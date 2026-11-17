@@ -1,0 +1,2921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Complete Math Shortcut Tricks & Quantitative Ability Handbook for CSS, PMS, FPSC, PPSC, and NTS exams. Master mental multiplication, fast division, percentage split tricks, ratio shortcuts, work and time formulas, relative speed, and arithmetic progressions.">
+    <meta name="keywords"
+        content="Math Shortcut Tricks, Quantitative Ability, Fast Mental Math, Percentages Tricks, Work and Time Problems, Ratio and Proportion, Speed Distance Time, Simple Compound Interest, CSS General Science and Ability, FPSC Math, PPSC Quantitative">
+    <title>Math Shortcut Tricks &amp; Quantitative Ability Handbook | CSS Prep Central</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --math-primary: #0284c7;
+            --math-primary-dark: #0369a1;
+            --math-primary-light: #f0f9ff;
+            --math-accent: #6366f1;
+            --math-gold: #f59e0b;
+            --math-card-bg: #ffffff;
+            --math-border: #e0f2fe;
+            --math-text-main: #0f172a;
+            --math-text-muted: #475569;
+            --math-code-bg: #f8fafc;
+        }
+
+        .dark-mode {
+            --math-primary: #38bdf8;
+            --math-primary-dark: #0c4a6e;
+            --math-primary-light: #082f49;
+            --math-accent: #818cf8;
+            --math-gold: #fbbf24;
+            --math-card-bg: #1e293b;
+            --math-border: #334155;
+            --math-text-main: #f8fafc;
+            --math-text-muted: #94a3b8;
+            --math-code-bg: #0f172a;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--math-text-main);
+            background-color: var(--bg-main, #f8fafc);
+            line-height: 1.65;
+        }
+
+        /* Hero Banner */
+        .math-hero {
+            background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0284c7 100%);
+            color: #ffffff;
+            padding: 4.5rem 1.5rem 3.5rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--math-gold);
+        }
+
+        .math-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.25) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .math-hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .math-badge-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #7dd3fc;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(125, 211, 252, 0.3);
+        }
+
+        .math-hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.25rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .math-hero-desc {
+            font-size: 1.15rem;
+            max-width: 850px;
+            color: #e0f2fe;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        /* Stats Grid */
+        .math-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .math-stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .math-stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.25);
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+        }
+
+        .math-stat-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .math-stat-lbl {
+            font-size: 0.85rem;
+            color: #bae6fd;
+            margin-top: 0.25rem;
+        }
+
+        /* Sticky Filter Controls */
+        .controls-section {
+            background: var(--math-card-bg);
+            border-bottom: 1px solid var(--math-border);
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 60px;
+            z-index: 40;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .controls-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-box-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+            max-width: 450px;
+        }
+
+        .search-box-wrap i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--math-text-muted);
+        }
+
+        .search-input-field {
+            width: 100%;
+            padding: 0.65rem 1rem 0.65rem 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--math-border);
+            background: var(--math-code-bg);
+            color: var(--math-text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-input-field:focus {
+            border-color: var(--math-primary);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+
+        .action-btns-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .ctrl-btn {
+            background: var(--math-code-bg);
+            color: var(--math-text-main);
+            border: 1px solid var(--math-border);
+            padding: 0.55rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .ctrl-btn:hover {
+            background: var(--math-primary);
+            color: #ffffff;
+            border-color: var(--math-primary);
+        }
+
+        /* Filter Pills */
+        .filter-pills-bar {
+            max-width: 1200px;
+            margin: 1.5rem auto 0;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .filter-pill {
+            background: var(--math-card-bg);
+            border: 1px solid var(--math-border);
+            color: var(--math-text-muted);
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .filter-pill:hover, .filter-pill.active {
+            background: var(--math-primary);
+            color: #ffffff;
+            border-color: var(--math-primary);
+        }
+
+        /* Interactive Calculators Section */
+        .calc-section-wrapper {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .calc-card {
+            background: var(--math-card-bg);
+            border: 1px solid var(--math-border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .calc-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--math-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .calc-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            align-items: center;
+        }
+
+        .calc-input {
+            flex: 1;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--math-border);
+            background: var(--math-code-bg);
+            color: var(--math-text-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .calc-res-box {
+            margin-top: 1rem;
+            padding: 0.85rem 1rem;
+            background: var(--math-primary-light);
+            border-left: 3px solid var(--math-primary);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--math-primary-dark);
+        }
+
+        .dark-mode .calc-res-box {
+            color: #bae6fd;
+        }
+
+        /* Modules Section */
+        .modules-wrapper {
+            max-width: 1200px;
+            margin: 2rem auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .module-section-card {
+            background: var(--math-card-bg);
+            border: 1px solid var(--math-border);
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s;
+        }
+
+        .module-section-card:hover {
+            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.08);
+        }
+
+        .module-header {
+            padding: 1.75rem 2rem;
+            background: linear-gradient(to right, rgba(2, 132, 199, 0.06), transparent);
+            border-bottom: 1px solid var(--math-border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .module-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--math-primary);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+        }
+
+        .module-header-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--math-text-main);
+            margin: 0;
+        }
+
+        .module-header-desc {
+            font-size: 0.92rem;
+            color: var(--math-text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Rules Sub-grid */
+        .rules-grid {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .rule-card {
+            background: var(--math-code-bg);
+            border: 1px solid var(--math-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .rule-card:hover {
+            border-color: var(--math-primary);
+            transform: translateY(-2px);
+        }
+
+        .rule-name-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .rule-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--math-primary);
+            line-height: 1.35;
+        }
+
+        .rule-text {
+            font-size: 0.9rem;
+            color: var(--math-text-main);
+            margin-bottom: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background: var(--math-card-bg);
+            border: 1px dashed var(--math-primary);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--math-primary);
+            margin-bottom: 0.85rem;
+            word-break: break-all;
+        }
+
+        .example-box {
+            background: rgba(2, 132, 199, 0.05);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            margin-bottom: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .tip-box {
+            font-size: 0.82rem;
+            color: var(--math-gold);
+            font-weight: 600;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+        }
+
+        /* Drills Container */
+        .drills-container {
+            border-top: 1px solid var(--math-border);
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.01);
+        }
+
+        .drills-header {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--math-text-main);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .drill-item {
+            background: var(--math-card-bg);
+            border: 1px solid var(--math-border);
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .drill-q {
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--math-text-main);
+            margin-bottom: 0.75rem;
+        }
+
+        .drill-opts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .drill-opt-pill {
+            background: var(--math-code-bg);
+            border: 1px solid var(--math-border);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .reveal-btn {
+            background: var(--math-code-bg);
+            border: 1px solid var(--math-border);
+            color: var(--math-primary);
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .reveal-btn:hover {
+            background: var(--math-primary);
+            color: #ffffff;
+            border-color: var(--math-primary);
+        }
+
+        .drill-solution-box {
+            display: none;
+            margin-top: 0.85rem;
+            padding: 1rem;
+            background: var(--math-primary-light);
+            border-left: 3px solid #10b981;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: none;
+            color: var(--math-text-muted);
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 4px;
+            transition: color 0.2s;
+        }
+
+        .copy-btn:hover {
+            color: var(--math-primary);
+        }
+
+        @media (max-width: 768px) {
+            .rules-grid {
+                grid-template-columns: 1fr;
+                padding: 1.25rem;
+            }
+            .module-header {
+                padding: 1.25rem;
+            }
+            .drills-container {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main Header Navbar -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-graduation-cap"></i></span>
+                <span class="logo-text">CSS Prep Central</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a href="latest-jobs.html" class="nav-link" style="color: #e11d48; font-weight: 700;"><i class="fas fa-bullhorn"></i> Latest Jobs <span style="background:#e11d48; color:#fff; font-size:0.62rem; padding:1px 5px; border-radius:8px;">17.5k</span></a></li>
+                    <li class="nav-item"><a href="math-mcqs.html" class="nav-link" style="color: #0284c7; font-weight: 700;"><i class="fas fa-check-to-slot"></i> Math MCQs (300+)</a></li>
+                    <li class="nav-item"><a href="math-tricks.html" class="nav-link active" style="color: #0284c7; font-weight: 700;"><i class="fas fa-calculator"></i> Math Tricks</a></li>
+                    <li class="nav-item"><a href="written-prep.html" class="nav-link"><i class="fas fa-book-open"></i> Written Prep</a></li>
+                    <li class="nav-item"><a href="css-essays-2026.html" class="nav-link"><i class="fas fa-pen-nib"></i> Solved Essays</a></li>
+                    <li class="nav-item"><a href="international-relations-essays.html" class="nav-link"><i class="fas fa-globe"></i> IR Essays</a></li>
+                    <li class="nav-item"><a href="geoeconomics-finance-essays.html" class="nav-link"><i class="fas fa-chart-line"></i> Geoeconomics</a></li>
+                    <li class="nav-item"><a href="islamiat-mcqs.html" class="nav-link"><i class="fas fa-mosque"></i> Islamiat</a></li>
+                    <li class="nav-item"><a href="quiz.html" class="nav-link"><i class="fas fa-vial"></i> Mock Test</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="math-hero">
+        <div class="math-hero-container">
+            <div class="math-badge-top">
+                <i class="fas fa-bolt"></i> Fast Mental Math &amp; Quantitative Ability
+            </div>
+            <h1 class="math-hero-title">Math Shortcut Tricks &amp; Quantitative Handbook</h1>
+            <p class="math-hero-desc">
+                Master lightning-fast mental math techniques, arithmetic shortcut formulas, and step-by-step past paper problem solutions for CSS General Science &amp; Ability (GSA), PMS, FPSC (FIA, Custom, IB), PPSC, SPSC, and NTS examinations.
+            </p>
+            <div class="math-stats-grid">
+                <div class="math-stat-card">
+                    <div class="math-stat-icon"><i class="fas fa-cubes"></i></div>
+                    <div>
+                        <div class="math-stat-val">12</div>
+                        <div class="math-stat-lbl">Core Modules</div>
+                    </div>
+                </div>
+                <div class="math-stat-card">
+                    <div class="math-stat-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <div>
+                        <div class="math-stat-val">52+</div>
+                        <div class="math-stat-lbl">Shortcut Formulas</div>
+                    </div>
+                </div>
+                <div class="math-stat-card">
+                    <div class="math-stat-icon"><i class="fas fa-circle-check"></i></div>
+                    <div>
+                        <div class="math-stat-val">40+</div>
+                        <div class="math-stat-lbl">Past Paper Drills</div>
+                    </div>
+                </div>
+                <div class="math-stat-card">
+                    <div class="math-stat-icon"><i class="fas fa-stopwatch"></i></div>
+                    <div>
+                        <div class="math-stat-val">5-10 Sec</div>
+                        <div class="math-stat-lbl">Target Solve Speed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+    
+
+    <!-- Category Filter Pills -->
+    <div class="filter-pills-bar" id="categoryFilterBar">
+        <button class="filter-pill active" onclick="filterByModule('all')"><i class="fas fa-border-all"></i> All Topics</button>
+        
+            <button class="filter-pill" onclick="filterByModule('percentages')">
+                <i class="fa-solid fa-percent"></i> Percentages & Fast Conversions
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('multiplication')">
+                <i class="fa-solid fa-xmark"></i> Mental Multiplication & Squaring
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('division')">
+                <i class="fa-solid fa-divide"></i> Division & Divisibility Tests
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('ratio')">
+                <i class="fa-solid fa-scale-balanced"></i> Ratio, Proportion & Variations
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('work-time')">
+                <i class="fa-solid fa-clock"></i> Work, Time & Wages
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('speed-distance')">
+                <i class="fa-solid fa-gauge-high"></i> Time, Speed & Distance
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('profit-loss')">
+                <i class="fa-solid fa-tags"></i> Profit, Loss & Discount
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('interest')">
+                <i class="fa-solid fa-coins"></i> Simple & Compound Interest
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('averages-alligation')">
+                <i class="fa-solid fa-chart-simple"></i> Averages & Rule of Alligation
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('progressions')">
+                <i class="fa-solid fa-arrow-trend-up"></i> Arithmetic & Geometric Progressions
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('algebra-bodmas')">
+                <i class="fa-solid fa-square-root-variable"></i> BODMAS, Inequalities & Set Theory
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('geometry-mensuration')">
+                <i class="fa-solid fa-shapes"></i> Geometry & Mensuration Shortcuts
+            </button>
+        
+            <button class="filter-pill" onclick="filterByModule('probability-combinations')">
+                <i class="fa-solid fa-dice"></i> Permutations & Combinations (Counting Tricks)
+            </button>
+        
+    </div>
+
+    <!-- Interactive Live Shortcut Calculators -->
+    <section class="calc-section-wrapper">
+        <h3 style="font-size: 1.15rem; font-family: 'Outfit', sans-serif; color: var(--math-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-calculator"></i> Interactive Shortcut Calculators (Try It Yourself)
+        </h3>
+        <p style="font-size: 0.88rem; color: var(--math-text-muted); margin-bottom: 1rem;">
+            Test the formulas in real time with your own numbers to verify the shortcut logic.
+        </p>
+
+        <div class="calc-grid">
+            <!-- Calc 1: Work & Time -->
+            <div class="calc-card">
+                <div class="calc-title"><i class="fas fa-clock"></i> Work &amp; Time (2 Workers)</div>
+                <p style="font-size: 0.85rem; color: var(--math-text-muted); margin-bottom: 0.75rem;">Formula: <code>(A × B) / (A + B)</code></p>
+                <div class="calc-row">
+                    <input type="number" id="workerA" class="calc-input" placeholder="Person A (hrs/days)" value="6" oninput="calculateWork()">
+                    <input type="number" id="workerB" class="calc-input" placeholder="Person B (hrs/days)" value="12" oninput="calculateWork()">
+                </div>
+                <div class="calc-res-box" id="workResult">
+                    Together: 4.00 hours/days
+                </div>
+            </div>
+
+            <!-- Calc 2: Percentage Commutative Trick -->
+            <div class="calc-card">
+                <div class="calc-title"><i class="fas fa-percent"></i> Percentage Reversal Trick</div>
+                <p style="font-size: 0.85rem; color: var(--math-text-muted); margin-bottom: 0.75rem;">Formula: <code>x% of y = y% of x = (x × y) / 100</code></p>
+                <div class="calc-row">
+                    <input type="number" id="pctX" class="calc-input" placeholder="Percentage X" value="16" oninput="calculatePct()">
+                    <input type="number" id="pctY" class="calc-input" placeholder="Number Y" value="50" oninput="calculatePct()">
+                </div>
+                <div class="calc-res-box" id="pctResult">
+                    16% of 50 = 50% of 16 = 8.00
+                </div>
+            </div>
+
+            <!-- Calc 3: Annual Depreciation -->
+            <div class="calc-card">
+                <div class="calc-title"><i class="fas fa-arrow-down-wide-short"></i> Annual Depreciation</div>
+                <p style="font-size: 0.85rem; color: var(--math-text-muted); margin-bottom: 0.75rem;">Formula: <code>P × (1 - r/100)^n</code></p>
+                <div class="calc-row">
+                    <input type="number" id="depP" class="calc-input" placeholder="Principal (Rs)" value="100000" oninput="calculateDep()">
+                    <input type="number" id="depR" class="calc-input" placeholder="Rate %" value="10" oninput="calculateDep()">
+                    <input type="number" id="depN" class="calc-input" placeholder="Years" value="2" oninput="calculateDep()">
+                </div>
+                <div class="calc-res-box" id="depResult">
+                    Value after 2 years: Rs. 81,000.00
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Fraction to Percentage Fast Conversion Table</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('1/2=50%, 1/3=33.33%, 1/4=25%, 1/5=20%, 1/6=16.67%, 1/7=14.28%, 1/8=12.5%, 1/9=11.11%, 1/11=9.09%, 1/12=8.33%, 1/16=6.25%')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Convert standard fractions to exact percentages instantaneously to eliminate long divisions.</div>
+                                <div class="formula-box"><strong>Formula:</strong> 1/2=50%, 1/3=33.33%, 1/4=25%, 1/5=20%, 1/6=16.67%, 1/7=14.28%, 1/8=12.5%, 1/9=11.11%, 1/11=9.09%, 1/12=8.33%, 1/16=6.25%</div>
+                                <div class="example-box"><strong>Example:</strong> What is 12.5% of 640? Instead of 0.125 × 640, compute 640 / 8 = 80.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Remember that 1/7 = 14.28% and 2/7 = 28.57% (digits double: 14 -> 28).</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">The Commutative Percentage Trick (x% of y = y% of x)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('x% of y = (x × y) / 100 = (y × x) / 100 = y% of x')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Whenever calculating x% of y seems awkward, reverse the numbers: x% of y is mathematically identical to y% of x.</div>
+                                <div class="formula-box"><strong>Formula:</strong> x% of y = (x × y) / 100 = (y × x) / 100 = y% of x</div>
+                                <div class="example-box"><strong>Example:</strong> Find 16% of 50. Swap it: 50% of 16 = half of 16 = 8!</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Extremely helpful when one number is 25, 50, 75, or 20.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">The Mental Split Method (10%, 5%, 1% Building Blocks)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Target% = a(10%) + b(5%) + c(1%)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Break any percentage into 10% (move decimal 1 place left), 1% (move decimal 2 places left), and 5% (half of 10%).</div>
+                                <div class="formula-box"><strong>Formula:</strong> Target% = a(10%) + b(5%) + c(1%)</div>
+                                <div class="example-box"><strong>Example:</strong> Find 36% of 450: 10% = 45 -> 30% = 135; 5% = 22.5; 1% = 4.5. Total = 135 + 22.5 + 4.5 = 162.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> For 98% of X, compute 100% - 2% (X - 2 × 1%).</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Annual Depreciation / Compounded Decay</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Value after n years = P × (1 - r/100)^n')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">When a value depreciates by r% annually, multiply the current value by (1 - r/100) for each year.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Value after n years = P × (1 - r/100)^n</div>
+                                <div class="example-box"><strong>Example:</strong> A computer worth Rs. 100,000 depreciates by 10% annually. Value after 2 years: Year 1 = 100,000 - 10,000 = 90,000; Year 2 = 90,000 - 9,000 = Rs. 81,000.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Do not subtract 20%! 10% depreciation for 2 years equals 19% total depreciation, leaving 81%.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Successive Percentage Changes (Net Change Formula)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Net % Change = a + b + (a × b) / 100')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">When a quantity changes by a% and then by b%, the net percentage change is given by the universal formula.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Net % Change = a + b + (a × b) / 100</div>
+                                <div class="example-box"><strong>Example:</strong> If price increases by 20% and then decreases by 10%: Net = +20 - 10 + (20 × -10)/100 = 10 - 2 = +8% increase.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Use (+) for increases and (-) for decreases/discounts.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Consumption Adjustment to Maintain Constant Budget</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Reduction in Consumption % = [R / (100 + R)] × 100%')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">If price of a commodity increases by R%, consumption must decrease by a specific fraction to keep total expenditure constant.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Reduction in Consumption % = [R / (100 + R)] × 100%</div>
+                                <div class="example-box"><strong>Example:</strong> If petrol price increases by 25%: Reduction = [25 / (100 + 25)] × 100% = (25/125) × 100% = 20% reduction.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> If price decreases by R%, consumption can increase by [R / (100 - R)] × 100%.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #0284c7;"></i> Solved Examination Drills (4)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> What percent of 120 is 90? (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">0.25</span><span class="drill-opt-pill">0.5</span><span class="drill-opt-pill">0.75</span><span class="drill-opt-pill">75%</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_percentages_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_percentages_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 0.75 (or 75%)
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Percentage = (Part / Whole) × 100% = (90 / 120) = 9/12 = 3/4 = 0.75 or 75%.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> If X% of Y is 100 and Y% of Z is 200, find the relation between X and Z. (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">Z = 2X</span><span class="drill-opt-pill">Z = X/2</span><span class="drill-opt-pill">X = Z/4</span><span class="drill-opt-pill">None of these</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_percentages_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_percentages_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: Z = 2X
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> X% of Y = (X × Y)/100 = 100 => XY = 10,000. Y% of Z = (Y × Z)/100 = 200 => YZ = 20,000. Divide the two equations: (XY)/(YZ) = 10,000 / 20,000 => X/Z = 1/2 => Z = 2X.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q3:</strong> The value of a computer depreciates by 10% annually. If the present value is Rs. 100,000, what will be its value after 2 years? (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">Rs. 18,000</span><span class="drill-opt-pill">Rs. 10,000</span><span class="drill-opt-pill">Rs. 81,000</span><span class="drill-opt-pill">Rs. 80,000</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_percentages_2')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_percentages_2">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: Rs. 81,000
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Value = 100,000 × (0.90) × (0.90) = 100,000 × 0.81 = Rs. 81,000.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q4:</strong> The tank full of petrol in Haroon's motorcycle lasts for 10 days. If he starts using 25% more every day, for how many days will the tank full of petrol last? (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">5 days</span><span class="drill-opt-pill">7 days</span><span class="drill-opt-pill">8 days</span><span class="drill-opt-pill">None of these</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_percentages_3')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_percentages_3">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 8 days
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Let original daily consumption be 1 unit/day. Total petrol = 10 days × 1 unit = 10 units. New consumption = 1 + 25% = 1.25 units/day. Days = 10 / 1.25 = 10 / (5/4) = 10 × 4/5 = 8 days.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Multiplying Any Number by 11</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('For ab × 11: write \'a\', then (a+b), then \'b\'. If (a+b) >= 10, carry over 1 to \'a\'.')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Keep the outer digits identical and sum adjacent digits from right to left.</div>
+                                <div class="formula-box"><strong>Formula:</strong> For ab × 11: write 'a', then (a+b), then 'b'. If (a+b) >= 10, carry over 1 to 'a'.</div>
+                                <div class="example-box"><strong>Example:</strong> 52 × 11: outer digits 5 and 2; middle = 5+2 = 7 -> 572. 87 × 11: 8 [8+7] 7 = 8 [15] 7 = (8+1) 5 7 = 957.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> For 3 digits: 342 × 11 -> First digit 3, then (3+4)=7, then (4+2)=6, last digit 2 -> 3,762.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Squaring Numbers Ending in 5</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('(N5)^2 = [N × (N + 1)] 25')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Multiply the leading number by its consecutive integer (N × (N+1)) and append 25 to the end.</div>
+                                <div class="formula-box"><strong>Formula:</strong> (N5)^2 = [N × (N + 1)] 25</div>
+                                <div class="example-box"><strong>Example:</strong> 65^2: Leading is 6. 6 × 7 = 42. Append 25 -> 4,225! 85^2: 8 × 9 = 72 -> 7,225.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Works for 3-digit numbers too: 115^2 -> 11 × 12 = 132 -> 13,225.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Multiplying Numbers Near Base 100</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('(100 + a)(100 + b) = [100 + a + b] | (a × b)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Find the deviation of each number from 100. Left part = (Num1 + Dev2). Right part = (Dev1 × Dev2) in 2 digits.</div>
+                                <div class="formula-box"><strong>Formula:</strong> (100 + a)(100 + b) = [100 + a + b] | (a × b)</div>
+                                <div class="example-box"><strong>Example:</strong> 104 × 107: Devs are +4 and +7. Left = 104 + 7 = 111. Right = 4 × 7 = 28 -> 11,128! For below 100: 96 × 93 -> Devs -4 and -7. Left = 96 - 7 = 89. Right = (-4) × (-7) = 28 -> 8,928.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Ensure the right-hand part always has 2 digits (e.g., 2 × 3 = 06).</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Product of Numbers with Difference of 2 (a^2 - 1)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('(x - 1)(x + 1) = x^2 - 1')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">When two numbers differ by 2, their product is the square of the middle number minus 1.</div>
+                                <div class="formula-box"><strong>Formula:</strong> (x - 1)(x + 1) = x^2 - 1</div>
+                                <div class="example-box"><strong>Example:</strong> 29 × 31: Middle number is 30. 30^2 - 1 = 900 - 1 = 899. 49 × 51 = 50^2 - 1 = 2,499.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> For difference of 4: (x - 2)(x + 2) = x^2 - 4. E.g., 28 × 32 = 30^2 - 4 = 896.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Multiplication by 25, 50, and 125</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('× 25 = (÷ 4) × 100;  × 50 = (÷ 2) × 100;  × 125 = (÷ 8) × 1000')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Instead of multiplying, divide by the reciprocal fraction and add zeros.</div>
+                                <div class="formula-box"><strong>Formula:</strong> × 25 = (÷ 4) × 100;  × 50 = (÷ 2) × 100;  × 125 = (÷ 8) × 1000</div>
+                                <div class="example-box"><strong>Example:</strong> 64 × 25: 64 ÷ 4 = 16 -> 1,600. 72 × 125: 72 ÷ 8 = 9 -> 9,000.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Faster than standard column multiplication by a factor of four.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #6366f1;"></i> Solved Examination Drills (3)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> What is the value of 85^2?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">7125</span><span class="drill-opt-pill">7225</span><span class="drill-opt-pill">7325</span><span class="drill-opt-pill">7425</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_multiplication_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_multiplication_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 7225
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> 8 × 9 = 72. Append 25 => 7,225.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> Find the product of 94 × 98 without pen and paper.</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">9212</span><span class="drill-opt-pill">9112</span><span class="drill-opt-pill">9312</span><span class="drill-opt-pill">9216</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_multiplication_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_multiplication_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 9212
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Deviations from 100 are -6 and -2. Left = 94 - 2 = 92. Right = (-6) × (-2) = 12 => 9,212.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q3:</strong> Calculate 48 × 52.</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">2496</span><span class="drill-opt-pill">2486</span><span class="drill-opt-pill">2504</span><span class="drill-opt-pill">2492</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_multiplication_2')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_multiplication_2">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 2496
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Middle is 50. 50^2 - 2^2 = 2500 - 4 = 2,496.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Master Divisibility Test for 3 and 9</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Sum(digits) mod 3 = 0 => Divisible by 3; Sum(digits) mod 9 = 0 => Divisible by 9')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">A number is divisible by 3 (or 9) if the sum of its digits is divisible by 3 (or 9).</div>
+                                <div class="formula-box"><strong>Formula:</strong> Sum(digits) mod 3 = 0 => Divisible by 3; Sum(digits) mod 9 = 0 => Divisible by 9</div>
+                                <div class="example-box"><strong>Example:</strong> Is 48,726 divisible by 9? Sum = 4+8+7+2+6 = 27. 27 is divisible by 9, so YES.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> 'Cast out nines': cancel out any digits that add to 9 as you go to calculate faster.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Divisibility Test for 4 and 8</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Last 2 digits divisible by 4 => Num div by 4; Last 3 digits div by 8 => Num div by 8')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">For 4: check only the last 2 digits. For 8: check only the last 3 digits.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Last 2 digits divisible by 4 => Num div by 4; Last 3 digits div by 8 => Num div by 8</div>
+                                <div class="example-box"><strong>Example:</strong> 753,824: Last 2 digits = 24 (div by 4 -> YES). Last 3 digits = 824 (824 ÷ 8 = 103 -> YES, div by 8).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> For 8: If the hundreds digit is even, check if last 2 digits are divisible by 8. If odd, add 4 to last 2 digits.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Alternating Sum Divisibility Test for 11</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('|Sum(odd places) - Sum(even places)| = 0, 11, 22...')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Take the difference between the sum of digits at odd places and sum of digits at even places. If the difference is 0 or divisible by 11, the number is divisible by 11.</div>
+                                <div class="formula-box"><strong>Formula:</strong> |Sum(odd places) - Sum(even places)| = 0, 11, 22...</div>
+                                <div class="example-box"><strong>Example:</strong> Test 9,183,724: Odd places (from right): 4+7+8+9 = 28. Even places: 2+3+1 = 6. Difference = 28 - 6 = 22 (divisible by 11 -> YES).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Extremely common in FPSC, CSS, and PPSC aptitude tests.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Fast Division by 5 and 50</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('X / 5 = (2X) / 10;  X / 50 = (2X) / 100')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">To divide by 5, double the number and shift the decimal one place left. To divide by 50, double and shift two places left.</div>
+                                <div class="formula-box"><strong>Formula:</strong> X / 5 = (2X) / 10;  X / 50 = (2X) / 100</div>
+                                <div class="example-box"><strong>Example:</strong> 342 ÷ 5: Double 342 = 684. Shift decimal -> 68.4. 1,450 ÷ 50: Double = 2,900. Shift two decimals -> 29.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> To divide by 25: Multiply by 4 and shift two decimals left.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Converting Recurring Decimals to Fractions</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('0.aaaa... = a/9;  0.abab... = ab/99;  0.ab_bar = (ab - a) / 90')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Pure recurring decimals have 9s in the denominator. Mixed recurring have 9s followed by 0s.</div>
+                                <div class="formula-box"><strong>Formula:</strong> 0.aaaa... = a/9;  0.abab... = ab/99;  0.ab_bar = (ab - a) / 90</div>
+                                <div class="example-box"><strong>Example:</strong> 0.4777... = (47 - 4) / 90 = 43/90. 0.2323... = 23/99.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Number of 9s = count of repeating digits; number of 0s = count of non-repeating digits after decimal.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #10b981;"></i> Solved Examination Drills (2)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> Which of the following numbers is divisible by 11?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">483,271</span><span class="drill-opt-pill">594,286</span><span class="drill-opt-pill">283,912</span><span class="drill-opt-pill">194,821</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_division_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_division_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 283,912
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> For 283,912: (2+3+1) = 6; (8+9+2) = 19. Difference = 19 - 6 = 13 (No). Let's check 594,286: (5+4+8) = 17; (9+2+6) = 17. 17 - 17 = 0 => Exactly divisible by 11!
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> Convert the recurring decimal 0.363636... into a simplified fraction.</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">4/11</span><span class="drill-opt-pill">36/100</span><span class="drill-opt-pill">12/33</span><span class="drill-opt-pill">18/55</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_division_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_division_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 4/11
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Two repeating digits '36' => 36 / 99 = divide top and bottom by 9 => 4/11.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">The 'N-Method' to Combine Two Ratios (A:B and B:C -> A:B:C)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('A : B : C = (A × B2) : (B1 × B2) : (B1 × C)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Multiply vertically and diagonally to find the unified ratio without finding common multiples.</div>
+                                <div class="formula-box"><strong>Formula:</strong> A : B : C = (A × B2) : (B1 × B2) : (B1 × C)</div>
+                                <div class="example-box"><strong>Example:</strong> If A:B = 2:3 and B:C = 4:5. A = 2×4 = 8; B = 3×4 = 12; C = 3×5 = 15. A:B:C = 8:12:15.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Keep A:B on top and B:C on bottom aligned at B.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Combining 4 Ratios (A:B:C:D)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Row 1: [A, B, B, B]; Row 2: [A, B, C, C]; Row 3: [A, B, C, D] -> multiply columns.')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Align ratios in a table and fill empty spaces with the adjacent number.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Row 1: [A, B, B, B]; Row 2: [A, B, C, C]; Row 3: [A, B, C, D] -> multiply columns.</div>
+                                <div class="example-box"><strong>Example:</strong> If A:B = 1:2, B:C = 3:4, C:D = 5:6. A = 1×3×5 = 15; B = 2×3×5 = 30; C = 2×4×5 = 40; D = 2×4×6 = 48. Unified = 15:30:40:48.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Simplify the final ratio by dividing by common factors if any.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Equivalent Ratio Property</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('a : b = ka : kb')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Multiplying or dividing both antecedent and consequent by the same non-zero number produces an equivalent ratio.</div>
+                                <div class="formula-box"><strong>Formula:</strong> a : b = ka : kb</div>
+                                <div class="example-box"><strong>Example:</strong> A ratio equivalent to 3:7 is (3×3) : (7×3) = 9:21 (FPSC Exam Question).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Check each option by dividing both numbers by their GCD to see if it reduces to original.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Mixture Replacement Formula (Successive Dilution)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Remaining Liquid = Initial Volume × [1 - (x / V)]^n')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">If a container has V liters of pure liquid and x liters are drawn out and replaced with water n times, the remaining pure liquid quantity is given by:</div>
+                                <div class="formula-box"><strong>Formula:</strong> Remaining Liquid = Initial Volume × [1 - (x / V)]^n</div>
+                                <div class="example-box"><strong>Example:</strong> A vessel has 40L of milk. 4L are drawn and replaced with water, repeated twice (total 2 operations). Remaining = 40 × [1 - 4/40]^2 = 40 × (0.9)^2 = 40 × 0.81 = 32.4 Liters.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Saves up to 3 minutes over step-by-step fractional calculation.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #f59e0b;"></i> Solved Examination Drills (3)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> A ratio equivalent to 3 : 7 is: (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">3 : 9</span><span class="drill-opt-pill">6 : 10</span><span class="drill-opt-pill">9 : 21</span><span class="drill-opt-pill">None of these</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_ratio_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_ratio_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 9 : 21
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Multiply both terms by 3: 3 × 3 = 9 and 7 × 3 = 21 => 9 : 21.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> If A : B = 3 : 4 and B : C = 8 : 9, find A : C.</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">1 : 2</span><span class="drill-opt-pill">2 : 3</span><span class="drill-opt-pill">3 : 5</span><span class="drill-opt-pill">4 : 5</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_ratio_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_ratio_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 2 : 3
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> A/C = (A/B) × (B/C) = (3/4) × (8/9) = 24 / 36 = 2/3 => 2 : 3.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q3:</strong> Rs. 1,200 is divided among A, B, and C in the ratio 2 : 3 : 5. What is B's share?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">Rs. 240</span><span class="drill-opt-pill">Rs. 360</span><span class="drill-opt-pill">Rs. 600</span><span class="drill-opt-pill">Rs. 400</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_ratio_2')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_ratio_2">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: Rs. 360
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Total parts = 2 + 3 + 5 = 10 parts. 1 part = 1,200 / 10 = Rs. 120. B's share = 3 parts = 3 × 120 = Rs. 360.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Two Workers Together Shortcut (Product over Sum)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Time = (A × B) / (A + B)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">If Person A completes work in A hours and Person B in B hours, working together they finish in (A × B) / (A + B) hours.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Time = (A × B) / (A + B)</div>
+                                <div class="example-box"><strong>Example:</strong> Mr. A completes work in 6 hours, Mr. B in 12 hours. Together: (6 × 12) / (6 + 12) = 72 / 18 = 4 hours! (FPSC Past Paper).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Instant 5-second solution; avoids adding 1/6 + 1/12.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">The Universal LCM (Unit Work) Method</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Total Units = LCM(t1, t2, t3); Combined Daily Units = u1 + u2 + u3; Time = Total Units / Combined Units')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Assume total work is the LCM of the individual times. Calculate daily/hourly units of work for each person.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Total Units = LCM(t1, t2, t3); Combined Daily Units = u1 + u2 + u3; Time = Total Units / Combined Units</div>
+                                <div class="example-box"><strong>Example:</strong> A does work in 10 days, B in 15 days, C in 30 days. LCM = 30 units. A = 3 units/day, B = 2 units/day, C = 1 unit/day. Combined = 3+2+1 = 6 units/day. Time = 30 / 6 = 5 days.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Handles workers leaving early, alternate day working, and negative work (leaks) effortlessly.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Man-Days-Hours-Work Formula (MDH / W)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('(M1 × D1 × H1 × E1) / W1 = (M2 × D2 × H2 × E2) / W2')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">The relation between workers, days, daily hours, efficiency, and work done across two scenarios is constant.</div>
+                                <div class="formula-box"><strong>Formula:</strong> (M1 × D1 × H1 × E1) / W1 = (M2 × D2 × H2 × E2) / W2</div>
+                                <div class="example-box"><strong>Example:</strong> If 15 men can build a 100m wall in 10 days working 8 hrs/day, how many days will 20 men take to build a 200m wall working 6 hrs/day? (15 × 10 × 8) / 100 = (20 × D2 × 6) / 200 => 12 = (120 × D2)/200 => D2 = 20 days.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> If work is identical, simply equate M1×D1×H1 = M2×D2×H2.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Pipes & Cisterns (Inlet and Leak Combined)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Net Time to Fill = (A × B) / (B - A)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Inlets perform positive work; leaks/outlets perform negative work. If Inlet fills in A hours and Outlet empties in B hours (where B > A):</div>
+                                <div class="formula-box"><strong>Formula:</strong> Net Time to Fill = (A × B) / (B - A)</div>
+                                <div class="example-box"><strong>Example:</strong> A pipe fills a tank in 6 hours, but a leak empties it in 10 hours. Time to fill: (6 × 10) / (10 - 6) = 60 / 4 = 15 hours.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> If tank is emptying, time = (A × B) / (A - B).</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #ea580c;"></i> Solved Examination Drills (3)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> Mr. A can do a particular work in 6 hours, and Mr. B can do the same work in 12 hours. How much time will it take if they do the work together? (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">7 hours</span><span class="drill-opt-pill">5 hours</span><span class="drill-opt-pill">4 hours</span><span class="drill-opt-pill">None of these</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_work-time_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_work-time_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 4 hours
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Time = (6 × 12) / (6 + 12) = 72 / 18 = 4 hours.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> 12 workers can complete a project in 18 days. In how many days can 9 workers complete the same project?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">20 days</span><span class="drill-opt-pill">24 days</span><span class="drill-opt-pill">22 days</span><span class="drill-opt-pill">26 days</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_work-time_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_work-time_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 24 days
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> M1 × D1 = M2 × D2 => 12 × 18 = 9 × D2 => D2 = (12 × 18) / 9 = 12 × 2 = 24 days.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q3:</strong> Pipe A can fill a pool in 20 minutes and Pipe B can fill it in 30 minutes. If both are opened together, how long will it take?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">10 minutes</span><span class="drill-opt-pill">12 minutes</span><span class="drill-opt-pill">15 minutes</span><span class="drill-opt-pill">25 minutes</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_work-time_2')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_work-time_2">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 12 minutes
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Time = (20 × 30) / (20 + 30) = 600 / 50 = 12 minutes.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Instant Speed Unit Conversion (km/h <-> m/s)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Speed(m/s) = Speed(km/h) × (5 / 18);  Speed(km/h) = Speed(m/s) × (18 / 5)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">To convert km/h to m/s multiply by 5/18. To convert m/s to km/h multiply by 18/5.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Speed(m/s) = Speed(km/h) × (5 / 18);  Speed(km/h) = Speed(m/s) × (18 / 5)</div>
+                                <div class="example-box"><strong>Example:</strong> Convert 72 km/h to m/s: 72 × (5/18) = 4 × 5 = 20 m/s. Convert 25 m/s to km/h: 25 × (18/5) = 5 × 18 = 90 km/h.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Notice that 18 km/h = 5 m/s, 36 km/h = 10 m/s, 54 km/h = 15 m/s, 72 km/h = 20 m/s.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Average Speed for Equal Distance (Harmonic Mean)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Average Speed = (2 × x × y) / (x + y)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">If a journey covers equal distance at speed x and returns at speed y, the average speed is not the arithmetic average.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Average Speed = (2 × x × y) / (x + y)</div>
+                                <div class="example-box"><strong>Example:</strong> A car travels from A to B at 60 km/h and returns at 40 km/h. Avg Speed = (2 × 60 × 40) / (60 + 40) = 4,800 / 100 = 48 km/h (NOT 50 km/h!).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> For 3 equal distances: Avg Speed = 3xyz / (xy + yz + zx).</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Train Crossing Relative Speed Rules</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Opposite: S_rel = S1 + S2;  Same: S_rel = |S1 - S2|;  Time = (L_train1 + L_object) / S_rel')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Total distance is always the sum of lengths. Speeds add if traveling in opposite directions; subtract if in same direction.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Opposite: S_rel = S1 + S2;  Same: S_rel = |S1 - S2|;  Time = (L_train1 + L_object) / S_rel</div>
+                                <div class="example-box"><strong>Example:</strong> A 150m train at 54 km/h crosses a pole: Dist = 150m, Speed = 54 × (5/18) = 15 m/s. Time = 150 / 15 = 10 seconds.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> For stationary objects with length (platform, bridge), Distance = Length(train) + Length(platform).</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Boats and Streams (Upstream & Downstream)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Boat in Still Water B = (D + U) / 2;  Stream Speed S = (D - U) / 2')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Let Boat speed in still water = B, Stream speed = S. Downstream D = B + S. Upstream U = B - S.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Boat in Still Water B = (D + U) / 2;  Stream Speed S = (D - U) / 2</div>
+                                <div class="example-box"><strong>Example:</strong> A boat moves at 14 km/h downstream and 8 km/h upstream. Boat speed = (14 + 8) / 2 = 11 km/h. Stream speed = (14 - 8) / 2 = 3 km/h.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> D is always greater than U.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #8b5cf6;"></i> Solved Examination Drills (2)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> A person travels from Lahore to Islamabad at 80 km/h and returns at 120 km/h. What is his average speed for the entire trip?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">100 km/h</span><span class="drill-opt-pill">96 km/h</span><span class="drill-opt-pill">92 km/h</span><span class="drill-opt-pill">104 km/h</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_speed-distance_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_speed-distance_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 96 km/h
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Avg Speed = (2 × 80 × 120) / (80 + 120) = 19,200 / 200 = 96 km/h.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> A 200m long train is running at 72 km/h. How many seconds will it take to pass an electric pole?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">8 sec</span><span class="drill-opt-pill">10 sec</span><span class="drill-opt-pill">12 sec</span><span class="drill-opt-pill">15 sec</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_speed-distance_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_speed-distance_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 10 sec
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Speed in m/s = 72 × (5/18) = 20 m/s. Time = Distance / Speed = 200 / 20 = 10 seconds.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">The Multiplier Factor Method</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Profit of p%: SP = CP × (1 + p/100);  Loss of l%: SP = CP × (1 - l/100)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Convert profit or loss into a direct multiplier to obtain Selling Price from Cost Price instantly.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Profit of p%: SP = CP × (1 + p/100);  Loss of l%: SP = CP × (1 - l/100)</div>
+                                <div class="example-box"><strong>Example:</strong> An item costs Rs. 450. Find SP at 20% profit: SP = 450 × 1.2 = Rs. 540. At 15% loss: SP = 450 × 0.85 = Rs. 382.5.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> To find CP from SP: CP = SP / Multiplier.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Successive Discounts Shortcut</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Single Equivalent Discount = d1 + d2 - (d1 × d2) / 100')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Two successive discounts of d1% and d2% are equivalent to a single net discount.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Single Equivalent Discount = d1 + d2 - (d1 × d2) / 100</div>
+                                <div class="example-box"><strong>Example:</strong> Successive discounts of 20% and 10%: Net Discount = 20 + 10 - (20 × 10)/100 = 30 - 2 = 28% (NOT 30%!).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> For three discounts: compute net of first two, then combine result with third.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Same SP with Equal % Profit and % Loss</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Net Loss % = (x / 10)^2 % = (x^2 / 100) %')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">When two articles are sold at the same price—one at x% profit and the other at x% loss—there is ALWAYS an overall net loss.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Net Loss % = (x / 10)^2 % = (x^2 / 100) %</div>
+                                <div class="example-box"><strong>Example:</strong> Two horses sold for Rs. 20,000 each; one at 20% gain, other at 20% loss. Net Result = Loss of (20^2 / 100)% = 400/100 = 4% loss.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> The selling price value does not affect the percentage loss result.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Dishonest Dealer (Cheating with Weights)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Gain % = [Error / (True Weight - Error)] × 100%')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">If a trader sells goods at cost price but uses a false weight:</div>
+                                <div class="formula-box"><strong>Formula:</strong> Gain % = [Error / (True Weight - Error)] × 100%</div>
+                                <div class="example-box"><strong>Example:</strong> A shopkeeper sells sugar at cost price but uses 900g instead of 1kg (1000g). Error = 100g. Gain% = [100 / (1000 - 100)] × 100% = (100/900) × 100% = 11.11%.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> True Weight - Error is the actual weight handed to the customer.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #ec4899;"></i> Solved Examination Drills (2)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> What is the single discount equivalent to successive discounts of 30% and 20%?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">50%</span><span class="drill-opt-pill">44%</span><span class="drill-opt-pill">46%</span><span class="drill-opt-pill">42%</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_profit-loss_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_profit-loss_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 44%
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Net Discount = 30 + 20 - (30 × 20)/100 = 50 - 6 = 44%.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> A man sells two watches for Rs. 1,000 each. On one he gains 10% and on the other he loses 10%. His overall result is:</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">No profit no loss</span><span class="drill-opt-pill">1% gain</span><span class="drill-opt-pill">1% loss</span><span class="drill-opt-pill">2% loss</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_profit-loss_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_profit-loss_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 1% loss
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Always a loss = (10^2 / 100)% = 100/100 = 1% loss.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Difference Between CI and SI for 2 Years</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Diff_2yr = P × (r / 100)^2')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">The difference between compound interest and simple interest over 2 years at annual rate r% on principal P:</div>
+                                <div class="formula-box"><strong>Formula:</strong> Diff_2yr = P × (r / 100)^2</div>
+                                <div class="example-box"><strong>Example:</strong> P = Rs. 5,000, r = 10%, t = 2 years. Diff = 5,000 × (10/100)^2 = 5,000 × 0.01 = Rs. 50.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Saves having to calculate both CI and SI separately and subtracting.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">The Rule of 72 (Time to Double Money)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Doubling Years ≈ 72 / Annual Interest Rate (r)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">At r% compound interest, an investment doubles in approximately 72 / r years.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Doubling Years ≈ 72 / Annual Interest Rate (r)</div>
+                                <div class="example-box"><strong>Example:</strong> At 8% compound interest, money doubles in 72 / 8 = 9 years. At 12%, it doubles in 72 / 12 = 6 years.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Rule of 114 gives tripling time; Rule of 144 gives quadrupling time.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Doubling Time for Simple Interest</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Years to Double (t) = 100 / r;  Rate to Double (r) = 100 / t')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Under simple interest, for a sum to double, the interest earned must equal the principal (SI = P).</div>
+                                <div class="formula-box"><strong>Formula:</strong> Years to Double (t) = 100 / r;  Rate to Double (r) = 100 / t</div>
+                                <div class="example-box"><strong>Example:</strong> At what SI rate will a sum double in 8 years? r = 100 / 8 = 12.5%.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> To triple under SI: t = 200 / r. To n-fold under SI: t = (n - 1) × 100 / r.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #059669;"></i> Solved Examination Drills (2)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> The difference between SI and CI on Rs. 8,000 for 2 years at 5% per annum is:</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">Rs. 15</span><span class="drill-opt-pill">Rs. 20</span><span class="drill-opt-pill">Rs. 25</span><span class="drill-opt-pill">Rs. 30</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_interest_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_interest_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: Rs. 20
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Diff = P × (r/100)^2 = 8,000 × (5/100)^2 = 8,000 × 0.0025 = Rs. 20.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> In how many years will an amount double itself under Simple Interest at 5% per annum?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">15 years</span><span class="drill-opt-pill">20 years</span><span class="drill-opt-pill">25 years</span><span class="drill-opt-pill">10 years</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_interest_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_interest_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 20 years
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> t = 100 / r = 100 / 5 = 20 years.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">The Assumed Mean / Deviation Method</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Average = A + [Sum(x_i - A) / n]')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Pick a convenient assumed average A near the middle. Average = A + (Sum of Deviations / Count).</div>
+                                <div class="formula-box"><strong>Formula:</strong> Average = A + [Sum(x_i - A) / n]</div>
+                                <div class="example-box"><strong>Example:</strong> Numbers: 182, 186, 188, 194, 190. Pick A = 190. Deviations: -8, -4, -2, +4, 0 = -10. Avg = 190 + (-10/5) = 190 - 2 = 188.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Avoids adding large multi-digit numbers.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">The Rule of Alligation (Cross Mixture Method)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('(Quantity of Cheaper) / (Quantity of Dearer) = (Dearer Price - Mean Price) / (Mean Price - Cheaper Price)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Find the ratio in which two ingredients of different prices/qualities must be blended to produce a desired mixture price.</div>
+                                <div class="formula-box"><strong>Formula:</strong> (Quantity of Cheaper) / (Quantity of Dearer) = (Dearer Price - Mean Price) / (Mean Price - Cheaper Price)</div>
+                                <div class="example-box"><strong>Example:</strong> In what ratio must rice at Rs. 60/kg be mixed with rice at Rs. 90/kg to sell at Rs. 72/kg? Cheaper = 60, Dearer = 90, Mean = 72. Cross differences: (90 - 72) = 18; (72 - 60) = 12. Ratio = 18 : 12 = 3 : 2.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Always place Cheaper on left, Dearer on right, Mean in center.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">New Member Joining Average Shift</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Weight/Age of New Person = Old Average + (n_new × Increase)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">When a new member joins an existing group of n people and increases average by x:</div>
+                                <div class="formula-box"><strong>Formula:</strong> Weight/Age of New Person = Old Average + (n_new × Increase)</div>
+                                <div class="example-box"><strong>Example:</strong> Average weight of 19 students is 40 kg. With teacher included (n=20), average becomes 41 kg (+1 kg). Teacher's weight = 40 + (20 × 1) = 60 kg.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> If average decreases by x, use: Old Average - (n_new × Decrease).</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #0284c7;"></i> Solved Examination Drills (2)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> In what ratio must a merchant mix tea worth Rs. 150/kg and Rs. 200/kg to get a blend worth Rs. 165/kg?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">7 : 3</span><span class="drill-opt-pill">3 : 7</span><span class="drill-opt-pill">2 : 3</span><span class="drill-opt-pill">4 : 1</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_averages-alligation_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_averages-alligation_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 7 : 3
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Cross differences: (200 - 165) = 35; (165 - 150) = 15. Ratio = 35 : 15 = 7 : 3.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> The average score of 10 players is 45 runs. When the captain's score is included, the average increases by 3 runs. The captain scored:</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">75 runs</span><span class="drill-opt-pill">78 runs</span><span class="drill-opt-pill">80 runs</span><span class="drill-opt-pill">72 runs</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_averages-alligation_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_averages-alligation_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 78 runs
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Captain's score = Old Avg + (New Count × Increase) = 45 + (11 × 3) = 45 + 33 = 78 runs.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Arithmetic Progression (AP) n-th Term</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('T_n = a + (n - 1) × d')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">In an arithmetic progression with first term a and common difference d = (T_n - T_{n-1}):</div>
+                                <div class="formula-box"><strong>Formula:</strong> T_n = a + (n - 1) × d</div>
+                                <div class="example-box"><strong>Example:</strong> If AP is -15, -22, -29, ..., find the 11th term: a = -15, d = -22 - (-15) = -7. T_11 = -15 + (11 - 1) × (-7) = -15 - 70 = -85 (FPSC Past Paper).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Be vigilant with negative common differences.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Arithmetic Mean (AM) Properties</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Single AM = (a + b) / 2;  Sum of n AMs = n × [(a + b) / 2]')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">A single AM between two numbers a and b is (a + b) / 2. The sum of n AMs between a and b is n × [(a + b) / 2].</div>
+                                <div class="formula-box"><strong>Formula:</strong> Single AM = (a + b) / 2;  Sum of n AMs = n × [(a + b) / 2]</div>
+                                <div class="example-box"><strong>Example:</strong> Sum of 4 AMs between 18 and 3: 4 × [(18 + 3) / 2] = 4 × 10.5 = 42 (FPSC Past Paper). Single AM between (x-3) and (x+3) = [(x-3) + (x+3)] / 2 = 2x / 2 = x (FPSC Past Paper).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Sum of any number of AMs is simply n times the average of the two extremes.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Sum of First n Natural, Even, and Odd Numbers</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Natural: n(n + 1) / 2;  Even: n(n + 1);  Odd: n^2;  Squares: n(n + 1)(2n + 1) / 6')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Standard closed formulas to calculate series sums in 3 seconds.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Natural: n(n + 1) / 2;  Even: n(n + 1);  Odd: n^2;  Squares: n(n + 1)(2n + 1) / 6</div>
+                                <div class="example-box"><strong>Example:</strong> Sum of first 20 odd numbers = 20^2 = 400. Sum of first 50 natural numbers = 50 × 51 / 2 = 1,275.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Number of odd numbers from 1 to L is (L + 1) / 2.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #d97706;"></i> Solved Examination Drills (3)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> If AP is -15, -22, -29, ..., then the 11th term is: (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">-85</span><span class="drill-opt-pill">85</span><span class="drill-opt-pill">-66</span><span class="drill-opt-pill">None of these</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_progressions_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_progressions_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: -85
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> a = -15, d = -7. T_11 = a + 10d = -15 + 10(-7) = -15 - 70 = -85.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> The single Arithmetic Mean between (x - 3) and (x + 3) is: (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">-6</span><span class="drill-opt-pill">6</span><span class="drill-opt-pill">x</span><span class="drill-opt-pill">None of these</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_progressions_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_progressions_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: x
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> AM = [(x - 3) + (x + 3)] / 2 = 2x / 2 = x.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q3:</strong> The sum of 4 Arithmetic Means between 18 and 3 is: (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">15</span><span class="drill-opt-pill">12</span><span class="drill-opt-pill">42</span><span class="drill-opt-pill">None of these</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_progressions_2')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_progressions_2">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 42
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Sum of n AMs = n × (a + b)/2 = 4 × (18 + 3)/2 = 4 × 21/2 = 42.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">BODMAS Order of Operations</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('B -> O -> D -> M -> A -> S')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Operations must be performed strictly from left to right in order: Brackets -> Orders (Powers/Roots) -> Division & Multiplication -> Addition & Subtraction.</div>
+                                <div class="formula-box"><strong>Formula:</strong> B -> O -> D -> M -> A -> S</div>
+                                <div class="example-box"><strong>Example:</strong> Evaluate 27 ÷ 32 ÷ 4 × 2 - 1 or 24 ÷ 6 × 2 + 5: 24 ÷ 6 = 4 -> 4 × 2 = 8 -> 8 + 5 = 13.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Consecutive divisions evaluate strictly from left to right: a ÷ b ÷ c = (a / b) / c = a / (b × c).</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Solving Linear Inequalities</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('ax + b >= c => ax >= c - b => x >= (c - b) / a (if a > 0)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">When multiplying or dividing both sides of an inequality by a negative number, reverse the inequality sign.</div>
+                                <div class="formula-box"><strong>Formula:</strong> ax + b >= c => ax >= c - b => x >= (c - b) / a (if a > 0)</div>
+                                <div class="example-box"><strong>Example:</strong> What is the solution interval of 6x - 2 >= 3x + 10? 6x - 3x >= 10 + 2 => 3x >= 12 => x >= 4. Interval = [4, ∞) (FPSC Past Paper).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Use square bracket [ for >= or <= and round parenthesis ( for > or <.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Three-Set Venn Diagram Formula (Inclusion-Exclusion)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('n(A ∪ B ∪ C) = n(A) + n(B) + n(C) - [n(A∩B) + n(B∩C) + n(A∩C)] + n(A∩B∩C)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">To find the number of elements belonging to at least one set among three overlapping categories:</div>
+                                <div class="formula-box"><strong>Formula:</strong> n(A ∪ B ∪ C) = n(A) + n(B) + n(C) - [n(A∩B) + n(B∩C) + n(A∩C)] + n(A∩B∩C)</div>
+                                <div class="example-box"><strong>Example:</strong> In a town: 45% read magazine A, 55% B, 40% C. 30% read A&B, 15% B&C, 25% A&C. 10% read all three. Percentage reading NONE: n(A∪B∪C) = 45+55+40 - (30+15+25) + 10 = 140 - 70 + 10 = 80%. None = 100% - 80% = 20%! (FPSC Past Paper).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Add individuals, subtract pair-wise intersections, add back the three-way intersection.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Age Word Problem Formulation</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('n times age k years ago = n × (x - k);  n times age k years hence = n × (x + k)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Express time-shifted statements with parentheses before scaling.</div>
+                                <div class="formula-box"><strong>Formula:</strong> n times age k years ago = n × (x - k);  n times age k years hence = n × (x + k)</div>
+                                <div class="example-box"><strong>Example:</strong> If Amna is x years old then 5 times Amna's age three years ago is: 5(x - 3) (FPSC Past Paper).</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Do not write 5x - 3; the subtraction happens before the multiplication.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #4f46e5;"></i> Solved Examination Drills (3)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> What is the solution interval of the inequality 6x - 2 >= 3x + 10? (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">(∞, 4]</span><span class="drill-opt-pill">(-∞, 4]</span><span class="drill-opt-pill">[-4, ∞)</span><span class="drill-opt-pill">[4, ∞)</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_algebra-bodmas_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_algebra-bodmas_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: [4, ∞)
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> 6x - 3x >= 10 + 2 => 3x >= 12 => x >= 4 => interval is [4, ∞).
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> If Amna is x years old, then 5 times Amna's age three years ago is: (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">3(x - 5)</span><span class="drill-opt-pill">5(x - 3)</span><span class="drill-opt-pill">3(x + 5)</span><span class="drill-opt-pill">5x - 3</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_algebra-bodmas_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_algebra-bodmas_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 5(x - 3)
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Amna's age 3 years ago was (x - 3). 5 times that age is 5(x - 3).
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q3:</strong> In a town 45% read magazine A, 55% read magazine B, 40% read magazine C. 30% read A and B, 15% read B and C, 25% read A and C, and 10% read all three. What percentage does not read any magazine? (FPSC Past Paper)</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">15%</span><span class="drill-opt-pill">10%</span><span class="drill-opt-pill">20%</span><span class="drill-opt-pill">25%</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_algebra-bodmas_2')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_algebra-bodmas_2">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 20%
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> n(At least one) = (45 + 55 + 40) - (30 + 15 + 25) + 10 = 140 - 70 + 10 = 80%. None = 100% - 80% = 20%.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Standard Pythagorean Triples</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('(3, 4, 5), (5, 12, 13), (7, 24, 25), (8, 15, 17), (9, 40, 41), (11, 60, 61), (12, 35, 37), (20, 21, 29)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Memorize base right-triangle side lengths to find hypotenuse without squaring.</div>
+                                <div class="formula-box"><strong>Formula:</strong> (3, 4, 5), (5, 12, 13), (7, 24, 25), (8, 15, 17), (9, 40, 41), (11, 60, 61), (12, 35, 37), (20, 21, 29)</div>
+                                <div class="example-box"><strong>Example:</strong> A triangle has sides 15 and 20. Divide by 5 -> (3, 4, ?). The missing side is 5 × 5 = 25.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Any scalar multiple of a triple is also a triple: (6, 8, 10), (9, 12, 15), etc.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Number of Diagonals in an n-Sided Polygon</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Diagonals = [n × (n - 3)] / 2')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">The total number of diagonals in a regular or irregular polygon with n vertices:</div>
+                                <div class="formula-box"><strong>Formula:</strong> Diagonals = [n × (n - 3)] / 2</div>
+                                <div class="example-box"><strong>Example:</strong> Number of diagonals in an octagon (n = 8): [8 × (8 - 3)] / 2 = (8 × 5) / 2 = 20 diagonals.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> A triangle (n=3) has 3×0 / 2 = 0 diagonals.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Percentage Increase in Circle Area</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('% Area Increase = 2r + (r^2 / 100) %')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">If radius of a circle increases by r%, the area increases by [2r + (r^2 / 100)]%.</div>
+                                <div class="formula-box"><strong>Formula:</strong> % Area Increase = 2r + (r^2 / 100) %</div>
+                                <div class="example-box"><strong>Example:</strong> If radius increases by 20%: Area increases by 2(20) + (400/100) = 40 + 4 = 44%.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Applies to squares when side increases by s%.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #0d9488;"></i> Solved Examination Drills (2)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> How many diagonals does a regular hexagon (6 sides) have?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">6</span><span class="drill-opt-pill">9</span><span class="drill-opt-pill">12</span><span class="drill-opt-pill">15</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_geometry-mensuration_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_geometry-mensuration_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 9
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Diagonals = n(n - 3)/2 = 6(3)/2 = 9 diagonals.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> If the radius of a circle is doubled (increased by 100%), by what percentage does its area increase?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">100%</span><span class="drill-opt-pill">200%</span><span class="drill-opt-pill">300%</span><span class="drill-opt-pill">400%</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_geometry-mensuration_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_geometry-mensuration_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 300%
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> New Area = π(2r)^2 = 4πr^2 (4 times original). Increase = (4 - 1) × 100% = 300% increase.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+
+    
+
+                <div class="rules-grid">
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Handshakes / Match Matches Formula</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Total Handshakes = [n × (n - 1)] / 2')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">If n persons in a room shake hands with each other exactly once, the total number of handshakes is:</div>
+                                <div class="formula-box"><strong>Formula:</strong> Total Handshakes = [n × (n - 1)] / 2</div>
+                                <div class="example-box"><strong>Example:</strong> 12 people attend a meeting and each shakes hands with everyone else. Handshakes = (12 × 11) / 2 = 66.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Identical to round-robin tournament matches among n teams.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">The Complementary Probability Trick (At Least One)</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('P(At least 1 success) = 1 - P(Zero successes)')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">Whenever asked to find the probability of 'at least one' occurrence, calculate 1 minus the probability of NONE.</div>
+                                <div class="formula-box"><strong>Formula:</strong> P(At least 1 success) = 1 - P(Zero successes)</div>
+                                <div class="example-box"><strong>Example:</strong> A coin is tossed 3 times. What is the probability of getting at least one Head? P(Zero heads / all tails) = (1/2)^3 = 1/8. P(At least 1 Head) = 1 - 1/8 = 7/8.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> Reduces multiple case computations to a single fraction.</span>
+                            </div>
+                        </div>
+                    
+                        <div class="rule-card">
+                            <div>
+                                <div class="rule-name-row">
+                                    <div class="rule-name">Circular Arrangements</div>
+                                    <button class="copy-btn" title="Copy formula" onclick="copyFormula('Circular Permutations = (n - 1)!')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="rule-text">The number of ways to arrange n distinct objects around a circular table is (n - 1)!.</div>
+                                <div class="formula-box"><strong>Formula:</strong> Circular Permutations = (n - 1)!</div>
+                                <div class="example-box"><strong>Example:</strong> In how many ways can 5 people be seated at a round table? (5 - 1)! = 4! = 4 × 3 × 2 × 1 = 24 ways.</div>
+                            </div>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i> <span><strong>Pro Tip:</strong> For necklaces or garlands where clockwise/anticlockwise are identical, divide by 2: (n - 1)! / 2.</span>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    <div class="drills-container">
+                        <div class="drills-header">
+                            <i class="fas fa-clipboard-question" style="color: #be185d;"></i> Solved Examination Drills (2)
+                        </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q1:</strong> At a conference, 10 delegates shake hands with each other once. How many total handshakes took place?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">45</span><span class="drill-opt-pill">90</span><span class="drill-opt-pill">50</span><span class="drill-opt-pill">100</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_probability-combinations_0')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_probability-combinations_0">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 45
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Handshakes = n(n - 1)/2 = 10(9)/2 = 45.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="drill-item">
+                                <div class="drill-q"><strong>Q2:</strong> Two dice are thrown simultaneously. What is the probability of getting a sum of 7?</div>
+                                <div class="drill-opts">
+                                    <span class="drill-opt-pill">1/6</span><span class="drill-opt-pill">1/12</span><span class="drill-opt-pill">5/36</span><span class="drill-opt-pill">7/36</span>
+                                </div>
+                                <button class="reveal-btn" onclick="toggleDrill('drill_probability-combinations_1')">
+                                    <i class="fas fa-eye"></i> Show Answer &amp; Shortcut
+                                </button>
+                                <div class="drill-solution-box" id="drill_probability-combinations_1">
+                                    <div style="font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                                        <i class="fas fa-check-circle"></i> Correct Answer: 1/6
+                                    </div>
+                                    <div style="font-size: 0.88rem; color: var(--math-text-main);">
+                                        <strong>Shortcut Logic:</strong> Pairs that sum to 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) = 6 outcomes out of 36 => 6/36 = 1/6.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            </section>
+
+    <!-- Practice MCQs Link Banner -->
+    <div style="max-width: 1300px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="background: rgba(255, 255, 255, 0.2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                    <i class="fas fa-calculator"></i>
+                </span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800;">Want to Practice Exam MCQs with Instant Solutions?</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.88rem; opacity: 0.95;">Test your speed with 300+ Solved Mathematics &amp; IQ MCQs from FPSC, PPSC, SPSC, and CSS Past Papers.</p>
+                </div>
+            </div>
+            <a href="math-mcqs.html" style="background: #ffffff; color: #0369a1; padding: 10px 20px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                <i class="fas fa-arrow-right"></i> Open 300+ Math MCQs Portal
+            </a>
+        </div>
+    </div>
+        
+    </main>
+
+    <!-- Standard Footer -->
+    <footer style="background: #0f172a; color: #94a3b8; padding: 50px 20px 30px; margin-top: 60px; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 36px; margin-bottom: 36px;">
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 14px; font-family: 'Outfit', sans-serif;">
+                    <i class="fas fa-graduation-cap" style="color: #f59e0b; margin-right: 8px;"></i>CSS Prep Central
+                </h4>
+                <p style="font-size: 0.88rem; line-height: 1.65; color: #94a3b8;">
+                    Independent open-access preparation repository for civil services, quantitative ability, General Science &amp; Ability, and competitive examinations.
+                </p>
+                <div style="margin-top: 16px;">
+                    <a href="about.html" style="color: #60a5fa; font-size: 0.85rem; font-weight: 600; text-decoration: none;"><i class="fas fa-info-circle"></i> About Our Platform</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 14px; font-family: 'Outfit', sans-serif;">
+                    <i class="fas fa-book-open" style="color: #3b82f6; margin-right: 8px;"></i>Study Modules
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2.1;">
+                    <li><a href="math-tricks.html" style="color: #38bdf8; font-weight: 700; text-decoration: none;">Math Shortcut Tricks (52+)</a></li>
+                    <li><a href="written-prep.html" style="color: #cbd5e1; text-decoration: none;">Written Examination Hub</a></li>
+                    <li><a href="grammar-rules.html" style="color: #cbd5e1; text-decoration: none;">English Grammar Handbook</a></li>
+                    <li><a href="fia-sample-papers.html" style="color: #cbd5e1; text-decoration: none;">FIA Solved Past Papers</a></li>
+                    <li><a href="islamiat-mcqs.html" style="color: #cbd5e1; text-decoration: none;">1,000+ Islamiat MCQs</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 14px; font-family: 'Outfit', sans-serif;">
+                    <i class="fas fa-pen-nib" style="color: #10b981; margin-right: 8px;"></i>Essay Archives
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2.1;">
+                    <li><a href="css-essays-2026.html" style="color: #cbd5e1; text-decoration: none;">CSS 2026 Solved Essays</a></li>
+                    <li><a href="international-relations-essays.html" style="color: #cbd5e1; text-decoration: none;">12 IR &amp; Geopolitics Essays</a></li>
+                    <li><a href="global-security-conflict-essays.html" style="color: #cbd5e1; text-decoration: none;">12 Global Security Essays</a></li>
+                    <li><a href="geoeconomics-finance-essays.html" style="color: #cbd5e1; text-decoration: none;">12 Geoeconomics Essays</a></li>
+                    <li><a href="scholarships.html" style="color: #cbd5e1; text-decoration: none;">Scholarships Guide</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 14px; font-family: 'Outfit', sans-serif;">
+                    <i class="fas fa-shield-halved" style="color: #60a5fa; margin-right: 8px;"></i>Legal &amp; Trust
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2.1;">
+                    <li><a href="privacy.html" style="color: #60a5fa; font-weight: 600; text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="terms.html" style="color: #cbd5e1; text-decoration: none;">Terms of Service</a></li>
+                    <li><a href="disclaimer.html" style="color: #f87171; font-weight: 600; text-decoration: none;">Disclaimer</a></li>
+                    <li><a href="contact.html" style="color: #cbd5e1; text-decoration: none;">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="max-width: 1240px; margin: 0 auto; padding-top: 24px; border-top: 1px solid #1e293b; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; font-size: 0.82rem; color: #64748b;">
+            <div>
+                &copy; 2026 CSS Prep Central. All rights reserved.
+            </div>
+            <div style="max-width: 750px; text-align: right; line-height: 1.5;">
+                <strong>Disclaimer:</strong> Educational material designed for competitive examination preparation.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data_math_tricks.js"></script>
+    <script>
+        // Interactive Calculations
+        function calculateWork() {
+            const a = parseFloat(document.getElementById('workerA').value) || 0;
+            const b = parseFloat(document.getElementById('workerB').value) || 0;
+            const resBox = document.getElementById('workResult');
+            if (a > 0 && b > 0) {
+                const combined = (a * b) / (a + b);
+                resBox.innerHTML = 'Together: <strong>' + combined.toFixed(2) + '</strong> hours/days (Method: ' + a + '×' + b + ' / ' + (a+b) + ')';
+            } else {
+                resBox.innerText = 'Please enter valid positive numbers for both workers.';
+            }
+        }
+
+        function calculatePct() {
+            const x = parseFloat(document.getElementById('pctX').value) || 0;
+            const y = parseFloat(document.getElementById('pctY').value) || 0;
+            const resBox = document.getElementById('pctResult');
+            const res = (x * y) / 100;
+            resBox.innerHTML = x + '% of ' + y + ' = ' + y + '% of ' + x + ' = <strong>' + res.toFixed(2) + '</strong>';
+        }
+
+        function calculateDep() {
+            const p = parseFloat(document.getElementById('depP').value) || 0;
+            const r = parseFloat(document.getElementById('depR').value) || 0;
+            const n = parseInt(document.getElementById('depN').value) || 0;
+            const resBox = document.getElementById('depResult');
+            if (p > 0 && r >= 0 && n >= 0) {
+                const finalVal = p * Math.pow(1 - (r / 100), n);
+                resBox.innerHTML = 'Value after ' + n + ' years: <strong>Rs. ' + finalVal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '</strong>';
+            } else {
+                resBox.innerText = 'Please enter valid positive numbers.';
+            }
+        }
+
+        // Drill toggling
+        function toggleDrill(id) {
+            const box = document.getElementById(id);
+            if (!box) return;
+            const isShown = box.style.display === 'block';
+            box.style.display = isShown ? 'none' : 'block';
+            const btn = box.previousElementSibling;
+            if (btn && btn.classList.contains('reveal-btn')) {
+                btn.innerHTML = isShown 
+                    ? '<i class="fas fa-eye"></i> Show Answer &amp; Shortcut' 
+                    : '<i class="fas fa-eye-slash"></i> Hide Answer';
+            }
+        }
+
+        function toggleAllDrills(show) {
+            document.querySelectorAll('.drill-solution-box').forEach(box => {
+                box.style.display = show ? 'block' : 'none';
+            });
+            document.querySelectorAll('.reveal-btn').forEach(btn => {
+                btn.innerHTML = show 
+                    ? '<i class="fas fa-eye-slash"></i> Hide Answer' 
+                    : '<i class="fas fa-eye"></i> Show Answer &amp; Shortcut';
+            });
+        }
+
+        // Live Search Filter
+        function filterMathContent() {
+            const query = document.getElementById('mathSearchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.rule-card');
+            const drillItems = document.querySelectorAll('.drill-item');
+            const moduleCards = document.querySelectorAll('.module-section-card');
+
+            if (!query) {
+                cards.forEach(c => c.style.display = 'flex');
+                drillItems.forEach(d => d.style.display = 'block');
+                moduleCards.forEach(m => m.style.display = 'block');
+                return;
+            }
+
+            moduleCards.forEach(mod => {
+                let modHasMatch = false;
+
+                // check rules inside module
+                const rulesInMod = mod.querySelectorAll('.rule-card');
+                rulesInMod.forEach(card => {
+                    const text = card.innerText.toLowerCase();
+                    if (text.includes(query)) {
+                        card.style.display = 'flex';
+                        modHasMatch = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // check drills inside module
+                const drillsInMod = mod.querySelectorAll('.drill-item');
+                drillsInMod.forEach(drill => {
+                    const text = drill.innerText.toLowerCase();
+                    if (text.includes(query)) {
+                        drill.style.display = 'block';
+                        modHasMatch = true;
+                    } else {
+                        drill.style.display = 'none';
+                    }
+                });
+
+                mod.style.display = modHasMatch ? 'block' : 'none';
+            });
+        }
+
+        // Filter by Module Pill
+        function filterByModule(moduleId) {
+            document.querySelectorAll('.filter-pill').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const moduleCards = document.querySelectorAll('.module-section-card');
+            if (moduleId === 'all') {
+                moduleCards.forEach(m => m.style.display = 'block');
+            } else {
+                moduleCards.forEach(m => {
+                    if (m.getAttribute('data-module-id') === moduleId) {
+                        m.style.display = 'block';
+                        m.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        m.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        // Copy Formula
+        function copyFormula(formula) {
+            navigator.clipboard.writeText(formula).then(() => {
+                alert('Formula copied to clipboard: ' + formula);
+            });
+        }
+
+        // Dark Mode Toggle Support
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+    </script>
+</body>
+</html>

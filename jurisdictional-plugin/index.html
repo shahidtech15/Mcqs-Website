@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Workflow AI Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-container">
+                <div class="logo-icon"></div>
+                <h1>Legal Workflow AI Assistant</h1>
+            </div>
+            <p class="subtitle">Your expert legal workflow and drafting companion</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tab-container">
+            <button class="tab-btn" data-tab="procedure-navigator">Jurisdictional Procedure Navigator</button>
+            <button class="tab-btn active" data-tab="charge-sheet-drafter">Automated Charge Sheet Drafter</button>
+        </div>
+
+        <main class="main-content">
+            <!-- ============================================== -->
+            <!-- TAB 1: PROCEDURE NAVIGATOR                     -->
+            <!-- ============================================== -->
+            <div id="procedure-navigator" class="tab-content">
+                <div class="two-col-layout">
+                    <!-- Left Column: Intake Form -->
+                    <section class="intake-section glass-panel">
+                        <h2>Step 1: Information Intake</h2>
+                        <p class="section-desc">Provide the details of your legal situation to proceed.</p>
+                        
+                        <form id="navigator-form" class="intake-form">
+                            <div class="form-group">
+                                <label for="legal-goal">Specific Legal Goal</label>
+                                <input type="text" id="legal-goal" placeholder="e.g., Draft a Cease & Desist, File Small Claims" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <select id="country" required>
+                                        <option value="" disabled selected>Select Country</option>
+                                        <option value="United States">United States</option>
+                                        <option value="Canada">Canada</option>
+                                        <option value="United Kingdom">United Kingdom</option>
+                                        <option value="Australia">Australia</option>
+                                        <option value="India">India</option>
+                                        <option value="Pakistan">Pakistan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State / Province</label>
+                                    <input type="text" id="state" placeholder="e.g., California, Ontario" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">City / County</label>
+                                <input type="text" id="city" placeholder="e.g., Los Angeles, Cook County" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="incident-date">Date of Incident / Breach</label>
+                                <input type="date" id="incident-date" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="document-upload">Upload Documents (FIR, Charge Sheet, Complaint, etc.)</label>
+                                <input type="file" id="document-upload" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                <small class="helper-text">Optional. Supports PDF, DOCX, and images.</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="legal-context">Applicable Acts, Ordinances, or Legal Context</label>
+                                <textarea id="legal-context" rows="3" placeholder="e.g., Section 420 of IPC, PECA 2016..."></textarea>
+                                <small class="helper-text">Optional. Provide relevant statutes to help the AI tailor the procedure.</small>
+                            </div>
+
+                            <button type="submit" class="submit-btn">
+                                <span>Generate Legal Workflow</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </section>
+
+                    <!-- Right Column: AI Output -->
+                    <section class="output-section glass-panel">
+                        <div id="nav-empty-state" class="empty-state">
+                            <div class="empty-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12H15M9 16H15M17 21H7C5.89543 21 5 20.1046 5 19V5C5 3.89543 5.89543 3 7 3H12.5858C12.851 3 13.1054 3.10536 13.2929 3.29289L18.7071 8.70711C18.8946 8.89464 19 9.149 19 9.41421V19C19 20.1046 18.1046 21 17 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <p>Awaiting information intake to generate your jurisdictional procedure flowchart, deadlines, and templates.</p>
+                        </div>
+
+                        <div id="nav-loading-state" class="loading-state hidden">
+                            <div class="loader"></div>
+                            <p>Analyzing Jurisdiction & Procedural Rules...</p>
+                        </div>
+
+                        <div id="nav-results-state" class="results-state hidden">
+                            <div class="mandatory-disclaimer">
+                                <strong>Disclaimer:</strong> I am an AI legal assistant, not an attorney. The information provided is for educational and drafting purposes only and does not constitute formal legal advice. Always consult with a qualified attorney in your jurisdiction before filing legal documents.
+                            </div>
+
+                            <div class="result-block">
+                                <h3><span class="step-num">1</span> Jurisdiction & Goal Confirmed</h3>
+                                <p id="res-goal-jurisdiction" class="highlight-text"></p>
+                            </div>
+
+                            <div class="result-block warning-block">
+                                <h3><span class="step-num">2</span> Statute of Limitations / Deadline Tracker</h3>
+                                <div id="res-deadlines" class="tracker-content"></div>
+                            </div>
+
+                            <div class="result-block">
+                                <h3><span class="step-num">3</span> Procedural Flowchart</h3>
+                                <div id="res-flowchart" class="flowchart-content"></div>
+                            </div>
+
+                            <div class="result-block">
+                                <h3><span class="step-num">4</span> Generated Template</h3>
+                                <div class="template-container">
+                                    <div class="template-header">
+                                        <span>Draft Document</span>
+                                        <button class="copy-btn" onclick="copyText('res-template', this)">Copy</button>
+                                    </div>
+                                    <pre id="res-template" class="template-content"></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- ============================================== -->
+            <!-- TAB 2: CHARGE SHEET DRAFTER                    -->
+            <!-- ============================================== -->
+            <div id="charge-sheet-drafter" class="tab-content active-tab">
+                <div class="two-col-layout">
+                    <!-- Left Column: Modular Intake -->
+                    <section class="intake-section glass-panel">
+                        <h2>Section 173 CrPC Intake</h2>
+                        <p class="section-desc">Provide separated case data for the AI to draft a formal Police Report.</p>
+                        
+                        <form id="charge-sheet-form" class="intake-form">
+                            
+                            <!-- MODULE 1: Case Core -->
+                            <div class="module-card">
+                                <h3 class="module-title">1. Case Core</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="fir-number">FIR Number</label>
+                                        <input type="text" id="fir-number" placeholder="e.g., 125/2026" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fir-date">Date of Registration</label>
+                                        <input type="date" id="fir-date" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="police-station">Police Station / Agency Branch</label>
+                                    <input type="text" id="police-station" placeholder="e.g., PS Model Town" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Penal Sections</label>
+                                    <div class="tag-input-container" id="penal-tags-container">
+                                        <div id="tags-wrapper"></div>
+                                        <input type="text" id="penal-section-input" placeholder="Type section and press Enter (e.g. 420 PPC)">
+                                    </div>
+                                    <input type="hidden" id="hidden-penal-sections" required> <!-- For validation -->
+                                </div>
+                            </div>
+
+                            <!-- MODULE 2: Accused Intake -->
+                            <div class="module-card">
+                                <h3 class="module-title">2. Accused Roster</h3>
+                                <div id="accused-list">
+                                    <div class="form-row dynamic-entry accused-entry">
+                                        <div class="form-group">
+                                            <label>Accused Name & Details</label>
+                                            <input type="text" class="accused-name" placeholder="Name, s/o, address" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Custodial Status</label>
+                                            <select class="accused-status" required>
+                                                <option value="in_custody">In Custody</option>
+                                                <option value="on_bail">Released on Bail</option>
+                                                <option value="absconding">Absconding (Proclaimed Offender)</option>
+                                                <option value="insufficient_evidence">Not sent up (Insufficient Evidence)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="text-btn" id="add-accused-btn">+ Add Accused</button>
+                            </div>
+
+                            <!-- MODULE 3: Witness Log -->
+                            <div class="module-card">
+                                <h3 class="module-title">3. Witness Log</h3>
+                                <div id="witness-list">
+                                    <div class="dynamic-entry witness-entry">
+                                        <div class="form-group">
+                                            <label>Witness Name</label>
+                                            <input type="text" class="witness-name" placeholder="e.g., John Doe" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Statement Brief (161 CrPC)</label>
+                                            <textarea class="witness-statement" rows="2" placeholder="Summary of testimony..." required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="text-btn" id="add-witness-btn">+ Add Witness</button>
+                            </div>
+
+                            <!-- MODULE 4: Evidence Log -->
+                            <div class="module-card">
+                                <h3 class="module-title">4. Evidence / Recovery Log</h3>
+                                <div id="evidence-list">
+                                    <div class="dynamic-entry evidence-entry">
+                                        <div class="form-group">
+                                            <label>Item Description</label>
+                                            <input type="text" class="evidence-item" placeholder="e.g., 1x Apple iPhone 13" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Investigator Notes</label>
+                                            <textarea class="evidence-notes" rows="2" placeholder="e.g., PFSA digital forensics report attached. Marks on document are handwritten." required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="text-btn" id="add-evidence-btn">+ Add Evidence Item</button>
+                            </div>
+
+                            <button type="submit" class="submit-btn" style="background: #10b981;">
+                                <span>Draft Charge Sheet (Challan)</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 4V20M12 4L8 8M12 4L16 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </section>
+
+                    <!-- Right Column: AI Output -->
+                    <section class="output-section glass-panel">
+                        <div id="cs-empty-state" class="empty-state">
+                            <div class="empty-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12H15M9 16H15M17 21H7C5.89543 21 5 20.1046 5 19V5C5 3.89543 5.89543 3 7 3H12.5858C12.851 3 13.1054 3.10536 13.2929 3.29289L18.7071 8.70711C18.8946 8.89464 19 9.149 19 9.41421V19C19 20.1046 18.1046 21 17 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <p>Awaiting modular case data to synthesize Section 173 CrPC Report.</p>
+                        </div>
+
+                        <div id="cs-loading-state" class="loading-state hidden">
+                            <div class="loader" style="border-top-color: #10b981;"></div>
+                            <p style="color: #10b981;">Synthesizing Case Data & Cross-referencing Arrays...</p>
+                        </div>
+
+                        <div id="cs-results-state" class="results-state hidden">
+                            <div class="mandatory-disclaimer">
+                                <strong>Disclaimer:</strong> I am an AI legal assistant, not an attorney. The information provided is for educational and drafting purposes only and does not constitute formal legal advice.
+                            </div>
+
+                            <div id="cs-flags-container"></div>
+                            <div id="cs-alerts-container"></div>
+
+                            <div class="result-block" style="margin-top: 1.5rem;">
+                                <h3>Draft Charge Sheet (Section 173 CrPC)</h3>
+                                <div class="template-container">
+                                    <div class="template-header">
+                                        <span>Formal Police Report</span>
+                                        <button class="copy-btn" onclick="copyText('res-cs-template', this)">Copy</button>
+                                    </div>
+                                    <pre id="res-cs-template" class="template-content"></pre>
+                                </div>
+                            </div>
+
+                            <div class="result-block">
+                                <h3>Procedural Compliance Checklist</h3>
+                                <div id="res-compliance" class="tracker-content" style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

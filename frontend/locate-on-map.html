@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locate It on the Map | Interactive World Geography Quiz &amp; Challenge</title>
+    <meta name="description"
+        content="Interactive 'Locate It on the Map' blank map geography quiz for CSS, PMS, FPSC, and PPSC students. Click precisely where countries, capitals, mountains, rivers, and seas are located on an unlabeled world map.">
+    <meta name="keywords"
+        content="Locate It on the Map, Blank World Map Quiz, Map Pin Challenge, Geography Map Quiz, CSS Geography MCQs, Click on Map Game, FPSC Map Test">
+
+    <!-- Anti-FOUC: Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet CSS for Blank Map Rendering -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --loc-primary: #0284c7;
+            --loc-primary-dark: #0369a1;
+            --loc-primary-light: #e0f2fe;
+            --loc-accent: #8b5cf6;
+            --loc-success: #10b981;
+            --loc-warning: #f59e0b;
+            --loc-danger: #ef4444;
+            --loc-bg: #f8fafc;
+            --loc-card-bg: #ffffff;
+            --loc-border: #e2e8f0;
+            --loc-text-main: #0f172a;
+            --loc-text-muted: #64748b;
+            --loc-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --loc-map-bg: #cad2d3;
+        }
+
+        .dark-mode {
+            --loc-primary: #38bdf8;
+            --loc-primary-dark: #0284c7;
+            --loc-primary-light: rgba(56, 189, 248, 0.15);
+            --loc-accent: #a78bfa;
+            --loc-bg: #090d16;
+            --loc-card-bg: #111827;
+            --loc-border: #1f2937;
+            --loc-text-main: #f3f4f6;
+            --loc-text-muted: #9ca3af;
+            --loc-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            --loc-map-bg: #191a1a;
+        }
+
+        body {
+            background-color: var(--loc-bg);
+            color: var(--loc-text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Top Map Switcher Bar */
+        .map-switcher-bar {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 9px 20px;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .switcher-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .switcher-btn {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.14);
+            border-color: #38bdf8;
+        }
+
+        .switcher-btn.active {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #38bdf8;
+            box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background: var(--loc-card-bg);
+            border-bottom: 1px solid var(--loc-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .nav-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--loc-text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #0284c7;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--loc-text-muted);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0284c7;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--loc-bg);
+            border: 1px solid var(--loc-border);
+            color: var(--loc-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--loc-primary);
+            color: var(--loc-primary);
+        }
+
+        /* Hero Banner */
+        .locate-hero {
+            background: linear-gradient(135deg, #092c48 0%, #0f4c81 50%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 34px 20px 28px;
+            text-align: center;
+            position: relative;
+        }
+
+        .locate-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .locate-hero p {
+            font-size: 0.98rem;
+            max-width: 840px;
+            margin: 0 auto 16px;
+            opacity: 0.92;
+            line-height: 1.5;
+        }
+
+        .locate-hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Main Workspace Container */
+        .locate-main-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Category Filter Row */
+        .category-tabs-bar {
+            background: var(--loc-card-bg);
+            border: 1px solid var(--loc-border);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .cat-pills-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .cat-pill-btn {
+            background: var(--loc-bg);
+            border: 1px solid var(--loc-border);
+            color: var(--loc-text-muted);
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: all 0.2s ease;
+        }
+
+        .cat-pill-btn:hover {
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        .cat-pill-btn.active {
+            background: #0284c7;
+            border-color: #0284c7;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+        }
+
+        .cat-count-badge {
+            background: rgba(0, 0, 0, 0.12);
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+
+        .cat-pill-btn.active .cat-count-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        .filter-controls-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .select-filter {
+            background: var(--loc-bg);
+            border: 1px solid var(--loc-border);
+            color: var(--loc-text-main);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Target Mission HUD */
+        .target-mission-card {
+            background: var(--loc-card-bg);
+            border: 2px solid var(--loc-primary);
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .target-mission-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, var(--loc-primary), var(--loc-accent));
+        }
+
+        .target-details-col {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .target-cat-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: var(--loc-primary-light);
+            color: var(--loc-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .target-texts h2 {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--loc-text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .target-category-pill {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .dark-mode .target-category-pill {
+            background: rgba(56, 189, 248, 0.2);
+            color: #38bdf8;
+        }
+
+        .target-instruction {
+            margin: 4px 0 0;
+            font-size: 0.88rem;
+            color: var(--loc-text-muted);
+            font-weight: 500;
+        }
+
+        .target-hud-stats {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hud-stat-box {
+            text-align: right;
+        }
+
+        .hud-stat-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--loc-text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .hud-stat-val {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--loc-text-main);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .hud-actions-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hud-btn {
+            background: var(--loc-bg);
+            border: 1px solid var(--loc-border);
+            color: var(--loc-text-main);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .hud-btn:hover {
+            border-color: var(--loc-primary);
+            color: var(--loc-primary);
+        }
+
+        .hud-btn.hint-btn {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+            color: #d97706;
+        }
+
+        .hud-btn.hint-btn:hover {
+            background: rgba(245, 158, 11, 0.2);
+        }
+
+        /* Map Canvas & Stage */
+        .map-stage-wrapper {
+            position: relative;
+            background: var(--loc-card-bg);
+            border: 1px solid var(--loc-border);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--loc-shadow);
+        }
+
+        #blankMapCanvas {
+            width: 100%;
+            height: 620px;
+            background-color: var(--loc-map-bg);
+            cursor: crosshair;
+        }
+
+        /* Floating Map Toolbar Overlay */
+        .map-floating-overlay {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 500;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .map-tool-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: var(--loc-card-bg);
+            border: 1px solid var(--loc-border);
+            color: var(--loc-text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .map-tool-btn:hover {
+            background: var(--loc-primary);
+            color: #ffffff;
+            border-color: var(--loc-primary);
+        }
+
+        /* Crosshair Cursor Indicator Hint */
+        .map-helper-pill {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 500;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            transition: opacity 0.3s;
+        }
+
+        /* Post-Click Educational Dossier Drawer / Banner */
+        .result-dossier-drawer {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--loc-card-bg);
+            border-top: 3px solid var(--loc-primary);
+            padding: 18px 24px;
+            z-index: 600;
+            box-shadow: 0 -8px 24px rgba(0,0,0,0.15);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .result-dossier-drawer.active {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .dossier-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .dossier-title-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .precision-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.86rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+        }
+
+        .precision-badge.bullseye {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #86efac;
+        }
+
+        .precision-badge.great {
+            background: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #7dd3fc;
+        }
+
+        .precision-badge.close {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fde68a;
+        }
+
+        .precision-badge.missed {
+            background: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fca5a5;
+        }
+
+        .dossier-distance-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--loc-text-main);
+        }
+
+        .btn-next-target {
+            background: #0284c7;
+            color: #ffffff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.92rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }
+
+        .btn-next-target:hover {
+            background: #0369a1;
+            transform: translateY(-1px);
+        }
+
+        .dossier-content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 16px;
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 860px) {
+            .dossier-content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dossier-exam-box {
+            background: var(--loc-bg);
+            border: 1px solid var(--loc-border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            line-height: 1.5;
+        }
+
+        .dossier-meta-box {
+            background: var(--loc-bg);
+            border: 1px solid var(--loc-border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* Custom Leaflet Marker Styling */
+        .player-pin-icon {
+            width: 22px;
+            height: 22px;
+            background: #2563eb;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.7);
+        }
+
+        .target-beacon-icon {
+            position: relative;
+            width: 28px;
+            height: 28px;
+            background: #10b981;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 14px rgba(16, 185, 129, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 11px;
+        }
+
+        .target-beacon-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #10b981;
+            animation: pulseRing 1.4s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.8); opacity: 0; }
+        }
+
+        /* Keyboard Shortcuts Footer Strip */
+        .shortcuts-strip {
+            margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: var(--loc-text-muted);
+            padding: 0 4px;
+        }
+
+        .shortcut-key {
+            background: var(--loc-card-bg);
+            border: 1px solid var(--loc-border);
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--loc-text-main);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Map Switcher Bar -->
+    <div class="map-switcher-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-layer-group" style="color: #38bdf8;"></i>
+            <span>Interactive Cartographic &amp; Geography Suite:</span>
+        </div>
+        <div class="switcher-links">
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+            <a href="guess-the-country.html" class="switcher-btn" style="color: #8b5cf6;">
+                <i class="fas fa-gamepad"></i> Guess Country
+            </a>
+            <a href="locate-on-map.html" class="switcher-btn active">
+                <i class="fas fa-crosshairs"></i> Locate on Map
+            </a>
+            <a href="match-the-following.html" class="switcher-btn" style="color: #a78bfa;">
+                <i class="fas fa-puzzle-piece"></i> Match Items
+            </a>
+            <a href="arrange-chronologically.html" class="switcher-btn" style="color: #fbbf24;">
+                <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz
+            </a>
+            <a href="crossword.html" class="switcher-btn" style="color: #0284c7;">
+                <i class="fas fa-chess-board"></i> Crossword
+            </a>
+            <a href="word-search.html" class="switcher-btn" style="color: #8b5cf6;">
+                <i class="fas fa-magnifying-glass"></i> Word Search
+            </a>
+            <a href="unsc-simulator.html" class="switcher-btn" style="color:#3b82f6;">
+                <i class="fas fa-scale-balanced"></i> UNSC Simulator
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="world-map.html">World Map</a>
+                <a href="physical-geography-map.html">Physical Map</a>
+                <a href="guess-the-country.html" style="font-weight:700; color:#8b5cf6;"><i class="fa-solid fa-gamepad"></i> Guess Country</a>
+                <a href="locate-on-map.html" class="active" style="font-weight:700; color:#0284c7;"><i class="fa-solid fa-crosshairs"></i> Locate on Map</a>
+                <a href="match-the-following.html" style="font-weight:700; color:#8b5cf6;"><i class="fa-solid fa-puzzle-piece"></i> Match Items</a>
+                <a href="arrange-chronologically.html" style="font-weight:700; color:#d97706;"><i class="fa-solid fa-arrow-down-1-9"></i> Chronology</a>
+                <a href="crossword.html" style="font-weight:700; color:#0284c7;"><i class="fa-solid fa-chess-board"></i> Crossword</a>
+                <a href="word-search.html" style="font-weight:700; color:#8b5cf6;"><i class="fa-solid fa-magnifying-glass"></i> Word Search</a>
+                <a href="unsc-simulator.html" style="color:#1d4ed8; font-weight:700;"><i class="fas fa-scale-balanced"></i> UNSC Simulator</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="written-prep.html">Written Prep</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="locate-hero">
+        <div class="container">
+            <h1>📍 Locate It on the Map</h1>
+            <p>Test your spatial memory and geographical precision on an unlabeled blank world map. Click directly on the map to pinpoint countries, capitals, mountains, rivers, and seas.</p>
+            <div class="locate-hero-badges">
+                <span class="hero-badge"><i class="fas fa-crosshairs"></i> 105 Geographic Targets</span>
+                <span class="hero-badge"><i class="fas fa-mountain"></i> Mountains, Rivers &amp; Seas</span>
+                <span class="hero-badge"><i class="fas fa-city"></i> Capitals &amp; Sovereign States</span>
+                <span class="hero-badge"><i class="fas fa-calculator"></i> Real-Time Distance Error (km)</span>
+                <span class="hero-badge"><i class="fas fa-graduation-cap"></i> High-Yield FPSC/PPSC Exam Dossiers</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Game Portal -->
+    <main class="locate-main-container">
+        <!-- Category & Filter Tabs Bar -->
+        <div class="category-tabs-bar">
+            <div class="cat-pills-row" id="catTabsRow">
+                <button type="button" class="cat-pill-btn active" data-cat="all">
+                    <i class="fas fa-earth-americas"></i> All Targets <span class="cat-count-badge" id="badgeAll">105</span>
+                </button>
+                <button type="button" class="cat-pill-btn" data-cat="countries">
+                    <i class="fas fa-flag"></i> Countries <span class="cat-count-badge" id="badgeCountries">25</span>
+                </button>
+                <button type="button" class="cat-pill-btn" data-cat="capitals">
+                    <i class="fas fa-landmark"></i> Capitals <span class="cat-count-badge" id="badgeCapitals">29</span>
+                </button>
+                <button type="button" class="cat-pill-btn" data-cat="mountains">
+                    <i class="fas fa-mountain"></i> Mountains <span class="cat-count-badge" id="badgeMountains">15</span>
+                </button>
+                <button type="button" class="cat-pill-btn" data-cat="rivers">
+                    <i class="fas fa-water"></i> Rivers <span class="cat-count-badge" id="badgeRivers">15</span>
+                </button>
+                <button type="button" class="cat-pill-btn" data-cat="seas">
+                    <i class="fas fa-anchor"></i> Seas &amp; Straits <span class="cat-count-badge" id="badgeSeas">21</span>
+                </button>
+            </div>
+
+            <div class="filter-controls-group">
+                <select id="continentFilterSelect" class="select-filter" title="Filter by Continent">
+                    <option value="all">🌍 All Continents</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Americas">Americas</option>
+                    <option value="Oceania">Oceania</option>
+                </select>
+
+                <select id="mapStyleSelect" class="select-filter" title="Select Blank Map Style">
+                    <option value="voyager">🗺️ Blank Physical (Voyager)</option>
+                    <option value="positron">⬜ Blank Minimalist (Light)</option>
+                    <option value="dark">⬛ Blank Midnight (Dark)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Target Mission HUD Card -->
+        <div class="target-mission-card">
+            <div class="target-details-col">
+                <div class="target-cat-icon" id="hudCatIcon">
+                    <i class="fas fa-mountain"></i>
+                </div>
+                <div class="target-texts">
+                    <h2>
+                        <span id="hudTargetName">Loading Mission...</span>
+                        <span class="target-category-pill" id="hudCatPill">Mountain</span>
+                    </h2>
+                    <p class="target-instruction" id="hudPromptInstruction">
+                        Click on the blank map where this geographic feature is located.
+                    </p>
+                </div>
+            </div>
+
+            <div class="target-hud-stats">
+                <div class="hud-stat-box">
+                    <div class="hud-stat-label">Progress</div>
+                    <div class="hud-stat-val" id="hudProgressText">1 / 105</div>
+                </div>
+                <div class="hud-stat-box">
+                    <div class="hud-stat-label">Score</div>
+                    <div class="hud-stat-val" id="hudScoreText" style="color:#0284c7;">0 pts</div>
+                </div>
+                <div class="hud-stat-box">
+                    <div class="hud-stat-label">Streak</div>
+                    <div class="hud-stat-val" id="hudStreakText" style="color:#f59e0b;">🔥 0</div>
+                </div>
+            </div>
+
+            <div class="hud-actions-group">
+                <button type="button" class="hud-btn hint-btn" id="btnShowHint" title="Reveal Geographic Hint (-15 pts)">
+                    <i class="fas fa-lightbulb"></i> Hint
+                </button>
+                <button type="button" class="hud-btn" id="btnSkipTarget" title="Skip to next target">
+                    <i class="fas fa-forward"></i> Skip
+                </button>
+                <button type="button" class="hud-btn" id="btnSoundToggle" title="Toggle audio sound">
+                    <i class="fas fa-volume-high"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Map Canvas Stage -->
+        <div class="map-stage-wrapper">
+            <!-- Leaflet Container -->
+            <div id="blankMapCanvas"></div>
+
+            <!-- Floating Map Toolbar -->
+            <div class="map-floating-overlay">
+                <button type="button" class="map-tool-btn" id="btnZoomIn" title="Zoom In">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button type="button" class="map-tool-btn" id="btnZoomOut" title="Zoom Out">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="map-tool-btn" id="btnResetView" title="Reset Global View">
+                    <i class="fas fa-rotate-left"></i>
+                </button>
+            </div>
+
+            <!-- Bottom Instruction Pill -->
+            <div class="map-helper-pill" id="mapHelperPill">
+                <i class="fas fa-crosshairs"></i> Click on the blank map to place your pin
+            </div>
+
+            <!-- Post-Guess Learning Dossier Drawer -->
+            <div class="result-dossier-drawer" id="resultDossierDrawer">
+                <div class="dossier-header-row">
+                    <div class="dossier-title-area">
+                        <span class="precision-badge bullseye" id="resPrecisionBadge">
+                            <i class="fas fa-bullseye"></i> Bullseye!
+                        </span>
+                        <div class="dossier-distance-text" id="resDistanceSummary">
+                            Distance: 45 km from target (+100 pts)
+                        </div>
+                    </div>
+                    <button type="button" class="btn-next-target" id="btnNextTarget">
+                        Next Target <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="dossier-content-grid">
+                    <div class="dossier-exam-box">
+                        <strong style="color:var(--loc-primary);"><i class="fas fa-graduation-cap"></i> High-Yield Exam Facts:</strong>
+                        <div id="resExamFacts" style="margin-top: 4px;">Loading facts...</div>
+                    </div>
+                    <div class="dossier-meta-box">
+                        <div><strong>Target:</strong> <span id="resTargetTitle">Target</span></div>
+                        <div><strong>Coordinates:</strong> <span id="resCoordinates">0° N, 0° E</span></div>
+                        <div><strong>Clue Context:</strong> <span id="resClueText" style="color:var(--loc-text-muted);">Clue</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyboard Shortcuts Helper -->
+        <div class="shortcuts-strip">
+            <div>
+                <i class="fas fa-keyboard"></i> Shortcuts: 
+                <span class="shortcut-key">Space</span> / <span class="shortcut-key">Enter</span> Next Target &bull;
+                <span class="shortcut-key">H</span> Hint &bull;
+                <span class="shortcut-key">S</span> Skip &bull;
+                <span class="shortcut-key">R</span> Reset View
+            </div>
+            <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                <a href="guess-the-country.html" style="color:#8b5cf6; text-decoration:none; font-weight:700;">
+                    <i class="fas fa-gamepad"></i> Try Guess the Country &rarr;
+                </a>
+                <a href="arrange-chronologically.html" style="color:#fbbf24; text-decoration:none; font-weight:700;">
+                    <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz &rarr;
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Leaflet JS & Game Data Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="js/data_locate_map.js"></script>
+
+    <script>
+        // Game State
+        let allTargets = [];
+        let filteredQueue = [];
+        let currentIndex = 0;
+        let currentTarget = null;
+        let currentCategory = 'all';
+        let currentContinent = 'all';
+        let currentMapStyle = 'voyager';
+        let score = 0;
+        let streak = 0;
+        let bestStreak = parseInt(localStorage.getItem('locate_best_streak') || '0', 10);
+        let isAnswered = false;
+        let soundEnabled = true;
+
+        // Leaflet Map & Layer Objects
+        let map = null;
+        let baseTileLayer = null;
+        let playerMarker = null;
+        let targetMarker = null;
+        let connectionLine = null;
+        let hintCircle = null;
+
+        // Tile URLs (CartoDB No-Labels for Blank Map Testing)
+        const TILE_URLS = {
+            voyager: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
+            positron: 'https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png',
+            dark: 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}{r}.png'
+        };
+
+        // Web Audio Synthesizer
+        let audioCtx = null;
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) audioCtx = new AudioContext();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                const now = ctx.currentTime;
+
+                if (type === 'bullseye') {
+                    // Ascending triumphant chime
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+                    osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
+                    osc.frequency.setValueAtTime(1046.50, now + 0.24); // C6
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+                    osc.start(now);
+                    osc.stop(now + 0.6);
+                } else if (type === 'hit') {
+                    // Two-tone pleasant hit
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.12);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                    osc.start(now);
+                    osc.stop(now + 0.4);
+                } else if (type === 'miss') {
+                    // Low error buzz
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.linearRampToValueAtTime(110, now + 0.3);
+                    gain.gain.setValueAtTime(0.22, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                }
+            } catch (e) {
+                // Audio safely fails silently
+            }
+        }
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                
+                if (isDark && currentMapStyle === 'voyager') {
+                    switchMapStyle('dark');
+                    document.getElementById('mapStyleSelect').value = 'dark';
+                } else if (!isDark && currentMapStyle === 'dark') {
+                    switchMapStyle('voyager');
+                    document.getElementById('mapStyleSelect').value = 'voyager';
+                }
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Shuffle Utility
+        function shuffle(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // Geodesic Haversine Distance (km)
+        function haversineDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Earth radius in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return Math.round(R * c);
+        }
+
+        // Compass Bearing Direction
+        function calculateBearing(lat1, lon1, lat2, lon2) {
+            const toRad = deg => deg * Math.PI / 180;
+            const toDeg = rad => rad * 180 / Math.PI;
+            const phi1 = toRad(lat1), phi2 = toRad(lat2);
+            const deltaLambda = toRad(lon2 - lon1);
+            const y = Math.sin(deltaLambda) * Math.cos(phi2);
+            const x = Math.cos(phi1) * Math.sin(phi2) - Math.sin(phi1) * Math.cos(phi2) * Math.cos(deltaLambda);
+            const theta = Math.atan2(y, x);
+            const brng = (toDeg(theta) + 360) % 360;
+            
+            const directions = ['North', 'North-East', 'East', 'South-East', 'South', 'South-West', 'West', 'North-West'];
+            const idx = Math.round(brng / 45) % 8;
+            return directions[idx];
+        }
+
+        // Initialize Map
+        function initLeafletMap() {
+            map = L.map('blankMapCanvas', {
+                center: [24, 20],
+                zoom: 2.3,
+                minZoom: 1.8,
+                maxZoom: 11,
+                scrollWheelZoom: true,
+                zoomControl: false,
+                worldCopyJump: true
+            });
+
+            const initialStyle = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'voyager';
+            currentMapStyle = initialStyle;
+            document.getElementById('mapStyleSelect').value = initialStyle;
+
+            baseTileLayer = L.tileLayer(TILE_URLS[initialStyle], {
+                attribution: '&copy; CartoDB &copy; OpenStreetMap',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Click Handler on Blank Map
+            map.on('click', onMapClick);
+
+            // Hook Toolbar Controls
+            document.getElementById('btnZoomIn').addEventListener('click', () => map.zoomIn());
+            document.getElementById('btnZoomOut').addEventListener('click', () => map.zoomOut());
+            document.getElementById('btnResetView').addEventListener('click', () => {
+                map.setView([24, 20], 2.3);
+            });
+        }
+
+        function switchMapStyle(styleKey) {
+            if (!TILE_URLS[styleKey] || !map) return;
+            currentMapStyle = styleKey;
+            if (baseTileLayer) {
+                map.removeLayer(baseTileLayer);
+            }
+            baseTileLayer = L.tileLayer(TILE_URLS[styleKey], {
+                attribution: '&copy; CartoDB &copy; OpenStreetMap',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+        }
+
+        // Category & Filter Filtering
+        function updateFilteredQueue() {
+            let list = [...allTargets];
+            if (currentCategory !== 'all') {
+                list = list.filter(item => item.category === currentCategory);
+            }
+            if (currentContinent !== 'all') {
+                if (currentContinent === 'Americas') {
+                    list = list.filter(item => item.continent === 'North America' || item.continent === 'South America' || item.continent === 'Americas');
+                } else {
+                    list = list.filter(item => item.continent.includes(currentContinent));
+                }
+            }
+
+            filteredQueue = shuffle(list);
+            currentIndex = 0;
+            loadTarget(currentIndex);
+        }
+
+        // Load Target into HUD & Reset Map Stage
+        function loadTarget(index) {
+            if (!filteredQueue.length) {
+                document.getElementById('hudTargetName').textContent = 'No targets matching filter';
+                return;
+            }
+
+            if (index >= filteredQueue.length) {
+                filteredQueue = shuffle(filteredQueue);
+                currentIndex = 0;
+            }
+
+            currentTarget = filteredQueue[currentIndex];
+            isAnswered = false;
+
+            // Clear Markers
+            if (playerMarker) map.removeLayer(playerMarker);
+            if (targetMarker) map.removeLayer(targetMarker);
+            if (connectionLine) map.removeLayer(connectionLine);
+            if (hintCircle) map.removeLayer(hintCircle);
+            playerMarker = null;
+            targetMarker = null;
+            connectionLine = null;
+            hintCircle = null;
+
+            // Hide Dossier Drawer
+            document.getElementById('resultDossierDrawer').classList.remove('active');
+            document.getElementById('mapHelperPill').style.display = 'flex';
+
+            // Category Icon & Color Mapping
+            const iconMap = {
+                countries: 'fa-flag',
+                capitals: 'fa-landmark',
+                mountains: 'fa-mountain',
+                rivers: 'fa-water',
+                seas: 'fa-anchor'
+            };
+            const catNameMap = {
+                countries: 'Country',
+                capitals: 'Capital City',
+                mountains: 'Mountain / Peak',
+                rivers: 'River / Basin',
+                seas: 'Sea / Strait'
+            };
+
+            const catIcon = iconMap[currentTarget.category] || 'fa-crosshairs';
+            document.getElementById('hudCatIcon').innerHTML = '<i class="fas ' + catIcon + '"></i>';
+            document.getElementById('hudTargetName').textContent = currentTarget.name;
+            document.getElementById('hudCatPill').textContent = catNameMap[currentTarget.category] || currentTarget.category;
+            document.getElementById('hudPromptInstruction').textContent = currentTarget.promptText || ('Locate ' + currentTarget.name + ' on the blank map.');
+
+            // Update Stats HUD
+            document.getElementById('hudProgressText').textContent = (currentIndex + 1) + ' / ' + filteredQueue.length;
+            document.getElementById('hudScoreText').textContent = score + ' pts';
+            document.getElementById('hudStreakText').textContent = '🔥 ' + streak;
+        }
+
+        // Map Click Action (Student Guess)
+        function onMapClick(e) {
+            if (isAnswered || !currentTarget) return;
+            isAnswered = true;
+
+            const clickLat = e.latlng.lat;
+            const clickLng = e.latlng.lng;
+            const targetLat = currentTarget.lat;
+            const targetLng = currentTarget.lng;
+
+            // Compute Distance Error
+            const distanceKm = haversineDistance(clickLat, clickLng, targetLat, targetLng);
+            const bearingDir = calculateBearing(clickLat, clickLng, targetLat, targetLng);
+
+            // Create Player Marker
+            const playerIcon = L.divIcon({
+                className: 'player-pin-icon',
+                iconSize: [22, 22],
+                iconAnchor: [11, 11]
+            });
+            playerMarker = L.marker([clickLat, clickLng], { icon: playerIcon }).addTo(map);
+
+            // Create Target Beacon Marker
+            const targetIcon = L.divIcon({
+                className: 'target-beacon-icon',
+                html: '<i class="fas fa-check"></i>',
+                iconSize: [28, 28],
+                iconAnchor: [14, 14]
+            });
+            targetMarker = L.marker([targetLat, targetLng], { icon: targetIcon }).addTo(map);
+
+            // Draw Geodesic Arc / Line
+            connectionLine = L.polyline([[clickLat, clickLng], [targetLat, targetLng]], {
+                color: '#ef4444',
+                weight: 3,
+                dashArray: '6, 8',
+                opacity: 0.85
+            }).addTo(map);
+
+            // Calculate Scoring & Category-Specific Precision
+            const tolerance = currentTarget.toleranceKm || 450;
+            let earnedPoints = 0;
+            let precisionTier = 'missed';
+            let soundType = 'miss';
+
+            if (distanceKm <= Math.max(250, tolerance * 0.5)) {
+                precisionTier = 'bullseye';
+                earnedPoints = 100;
+                soundType = 'bullseye';
+                streak++;
+            } else if (distanceKm <= tolerance) {
+                precisionTier = 'great';
+                earnedPoints = 75;
+                soundType = 'hit';
+                streak++;
+            } else if (distanceKm <= tolerance * 1.8) {
+                precisionTier = 'close';
+                earnedPoints = 40;
+                soundType = 'hit';
+                streak = 0;
+            } else {
+                precisionTier = 'missed';
+                earnedPoints = 0;
+                soundType = 'miss';
+                streak = 0;
+            }
+
+            if (streak >= 3) {
+                earnedPoints += 25;
+            }
+
+            score += earnedPoints;
+            if (streak > bestStreak) {
+                bestStreak = streak;
+                localStorage.setItem('locate_best_streak', bestStreak);
+            }
+
+            playSound(soundType);
+
+            // Smooth Frame Camera to Show Both Points
+            const bounds = L.latLngBounds([ [clickLat, clickLng], [targetLat, targetLng] ]);
+            map.fitBounds(bounds, { padding: [80, 80], maxZoom: 6, animate: true, duration: 0.8 });
+
+            // Display Results Dossier
+            showResultDossier(precisionTier, distanceKm, bearingDir, earnedPoints);
+        }
+
+        // Show Result Learning Dossier
+        function showResultDossier(tier, distanceKm, bearingDir, points) {
+            const drawer = document.getElementById('resultDossierDrawer');
+            const badge = document.getElementById('resPrecisionBadge');
+            const distSummary = document.getElementById('resDistanceSummary');
+            document.getElementById('mapHelperPill').style.display = 'none';
+
+            badge.className = 'precision-badge ' + tier;
+            if (tier === 'bullseye') {
+                badge.innerHTML = '<i class="fas fa-bullseye"></i> Bullseye!';
+                distSummary.innerHTML = 'Distance: <strong>' + distanceKm.toLocaleString() + ' km</strong> &bull; Direct Regional Hit! (+' + points + ' pts)';
+            } else if (tier === 'great') {
+                badge.innerHTML = '<i class="fas fa-circle-check"></i> Great Precision!';
+                distSummary.innerHTML = 'Distance: <strong>' + distanceKm.toLocaleString() + ' km</strong> &bull; Well within territory! (+' + points + ' pts)';
+            } else if (tier === 'close') {
+                badge.innerHTML = '<i class="fas fa-location-arrow"></i> Close Effort';
+                distSummary.innerHTML = 'Distance: <strong>' + distanceKm.toLocaleString() + ' km</strong> &bull; Target is ' + bearingDir + ' of your pin (+' + points + ' pts)';
+            } else {
+                badge.innerHTML = '<i class="fas fa-circle-xmark"></i> Off Target';
+                distSummary.innerHTML = 'Distance: <strong>' + distanceKm.toLocaleString() + ' km</strong> &bull; Target is ' + bearingDir + ' of where you clicked (0 pts)';
+            }
+
+            document.getElementById('resTargetTitle').textContent = (currentTarget.flag || '') + ' ' + currentTarget.name;
+            document.getElementById('resCoordinates').textContent = currentTarget.lat.toFixed(4) + '° N, ' + currentTarget.lng.toFixed(4) + '° E';
+            document.getElementById('resExamFacts').textContent = currentTarget.examFacts;
+            document.getElementById('resClueText').textContent = currentTarget.clue;
+
+            // Update stats
+            document.getElementById('hudScoreText').textContent = score + ' pts';
+            document.getElementById('hudStreakText').textContent = '🔥 ' + streak;
+
+            drawer.classList.add('active');
+        }
+
+        // Next Target
+        function nextTarget() {
+            currentIndex++;
+            loadTarget(currentIndex);
+        }
+
+        // Skip Target
+        function skipTarget() {
+            if (isAnswered) {
+                nextTarget();
+                return;
+            }
+            streak = 0;
+            playSound('miss');
+            currentIndex++;
+            loadTarget(currentIndex);
+        }
+
+        // Reveal Hint Function
+        function showHint() {
+            if (isAnswered || !currentTarget) return;
+            score = Math.max(0, score - 15);
+            document.getElementById('hudScoreText').textContent = score + ' pts';
+
+            // Draw Pulsing Hint Circle Around Target Region
+            if (hintCircle) map.removeLayer(hintCircle);
+            hintCircle = L.circle([currentTarget.lat, currentTarget.lng], {
+                radius: (currentTarget.toleranceKm || 500) * 1000,
+                color: '#f59e0b',
+                fillColor: '#fef3c7',
+                fillOpacity: 0.25,
+                weight: 2,
+                dashArray: '4, 6'
+            }).addTo(map);
+
+            // Pan Towards General Region
+            map.flyTo([currentTarget.lat, currentTarget.lng], 3.8, { duration: 1 });
+
+            // Display Hint Banner
+            document.getElementById('hudPromptInstruction').innerHTML = 
+                '<span style="color:#d97706; font-weight:700;"><i class="fas fa-lightbulb"></i> Hint:</span> ' + currentTarget.clue;
+        }
+
+        // Category Tab Handlers
+        document.querySelectorAll('.cat-pill-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.cat-pill-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.getAttribute('data-cat');
+                updateFilteredQueue();
+            });
+        });
+
+        // Filter Selects
+        document.getElementById('continentFilterSelect').addEventListener('change', (e) => {
+            currentContinent = e.target.value;
+            updateFilteredQueue();
+        });
+
+        document.getElementById('mapStyleSelect').addEventListener('change', (e) => {
+            switchMapStyle(e.target.value);
+        });
+
+        // Action Buttons
+        document.getElementById('btnShowHint').addEventListener('click', showHint);
+        document.getElementById('btnSkipTarget').addEventListener('click', skipTarget);
+        document.getElementById('btnNextTarget').addEventListener('click', nextTarget);
+
+        // Sound Toggle
+        document.getElementById('btnSoundToggle').addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('btnSoundToggle');
+            btn.innerHTML = soundEnabled ? '<i class="fas fa-volume-high"></i>' : '<i class="fas fa-volume-xmark"></i>';
+            btn.style.opacity = soundEnabled ? '1' : '0.6';
+        });
+
+        // Keyboard Shortcuts
+        window.addEventListener('keydown', (e) => {
+            if ((e.code === 'Enter' || e.code === 'Space') && isAnswered) {
+                e.preventDefault();
+                nextTarget();
+            } else if (e.key === 'h' || e.key === 'H') {
+                if (!isAnswered) showHint();
+            } else if (e.key === 's' || e.key === 'S') {
+                skipTarget();
+            } else if (e.key === 'r' || e.key === 'R') {
+                if (map) map.setView([24, 20], 2.3);
+            }
+        });
+
+        // Boot
+        window.addEventListener('DOMContentLoaded', () => {
+            allTargets = (typeof window !== 'undefined' && window.LOCATE_MAP_DATA) ? window.LOCATE_MAP_DATA : ((typeof LOCATE_MAP_DATA !== 'undefined') ? LOCATE_MAP_DATA : []);
+            initLeafletMap();
+            updateFilteredQueue();
+        });
+    </script>
+</body>
+
+</html>

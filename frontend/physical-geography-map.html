@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Physical Geography Map | Mountains, Rivers, Lakes, Deserts, Seas, Oceans, Plateaus & Straits</title>
+    <meta name="description"
+        content="Interactive Physical Geography Map for CSS, PMS, FPSC, PPSC, SPSC, and UPSC aspirants. Click mountains, rivers, lakes, deserts, seas, oceans, plateaus, and straits to explore real-time coordinates, physical facts, and geopolitical significance.">
+    <meta name="keywords"
+        content="Physical Geography Map, World Mountains, World Rivers, World Lakes, World Deserts, World Seas, World Oceans, World Plateaus, Strategic Straits, CSS Physical Geography, World Map GK, FPSC Geography MCQs, Strait of Hormuz, Strait of Malacca, Himalayas, Lake Baikal">
+
+    <!-- Anti-FOUC: Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet CSS for Physical Map Rendering -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --geo-primary: #0284c7;
+            --geo-primary-dark: #0369a1;
+            --geo-primary-light: #e0f2fe;
+            --geo-accent: #059669;
+            --geo-bg: #f8fafc;
+            --geo-card-bg: #ffffff;
+            --geo-border: #e2e8f0;
+            --geo-text-main: #0f172a;
+            --geo-text-muted: #64748b;
+            --geo-sidebar-w: 440px;
+        }
+
+        .dark-mode {
+            --geo-bg: #090d16;
+            --geo-card-bg: #111827;
+            --geo-border: #1f2937;
+            --geo-text-main: #f8fafc;
+            --geo-text-muted: #94a3b8;
+            --geo-primary-light: rgba(2, 132, 199, 0.15);
+        }
+
+        body {
+            background-color: var(--geo-bg);
+            color: var(--geo-text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        /* Top Announcement / Switcher Bar */
+        .top-switcher-bar {
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 0.86rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .switcher-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .switcher-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .switcher-btn:hover,
+        .switcher-btn.active {
+            background: #0284c7;
+            border-color: #38bdf8;
+            color: #ffffff;
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--geo-card-bg);
+            border-bottom: 1px solid var(--geo-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--geo-text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #0284c7;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--geo-text-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0284c7;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: 1px solid var(--geo-border);
+            color: var(--geo-text-muted);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        /* Hero Masthead */
+        .geo-hero {
+            background: linear-gradient(135deg, #092c48 0%, #0f4c81 50%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 32px 20px 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .geo-hero-badge {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #bae6fd;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .geo-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 900;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .geo-hero p {
+            font-size: 0.98rem;
+            color: #e0f2fe;
+            max-width: 860px;
+            margin: 0 auto 18px;
+            line-height: 1.6;
+        }
+
+        .geo-stats-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .geo-stat-pill {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Filter Controls & Search Card */
+        .controls-card {
+            max-width: 1440px;
+            margin: -16px auto 18px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .controls-inner {
+            background: var(--geo-card-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .search-and-tools {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-box-wrap {
+            flex: 1;
+            min-width: 260px;
+            position: relative;
+        }
+
+        .search-box-wrap input {
+            width: 100%;
+            padding: 10px 14px 10px 38px;
+            border: 1px solid var(--geo-border);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            background: var(--geo-bg);
+            color: var(--geo-text-main);
+            outline: none;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+
+        .search-box-wrap input:focus {
+            border-color: #0284c7;
+        }
+
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--geo-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .challenge-mode-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+            transition: transform 0.15s;
+        }
+
+        .challenge-mode-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* 8 Category Filter Pills */
+        .category-pills-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+
+        .cat-pill {
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            color: var(--geo-text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .cat-pill:hover {
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        .cat-pill.active {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
+        }
+
+        .cat-pill .pill-badge {
+            background: rgba(0, 0, 0, 0.1);
+            color: inherit;
+            font-size: 0.72rem;
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-weight: 800;
+        }
+
+        .cat-pill.active .pill-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* Main Workspace Split Grid */
+        .workspace-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .map-workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr var(--geo-sidebar-w);
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* Map Canvas Card */
+        .map-canvas-card {
+            background: var(--geo-card-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .map-toolbar-strip {
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--geo-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: var(--geo-card-bg);
+        }
+
+        .map-info-text {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--geo-text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .map-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tool-btn {
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            color: var(--geo-text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.15s;
+        }
+
+        .tool-btn:hover {
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        /* Leaflet Map Height */
+        #physicalMapContainer {
+            width: 100%;
+            height: 600px;
+            background: #0f172a;
+            position: relative;
+        }
+
+        /* Custom Marker Styles */
+        .geo-marker-pin {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.85rem;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .geo-marker-pin:hover,
+        .geo-marker-pin.active {
+            transform: scale(1.25);
+            z-index: 1000 !important;
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.6), 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Map Legend */
+        .map-legend-row {
+            padding: 10px 16px;
+            background: var(--geo-card-bg);
+            border-top: 1px solid var(--geo-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: var(--geo-text-muted);
+        }
+
+        .legend-items {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+        }
+
+        .legend-color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* Right Dossier Sidebar */
+        .dossier-sidebar {
+            background: var(--geo-card-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            position: sticky;
+            top: 80px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .dossier-hero {
+            padding: 24px;
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff;
+            position: relative;
+        }
+
+        .dossier-hero-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .dossier-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 900;
+            margin: 0 0 6px 0;
+            line-height: 1.25;
+        }
+
+        .dossier-tagline {
+            font-size: 0.88rem;
+            color: #e0f2fe;
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        .dossier-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* Metric Grid */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .metric-cell {
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .metric-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--geo-text-muted);
+            text-transform: uppercase;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .metric-val {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--geo-text-main);
+            line-height: 1.3;
+        }
+
+        /* Dossier Section Blocks */
+        .dossier-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dossier-section-title {
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--geo-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dossier-text-block {
+            font-size: 0.88rem;
+            color: var(--geo-text-main);
+            line-height: 1.6;
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .bullet-list li {
+            font-size: 0.86rem;
+            line-height: 1.5;
+            color: var(--geo-text-main);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .bullet-list li i {
+            color: #0284c7;
+            margin-top: 4px;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        /* Exam Points Box */
+        .exam-points-box {
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-left: 4px solid #f59e0b;
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+        .dark-mode .exam-points-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-color: rgba(245, 158, 11, 0.2);
+        }
+
+        .exam-points-title {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #b45309;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dark-mode .exam-points-title {
+            color: #fbbf24;
+        }
+
+        /* Quiz Banner in Dossier */
+        .quiz-active-card {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            display: none;
+        }
+
+        .dark-mode .quiz-active-card {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        /* Comparison Table Section */
+        .table-section {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .table-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            margin: 0 0 16px 0;
+            color: var(--geo-text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .table-wrap {
+            background: var(--geo-card-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 14px;
+            overflow-x: auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .geo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            text-align: left;
+        }
+
+        .geo-table th {
+            background: var(--geo-bg);
+            color: var(--geo-text-main);
+            font-weight: 800;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--geo-border);
+            white-space: nowrap;
+        }
+
+        .geo-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--geo-border);
+            vertical-align: top;
+            color: var(--geo-text-main);
+        }
+
+        .geo-table tr:hover td {
+            background: rgba(2, 132, 199, 0.03);
+            cursor: pointer;
+        }
+
+        .table-cat-badge {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--geo-card-bg);
+            border-top: 1px solid var(--geo-border);
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: var(--geo-text-muted);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: var(--geo-text-muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #0284c7;
+        }
+
+        @media (max-width: 1024px) {
+            .map-workspace-grid {
+                grid-template-columns: 1fr;
+            }
+            .dossier-sidebar {
+                position: static;
+                max-height: none;
+            }
+            #physicalMapContainer {
+                height: 480px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Switcher Bar: Political vs Physical Map -->
+    <div class="top-switcher-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="background: #0284c7; color: #fff; font-size: 0.7rem; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">
+                Maps Hub
+            </span>
+            <span>Switch between Comprehensive World Maps:</span>
+        </div>
+        <div class="switcher-links">
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn active">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+            <a href="guess-the-country.html" class="switcher-btn" style="color: #8b5cf6;">
+                <i class="fas fa-gamepad"></i> Guess Country
+            </a>
+                <a href="locate-on-map.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-crosshairs"></i> Locate on Map</a>
+                <a href="match-the-following.html" style="color: #8b5cf6; font-weight: 700;"><i class="fas fa-puzzle-piece"></i> Match Items</a>
+            <a href="locate-on-map.html" class="switcher-btn" style="color: #38bdf8;">
+                <i class="fas fa-crosshairs"></i> Locate on Map
+            </a>
+            <a href="match-the-following.html" class="switcher-btn" style="color: #a78bfa;">
+                <i class="fas fa-puzzle-piece"></i> Match Items
+            </a>
+            <a href="arrange-chronologically.html" class="switcher-btn" style="color: #fbbf24;">
+                <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz
+            </a>
+            <a href="crossword.html" class="switcher-btn" style="color: #0284c7;">
+                <i class="fas fa-chess-board"></i> Crossword
+            </a>
+            <a href="word-search.html" class="switcher-btn" style="color: #8b5cf6;">
+                <i class="fas fa-magnifying-glass"></i> Word Search
+            </a>
+            <a href="unsc-simulator.html" class="switcher-btn" style="color:#3b82f6;">
+                <i class="fas fa-scale-balanced"></i> UNSC Simulator
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="geopolitical-hotspots-map.html" style="color: #e11d48; font-weight: 700;"><i class="fas fa-satellite-dish"></i> Hotspots Map</a>
+                <a href="physical-geography-map.html" class="active" style="color: #0284c7; font-weight: 800;"><i class="fas fa-mountain-sun"></i> Physical Map</a>
+                <a href="world-map.html"><i class="fas fa-globe"></i> Political Map</a>
+                <a href="guess-the-country.html" style="color: #8b5cf6; font-weight: 700;"><i class="fas fa-gamepad"></i> Guess Country</a>
+                <a href="arrange-chronologically.html" style="color: #d97706; font-weight: 700;"><i class="fas fa-arrow-down-1-9"></i> Chronology</a>
+                <a href="crossword.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-chess-board"></i> Crossword</a>
+                <a href="word-search.html" style="color: #8b5cf6; font-weight: 700;"><i class="fas fa-magnifying-glass"></i> Word Search</a>
+                <a href="unsc-simulator.html" style="color:#1d4ed8; font-weight:700;"><i class="fas fa-scale-balanced"></i> UNSC Simulator</a>
+                <a href="latest-jobs.html" style="color: #e11d48; font-weight: 700;"><i class="fas fa-bullhorn"></i> Latest Jobs <span style="background:#e11d48; color:#fff; font-size:0.65rem; padding:1px 6px; border-radius:10px;">17,500+</span></a>
+                <a href="scholarships.html"><i class="fas fa-graduation-cap"></i> Scholarships</a>
+                <a href="math-mcqs.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-calculator"></i> Math MCQs</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="cce-essays-2025.html">CCE Essays</a>
+                <a href="css-essays-2026.html">CSS Essays</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Masthead -->
+    <section class="geo-hero">
+        <div class="geo-hero-badge">
+            <i class="fas fa-compass"></i> Interactive Geography Explorer &bull; CSS &bull; PMS &bull; FPSC &bull; UPSC
+        </div>
+        <h1>Global Physical Geography Map</h1>
+        <p>
+            Click mountains, rivers, lakes, deserts, seas, oceans, plateaus, and straits to explore real-time coordinates, physical dimensions, environmental significance, geopolitical importance, and high-yield competitive examination facts.
+        </p>
+        <div class="geo-stats-row">
+            <div class="geo-stat-pill"><i class="fas fa-mountain"></i> 11 Mountain Ranges</div>
+            <div class="geo-stat-pill"><i class="fas fa-water"></i> 10 River Systems</div>
+            <div class="geo-stat-pill"><i class="fas fa-gem"></i> 8 Major Lakes</div>
+            <div class="geo-stat-pill"><i class="fas fa-sun"></i> 7 Global Deserts</div>
+            <div class="geo-stat-pill"><i class="fas fa-sailboat"></i> 6 Geopolitical Seas</div>
+            <div class="geo-stat-pill"><i class="fas fa-compass"></i> 5 Major Oceans</div>
+            <div class="geo-stat-pill"><i class="fas fa-volcano"></i> 8 High Plateaus</div>
+            <div class="geo-stat-pill"><i class="fas fa-anchor"></i> 11 Maritime Straits</div>
+        </div>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <section class="controls-card">
+        <div class="controls-inner">
+            <div class="search-and-tools">
+                <div class="search-box-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="geoSearchInput" placeholder="Search physical features (e.g., 'Hormuz', 'Nile', 'Everest', 'Baikal', 'Sahara', 'Potohar', 'Tibetan', 'Gibraltar')..." oninput="handleSearch(this.value)">
+                </div>
+                <button type="button" class="challenge-mode-btn" id="btnToggleQuiz" onclick="toggleQuizMode()">
+                    <i class="fas fa-bullseye"></i> <span id="quizBtnText">Start Map Quiz Challenge</span>
+                </button>
+            </div>
+
+            <!-- 8 Category Filter Pills -->
+            <div class="category-pills-row" id="categoryPillsContainer">
+                <!-- Dynamically Rendered -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace Split Grid -->
+    <main class="workspace-container">
+        <div class="map-workspace-grid">
+            <!-- Left: Interactive Physical Map Canvas -->
+            <div class="map-canvas-card">
+                <div class="map-toolbar-strip">
+                    <div class="map-info-text">
+                        <i class="fas fa-map-marked-alt" style="color: #0284c7;"></i>
+                        <span id="activeFeatureTitle">Active: Himalayas (Mount Everest)</span>
+                    </div>
+                    <div class="map-actions">
+                        <button class="tool-btn" onclick="zoomInMap()" title="Zoom In"><i class="fas fa-plus"></i></button>
+                        <button class="tool-btn" onclick="zoomOutMap()" title="Zoom Out"><i class="fas fa-minus"></i></button>
+                        <button class="tool-btn" onclick="resetMapView()" title="Reset Global View"><i class="fas fa-globe"></i></button>
+                    </div>
+                </div>
+
+                <!-- Leaflet Physical Map Container -->
+                <div id="physicalMapContainer"></div>
+
+                <!-- Map Legend -->
+                <div class="map-legend-row">
+                    <span style="font-weight: 700; color: var(--geo-text-main);"><i class="fas fa-tags"></i> Feature Colors:</span>
+                    <div class="legend-items">
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#dc2626;"></span> Mountains</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#0284c7;"></span> Rivers</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#2563eb;"></span> Lakes</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#d97706;"></span> Deserts</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#0891b2;"></span> Seas</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#1e3a8a;"></span> Oceans</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#7c2d12;"></span> Plateaus</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#059669;"></span> Straits</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Feature Intelligence Dossier -->
+            <aside class="dossier-sidebar" id="dossierSidebar">
+                <!-- Quiz Banner when Quiz is Active -->
+                <div class="quiz-active-card" id="quizActiveCard">
+                    <div style="font-size: 0.8rem; font-weight: 800; color: #15803d; text-transform: uppercase;">Map Challenge Active</div>
+                    <h4 id="quizQuestionPrompt" style="margin: 6px 0; color: #166534; font-size: 1rem;">Find and click: Strait of Hormuz</h4>
+                    <div style="font-size: 0.82rem; color: #15803d;">Score: <strong id="quizScore">0</strong> / <span id="quizTotal">0</span> &bull; <button onclick="nextQuizQuestion()" style="background:#16a34a; color:#fff; border:none; padding:2px 8px; border-radius:4px; cursor:pointer;">Skip</button></div>
+                </div>
+
+                <div class="dossier-hero" id="dossierHero">
+                    <div class="dossier-hero-badge" id="dossierCategoryBadge">
+                        <i class="fas fa-mountain"></i> Mountains &amp; Ranges
+                    </div>
+                    <h2 class="dossier-title" id="dossierTitle">Himalayas</h2>
+                    <p class="dossier-tagline" id="dossierTagline">Youngest &amp; Highest Fold Mountain Range on Earth</p>
+                </div>
+
+                <div class="dossier-body">
+                    <!-- Key Metrics Grid -->
+                    <div class="metric-grid">
+                        <div class="metric-cell">
+                            <div class="metric-label"><i class="fas fa-arrows-up-down"></i> Elevation / Depth</div>
+                            <div class="metric-val" id="dossierElevation">8,848.86 m (Everest)</div>
+                        </div>
+                        <div class="metric-cell">
+                            <div class="metric-label"><i class="fas fa-ruler-horizontal"></i> Length / Area</div>
+                            <div class="metric-val" id="dossierLength">2,400 km</div>
+                        </div>
+                        <div class="metric-cell">
+                            <div class="metric-label"><i class="fas fa-globe-asia"></i> Continent</div>
+                            <div class="metric-val" id="dossierContinent">Asia</div>
+                        </div>
+                        <div class="metric-cell">
+                            <div class="metric-label"><i class="fas fa-location-crosshairs"></i> Coordinates</div>
+                            <div class="metric-val" id="dossierCoords">28.00° N, 86.90° E</div>
+                        </div>
+                    </div>
+
+                    <!-- Countries / Territory -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-earth-americas"></i> Countries &amp; Territorials</div>
+                        <div class="dossier-text-block" id="dossierCountries" style="font-weight: 600;">
+                            Nepal, China (Tibet), India, Pakistan, Bhutan
+                        </div>
+                    </div>
+
+                    <!-- Fast Facts -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-bolt" style="color: #f59e0b;"></i> Key Geographical Facts</div>
+                        <div class="dossier-text-block">
+                            <ul class="bullet-list" id="dossierFastFacts">
+                                <!-- Populated dynamically -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Geographical & Physical Significance -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-layer-group" style="color: #0284c7;"></i> Geographical &amp; Climatic Significance</div>
+                        <div class="dossier-text-block" id="dossierGeoSig">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Geopolitical & Strategic Significance -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-shield-halved" style="color: #059669;"></i> Geopolitical &amp; Strategic Significance</div>
+                        <div class="dossier-text-block" id="dossierGeoPolSig">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Competitive Exam MCQ High-Yield Points -->
+                    <div class="exam-points-box">
+                        <div class="exam-points-title"><i class="fas fa-award"></i> Exam High-Yield Points (FPSC / PPSC / CSS)</div>
+                        <ul class="bullet-list" id="dossierExamPoints">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Master Physical Geography Comparison Table -->
+    <section class="table-section">
+        <h3 class="table-section-title">
+            <i class="fas fa-table-list" style="color: #0284c7;"></i> Master Physical Geography Reference Directory (All 66 Features)
+        </h3>
+        <div class="table-wrap">
+            <table class="geo-table" id="masterGeoTable">
+                <thead>
+                    <tr>
+                        <th>Feature Name</th>
+                        <th>Category</th>
+                        <th>Location &bull; Region</th>
+                        <th>Elevation / Length / Area</th>
+                        <th>Geopolitical &amp; Exam Significance</th>
+                    </tr>
+                </thead>
+                <tbody id="masterTableBody">
+                    <!-- Populated dynamically via JS -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="pakistan-map.html">Pakistan Map</a>
+            <a href="sindh-map.html">Sindh Map</a>
+            <a href="international-trade-routes-map.html">Trade Routes Map</a>
+            <a href="geopolitical-hotspots-map.html">Hotspots Map</a>
+            <a href="physical-geography-map.html">Physical Map</a>
+            <a href="world-map.html">Political Map</a>
+            <a href="latest-jobs.html">Latest Jobs</a>
+            <a href="scholarships.html">Scholarships</a>
+            <a href="recruitment-prep.html">Recruitment Prep</a>
+            <a href="math-mcqs.html">Math MCQs</a>
+            <a href="math-tricks.html">Math Tricks</a>
+            <a href="written-prep.html">Written Prep</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+        </div>
+        <p>&copy; 2026 CSS Prep Central. Interactive Physical Geography Map for competitive exam aspirants.</p>
+    </footer>
+
+    <!-- Leaflet JS & Data Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="js/data_physical_geography.js"></script>
+
+    <script>
+        // State
+        let map;
+        let markersGroup;
+        let currentFilter = 'all';
+        let currentFeature = null;
+        let allFeatures = [];
+        let isQuizMode = false;
+        let quizTarget = null;
+        let quizScore = 0;
+        let quizTotal = 0;
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Initialize Map
+        function initMap() {
+            allFeatures = window.PHYSICAL_GEOGRAPHY_DATA.features || [];
+
+            // Create Leaflet Map with smooth inertia
+            map = L.map('physicalMapContainer', {
+                center: [25, 30],
+                zoom: 2.5,
+                minZoom: 1.8,
+                maxZoom: 12,
+                scrollWheelZoom: true,
+                zoomControl: false
+            });
+
+            // Add Topographic/Physical Tile Layer (CartoDB Positron / OpenTopoMap fallback)
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+
+            markersGroup = L.layerGroup().addTo(map);
+
+            // Render Category Buttons
+            renderCategoryPills();
+
+            // Render Markers on Map
+            renderMarkers();
+
+            // Render Master Table
+            renderMasterTable();
+
+            // Select Default Feature (Himalayas)
+            if (allFeatures.length > 0) {
+                selectFeature(allFeatures[0], false);
+            }
+        }
+
+        // Render Category Pills with Counts
+        function renderCategoryPills() {
+            const container = document.getElementById('categoryPillsContainer');
+            if (!container) return;
+
+            const categories = window.PHYSICAL_GEOGRAPHY_DATA.categories || [];
+            container.innerHTML = categories.map(cat => {
+                const count = cat.id === 'all' 
+                    ? allFeatures.length 
+                    : allFeatures.filter(f => f.category === cat.id).length;
+                const isActive = cat.id === currentFilter ? 'active' : '';
+                return `
+                    <button type="button" class="cat-pill ${isActive}" onclick="filterByCategory('${cat.id}')">
+                        <i class="fas ${cat.icon}"></i> ${cat.name} <span class="pill-badge">${count}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Render Markers based on current filter & search
+        function renderMarkers() {
+            markersGroup.clearLayers();
+
+            const query = (document.getElementById('geoSearchInput').value || '').toLowerCase().trim();
+            const filtered = allFeatures.filter(f => {
+                const matchCat = currentFilter === 'all' || f.category === currentFilter;
+                const matchSearch = !query || 
+                    f.name.toLowerCase().includes(query) || 
+                    f.tagline.toLowerCase().includes(query) || 
+                    f.continents.toLowerCase().includes(query) ||
+                    f.countries.some(c => c.toLowerCase().includes(query));
+                return matchCat && matchSearch;
+            });
+
+            filtered.forEach(f => {
+                // Custom DivIcon with matching category color
+                const iconHtml = `
+                    <div class="geo-marker-pin ${currentFeature && currentFeature.id === f.id ? 'active' : ''}" style="background: ${f.color};">
+                        <i class="fas ${f.icon}"></i>
+                    </div>
+                `;
+
+                const customIcon = L.divIcon({
+                    html: iconHtml,
+                    className: 'custom-geo-icon',
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16],
+                    popupAnchor: [0, -18]
+                });
+
+                const marker = L.marker([f.lat, f.lng], { icon: customIcon });
+
+                // Popup
+                marker.bindPopup(`
+                    <div style="font-family:'Inter', sans-serif; min-width: 180px;">
+                        <div style="font-size:0.75rem; font-weight:800; color:${f.color}; text-transform:uppercase;">
+                            ${f.category}
+                        </div>
+                        <h4 style="margin:3px 0 5px 0; font-size:1rem; font-weight:800;">${f.name}</h4>
+                        <div style="font-size:0.8rem; color:#64748b; margin-bottom:8px;">${f.tagline}</div>
+                        <button onclick="selectFeatureById('${f.id}', true)" style="background:${f.color}; color:#fff; border:none; padding:5px 12px; border-radius:6px; font-weight:700; font-size:0.8rem; cursor:pointer; width:100%;">
+                            View Complete Dossier &rarr;
+                        </button>
+                    </div>
+                `);
+
+                marker.on('click', () => {
+                    if (isQuizMode) {
+                        checkQuizAnswer(f);
+                    } else {
+                        selectFeature(f, false);
+                    }
+                });
+
+                markersGroup.addLayer(marker);
+            });
+        }
+
+        // Select and Display Feature in Dossier
+        function selectFeature(f, shouldZoom = true) {
+            currentFeature = f;
+            document.getElementById('activeFeatureTitle').innerHTML = `Active: ${f.name} (${f.elevation || f.length || f.area})`;
+
+            // Update Dossier Elements
+            document.getElementById('dossierTitle').textContent = f.name;
+            document.getElementById('dossierTagline').textContent = f.tagline;
+            document.getElementById('dossierCategoryBadge').innerHTML = `<i class="fas ${f.icon}"></i> ${f.category.toUpperCase()}`;
+            document.getElementById('dossierHero').style.background = `linear-gradient(135deg, ${f.color} 0%, #0f172a 100%)`;
+
+            document.getElementById('dossierElevation').textContent = f.elevation || f.depth || 'N/A';
+            document.getElementById('dossierLength').textContent = f.length || f.area || 'N/A';
+            document.getElementById('dossierContinent').textContent = f.continents || 'Global';
+            document.getElementById('dossierCoords').textContent = `${Math.abs(f.lat).toFixed(2)}° ${f.lat >= 0 ? 'N' : 'S'}, ${Math.abs(f.lng).toFixed(2)}° ${f.lng >= 0 ? 'E' : 'W'}`;
+
+            document.getElementById('dossierCountries').textContent = f.countries.join(', ');
+
+            // Fast Facts
+            const factsContainer = document.getElementById('dossierFastFacts');
+            factsContainer.innerHTML = f.fastFacts.map(fact => `
+                <li><i class="fas fa-check-circle"></i> <span>${fact}</span></li>
+            `).join('');
+
+            // Geographical Significance
+            document.getElementById('dossierGeoSig').textContent = f.geographicalSignificance;
+
+            // Geopolitical Significance
+            document.getElementById('dossierGeoPolSig').textContent = f.geopoliticalSignificance;
+
+            // Exam MCQ Points
+            const examContainer = document.getElementById('dossierExamPoints');
+            examContainer.innerHTML = f.examMcqPoints.map(pt => `
+                <li><i class="fas fa-star" style="color:#f59e0b;"></i> <span>${pt}</span></li>
+            `).join('');
+
+            // Smooth Pan / Zoom
+            if (shouldZoom && map) {
+                map.flyTo([f.lat, f.lng], Math.max(map.getZoom(), 4.5), {
+                    duration: 1.2
+                });
+            }
+
+            // Scroll Dossier into view on small screens
+            if (window.innerWidth <= 1024) {
+                const sidebar = document.getElementById('dossierSidebar');
+                if (sidebar) sidebar.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function selectFeatureById(id, shouldZoom = true) {
+            const f = allFeatures.find(item => item.id === id);
+            if (f) selectFeature(f, shouldZoom);
+        }
+
+        // Category Filter
+        function filterByCategory(catId) {
+            currentFilter = catId;
+            renderCategoryPills();
+            renderMarkers();
+            renderMasterTable();
+
+            // Zoom bounds to filtered markers if available
+            const filtered = currentFilter === 'all' 
+                ? allFeatures 
+                : allFeatures.filter(f => f.category === currentFilter);
+            if (filtered.length > 0 && map) {
+                const latLngs = filtered.map(f => [f.lat, f.lng]);
+                const bounds = L.latLngBounds(latLngs);
+                map.flyToBounds(bounds, { padding: [50, 50], maxZoom: 6 });
+            }
+        }
+
+        // Live Search Handler
+        function handleSearch(query) {
+            renderMarkers();
+            renderMasterTable();
+        }
+
+        // Render Master Quick Reference Table
+        function renderMasterTable() {
+            const tbody = document.getElementById('masterTableBody');
+            if (!tbody) return;
+
+            const query = (document.getElementById('geoSearchInput').value || '').toLowerCase().trim();
+            const filtered = allFeatures.filter(f => {
+                const matchCat = currentFilter === 'all' || f.category === currentFilter;
+                const matchSearch = !query || 
+                    f.name.toLowerCase().includes(query) || 
+                    f.tagline.toLowerCase().includes(query) || 
+                    f.continents.toLowerCase().includes(query) ||
+                    f.countries.some(c => c.toLowerCase().includes(query));
+                return matchCat && matchSearch;
+            });
+
+            tbody.innerHTML = filtered.map(f => `
+                <tr onclick="selectFeatureById('${f.id}', true)">
+                    <td>
+                        <strong style="color:${f.color}; font-size:0.95rem;"><i class="fas ${f.icon}"></i> ${f.name}</strong><br>
+                        <span style="font-size:0.75rem; color:var(--geo-text-muted);">${f.tagline}</span>
+                    </td>
+                    <td>
+                        <span class="table-cat-badge" style="background:${f.color}15; color:${f.color}; border:1px solid ${f.color}40;">
+                            ${f.category}
+                        </span>
+                    </td>
+                    <td>
+                        <strong>${f.continents}</strong><br>
+                        <span style="font-size:0.78rem; color:var(--geo-text-muted);">${f.countries.slice(0, 3).join(', ')}${f.countries.length > 3 ? '...' : ''}</span>
+                    </td>
+                    <td>
+                        <strong>${f.elevation || f.depth || f.length || f.area}</strong>
+                    </td>
+                    <td style="font-size:0.82rem; line-height:1.4;">
+                        ${f.geopoliticalSignificance.substring(0, 110)}...
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Zoom Helpers
+        function zoomInMap() { if (map) map.zoomIn(); }
+        function zoomOutMap() { if (map) map.zoomOut(); }
+        function resetMapView() { if (map) map.flyTo([25, 30], 2.5, { duration: 1.2 }); }
+
+        // Interactive Map Quiz Challenge Mode
+        function toggleQuizMode() {
+            isQuizMode = !isQuizMode;
+            const card = document.getElementById('quizActiveCard');
+            const btn = document.getElementById('btnToggleQuiz');
+            const btnText = document.getElementById('quizBtnText');
+
+            if (isQuizMode) {
+                card.style.display = 'block';
+                btn.style.background = '#dc2626';
+                btnText.textContent = 'Exit Challenge Mode';
+                quizScore = 0;
+                quizTotal = 0;
+                nextQuizQuestion();
+            } else {
+                card.style.display = 'none';
+                btn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+                btnText.textContent = 'Start Map Quiz Challenge';
+            }
+        }
+
+        function nextQuizQuestion() {
+            if (!allFeatures.length) return;
+            quizTarget = allFeatures[Math.floor(Math.random() * allFeatures.length)];
+            document.getElementById('quizQuestionPrompt').innerHTML = `Click on the Map: <strong>${quizTarget.name}</strong> (${quizTarget.category.toUpperCase()})`;
+        }
+
+        function checkQuizAnswer(clickedFeature) {
+            if (!isQuizMode || !quizTarget) return;
+            quizTotal++;
+
+            if (clickedFeature.id === quizTarget.id) {
+                quizScore++;
+                alert('âœ… Correct! That is ' + quizTarget.name + '.');
+                nextQuizQuestion();
+            } else {
+                alert('âŒ Not quite! You clicked ' + clickedFeature.name + '. Try finding ' + quizTarget.name + '!');
+            }
+
+            document.getElementById('quizScore').textContent = quizScore;
+            document.getElementById('quizTotal').textContent = quizTotal;
+        }
+
+        // On Load
+        window.addEventListener('DOMContentLoaded', () => {
+            initMap();
+        });
+    </script>
+</body>
+</html>

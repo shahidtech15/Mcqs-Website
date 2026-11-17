@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Service Word Search Challenge | CSS, PMS, FPSC, PPSC Exam Preparation</title>
+    <meta name="description"
+        content="Interactive academic word search puzzle for civil service competitive exams. Find high-yield terminology from Pakistan Affairs, International Relations, Everyday Science, Law, Geography, and Current Affairs.">
+    <link rel="canonical" href="https://cssprepcentral.com/word-search.html" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --ws-bg: #f8fafc;
+            --ws-card-bg: #ffffff;
+            --ws-border: #e2e8f0;
+            --ws-text-main: #0f172a;
+            --ws-text-muted: #64748b;
+            --ws-primary: #8b5cf6;
+            --ws-primary-hover: #7c3aed;
+            --ws-primary-light: rgba(139, 92, 246, 0.1);
+            --ws-accent: #0284c7;
+            --ws-success: #10b981;
+            --ws-error: #ef4444;
+            --ws-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --ws-tile-bg: #ffffff;
+            --ws-tile-border: #cbd5e1;
+            --ws-tile-hover: #ede9fe;
+            --ws-tile-select: #c4b5fd;
+        }
+
+        .dark-mode {
+            --ws-bg: #0f172a;
+            --ws-card-bg: #1e293b;
+            --ws-border: #334155;
+            --ws-text-main: #f8fafc;
+            --ws-text-muted: #94a3b8;
+            --ws-primary: #a78bfa;
+            --ws-primary-hover: #8b5cf6;
+            --ws-primary-light: rgba(167, 139, 250, 0.15);
+            --ws-accent: #38bdf8;
+            --ws-success: #34d399;
+            --ws-error: #f87171;
+            --ws-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --ws-tile-bg: #1e293b;
+            --ws-tile-border: #475569;
+            --ws-tile-hover: #312e81;
+            --ws-tile-select: #4c1d95;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ws-bg);
+            color: var(--ws-text-main);
+            line-height: 1.5;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Switcher Bar */
+        .site-switcher-bar {
+            background: #090d16;
+            border-bottom: 1px solid #1e293b;
+            padding: 7px 16px;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .switcher-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .switcher-label {
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+        }
+
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .switcher-btn.active {
+            color: #a78bfa;
+            background: rgba(167, 139, 250, 0.12);
+            font-weight: 700;
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background: var(--ws-card-bg);
+            border-bottom: 1px solid var(--ws-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--ws-text-main);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .logo i {
+            color: var(--ws-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ws-text-muted);
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--ws-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--ws-bg);
+            border: 1px solid var(--ws-border);
+            color: var(--ws-text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        /* Hero Masthead */
+        .ws-hero {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(2, 132, 199, 0.05) 100%);
+            border-bottom: 1px solid var(--ws-border);
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .ws-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--ws-primary-light);
+            color: var(--ws-primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .ws-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .ws-hero p {
+            color: var(--ws-text-muted);
+            font-size: 0.95rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Game HUD Bar */
+        .ws-hud-bar {
+            background: var(--ws-card-bg);
+            border-bottom: 1px solid var(--ws-border);
+            padding: 12px 20px;
+            position: sticky;
+            top: 61px;
+            z-index: 90;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .ws-hud-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hud-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hud-select {
+            background: var(--ws-bg);
+            border: 1px solid var(--ws-border);
+            color: var(--ws-text-main);
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 7px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .hud-stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--ws-text-main);
+            background: var(--ws-bg);
+            border: 1px solid var(--ws-border);
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        .hud-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid var(--ws-border);
+            background: var(--ws-bg);
+            color: var(--ws-text-main);
+            transition: all 0.2s;
+        }
+
+        .btn-action:hover {
+            border-color: var(--ws-primary);
+            color: var(--ws-primary);
+        }
+
+        .btn-action.btn-primary {
+            background: var(--ws-primary);
+            color: #ffffff;
+            border-color: var(--ws-primary);
+        }
+
+        .btn-action.btn-primary:hover {
+            background: var(--ws-primary-hover);
+        }
+
+        .btn-switch-crossword {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #ffffff;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-switch-crossword:hover {
+            opacity: 0.95;
+            color: #ffffff;
+        }
+
+        /* Main Game Arena */
+        .ws-main-container {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px 40px;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 24px;
+            width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .ws-main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Board Card */
+        .ws-board-card {
+            background: var(--ws-card-bg);
+            border: 1px solid var(--ws-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--ws-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            user-select: none;
+        }
+
+        .ws-grid-frame {
+            display: inline-block;
+            background: var(--ws-border);
+            border: 3px solid var(--ws-border);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            margin: 0 auto 16px;
+        }
+
+        .ws-grid-matrix {
+            display: grid;
+            gap: 2px;
+            background: var(--ws-border);
+            touch-action: none;
+        }
+
+        .ws-tile {
+            width: 38px;
+            height: 38px;
+            background: var(--ws-tile-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            color: var(--ws-text-main);
+            cursor: pointer;
+            transition: background 0.15s, transform 0.1s, color 0.15s;
+        }
+
+        @media (max-width: 600px) {
+            .ws-tile {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+        }
+
+        .ws-tile:hover {
+            background: var(--ws-tile-hover);
+        }
+
+        .ws-tile.selected {
+            background: var(--ws-tile-select) !important;
+            color: #ffffff;
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .ws-tile.hint-flash {
+            background: #fef08a !important;
+            color: #854d0e !important;
+            animation: pulseHint 0.8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseHint {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
+        /* Found Words Highlights */
+        .ws-tile.found-0 { background: #dbeafe !important; color: #1e40af !important; font-weight: 900; }
+        .ws-tile.found-1 { background: #dcfce7 !important; color: #166534 !important; font-weight: 900; }
+        .ws-tile.found-2 { background: #fef3c7 !important; color: #92400e !important; font-weight: 900; }
+        .ws-tile.found-3 { background: #fae8ff !important; color: #86198f !important; font-weight: 900; }
+        .ws-tile.found-4 { background: #ffe4e6 !important; color: #9f1239 !important; font-weight: 900; }
+        .ws-tile.found-5 { background: #e0e7ff !important; color: #3730a3 !important; font-weight: 900; }
+        .ws-tile.found-6 { background: #ccfbf1 !important; color: #115e59 !important; font-weight: 900; }
+        .ws-tile.found-7 { background: #ffedd5 !important; color: #9a3412 !important; font-weight: 900; }
+        .ws-tile.found-8 { background: #f3e8ff !important; color: #6b21a8 !important; font-weight: 900; }
+        .ws-tile.found-9 { background: #ecfccb !important; color: #3f6212 !important; font-weight: 900; }
+
+        .dark-mode .ws-tile.found-0 { background: #1e3a8a !important; color: #bfdbfe !important; }
+        .dark-mode .ws-tile.found-1 { background: #14532d !important; color: #bbf7d0 !important; }
+        .dark-mode .ws-tile.found-2 { background: #78350f !important; color: #fde68a !important; }
+        .dark-mode .ws-tile.found-3 { background: #701a75 !important; color: #f5d0fe !important; }
+        .dark-mode .ws-tile.found-4 { background: #881337 !important; color: #fecdd3 !important; }
+        .dark-mode .ws-tile.found-5 { background: #312e81 !important; color: #c7d2fe !important; }
+        .dark-mode .ws-tile.found-6 { background: #134e4a !important; color: #99f6e4 !important; }
+        .dark-mode .ws-tile.found-7 { background: #7c2d12 !important; color: #fed7aa !important; }
+        .dark-mode .ws-tile.found-8 { background: #581c87 !important; color: #e9d5ff !important; }
+        .dark-mode .ws-tile.found-9 { background: #365314 !important; color: #d9f99d !important; }
+
+        /* Selection Feedback Indicator */
+        .ws-selection-status {
+            width: 100%;
+            background: var(--ws-bg);
+            border: 1px solid var(--ws-border);
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--ws-text-muted);
+            min-height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ws-selection-status.spelling {
+            color: var(--ws-primary);
+            font-size: 1.05rem;
+            letter-spacing: 0.08em;
+        }
+
+        /* Right Column Panels */
+        .ws-side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ws-bank-card {
+            background: var(--ws-card-bg);
+            border: 1px solid var(--ws-border);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--ws-shadow);
+        }
+
+        .bank-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            border-bottom: 1px solid var(--ws-border);
+            padding-bottom: 10px;
+        }
+
+        .bank-header h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+        }
+
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 10px;
+        }
+
+        .word-badge {
+            background: var(--ws-bg);
+            border: 1px solid var(--ws-border);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.03em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .word-badge:hover {
+            border-color: var(--ws-primary);
+        }
+
+        .word-badge.found {
+            text-decoration: line-through;
+            opacity: 0.75;
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--ws-success);
+            color: var(--ws-success);
+        }
+
+        .word-badge .check-icon {
+            display: none;
+        }
+
+        .word-badge.found .check-icon {
+            display: inline-block;
+        }
+
+        /* Dossier Card */
+        .ws-dossier-card {
+            background: var(--ws-card-bg);
+            border: 1px solid var(--ws-border);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--ws-shadow);
+        }
+
+        .dossier-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--ws-accent);
+        }
+
+        .dossier-content {
+            background: var(--ws-bg);
+            border: 1px solid var(--ws-border);
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            max-height: 320px;
+            overflow-y: auto;
+        }
+
+        .dossier-item {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--ws-border);
+        }
+
+        .dossier-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .dossier-word-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--ws-text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dossier-definition {
+            color: var(--ws-text-muted);
+            margin: 4px 0;
+        }
+
+        .dossier-fact {
+            font-size: 0.82rem;
+            color: var(--ws-accent);
+            font-weight: 600;
+        }
+
+        /* Shortcuts Footer */
+        .shortcuts-hint {
+            max-width: 1400px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: var(--ws-text-muted);
+        }
+
+        .shortcut-pill {
+            background: var(--ws-card-bg);
+            border: 1px solid var(--ws-border);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: var(--ws-text-main);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Interactive Suite Switcher -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes Map
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+            <a href="guess-the-country.html" class="switcher-btn">
+                <i class="fas fa-gamepad"></i> Guess Country
+            </a>
+            <a href="locate-on-map.html" class="switcher-btn">
+                <i class="fas fa-crosshairs"></i> Locate on Map
+            </a>
+            <a href="match-the-following.html" class="switcher-btn">
+                <i class="fas fa-puzzle-piece"></i> Match Items
+            </a>
+            <a href="arrange-chronologically.html" class="switcher-btn">
+                <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz
+            </a>
+            <a href="crossword.html" class="switcher-btn" style="color:#0284c7;">
+                <i class="fas fa-chess-board"></i> Crossword Puzzle
+            </a>
+            <a href="word-search.html" class="switcher-btn active">
+                <i class="fas fa-magnifying-glass"></i> Word Search
+            </a>
+            <a href="unsc-simulator.html" class="switcher-btn" style="color:#3b82f6;">
+                <i class="fas fa-scale-balanced"></i> UNSC Simulator
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="word-search.html" class="active" style="color:var(--ws-primary); font-weight:800;"><i class="fas fa-magnifying-glass"></i> Word Search</a>
+                <a href="unsc-simulator.html" style="color:#1d4ed8; font-weight:700;"><i class="fas fa-scale-balanced"></i> UNSC Simulator</a>
+                <a href="crossword.html" style="color:#0284c7; font-weight:700;"><i class="fas fa-chess-board"></i> Crossword</a>
+                <a href="arrange-chronologically.html" style="font-weight:700; color:#d97706;"><i class="fas fa-arrow-down-1-9"></i> Chronology</a>
+                <a href="match-the-following.html"><i class="fas fa-puzzle-piece"></i> Match Items</a>
+                <a href="locate-on-map.html"><i class="fas fa-crosshairs"></i> Locate on Map</a>
+                <a href="guess-the-country.html"><i class="fas fa-gamepad"></i> Guess Country</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="written-prep.html">Written Prep</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Masthead -->
+    <section class="ws-hero">
+        <div class="ws-hero-badge">
+            <i class="fas fa-search"></i> Interactive Academic Vocabulary &bull; CSS &bull; PMS &bull; FPSC &bull; PPSC
+        </div>
+        <h1>Civil Service Word Search Challenge</h1>
+        <p>
+            Locate high-yield vocabulary hidden horizontally, vertically, and diagonally across <strong>Pakistan Affairs</strong>, <strong>International Relations</strong>, <strong>Everyday Science</strong>, <strong>Law</strong>, <strong>Geography</strong>, and <strong>Current Affairs</strong>.
+        </p>
+    </section>
+
+    <!-- HUD Control Bar -->
+    <div class="ws-hud-bar">
+        <div class="ws-hud-inner">
+            <div class="hud-left">
+                <label for="categorySelect" style="display:none;">Discipline</label>
+                <select id="categorySelect" class="hud-select" title="Discipline">
+                    <option value="all">⭐ All Disciplines (Mixed Pool)</option>
+                    <option value="pakistan_affairs">🇵🇰 Pakistan Affairs</option>
+                    <option value="international_relations">🌐 International Relations</option>
+                    <option value="science">🔬 Everyday Science</option>
+                    <option value="law">⚖️ Constitutional &amp; Civil Law</option>
+                    <option value="geography">🌍 Physical Geography</option>
+                    <option value="current_affairs">📰 Current Affairs</option>
+                </select>
+
+                <label for="difficultySelect" style="display:none;">Grid Size</label>
+                <select id="difficultySelect" class="hud-select" title="Grid Size">
+                    <option value="medium">Medium (12x12 &bull; 8 Words)</option>
+                    <option value="easy">Easy (10x10 &bull; 6 Words)</option>
+                    <option value="hard">Hard (14x14 &bull; 10 Words)</option>
+                </select>
+
+                <div class="hud-stat">
+                    <i class="fas fa-clock" style="color:var(--ws-primary);"></i>
+                    <span id="hudTimerVal">00:00</span>
+                </div>
+                <div class="hud-stat">
+                    <i class="fas fa-check-circle" style="color:var(--ws-success);"></i>
+                    <span id="hudWordsFoundCount">0 / 8 Found</span>
+                </div>
+            </div>
+
+            <div class="hud-right">
+                <button type="button" class="btn-action" id="btnHint" title="Flash the first letter of an unfound word">
+                    <i class="fas fa-lightbulb"></i> Hint
+                </button>
+                <button type="button" class="btn-action" id="btnRevealAll" title="Reveal unfound words">
+                    <i class="fas fa-eye"></i> Reveal
+                </button>
+                <button type="button" class="btn-action btn-primary" id="btnNewGame" title="Generate a fresh puzzle">
+                    <i class="fas fa-arrows-rotate"></i> New Game
+                </button>
+                <button type="button" class="btn-action" id="btnSoundToggle" title="Toggle Sound Effects">
+                    <i class="fas fa-volume-high"></i>
+                </button>
+                <a href="crossword.html" class="btn-action btn-switch-crossword" title="Switch to Crossword Puzzle">
+                    <i class="fas fa-chess-board"></i> Play Crossword &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Game Container -->
+    <main class="ws-main-container">
+        <!-- Board Column -->
+        <div class="ws-board-card">
+            <div class="ws-grid-frame">
+                <div class="ws-grid-matrix" id="wordSearchGrid">
+                    <!-- Dynamic Letter Matrix Injected Here -->
+                </div>
+            </div>
+
+            <!-- Selection Feedback Strip -->
+            <div class="ws-selection-status" id="selectionStatus">
+                Drag over letters or click the start &amp; end letter to select a word.
+            </div>
+        </div>
+
+        <!-- Word Bank & Dossier Column -->
+        <div class="ws-side-panel">
+            <!-- Word Bank Card -->
+            <div class="ws-bank-card">
+                <div class="bank-header">
+                    <h3><i class="fas fa-clipboard-list" style="color:var(--ws-primary);"></i> Target Vocabulary</h3>
+                    <span style="font-size:0.8rem; color:var(--ws-text-muted); font-weight:600;" id="bankProgressBadge">0 Found</span>
+                </div>
+                <div class="words-grid" id="wordBankGrid">
+                    <!-- Word Badges Injected Here -->
+                </div>
+            </div>
+
+            <!-- Vocabulary & Dossier Card -->
+            <div class="ws-dossier-card">
+                <div class="dossier-header">
+                    <i class="fas fa-graduation-cap"></i> CSS &amp; PMS Examination Dossier
+                </div>
+                <div class="dossier-content" id="dossierContainer">
+                    <p style="color:var(--ws-text-muted); text-align:center; padding:10px 0;">
+                        Words you locate on the grid will reveal their high-yield examination notes and CSS/PMS significance here.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shortcuts Footer -->
+    <div class="shortcuts-hint">
+        <div>
+            <i class="fas fa-mouse-pointer"></i> Drag to select &bull; Or click starting letter then click ending letter &bull; 8 Directions
+        </div>
+        <div>
+            <a href="crossword.html" style="color:#0284c7; text-decoration:none; font-weight:700;">
+                <i class="fas fa-chess-board"></i> Want to test with clues? Play the Crossword Puzzle &rarr;
+            </a>
+        </div>
+    </div>
+
+    <!-- Puzzle Data Script -->
+    <script src="js/data_puzzles.js"></script>
+
+    <!-- Word Search Game Engine -->
+    <script>
+        // Game State
+        let currentCategory = 'all';
+        let currentDifficulty = 'medium'; // 'easy' (10x10, 6 words), 'medium' (12x12, 8 words), 'hard' (14x14, 10 words)
+        let gridSize = 12;
+        let targetWordCount = 8;
+        let gridLetters = []; // 2D array [r][c]
+        let targetWords = []; // Array of { answer, clue, examFact, found, colorIdx, placements: [] }
+        let isMouseDown = false;
+        let startCell = null; // { r, c }
+        let currentCell = null;
+        let clickStartCell = null; // for two-click selection mode
+        let soundEnabled = true;
+        let secondsElapsed = 0;
+        let timerInterval = null;
+        let isComplete = false;
+
+        // Web Audio Synthesizer
+        let audioCtx = null;
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) audioCtx = new AudioContext();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'tile') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(450, now);
+                    gain.gain.setValueAtTime(0.04, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+                    osc.start(now);
+                    osc.stop(now + 0.05);
+                } else if (type === 'found') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+                    osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+                    osc.start(now);
+                    osc.stop(now + 0.45);
+                } else if (type === 'victory') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(440, now);
+                    osc.frequency.setValueAtTime(554.37, now + 0.12);
+                    osc.frequency.setValueAtTime(659.25, now + 0.24);
+                    osc.frequency.setValueAtTime(880, now + 0.36);
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.75);
+                    osc.start(now);
+                    osc.stop(now + 0.75);
+                }
+            } catch (e) {
+                // Ignore audio errors
+            }
+        }
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Shuffle Utility
+        function shuffle(arr) {
+            const copy = [...arr];
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
+
+        // Timer
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            secondsElapsed = 0;
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                secondsElapsed++;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+            const secs = String(secondsElapsed % 60).padStart(2, '0');
+            document.getElementById('hudTimerVal').textContent = `${mins}:${secs}`;
+        }
+
+        // Initialize Game
+        function initWordSearch() {
+            setDifficulty(currentDifficulty);
+            generateNewPuzzle();
+        }
+
+        function setDifficulty(diff) {
+            currentDifficulty = diff;
+            if (diff === 'easy') {
+                gridSize = 10;
+                targetWordCount = 6;
+            } else if (diff === 'medium') {
+                gridSize = 12;
+                targetWordCount = 8;
+            } else {
+                gridSize = 14;
+                targetWordCount = 10;
+            }
+        }
+
+        // Generate Board
+        function generateNewPuzzle() {
+            isComplete = false;
+            startTimer();
+
+            // Pull candidate pool
+            const vocabData = window.PUZZLE_VOCABULARY || {};
+            let pool = [];
+
+            if (currentCategory === 'all') {
+                Object.values(vocabData).forEach(list => {
+                    pool = pool.concat(list);
+                });
+            } else {
+                pool = vocabData[currentCategory] || [];
+            }
+
+            // Filter words that fit within grid size
+            const validPool = pool.filter(w => w.answer.length <= gridSize);
+            const shuffledPool = shuffle(validPool);
+
+            // Directions allowed by difficulty
+            let allowedDirs = [
+                { dr: 0, dc: 1 },  // across forward
+                { dr: 1, dc: 0 }   // down forward
+            ];
+
+            if (currentDifficulty === 'medium' || currentDifficulty === 'hard') {
+                allowedDirs.push(
+                    { dr: 1, dc: 1 },   // diagonal down-right
+                    { dr: 1, dc: -1 }   // diagonal down-left
+                );
+            }
+
+            if (currentDifficulty === 'hard') {
+                allowedDirs.push(
+                    { dr: 0, dc: -1 },  // across backward
+                    { dr: -1, dc: 0 },  // down backward
+                    { dr: -1, dc: 1 },  // diagonal up-right
+                    { dr: -1, dc: -1 }  // diagonal up-left
+                );
+            }
+
+            // Initialize empty matrix
+            gridLetters = Array.from({ length: gridSize }, () => Array(gridSize).fill(''));
+            targetWords = [];
+
+            let colorCounter = 0;
+
+            for (let w = 0; w < shuffledPool.length && targetWords.length < targetWordCount; w++) {
+                const wordObj = shuffledPool[w];
+                const word = wordObj.answer;
+                const placement = tryPlaceWord(word, allowedDirs);
+
+                if (placement) {
+                    targetWords.push({
+                        ...wordObj,
+                        found: false,
+                        colorIdx: colorCounter % 10,
+                        cells: placement.cells
+                    });
+                    colorCounter++;
+                }
+            }
+
+            // Fill empty cells with random letters
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for (let r = 0; r < gridSize; r++) {
+                for (let c = 0; c < gridSize; c++) {
+                    if (!gridLetters[r][c]) {
+                        gridLetters[r][c] = alphabet[Math.floor(Math.random() * alphabet.length)];
+                    }
+                }
+            }
+
+            renderBoard();
+            renderWordBank();
+            updateFoundProgress();
+            resetDossier();
+        }
+
+        // Try placing word in matrix
+        function tryPlaceWord(word, dirs) {
+            const shuffledDirs = shuffle(dirs);
+            const attempts = 150;
+
+            for (let a = 0; a < attempts; a++) {
+                const dir = shuffledDirs[a % shuffledDirs.length];
+                const r = Math.floor(Math.random() * gridSize);
+                const c = Math.floor(Math.random() * gridSize);
+
+                // Check bounds
+                const endR = r + dir.dr * (word.length - 1);
+                const endC = c + dir.dc * (word.length - 1);
+
+                if (endR < 0 || endR >= gridSize || endC < 0 || endC >= gridSize) continue;
+
+                // Check collisions
+                let canPlace = true;
+                const cells = [];
+
+                for (let i = 0; i < word.length; i++) {
+                    const cr = r + dir.dr * i;
+                    const cc = c + dir.dc * i;
+                    const existing = gridLetters[cr][cc];
+
+                    if (existing && existing !== word[i]) {
+                        canPlace = false;
+                        break;
+                    }
+                    cells.push({ r: cr, c: cc });
+                }
+
+                if (canPlace) {
+                    for (let i = 0; i < word.length; i++) {
+                        const cr = cells[i].r;
+                        const cc = cells[i].c;
+                        gridLetters[cr][cc] = word[i];
+                    }
+                    return { cells };
+                }
+            }
+
+            return null;
+        }
+
+        // Render Board
+        function renderBoard() {
+            const matrix = document.getElementById('wordSearchGrid');
+            matrix.innerHTML = '';
+            matrix.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+
+            for (let r = 0; r < gridSize; r++) {
+                for (let c = 0; c < gridSize; c++) {
+                    const tile = document.createElement('div');
+                    tile.className = 'ws-tile';
+                    tile.id = `ws-tile-${r}-${c}`;
+                    tile.dataset.row = r;
+                    tile.dataset.col = c;
+                    tile.textContent = gridLetters[r][c];
+
+                    // Mouse & Pointer Events
+                    tile.addEventListener('pointerdown', (e) => handlePointerDown(e, r, c));
+                    tile.addEventListener('pointerenter', (e) => handlePointerEnter(e, r, c));
+
+                    matrix.appendChild(tile);
+                }
+            }
+
+            // Global Pointer Up
+            window.removeEventListener('pointerup', handlePointerUp);
+            window.addEventListener('pointerup', handlePointerUp);
+        }
+
+        // Pointer Event Handlers for Drag Selection
+        function handlePointerDown(e, r, c) {
+            e.preventDefault();
+            isMouseDown = true;
+            startCell = { r, c };
+            currentCell = { r, c };
+
+            // Handle two-click selection fallback
+            if (!clickStartCell) {
+                clickStartCell = { r, c };
+            } else {
+                // Second click evaluates
+                evaluateLine(clickStartCell, { r, c });
+                clickStartCell = null;
+                clearSelectedTiles();
+                return;
+            }
+
+            highlightLine(startCell, currentCell);
+            playSound('tile');
+        }
+
+        function handlePointerEnter(e, r, c) {
+            if (!isMouseDown || !startCell) return;
+            currentCell = { r, c };
+            highlightLine(startCell, currentCell);
+        }
+
+        function handlePointerUp() {
+            if (!isMouseDown) return;
+            isMouseDown = false;
+
+            if (startCell && currentCell) {
+                if (startCell.r !== currentCell.r || startCell.c !== currentCell.c) {
+                    // Evaluate drag
+                    evaluateLine(startCell, currentCell);
+                    clickStartCell = null;
+                }
+            }
+
+            clearSelectedTiles();
+            startCell = null;
+            currentCell = null;
+        }
+
+        // Calculate straight line cells between (r1,c1) and (r2,c2)
+        function getLineCells(p1, p2) {
+            const dr = p2.r - p1.r;
+            const dc = p2.c - p1.c;
+            const stepR = dr === 0 ? 0 : dr / Math.abs(dr);
+            const stepC = dc === 0 ? 0 : dc / Math.abs(dc);
+
+            // Must be horizontal, vertical, or perfectly 45 deg diagonal
+            if (dr !== 0 && dc !== 0 && Math.abs(dr) !== Math.abs(dc)) {
+                return null;
+            }
+
+            const len = Math.max(Math.abs(dr), Math.abs(dc)) + 1;
+            const cells = [];
+            for (let i = 0; i < len; i++) {
+                cells.push({ r: p1.r + stepR * i, c: p1.c + stepC * i });
+            }
+            return cells;
+        }
+
+        function highlightLine(p1, p2) {
+            clearSelectedTiles();
+            const cells = getLineCells(p1, p2);
+            if (!cells) return;
+
+            let spelled = '';
+            cells.forEach(pt => {
+                const tile = document.getElementById(`ws-tile-${pt.r}-${pt.c}`);
+                if (tile) tile.classList.add('selected');
+                spelled += gridLetters[pt.r][pt.c];
+            });
+
+            const status = document.getElementById('selectionStatus');
+            status.className = 'ws-selection-status spelling';
+            status.textContent = `Selecting: ${spelled}`;
+        }
+
+        function clearSelectedTiles() {
+            document.querySelectorAll('.ws-tile.selected').forEach(t => t.classList.remove('selected'));
+            const status = document.getElementById('selectionStatus');
+            status.className = 'ws-selection-status';
+            status.textContent = 'Drag over letters or click the start & end letter to select a word.';
+        }
+
+        // Evaluate Line Against Target Words
+        function evaluateLine(p1, p2) {
+            const cells = getLineCells(p1, p2);
+            if (!cells || cells.length < 2) return;
+
+            let forward = '';
+            let backward = '';
+            cells.forEach(pt => {
+                forward += gridLetters[pt.r][pt.c];
+            });
+            backward = forward.split('').reverse().join('');
+
+            const match = targetWords.find(tw => !tw.found && (tw.answer === forward || tw.answer === backward));
+
+            if (match) {
+                // Word found!
+                match.found = true;
+                playSound('found');
+
+                // Apply persistent color class
+                cells.forEach(pt => {
+                    const tile = document.getElementById(`ws-tile-${pt.r}-${pt.c}`);
+                    if (tile) tile.classList.add(`found-${match.colorIdx}`);
+                });
+
+                // Update Word Bank Item
+                const badge = document.getElementById(`badge-${match.answer}`);
+                if (badge) badge.classList.add('found');
+
+                // Add to Exam Dossier
+                addWordToDossier(match);
+
+                updateFoundProgress();
+            }
+        }
+
+        // Render Word Bank
+        function renderWordBank() {
+            const container = document.getElementById('wordBankGrid');
+            container.innerHTML = '';
+
+            targetWords.forEach(w => {
+                const badge = document.createElement('div');
+                badge.className = 'word-badge';
+                badge.id = `badge-${w.answer}`;
+                badge.innerHTML = `<span>${w.answer}</span> <i class="fas fa-check-circle check-icon"></i>`;
+
+                badge.addEventListener('click', () => {
+                    if (w.found) {
+                        highlightFoundWordOnBoard(w);
+                    }
+                });
+
+                container.appendChild(badge);
+            });
+        }
+
+        function highlightFoundWordOnBoard(wordObj) {
+            wordObj.cells.forEach(pt => {
+                const tile = document.getElementById(`ws-tile-${pt.r}-${pt.c}`);
+                if (tile) {
+                    tile.style.transform = 'scale(1.2)';
+                    setTimeout(() => tile.style.transform = '', 300);
+                }
+            });
+        }
+
+        function updateFoundProgress() {
+            const foundCount = targetWords.filter(w => w.found).length;
+            document.getElementById('hudWordsFoundCount').textContent = `${foundCount} / ${targetWords.length} Found`;
+            document.getElementById('bankProgressBadge').textContent = `${foundCount} / ${targetWords.length} Found`;
+
+            if (foundCount === targetWords.length && !isComplete) {
+                isComplete = true;
+                playSound('victory');
+                setTimeout(() => {
+                    alert(`🎉 Excellent! You discovered all ${targetWords.length} civil service examination words in ${document.getElementById('hudTimerVal').textContent}!`);
+                }, 300);
+            }
+        }
+
+        // Exam Dossier Handlers
+        function resetDossier() {
+            const container = document.getElementById('dossierContainer');
+            container.innerHTML = `
+                <p style="color:var(--ws-text-muted); text-align:center; padding:10px 0;">
+                    Words you locate on the grid will reveal their high-yield examination notes and CSS/PMS significance here.
+                </p>
+            `;
+        }
+
+        function addWordToDossier(wordObj) {
+            const container = document.getElementById('dossierContainer');
+            // Remove initial placeholder if present
+            if (container.querySelector('p')) {
+                container.innerHTML = '';
+            }
+
+            const item = document.createElement('div');
+            item.className = 'dossier-item';
+            item.innerHTML = `
+                <div class="dossier-word-title">
+                    <span>${wordObj.answer}</span>
+                    <span style="font-size:0.75rem; color:var(--ws-success);"><i class="fas fa-circle-check"></i> Found</span>
+                </div>
+                <div class="dossier-definition">${wordObj.clue}</div>
+                <div class="dossier-fact"><i class="fas fa-lightbulb"></i> Exam Point: ${wordObj.examFact || ''}</div>
+            `;
+            container.prepend(item);
+        }
+
+        // Actions: Hint
+        document.getElementById('btnHint').addEventListener('click', () => {
+            const unfound = targetWords.filter(w => !w.found);
+            if (unfound.length === 0) return;
+
+            const randomWord = unfound[Math.floor(Math.random() * unfound.length)];
+            const firstCell = randomWord.cells[0];
+            const tile = document.getElementById(`ws-tile-${firstCell.r}-${firstCell.c}`);
+
+            if (tile) {
+                tile.classList.add('hint-flash');
+                playSound('tile');
+                setTimeout(() => tile.classList.remove('hint-flash'), 1800);
+            }
+        });
+
+        // Actions: Reveal All
+        document.getElementById('btnRevealAll').addEventListener('click', () => {
+            targetWords.forEach(w => {
+                if (!w.found) {
+                    w.found = true;
+                    w.cells.forEach(pt => {
+                        const tile = document.getElementById(`ws-tile-${pt.r}-${pt.c}`);
+                        if (tile) tile.classList.add(`found-${w.colorIdx}`);
+                    });
+                    const badge = document.getElementById(`badge-${w.answer}`);
+                    if (badge) badge.classList.add('found');
+                    addWordToDossier(w);
+                }
+            });
+            updateFoundProgress();
+        });
+
+        // Actions: New Game
+        document.getElementById('btnNewGame').addEventListener('click', generateNewPuzzle);
+
+        // Actions: Category & Difficulty Change
+        document.getElementById('categorySelect').addEventListener('change', (e) => {
+            currentCategory = e.target.value;
+            generateNewPuzzle();
+        });
+
+        document.getElementById('difficultySelect').addEventListener('change', (e) => {
+            setDifficulty(e.target.value);
+            generateNewPuzzle();
+        });
+
+        // Actions: Sound Toggle
+        document.getElementById('btnSoundToggle').addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('btnSoundToggle');
+            btn.innerHTML = soundEnabled ? '<i class="fas fa-volume-high"></i>' : '<i class="fas fa-volume-xmark"></i>';
+            btn.style.opacity = soundEnabled ? '1' : '0.6';
+        });
+
+        // Boot
+        window.addEventListener('DOMContentLoaded', initWordSearch);
+    </script>
+</body>
+
+</html>

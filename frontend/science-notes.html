@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="General Science Revision Capsule - 145+ High-Yield Questions, Scientific Instruments, Chemical Formulas, Vitamins, Human Body Records & Laws for Competitive Exams (SSC, Railways, FPSC, PPSC, CSS).">
+    <title>General Science Capsule Notes | MCQs Portal</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .capsule-hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: #ffffff;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .capsule-hero h1 {
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .capsule-hero p {
+            font-size: 17px;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            opacity: 0.92;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .hero-btn-primary {
+            background: #ffffff;
+            color: #1e3a8a;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        }
+
+        .hero-btn-primary:hover {
+            background: #f1f5f9;
+            transform: translateY(-2px);
+        }
+
+        .hero-btn-secondary {
+            background: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Controls: Search and Tabs */
+        .capsule-controls-wrap {
+            position: sticky;
+            top: 70px;
+            z-index: 99;
+            background: var(--bg-color);
+            padding: 20px 0 10px;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .capsule-search-box {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto 18px;
+        }
+
+        .capsule-search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 18px;
+        }
+
+        .capsule-search-box input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border-radius: 50px;
+            border: 2px solid var(--border-color);
+            background: var(--white);
+            color: var(--text-dark);
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .capsule-search-box input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+        }
+
+        .capsule-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scrollbar-width: thin;
+            justify-content: flex-start;
+        }
+
+        .capsule-tab {
+            white-space: nowrap;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            padding: 9px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .capsule-tab:hover {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .capsule-tab.active {
+            background: var(--secondary-color);
+            color: #ffffff;
+            border-color: var(--secondary-color);
+        }
+
+        /* Content Sections */
+        .capsule-container {
+            max-width: 1200px;
+            margin: 30px auto 80px;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            display: none;
+            margin-bottom: 40px;
+        }
+
+        .content-section.active-section {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .section-header-box h2 {
+            font-size: 24px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-count {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--secondary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* One-Liner Cards */
+        .oneliner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 18px;
+        }
+
+        .oneliner-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .oneliner-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+            border-color: var(--secondary-color);
+        }
+
+        .oneliner-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            gap: 8px;
+        }
+
+        .oneliner-num {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 14px;
+            background: rgba(37, 99, 235, 0.08);
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .oneliner-topic {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .oneliner-q {
+            font-size: 15px;
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .oneliner-ans {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid var(--success);
+            padding: 8px 12px;
+            border-radius: 4px;
+            color: #065f46;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        html.dark-mode .oneliner-ans {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
+
+        /* Generic Data Tables */
+        .table-responsive {
+            overflow-x: auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .capsule-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .capsule-table th {
+            background: rgba(30, 58, 138, 0.05);
+            color: var(--primary-color);
+            padding: 14px 18px;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .capsule-table td {
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-dark);
+            vertical-align: middle;
+        }
+
+        .capsule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .capsule-table tr:hover {
+            background-color: rgba(37, 99, 235, 0.02);
+        }
+
+        .formula-badge {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(239, 68, 68, 0.08);
+            color: #dc2626;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        html.dark-mode .formula-badge {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        /* Human Body Stat Grid */
+        .stat-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 16px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .stat-card-label {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .stat-card-val {
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* Search Highlight */
+        .highlight-text {
+            background-color: #fef08a;
+            color: #854d0e;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        html.dark-mode .highlight-text {
+            background-color: #854d0e;
+            color: #fef08a;
+        }
+
+        /* No Results Box */
+        .no-results {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-light);
+        }
+
+        .no-results i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .capsule-hero h1 { font-size: 26px; }
+            .capsule-hero p { font-size: 15px; }
+            .oneliner-grid { grid-template-columns: 1fr; }
+            .stat-cards-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Header & Main Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="acts-rules.html">Acts &amp; Rules</a>
+                <a href="articles.html">Articles</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="fia-sample-papers.html">FIA Papers</a>
+                <a href="grammar-rules.html">Grammar Rules</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="exam-guide.html">Exam Guide</a>
+                <a href="science-notes.html" class="active">Science Notes</a>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Navigation Bar -->
+    <nav class="secondary-navbar" aria-label="Secondary Navigation">
+        <div class="container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="articles.html" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-book-open"></i> Study Articles</a></li>
+                <li><a href="timeline.html" style="font-weight: 700; color: #4338ca;"><i class="fa-solid fa-timeline"></i> Historical Timeline</a></li>
+                <li><a href="leaderboard.html" style="font-weight: 700; color: #f59e0b;"><i class="fa-solid fa-trophy"></i> Daily Challenge &amp; Leaderboard</a></li>
+                <li><a href="dashboard.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="ai-assistant.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-robot"></i> AI Study Assistant</a></li>
+                <li><a href="editorial-explainer.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-newspaper"></i> Editorial Explainer</a></li>
+                <li><a href="world-map.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-earth-americas"></i> Interactive World Map</a></li>
+                <li><a href="digital-library.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-book-bookmark"></i> Digital Library &amp; Reports</a></li>
+                <li><a href="recommended-books.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-book"></i> Recommended Books</a></li>
+                <li><a href="written-prep.html" style="font-weight: 600; color: #38bdf8;"><i class="fa-solid fa-pen-nib"></i> Written Prep</a></li>
+                <li><a href="exam-guide.html" style="font-weight: 600; color: #f59e0b;"><i class="fa-solid fa-book-open-reader"></i> Exam Guide</a></li>
+                <li><a href="science-notes.html" class="active">🔬 Science Capsule</a></li>
+                <li><a href="quiz.html?category=Everyday%20Science">🎯 Practice Science Quiz</a></li>
+                <li><a href="index.html#study-resources">📚 PDF Downloads</a></li>
+                <li><a href="index.html#categories">Browse Categories</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="capsule-hero">
+        <div class="container">
+            <h1>🔬 General Science Revision Capsule</h1>
+            <p>High-yield fast-track revision guide covering 145+ verified questions, scientific instruments, chemical formulas, vitamins & minerals, human anatomy records, and scientific laws for competitive exams (SSC, Railways, FPSC, PPSC, CSS, NTS).</p>
+            <div class="hero-actions">
+                <a href="resources/General_Science_Capsule_Notes.pdf" download class="hero-btn hero-btn-primary">
+                    <i class="fa-solid fa-file-pdf"></i> Download 24-Page PDF
+                </a>
+                <a href="quiz.html?category=Everyday%20Science" class="hero-btn hero-btn-secondary">
+                    <i class="fa-solid fa-clipboard-question"></i> Practice Science Mock Quiz
+                </a>
+                <a href="index.html#study-resources" class="hero-btn hero-btn-secondary">
+                    <i class="fa-solid fa-book-bookmark"></i> All Resources
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Filter & Search Bar -->
+    <div class="capsule-controls-wrap">
+        <div class="container">
+            <div class="capsule-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="capsuleSearch" placeholder="Search any fact, instrument, formula, vitamin, disease, or scientific law..." autocomplete="off">
+            </div>
+            <div class="capsule-tabs" id="capsuleTabs">
+                <button class="capsule-tab active" data-target="sec-oneliners"><i class="fa-solid fa-bolt"></i> 145 One-Liners</button>
+                <button class="capsule-tab" data-target="sec-humanbody"><i class="fa-solid fa-dna"></i> Human Body</button>
+                <button class="capsule-tab" data-target="sec-chemistry"><i class="fa-solid fa-flask"></i> Chemistry &amp; Formulas</button>
+                <button class="capsule-tab" data-target="sec-instruments"><i class="fa-solid fa-compass-drafting"></i> 57 Instruments</button>
+                <button class="capsule-tab" data-target="sec-vitamins"><i class="fa-solid fa-apple-whole"></i> Vitamins &amp; Deficiencies</button>
+                <button class="capsule-tab" data-target="sec-diseases"><i class="fa-solid fa-virus"></i> Diseases &amp; Organs</button>
+                <button class="capsule-tab" data-target="sec-laws"><i class="fa-solid fa-scale-balanced"></i> Laws &amp; Theories</button>
+                <button class="capsule-tab" data-target="sec-ores"><i class="fa-solid fa-gem"></i> Ores &amp; Alloys</button>
+                <button class="capsule-tab" data-target="sec-facts"><i class="fa-solid fa-lightbulb"></i> Geographical &amp; World Facts</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="capsule-container">
+
+        <!-- SECTION 1: 145 One-Liners -->
+        <section id="sec-oneliners" class="content-section active-section">
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-bolt"></i> 145 High-Yield General Science One-Liners</h2>
+                <span class="badge-count" id="onelinerCount">145 Questions</span>
+            </div>
+            <div class="oneliner-grid" id="onelinerGrid">
+                <!-- Injected via JavaScript from data_science_capsule.js -->
+            </div>
+        </section>
+
+        <!-- SECTION 2: Human Body & Anatomy Records -->
+        <section id="sec-humanbody" class="content-section">
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-dna"></i> Important Facts About the Human Body</h2>
+                <span class="badge-count">37 Vital Metrics</span>
+            </div>
+            <div class="stat-cards-grid" id="humanBodyGrid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <!-- SECTION 3: Chemistry & Chemical Compounds -->
+        <section id="sec-chemistry" class="content-section">
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-flask"></i> Common Chemical Compounds &amp; Formulas</h2>
+                <span class="badge-count">27 Compounds</span>
+            </div>
+            <div class="table-responsive">
+                <table class="capsule-table" id="chemistryTable">
+                    <thead>
+                        <tr>
+                            <th>Common Name</th>
+                            <th>Chemical Compound Name</th>
+                            <th>Chemical Formula</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injected via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-header-box" style="margin-top: 40px;">
+                <h2><i class="fa-solid fa-droplet"></i> pH Values of Common Liquids &amp; Fluids</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="capsule-table" id="phTable">
+                    <thead>
+                        <tr>
+                            <th>Liquid / Substance</th>
+                            <th>Typical pH Value</th>
+                            <th>Nature</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injected via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 57 Scientific Instruments -->
+        <section id="sec-instruments" class="content-section">
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-compass-drafting"></i> 57 Scientific Instruments &amp; Their Uses</h2>
+                <span class="badge-count" id="instrumentsCount">57 Instruments</span>
+            </div>
+            <div class="table-responsive">
+                <table class="capsule-table" id="instrumentsTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Instrument Name</th>
+                            <th>Exact Function &amp; Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injected via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Vitamins & Deficiencies -->
+        <section id="sec-vitamins" class="content-section">
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-apple-whole"></i> Vitamins, Chemical Names &amp; Deficiency Diseases</h2>
+                <span class="badge-count">Complete Vitamin Guide</span>
+            </div>
+            <div class="table-responsive">
+                <table class="capsule-table" id="vitaminsTable">
+                    <thead>
+                        <tr>
+                            <th>Vitamin</th>
+                            <th>Chemical Name</th>
+                            <th>Solubility</th>
+                            <th>Rich Food Sources</th>
+                            <th>Deficiency Disease / Disorder</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injected via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Diseases & Affected Organs -->
+        <section id="sec-diseases" class="content-section">
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-virus"></i> Infectious Diseases by Pathogen Type</h2>
+                <span class="badge-count">Viral, Bacterial &amp; Protozoan</span>
+            </div>
+            <div class="table-responsive" style="margin-bottom: 35px;">
+                <table class="capsule-table" id="pathogenTable">
+                    <thead>
+                        <tr>
+                            <th>Disease Name</th>
+                            <th>Causative Organism / Pathogen</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injected via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-user-doctor"></i> Common Human Diseases &amp; Affected Organs</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="capsule-table" id="affectedOrgansTable">
+                    <thead>
+                        <tr>
+                            <th>Disease</th>
+                            <th>Primary Body Part / Organ Affected</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injected via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 7: Scientific Laws & Theories -->
+        <section id="sec-laws" class="content-section">
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-scale-balanced"></i> Important Scientific Laws &amp; Principles</h2>
+                <span class="badge-count">12 Major Laws</span>
+            </div>
+            <div class="oneliner-grid" id="lawsGrid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <!-- SECTION 8: Ores & Alloys -->
+        <section id="sec-ores" class="content-section">
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-gem"></i> Major Metal Ores in Nature</h2>
+            </div>
+            <div class="table-responsive" style="margin-bottom: 35px;">
+                <table class="capsule-table" id="oresTable">
+                    <thead>
+                        <tr>
+                            <th>Metal Element</th>
+                            <th>Principal Natural Ores</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injected via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-cubes"></i> Common Alloys &amp; Their Compositions</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="capsule-table" id="alloysTable">
+                    <thead>
+                        <tr>
+                            <th>Alloy Name</th>
+                            <th>Chemical Composition</th>
+                            <th>Practical Applications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injected via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- SECTION 9: Interesting Geographical & Science Facts -->
+        <section id="sec-facts" class="content-section">
+            <div class="section-header-box">
+                <h2><i class="fa-solid fa-lightbulb"></i> Fascinating Geographical, Space &amp; Science Facts</h2>
+                <span class="badge-count" id="notesFactsCount">40 Facts</span>
+            </div>
+            <div class="oneliner-grid" id="notesFactsGrid">
+                <!-- Injected via JavaScript from data_facts.js -->
+            </div>
+        </section>
+
+        <!-- No search results container -->
+        <div id="noResults" class="no-results" style="display: none;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <h3>No matching notes found</h3>
+            <p>Try searching for a different keyword like "vitamin", "mercury", "newton", "retinol", or "barometer".</p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 MCQs Portal. All rights reserved. General Science Revision Capsule.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Capsule Dataset -->
+    <script src="js/data_science_capsule.js"></script>
+    <script src="js/data_facts.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = window.SCIENCE_CAPSULE_NOTES;
+            if (!data) {
+                console.error("Science capsule data not loaded!");
+                return;
+            }
+
+            // Dark mode toggle
+            const darkModeBtn = document.getElementById('darkModeToggle');
+            if (darkModeBtn) {
+                darkModeBtn.addEventListener('click', () => {
+                    const isDark = document.documentElement.classList.toggle('dark-mode');
+                    localStorage.setItem('mcqs_dark_mode', isDark);
+                    const icon = darkModeBtn.querySelector('i');
+                    if (icon) icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                });
+                const icon = darkModeBtn.querySelector('i');
+                if (icon && document.documentElement.classList.contains('dark-mode')) {
+                    icon.className = 'fa-solid fa-sun';
+                }
+            }
+
+            // Render 145 One-Liners
+            const onelinerGrid = document.getElementById('onelinerGrid');
+            function renderOneLiners(list) {
+                onelinerGrid.innerHTML = list.map(item => `
+                    <div class="oneliner-card" data-search="${(item.q + ' ' + item.a + ' ' + item.topic).toLowerCase()}">
+                        <div>
+                            <div class="oneliner-top">
+                                <span class="oneliner-num">#${item.id}</span>
+                                <span class="oneliner-topic">${item.topic}</span>
+                            </div>
+                            <div class="oneliner-q">${item.q}</div>
+                        </div>
+                        <div class="oneliner-ans"><i class="fa-solid fa-check-circle"></i> ${item.a}</div>
+                    </div>
+                `).join('');
+                document.getElementById('onelinerCount').innerText = list.length + ' Questions';
+            }
+            renderOneLiners(data.oneLiners);
+
+            // Render Human Body Records
+            const humanBodyGrid = document.getElementById('humanBodyGrid');
+            humanBodyGrid.innerHTML = data.humanBodyFacts.map(fact => `
+                <div class="stat-card" data-search="${(fact.label + ' ' + fact.val).toLowerCase()}">
+                    <div class="stat-card-label">${fact.label}</div>
+                    <div class="stat-card-val">${fact.val}</div>
+                </div>
+            `).join('');
+
+            // Render Chemical Compounds Table
+            const chemTableBody = document.querySelector('#chemistryTable tbody');
+            chemTableBody.innerHTML = data.chemicalCompounds.map(c => `
+                <tr data-search="${(c.common + ' ' + c.chemical + ' ' + c.formula).toLowerCase()}">
+                    <td><strong>${c.common}</strong></td>
+                    <td>${c.chemical}</td>
+                    <td><span class="formula-badge">${c.formula}</span></td>
+                </tr>
+            `).join('');
+
+            // Render pH Values Table
+            const phTableBody = document.querySelector('#phTable tbody');
+            phTableBody.innerHTML = data.pHValues.map(p => `
+                <tr data-search="${(p.substance + ' ' + p.ph + ' ' + p.type).toLowerCase()}">
+                    <td><strong>${p.substance}</strong></td>
+                    <td><strong>${p.ph}</strong></td>
+                    <td><span class="badge-count">${p.type}</span></td>
+                </tr>
+            `).join('');
+
+            // Render Scientific Instruments
+            const instTableBody = document.querySelector('#instrumentsTable tbody');
+            instTableBody.innerHTML = data.instruments.map((inst, i) => `
+                <tr data-search="${(inst.name + ' ' + inst.use).toLowerCase()}">
+                    <td>${i + 1}</td>
+                    <td><strong>${inst.name}</strong></td>
+                    <td>${inst.use}</td>
+                </tr>
+            `).join('');
+
+            // Render Vitamins Table
+            const vitTableBody = document.querySelector('#vitaminsTable tbody');
+            vitTableBody.innerHTML = data.vitamins.map(v => `
+                <tr data-search="${(v.name + ' ' + v.chemical + ' ' + v.sources + ' ' + v.deficiency).toLowerCase()}">
+                    <td><strong>${v.name}</strong></td>
+                    <td>${v.chemical}</td>
+                    <td><span class="badge-count">${v.soluble} Soluble</span></td>
+                    <td>${v.sources}</td>
+                    <td><strong style="color: #dc2626;">${v.deficiency}</strong></td>
+                </tr>
+            `).join('');
+
+            // Render Pathogens Table
+            const pathTableBody = document.querySelector('#pathogenTable tbody');
+            pathTableBody.innerHTML = data.diseases.map(d => `
+                <tr data-search="${(d.name + ' ' + d.pathogen + ' ' + d.type).toLowerCase()}">
+                    <td><strong>${d.name}</strong></td>
+                    <td><em>${d.pathogen}</em></td>
+                    <td><span class="badge-count">${d.type}</span></td>
+                </tr>
+            `).join('');
+
+            // Render Affected Organs Table
+            const affTableBody = document.querySelector('#affectedOrgansTable tbody');
+            affTableBody.innerHTML = data.diseasesAffectedOrgans.map(o => `
+                <tr data-search="${(o.disease + ' ' + o.affected).toLowerCase()}">
+                    <td><strong>${o.disease}</strong></td>
+                    <td>${o.affected}</td>
+                </tr>
+            `).join('');
+
+            // Render Scientific Laws
+            const lawsGrid = document.getElementById('lawsGrid');
+            lawsGrid.innerHTML = data.scientificLaws.map(l => `
+                <div class="oneliner-card" data-search="${(l.law + ' ' + l.text).toLowerCase()}">
+                    <div class="oneliner-top">
+                        <span class="oneliner-num"><i class="fa-solid fa-scale-balanced"></i> Law</span>
+                    </div>
+                    <div class="oneliner-q" style="font-size: 17px; font-weight: 700; color: var(--primary-color);">${l.law}</div>
+                    <div style="font-size: 14px; line-height: 1.6; color: var(--text-dark);">${l.text}</div>
+                </div>
+            `).join('');
+
+            // Render Ores Table
+            const oresTableBody = document.querySelector('#oresTable tbody');
+            oresTableBody.innerHTML = data.ores.map(o => `
+                <tr data-search="${(o.metal + ' ' + o.ores).toLowerCase()}">
+                    <td><strong>${o.metal}</strong></td>
+                    <td>${o.ores}</td>
+                </tr>
+            `).join('');
+
+            // Render Alloys Table
+            const alloysTableBody = document.querySelector('#alloysTable tbody');
+            alloysTableBody.innerHTML = data.alloys.map(a => `
+                <tr data-search="${(a.alloy + ' ' + a.composition + ' ' + a.use).toLowerCase()}">
+                    <td><strong>${a.alloy}</strong></td>
+                    <td>${a.composition}</td>
+                    <td>${a.use}</td>
+                </tr>
+            `).join('');
+
+            
+            // Render Facts in Notes
+            const notesFactsGrid = document.getElementById('notesFactsGrid');
+            const factsData = (typeof window !== 'undefined' && Array.isArray(window.INTERESTING_FACTS)) ? window.INTERESTING_FACTS : [];
+            if (notesFactsGrid && factsData.length > 0) {
+                notesFactsGrid.innerHTML = factsData.map(f => `
+                    <div class="oneliner-card" data-search="${(f.title + ' ' + f.fact + ' ' + f.highlight + ' ' + f.category).toLowerCase()}">
+                        <div>
+                            <div class="oneliner-top">
+                                <span class="oneliner-num"><i class="fa-solid ${f.icon || 'fa-lightbulb'}"></i> ${f.category}</span>
+                                <span class="oneliner-topic">${f.tag || ''}</span>
+                            </div>
+                            <div class="oneliner-q" style="font-size: 16px; font-weight: 700; color: var(--primary-color);">${f.title}</div>
+                            <div style="font-size: 14px; line-height: 1.6; color: var(--text-dark); margin-bottom: 12px;">${f.fact}</div>
+                        </div>
+                        <div>
+                            <div class="oneliner-ans"><i class="fa-solid fa-lightbulb"></i> ${f.highlight}</div>
+                            ${f.examRelevance ? `<div style="margin-top: 8px; font-size: 12px; color: var(--text-light);"><i class="fa-solid fa-graduation-cap"></i> Target: <strong>${f.examRelevance}</strong></div>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+                const countBadge = document.getElementById('notesFactsCount');
+                if (countBadge) countBadge.innerText = factsData.length + ' Facts';
+            }
+
+            // Tab Switching Logic
+            const tabs = document.querySelectorAll('.capsule-tab');
+            const sections = document.querySelectorAll('.content-section');
+            const searchInput = document.getElementById('capsuleSearch');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    const targetId = tab.getAttribute('data-target');
+                    sections.forEach(sec => {
+                        if (sec.id === targetId) {
+                            sec.classList.add('active-section');
+                        } else {
+                            sec.classList.remove('active-section');
+                        }
+                    });
+
+                    // If searching, trigger filter again for current section
+                    if (searchInput.value.trim()) {
+                        performSearch(searchInput.value.trim().toLowerCase());
+                    }
+                });
+            });
+
+            // Live Search Logic across all sections
+            function performSearch(query) {
+                let totalVisible = 0;
+                const activeTab = document.querySelector('.capsule-tab.active');
+                const targetSecId = activeTab ? activeTab.getAttribute('data-target') : null;
+                const activeSec = document.getElementById(targetSecId);
+
+                if (!query) {
+                    // Show all in active section
+                    document.querySelectorAll('[data-search]').forEach(el => {
+                        el.style.display = '';
+                    });
+                    document.getElementById('noResults').style.display = 'none';
+                    return;
+                }
+
+                // Search items in the active section
+                if (activeSec) {
+                    const items = activeSec.querySelectorAll('[data-search]');
+                    items.forEach(el => {
+                        const hay = el.getAttribute('data-search') || '';
+                        if (hay.includes(query)) {
+                            el.style.display = '';
+                            totalVisible++;
+                        } else {
+                            el.style.display = 'none';
+                        }
+                    });
+                }
+
+                document.getElementById('noResults').style.display = totalVisible === 0 ? 'block' : 'none';
+            }
+
+            searchInput.addEventListener('input', (e) => {
+                performSearch(e.target.value.trim().toLowerCase());
+            });
+        });
+    </script>
+</body>
+
+</html>

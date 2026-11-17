@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UN Security Council Simulator | Interactive Voting & Veto Dynamics | CSS, PMS, IR Preparation</title>
+    <meta name="description"
+        content="Interactive UN Security Council Simulator for CSS, PMS, and International Relations students. Explore the 15 member states, P5 veto power, Article 27 rules, and simulate voting on global crisis resolutions.">
+    <link rel="canonical" href="https://cssprepcentral.com/unsc-simulator.html" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --un-bg: #f8fafc;
+            --un-card-bg: #ffffff;
+            --un-border: #e2e8f0;
+            --un-text-main: #0f172a;
+            --un-text-muted: #64748b;
+            --un-blue-dark: #0f2c59;
+            --un-blue-primary: #1d4ed8;
+            --un-blue-accent: #3b82f6;
+            --un-blue-light: rgba(59, 130, 246, 0.1);
+            --un-gold: #f59e0b;
+            --un-gold-light: rgba(245, 158, 11, 0.12);
+            --un-success: #10b981;
+            --un-error: #ef4444;
+            --un-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --un-table-bg: #f1f5f9;
+            --un-seat-bg: #ffffff;
+        }
+
+        .dark-mode {
+            --un-bg: #0b1120;
+            --un-card-bg: #131c31;
+            --un-border: #1e293b;
+            --un-text-main: #f8fafc;
+            --un-text-muted: #94a3b8;
+            --un-blue-dark: #1e3a8a;
+            --un-blue-primary: #3b82f6;
+            --un-blue-accent: #60a5fa;
+            --un-blue-light: rgba(59, 130, 246, 0.18);
+            --un-gold: #fbbf24;
+            --un-gold-light: rgba(251, 191, 36, 0.18);
+            --un-success: #34d399;
+            --un-error: #f87171;
+            --un-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --un-table-bg: #0f172a;
+            --un-seat-bg: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--un-bg);
+            color: var(--un-text-main);
+            line-height: 1.5;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Switcher Bar */
+        .site-switcher-bar {
+            background: #090d16;
+            border-bottom: 1px solid #1e293b;
+            padding: 7px 16px;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .switcher-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .switcher-label {
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+        }
+
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .switcher-btn.active {
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+            font-weight: 700;
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background: var(--un-card-bg);
+            border-bottom: 1px solid var(--un-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--un-text-main);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .logo i {
+            color: var(--un-blue-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--un-text-muted);
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--un-blue-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--un-bg);
+            border: 1px solid var(--un-border);
+            color: var(--un-text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        /* Hero Masthead */
+        .un-hero {
+            background: linear-gradient(135deg, rgba(29, 78, 216, 0.1) 0%, rgba(15, 44, 89, 0.08) 50%, rgba(245, 158, 11, 0.05) 100%);
+            border-bottom: 1px solid var(--un-border);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .un-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--un-blue-light);
+            color: var(--un-blue-accent);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .un-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .un-hero p {
+            color: var(--un-text-muted);
+            font-size: 1rem;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* Navigation Tab Strip */
+        .simulator-tabs-bar {
+            background: var(--un-card-bg);
+            border-bottom: 1px solid var(--un-border);
+            position: sticky;
+            top: 61px;
+            z-index: 90;
+        }
+
+        .tabs-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 8px;
+            padding: 8px 20px;
+            overflow-x: auto;
+        }
+
+        .sim-tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--un-text-muted);
+            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .sim-tab-btn:hover {
+            color: var(--un-text-main);
+            background: var(--un-bg);
+        }
+
+        .sim-tab-btn.active {
+            color: var(--un-blue-primary);
+            background: var(--un-blue-light);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        /* Main Content Container */
+        .sim-main-container {
+            max-width: 1400px;
+            margin: 24px auto 40px;
+            padding: 0 20px;
+            width: 100%;
+            flex: 1;
+        }
+
+        .sim-section-view {
+            display: none;
+        }
+
+        .sim-section-view.active {
+            display: block;
+        }
+
+        /* Horseshoe Chamber View */
+        .chamber-layout-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .chamber-layout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chamber-board-card {
+            background: var(--un-card-bg);
+            border: 1px solid var(--un-border);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: var(--un-shadow);
+        }
+
+        .chamber-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--un-border);
+        }
+
+        .chamber-card-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Horseshoe Arena Visual */
+        .horseshoe-stage {
+            background: var(--un-table-bg);
+            border: 2px solid var(--un-border);
+            border-radius: 16px;
+            padding: 24px 16px;
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .dais-presidency {
+            background: var(--un-card-bg);
+            border: 2px solid var(--un-gold);
+            border-radius: 12px;
+            padding: 10px 24px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+            z-index: 10;
+            margin-bottom: 20px;
+        }
+
+        .dais-title {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--un-gold);
+        }
+
+        .dais-role {
+            font-size: 1rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .seats-horseshoe-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        @media (max-width: 768px) {
+            .seats-horseshoe-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .seats-horseshoe-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .chamber-seat {
+            background: var(--un-seat-bg);
+            border: 2px solid var(--un-border);
+            border-radius: 12px;
+            padding: 12px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .chamber-seat:hover {
+            transform: translateY(-3px);
+            border-color: var(--un-blue-accent);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        .chamber-seat.active-selected {
+            border-color: var(--un-blue-accent);
+            background: var(--un-blue-light);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+
+        .chamber-seat.p5-seat {
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+
+        .chamber-seat.p5-seat .p5-badge {
+            position: absolute;
+            top: -7px;
+            right: -7px;
+            background: var(--un-gold);
+            color: #000000;
+            font-size: 0.65rem;
+            font-weight: 900;
+            padding: 1px 6px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .chamber-seat.pakistan-seat {
+            border-color: #059669;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+        }
+
+        .chamber-seat.pakistan-seat .pak-badge {
+            position: absolute;
+            top: -7px;
+            left: -7px;
+            background: #059669;
+            color: #ffffff;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 1px 6px;
+            border-radius: 8px;
+        }
+
+        .seat-flag {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .seat-name {
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--un-text-main);
+        }
+
+        .seat-status-tag {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--un-text-muted);
+        }
+
+        /* Voting State Badges on Seats */
+        .vote-pill-indicator {
+            display: none;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .vote-pill-indicator.vote-favor {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.18);
+            color: var(--un-success);
+            border: 1px solid var(--un-success);
+        }
+
+        .vote-pill-indicator.vote-against {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.18);
+            color: var(--un-error);
+            border: 1px solid var(--un-error);
+        }
+
+        .vote-pill-indicator.vote-abstain {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.18);
+            color: var(--un-gold);
+            border: 1px solid var(--un-gold);
+        }
+
+        /* Member Dossier Details Card */
+        .member-dossier-card {
+            background: var(--un-card-bg);
+            border: 1px solid var(--un-border);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: var(--un-shadow);
+        }
+
+        .dossier-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--un-border);
+        }
+
+        .dossier-flag-large {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .dossier-title-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .dossier-meta-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-top: 4px;
+        }
+
+        .badge-p5 {
+            background: var(--un-gold-light);
+            color: var(--un-gold);
+            border: 1px solid var(--un-gold);
+        }
+
+        .badge-e10 {
+            background: var(--un-blue-light);
+            color: var(--un-blue-accent);
+            border: 1px solid var(--un-blue-accent);
+        }
+
+        .dossier-info-row {
+            margin-bottom: 12px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .dossier-info-row strong {
+            display: block;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--un-text-muted);
+            margin-bottom: 2px;
+        }
+
+        /* Voting Simulator Tab Layout */
+        .voting-sim-card {
+            background: var(--un-card-bg);
+            border: 1px solid var(--un-border);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: var(--un-shadow);
+            margin-bottom: 24px;
+        }
+
+        .sim-config-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--un-border);
+        }
+
+        .role-picker-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .role-picker-box label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--un-text-muted);
+        }
+
+        .sim-select {
+            background: var(--un-bg);
+            border: 1px solid var(--un-border);
+            color: var(--un-text-main);
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 8px 14px;
+            border-radius: 8px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Resolution Dais Card */
+        .resolution-dais-box {
+            background: var(--un-bg);
+            border: 1px solid var(--un-border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .res-top-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .res-code-badge {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--un-blue-dark);
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        .res-chapter-badge {
+            background: var(--un-gold-light);
+            color: var(--un-gold);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--un-gold);
+        }
+
+        .res-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--un-text-main);
+        }
+
+        .res-summary-p {
+            font-size: 0.92rem;
+            color: var(--un-text-muted);
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+
+        .res-operatives-box {
+            background: var(--un-card-bg);
+            border: 1px solid var(--un-border);
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 14px;
+        }
+
+        .res-operatives-box h4 {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--un-blue-accent);
+            margin-bottom: 8px;
+        }
+
+        .res-operatives-box ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .res-operatives-box li {
+            margin-bottom: 6px;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .res-operatives-box li::before {
+            content: "•";
+            color: var(--un-blue-accent);
+            position: absolute;
+            left: 0;
+            font-weight: 800;
+        }
+
+        /* Voting Controls Bar */
+        .voting-action-stage {
+            background: var(--un-card-bg);
+            border: 2px solid var(--un-border);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .voting-prompt {
+            font-size: 1.05rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 14px;
+        }
+
+        .voting-btns-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-vote {
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s;
+        }
+
+        .btn-vote-favor {
+            background: var(--un-success);
+            color: #ffffff;
+        }
+
+        .btn-vote-favor:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-vote-against {
+            background: var(--un-error);
+            color: #ffffff;
+        }
+
+        .btn-vote-against:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-vote-abstain {
+            background: var(--un-gold);
+            color: #000000;
+        }
+
+        .btn-vote-abstain:hover {
+            background: #d97706;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Voting Results Banner */
+        .vote-result-banner {
+            display: none;
+            border-radius: 14px;
+            padding: 24px;
+            margin-top: 20px;
+            text-align: center;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .vote-result-banner.status-adopted {
+            display: block;
+            background: rgba(16, 185, 129, 0.12);
+            border: 2px solid var(--un-success);
+            color: var(--un-text-main);
+        }
+
+        .vote-result-banner.status-vetoed {
+            display: block;
+            background: rgba(239, 68, 68, 0.12);
+            border: 2px solid var(--un-error);
+            color: var(--un-text-main);
+        }
+
+        .vote-result-banner.status-rejected {
+            display: block;
+            background: rgba(245, 158, 11, 0.12);
+            border: 2px solid var(--un-gold);
+            color: var(--un-text-main);
+        }
+
+        .result-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 6px;
+        }
+
+        .result-tally-bar {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 14px 0;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .result-explanation {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            background: var(--un-card-bg);
+            border: 1px solid var(--un-border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        /* Custom Resolution Creator Form */
+        .custom-drafter-card {
+            background: var(--un-card-bg);
+            border: 1px solid var(--un-border);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: var(--un-shadow);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--un-text-main);
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            background: var(--un-bg);
+            border: 1px solid var(--un-border);
+            color: var(--un-text-main);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Study Modules Grid */
+        .exam-modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .exam-module-card {
+            background: var(--un-card-bg);
+            border: 1px solid var(--un-border);
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: var(--un-shadow);
+            transition: all 0.2s;
+        }
+
+        .exam-module-card:hover {
+            border-color: var(--un-blue-accent);
+            transform: translateY(-2px);
+        }
+
+        .module-icon-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .module-icon-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--un-blue-light);
+            color: var(--un-blue-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .module-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+        }
+
+        .module-summary {
+            font-size: 0.85rem;
+            color: var(--un-text-muted);
+            margin-bottom: 14px;
+        }
+
+        .module-points-list {
+            list-style: none;
+            padding: 0;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .module-points-list li {
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .module-points-list li::before {
+            content: "✓";
+            color: var(--un-blue-accent);
+            position: absolute;
+            left: 0;
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Interactive Suite Switcher -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes Map
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+            <a href="guess-the-country.html" class="switcher-btn">
+                <i class="fas fa-gamepad"></i> Guess Country
+            </a>
+            <a href="locate-on-map.html" class="switcher-btn">
+                <i class="fas fa-crosshairs"></i> Locate on Map
+            </a>
+            <a href="match-the-following.html" class="switcher-btn">
+                <i class="fas fa-puzzle-piece"></i> Match Items
+            </a>
+            <a href="arrange-chronologically.html" class="switcher-btn">
+                <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz
+            </a>
+            <a href="crossword.html" class="switcher-btn">
+                <i class="fas fa-chess-board"></i> Crossword
+            </a>
+            <a href="word-search.html" class="switcher-btn">
+                <i class="fas fa-magnifying-glass"></i> Word Search
+            </a>
+            <a href="unsc-simulator.html" class="switcher-btn active">
+                <i class="fas fa-scale-balanced"></i> UNSC Simulator
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="unsc-simulator.html" class="active" style="color:var(--un-blue-primary); font-weight:800;"><i class="fas fa-scale-balanced"></i> UNSC Simulator</a>
+                <a href="topic-united-nations.html" style="font-weight:700; color:#1d4ed8;"><i class="fa-solid fa-flag"></i> UN Master Hub</a>
+                <a href="crossword.html"><i class="fas fa-chess-board"></i> Crossword</a>
+                <a href="word-search.html"><i class="fas fa-magnifying-glass"></i> Word Search</a>
+                <a href="arrange-chronologically.html" style="font-weight:700; color:#d97706;"><i class="fas fa-arrow-down-1-9"></i> Chronology</a>
+                <a href="match-the-following.html"><i class="fas fa-puzzle-piece"></i> Match Items</a>
+                <a href="locate-on-map.html"><i class="fas fa-crosshairs"></i> Locate on Map</a>
+                <a href="guess-the-country.html"><i class="fas fa-gamepad"></i> Guess Country</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Masthead -->
+    <section class="un-hero">
+        <div class="un-hero-badge">
+            <i class="fas fa-scale-balanced"></i> UN Charter Chapter V &bull; Article 27 Voting &bull; 2025-2026 Council Simulation
+        </div>
+        <h1>UN Security Council Simulator</h1>
+        <p>
+            Explore the 15-member Security Council, permanent members (P5), veto power dynamics, and legal resolution mechanics. Simulate real-time roll-call voting on global crisis resolutions as Pakistan, the P5, or the Council President.
+        </p>
+    </section>
+
+    <!-- Mode Tab Navigation -->
+    <div class="simulator-tabs-bar">
+        <div class="tabs-inner">
+            <button type="button" class="sim-tab-btn active" onclick="switchSimTab('chamberTab')">
+                <i class="fas fa-users-viewfinder"></i> The 15-Member Chamber
+            </button>
+            <button type="button" class="sim-tab-btn" onclick="switchSimTab('votingTab')">
+                <i class="fas fa-check-to-slot"></i> Voting Simulation &amp; Veto
+            </button>
+            <button type="button" class="sim-tab-btn" onclick="switchSimTab('drafterTab')">
+                <i class="fas fa-pen-fancy"></i> Custom Resolution Drafter
+            </button>
+            <button type="button" class="sim-tab-btn" onclick="switchSimTab('modulesTab')">
+                <i class="fas fa-book-bookmark"></i> CSS/PMS Exam Dossier
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="sim-main-container">
+        <!-- TAB 1: 15-Member Horseshoe Chamber Explorer -->
+        <section id="chamberTab" class="sim-section-view active">
+            <div class="chamber-layout-grid">
+                <!-- Horseshoe Visual -->
+                <div class="chamber-board-card">
+                    <div class="chamber-card-header">
+                        <h2><i class="fas fa-table-cells-large" style="color:var(--un-blue-accent);"></i> Security Council Horseshoe Chamber</h2>
+                        <span style="font-size:0.85rem; color:var(--un-text-muted); font-weight:700;">Click any seat to inspect diplomatic dossier</span>
+                    </div>
+
+                    <div class="horseshoe-stage">
+                        <div class="dais-presidency">
+                            <div class="dais-title">Council Dais</div>
+                            <div class="dais-role"><i class="fas fa-gavel"></i> President of the Security Council</div>
+                        </div>
+
+                        <!-- 15 Member Seats Grid -->
+                        <div class="seats-horseshoe-container" id="horseshoeSeatsContainer">
+                            <!-- Injected Dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Diplomatic Dossier -->
+                <div class="member-dossier-card" id="memberDossierBox">
+                    <div class="dossier-top">
+                        <div class="dossier-flag-large" id="dossierFlag">🇵🇰</div>
+                        <div class="dossier-title-box">
+                            <h3 id="dossierCountryName">Islamic Republic of Pakistan</h3>
+                            <span class="dossier-meta-badge badge-e10" id="dossierBadge">Elected Member (2025-2026)</span>
+                        </div>
+                    </div>
+
+                    <div class="dossier-info-row">
+                        <strong>Permanent Representative / Ambassador</strong>
+                        <span id="dossierAmbassador">Munir Akram</span>
+                    </div>
+
+                    <div class="dossier-info-row">
+                        <strong>Regional Electoral Group</strong>
+                        <span id="dossierGroup">Asia-Pacific Group</span>
+                    </div>
+
+                    <div class="dossier-info-row">
+                        <strong>Foreign Policy Doctrine &amp; Priorities</strong>
+                        <span id="dossierDoctrine">Self-determination advocacy, Chapter VI peaceful settlement of disputes, non-proliferation, and counter-terrorism cooperation.</span>
+                    </div>
+
+                    <div class="dossier-info-row">
+                        <strong>Veto Power &amp; Voting History</strong>
+                        <span id="dossierVetoHistory">E10 Member (No veto). Served 8 historic terms on UNSC. One of the world's top contributors to UN Peacekeeping operations.</span>
+                    </div>
+
+                    <div class="dossier-info-row">
+                        <strong>Position on Security Council Reform</strong>
+                        <span id="dossierReform">Leading coordinator of Uniting for Consensus (UfC / Coffee Club) opposing G4 permanent seat expansion.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: Voting Simulator & Crisis Resolutions -->
+        <section id="votingTab" class="sim-section-view">
+            <div class="voting-sim-card">
+                <div class="sim-config-header">
+                    <div class="role-picker-box">
+                        <label for="selectMyRole"><i class="fas fa-user-tie"></i> Representing Nation:</label>
+                        <select id="selectMyRole" class="sim-select" title="Representing Nation">
+                            <option value="pakistan">🇵🇰 Pakistan (Elected Member 2025-26)</option>
+                            <option value="usa">🇺🇸 United States (P5 Permanent Member)</option>
+                            <option value="china">🇨🇳 China (P5 Permanent Member)</option>
+                            <option value="russia">🇷🇺 Russian Federation (P5 Permanent Member)</option>
+                            <option value="uk">🇬🇧 United Kingdom (P5 Permanent Member)</option>
+                            <option value="france">🇫🇷 France (P5 Permanent Member)</option>
+                            <option value="algeria">🇩🇿 Algeria (Arab/African Seat)</option>
+                            <option value="guyana">🇬🇾 Guyana (GRULAC Seat)</option>
+                            <option value="south_korea">🇰🇷 Republic of Korea (Asia-Pacific)</option>
+                            <option value="slovenia">🇸🇮 Slovenia (Eastern European Group)</option>
+                            <option value="switzerland">🇨🇭 Switzerland (WEOG)</option>
+                            <option value="president">👑 Council President (Overseeing Chamber)</option>
+                        </select>
+                    </div>
+
+                    <div class="role-picker-box">
+                        <label for="selectResolution"><i class="fas fa-scroll"></i> Crisis Resolution:</label>
+                        <select id="selectResolution" class="sim-select" title="Crisis Resolution">
+                            <!-- Injected Dynamically -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Resolution Dais Display -->
+                <div class="resolution-dais-box" id="resolutionDais">
+                    <div class="res-top-meta">
+                        <span class="res-code-badge" id="resCodeBadge">S/2026/104</span>
+                        <span class="res-chapter-badge" id="resChapterBadge">Chapter VII Mandate</span>
+                        <span style="font-size:0.85rem; font-weight:700; color:var(--un-text-muted);" id="resSponsorText">Sponsor: Algeria &amp; Pakistan</span>
+                    </div>
+
+                    <h3 class="res-heading" id="resHeadingTitle">Immediate Ceasefire &amp; Humanitarian Access in Gaza</h3>
+                    <p class="res-summary-p" id="resSummaryText">Description of the resolution.</p>
+
+                    <div class="res-operatives-box">
+                        <h4><i class="fas fa-scale-balanced"></i> Key Operative Clauses (UN Charter)</h4>
+                        <ul id="resOperativesList">
+                            <!-- Injected -->
+                        </ul>
+                    </div>
+
+                    <div style="font-size:0.85rem; color:var(--un-text-muted); padding:8px 12px; background:var(--un-card-bg); border-radius:8px; border:1px solid var(--un-border);">
+                        <strong><i class="fas fa-graduation-cap" style="color:var(--un-gold);"></i> CSS / PMS Exam Focus:</strong>
+                        <span id="resExamNote">Legal notes on Article 27 and Chapter VII.</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Chamber Mini-Roll Call Table -->
+                <div class="chamber-board-card" style="margin-bottom:20px;">
+                    <div class="chamber-card-header">
+                        <h2><i class="fas fa-microphone-lines"></i> 15-Member Roll-Call Chamber</h2>
+                        <span style="font-size:0.85rem; color:var(--un-text-muted);" id="rollCallStatusText">Waiting for Delegate's Vote...</span>
+                    </div>
+                    <div class="seats-horseshoe-container" id="votingSeatsContainer">
+                        <!-- Cloned seats with real-time vote status -->
+                    </div>
+                </div>
+
+                <!-- Voting Actions Dais -->
+                <div class="voting-action-stage">
+                    <div class="voting-prompt" id="votingPromptText">
+                        Cast your vote as <span id="currentRoleCountryName" style="color:var(--un-blue-accent);">Pakistan</span>:
+                    </div>
+                    <div class="voting-btns-row">
+                        <button type="button" class="btn-vote btn-vote-favor" onclick="castUserVote('favor')">
+                            <i class="fas fa-check"></i> In Favor (Yes)
+                        </button>
+                        <button type="button" class="btn-vote btn-vote-against" onclick="castUserVote('against')">
+                            <i class="fas fa-xmark"></i> Against (No / Veto)
+                        </button>
+                        <button type="button" class="btn-vote btn-vote-abstain" onclick="castUserVote('abstain')">
+                            <i class="fas fa-minus"></i> Abstain
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Voting Outcome Banner -->
+                <div class="vote-result-banner" id="voteResultBanner">
+                    <div class="result-title" id="voteResultTitle">RESOLUTION ADOPTED</div>
+                    <div class="result-tally-bar" id="voteResultTally">
+                        <span style="color:var(--un-success);"><i class="fas fa-check-circle"></i> In Favor: 14</span>
+                        <span style="color:var(--un-error);"><i class="fas fa-times-circle"></i> Against: 1 (VETO)</span>
+                        <span style="color:var(--un-gold);"><i class="fas fa-minus-circle"></i> Abstentions: 0</span>
+                    </div>
+                    <div class="result-explanation" id="voteResultExplanation">
+                        Explanation details.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: Custom Resolution Drafter -->
+        <section id="drafterTab" class="sim-section-view">
+            <div class="custom-drafter-card">
+                <div class="chamber-card-header">
+                    <h2><i class="fas fa-pen-nib" style="color:var(--un-blue-accent);"></i> Draft a Security Council Resolution</h2>
+                    <span style="font-size:0.85rem; color:var(--un-text-muted);">Formulate operative clauses and simulate the 15-member council vote</span>
+                </div>
+
+                <form id="customResolutionForm" onsubmit="handleCustomResolutionSubmit(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="customTitle">Resolution Title / Subject:</label>
+                            <input type="text" id="customTitle" class="form-input" placeholder="e.g. Humanitarian De-escalation in Regional Conflict" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customChapter">UN Charter Legal Chapter:</label>
+                            <select id="customChapter" class="form-input">
+                                <option value="Chapter VI (Pacific Settlement of Disputes, Arts 33-38)">Chapter VI: Pacific Settlement (Recommendatory)</option>
+                                <option value="Chapter VII (Action with Respect to Threats to Peace, Arts 41-42)">Chapter VII: Binding Enforcement (Sanctions / Military)</option>
+                                <option value="Chapter VIII (Regional Arrangements)">Chapter VIII: Regional Security Arrangements</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="customSponsor">Sponsoring Member State:</label>
+                            <select id="customSponsor" class="form-input">
+                                <option value="pakistan">🇵🇰 Pakistan (Elected Member 2025-26)</option>
+                                <option value="usa">🇺🇸 United States</option>
+                                <option value="china">🇨🇳 China</option>
+                                <option value="russia">🇷🇺 Russian Federation</option>
+                                <option value="uk">🇬🇧 United Kingdom</option>
+                                <option value="france">🇫🇷 France</option>
+                                <option value="algeria">🇩🇿 Algeria</option>
+                                <option value="guyana">🇬🇾 Guyana</option>
+                                <option value="switzerland">🇨🇭 Switzerland</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="customSanctionsType">Key Operative Mechanism:</label>
+                            <select id="customMechanism" class="form-input">
+                                <option value="peacekeeping">Deploy UN Peacekeeping / Observer Mission</option>
+                                <option value="sanctions">Targeted Economic &amp; Financial Sanctions (Art 41)</option>
+                                <option value="arms_embargo">Comprehensive Arms Embargo &amp; Interdiction</option>
+                                <option value="ceasefire">Immediate Ceasefire &amp; Humanitarian Corridors</option>
+                                <option value="mediation">Fact-Finding Commission &amp; ICJ Referral</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customOperative">Operative Clauses Text (One per line):</label>
+                        <textarea id="customOperative" class="form-textarea" placeholder="1. Demands the immediate cessation of hostile military actions.&#10;2. Urges unhindered humanitarian aid access under UN coordination.&#10;3. Decides to remain actively seized of the matter." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-vote btn-vote-favor" style="border:none;">
+                        <i class="fas fa-file-signature"></i> Introduce Resolution to Council &amp; Proceed to Vote &rarr;
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- TAB 4: CSS/PMS Exam Study Modules -->
+        <section id="modulesTab" class="sim-section-view">
+            <div class="exam-modules-grid" id="examModulesGridContainer">
+                <!-- Injected Dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Sound & Simulator Engine -->
+    <script src="js/data_unsc_simulator.js"></script>
+
+    <script>
+        // Game & Simulator State
+        let currentRole = 'pakistan';
+        let currentResIndex = 0;
+        let selectedMemberId = 'pakistan';
+        let customResolutionsList = [];
+        let soundEnabled = true;
+
+        // Audio Context (Web Audio API)
+        let audioCtx = null;
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) audioCtx = new AudioContext();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playGavel() {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                // Double tap gavel strike
+                [0, 0.18].forEach(t => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(140, now + t);
+                    osc.frequency.exponentialRampToValueAtTime(40, now + t + 0.12);
+                    gain.gain.setValueAtTime(0.3, now + t);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + t + 0.15);
+                    osc.start(now + t);
+                    osc.stop(now + t + 0.15);
+                });
+            } catch (e) {}
+        }
+
+        function playAdoptedFanfare() {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(440, now);
+                osc.frequency.setValueAtTime(554.37, now + 0.12);
+                osc.frequency.setValueAtTime(659.25, now + 0.24);
+                osc.frequency.setValueAtTime(880, now + 0.36);
+                gain.gain.setValueAtTime(0.25, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+                osc.start(now);
+                osc.stop(now + 0.7);
+            } catch (e) {}
+        }
+
+        function playVetoAlarm() {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(260, now);
+                osc.frequency.linearRampToValueAtTime(110, now + 0.35);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                osc.start(now);
+                osc.stop(now + 0.4);
+            } catch (e) {}
+        }
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Tab Switching
+        function switchSimTab(tabId) {
+            document.querySelectorAll('.sim-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.sim-section-view').forEach(v => v.classList.remove('active'));
+
+            const targetView = document.getElementById(tabId);
+            if (targetView) targetView.classList.add('active');
+
+            // Set active button
+            const btnMap = {
+                chamberTab: 0,
+                votingTab: 1,
+                drafterTab: 2,
+                modulesTab: 3
+            };
+            const btns = document.querySelectorAll('.sim-tab-btn');
+            if (btns[btnMap[tabId]]) btns[btnMap[tabId]].classList.add('active');
+
+            if (tabId === 'votingTab') {
+                playGavel();
+            }
+        }
+
+        // Initialize Simulator
+        function initSimulator() {
+            renderChamberSeats();
+            renderVotingChamberSeats();
+            populateResolutionsSelect();
+            displayCurrentResolution();
+            renderExamModules();
+            inspectMember('pakistan');
+        }
+
+        // Render Horseshoe Seats
+        function renderChamberSeats() {
+            const container = document.getElementById('horseshoeSeatsContainer');
+            container.innerHTML = '';
+
+            const members = window.UNSC_MEMBERS || [];
+            members.forEach(m => {
+                const seat = document.createElement('div');
+                seat.className = `chamber-seat ${m.isP5 ? 'p5-seat' : ''} ${m.id === 'pakistan' ? 'pakistan-seat' : ''}`;
+                seat.id = `seat-${m.id}`;
+                seat.onclick = () => inspectMember(m.id);
+
+                let badgeHtml = '';
+                if (m.isP5) badgeHtml = '<span class="p5-badge">P5 VETO</span>';
+                if (m.id === 'pakistan') badgeHtml = '<span class="pak-badge">E10 2025-26</span>';
+
+                seat.innerHTML = `
+                    ${badgeHtml}
+                    <div class="seat-flag">${m.flag}</div>
+                    <div class="seat-name">${m.name}</div>
+                    <div class="seat-status-tag">${m.isP5 ? 'Permanent' : 'Elected'}</div>
+                `;
+
+                container.appendChild(seat);
+            });
+        }
+
+        // Render Voting Chamber Seats (For Tab 2)
+        function renderVotingChamberSeats() {
+            const container = document.getElementById('votingSeatsContainer');
+            container.innerHTML = '';
+
+            const members = window.UNSC_MEMBERS || [];
+            members.forEach(m => {
+                const seat = document.createElement('div');
+                seat.className = `chamber-seat ${m.isP5 ? 'p5-seat' : ''} ${m.id === 'pakistan' ? 'pakistan-seat' : ''}`;
+                seat.id = `vote-seat-${m.id}`;
+
+                let badgeHtml = '';
+                if (m.isP5) badgeHtml = '<span class="p5-badge">P5</span>';
+                if (m.id === 'pakistan') badgeHtml = '<span class="pak-badge">PK</span>';
+
+                seat.innerHTML = `
+                    ${badgeHtml}
+                    <div class="seat-flag">${m.flag}</div>
+                    <div class="seat-name">${m.name}</div>
+                    <div class="vote-pill-indicator" id="seat-vote-pill-${m.id}">Pending</div>
+                `;
+
+                container.appendChild(seat);
+            });
+        }
+
+        // Inspect Member Dossier
+        function inspectMember(memberId) {
+            selectedMemberId = memberId;
+            const members = window.UNSC_MEMBERS || [];
+            const m = members.find(item => item.id === memberId);
+            if (!m) return;
+
+            // Update active styling
+            document.querySelectorAll('.chamber-seat').forEach(s => s.classList.remove('active-selected'));
+            const activeSeat = document.getElementById(`seat-${m.id}`);
+            if (activeSeat) activeSeat.classList.add('active-selected');
+
+            document.getElementById('dossierFlag').textContent = m.flag;
+            document.getElementById('dossierCountryName').textContent = m.name;
+
+            const badge = document.getElementById('dossierBadge');
+            badge.className = `dossier-meta-badge ${m.isP5 ? 'badge-p5' : 'badge-e10'}`;
+            badge.textContent = m.isP5 ? `Permanent Member (${m.vetoCount} Historic Vetoes)` : m.term;
+
+            document.getElementById('dossierAmbassador').textContent = m.ambassador;
+            document.getElementById('dossierGroup').textContent = m.group;
+            document.getElementById('dossierDoctrine').textContent = m.doctrine;
+            document.getElementById('dossierVetoHistory').textContent = m.isP5 ? `${m.vetoTendency} Total Vetoes Cast: ${m.vetoCount}` : m.vetoTendency;
+            document.getElementById('dossierReform').textContent = m.reformStance;
+        }
+
+        // Populate Resolutions Select
+        function populateResolutionsSelect() {
+            const select = document.getElementById('selectResolution');
+            select.innerHTML = '';
+
+            const allRes = [...(window.UNSC_RESOLUTIONS || []), ...customResolutionsList];
+            allRes.forEach((r, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = `${r.code}: ${r.title}`;
+                select.appendChild(opt);
+            });
+
+            select.addEventListener('change', (e) => {
+                currentResIndex = parseInt(e.target.value, 10);
+                displayCurrentResolution();
+                resetVotingUI();
+            });
+        }
+
+        // Display Current Resolution in Dais
+        function displayCurrentResolution() {
+            const allRes = [...(window.UNSC_RESOLUTIONS || []), ...customResolutionsList];
+            const r = allRes[currentResIndex];
+            if (!r) return;
+
+            document.getElementById('resCodeBadge').textContent = r.code;
+            document.getElementById('resChapterBadge').textContent = r.chapter;
+            document.getElementById('resSponsorText').textContent = `Sponsor: ${r.sponsor}`;
+            document.getElementById('resHeadingTitle').textContent = r.title;
+            document.getElementById('resSummaryText').textContent = r.summary;
+
+            const opList = document.getElementById('resOperativesList');
+            opList.innerHTML = '';
+            r.operativeClauses.forEach(cl => {
+                const li = document.createElement('li');
+                li.textContent = cl;
+                opList.appendChild(li);
+            });
+
+            document.getElementById('resExamNote').textContent = r.cssSignificance || 'Examines UN Charter decision-making mechanisms.';
+        }
+
+        function resetVotingUI() {
+            document.getElementById('voteResultBanner').style.display = 'none';
+            document.getElementById('rollCallStatusText').textContent = 'Waiting for Delegate\'s Vote...';
+            document.querySelectorAll('.vote-pill-indicator').forEach(p => {
+                p.className = 'vote-pill-indicator';
+                p.textContent = 'Pending';
+                p.style.display = 'none';
+            });
+        }
+
+        // Handle Role Picker Change
+        document.getElementById('selectMyRole').addEventListener('change', (e) => {
+            currentRole = e.target.value;
+            const members = window.UNSC_MEMBERS || [];
+            const roleObj = members.find(m => m.id === currentRole);
+            const roleName = currentRole === 'president' ? 'Council President' : (roleObj ? roleObj.name : 'Delegate');
+            document.getElementById('currentRoleCountryName').textContent = roleName;
+            resetVotingUI();
+        });
+
+        // Cast User Vote & Simulate 14 Remaining States
+        function castUserVote(userVoteType) {
+            playGavel();
+
+            const allRes = [...(window.UNSC_RESOLUTIONS || []), ...customResolutionsList];
+            const r = allRes[currentResIndex];
+            if (!r) return;
+
+            const votes = { ...(r.defaultVotes || {}) };
+
+            // Apply user vote
+            if (currentRole !== 'president') {
+                votes[currentRole] = userVoteType;
+            }
+
+            document.getElementById('rollCallStatusText').textContent = 'President Conducting Roll-Call...';
+
+            // Animate roll call
+            const members = window.UNSC_MEMBERS || [];
+            let inFavorCount = 0;
+            let againstCount = 0;
+            let abstainCount = 0;
+            const vetoers = [];
+
+            members.forEach((m, idx) => {
+                setTimeout(() => {
+                    const vote = votes[m.id] || 'abstain';
+                    const pill = document.getElementById(`seat-vote-pill-${m.id}`);
+
+                    if (pill) {
+                        pill.style.display = 'inline-block';
+                        if (vote === 'favor') {
+                            pill.className = 'vote-pill-indicator vote-favor';
+                            pill.textContent = 'IN FAVOR';
+                        } else if (vote === 'against') {
+                            pill.className = 'vote-pill-indicator vote-against';
+                            pill.textContent = m.isP5 ? 'VETO (NO)' : 'AGAINST';
+                        } else {
+                            pill.className = 'vote-pill-indicator vote-abstain';
+                            pill.textContent = 'ABSTAIN';
+                        }
+                    }
+
+                    // On last member, evaluate
+                    if (idx === members.length - 1) {
+                        setTimeout(() => evaluateVoteOutcome(votes, r), 400);
+                    }
+                }, idx * 100);
+            });
+        }
+
+        // Evaluate Vote Outcome
+        function evaluateVoteOutcome(votes, r) {
+            const members = window.UNSC_MEMBERS || [];
+            let inFavor = 0;
+            let against = 0;
+            let abstain = 0;
+            const vetoers = [];
+
+            members.forEach(m => {
+                const v = votes[m.id];
+                if (v === 'favor') inFavor++;
+                else if (v === 'against') {
+                    against++;
+                    if (m.isP5) vetoers.push(m);
+                } else {
+                    abstain++;
+                }
+            });
+
+            const banner = document.getElementById('voteResultBanner');
+            const title = document.getElementById('voteResultTitle');
+            const tally = document.getElementById('voteResultTally');
+            const explanation = document.getElementById('voteResultExplanation');
+
+            tally.innerHTML = `
+                <span style="color:var(--un-success);"><i class="fas fa-check-circle"></i> In Favor: ${inFavor}</span>
+                <span style="color:var(--un-error);"><i class="fas fa-times-circle"></i> Against: ${against}</span>
+                <span style="color:var(--un-gold);"><i class="fas fa-minus-circle"></i> Abstentions: ${abstain}</span>
+            `;
+
+            if (inFavor >= 9 && vetoers.length === 0) {
+                // Adopted!
+                playAdoptedFanfare();
+                banner.className = 'vote-result-banner status-adopted';
+                title.textContent = `🎉 RESOLUTION ADOPTED (S/RES/${Math.floor(2750 + Math.random() * 50)})`;
+                explanation.innerHTML = `
+                    <strong>Legal Certification under Article 27:</strong> The resolution received ${inFavor} affirmative votes (exceeding the 9-vote threshold) with <strong>ZERO vetoes</strong> cast by permanent members. The resolution is formally adopted and enters international law.<br><br>
+                    <strong>Diplomatic Assessment:</strong> Consensus was secured through strategic alignment between E10 members and abstaining P5 powers. All UN Member States are bound under <strong>Article 25</strong> to accept and carry out this decision.
+                `;
+            } else if (inFavor >= 9 && vetoers.length > 0) {
+                // Vetoed!
+                playVetoAlarm();
+                banner.className = 'vote-result-banner status-vetoed';
+                const vetoNames = vetoers.map(v => `${v.flag} ${v.name}`).join(', ');
+                title.textContent = `🛑 RESOLUTION VETOED BY ${vetoers.map(v => v.code).join(' & ')}`;
+                
+                let rationaleText = '';
+                vetoers.forEach(v => {
+                    const rat = (r.diplomaticRationale && r.diplomaticRationale[v.id]) || `${v.name} exercised its sovereign veto power under Article 27(3) of the UN Charter.`;
+                    rationaleText += `<p style="margin-top:6px;"><strong>${v.flag} ${v.name} Veto Rationale:</strong> ${rat}</p>`;
+                });
+
+                explanation.innerHTML = `
+                    <strong>Veto Formula Applied (Article 27, Paragraph 3):</strong> Although the resolution gained ${inFavor} affirmative votes (surpassing the procedural 9-vote requirement), it was struck down because <strong>${vetoNames}</strong> voted Against.<br>
+                    ${rationaleText}
+                    <div style="margin-top:10px; padding:10px; background:rgba(0,0,0,0.04); border-radius:8px;">
+                        <strong><i class="fas fa-landmark"></i> The "Uniting for Peace" Option (GA Res 377A of 1950):</strong> Since the Security Council is paralyzed by permanent member vetoes, the General Assembly can be convened in an Emergency Special Session within 24 hours to recommend collective measures.
+                    </div>
+                `;
+            } else {
+                // Rejected procedurally
+                playVetoAlarm();
+                banner.className = 'vote-result-banner status-rejected';
+                title.textContent = `⚠️ RESOLUTION REJECTED (FAILED PROCEDURAL THRESHOLD)`;
+                explanation.innerHTML = `
+                    <strong>Procedural Deficit under Article 27:</strong> The resolution secured only ${inFavor} affirmative votes, failing to meet the mandatory <strong>9-vote threshold</strong> out of 15 members. Even without considering veto powers, the draft fails to pass council muster.
+                `;
+            }
+
+            banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Custom Resolution Submission
+        function handleCustomResolutionSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('customTitle').value.trim();
+            const chapter = document.getElementById('customChapter').value;
+            const sponsorId = document.getElementById('customSponsor').value;
+            const mechanism = document.getElementById('customMechanism').value;
+            const operativesRaw = document.getElementById('customOperative').value.trim();
+
+            const operatives = operativesRaw.split('\n').filter(l => l.trim().length > 0);
+
+            const members = window.UNSC_MEMBERS || [];
+            const sponsorObj = members.find(m => m.id === sponsorId);
+
+            const newRes = {
+                id: `custom_${Date.now()}`,
+                code: `S/2026/C-${Math.floor(100 + Math.random() * 900)}`,
+                title: title,
+                topic: "Custom Council Initiative",
+                chapter: chapter,
+                sponsor: sponsorObj ? sponsorObj.name : 'Pakistan',
+                sponsorId: sponsorId,
+                summary: `Custom resolution sponsored by ${sponsorObj ? sponsorObj.name : 'Council Member'} addressing international crisis management.`,
+                operativeClauses: operatives,
+                cssSignificance: "Student-drafted resolution simulating dynamic diplomatic negotiation and Article 27 voting rules.",
+                defaultVotes: {
+                    usa: mechanism === 'sanctions' ? 'favor' : 'abstain',
+                    china: mechanism === 'peacekeeping' ? 'favor' : 'abstain',
+                    russia: mechanism === 'sanctions' ? 'against' : 'abstain',
+                    uk: 'favor',
+                    france: 'favor',
+                    pakistan: 'favor',
+                    algeria: 'favor',
+                    guyana: 'favor',
+                    south_korea: 'favor',
+                    sierra_leone: 'favor',
+                    slovenia: 'favor',
+                    switzerland: 'favor',
+                    panama: 'favor',
+                    somalia: 'favor',
+                    denmark: 'favor'
+                }
+            };
+
+            customResolutionsList.push(newRes);
+            populateResolutionsSelect();
+
+            // Switch to newly created resolution and jump to voting tab
+            currentResIndex = (window.UNSC_RESOLUTIONS || []).length + customResolutionsList.length - 1;
+            document.getElementById('selectResolution').value = currentResIndex;
+            displayCurrentResolution();
+            switchSimTab('votingTab');
+        }
+
+        // Render Exam Modules
+        function renderExamModules() {
+            const container = document.getElementById('examModulesGridContainer');
+            container.innerHTML = '';
+
+            const modules = window.UNSC_EXAM_MODULES || [];
+            modules.forEach(mod => {
+                const card = document.createElement('div');
+                card.className = 'exam-module-card';
+                card.innerHTML = `
+                    <div class="module-icon-row">
+                        <div class="module-icon-badge"><i class="fas ${mod.icon}"></i></div>
+                        <h3 class="module-title">${mod.title}</h3>
+                    </div>
+                    <p class="module-summary">${mod.summary}</p>
+                    <ul class="module-points-list">
+                        ${mod.points.map(pt => `<li>${pt}</li>`).join('')}
+                    </ul>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Boot
+        window.addEventListener('DOMContentLoaded', initSimulator);
+    </script>
+</body>
+
+</html>

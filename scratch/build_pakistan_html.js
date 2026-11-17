@@ -1,0 +1,1643 @@
+const fs = require('fs');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Pakistan &amp; Provincial Geography Map | Provinces, Divisions, Rivers, Dams, Parks, Heritage &amp; Cities</title>
+    <meta name="description"
+        content="Interactive Pakistan Geography & Provincial Map for CSS, PMS, FPSC, PPSC, SPSC, KPPSC, and BPSC aspirants. Click provinces, divisions, districts, rivers, dams, national parks, historical sites, and important cities to reveal high-yield examination facts.">
+    <meta name="keywords"
+        content="Pakistan Map, Provincial Maps Pakistan, Punjab Districts, Sindh Map, KP Districts, Balochistan Map, Indus River, Tarbela Dam, Mangla Dam, Sukkur Barrage, Mohenjo-Daro, Taxila, Hingol National Park, Deosai, CSS Pakistan Affairs, FPSC Geography MCQs">
+
+    <!-- Anti-FOUC: Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet CSS for Map Rendering -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --pak-primary: #047857;
+            --pak-primary-dark: #065f46;
+            --pak-primary-light: #d1fae5;
+            --pak-accent: #0284c7;
+            --pak-bg: #f8fafc;
+            --pak-card-bg: #ffffff;
+            --pak-border: #e2e8f0;
+            --pak-text-main: #0f172a;
+            --pak-text-muted: #64748b;
+            --pak-sidebar-w: 490px;
+        }
+
+        .dark-mode {
+            --pak-bg: #090d16;
+            --pak-card-bg: #111827;
+            --pak-border: #1f2937;
+            --pak-text-main: #f8fafc;
+            --pak-text-muted: #94a3b8;
+            --pak-primary-light: rgba(4, 120, 87, 0.15);
+        }
+
+        body {
+            background-color: var(--pak-bg);
+            color: var(--pak-text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        /* Top Announcement / Switcher Bar */
+        .top-switcher-bar {
+            background: linear-gradient(90deg, #064e3b 0%, #047857 50%, #0f172a 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 0.86rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .switcher-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .switcher-btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        .switcher-btn.active {
+            background: #047857;
+            border-color: #34d399;
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(4, 120, 87, 0.5);
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--pak-card-bg);
+            border-bottom: 1px solid var(--pak-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--pak-text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #047857;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--pak-text-muted);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #047857;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--pak-bg);
+            border: 1px solid var(--pak-border);
+            color: var(--pak-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        /* Hero Masthead */
+        .pak-hero {
+            background: radial-gradient(circle at 50% 30%, rgba(4, 120, 87, 0.08) 0%, rgba(15, 23, 42, 0.02) 70%);
+            padding: 36px 20px 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--pak-border);
+        }
+
+        .pak-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(4, 120, 87, 0.12);
+            color: #047857;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(4, 120, 87, 0.28);
+            margin-bottom: 14px;
+        }
+
+        .pak-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.35rem;
+            font-weight: 900;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            color: var(--pak-text-main);
+        }
+
+        .pak-hero p {
+            max-width: 900px;
+            margin: 0 auto 20px;
+            color: var(--pak-text-muted);
+            font-size: 1.02rem;
+            line-height: 1.6;
+        }
+
+        .pak-stats-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pak-stat-pill {
+            background: var(--pak-card-bg);
+            border: 1px solid var(--pak-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--pak-text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        .pak-stat-pill i {
+            color: #047857;
+        }
+
+        /* Controls Section */
+        .controls-card {
+            max-width: 1480px;
+            margin: 22px auto 16px;
+            padding: 0 20px;
+        }
+
+        .controls-inner {
+            background: var(--pak-card-bg);
+            border: 1px solid var(--pak-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+        }
+
+        .search-and-tools {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .search-box-wrap {
+            flex: 1;
+            min-width: 290px;
+            position: relative;
+        }
+
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--pak-text-muted);
+        }
+
+        .search-box-wrap input {
+            width: 100%;
+            padding: 11px 16px 11px 40px;
+            background: var(--pak-bg);
+            border: 1px solid var(--pak-border);
+            border-radius: 10px;
+            color: var(--pak-text-main);
+            font-size: 0.92rem;
+            outline: none;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .search-box-wrap input:focus {
+            border-color: #047857;
+            box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.15);
+        }
+
+        .province-focus-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .prov-btn {
+            background: var(--pak-bg);
+            border: 1px solid var(--pak-border);
+            color: var(--pak-text-muted);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .prov-btn:hover,
+        .prov-btn.active {
+            border-color: #047857;
+            color: #047857;
+            background: var(--pak-primary-light);
+        }
+
+        .sindh-link-btn {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.86rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(4, 120, 87, 0.25);
+            transition: transform 0.15s;
+        }
+
+        .sindh-link-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .challenge-mode-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.86rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+            transition: transform 0.15s;
+        }
+
+        .challenge-mode-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Category Filter Pills */
+        .category-pills-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+
+        .cat-pill {
+            background: var(--pak-bg);
+            border: 1px solid var(--pak-border);
+            color: var(--pak-text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .cat-pill:hover {
+            border-color: #047857;
+            color: #047857;
+        }
+
+        .cat-pill.active {
+            background: #047857;
+            color: #ffffff;
+            border-color: #047857;
+        }
+
+        .cat-pill .pill-badge {
+            background: rgba(0, 0, 0, 0.12);
+            color: inherit;
+            font-size: 0.72rem;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-weight: 800;
+        }
+
+        .cat-pill.active .pill-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* Main Workspace Split Grid */
+        .workspace-container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .map-workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr var(--pak-sidebar-w);
+            gap: 22px;
+            align-items: start;
+        }
+
+        /* Map Canvas Card */
+        .map-canvas-card {
+            background: var(--pak-card-bg);
+            border: 1px solid var(--pak-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+
+        .map-toolbar-strip {
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--pak-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: var(--pak-card-bg);
+        }
+
+        .map-info-text {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--pak-text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .map-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tool-btn {
+            background: var(--pak-bg);
+            border: 1px solid var(--pak-border);
+            color: var(--pak-text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.82rem;
+            transition: all 0.15s;
+        }
+
+        .tool-btn:hover {
+            border-color: #047857;
+            color: #047857;
+        }
+
+        /* Leaflet Map Height */
+        #pakistanMapContainer {
+            width: 100%;
+            height: 650px;
+            background: #090d16;
+            position: relative;
+        }
+
+        /* Custom Marker Pins */
+        .pak-marker-pin {
+            position: relative;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.88rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid #ffffff;
+        }
+
+        .pak-marker-pin:hover,
+        .pak-marker-pin.active {
+            transform: scale(1.3);
+            z-index: 1000 !important;
+            box-shadow: 0 0 20px rgba(4, 120, 87, 0.8);
+        }
+
+        /* Map Legend Strip */
+        .map-legend-row {
+            padding: 10px 18px;
+            border-top: 1px solid var(--pak-border);
+            background: var(--pak-card-bg);
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .legend-items {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            color: var(--pak-text-muted);
+        }
+
+        .legend-color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Strategic Geography Dossier Sidebar */
+        .dossier-sidebar {
+            background: var(--pak-card-bg);
+            border: 1px solid var(--pak-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 84px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .dossier-header {
+            padding: 20px 22px 16px;
+            background: linear-gradient(135deg, rgba(4, 120, 87, 0.08) 0%, rgba(15, 23, 42, 0.03) 100%);
+            border-bottom: 1px solid var(--pak-border);
+        }
+
+        .dossier-meta-tags {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .type-badge {
+            font-size: 0.74rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 12px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .category-badge {
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: var(--pak-bg);
+            border: 1px solid var(--pak-border);
+            color: var(--pak-text-muted);
+        }
+
+        .dossier-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--pak-text-main);
+            margin: 0 0 6px;
+            line-height: 1.25;
+        }
+
+        .dossier-region-row {
+            font-size: 0.84rem;
+            color: var(--pak-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .dossier-region-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dossier-body {
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .dossier-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dossier-section-title {
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--pak-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .dossier-text-block {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--pak-text-main);
+        }
+
+        .metrics-card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .metric-box {
+            background: var(--pak-bg);
+            border: 1px solid var(--pak-border);
+            padding: 10px 12px;
+            border-radius: 10px;
+        }
+
+        .metric-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--pak-text-muted);
+            margin-bottom: 2px;
+        }
+
+        .metric-val {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--pak-text-main);
+            line-height: 1.3;
+        }
+
+        .bullet-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: var(--pak-text-main);
+        }
+
+        .bullet-list li {
+            margin-bottom: 6px;
+        }
+
+        .exam-analysis-box {
+            background: linear-gradient(135deg, rgba(4, 120, 87, 0.05) 0%, rgba(2, 132, 199, 0.05) 100%);
+            border: 1px solid rgba(4, 120, 87, 0.25);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .exam-analysis-title {
+            color: #047857;
+            font-weight: 800;
+            font-size: 0.84rem;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 8px;
+        }
+
+        /* Master Directory Table */
+        .table-section {
+            max-width: 1480px;
+            margin: 20px auto 40px;
+            padding: 0 20px;
+        }
+
+        .table-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin: 0 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--pak-text-main);
+        }
+
+        .table-wrap {
+            background: var(--pak-card-bg);
+            border: 1px solid var(--pak-border);
+            border-radius: 16px;
+            overflow-x: auto;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .pak-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            text-align: left;
+        }
+
+        .pak-table th {
+            background: var(--pak-bg);
+            color: var(--pak-text-muted);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.74rem;
+            letter-spacing: 0.05em;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--pak-border);
+            white-space: nowrap;
+        }
+
+        .pak-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--pak-border);
+            vertical-align: top;
+            color: var(--pak-text-main);
+        }
+
+        .pak-table tr:hover td {
+            background: rgba(4, 120, 87, 0.03);
+        }
+
+        .table-btn {
+            background: var(--pak-bg);
+            border: 1px solid var(--pak-border);
+            color: #047857;
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .table-btn:hover {
+            background: #047857;
+            border-color: #047857;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--pak-card-bg);
+            border-top: 1px solid var(--pak-border);
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: var(--pak-text-muted);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: var(--pak-text-muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #047857;
+        }
+
+        /* Quiz Banner Overlay */
+        .quiz-banner {
+            display: none;
+            background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
+            color: #ffffff;
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .quiz-banner.active {
+            display: flex;
+        }
+
+        @media (max-width: 1024px) {
+            .map-workspace-grid {
+                grid-template-columns: 1fr;
+            }
+            .dossier-sidebar {
+                position: static;
+                max-height: none;
+            }
+            #pakistanMapContainer {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Switcher Bar: Complete Cartographic Suite -->
+    <div class="top-switcher-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="background: #047857; color: #fff; font-size: 0.7rem; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">
+                Maps Hub
+            </span>
+            <span>Switch between Authoritative Cartographic Portals:</span>
+        </div>
+        <div class="switcher-links">
+            <a href="pakistan-map.html" class="switcher-btn active">
+                <i class="fas fa-flag"></i> Pakistan Geography Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn" style="border-color:#34d399; color:#a7f3d0;">
+                <i class="fas fa-map-marked-alt"></i> Dedicated Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes Map
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="pakistan-map.html" class="active" style="color: #047857; font-weight: 800;"><i class="fas fa-flag"></i> Pakistan Map</a>
+                <a href="sindh-map.html" style="color: #059669; font-weight: 700;"><i class="fas fa-map-marked-alt"></i> Sindh Map</a>
+                <a href="international-trade-routes-map.html"><i class="fas fa-ship"></i> Trade Routes</a>
+                <a href="geopolitical-hotspots-map.html"><i class="fas fa-satellite-dish"></i> Hotspots Map</a>
+                <a href="physical-geography-map.html"><i class="fas fa-mountain-sun"></i> Physical Map</a>
+                <a href="latest-jobs.html" style="color: #e11d48; font-weight: 700;"><i class="fas fa-bullhorn"></i> Latest Jobs <span style="background:#e11d48; color:#fff; font-size:0.65rem; padding:1px 6px; border-radius:10px;">17,500+</span></a>
+                <a href="scholarships.html"><i class="fas fa-graduation-cap"></i> Scholarships</a>
+                <a href="math-mcqs.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-calculator"></i> Math MCQs</a>
+                <a href="written-prep.html">Written Prep</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Masthead -->
+    <section class="pak-hero">
+        <div class="pak-hero-badge">
+            <i class="fas fa-compass"></i> National &amp; Provincial Geography Explorer &bull; CSS &bull; PMS &bull; FPSC &bull; PPSC &bull; SPSC
+        </div>
+        <h1>Interactive Pakistan &amp; Provincial Geography Map</h1>
+        <p>
+            Explore Pakistan's <strong>4 provinces</strong>, <strong>administrative territories</strong>, <strong>divisions</strong>, <strong>major districts</strong>, <strong>river systems</strong>, <strong>dams &amp; barrages</strong>, <strong>national parks</strong>, <strong>UNESCO World Heritage sites</strong>, and <strong>key strategic cities</strong> with high-yield examination dossiers.
+        </p>
+        <div class="pak-stats-row">
+            <div class="pak-stat-pill"><i class="fas fa-map" style="color:#059669;"></i> 7 Provinces &amp; Units</div>
+            <div class="pak-stat-pill"><i class="fas fa-water" style="color:#0284c7;"></i> 3,180 km Indus River</div>
+            <div class="pak-stat-pill"><i class="fas fa-archway" style="color:#d97706;"></i> 6 Major Dams &amp; Barrages</div>
+            <div class="pak-stat-pill"><i class="fas fa-tree" style="color:#16a34a;"></i> 5 National Parks</div>
+            <div class="pak-stat-pill"><i class="fas fa-landmark" style="color:#e11d48;"></i> 8 World Heritage Sites</div>
+            <div class="pak-stat-pill"><i class="fas fa-building" style="color:#7c3aed;"></i> 20 Important Cities</div>
+            <a href="sindh-map.html" class="sindh-link-btn">
+                <i class="fas fa-map-marked-alt"></i> Open Dedicated Sindh Map &rarr;
+            </a>
+        </div>
+    </section>
+
+    <!-- Controls & Filters Card -->
+    <section class="controls-card">
+        <!-- Interactive Quiz Banner -->
+        <div class="quiz-banner" id="quizBanner">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 1.5rem;"><i class="fas fa-bullseye" style="color: #f59e0b;"></i></span>
+                <div>
+                    <strong style="font-size: 1rem;" id="quizPromptTitle">CSS Pakistan Geography Challenge:</strong>
+                    <div style="font-size: 0.88rem; opacity: 0.9;" id="quizPromptQuestion">Click the feature on the map...</div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="font-weight: 700; font-size: 0.9rem;" id="quizScoreText">Score: 0 / 0</span>
+                <button type="button" onclick="nextQuizQuestion()" style="background:#f59e0b; color:#fff; border:none; padding:6px 14px; border-radius:6px; font-weight:700; cursor:pointer;">
+                    Next Question &rarr;
+                </button>
+                <button type="button" onclick="toggleQuizMode()" style="background:rgba(255,255,255,0.2); color:#fff; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;">
+                    Exit Quiz
+                </button>
+            </div>
+        </div>
+
+        <div class="controls-inner">
+            <div class="search-and-tools">
+                <div class="search-box-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="pakSearchInput" placeholder="Search provinces, districts, rivers, dams, national parks, or heritage sites (e.g., 'Punjab', 'Tarbela', 'Indus', 'Taxila', 'Gwadar', 'Sukkur', 'Deosai', 'Mohenjo-Daro')..." oninput="handleSearch(this.value)">
+                </div>
+
+                <div class="province-focus-group">
+                    <span style="font-size: 0.78rem; font-weight: 700; color: var(--pak-text-muted);">Quick Focus:</span>
+                    <button type="button" class="prov-btn active" onclick="focusProvince('pakistan')">All Pakistan</button>
+                    <button type="button" class="prov-btn" onclick="focusProvince('punjab')">Punjab</button>
+                    <button type="button" class="prov-btn" onclick="focusProvince('sindh')">Sindh</button>
+                    <button type="button" class="prov-btn" onclick="focusProvince('kp')">Khyber Pakhtunkhwa</button>
+                    <button type="button" class="prov-btn" onclick="focusProvince('balochistan')">Balochistan</button>
+                    <button type="button" class="prov-btn" onclick="focusProvince('gb')">Gilgit-Baltistan</button>
+                    <button type="button" class="prov-btn" onclick="focusProvince('ajk')">AJK</button>
+                </div>
+
+                <button type="button" class="challenge-mode-btn" id="btnToggleQuiz" onclick="toggleQuizMode()">
+                    <i class="fas fa-bullseye"></i> <span id="quizBtnText">Start Geography Quiz</span>
+                </button>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="category-pills-row" id="categoryPillsContainer">
+                <!-- Dynamically Rendered -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace Split Grid -->
+    <main class="workspace-container">
+        <div class="map-workspace-grid">
+            <!-- Left: Interactive Map Canvas -->
+            <div class="map-canvas-card">
+                <div class="map-toolbar-strip">
+                    <div class="map-info-text">
+                        <i class="fas fa-flag" style="color: #047857;"></i>
+                        <span id="activeFeatureTitle">Active: Punjab (Land of Five Rivers)</span>
+                    </div>
+                    <div class="map-actions">
+                        <button class="tool-btn" onclick="zoomInMap()" title="Zoom In"><i class="fas fa-plus"></i></button>
+                        <button class="tool-btn" onclick="zoomOutMap()" title="Zoom Out"><i class="fas fa-minus"></i></button>
+                        <button class="tool-btn" onclick="resetMapView()" title="Reset Pakistan View"><i class="fas fa-compass"></i></button>
+                    </div>
+                </div>
+
+                <!-- Leaflet Pakistan Map Container -->
+                <div id="pakistanMapContainer"></div>
+
+                <!-- Map Legend -->
+                <div class="map-legend-row">
+                    <span style="font-weight: 700; color: var(--pak-text-main);"><i class="fas fa-layer-group"></i> Feature Legend:</span>
+                    <div class="legend-items">
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#059669;"></span> Province / Unit</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#2563eb;"></span> Division / District</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#0284c7;"></span> River / Waterway</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#d97706;"></span> Dam / Barrage</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#16a34a;"></span> National Park</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#e11d48;"></span> Heritage / UNESCO</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#7c3aed;"></span> Major City</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Strategic Geography Dossier Sidebar -->
+            <aside class="dossier-sidebar" id="dossierSidebar">
+                <div class="dossier-header">
+                    <div class="dossier-meta-tags">
+                        <span class="type-badge" id="dossierTypeBadge" style="background:#059669;">
+                            <i class="fas fa-map"></i> <span id="dossierTypeText">Province</span>
+                        </span>
+                        <span class="category-badge" id="dossierCategoryBadge">Provinces &amp; Territories</span>
+                    </div>
+                    <h2 class="dossier-title" id="dossierTitle">Punjab</h2>
+                    <div class="dossier-region-row">
+                        <span><i class="fas fa-location-dot" style="color: #047857;"></i> <span id="dossierRegionText">Capital: Lahore &bull; Eastern Pakistan</span></span>
+                        <span><i class="fas fa-crosshairs"></i> <span id="dossierCoords">31.2&deg; N, 72.7&deg; E</span></span>
+                    </div>
+                </div>
+
+                <div class="dossier-body">
+                    <!-- Metrics Card Grid -->
+                    <div class="metrics-card-grid">
+                        <div class="metric-box">
+                            <div class="metric-label" id="metricLabel1">Population (2023)</div>
+                            <div class="metric-val" id="dossierMetric1">127.7 Million</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label" id="metricLabel2">Total Area</div>
+                            <div class="metric-val" id="dossierMetric2">205,344 km²</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label" id="metricLabel3">Literacy / Capacity</div>
+                            <div class="metric-val" id="dossierMetric3">66.3%</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label" id="metricLabel4">Divisions / Districts</div>
+                            <div class="metric-val" id="dossierMetric4">10 Div &bull; 42 Dist</div>
+                        </div>
+                    </div>
+
+                    <!-- Situation & Overview Summary -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-align-left" style="color: #047857;"></i> Overview &amp; Geographical Significance</div>
+                        <div class="dossier-text-block" id="dossierSummary">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Economic & Industrial Base -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-chart-line" style="color: #0284c7;"></i> Economic, Agricultural &amp; Industrial Base</div>
+                        <div class="dossier-text-block" id="dossierEconomic">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- High-Yield Competitive Exam MCQs -->
+                    <div class="exam-analysis-box">
+                        <div class="exam-analysis-title">
+                            <i class="fas fa-graduation-cap"></i> Exam High-Yield Points (FPSC / PPSC / SPSC / CSS)
+                        </div>
+                        <ul class="bullet-list" id="dossierExamPoints">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Master Reference Directory Table -->
+    <section class="table-section">
+        <h3 class="table-section-title">
+            <i class="fas fa-table-list" style="color: #047857;"></i> Master Pakistan Geography &amp; Administrative Directory (All 62 Nodes)
+        </h3>
+        <div class="table-wrap">
+            <table class="pak-table" id="masterPakTable">
+                <thead>
+                    <tr>
+                        <th>Feature / Administrative Unit</th>
+                        <th>Category</th>
+                        <th>Province / Region</th>
+                        <th>Key Metric (Pop / Area / Length / Cap)</th>
+                        <th>Geographical &amp; Exam Significance</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="masterTableBody">
+                    <!-- Populated dynamically via JS -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="pakistan-map.html">Pakistan Map</a>
+            <a href="sindh-map.html">Sindh Map</a>
+            <a href="international-trade-routes-map.html">Trade Routes Map</a>
+            <a href="geopolitical-hotspots-map.html">Hotspots Map</a>
+            <a href="physical-geography-map.html">Physical Map</a>
+            <a href="world-map.html">Political Map</a>
+            <a href="latest-jobs.html">Latest Jobs</a>
+            <a href="scholarships.html">Scholarships</a>
+            <a href="math-mcqs.html">Math MCQs</a>
+            <a href="written-prep.html">Written Prep</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+        </div>
+        <p>&copy; 2026 CSS Prep Central. Comprehensive Pakistan Geography &amp; Provincial Explorer for competitive examination candidates.</p>
+    </footer>
+
+    <!-- Leaflet JS & Pakistan Dataset -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="js/data_pakistan_map.js"></script>
+
+    <script>
+        // State
+        let map;
+        let markersGroup;
+        let currentCategory = 'all';
+        let currentItem = null;
+        let allItems = [];
+        let isQuizMode = false;
+        let quizTarget = null;
+        let quizScore = 0;
+        let quizTotal = 0;
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                updateMapTiles();
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        let tileLayer;
+        function updateMapTiles() {
+            if (!map) return;
+            if (tileLayer) map.removeLayer(tileLayer);
+
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            const tileUrl = isDark 
+                ? 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png'
+                : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+
+            tileLayer = L.tileLayer(tileUrl, {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+        }
+
+        // Initialize Map
+        function initMap() {
+            const data = window.PAKISTAN_MAP_DATA;
+            const provinces = (data.provinces || []).map(p => ({ ...p, itemCategory: 'provinces', icon: 'fa-flag', color: '#059669' }));
+            const districts = (data.districts || []).map(d => ({ ...d, itemCategory: 'districts', icon: 'fa-city', color: '#2563eb' }));
+            const rivers = (data.rivers || []).map(r => ({ ...r, itemCategory: 'rivers', icon: 'fa-water', color: '#0284c7' }));
+            const dams = (data.dams || []).map(dm => ({ ...dm, itemCategory: 'dams', icon: 'fa-archway', color: '#d97706' }));
+            const parks = (data.parks || []).map(pk => ({ ...pk, itemCategory: 'parks', icon: 'fa-tree', color: '#16a34a' }));
+            const heritage = (data.heritage || []).map(h => ({ ...h, itemCategory: 'heritage', icon: 'fa-landmark', color: '#e11d48' }));
+            const cities = (data.cities || []).map(c => ({ ...c, itemCategory: 'cities', icon: 'fa-building', color: '#7c3aed' }));
+
+            allItems = [...provinces, ...districts, ...rivers, ...dams, ...parks, ...heritage, ...cities];
+
+            // Center on Pakistan
+            map = L.map('pakistanMapContainer', {
+                center: [30.3753, 69.3451],
+                zoom: 5.3,
+                minZoom: 4.5,
+                maxZoom: 14,
+                scrollWheelZoom: true,
+                zoomControl: false
+            });
+
+            updateMapTiles();
+            markersGroup = L.layerGroup().addTo(map);
+
+            renderCategoryPills();
+            renderMarkers();
+            renderMasterTable();
+
+            // Default Select: Punjab
+            if (provinces.length > 0) {
+                selectItem(provinces[0], false);
+            }
+        }
+
+        // Render Category Filter Pills
+        function renderCategoryPills() {
+            const container = document.getElementById('categoryPillsContainer');
+            if (!container) return;
+
+            const categories = window.PAKISTAN_MAP_DATA.categories || [];
+            container.innerHTML = categories.map(cat => {
+                let count = 0;
+                if (cat.id === 'all') count = allItems.length;
+                else count = allItems.filter(item => item.itemCategory === cat.id).length;
+
+                const isActive = cat.id === currentCategory ? 'active' : '';
+                return \`
+                    <button type="button" class="cat-pill \${isActive}" onclick="filterByCategory('\${cat.id}')">
+                        <i class="fas \${cat.icon}"></i> \${cat.name} <span class="pill-badge">\${count}</span>
+                    </button>
+                \`;
+            }).join('');
+        }
+
+        // Render Markers based on category and search
+        function renderMarkers() {
+            markersGroup.clearLayers();
+
+            const query = (document.getElementById('pakSearchInput').value || '').toLowerCase().trim();
+
+            const filtered = allItems.filter(item => {
+                const matchCat = currentCategory === 'all' || item.itemCategory === currentCategory;
+                const matchSearch = !query ||
+                    item.name.toLowerCase().includes(query) ||
+                    (item.tagline && item.tagline.toLowerCase().includes(query)) ||
+                    (item.province && item.province.toLowerCase().includes(query)) ||
+                    (item.significance && item.significance.toLowerCase().includes(query)) ||
+                    (item.economicBase && item.economicBase.toLowerCase().includes(query));
+
+                return matchCat && matchSearch;
+            });
+
+            filtered.forEach(item => {
+                if (!item.lat || !item.lng) return;
+
+                const isSelected = currentItem && currentItem.id === item.id;
+                const iconHtml = \`
+                    <div class="pak-marker-pin \${isSelected ? 'active' : ''}" style="background: \${item.color};">
+                        <i class="fas \${item.icon}"></i>
+                    </div>
+                \`;
+
+                const customIcon = L.divIcon({
+                    html: iconHtml,
+                    className: 'custom-pak-icon',
+                    iconSize: [34, 34],
+                    iconAnchor: [17, 17]
+                });
+
+                const marker = L.marker([item.lat, item.lng], { icon: customIcon });
+
+                marker.on('click', () => {
+                    if (isQuizMode) handleQuizAnswer(item);
+                    else selectItem(item, true);
+                });
+
+                marker.bindTooltip(\`<strong>\${item.name}</strong><br><span style="font-size:0.75rem; color:\${item.color}">\${item.type || item.province || item.itemCategory}</span>\`, {
+                    direction: 'top',
+                    offset: [0, -18],
+                    opacity: 0.95
+                });
+
+                markersGroup.addLayer(marker);
+            });
+        }
+
+        // Select Feature and Populate Dossier
+        function selectItem(item, panTo = true) {
+            currentItem = item;
+
+            const activeTitle = document.getElementById('activeFeatureTitle');
+            if (activeTitle) activeTitle.textContent = \`Active: \${item.name}\`;
+
+            document.getElementById('dossierTitle').textContent = item.name;
+
+            const typeBadge = document.getElementById('dossierTypeBadge');
+            const typeText = document.getElementById('dossierTypeText');
+            const categoryBadge = document.getElementById('dossierCategoryBadge');
+
+            typeBadge.style.background = item.color || '#047857';
+            typeText.textContent = item.type || item.itemCategory;
+
+            const catObj = window.PAKISTAN_MAP_DATA.categories.find(c => c.id === item.itemCategory);
+            categoryBadge.textContent = catObj ? catObj.name : item.itemCategory;
+
+            document.getElementById('dossierCoords').textContent = \`\${Math.abs(item.lat).toFixed(1)}° N, \${Math.abs(item.lng).toFixed(1)}° E\`;
+
+            // Reset metric labels
+            const mLabel1 = document.getElementById('metricLabel1');
+            const mLabel2 = document.getElementById('metricLabel2');
+            const mLabel3 = document.getElementById('metricLabel3');
+            const mLabel4 = document.getElementById('metricLabel4');
+
+            const mVal1 = document.getElementById('dossierMetric1');
+            const mVal2 = document.getElementById('dossierMetric2');
+            const mVal3 = document.getElementById('dossierMetric3');
+            const mVal4 = document.getElementById('dossierMetric4');
+
+            if (item.itemCategory === 'provinces') {
+                document.getElementById('dossierRegionText').textContent = \`Capital: \${item.capital} &bull; \${item.tagline}\`;
+                mLabel1.textContent = 'Population (2023)';
+                mVal1.textContent = item.population2023.substring(0, 20);
+
+                mLabel2.textContent = 'Land Area';
+                mVal2.textContent = item.areaKm2;
+
+                mLabel3.textContent = 'Literacy Rate';
+                mVal3.textContent = item.literacyRate;
+
+                mLabel4.textContent = 'Divisions & Dist';
+                mVal4.textContent = \`\${item.divisionsCount} Div &bull; \${item.districtsCount} Dist\`;
+
+                document.getElementById('dossierSummary').textContent = item.geographyDescription;
+                document.getElementById('dossierEconomic').textContent = item.economicBase;
+
+                const examList = document.getElementById('dossierExamPoints');
+                examList.innerHTML = (item.examMcqPoints || []).map(p => \`<li>\${p}</li>\`).join('');
+            } else if (item.itemCategory === 'rivers') {
+                document.getElementById('dossierRegionText').textContent = \`Origin: \${item.origin}\`;
+                mLabel1.textContent = 'Total Length';
+                mVal1.textContent = item.lengthKm;
+
+                mLabel2.textContent = 'Mouth / Outlet';
+                mVal2.textContent = item.mouth;
+
+                mLabel3.textContent = 'Major Dams';
+                mVal3.textContent = item.damsBuilt ? item.damsBuilt.join(', ') : 'Natural Flow';
+
+                mLabel4.textContent = 'Barrages Built';
+                mVal4.textContent = item.barragesBuilt ? item.barragesBuilt.slice(0, 2).join(', ') : 'None';
+
+                document.getElementById('dossierSummary').textContent = item.significance;
+                document.getElementById('dossierEconomic').textContent = \`Left-Bank Tributaries: \${(item.tributariesLeft || []).join(', ')}; Right-Bank Tributaries: \${(item.tributariesRight || []).join(', ')}\`;
+
+                const examList = document.getElementById('dossierExamPoints');
+                examList.innerHTML = \`<li>\${item.examPoints}</li>\`;
+            } else if (item.itemCategory === 'dams') {
+                document.getElementById('dossierRegionText').textContent = \`River: \${item.river} &bull; \${item.location}\`;
+                mLabel1.textContent = 'Generation Capacity';
+                mVal1.textContent = item.capacityMw || \`\${item.gatesCount} Barrage Gates\`;
+
+                mLabel2.textContent = 'Reservoir / Length';
+                mVal2.textContent = item.reservoirCapMaf || item.lengthM || 'Standard';
+
+                mLabel3.textContent = 'Height / Spans';
+                mVal3.textContent = item.heightM || \`\${item.gatesCount} Gates\`;
+
+                mLabel4.textContent = 'Completion Year';
+                mVal4.textContent = item.completionYear;
+
+                document.getElementById('dossierSummary').textContent = item.significance;
+                document.getElementById('dossierEconomic').textContent = \`Hydraulic Type: \${item.type}; Located in \${item.location} on \${item.river}.\`;
+
+                const examList = document.getElementById('dossierExamPoints');
+                examList.innerHTML = \`<li>\${item.examPoints}</li>\`;
+            } else if (item.itemCategory === 'parks') {
+                document.getElementById('dossierRegionText').textContent = \`\${item.province} &bull; Est. \${item.established}\`;
+                mLabel1.textContent = 'Protected Area';
+                mVal1.textContent = item.areaKm2;
+
+                mLabel2.textContent = 'Province / Region';
+                mVal2.textContent = item.province;
+
+                mLabel3.textContent = 'Establishment';
+                mVal3.textContent = item.established;
+
+                mLabel4.textContent = 'Districts Covered';
+                mVal4.textContent = (item.districts || []).join(', ');
+
+                document.getElementById('dossierSummary').textContent = item.significance;
+                document.getElementById('dossierEconomic').textContent = \`Key Protected Wildlife: \${item.wildlife}\`;
+
+                const examList = document.getElementById('dossierExamPoints');
+                examList.innerHTML = \`<li>\${item.examPoints}</li>\`;
+            } else if (item.itemCategory === 'heritage') {
+                document.getElementById('dossierRegionText').textContent = \`\${item.district}, \${item.province}\`;
+                mLabel1.textContent = 'Historical Period';
+                mVal1.textContent = item.period ? item.period.substring(0, 22) : 'Ancient';
+
+                mLabel2.textContent = 'UNESCO Status';
+                mVal2.textContent = item.unescoYear ? \`UNESCO \${item.unescoYear}\` : 'Tentative';
+
+                mLabel3.textContent = 'Province';
+                mVal3.textContent = item.province;
+
+                mLabel4.textContent = 'District';
+                mVal4.textContent = item.district;
+
+                document.getElementById('dossierSummary').textContent = item.significance;
+                document.getElementById('dossierEconomic').textContent = \`Historical Epoch: \${item.period}; UNESCO World Heritage inscription: \${item.unescoYear}.\`;
+
+                const examList = document.getElementById('dossierExamPoints');
+                examList.innerHTML = \`<li>\${item.examPoints}</li>\`;
+            } else {
+                document.getElementById('dossierRegionText').textContent = \`\${item.province || 'Pakistan'}\`;
+                mLabel1.textContent = 'Population';
+                mVal1.textContent = item.population || item.pop || 'N/A';
+
+                mLabel2.textContent = 'Area / Role';
+                mVal2.textContent = item.area || item.role || 'Strategic Hub';
+
+                mLabel3.textContent = 'Province / Division';
+                mVal3.textContent = item.province || item.division || 'Pakistan';
+
+                mLabel4.textContent = 'Status';
+                mVal4.textContent = 'Urban / Administrative';
+
+                document.getElementById('dossierSummary').textContent = item.significance || item.role || '';
+                document.getElementById('dossierEconomic').textContent = \`Major economic and administrative center in \${item.province}.\`;
+
+                const examList = document.getElementById('dossierExamPoints');
+                examList.innerHTML = item.examPoints ? \`<li>\${item.examPoints}</li>\` : \`<li>Key district center for administrative recruitment and competitive examinations.</li>\`;
+            }
+
+            if (panTo && item.lat && item.lng && map) {
+                map.flyTo([item.lat, item.lng], Math.max(map.getZoom(), 6.5), {
+                    animate: true,
+                    duration: 1.2
+                });
+            }
+
+            renderMarkers();
+        }
+
+        // Filter Handlers
+        function filterByCategory(catId) {
+            currentCategory = catId;
+            renderCategoryPills();
+            renderMarkers();
+            renderMasterTable();
+        }
+
+        function handleSearch(val) {
+            renderMarkers();
+            renderMasterTable();
+        }
+
+        // Quick Province Focus
+        function focusProvince(prov) {
+            document.querySelectorAll('.prov-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (!map) return;
+            switch(prov) {
+                case 'punjab':
+                    map.flyTo([31.17, 72.7], 6.5, { duration: 1.2 });
+                    break;
+                case 'sindh':
+                    map.flyTo([25.89, 68.52], 6.5, { duration: 1.2 });
+                    break;
+                case 'kp':
+                    map.flyTo([34.0, 71.5], 6.5, { duration: 1.2 });
+                    break;
+                case 'balochistan':
+                    map.flyTo([28.5, 65.5], 6.0, { duration: 1.2 });
+                    break;
+                case 'gb':
+                    map.flyTo([35.92, 74.31], 7.0, { duration: 1.2 });
+                    break;
+                case 'ajk':
+                    map.flyTo([34.36, 73.47], 7.5, { duration: 1.2 });
+                    break;
+                case 'pakistan':
+                default:
+                    map.flyTo([30.3753, 69.3451], 5.3, { duration: 1.2 });
+                    break;
+            }
+        }
+
+        function zoomInMap() { if (map) map.zoomIn(); }
+        function zoomOutMap() { if (map) map.zoomOut(); }
+        function resetMapView() { focusProvince('pakistan'); }
+
+        // Render Master Table
+        function renderMasterTable() {
+            const tbody = document.getElementById('masterTableBody');
+            if (!tbody) return;
+
+            const query = (document.getElementById('pakSearchInput').value || '').toLowerCase().trim();
+
+            const filtered = allItems.filter(item => {
+                const matchCat = currentCategory === 'all' || item.itemCategory === currentCategory;
+                const matchSearch = !query ||
+                    item.name.toLowerCase().includes(query) ||
+                    (item.tagline && item.tagline.toLowerCase().includes(query)) ||
+                    (item.province && item.province.toLowerCase().includes(query)) ||
+                    (item.significance && item.significance.toLowerCase().includes(query));
+
+                return matchCat && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = \`<tr><td colspan="6" style="text-align:center; padding:30px; color:var(--pak-text-muted);">No geography features match your search.</td></tr>\`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(item => {
+                const catObj = window.PAKISTAN_MAP_DATA.categories.find(c => c.id === item.itemCategory);
+                let metricStr = item.population2023 || item.lengthKm || item.capacityMw || item.areaKm2 || item.period || item.pop || '';
+                if (metricStr.length > 35) metricStr = metricStr.substring(0, 35) + '...';
+
+                let sigStr = item.significance || item.geographyDescription || item.role || item.economicBase || '';
+                if (sigStr.length > 130) sigStr = sigStr.substring(0, 130) + '...';
+
+                return \`
+                    <tr>
+                        <td style="font-weight:700;">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="background:\${item.color}; color:#fff; width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem;">
+                                    <i class="fas \${item.icon}"></i>
+                                </span>
+                                <div>
+                                    <div>\${item.name}</div>
+                                    <small style="color:var(--pak-text-muted);">\${item.tagline || item.type || ''}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="category-badge" style="border-color:\${item.color}; color:\${item.color};">
+                                \${catObj ? catObj.name : item.itemCategory}
+                            </span>
+                        </td>
+                        <td><strong>\${item.province || item.location || 'Pakistan'}</strong></td>
+                        <td>\${metricStr}</td>
+                        <td style="max-width:320px; font-size:0.83rem; line-height:1.5;">\${sigStr}</td>
+                        <td>
+                            <button type="button" class="table-btn" onclick="scrollToMapAndSelect('\${item.id}')">
+                                <i class="fas fa-crosshairs"></i> Inspect
+                            </button>
+                        </td>
+                    </tr>
+                \`;
+            }).join('');
+        }
+
+        function scrollToMapAndSelect(itemId) {
+            const item = allItems.find(i => i.id === itemId);
+            if (!item) return;
+
+            document.getElementById('pakistanMapContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            selectItem(item, true);
+        }
+
+        // Quiz Mode
+        function toggleQuizMode() {
+            isQuizMode = !isQuizMode;
+            const banner = document.getElementById('quizBanner');
+            const btnText = document.getElementById('quizBtnText');
+
+            if (isQuizMode) {
+                banner.classList.add('active');
+                btnText.textContent = 'Exit Quiz Mode';
+                quizScore = 0;
+                quizTotal = 0;
+                nextQuizQuestion();
+            } else {
+                banner.classList.remove('active');
+                btnText.textContent = 'Start Geography Quiz';
+                quizTarget = null;
+            }
+        }
+
+        function nextQuizQuestion() {
+            if (!allItems.length) return;
+            const randomIndex = Math.floor(Math.random() * allItems.length);
+            quizTarget = allItems[randomIndex];
+
+            const questionElem = document.getElementById('quizPromptQuestion');
+            questionElem.innerHTML = \`Target: Find <strong>\${quizTarget.name}</strong> (\${quizTarget.province || quizTarget.type || quizTarget.itemCategory}) on the map!\`;
+        }
+
+        function handleQuizAnswer(clickedItem) {
+            if (!quizTarget) return;
+            quizTotal++;
+
+            if (clickedItem.id === quizTarget.id) {
+                quizScore++;
+                alert(\`Correct! You located \${quizTarget.name}.\`);
+                selectItem(clickedItem, false);
+                nextQuizQuestion();
+            } else {
+                alert(\`Incorrect! That was \${clickedItem.name}. Look for \${quizTarget.name} in \${quizTarget.province || 'Pakistan'}.\`);
+            }
+
+            document.getElementById('quizScoreText').textContent = \`Score: \${quizScore} / \${quizTotal}\`;
+        }
+
+        // Auto Boot
+        window.addEventListener('DOMContentLoaded', initMap);
+    </script>
+</body>
+
+</html>
+`;
+
+fs.writeFileSync('frontend/pakistan-map.html', htmlContent, 'utf8');
+console.log('Successfully generated frontend/pakistan-map.html!');

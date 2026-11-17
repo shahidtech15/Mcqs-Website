@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Trade Routes Map | Strait of Hormuz, Suez Canal, Panama Canal, Malacca & Major Shipping Lanes</title>
+    <meta name="description"
+        content="Interactive International Trade Routes Map for CSS, PMS, FPSC, UPSC, and International Relations aspirants. Explore the Strait of Hormuz, Suez Canal, Panama Canal, Strait of Malacca, Bab-el-Mandeb, major shipping routes, global megaports, and route distance simulators.">
+    <meta name="keywords"
+        content="International Trade Routes Map, Strait of Hormuz, Suez Canal, Panama Canal, Strait of Malacca, Bab-el-Mandeb, Cape of Good Hope, Strategic Chokepoints, Global Shipping Lanes, CPEC Gwadar, Maritime Silk Road, Sea Lines of Communication, SLOCs, CSS Geoeconomics">
+
+    <!-- Anti-FOUC: Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet CSS for Maritime Map Rendering -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --trade-primary: #0284c7;
+            --trade-primary-dark: #0369a1;
+            --trade-primary-light: #e0f2fe;
+            --trade-choke: #e11d48;
+            --trade-lane: #2563eb;
+            --trade-energy: #d97706;
+            --trade-port: #059669;
+            --trade-bg: #f8fafc;
+            --trade-card-bg: #ffffff;
+            --trade-border: #e2e8f0;
+            --trade-text-main: #0f172a;
+            --trade-text-muted: #64748b;
+            --trade-sidebar-w: 490px;
+        }
+
+        .dark-mode {
+            --trade-bg: #090d16;
+            --trade-card-bg: #111827;
+            --trade-border: #1f2937;
+            --trade-text-main: #f8fafc;
+            --trade-text-muted: #94a3b8;
+            --trade-primary-light: rgba(2, 132, 199, 0.15);
+        }
+
+        body {
+            background-color: var(--trade-bg);
+            color: var(--trade-text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        /* Top Announcement / Switcher Bar */
+        .top-switcher-bar {
+            background: linear-gradient(90deg, #090d16 0%, #0369a1 50%, #0f172a 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 0.86rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .switcher-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .switcher-btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        .switcher-btn.active {
+            background: #0284c7;
+            border-color: #38bdf8;
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(2, 132, 199, 0.5);
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--trade-card-bg);
+            border-bottom: 1px solid var(--trade-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--trade-text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #0284c7;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--trade-text-muted);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0284c7;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--trade-bg);
+            border: 1px solid var(--trade-border);
+            color: var(--trade-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        /* Hero Masthead */
+        .trade-hero {
+            background: radial-gradient(circle at 50% 30%, rgba(2, 132, 199, 0.08) 0%, rgba(15, 23, 42, 0.02) 70%);
+            padding: 36px 20px 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--trade-border);
+        }
+
+        .trade-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(2, 132, 199, 0.12);
+            color: #0284c7;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(2, 132, 199, 0.28);
+            margin-bottom: 14px;
+        }
+
+        .trade-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.35rem;
+            font-weight: 900;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            color: var(--trade-text-main);
+        }
+
+        .trade-hero p {
+            max-width: 900px;
+            margin: 0 auto 20px;
+            color: var(--trade-text-muted);
+            font-size: 1.02rem;
+            line-height: 1.6;
+        }
+
+        .trade-stats-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trade-stat-pill {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--trade-text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        .trade-stat-pill i {
+            color: #0284c7;
+        }
+
+        /* Controls Section */
+        .controls-card {
+            max-width: 1480px;
+            margin: 22px auto 16px;
+            padding: 0 20px;
+        }
+
+        .controls-inner {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+        }
+
+        .search-and-tools {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .search-box-wrap {
+            flex: 1;
+            min-width: 290px;
+            position: relative;
+        }
+
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--trade-text-muted);
+        }
+
+        .search-box-wrap input {
+            width: 100%;
+            padding: 11px 16px 11px 40px;
+            background: var(--trade-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: 10px;
+            color: var(--trade-text-main);
+            font-size: 0.92rem;
+            outline: none;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .search-box-wrap input:focus {
+            border-color: #0284c7;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+
+        .region-focus-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .region-btn {
+            background: var(--trade-bg);
+            border: 1px solid var(--trade-border);
+            color: var(--trade-text-muted);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .region-btn:hover {
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        .simulator-toggle-btn {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.86rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+            transition: transform 0.15s;
+        }
+
+        .simulator-toggle-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .challenge-mode-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.86rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+            transition: transform 0.15s;
+        }
+
+        .challenge-mode-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Category Filter Pills */
+        .category-pills-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+
+        .cat-pill {
+            background: var(--trade-bg);
+            border: 1px solid var(--trade-border);
+            color: var(--trade-text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .cat-pill:hover {
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        .cat-pill.active {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
+        }
+
+        .cat-pill .pill-badge {
+            background: rgba(0, 0, 0, 0.12);
+            color: inherit;
+            font-size: 0.72rem;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-weight: 800;
+        }
+
+        .cat-pill.active .pill-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* Main Workspace Split Grid */
+        .workspace-container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .map-workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr var(--trade-sidebar-w);
+            gap: 22px;
+            align-items: start;
+        }
+
+        /* Map Canvas Card */
+        .map-canvas-card {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+
+        .map-toolbar-strip {
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--trade-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: var(--trade-card-bg);
+        }
+
+        .map-info-text {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--trade-text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .map-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tool-btn {
+            background: var(--trade-bg);
+            border: 1px solid var(--trade-border);
+            color: var(--trade-text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.82rem;
+            transition: all 0.15s;
+        }
+
+        .tool-btn:hover {
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        /* Leaflet Map Height */
+        #tradeMapContainer {
+            width: 100%;
+            height: 650px;
+            background: #090d16;
+            position: relative;
+        }
+
+        /* Custom Marker Pins */
+        .trade-marker-pin {
+            position: relative;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.88rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid #ffffff;
+        }
+
+        .trade-marker-pin:hover,
+        .trade-marker-pin.active {
+            transform: scale(1.3);
+            z-index: 1000 !important;
+            box-shadow: 0 0 20px rgba(2, 132, 199, 0.8);
+        }
+
+        .choke-pulse-ring {
+            position: absolute;
+            top: -7px;
+            left: -7px;
+            right: -7px;
+            bottom: -7px;
+            border-radius: 50%;
+            border: 2.5px solid #e11d48;
+            opacity: 0.8;
+            animation: choke-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+            pointer-events: none;
+        }
+
+        @keyframes choke-ping {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.9;
+            }
+            80%, 100% {
+                transform: scale(2.2);
+                opacity: 0;
+            }
+        }
+
+        /* Map Legend Strip */
+        .map-legend-row {
+            padding: 10px 18px;
+            border-top: 1px solid var(--trade-border);
+            background: var(--trade-card-bg);
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .legend-items {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            color: var(--trade-text-muted);
+        }
+
+        .legend-color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .legend-line-sample {
+            width: 24px;
+            height: 4px;
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        /* Strategic Geoeconomic Dossier Sidebar */
+        .dossier-sidebar {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 84px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .dossier-header {
+            padding: 20px 22px 16px;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(15, 23, 42, 0.03) 100%);
+            border-bottom: 1px solid var(--trade-border);
+        }
+
+        .dossier-meta-tags {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .status-badge {
+            font-size: 0.74rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 12px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .category-badge {
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: var(--trade-bg);
+            border: 1px solid var(--trade-border);
+            color: var(--trade-text-muted);
+        }
+
+        .dossier-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--trade-text-main);
+            margin: 0 0 6px;
+            line-height: 1.25;
+        }
+
+        .dossier-region-row {
+            font-size: 0.84rem;
+            color: var(--trade-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .dossier-region-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dossier-body {
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .dossier-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dossier-section-title {
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--trade-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .dossier-text-block {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--trade-text-main);
+        }
+
+        .metrics-card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .metric-box {
+            background: var(--trade-bg);
+            border: 1px solid var(--trade-border);
+            padding: 10px 12px;
+            border-radius: 10px;
+        }
+
+        .metric-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--trade-text-muted);
+            margin-bottom: 2px;
+        }
+
+        .metric-val {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--trade-text-main);
+            line-height: 1.3;
+        }
+
+        .bullet-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: var(--trade-text-main);
+        }
+
+        .bullet-list li {
+            margin-bottom: 6px;
+        }
+
+        .exam-analysis-box {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
+            border: 1px solid rgba(2, 132, 199, 0.25);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .exam-analysis-title {
+            color: #0284c7;
+            font-weight: 800;
+            font-size: 0.84rem;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 8px;
+        }
+
+        .essay-cta-btn {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff !important;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.88rem;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+
+        .essay-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+        }
+
+        /* Interactive Simulator Panel */
+        .simulator-modal {
+            display: none;
+            background: var(--trade-card-bg);
+            border: 2px solid #0284c7;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 0 0 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .simulator-modal.active {
+            display: block;
+        }
+
+        .sim-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--trade-border);
+            padding-bottom: 12px;
+        }
+
+        .sim-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--trade-text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sim-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .sim-card {
+            background: var(--trade-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sim-card.highlight {
+            border-color: #0284c7;
+            background: rgba(2, 132, 199, 0.04);
+        }
+
+        .sim-card-title {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--trade-text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sim-stat-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            border-bottom: 1px dashed var(--trade-border);
+            padding-bottom: 6px;
+        }
+
+        .sim-stat-label {
+            color: var(--trade-text-muted);
+        }
+
+        .sim-stat-val {
+            font-weight: 700;
+            color: var(--trade-text-main);
+        }
+
+        /* Master Directory Table */
+        .table-section {
+            max-width: 1480px;
+            margin: 20px auto 40px;
+            padding: 0 20px;
+        }
+
+        .table-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin: 0 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--trade-text-main);
+        }
+
+        .table-wrap {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: 16px;
+            overflow-x: auto;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .trade-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            text-align: left;
+        }
+
+        .trade-table th {
+            background: var(--trade-bg);
+            color: var(--trade-text-muted);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.74rem;
+            letter-spacing: 0.05em;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--trade-border);
+            white-space: nowrap;
+        }
+
+        .trade-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--trade-border);
+            vertical-align: top;
+            color: var(--trade-text-main);
+        }
+
+        .trade-table tr:hover td {
+            background: rgba(2, 132, 199, 0.03);
+        }
+
+        .table-btn {
+            background: var(--trade-bg);
+            border: 1px solid var(--trade-border);
+            color: #0284c7;
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .table-btn:hover {
+            background: #0284c7;
+            border-color: #0284c7;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--trade-card-bg);
+            border-top: 1px solid var(--trade-border);
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: var(--trade-text-muted);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: var(--trade-text-muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #0284c7;
+        }
+
+        /* Quiz Banner Overlay */
+        .quiz-banner {
+            display: none;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .quiz-banner.active {
+            display: flex;
+        }
+
+        @media (max-width: 1024px) {
+            .map-workspace-grid {
+                grid-template-columns: 1fr;
+            }
+            .dossier-sidebar {
+                position: static;
+                max-height: none;
+            }
+            #tradeMapContainer {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Switcher Bar: 4-Map Suite -->
+    <div class="top-switcher-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="background: #0284c7; color: #fff; font-size: 0.7rem; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">
+                Maps Suite
+            </span>
+            <span>Switch between Global Cartographic Hubs:</span>
+        </div>
+        <div class="switcher-links">
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn active">
+                <i class="fas fa-ship"></i> Trade Routes
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+            <a href="guess-the-country.html" class="switcher-btn" style="color: #8b5cf6;">
+                <i class="fas fa-gamepad"></i> Guess Country
+            </a>
+                <a href="locate-on-map.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-crosshairs"></i> Locate on Map</a>
+                <a href="match-the-following.html" style="color: #8b5cf6; font-weight: 700;"><i class="fas fa-puzzle-piece"></i> Match Items</a>
+            <a href="locate-on-map.html" class="switcher-btn" style="color: #38bdf8;">
+                <i class="fas fa-crosshairs"></i> Locate on Map
+            </a>
+            <a href="match-the-following.html" class="switcher-btn" style="color: #a78bfa;">
+                <i class="fas fa-puzzle-piece"></i> Match Items
+            </a>
+            <a href="arrange-chronologically.html" class="switcher-btn" style="color: #fbbf24;">
+                <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz
+            </a>
+            <a href="crossword.html" class="switcher-btn" style="color: #0284c7;">
+                <i class="fas fa-chess-board"></i> Crossword
+            </a>
+            <a href="word-search.html" class="switcher-btn" style="color: #8b5cf6;">
+                <i class="fas fa-magnifying-glass"></i> Word Search
+            </a>
+            <a href="unsc-simulator.html" class="switcher-btn" style="color:#3b82f6;">
+                <i class="fas fa-scale-balanced"></i> UNSC Simulator
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="international-trade-routes-map.html" class="active" style="color: #0284c7; font-weight: 800;"><i class="fas fa-ship"></i> Trade Routes Map</a>
+                <a href="geopolitical-hotspots-map.html"><i class="fas fa-satellite-dish"></i> Hotspots Map</a>
+                <a href="physical-geography-map.html"><i class="fas fa-mountain-sun"></i> Physical Map</a>
+                <a href="world-map.html"><i class="fas fa-globe"></i> Political Map</a>
+                <a href="guess-the-country.html" style="color: #8b5cf6; font-weight: 700;"><i class="fas fa-gamepad"></i> Guess Country</a>
+                <a href="arrange-chronologically.html" style="color: #d97706; font-weight: 700;"><i class="fas fa-arrow-down-1-9"></i> Chronology</a>
+                <a href="crossword.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-chess-board"></i> Crossword</a>
+                <a href="word-search.html" style="color: #8b5cf6; font-weight: 700;"><i class="fas fa-magnifying-glass"></i> Word Search</a>
+                <a href="unsc-simulator.html" style="color:#1d4ed8; font-weight:700;"><i class="fas fa-scale-balanced"></i> UNSC Simulator</a>
+                <a href="latest-jobs.html" style="color: #e11d48; font-weight: 700;"><i class="fas fa-bullhorn"></i> Latest Jobs <span style="background:#e11d48; color:#fff; font-size:0.65rem; padding:1px 6px; border-radius:10px;">17,500+</span></a>
+                <a href="scholarships.html"><i class="fas fa-graduation-cap"></i> Scholarships</a>
+                <a href="math-mcqs.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-calculator"></i> Math MCQs</a>
+                <a href="geoeconomics-finance-essays.html">Trade Essays</a>
+                <a href="international-relations-essays.html">IR Essays</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Masthead -->
+    <section class="trade-hero">
+        <div class="trade-hero-badge">
+            <i class="fas fa-compass"></i> Interactive Maritime Strategy &bull; CSS &bull; PMS &bull; FPSC &bull; IR &bull; Geoeconomics
+        </div>
+        <h1>International Maritime Trade Routes &amp; Chokepoints Map</h1>
+        <p>
+            Explore the <strong>Strait of Hormuz</strong>, <strong>Suez Canal</strong>, <strong>Panama Canal</strong>, <strong>Strait of Malacca</strong>, <strong>Bab-el-Mandeb</strong>, transoceanic shipping highways, and major global megaports with real-time strategic intelligence dossiers, vessel traffic metrics, and route distance simulators.
+        </p>
+        <div class="trade-stats-row">
+            <div class="trade-stat-pill"><i class="fas fa-anchor" style="color:#e11d48;"></i> 13 Strategic Chokepoints</div>
+            <div class="trade-stat-pill"><i class="fas fa-route" style="color:#2563eb;"></i> 8 Major Shipping Lanes</div>
+            <div class="trade-stat-pill"><i class="fas fa-ship" style="color:#059669;"></i> 12 Global Megaports &amp; Hubs</div>
+            <div class="trade-stat-pill"><i class="fas fa-oil-well" style="color:#d97706;"></i> 21M bpd Hormuz Oil Transit</div>
+            <div class="trade-stat-pill" style="background:#0284c7; color:#ffffff; border-color:#0284c7;">
+                <i class="fas fa-calculator" style="color:#fff;"></i> Interactive Voyage Simulator
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls & Filters Card -->
+    <section class="controls-card">
+        <!-- Interactive Quiz Banner -->
+        <div class="quiz-banner" id="quizBanner">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 1.5rem;"><i class="fas fa-bullseye" style="color: #f59e0b;"></i></span>
+                <div>
+                    <strong style="font-size: 1rem;" id="quizPromptTitle">CSS Maritime Trade Challenge:</strong>
+                    <div style="font-size: 0.88rem; opacity: 0.9;" id="quizPromptQuestion">Click the strategic chokepoint or port on the map...</div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="font-weight: 700; font-size: 0.9rem;" id="quizScoreText">Score: 0 / 0</span>
+                <button type="button" onclick="nextQuizQuestion()" style="background:#f59e0b; color:#fff; border:none; padding:6px 14px; border-radius:6px; font-weight:700; cursor:pointer;">
+                    Next Question &rarr;
+                </button>
+                <button type="button" onclick="toggleQuizMode()" style="background:rgba(255,255,255,0.2); color:#fff; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;">
+                    Exit Quiz
+                </button>
+            </div>
+        </div>
+
+        <!-- Interactive Voyage Simulator Card -->
+        <div class="simulator-modal" id="simulatorModal">
+            <div class="sim-header">
+                <h3><i class="fas fa-calculator" style="color: #0284c7;"></i> Maritime Voyage Distance &amp; Cost Simulator (Shanghai to Rotterdam)</h3>
+                <button type="button" onclick="toggleSimulator()" style="background:transparent; border:none; font-size:1.2rem; cursor:pointer; color:var(--trade-text-muted);">&times;</button>
+            </div>
+            <div class="sim-grid">
+                <!-- Option 1: Via Suez -->
+                <div class="sim-card highlight">
+                    <div class="sim-card-title">
+                        <span><i class="fas fa-water" style="color:#0284c7;"></i> Via Suez Canal</span>
+                        <span style="font-size:0.75rem; background:#0284c7; color:#fff; padding:2px 8px; border-radius:10px;">Primary Route</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Total Distance:</span>
+                        <span class="sim-stat-val">10,500 Nautical Miles</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Transit Time (18 knots):</span>
+                        <span class="sim-stat-val">28 Sailing Days</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Bunker Fuel (Fuel Oil):</span>
+                        <span class="sim-stat-val">~1,120 Metric Tons</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Insurance Rating:</span>
+                        <span class="sim-stat-val" style="color:#dc2626;">High (Red Sea War Risk)</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Key Chokepoints:</span>
+                        <span class="sim-stat-val">Malacca &bull; Bab-el-Mandeb &bull; Suez &bull; Gibraltar</span>
+                    </div>
+                </div>
+
+                <!-- Option 2: Via Cape of Good Hope -->
+                <div class="sim-card">
+                    <div class="sim-card-title">
+                        <span><i class="fas fa-shield-halved" style="color:#e11d48;"></i> Via Cape of Good Hope</span>
+                        <span style="font-size:0.75rem; background:#e11d48; color:#fff; padding:2px 8px; border-radius:10px;">Conflict Fallback</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Total Distance:</span>
+                        <span class="sim-stat-val" style="color:#dc2626;">14,000 NM (+3,500 NM)</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Transit Time:</span>
+                        <span class="sim-stat-val" style="color:#dc2626;">40 Days (+12 Days)</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Bunker Fuel:</span>
+                        <span class="sim-stat-val" style="color:#dc2626;">~1,600 MT (+$1M extra cost)</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Insurance Rating:</span>
+                        <span class="sim-stat-val" style="color:#059669;">Standard Commercial</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Key Chokepoints:</span>
+                        <span class="sim-stat-val">Malacca &bull; Cape of Good Hope</span>
+                    </div>
+                </div>
+
+                <!-- Option 3: Via Northern Sea Route -->
+                <div class="sim-card">
+                    <div class="sim-card-title">
+                        <span><i class="fas fa-snowflake" style="color:#059669;"></i> Northern Sea Route (Arctic)</span>
+                        <span style="font-size:0.75rem; background:#059669; color:#fff; padding:2px 8px; border-radius:10px;">Summer Window</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Total Distance:</span>
+                        <span class="sim-stat-val" style="color:#059669;">7,600 NM (-2,900 NM)</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Transit Time:</span>
+                        <span class="sim-stat-val" style="color:#059669;">20 Days (-8 Days vs Suez)</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Bunker Fuel:</span>
+                        <span class="sim-stat-val" style="color:#059669;">~800 MT (-30% Emissions)</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Insurance Rating:</span>
+                        <span class="sim-stat-val">Polar Ice-Class Escort</span>
+                    </div>
+                    <div class="sim-stat-row">
+                        <span class="sim-stat-label">Key Chokepoints:</span>
+                        <span class="sim-stat-val">Bering Strait &bull; Vilkitsky Strait</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-inner">
+            <div class="search-and-tools">
+                <div class="search-box-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="tradeSearchInput" placeholder="Search chokepoints, shipping lanes, megaports, commodities, or straits (e.g., 'Hormuz', 'Suez', 'Panama', 'Malacca', 'Bab-el-Mandeb', 'Gwadar', 'Crude Oil', 'Panamax')..." oninput="handleSearch(this.value)">
+                </div>
+
+                <div class="region-focus-group">
+                    <span style="font-size: 0.78rem; font-weight: 700; color: var(--trade-text-muted);">Quick Focus:</span>
+                    <button type="button" class="region-btn" onclick="focusRegion('world')">Global Maritime</button>
+                    <button type="button" class="region-btn" onclick="focusRegion('hormuz')">Hormuz &amp; Gulf</button>
+                    <button type="button" class="region-btn" onclick="focusRegion('suez')">Suez &amp; Red Sea</button>
+                    <button type="button" class="region-btn" onclick="focusRegion('malacca')">Malacca &amp; Asia</button>
+                    <button type="button" class="region-btn" onclick="focusRegion('panama')">Panama Canal</button>
+                </div>
+
+                <button type="button" class="simulator-toggle-btn" onclick="toggleSimulator()">
+                    <i class="fas fa-calculator"></i> <span>Voyage Simulator</span>
+                </button>
+
+                <button type="button" class="challenge-mode-btn" id="btnToggleQuiz" onclick="toggleQuizMode()">
+                    <i class="fas fa-bullseye"></i> <span id="quizBtnText">Start Trade Quiz</span>
+                </button>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="category-pills-row" id="categoryPillsContainer">
+                <!-- Dynamically Rendered -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace Split Grid -->
+    <main class="workspace-container">
+        <div class="map-workspace-grid">
+            <!-- Left: Interactive Map Canvas -->
+            <div class="map-canvas-card">
+                <div class="map-toolbar-strip">
+                    <div class="map-info-text">
+                        <i class="fas fa-ship" style="color: #0284c7;"></i>
+                        <span id="activeTradeTitle">Active: Strait of Hormuz (21M bpd Oil Chokepoint)</span>
+                    </div>
+                    <div class="map-actions">
+                        <button class="tool-btn" onclick="zoomInMap()" title="Zoom In"><i class="fas fa-plus"></i></button>
+                        <button class="tool-btn" onclick="zoomOutMap()" title="Zoom Out"><i class="fas fa-minus"></i></button>
+                        <button class="tool-btn" onclick="resetMapView()" title="Reset Global View"><i class="fas fa-globe"></i></button>
+                    </div>
+                </div>
+
+                <!-- Leaflet Map Container -->
+                <div id="tradeMapContainer"></div>
+
+                <!-- Map Legend -->
+                <div class="map-legend-row">
+                    <span style="font-weight: 700; color: var(--trade-text-main);"><i class="fas fa-layer-group"></i> Trade Layer Legend:</span>
+                    <div class="legend-items">
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#e11d48;"></span> Strategic Chokepoint</span>
+                        <span class="legend-item"><span class="legend-line-sample" style="background:#2563eb;"></span> Container Shipping Lane</span>
+                        <span class="legend-item"><span class="legend-line-sample" style="background:#d97706;"></span> Hydrocarbon Energy Highway</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#059669;"></span> Megaport / Transshipment Hub</span>
+                        <span class="legend-item"><i class="fas fa-circle-dot" style="color:#e11d48; animation:choke-ping 1.5s infinite;"></i> Pulsing = High Vulnerability</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Strategic Geoeconomic Dossier Sidebar -->
+            <aside class="dossier-sidebar" id="dossierSidebar">
+                <div class="dossier-header">
+                    <div class="dossier-meta-tags">
+                        <span class="status-badge" id="dossierStatusBadge" style="background:#e11d48;">
+                            <i class="fas fa-anchor"></i> <span id="dossierStatusText">Strategic Chokepoint</span>
+                        </span>
+                        <span class="category-badge" id="dossierCategoryBadge">Strategic Chokepoints</span>
+                    </div>
+                    <h2 class="dossier-title" id="dossierTitle">Strait of Hormuz</h2>
+                    <div class="dossier-region-row">
+                        <span><i class="fas fa-water" style="color: #0284c7;"></i> <span id="dossierSubtype">Persian Gulf to Gulf of Oman</span></span>
+                        <span><i class="fas fa-crosshairs"></i> <span id="dossierCoords">26.6&deg; N, 56.3&deg; E</span></span>
+                    </div>
+                </div>
+
+                <div class="dossier-body">
+                    <!-- Metrics Card Grid -->
+                    <div class="metrics-card-grid">
+                        <div class="metric-box">
+                            <div class="metric-label">Transit Cargo / Energy</div>
+                            <div class="metric-val" id="dossierMetricVolume">21.0M bpd Oil (~21% global)</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">Annual Vessel Traffic</div>
+                            <div class="metric-val" id="dossierMetricVessels">~33,000 Ships / Year</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">Vessel Size Limit</div>
+                            <div class="metric-val" id="dossierMetricLimits">VLCC / ULCC Deep Draft</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">Littoral / Sovereign States</div>
+                            <div class="metric-val" id="dossierMetricStates">Oman &bull; Iran &bull; UAE</div>
+                        </div>
+                    </div>
+
+                    <!-- Situation & Strategic Summary -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-align-left" style="color: #0284c7;"></i> Geoeconomic &amp; Strategic Significance</div>
+                        <div class="dossier-text-block" id="dossierStrategicSig">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Key Commodities Transported -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-boxes-stacked" style="color: #d97706;"></i> Primary Cargo &amp; Commodities</div>
+                        <ul class="bullet-list" id="dossierCommodities">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+
+                    <!-- Chokepoint Vulnerabilities & Threats -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-triangle-exclamation" style="color: #e11d48;"></i> Vulnerabilities, Threats &amp; Blockade Risks</div>
+                        <ul class="bullet-list" id="dossierVulnerabilities">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+
+                    <!-- International Maritime Law & Treaties -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-scale-balanced" style="color: #059669;"></i> International Law &amp; Navigation Regimes</div>
+                        <div class="dossier-text-block" id="dossierLaw">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- CSS Examination Analytical Framework -->
+                    <div class="exam-analysis-box">
+                        <div class="exam-analysis-title">
+                            <i class="fas fa-brain"></i> CSS Examination Analysis &amp; Foreign Policy
+                        </div>
+                        <div class="dossier-text-block" id="dossierExamAnalysis" style="font-size:0.87rem; line-height:1.6;">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Solved Master Essay CTA Link -->
+                    <a href="geoeconomics-finance-essays.html#topic-12" id="dossierEssayBtn" class="essay-cta-btn" target="_blank">
+                        <i class="fas fa-book-open"></i> Read Solved CSS Geoeconomics Essay &amp; Outline &rarr;
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Master Maritime Trade Directory Table -->
+    <section class="table-section">
+        <h3 class="table-section-title">
+            <i class="fas fa-table-list" style="color: #0284c7;"></i> Master International Trade Routes &amp; Chokepoints Directory (All 33 Maritime Nodes)
+        </h3>
+        <div class="table-wrap">
+            <table class="trade-table" id="masterTradeTable">
+                <thead>
+                    <tr>
+                        <th>Node / Corridor Name</th>
+                        <th>Type</th>
+                        <th>Status / Vulnerability</th>
+                        <th>Transit Volume &bull; Capacity</th>
+                        <th>Strategic &amp; Geoeconomic Significance</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="masterTableBody">
+                    <!-- Populated dynamically via JS -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="pakistan-map.html">Pakistan Map</a>
+            <a href="sindh-map.html">Sindh Map</a>
+            <a href="international-trade-routes-map.html">Trade Routes Map</a>
+            <a href="geopolitical-hotspots-map.html">Hotspots Map</a>
+            <a href="physical-geography-map.html">Physical Map</a>
+            <a href="world-map.html">Political Map</a>
+            <a href="geoeconomics-finance-essays.html">Geoeconomics Essays</a>
+            <a href="international-relations-essays.html">IR Essays</a>
+            <a href="global-security-conflict-essays.html">Conflict Essays</a>
+            <a href="latest-jobs.html">Latest Jobs</a>
+            <a href="scholarships.html">Scholarships</a>
+            <a href="math-mcqs.html">Math MCQs</a>
+            <a href="math-tricks.html">Math Tricks</a>
+            <a href="written-prep.html">Written Prep</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+        </div>
+        <p>&copy; 2026 CSS Prep Central. Authoritative International Trade Routes &amp; Maritime Chokepoints Map for competitive exam aspirants.</p>
+    </footer>
+
+    <!-- Leaflet JS & Trade Routes Dataset -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="js/data_trade_routes.js"></script>
+
+    <script>
+        // State Variables
+        let map;
+        let markersGroup;
+        let polylinesGroup;
+        let currentCategory = 'all';
+        let currentItem = null;
+        let allItems = [];
+        let isQuizMode = false;
+        let quizTarget = null;
+        let quizScore = 0;
+        let quizTotal = 0;
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                updateMapTiles();
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        let tileLayer;
+        function updateMapTiles() {
+            if (!map) return;
+            if (tileLayer) map.removeLayer(tileLayer);
+
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            const tileUrl = isDark 
+                ? 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png'
+                : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+
+            tileLayer = L.tileLayer(tileUrl, {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+        }
+
+        // Initialize Map
+        function initMap() {
+            // Flatten all items into unified collection
+            const chokepoints = (window.TRADE_ROUTES_DATA.chokepoints || []).map(cp => ({ ...cp, itemType: 'chokepoint' }));
+            const shippingLanes = (window.TRADE_ROUTES_DATA.shippingLanes || []).map(sl => ({ ...sl, itemType: 'shipping_lane' }));
+            const megaports = (window.TRADE_ROUTES_DATA.megaports || []).map(mp => ({ ...mp, itemType: 'megaport' }));
+
+            allItems = [...chokepoints, ...shippingLanes, ...megaports];
+
+            map = L.map('tradeMapContainer', {
+                center: [20, 50],
+                zoom: 2.6,
+                minZoom: 1.8,
+                maxZoom: 12,
+                scrollWheelZoom: true,
+                zoomControl: false
+            });
+
+            updateMapTiles();
+            polylinesGroup = L.layerGroup().addTo(map);
+            markersGroup = L.layerGroup().addTo(map);
+
+            renderCategoryPills();
+            renderMapLayers();
+            renderMasterTable();
+
+            // Default Select: Strait of Hormuz
+            const defaultItem = chokepoints.find(cp => cp.id === 'strait-of-hormuz') || allItems[0];
+            if (defaultItem) {
+                selectItem(defaultItem, false);
+            }
+        }
+
+        // Render Category Filter Pills
+        function renderCategoryPills() {
+            const container = document.getElementById('categoryPillsContainer');
+            if (!container) return;
+
+            const categories = window.TRADE_ROUTES_DATA.categories || [];
+            container.innerHTML = categories.map(cat => {
+                let count = 0;
+                if (cat.id === 'all') count = allItems.length;
+                else if (cat.id === 'chokepoints') count = window.TRADE_ROUTES_DATA.chokepoints.length;
+                else if (cat.id === 'shipping_lanes') count = window.TRADE_ROUTES_DATA.shippingLanes.filter(sl => sl.category === 'shipping_lanes').length;
+                else if (cat.id === 'energy_corridors') count = window.TRADE_ROUTES_DATA.shippingLanes.filter(sl => sl.category === 'energy_corridors').length;
+                else if (cat.id === 'megaports') count = window.TRADE_ROUTES_DATA.megaports.length;
+
+                const isActive = cat.id === currentCategory ? 'active' : '';
+                return `
+                    <button type="button" class="cat-pill ${isActive}" onclick="filterByCategory('${cat.id}')">
+                        <i class="fas ${cat.icon}"></i> ${cat.name} <span class="pill-badge">${count}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Render Map Layers: Markers and Polylines
+        function renderMapLayers() {
+            markersGroup.clearLayers();
+            polylinesGroup.clearLayers();
+
+            const query = (document.getElementById('tradeSearchInput').value || '').toLowerCase().trim();
+
+            // 1. Render Shipping Lanes Polylines
+            const lanes = window.TRADE_ROUTES_DATA.shippingLanes || [];
+            lanes.forEach(lane => {
+                const matchCat = currentCategory === 'all' || lane.category === currentCategory || currentCategory === 'shipping_lanes';
+                const matchSearch = !query || 
+                    lane.name.toLowerCase().includes(query) ||
+                    lane.description.toLowerCase().includes(query);
+
+                if (matchCat && matchSearch && lane.routePath) {
+                    const isSelected = currentItem && currentItem.id === lane.id;
+
+                    const polyline = L.polyline(lane.routePath, {
+                        color: lane.color || '#2563eb',
+                        weight: isSelected ? 5.5 : 3.5,
+                        opacity: isSelected ? 0.95 : 0.75,
+                        dashArray: lane.category === 'energy_corridors' ? '8, 8' : '10, 6',
+                        lineCap: 'round'
+                    });
+
+                    polyline.bindTooltip(`<strong>${lane.name}</strong><br><span style="font-size:0.75rem;">${lane.distanceNm} &bull; ${lane.transitTimeDays}</span>`, {
+                        sticky: true
+                    });
+
+                    polyline.on('click', () => {
+                        selectItem({ ...lane, itemType: 'shipping_lane' }, false);
+                        map.fitBounds(polyline.getBounds(), { padding: [50, 50], maxZoom: 5 });
+                    });
+
+                    polylinesGroup.addLayer(polyline);
+                }
+            });
+
+            // 2. Render Chokepoints Markers
+            const chokepoints = window.TRADE_ROUTES_DATA.chokepoints || [];
+            chokepoints.forEach(cp => {
+                const matchCat = currentCategory === 'all' || currentCategory === 'chokepoints';
+                const matchSearch = !query ||
+                    cp.name.toLowerCase().includes(query) ||
+                    cp.strategicSignificance.toLowerCase().includes(query) ||
+                    cp.waterwaysConnected.toLowerCase().includes(query) ||
+                    (cp.borderingStates && cp.borderingStates.some(s => s.toLowerCase().includes(query)));
+
+                if (matchCat && matchSearch) {
+                    const isSelected = currentItem && currentItem.id === cp.id;
+                    const isCritical = cp.status.includes('Extreme') || cp.status.includes('Kinetic') || cp.status.includes('Flashpoint');
+
+                    const pulseHtml = isCritical ? '<div class="choke-pulse-ring"></div>' : '';
+
+                    const iconHtml = `
+                        <div class="trade-marker-pin ${isSelected ? 'active' : ''}" style="background: ${cp.color || '#e11d48'};">
+                            ${pulseHtml}
+                            <i class="fas ${cp.icon || 'fa-anchor'}"></i>
+                        </div>
+                    `;
+
+                    const customIcon = L.divIcon({
+                        html: iconHtml,
+                        className: 'custom-trade-icon',
+                        iconSize: [34, 34],
+                        iconAnchor: [17, 17]
+                    });
+
+                    const marker = L.marker([cp.lat, cp.lng], { icon: customIcon });
+
+                    marker.on('click', () => {
+                        if (isQuizMode) handleQuizAnswer(cp);
+                        else selectItem({ ...cp, itemType: 'chokepoint' }, true);
+                    });
+
+                    marker.bindTooltip(`<strong>${cp.name}</strong><br><span style="font-size:0.75rem; color:${cp.statusColor}">${cp.type}</span>`, {
+                        direction: 'top',
+                        offset: [0, -18],
+                        opacity: 0.95
+                    });
+
+                    markersGroup.addLayer(marker);
+                }
+            });
+
+            // 3. Render Megaports Markers
+            const megaports = window.TRADE_ROUTES_DATA.megaports || [];
+            megaports.forEach(mp => {
+                const matchCat = currentCategory === 'all' || currentCategory === 'megaports';
+                const matchSearch = !query ||
+                    mp.name.toLowerCase().includes(query) ||
+                    mp.country.toLowerCase().includes(query) ||
+                    mp.keyRole.toLowerCase().includes(query);
+
+                if (matchCat && matchSearch) {
+                    const isSelected = currentItem && currentItem.id === mp.id;
+
+                    const iconHtml = `
+                        <div class="trade-marker-pin ${isSelected ? 'active' : ''}" style="background: #059669;">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                    `;
+
+                    const customIcon = L.divIcon({
+                        html: iconHtml,
+                        className: 'custom-port-icon',
+                        iconSize: [30, 30],
+                        iconAnchor: [15, 15]
+                    });
+
+                    const marker = L.marker([mp.lat, mp.lng], { icon: customIcon });
+
+                    marker.on('click', () => {
+                        if (isQuizMode) handleQuizAnswer(mp);
+                        else selectItem({ ...mp, itemType: 'megaport' }, true);
+                    });
+
+                    marker.bindTooltip(`<strong>${mp.name}</strong><br><span style="font-size:0.75rem; color:#059669;">${mp.country} &bull; ${mp.throughputTeu.substring(0, 30)}</span>`, {
+                        direction: 'top',
+                        offset: [0, -16],
+                        opacity: 0.95
+                    });
+
+                    markersGroup.addLayer(marker);
+                }
+            });
+        }
+
+        // Select and Populate Dossier
+        function selectItem(item, panTo = true) {
+            currentItem = item;
+
+            const activeTitle = document.getElementById('activeTradeTitle');
+            if (activeTitle) activeTitle.textContent = `Active: ${item.name}`;
+
+            // Title & Badges
+            document.getElementById('dossierTitle').textContent = item.name;
+
+            const statusBadge = document.getElementById('dossierStatusBadge');
+            const statusText = document.getElementById('dossierStatusText');
+            const categoryBadge = document.getElementById('dossierCategoryBadge');
+
+            if (item.itemType === 'chokepoint') {
+                statusBadge.style.background = item.statusColor || '#e11d48';
+                statusText.textContent = item.type || 'Chokepoint';
+                categoryBadge.textContent = 'Strategic Chokepoints';
+
+                document.getElementById('dossierSubtype').textContent = item.waterwaysConnected;
+                document.getElementById('dossierCoords').textContent = `${Math.abs(item.lat).toFixed(1)}° ${item.lat >= 0 ? 'N' : 'S'}, ${Math.abs(item.lng).toFixed(1)}° ${item.lng >= 0 ? 'E' : 'W'}`;
+
+                // Metrics
+                document.getElementById('dossierMetricVolume').textContent = item.transitVolume ? item.transitVolume.substring(0, 40) + '...' : 'High Capacity';
+                document.getElementById('dossierMetricVessels').textContent = item.annualVessels || '20,000+ Ships/Yr';
+                document.getElementById('dossierMetricLimits').textContent = item.vesselLimits ? item.vesselLimits.substring(0, 35) + '...' : 'Standard';
+                document.getElementById('dossierMetricStates').textContent = item.borderingStates ? item.borderingStates.join(', ') : 'International';
+
+                // Strategic Significance
+                document.getElementById('dossierStrategicSig').textContent = item.strategicSignificance;
+
+                // Commodities
+                const commList = document.getElementById('dossierCommodities');
+                commList.innerHTML = (item.keyCommodities || []).map(c => `<li>${c}</li>`).join('');
+
+                // Vulnerabilities
+                const vulnList = document.getElementById('dossierVulnerabilities');
+                vulnList.innerHTML = (item.vulnerabilitiesAndThreats || []).map(v => `<li>${v}</li>`).join('');
+
+                // Law
+                document.getElementById('dossierLaw').textContent = item.internationalLaw || 'Governed by UNCLOS Part III Transit Passage regime.';
+
+                // CSS Analysis
+                document.getElementById('dossierExamAnalysis').textContent = item.cssExamAnalysis || 'Demonstrates classical sea power geopolitics (Mahan & Spykman) and critical maritime energy security.';
+
+                // Essay CTA
+                const essayBtn = document.getElementById('dossierEssayBtn');
+                if (essayBtn) {
+                    essayBtn.href = item.relatedEssayLink || 'geoeconomics-finance-essays.html#topic-12';
+                }
+            } else if (item.itemType === 'shipping_lane') {
+                statusBadge.style.background = item.color || '#2563eb';
+                statusText.textContent = item.code || 'Shipping Lane';
+                categoryBadge.textContent = 'Maritime Shipping Corridors';
+
+                document.getElementById('dossierSubtype').textContent = item.distanceNm;
+                document.getElementById('dossierCoords').textContent = item.transitTimeDays;
+
+                // Metrics
+                document.getElementById('dossierMetricVolume').textContent = item.volumeShare ? item.volumeShare.substring(0, 40) + '...' : 'Trillion Dollar Corridors';
+                document.getElementById('dossierMetricVessels').textContent = item.transitTimeDays;
+                document.getElementById('dossierMetricLimits').textContent = item.distanceNm;
+                document.getElementById('dossierMetricStates').textContent = 'Global Oceanic Transit';
+
+                document.getElementById('dossierStrategicSig').textContent = item.description;
+
+                const commList = document.getElementById('dossierCommodities');
+                commList.innerHTML = `<li>Containerized Finished Goods, Industrial Electronics, Machinery</li><li>Crude Oil, Liquefied Petroleum & Refined Products</li><li>Raw Minerals, Grain & Agricultural Bulks</li>`;
+
+                const vulnList = document.getElementById('dossierVulnerabilities');
+                vulnList.innerHTML = `<li>Chokepoint transit vulnerability requiring alternate circumnavigation routes.</li><li>Marine insurance spikes and container freight rate volatility during geopolitical crises.</li><li>Decarbonization compliance pressures (IMO Net-Zero 2050 targets).</li>`;
+
+                document.getElementById('dossierLaw').textContent = 'High seas freedom of navigation under UNCLOS Part VII and customary maritime transit rights.';
+                document.getElementById('dossierExamAnalysis').textContent = item.cssRelevance || 'Exemplifies global economic interdependence, maritime supply chain elasticity, and trade weaponization.';
+
+                const essayBtn = document.getElementById('dossierEssayBtn');
+                if (essayBtn) {
+                    essayBtn.href = 'geoeconomics-finance-essays.html#topic-8';
+                }
+            } else if (item.itemType === 'megaport') {
+                statusBadge.style.background = '#059669';
+                statusText.textContent = 'Global Hub';
+                categoryBadge.textContent = 'Megaports & Transshipment';
+
+                document.getElementById('dossierSubtype').textContent = item.country;
+                document.getElementById('dossierCoords').textContent = `${Math.abs(item.lat).toFixed(1)}° ${item.lat >= 0 ? 'N' : 'S'}, ${Math.abs(item.lng).toFixed(1)}° ${item.lng >= 0 ? 'E' : 'W'}`;
+
+                document.getElementById('dossierMetricVolume').textContent = item.throughputTeu.substring(0, 35) + '...';
+                document.getElementById('dossierMetricVessels').textContent = 'Continuous 24/7 Berthing';
+                document.getElementById('dossierMetricLimits').textContent = 'Deepwater Container Terminals';
+                document.getElementById('dossierMetricStates').textContent = item.country;
+
+                document.getElementById('dossierStrategicSig').textContent = item.keyRole;
+
+                const commList = document.getElementById('dossierCommodities');
+                commList.innerHTML = (item.connectedRoutes || []).map(r => `<li>Connected Shipping Lane: <strong>${r}</strong></li>`).join('');
+
+                const vulnList = document.getElementById('dossierVulnerabilities');
+                vulnList.innerHTML = `<li>Port congestion bottlenecks, crane downtime, and logistics hinterland friction.</li><li>Geopolitical port concession disputes and strategic asset acquisition rivalries.</li>`;
+
+                document.getElementById('dossierLaw').textContent = 'Sovereign port state jurisdiction, ISPS (International Ship and Port Facility Security) Code regulations.';
+                document.getElementById('dossierExamAnalysis').textContent = 'Central to CPEC Gwadar analysis, String of Pearls theory, and national geoeconomic hub strategy.';
+
+                const essayBtn = document.getElementById('dossierEssayBtn');
+                if (essayBtn) {
+                    essayBtn.href = 'geoeconomics-finance-essays.html#topic-1';
+                }
+            }
+
+            if (panTo && item.lat && item.lng && map) {
+                map.flyTo([item.lat, item.lng], Math.max(map.getZoom(), 4.8), {
+                    animate: true,
+                    duration: 1.2
+                });
+            }
+
+            renderMapLayers();
+        }
+
+        // Filter Handlers
+        function filterByCategory(catId) {
+            currentCategory = catId;
+            renderCategoryPills();
+            renderMapLayers();
+            renderMasterTable();
+        }
+
+        function handleSearch(val) {
+            renderMapLayers();
+            renderMasterTable();
+        }
+
+        // Quick Region Focus
+        function focusRegion(region) {
+            if (!map) return;
+            switch(region) {
+                case 'hormuz':
+                    map.flyTo([26.5, 56.0], 5.5, { duration: 1.2 });
+                    break;
+                case 'suez':
+                    map.flyTo([22.0, 38.0], 4.5, { duration: 1.2 });
+                    break;
+                case 'malacca':
+                    map.flyTo([2.5, 102.0], 5.0, { duration: 1.2 });
+                    break;
+                case 'panama':
+                    map.flyTo([9.0, -79.5], 5.5, { duration: 1.2 });
+                    break;
+                case 'world':
+                default:
+                    map.flyTo([20, 50], 2.6, { duration: 1.2 });
+                    break;
+            }
+        }
+
+        function zoomInMap() { if (map) map.zoomIn(); }
+        function zoomOutMap() { if (map) map.zoomOut(); }
+        function resetMapView() { focusRegion('world'); }
+
+        function toggleSimulator() {
+            const modal = document.getElementById('simulatorModal');
+            modal.classList.toggle('active');
+            if (modal.classList.contains('active')) {
+                modal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // Render Master Table
+        function renderMasterTable() {
+            const tbody = document.getElementById('masterTableBody');
+            if (!tbody) return;
+
+            const query = (document.getElementById('tradeSearchInput').value || '').toLowerCase().trim();
+
+            const filtered = allItems.filter(item => {
+                let matchCat = true;
+                if (currentCategory === 'chokepoints') matchCat = item.itemType === 'chokepoint';
+                else if (currentCategory === 'shipping_lanes') matchCat = item.category === 'shipping_lanes';
+                else if (currentCategory === 'energy_corridors') matchCat = item.category === 'energy_corridors';
+                else if (currentCategory === 'megaports') matchCat = item.itemType === 'megaport';
+
+                const matchSearch = !query ||
+                    item.name.toLowerCase().includes(query) ||
+                    (item.strategicSignificance && item.strategicSignificance.toLowerCase().includes(query)) ||
+                    (item.description && item.description.toLowerCase().includes(query)) ||
+                    (item.keyRole && item.keyRole.toLowerCase().includes(query));
+
+                return matchCat && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:30px; color:var(--trade-text-muted);">No maritime features match your search.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(item => {
+                let typeBadge = '';
+                let statusBadge = '';
+                let volumeText = '';
+                let descText = '';
+
+                if (item.itemType === 'chokepoint') {
+                    typeBadge = '<span class="category-badge" style="border-color:#e11d48; color:#e11d48;">Strategic Chokepoint</span>';
+                    statusBadge = `<span class="status-badge" style="background:${item.statusColor}; font-size:0.68rem; padding:2px 8px;">${item.status}</span>`;
+                    volumeText = item.transitVolume ? item.transitVolume.substring(0, 45) + '...' : 'Critical Volume';
+                    descText = item.strategicSignificance ? item.strategicSignificance.substring(0, 130) + '...' : '';
+                } else if (item.itemType === 'shipping_lane') {
+                    typeBadge = '<span class="category-badge" style="border-color:#2563eb; color:#2563eb;">Shipping Lane</span>';
+                    statusBadge = '<span class="status-badge" style="background:#2563eb; font-size:0.68rem; padding:2px 8px;">Global Artery</span>';
+                    volumeText = `${item.distanceNm} &bull; ${item.transitTimeDays}`;
+                    descText = item.description ? item.description.substring(0, 130) + '...' : '';
+                } else if (item.itemType === 'megaport') {
+                    typeBadge = '<span class="category-badge" style="border-color:#059669; color:#059669;">Megaport Hub</span>';
+                    statusBadge = '<span class="status-badge" style="background:#059669; font-size:0.68rem; padding:2px 8px;">Transshipment</span>';
+                    volumeText = item.throughputTeu ? item.throughputTeu.substring(0, 45) + '...' : '';
+                    descText = item.keyRole ? item.keyRole.substring(0, 130) + '...' : '';
+                }
+
+                return `
+                    <tr>
+                        <td style="font-weight:700;">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="background:${item.color || '#0284c7'}; color:#fff; width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem;">
+                                    <i class="fas ${item.icon || 'fa-ship'}"></i>
+                                </span>
+                                <div>
+                                    <div>${item.name}</div>
+                                    <small style="color:var(--trade-text-muted);">${item.waterwaysConnected || item.country || item.code || ''}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>${typeBadge}</td>
+                        <td>${statusBadge}</td>
+                        <td>${volumeText}</td>
+                        <td style="max-width:320px; font-size:0.83rem; line-height:1.5;">${descText}</td>
+                        <td>
+                            <button type="button" class="table-btn" onclick="scrollToMapAndSelect('${item.id}')">
+                                <i class="fas fa-crosshairs"></i> Inspect
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function scrollToMapAndSelect(itemId) {
+            const item = allItems.find(i => i.id === itemId);
+            if (!item) return;
+
+            document.getElementById('tradeMapContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            selectItem(item, true);
+        }
+
+        // Quiz Mode
+        function toggleQuizMode() {
+            isQuizMode = !isQuizMode;
+            const banner = document.getElementById('quizBanner');
+            const btnText = document.getElementById('quizBtnText');
+
+            if (isQuizMode) {
+                banner.classList.add('active');
+                btnText.textContent = 'Exit Quiz Mode';
+                quizScore = 0;
+                quizTotal = 0;
+                nextQuizQuestion();
+            } else {
+                banner.classList.remove('active');
+                btnText.textContent = 'Start Trade Quiz';
+                quizTarget = null;
+            }
+        }
+
+        function nextQuizQuestion() {
+            const chokepoints = window.TRADE_ROUTES_DATA.chokepoints || [];
+            if (!chokepoints.length) return;
+            const randomIndex = Math.floor(Math.random() * chokepoints.length);
+            quizTarget = chokepoints[randomIndex];
+
+            const questionElem = document.getElementById('quizPromptQuestion');
+            questionElem.innerHTML = `Target: Locate <strong>${quizTarget.name}</strong> (${quizTarget.waterwaysConnected}) on the map!`;
+        }
+
+        function handleQuizAnswer(clickedItem) {
+            if (!quizTarget) return;
+            quizTotal++;
+
+            if (clickedItem.id === quizTarget.id) {
+                quizScore++;
+                alert(`Correct! You located ${quizTarget.name}.`);
+                selectItem({ ...clickedItem, itemType: 'chokepoint' }, false);
+                nextQuizQuestion();
+            } else {
+                alert(`Incorrect! That was ${clickedItem.name}. Look for ${quizTarget.name} connecting ${quizTarget.waterwaysConnected}.`);
+            }
+
+            document.getElementById('quizScoreText').textContent = `Score: ${quizScore} / ${quizTotal}`;
+        }
+
+        // Auto Boot
+        window.addEventListener('DOMContentLoaded', initMap);
+    </script>
+</body>
+
+</html>

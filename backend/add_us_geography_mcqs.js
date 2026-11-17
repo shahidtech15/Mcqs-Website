@@ -1,0 +1,717 @@
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const Category = require('./models/Category');
+const Question = require('./models/Question');
+
+dotenv.config();
+
+const US_GEOGRAPHY_QUESTIONS = [
+  {
+    "q": "Which river is the longest river in the United States?",
+    "opts": [
+      "Mississippi River",
+      "Missouri River",
+      "Colorado River",
+      "Rio Grande"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "The Missouri River is the longest river in the United States at approximately 2,341 miles (3,767 km), flowing into the Mississippi River just north of St. Louis."
+  },
+  {
+    "q": "What is the highest mountain peak in the United States and North America?",
+    "opts": [
+      "Mount Whitney",
+      "Mount Rainier",
+      "Denali (Mount McKinley)",
+      "Mount Elbert"
+    ],
+    "ans": "C",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Denali (formerly named Mount McKinley) in the Alaska Range stands at 20,310 feet (6,190 meters) above sea level, making it the highest peak in North America."
+  },
+  {
+    "q": "What is the highest mountain peak in the contiguous (lower 48) United States?",
+    "opts": [
+      "Mount Shasta",
+      "Mount Whitney",
+      "Mount Rainier",
+      "Pikes Peak"
+    ],
+    "ans": "B",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Mount Whitney in California's Sierra Nevada range is the highest summit in the contiguous United States with an elevation of 14,505 feet (4,421 m)."
+  },
+  {
+    "q": "Which location in California is the lowest, driest, and hottest point in North America?",
+    "opts": [
+      "Salton Sea",
+      "Mojave Basin",
+      "Badwater Basin (Death Valley)",
+      "Imperial Valley"
+    ],
+    "ans": "C",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Badwater Basin in Death Valley National Park sits at 282 feet (86 m) below sea level, recording some of the hottest temperatures on Earth."
+  },
+  {
+    "q": "Which of the five Great Lakes is located entirely within the territory of the United States?",
+    "opts": [
+      "Lake Superior",
+      "Lake Huron",
+      "Lake Michigan",
+      "Lake Erie"
+    ],
+    "ans": "C",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Lake Michigan is the only one of the five Great Lakes situated completely within the borders of the United States. The other four are shared with Canada."
+  },
+  {
+    "q": "What is the largest of the Great Lakes by both surface area and volume?",
+    "opts": [
+      "Lake Superior",
+      "Lake Huron",
+      "Lake Michigan",
+      "Lake Ontario"
+    ],
+    "ans": "A",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Lake Superior is the world's largest freshwater lake by surface area (31,700 sq mi / 82,103 km²) and the largest Great Lake by volume."
+  },
+  {
+    "q": "Which state is the largest in terms of total land area in the United States?",
+    "opts": [
+      "Texas",
+      "California",
+      "Montana",
+      "Alaska"
+    ],
+    "ans": "D",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Alaska is by far the largest US state by area, covering approximately 665,384 square miles—more than double the size of Texas."
+  },
+  {
+    "q": "Which state has the smallest land area among all 50 US states?",
+    "opts": [
+      "Delaware",
+      "Rhode Island",
+      "Connecticut",
+      "Hawaii"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Rhode Island is the smallest US state, covering an area of approximately 1,214 square miles (3,144 km²)."
+  },
+  {
+    "q": "What is the deepest lake in the United States?",
+    "opts": [
+      "Lake Tahoe",
+      "Crater Lake",
+      "Lake Chelan",
+      "Lake Superior"
+    ],
+    "ans": "B",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Crater Lake in southwestern Oregon is the deepest lake in the US at 1,943 feet (592 m), formed by the collapse of Mount Mazama volcano ~7,700 years ago."
+  },
+  {
+    "q": "Which river carved the world-famous Grand Canyon in northern Arizona?",
+    "opts": [
+      "Snake River",
+      "Rio Grande",
+      "Colorado River",
+      "Columbia River"
+    ],
+    "ans": "C",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "The Colorado River carved the Grand Canyon over millions of years, cutting through nearly two billion years of Earth's geological history."
+  },
+  {
+    "q": "The Four Corners Monument marks the quadripoint where which four US states meet?",
+    "opts": [
+      "Utah, Colorado, Arizona, New Mexico",
+      "Nevada, Utah, Arizona, California",
+      "Idaho, Wyoming, Utah, Colorado",
+      "Montana, Wyoming, South Dakota, North Dakota"
+    ],
+    "ans": "A",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "The Four Corners is the only location in the United States where four states—Arizona, Colorado, New Mexico, and Utah—meet at a single point."
+  },
+  {
+    "q": "Which US state has the longest total ocean coastline?",
+    "opts": [
+      "Florida",
+      "California",
+      "Hawaii",
+      "Alaska"
+    ],
+    "ans": "D",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Alaska has 6,640 miles of coastline, and when tidal shoreline (islands, bays, inlets) is included, it exceeds 33,900 miles—more than all other 49 states combined."
+  },
+  {
+    "q": "Which is the only US state that borders exactly one other US state?",
+    "opts": [
+      "Maine",
+      "Florida",
+      "Washington",
+      "Rhode Island"
+    ],
+    "ans": "A",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Maine borders only one other US state—New Hampshire—to its west, while bordering the Canadian provinces of Quebec and New Brunswick."
+  },
+  {
+    "q": "The Appalachian Mountains stretch from which southern US state northward into Canada?",
+    "opts": [
+      "Georgia",
+      "Alabama",
+      "Tennessee",
+      "North Carolina"
+    ],
+    "ans": "B",
+    "diff": "Hard",
+    "subCat": "United States Geography",
+    "exp": "The Appalachian chain extends approximately 1,500 miles from central Alabama in the southern United States northeast to Newfoundland in Canada."
+  },
+  {
+    "q": "Which mountain range forms the principal 'Continental Divide' of the Americas in the western United States?",
+    "opts": [
+      "Sierra Nevada",
+      "Cascade Range",
+      "Rocky Mountains",
+      "Appalachian Mountains"
+    ],
+    "ans": "C",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "The Rocky Mountains host the Continental Divide, separating water drainage flowing into the Atlantic/Arctic oceans from drainage flowing to the Pacific Ocean."
+  },
+  {
+    "q": "What is the capital of the United States, which is a federal district and not part of any state?",
+    "opts": [
+      "New York City",
+      "Philadelphia",
+      "Washington, D.C.",
+      "Boston"
+    ],
+    "ans": "C",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Washington, District of Columbia (D.C.) is the federal capital of the United States, established under Article I of the US Constitution."
+  },
+  {
+    "q": "On which river is the federal capital, Washington, D.C., located?",
+    "opts": [
+      "Delaware River",
+      "Hudson River",
+      "Potomac River",
+      "Susquehanna River"
+    ],
+    "ans": "C",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Washington, D.C., is situated along the Potomac River, which separates it from the state of Virginia to its south and west."
+  },
+  {
+    "q": "Which US state is the most populous in the nation?",
+    "opts": [
+      "Texas",
+      "Florida",
+      "New York",
+      "California"
+    ],
+    "ans": "D",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "California is the most populous US state with approximately 39 million residents, followed by Texas and Florida."
+  },
+  {
+    "q": "Which US state has the smallest population among all 50 states?",
+    "opts": [
+      "Vermont",
+      "Wyoming",
+      "Alaska",
+      "North Dakota"
+    ],
+    "ans": "B",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Wyoming is the least populous US state, with an estimated population of fewer than 585,000 residents."
+  },
+  {
+    "q": "Yellowstone National Park, established in 1872 as the world's first national park, is primarily located in which state?",
+    "opts": [
+      "Montana",
+      "Wyoming",
+      "Idaho",
+      "Colorado"
+    ],
+    "ans": "B",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Approximately 96% of Yellowstone National Park is located in northwestern Wyoming, with small portions extending into Montana (3%) and Idaho (1%)."
+  },
+  {
+    "q": "The famous hydrothermal feature 'Old Faithful' is located in which US National Park?",
+    "opts": [
+      "Yosemite National Park",
+      "Yellowstone National Park",
+      "Glacier National Park",
+      "Grand Teton National Park"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Old Faithful is a cone geyser in Yellowstone National Park, Wyoming, famous for its highly predictable and frequent eruptions."
+  },
+  {
+    "q": "Which river forms a major segment of the international border between the United States (Texas) and Mexico?",
+    "opts": [
+      "Colorado River",
+      "Rio Grande",
+      "Gila River",
+      "Pecos River"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "The Rio Grande (known as Río Bravo in Mexico) defines approximately 1,250 miles of the US-Mexico international border along Texas."
+  },
+  {
+    "q": "What is the longest international land border in the world?",
+    "opts": [
+      "Russia–China border",
+      "Argentina–Chile border",
+      "Canada–United States border",
+      "Russia–Kazakhstan border"
+    ],
+    "ans": "C",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "The Canada–United States border is the longest international land border in the world, spanning 5,525 miles (8,891 km), including Alaska's border."
+  },
+  {
+    "q": "Which unique subtropical wetland ecosystem, nicknamed 'The River of Grass', covers southern Florida?",
+    "opts": [
+      "The Okefenokee Swamp",
+      "The Everglades",
+      "The Atchafalaya Basin",
+      "The Great Dismal Swamp"
+    ],
+    "ans": "B",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "The Florida Everglades is a unique, slow-moving shallow river of grass draining Lake Okeechobee south into Florida Bay."
+  },
+  {
+    "q": "Which US state has the greatest number of National Parks (9 national parks)?",
+    "opts": [
+      "Alaska",
+      "Utah",
+      "California",
+      "Colorado"
+    ],
+    "ans": "C",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "California has 9 national parks (including Yosemite, Death Valley, Sequoia, Joshua Tree, and Redwood), the most of any state, followed by Alaska with 8."
+  },
+  {
+    "q": "In which US state is the Great Salt Lake, the largest saltwater lake in the Western Hemisphere, located?",
+    "opts": [
+      "Nevada",
+      "Utah",
+      "Arizona",
+      "New Mexico"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "The Great Salt Lake is located in northern Utah and is a remnant of the prehistoric Lake Bonneville."
+  },
+  {
+    "q": "Which narrow strait separates the Seward Peninsula of Alaska (USA) from the Chukchi Peninsula of Russia?",
+    "opts": [
+      "Bering Strait",
+      "Cook Inlet",
+      "Davis Strait",
+      "Strait of Juan de Fuca"
+    ],
+    "ans": "A",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "The Bering Strait connects the Bering Sea to the Arctic Ocean, separating the US and Russia by only about 51 miles (82 km) at its narrowest point."
+  },
+  {
+    "q": "What major transform fault line extends roughly 750 miles through coastal California?",
+    "opts": [
+      "New Madrid Fault",
+      "Cascadia Subduction Zone",
+      "San Andreas Fault",
+      "Wasatch Fault"
+    ],
+    "ans": "C",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "The San Andreas Fault forms the tectonic boundary between the Pacific Plate and the North American Plate through California."
+  },
+  {
+    "q": "Which stratovolcano in Washington state violently erupted on May 18, 1980, significantly altering the surrounding geography?",
+    "opts": [
+      "Mount Rainier",
+      "Mount St. Helens",
+      "Mount Hood",
+      "Mount Adams"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Mount St. Helens in the Cascade Range erupted in May 1980, blowing off its northern face and reducing its elevation from 9,677 ft to 8,363 ft."
+  },
+  {
+    "q": "What is the largest island in the United States by land area?",
+    "opts": [
+      "Oahu (Hawaii)",
+      "Kodiak Island (Alaska)",
+      "Long Island (New York)",
+      "Island of Hawaii (Big Island)"
+    ],
+    "ans": "D",
+    "diff": "Hard",
+    "subCat": "United States Geography",
+    "exp": "The Island of Hawaii (the 'Big Island') is the largest island in the US, covering 4,028 square miles, followed closely by Kodiak Island in Alaska (3,588 sq mi)."
+  },
+  {
+    "q": "Measured from its underwater base on the ocean floor to its peak, which Hawaiian volcano is the tallest mountain on Earth?",
+    "opts": [
+      "Mauna Loa",
+      "Kilauea",
+      "Mauna Kea",
+      "Haleakala"
+    ],
+    "ans": "C",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Mauna Kea rises 13,803 ft above sea level, but measured from its underwater base on the Pacific floor, it stands over 33,000 ft (10,000 m) tall."
+  },
+  {
+    "q": "Which major desert in the southwestern US is famous as the native habitat of the giant Saguaro cactus?",
+    "opts": [
+      "Mojave Desert",
+      "Chihuahuan Desert",
+      "Sonoran Desert",
+      "Great Basin Desert"
+    ],
+    "ans": "C",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "The Sonoran Desert, covering parts of Arizona and California, is the only place in the world where the giant Saguaro cactus grows naturally in the wild."
+  },
+  {
+    "q": "The region in the central United States known for the highest frequency of destructive tornadoes is called:",
+    "opts": [
+      "Hurricane Alley",
+      "Tornado Alley",
+      "The Cyclone Belt",
+      "Twister Valley"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Tornado Alley encompasses the Great Plains (including Texas, Oklahoma, Kansas, and Nebraska) where warm Gulf air collides with cold Canadian air."
+  },
+  {
+    "q": "Niagara Falls sits on the international border between Ontario, Canada, and which US state?",
+    "opts": [
+      "Pennsylvania",
+      "New York",
+      "Michigan",
+      "Ohio"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Niagara Falls is located on the Niagara River between the state of New York and the province of Ontario, linking Lake Erie to Lake Ontario."
+  },
+  {
+    "q": "Which river is the largest river in North America flowing into the Pacific Ocean?",
+    "opts": [
+      "Colorado River",
+      "Columbia River",
+      "Yukon River",
+      "Fraser River"
+    ],
+    "ans": "B",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "The Columbia River flows from the Canadian Rockies through Washington and Oregon into the Pacific, boasting the greatest discharge of any US Pacific river."
+  },
+  {
+    "q": "What is the longest known cave system in the world, located in west-central Kentucky?",
+    "opts": [
+      "Carlsbad Caverns",
+      "Mammoth Cave",
+      "Luray Caverns",
+      "Wind Cave"
+    ],
+    "ans": "B",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Mammoth Cave National Park preserves the world's longest known cave system, with over 426 miles (686 km) of explored passageways."
+  },
+  {
+    "q": "What is the largest estuary in the United States, bounded by Maryland and Virginia?",
+    "opts": [
+      "Puget Sound",
+      "San Francisco Bay",
+      "Chesapeake Bay",
+      "Tampa Bay"
+    ],
+    "ans": "C",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "The Chesapeake Bay is the largest estuary in the United States, spanning roughly 200 miles long and fed by over 150 rivers and streams."
+  },
+  {
+    "q": "In which US state are the Black Hills and the Mount Rushmore National Memorial located?",
+    "opts": [
+      "North Dakota",
+      "South Dakota",
+      "Wyoming",
+      "Montana"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Mount Rushmore is carved into the granite rock of the Black Hills in Pennington County, South Dakota."
+  },
+  {
+    "q": "The continuous 2,190-mile Appalachian National Scenic Trail connects Springer Mountain in Georgia to which mountain peak in Maine?",
+    "opts": [
+      "Mount Washington",
+      "Mount Katahdin",
+      "Mount Mansfield",
+      "Mount Marcy"
+    ],
+    "ans": "B",
+    "diff": "Hard",
+    "subCat": "United States Geography",
+    "exp": "The Appalachian Trail terminates at its northern terminus on Mount Katahdin (5,269 ft) in Baxter State Park, Maine."
+  },
+  {
+    "q": "Which state is known geographically as the 'Land of 10,000 Lakes'?",
+    "opts": [
+      "Wisconsin",
+      "Michigan",
+      "Minnesota",
+      "Maine"
+    ],
+    "ans": "C",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Minnesota is officially nicknamed the 'Land of 10,000 Lakes' because it contains 11,842 lakes measuring 10 acres or larger."
+  },
+  {
+    "q": "Which five US states border the Gulf of Mexico?",
+    "opts": [
+      "Texas, Louisiana, Mississippi, Alabama, Florida",
+      "Texas, Oklahoma, Louisiana, Georgia, Florida",
+      "California, Arizona, New Mexico, Texas, Louisiana",
+      "North Carolina, South Carolina, Georgia, Florida, Alabama"
+    ],
+    "ans": "A",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "The five US Gulf Coast states are Texas, Louisiana, Mississippi, Alabama, and Florida."
+  },
+  {
+    "q": "The Great Basin, a large arid endorheic watershed where no surface water reaches the ocean, covers most of which state?",
+    "opts": [
+      "Arizona",
+      "Nevada",
+      "New Mexico",
+      "Idaho"
+    ],
+    "ans": "B",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "The Great Basin covers nearly all of Nevada, where rivers and streams drain into internal sinks and evaporating saline lakes."
+  },
+  {
+    "q": "Which volcanic peak is the highest mountain in the state of Washington and the Cascade Range?",
+    "opts": [
+      "Mount Shasta",
+      "Mount Hood",
+      "Mount Rainier",
+      "Mount Baker"
+    ],
+    "ans": "C",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Mount Rainier (14,411 ft / 4,392 m) is an active stratovolcano and the highest summit in Washington state and the Cascade Range."
+  },
+  {
+    "q": "Which territory is the most populous unincorporated territory of the United States?",
+    "opts": [
+      "Guam",
+      "Puerto Rico",
+      "U.S. Virgin Islands",
+      "American Samoa"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Puerto Rico in the Caribbean is the most populous US territory, with a population of approximately 3.2 million American citizens."
+  },
+  {
+    "q": "Which US river flows through the Grand Canyon and fills both Lake Mead and Lake Powell reservoirs?",
+    "opts": [
+      "Snake River",
+      "Colorado River",
+      "Rio Grande",
+      "Platte River"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "The Colorado River was dammed to form Lake Powell (by Glen Canyon Dam) and Lake Mead (by Hoover Dam), supplying water across the American Southwest."
+  },
+  {
+    "q": "In which California national park is General Sherman, the world's largest living single-stem tree by volume, found?",
+    "opts": [
+      "Yosemite National Park",
+      "Sequoia National Park",
+      "Redwood National Park",
+      "Kings Canyon National Park"
+    ],
+    "ans": "B",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "The General Sherman giant sequoia tree in Sequoia National Park, California, is estimated at ~52,500 cubic feet (1,487 m³) in volume."
+  },
+  {
+    "q": "What is the name of the prominent bay and fjord-like estuary located in western Washington state, connecting to the Pacific via the Strait of Juan de Fuca?",
+    "opts": [
+      "San Francisco Bay",
+      "Puget Sound",
+      "Chesapeake Bay",
+      "Monterey Bay"
+    ],
+    "ans": "B",
+    "diff": "Medium",
+    "subCat": "United States Geography",
+    "exp": "Puget Sound is an extensive inlet of the Pacific Ocean in northwestern Washington, serving cities including Seattle, Tacoma, and Olympia."
+  },
+  {
+    "q": "Which river basin is the second longest in the United States, flowing from Minnesota to the Gulf of Mexico?",
+    "opts": [
+      "Missouri River",
+      "Mississippi River",
+      "Yukon River",
+      "Rio Grande"
+    ],
+    "ans": "B",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "The Mississippi River is the second longest US river at 2,340 miles, but possesses the greatest discharge volume of any river system in North America."
+  },
+  {
+    "q": "Which US state consists entirely of an archipelago located in the central Pacific Ocean?",
+    "opts": [
+      "Alaska",
+      "Florida",
+      "Hawaii",
+      "Puerto Rico"
+    ],
+    "ans": "C",
+    "diff": "Easy",
+    "subCat": "United States Geography",
+    "exp": "Hawaii was admitted as the 50th US state in August 1959 and is the only island state in the nation, located in Polynesia/Oceania."
+  },
+  {
+    "q": "Which extensive upland plateau region spans across southern Missouri, northern Arkansas, and parts of Oklahoma and Kansas?",
+    "opts": [
+      "The Piedmont",
+      "The Cumberland Plateau",
+      "The Ozarks (Ozark Plateau)",
+      "The Colorado Plateau"
+    ],
+    "ans": "C",
+    "diff": "Hard",
+    "subCat": "United States Geography",
+    "exp": "The Ozarks, also called the Ozark Mountains or Ozark Plateau, is a physiographic highland region covering large portions of Missouri and Arkansas."
+  }
+];
+
+const seedUSGeography = async () => {
+  try {
+    console.log('Connecting to MongoDB for US Geography Seeding...');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mcqs_db');
+    console.log('MongoDB Connected.');
+
+    // 1. Find or create Geography category
+    let geogCategory = await Category.findOne({ name: 'Geography' });
+    if (!geogCategory) {
+      geogCategory = await Category.create({
+        name: 'Geography',
+        description: 'Physical, political & human geography of World, Pakistan, and United States'
+      });
+      console.log('Created Geography category.');
+    }
+
+    const geogId = geogCategory._id;
+
+    // 2. Format questions
+    const formatted = US_GEOGRAPHY_QUESTIONS.map(item => ({
+      questionText: item.q,
+      options: {
+        A: item.opts[0],
+        B: item.opts[1],
+        C: item.opts[2],
+        D: item.opts[3]
+      },
+      correctAnswer: item.ans,
+      explanation: item.exp,
+      category: geogId,
+      subCategory: item.subCat,
+      difficulty: item.diff
+    }));
+
+    // 3. Insert without duplicate questionText
+    let inserted = 0;
+    for (const q of formatted) {
+      const exists = await Question.findOne({ questionText: q.questionText });
+      if (!exists) {
+        await Question.create(q);
+        inserted++;
+      }
+    }
+
+    console.log(`Successfully seeded ${inserted} new United States Geography MCQs (Total pool: ${formatted.length})!`);
+    process.exit(0);
+  } catch (err) {
+    console.error('Error seeding US geography MCQs:', err);
+    process.exit(1);
+  }
+};
+
+if (require.main === module) {
+  seedUSGeography();
+}
+
+module.exports = US_GEOGRAPHY_QUESTIONS;

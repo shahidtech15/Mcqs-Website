@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="1,000 High-Yield Islamiat (Islamic Studies) MCQs with comprehensive answers and authentic explanations for CSS, PMS, SPSC CCE, FPSC, PPSC, KPPSC, NTS, and competitive exams. Complete coverage across the Holy Quran, Seerat-un-Nabi, Islamic Battles, Caliphate, Pillars of Islam, Hadith, Fiqh, Prophets, and Islamic Civilization.">
+    <meta name="keywords"
+        content="Islamiat MCQs 1000, Islamic Studies MCQs CSS, Islamic Studies Past Papers FPSC, Quran MCQs, Seerat un Nabi MCQs, Khulafa e Rashideen MCQs, Arkan e Islam MCQs, Hadith Fiqh MCQs, SPSC CCE Islamiat, Islamic History MCQs">
+    <title>1,000 High-Yield Islamiat MCQs Bank | CSS, PMS, SPSC &amp; FPSC Islamic Studies Preparation</title>
+    <link rel="canonical" href="https://cssprepcentral.com/islamiat-mcqs.html">
+
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if (localStorage.getItem('mcqs_dark_mode') === 'true') document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --islam-emerald-dark: #064e3b;
+            --islam-emerald-primary: #059669;
+            --islam-emerald-light: #10b981;
+            --islam-emerald-subtle: #ecfdf5;
+            --islam-gold: #d97706;
+            --islam-gold-light: #fef3c7;
+        }
+
+        .dark-mode {
+            --islam-emerald-dark: #022c22;
+            --islam-emerald-primary: #10b981;
+            --islam-emerald-light: #34d399;
+            --islam-emerald-subtle: #064e3b;
+            --islam-gold: #f59e0b;
+            --islam-gold-light: #78350f;
+        }
+
+        .isl-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px 20px 80px;
+        }
+
+        /* Hero Header */
+        .isl-hero {
+            background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #0d9488 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 44px 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 12px 35px rgba(5, 150, 105, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .isl-hero::after {
+            content: '﷽';
+            font-family: 'Amiri', serif;
+            position: absolute;
+            right: 20px;
+            bottom: -20px;
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .isl-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(8px);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .isl-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+
+        .isl-hero p {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            max-width: 860px;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 24px;
+        }
+
+        .isl-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            margin-top: 10px;
+        }
+
+        .isl-stat-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 18px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .isl-stat-number {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #fef08a;
+            font-family: 'Outfit', sans-serif;
+            display: block;
+        }
+
+        .isl-stat-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Filter & Search Bar */
+        .isl-controls {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .isl-search-box {
+            flex: 1 1 320px;
+            position: relative;
+        }
+
+        .isl-search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color, #cbd5e1);
+            background: var(--bg-color, #f8fafc);
+            color: var(--text-color, #1e293b);
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+        }
+
+        .isl-search-box input:focus {
+            outline: none;
+            border-color: var(--islam-emerald-primary);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+            background: #ffffff;
+        }
+
+        .isl-search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .isl-filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .isl-select {
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color, #cbd5e1);
+            background: var(--bg-color, #f8fafc);
+            color: var(--text-color, #1e293b);
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .isl-quiz-btn {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: #ffffff !important;
+            padding: 11px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .isl-quiz-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(5, 150, 105, 0.35);
+        }
+
+        /* Subcategory Quick Tabs */
+        .isl-subcats-bar {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            scrollbar-width: thin;
+        }
+
+        .isl-subcat-pill {
+            padding: 7px 15px;
+            border-radius: 20px;
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            color: var(--text-color, #475569);
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .isl-subcat-pill:hover,
+        .isl-subcat-pill.active {
+            background: var(--islam-emerald-primary);
+            color: #ffffff;
+            border-color: var(--islam-emerald-primary);
+            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.2);
+        }
+
+        /* Question Cards */
+        .isl-mcq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .isl-mcq-card {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+            position: relative;
+        }
+
+        .isl-mcq-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            border-color: #cbd5e1;
+        }
+
+        .isl-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .isl-qnum {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #047857;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .isl-card-meta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .isl-badge-subcat {
+            background: var(--islam-emerald-subtle);
+            color: var(--islam-emerald-primary);
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 20px;
+        }
+
+        .isl-badge-diff {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .diff-easy { background: #dcfce7; color: #15803d; }
+        .diff-medium { background: #fef3c7; color: #b45309; }
+        .diff-hard { background: #fee2e2; color: #b91c1c; }
+
+        .dark-mode .diff-easy { background: #064e3b; color: #86efac; }
+        .dark-mode .diff-medium { background: #78350f; color: #fde68a; }
+        .dark-mode .diff-hard { background: #7f1d1d; color: #fca5a5; }
+
+        .isl-qtext {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.55;
+            color: var(--text-color, #0f172a);
+            margin-bottom: 18px;
+        }
+
+        .isl-options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .isl-opt {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color, #e2e8f0);
+            background: var(--bg-color, #f8fafc);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: var(--text-color, #334155);
+            transition: all 0.2s ease;
+        }
+
+        .isl-opt-letter {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #334155;
+            font-weight: 700;
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .dark-mode .isl-opt-letter {
+            background: #334155;
+            color: #e2e8f0;
+        }
+
+        .isl-opt.correct {
+            background: #ecfdf5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+            font-weight: 600;
+        }
+
+        .isl-opt.correct .isl-opt-letter {
+            background: #10b981 !important;
+            color: #ffffff !important;
+        }
+
+        .dark-mode .isl-opt.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: #34d399 !important;
+            color: #6ee7b7 !important;
+        }
+
+        .isl-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px dashed var(--border-color, #e2e8f0);
+            padding-top: 14px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .isl-toggle-btn {
+            background: transparent;
+            border: 1px solid var(--border-color, #cbd5e1);
+            color: var(--islam-emerald-primary);
+            font-weight: 700;
+            font-size: 0.84rem;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .isl-toggle-btn:hover {
+            background: var(--islam-emerald-subtle);
+            border-color: var(--islam-emerald-primary);
+        }
+
+        .isl-explanation-box {
+            display: none;
+            margin-top: 14px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            background: #f0fdf4;
+            border-left: 4px solid #059669;
+            color: #14532d;
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+
+        .dark-mode .isl-explanation-box {
+            background: #022c22;
+            border-left-color: #10b981;
+            color: #d1fae5;
+        }
+
+        .isl-explanation-box strong {
+            color: #047857;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .dark-mode .isl-explanation-box strong {
+            color: #6ee7b7;
+        }
+
+        /* Pagination */
+        .isl-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 36px;
+            flex-wrap: wrap;
+        }
+
+        .isl-page-btn {
+            padding: 8px 14px;
+            border-radius: 8px;
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            color: var(--text-color, #334155);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .isl-page-btn:hover:not(:disabled) {
+            background: var(--islam-emerald-primary);
+            color: #ffffff;
+            border-color: var(--islam-emerald-primary);
+        }
+
+        .isl-page-btn.active {
+            background: var(--islam-emerald-primary);
+            color: #ffffff;
+            border-color: var(--islam-emerald-primary);
+        }
+
+        .isl-page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .isl-page-info {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 600;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .isl-hero { padding: 30px 20px; }
+            .isl-hero h1 { font-size: 1.7rem; }
+            .isl-controls { flex-direction: column; align-items: stretch; }
+            .isl-options-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="islamiat-mcqs.html" class="active" style="font-weight:700; color:#047857;"><i class="fa-solid fa-kaaba"></i> Islamiat (1,000) <span style="background:#10b981; color:#fff; font-size:0.65rem; padding:1px 5px; border-radius:4px;">1,000+</span></a>
+                <a href="quiz.html?categoryId=cat_islam&categoryName=Islamiat" style="font-weight:700; color:#0d9488;"><i class="fa-solid fa-bolt"></i> Islamiat Quiz</a>
+                <a href="recruitment-prep.html"><i class="fa-solid fa-briefcase"></i> Recruitment Prep</a>
+                <a href="recruitment-prep.html#latest-jobs" style="color:#e11d48; font-weight:700;"><i class="fa-solid fa-bullhorn"></i> Jobs</a>
+                <a href="scholarships.html"><i class="fa-solid fa-graduation-cap"></i> Scholarships</a>
+                <a href="international-relations-essays.html"><i class="fa-solid fa-globe"></i> IR Essays</a>
+                <a href="global-security-conflict-essays.html"><i class="fa-solid fa-shield-halved"></i> Global Security</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="quiz.html">All Quizzes</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="isl-container">
+        <!-- Hero Masthead -->
+        <section class="isl-hero">
+            <div class="isl-badge">
+                <i class="fa-solid fa-star-and-crescent"></i> Complete Competitive Exam Master Repository
+            </div>
+            <h1>1,000 High-Yield Islamiat (Islamic Studies) MCQs</h1>
+            <p>
+                Authoritative, verified, and complete Islamic Studies question bank for CSS, PMS, SPSC CCE, FPSC, PPSC, KPPSC, BPSC, NTS, and recruitment screening tests. Includes full historical context, Quranic ayat references, Sahih Hadith citations, and detailed analytical rationales.
+            </p>
+            <div class="isl-stats-grid">
+                <div class="isl-stat-card">
+                    <span class="isl-stat-number">1,000</span>
+                    <span class="isl-stat-label">Verified MCQs</span>
+                </div>
+                <div class="isl-stat-card">
+                    <span class="isl-stat-number">10</span>
+                    <span class="isl-stat-label">Core Modules</span>
+                </div>
+                <div class="isl-stat-card">
+                    <span class="isl-stat-number">100%</span>
+                    <span class="isl-stat-label">Detailed Explanations</span>
+                </div>
+                <div class="isl-stat-card">
+                    <span class="isl-stat-number">CSS / PMS</span>
+                    <span class="isl-stat-label">Exam Syllabus Match</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subcategories Bar -->
+        <div class="isl-subcats-bar" id="subcatsBar">
+            <button class="isl-subcat-pill active" data-subcat="ALL">All 10 Modules (1,000)</button>
+            <button class="isl-subcat-pill" data-subcat="Holy Quran & Quranic Sciences">Holy Quran (120)</button>
+            <button class="isl-subcat-pill" data-subcat="Seerat-un-Nabi (PBUH) - Makkan Era">Seerat: Makkan Era (100)</button>
+            <button class="isl-subcat-pill" data-subcat="Seerat-un-Nabi (PBUH) - Madani Era">Seerat: Madani Era (100)</button>
+            <button class="isl-subcat-pill" data-subcat="Islamic Battles (Ghazwat & Saraya)">Islamic Battles (100)</button>
+            <button class="isl-subcat-pill" data-subcat="Rightly Guided Caliphate (Khulafa-e-Rashideen)">Khulafa-e-Rashideen (120)</button>
+            <button class="isl-subcat-pill" data-subcat="Pillars of Islam (Arkan-e-Islam & Worship)">Arkan-e-Islam (120)</button>
+            <button class="isl-subcat-pill" data-subcat="Hadith, Sunnah & Compilation">Hadith &amp; Sunnah (100)</button>
+            <button class="isl-subcat-pill" data-subcat="Islamic Jurisprudence (Fiqh & Sharia)">Fiqh &amp; Sharia (80)</button>
+            <button class="isl-subcat-pill" data-subcat="Prophets in Islam (Qisas al-Anbiya)">Prophets &amp; Theology (100)</button>
+            <button class="isl-subcat-pill" data-subcat="Companions & Islamic Civilization">Sahaba &amp; Civilization (60)</button>
+        </div>
+
+        <!-- Interactive Controls -->
+        <div class="isl-controls">
+            <div class="isl-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="islSearchInput" placeholder="Search 1,000 questions, keywords, companions, battles, or ayat...">
+            </div>
+            <div class="isl-filter-group">
+                <select id="islDiffFilter" class="isl-select">
+                    <option value="ALL">All Difficulties</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+                <select id="islPageSize" class="isl-select">
+                    <option value="25">25 per page</option>
+                    <option value="50">50 per page</option>
+                    <option value="100">100 per page</option>
+                    <option value="ALL">Show All</option>
+                </select>
+                <a href="quiz.html?categoryId=cat_islam&categoryName=Islamiat" class="isl-quiz-btn">
+                    <i class="fa-solid fa-play"></i> Launch Timed Quiz
+                </a>
+            </div>
+        </div>
+
+        <!-- Results Counter -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; font-size:0.9rem; color:#64748b; font-weight:600;">
+            <span id="resultsCount">Loading 1,000 questions...</span>
+            <button id="toggleAllAnswersBtn" class="isl-toggle-btn">
+                <i class="fa-regular fa-eye"></i> Show All Answers
+            </button>
+        </div>
+
+        <!-- Question List -->
+        <div class="isl-mcq-list" id="mcqContainer">
+            <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="isl-pagination" id="paginationContainer">
+            <!-- Rendered dynamically -->
+        </div>
+    </main>
+
+    <!-- Standard 4-Column Legal Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <div class="logo">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </div>
+                <p class="footer-desc">
+                    Pakistan's premier open-access competitive examinations repository and academic civil services resource. Providing high-yield question banks, master-level solved CSS essays, recruitment screening preparation, and international higher education scholarship dossiers.
+                </p>
+                <p class="footer-copyright">&copy; 2026 MCQs Portal. All rights reserved.</p>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Academic Portals</h3>
+                <ul class="footer-links">
+                    <li><a href="islamiat-mcqs.html">Islamiat 1,000 Bank</a></li>
+                    <li><a href="international-relations-essays.html">International Relations (12 Essays)</a></li>
+                    <li><a href="global-security-conflict-essays.html">Global Security &amp; Warfare (12 Essays)</a></li>
+                    <li><a href="css-essays-2026.html">CSS 2026 Solved Papers</a></li>
+                    <li><a href="cce-essays-2025.html">SPSC CCE 2025 Solved</a></li>
+                    <li><a href="upsc-essays-2023.html">UPSC Mains Solved Essays</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Recruitment &amp; Tests</h3>
+                <ul class="footer-links">
+                    <li><a href="recruitment-prep.html#latest-jobs">Sindh Police Jobs (17,500+ Posts)</a></li>
+                    <li><a href="fia-sample-papers.html">FIA Assistant Director Sample Papers</a></li>
+                    <li><a href="acts-rules.html">Federal &amp; Provincial Acts</a></li>
+                    <li><a href="scholarships.html">Master's &amp; PhD Scholarships</a></li>
+                    <li><a href="quiz.html">Online Quiz Simulator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Institutional &amp; Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Our Mission</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="disclaimer.html">Academic Disclaimer</a></li>
+                    <li><a href="contact.html">Editorial &amp; Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data_islamiat_1000.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Dark Mode Toggle
+            const toggle = document.getElementById('darkModeToggle');
+            if (toggle) {
+                toggle.addEventListener('click', function () {
+                    document.documentElement.classList.toggle('dark-mode');
+                    const isDark = document.documentElement.classList.contains('dark-mode');
+                    localStorage.setItem('mcqs_dark_mode', isDark);
+                });
+            }
+
+            const allQuestions = (typeof window !== 'undefined' && Array.isArray(window.ISLAMIAT_1000_MCQS)) ? window.ISLAMIAT_1000_MCQS : [];
+            let currentFilterSubcat = 'ALL';
+            let currentFilterDiff = 'ALL';
+            let currentSearchTerm = '';
+            let currentPage = 1;
+            let pageSize = 25;
+            let allAnswersVisible = false;
+
+            const mcqContainer = document.getElementById('mcqContainer');
+            const paginationContainer = document.getElementById('paginationContainer');
+            const resultsCount = document.getElementById('resultsCount');
+            const searchInput = document.getElementById('islSearchInput');
+            const diffFilter = document.getElementById('islDiffFilter');
+            const pageSizeSelect = document.getElementById('islPageSize');
+            const subcatsBar = document.getElementById('subcatsBar');
+            const toggleAllBtn = document.getElementById('toggleAllAnswersBtn');
+
+            function getFilteredQuestions() {
+                return allQuestions.filter(q => {
+                    // Subcategory
+                    if (currentFilterSubcat !== 'ALL' && q.subCategory !== currentFilterSubcat) {
+                        return false;
+                    }
+                    // Difficulty
+                    if (currentFilterDiff !== 'ALL' && q.difficulty !== currentFilterDiff) {
+                        return false;
+                    }
+                    // Search
+                    if (currentSearchTerm) {
+                        const term = currentSearchTerm.toLowerCase();
+                        const inQ = q.questionText.toLowerCase().includes(term);
+                        const inExp = q.explanation.toLowerCase().includes(term);
+                        const inAns = q.correctAnswerText.toLowerCase().includes(term);
+                        if (!inQ && !inExp && !inAns) return false;
+                    }
+                    return true;
+                });
+            }
+
+            function render() {
+                const filtered = getFilteredQuestions();
+                const total = filtered.length;
+
+                // Update results count
+                resultsCount.textContent = `Showing ${Math.min((currentPage - 1) * pageSize + 1, total)} - ${Math.min(currentPage * pageSize, total)} of ${total} Questions`;
+
+                if (total === 0) {
+                    mcqContainer.innerHTML = `
+                        <div style="text-align:center; padding:60px 20px; background:var(--card-bg, #fff); border-radius:16px; border:1px solid #e2e8f0;">
+                            <i class="fa-solid fa-magnifying-glass" style="font-size:2.5rem; color:#94a3b8; margin-bottom:14px;"></i>
+                            <h3 style="font-size:1.2rem; font-weight:700; color:#334155; margin-bottom:8px;">No matching questions found</h3>
+                            <p style="color:#64748b; font-size:0.92rem;">Try clearing your search term or selecting another subcategory.</p>
+                        </div>
+                    `;
+                    paginationContainer.innerHTML = '';
+                    return;
+                }
+
+                // Slice page items
+                const effectivePageSize = pageSize === 'ALL' ? total : parseInt(pageSize, 10);
+                const totalPages = Math.ceil(total / effectivePageSize);
+                if (currentPage > totalPages) currentPage = 1;
+
+                const startIdx = (currentPage - 1) * effectivePageSize;
+                const endIdx = startIdx + effectivePageSize;
+                const pageItems = filtered.slice(startIdx, endIdx);
+
+                // Render Cards
+                let html = '';
+                pageItems.forEach((q, idx) => {
+                    const diffClass = `diff-${(q.difficulty || 'medium').toLowerCase()}`;
+                    const isVisible = allAnswersVisible;
+
+                    html += `
+                        <article class="isl-mcq-card" id="card-${q.questionId}">
+                            <div class="isl-card-header">
+                                <span class="isl-qnum">#${q.questionId}</span>
+                                <div class="isl-card-meta">
+                                    <span class="isl-badge-subcat">${escapeHtml(q.subCategory)}</span>
+                                    <span class="isl-badge-diff ${diffClass}">${escapeHtml(q.difficulty || 'Medium')}</span>
+                                </div>
+                            </div>
+                            <div class="isl-qtext">${escapeHtml(q.questionText)}</div>
+                            <div class="isl-options-grid">
+                                <div class="isl-opt ${isVisible && q.correctAnswer === 'A' ? 'correct' : ''}" data-opt="A">
+                                    <span class="isl-opt-letter">A</span>
+                                    <span>${escapeHtml(q.options.A)}</span>
+                                </div>
+                                <div class="isl-opt ${isVisible && q.correctAnswer === 'B' ? 'correct' : ''}" data-opt="B">
+                                    <span class="isl-opt-letter">B</span>
+                                    <span>${escapeHtml(q.options.B)}</span>
+                                </div>
+                                <div class="isl-opt ${isVisible && q.correctAnswer === 'C' ? 'correct' : ''}" data-opt="C">
+                                    <span class="isl-opt-letter">C</span>
+                                    <span>${escapeHtml(q.options.C)}</span>
+                                </div>
+                                <div class="isl-opt ${isVisible && q.correctAnswer === 'D' ? 'correct' : ''}" data-opt="D">
+                                    <span class="isl-opt-letter">D</span>
+                                    <span>${escapeHtml(q.options.D)}</span>
+                                </div>
+                            </div>
+                            <div class="isl-card-footer">
+                                <button class="isl-toggle-btn" onclick="toggleAnswer(${q.questionId})">
+                                    <i class="fa-solid fa-lightbulb"></i> <span class="btn-text">${isVisible ? 'Hide Answer' : 'Show Answer & Explanation'}</span>
+                                </button>
+                                <span style="font-size:0.75rem; color:#94a3b8;"><i class="fa-solid fa-shield-halved"></i> CSS/PMS Question Bank</span>
+                            </div>
+                            <div class="isl-explanation-box" id="exp-${q.questionId}" style="display:${isVisible ? 'block' : 'none'};">
+                                <strong><i class="fa-solid fa-circle-check"></i> Correct Answer: (${q.correctAnswer}) ${escapeHtml(q.correctAnswerText)}</strong>
+                                ${escapeHtml(q.explanation)}
+                            </div>
+                        </article>
+                    `;
+                });
+                mcqContainer.innerHTML = html;
+
+                // Render Pagination
+                renderPagination(totalPages);
+            }
+
+            function renderPagination(totalPages) {
+                if (totalPages <= 1) {
+                    paginationContainer.innerHTML = '';
+                    return;
+                }
+
+                let phtml = '';
+                phtml += `<button class="isl-page-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(1)"><i class="fa-solid fa-angles-left"></i></button>`;
+                phtml += `<button class="isl-page-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})"><i class="fa-solid fa-chevron-left"></i></button>`;
+
+                const startP = Math.max(1, currentPage - 2);
+                const endP = Math.min(totalPages, currentPage + 2);
+
+                for (let p = startP; p <= endP; p++) {
+                    phtml += `<button class="isl-page-btn ${p === currentPage ? 'active' : ''}" onclick="changePage(${p})">${p}</button>`;
+                }
+
+                phtml += `<button class="isl-page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})"><i class="fa-solid fa-chevron-right"></i></button>`;
+                phtml += `<button class="isl-page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${totalPages})"><i class="fa-solid fa-angles-right"></i></button>`;
+
+                phtml += `<span class="isl-page-info">Page ${currentPage} of ${totalPages}</span>`;
+                paginationContainer.innerHTML = phtml;
+            }
+
+            window.changePage = function (page) {
+                currentPage = page;
+                render();
+                window.scrollTo({ top: mcqContainer.offsetTop - 120, behavior: 'smooth' });
+            };
+
+            window.toggleAnswer = function (id) {
+                const card = document.getElementById(`card-${id}`);
+                if (!card) return;
+                const expBox = document.getElementById(`exp-${id}`);
+                const btnText = card.querySelector('.btn-text');
+                const question = allQuestions.find(q => q.questionId === id);
+                if (!question) return;
+
+                const isShown = expBox.style.display === 'block';
+                if (isShown) {
+                    expBox.style.display = 'none';
+                    btnText.textContent = 'Show Answer & Explanation';
+                    card.querySelectorAll('.isl-opt').forEach(opt => opt.classList.remove('correct'));
+                } else {
+                    expBox.style.display = 'block';
+                    btnText.textContent = 'Hide Answer';
+                    const correctOpt = card.querySelector(`[data-opt="${question.correctAnswer}"]`);
+                    if (correctOpt) correctOpt.classList.add('correct');
+                }
+            };
+
+            toggleAllBtn.addEventListener('click', function () {
+                allAnswersVisible = !allAnswersVisible;
+                toggleAllBtn.innerHTML = allAnswersVisible ?
+                    '<i class="fa-regular fa-eye-slash"></i> Hide All Answers' :
+                    '<i class="fa-regular fa-eye"></i> Show All Answers';
+                render();
+            });
+
+            // Subcategory pill click
+            subcatsBar.addEventListener('click', function (e) {
+                const btn = e.target.closest('.isl-subcat-pill');
+                if (!btn) return;
+                subcatsBar.querySelectorAll('.isl-subcat-pill').forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilterSubcat = btn.getAttribute('data-subcat');
+                currentPage = 1;
+                render();
+            });
+
+            // Search input
+            let searchTimeout;
+            searchInput.addEventListener('input', function () {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    currentSearchTerm = searchInput.value.trim();
+                    currentPage = 1;
+                    render();
+                }, 250);
+            });
+
+            // Difficulty filter
+            diffFilter.addEventListener('change', function () {
+                currentFilterDiff = diffFilter.value;
+                currentPage = 1;
+                render();
+            });
+
+            // Page size
+            pageSizeSelect.addEventListener('change', function () {
+                pageSize = pageSizeSelect.value;
+                currentPage = 1;
+                render();
+            });
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
+            // Initial render
+            render();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+# robots.txt for CSS Prep Central & MCQs Portal
+# Accessible at https://cssprepcentral.com/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /js/admin.js
+
+# Crawl delay (optional courteous crawler directive)
+Crawl-delay: 1
+
+# XML Sitemap declaration
+Sitemap: https://cssprepcentral.com/sitemap.xml

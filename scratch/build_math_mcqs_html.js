@@ -1,0 +1,1179 @@
+// build_math_mcqs_html.js - Generator for frontend/math-mcqs.html
+const fs = require('fs');
+
+console.log('Generating frontend/math-mcqs.html...');
+
+const html = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="300+ Solved Math & Quantitative Ability MCQs with detailed step-by-step solutions for CSS General Science & Ability, PMS, FPSC, PPSC, SPSC, KPPSC, and NTS examinations. Master percentages, ages, work and time, speed-distance-time, compound interest, series, and permutations.">
+    <meta name="keywords"
+        content="Math Solved MCQs CSS, Quantitative Ability Past Papers, FPSC Math MCQs, PPSC Math MCQs, CSS General Science and Ability Math, Age Problems Solved, Work and Time Solved MCQs, Percentages Solved MCQs, Simple Compound Interest MCQs, NTS Math Past Papers">
+    <title>300+ Solved Math &amp; Quantitative Ability MCQs Bank | CSS, PMS, FPSC &amp; PPSC</title>
+    <link rel="canonical" href="https://cssprepcentral.com/math-mcqs.html">
+
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if (localStorage.getItem('mcqs_dark_mode') === 'true') document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --q-primary: #0284c7;
+            --q-primary-dark: #0369a1;
+            --q-primary-light: #f0f9ff;
+            --q-accent: #6366f1;
+            --q-success: #10b981;
+            --q-danger: #ef4444;
+            --q-card-bg: #ffffff;
+            --q-border: #e2e8f0;
+            --q-text-main: #0f172a;
+            --q-text-muted: #475569;
+            --q-code-bg: #f8fafc;
+        }
+
+        .dark-mode {
+            --q-primary: #38bdf8;
+            --q-primary-dark: #0c4a6e;
+            --q-primary-light: #082f49;
+            --q-accent: #818cf8;
+            --q-success: #34d399;
+            --q-danger: #f87171;
+            --q-card-bg: #1e293b;
+            --q-border: #334155;
+            --q-text-main: #f8fafc;
+            --q-text-muted: #94a3b8;
+            --q-code-bg: #0f172a;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--q-text-main);
+            background-color: var(--bg-color, #f8fafc);
+        }
+
+        .math-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 24px 20px 80px;
+        }
+
+        /* Hero Header */
+        .math-hero {
+            background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #4f46e5 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 44px 36px;
+            margin-bottom: 24px;
+            box-shadow: 0 12px 35px rgba(2, 132, 199, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .math-hero::after {
+            content: '∑ ∫ √';
+            font-family: 'JetBrains Mono', monospace;
+            position: absolute;
+            right: 20px;
+            bottom: -20px;
+            font-size: 7rem;
+            color: rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .math-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(8px);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .math-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+
+        .math-hero p {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            max-width: 880px;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 24px;
+        }
+
+        .math-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-top: 10px;
+        }
+
+        .math-stat-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 18px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .math-stat-number {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #bae6fd;
+            font-family: 'Outfit', sans-serif;
+            display: block;
+        }
+
+        .math-stat-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Shortcut Banner Card */
+        .shortcut-promo-banner {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            border: 1px solid #4338ca;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: 0 4px 16px rgba(49, 46, 129, 0.15);
+        }
+
+        .shortcut-promo-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .shortcut-promo-icon {
+            font-size: 2.2rem;
+            color: #fbbf24;
+        }
+
+        .shortcut-promo-text h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #ffffff;
+        }
+
+        .shortcut-promo-text p {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        .shortcut-promo-btn {
+            background: #f59e0b;
+            color: #0f172a !important;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .shortcut-promo-btn:hover {
+            background: #fbbf24;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+        }
+
+        /* Controls Section */
+        .math-controls {
+            background: var(--q-card-bg);
+            border: 1px solid var(--q-border);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .math-search-box {
+            flex: 1 1 320px;
+            position: relative;
+        }
+
+        .math-search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            border-radius: 10px;
+            border: 1px solid var(--q-border);
+            background: var(--bg-color, #f8fafc);
+            color: var(--q-text-main);
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+        }
+
+        .math-search-box input:focus {
+            outline: none;
+            border-color: var(--q-primary);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+            background: var(--q-card-bg);
+        }
+
+        .math-search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .math-filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .math-select {
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--q-border);
+            background: var(--bg-color, #f8fafc);
+            color: var(--q-text-main);
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .math-select:focus {
+            outline: none;
+            border-color: var(--q-primary);
+        }
+
+        .math-toggle-btn {
+            background: var(--q-primary-light);
+            color: var(--q-primary);
+            border: 1px solid var(--q-primary);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .math-toggle-btn:hover {
+            background: var(--q-primary);
+            color: #ffffff;
+        }
+
+        /* Subcategory Pills */
+        .math-subcat-nav {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+            scrollbar-width: thin;
+        }
+
+        .math-subcat-pill {
+            background: var(--q-card-bg);
+            border: 1px solid var(--q-border);
+            color: var(--q-text-muted);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .math-subcat-pill:hover {
+            border-color: var(--q-primary);
+            color: var(--q-primary);
+        }
+
+        .math-subcat-pill.active {
+            background: var(--q-primary);
+            border-color: var(--q-primary);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+
+        .math-subcat-pill .pill-count {
+            background: rgba(0, 0, 0, 0.08);
+            padding: 2px 7px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        .math-subcat-pill.active .pill-count {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* Questions Counter */
+        .math-results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 0.92rem;
+            color: var(--q-text-muted);
+            font-weight: 500;
+        }
+
+        /* MCQ Card Styling */
+        .math-mcq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .math-card {
+            background: var(--q-card-bg);
+            border: 1px solid var(--q-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .math-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .math-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .math-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .math-qnum {
+            background: var(--q-primary-light);
+            color: var(--q-primary);
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .math-subcat-tag {
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .dark-mode .math-subcat-tag {
+            background: #312e81;
+            color: #a5b4fc;
+        }
+
+        .math-exam-tags {
+            display: flex;
+            gap: 4px;
+        }
+
+        .math-exam-tag {
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 7px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .dark-mode .math-exam-tag {
+            background: #334155;
+            color: #cbd5e1;
+        }
+
+        .math-qtext {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            color: var(--q-text-main);
+        }
+
+        .math-options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .math-opt {
+            background: var(--bg-color, #f8fafc);
+            border: 1px solid var(--q-border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            color: var(--q-text-main);
+        }
+
+        .math-opt:hover {
+            border-color: var(--q-primary);
+            background: var(--q-primary-light);
+        }
+
+        .math-opt-key {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #475569;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .dark-mode .math-opt-key {
+            background: #334155;
+            color: #cbd5e1;
+        }
+
+        /* Option Feedback States */
+        .math-opt.selected-correct {
+            background: #ecfdf5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+        }
+
+        .math-opt.selected-correct .math-opt-key {
+            background: #10b981 !important;
+            color: #ffffff !important;
+        }
+
+        .math-opt.selected-wrong {
+            background: #fef2f2 !important;
+            border-color: #ef4444 !important;
+            color: #991b1b !important;
+        }
+
+        .math-opt.selected-wrong .math-opt-key {
+            background: #ef4444 !important;
+            color: #ffffff !important;
+        }
+
+        .math-opt.show-correct {
+            background: #f0fdf4 !important;
+            border-color: #22c55e !important;
+            color: #166534 !important;
+        }
+
+        .math-opt.show-correct .math-opt-key {
+            background: #22c55e !important;
+            color: #ffffff !important;
+        }
+
+        /* Solution Accordion */
+        .math-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px dashed var(--q-border);
+            padding-top: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .math-sol-btn {
+            background: none;
+            border: 1px solid var(--q-border);
+            color: var(--q-text-muted);
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .math-sol-btn:hover {
+            border-color: var(--q-primary);
+            color: var(--q-primary);
+        }
+
+        .math-exp-box {
+            display: none;
+            margin-top: 16px;
+            background: var(--q-code-bg);
+            border: 1px solid var(--q-border);
+            border-left: 4px solid var(--q-primary);
+            border-radius: 8px;
+            padding: 16px 18px;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: var(--q-text-main);
+        }
+
+        .math-exp-box.active {
+            display: block;
+        }
+
+        .math-exp-title {
+            font-weight: 700;
+            color: var(--q-primary);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Pagination */
+        .math-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .math-page-btn {
+            background: var(--q-card-bg);
+            border: 1px solid var(--q-border);
+            color: var(--q-text-main);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .math-page-btn:hover:not(:disabled) {
+            border-color: var(--q-primary);
+            color: var(--q-primary);
+        }
+
+        .math-page-btn.active {
+            background: var(--q-primary);
+            border-color: var(--q-primary);
+            color: #ffffff;
+        }
+
+        .math-page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .math-page-info {
+            font-size: 0.88rem;
+            color: var(--q-text-muted);
+            margin-left: 12px;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .math-hero {
+                padding: 32px 20px;
+            }
+
+            .math-hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .math-options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .shortcut-promo-banner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i> CSS Prep Central
+            </a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="math-mcqs.html" class="active">Math MCQs</a>
+                <a href="math-tricks.html">Math Tricks</a>
+                <a href="islamiat-mcqs.html">Islamiat MCQs</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="recruitment-prep.html">Latest Jobs</a>
+                <a href="scholarships.html">Scholarships</a>
+                <a href="quiz.html">Practice Quiz</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="math-container">
+        <!-- Hero Section -->
+        <section class="math-hero">
+            <div class="math-badge">
+                <i class="fas fa-calculator"></i> Quantitative Ability &bull; FPSC, PPSC, CSS &amp; PMS
+            </div>
+            <h1>300+ Solved Math &amp; Quantitative Ability MCQs Bank</h1>
+            <p>
+                A comprehensive, examination-verified collection of solved quantitative reasoning and mathematics MCQs. Features authentic questions with instant interactive testing and rigorous step-by-step mathematical explanations for CSS General Science &amp; Ability, PMS, FPSC, PPSC, SPSC, and NTS tests.
+            </p>
+            <div class="math-stats-grid">
+                <div class="math-stat-card">
+                    <span class="math-stat-number" id="hero-total-count">300</span>
+                    <span class="math-stat-label">Solved MCQs</span>
+                </div>
+                <div class="math-stat-card">
+                    <span class="math-stat-number">4</span>
+                    <span class="math-stat-label">Core Modules</span>
+                </div>
+                <div class="math-stat-card">
+                    <span class="math-stat-number">100%</span>
+                    <span class="math-stat-label">Step-by-Step Solutions</span>
+                </div>
+                <div class="math-stat-card">
+                    <span class="math-stat-number">5+</span>
+                    <span class="math-stat-label">Exam Boards Covered</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shortcut Tricks Promotion Banner -->
+        <div class="shortcut-promo-banner">
+            <div class="shortcut-promo-content">
+                <div class="shortcut-promo-icon">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                </div>
+                <div class="shortcut-promo-text">
+                    <h3>Solve These Questions in Under 15 Seconds!</h3>
+                    <p>
+                        Master 52 mental math formulas, ratio cross-multiplication shortcuts, divisibility oscillators (7, 13, 17, 19), work &amp; time multipliers, and depreciation calculators in our dedicated handbook.
+                    </p>
+                </div>
+            </div>
+            <a href="math-tricks.html" class="shortcut-promo-btn">
+                <i class="fas fa-bolt"></i> View Math Shortcuts Handbook
+            </a>
+        </div>
+
+        <!-- Controls: Search, Filters & Toggles -->
+        <section class="math-controls">
+            <div class="math-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="math-search-input" placeholder="Search questions, formulas, or concepts (e.g. sugar, ratio, train, age)...">
+            </div>
+            <div class="math-filter-group">
+                <select id="exam-filter" class="math-select">
+                    <option value="all">All Exams</option>
+                    <option value="CSS">CSS Competitive Exam</option>
+                    <option value="PMS">PMS Provincial</option>
+                    <option value="FPSC">FPSC General Recruitment</option>
+                    <option value="PPSC">PPSC Departmental</option>
+                    <option value="NTS">NTS / Screening Tests</option>
+                </select>
+                <select id="page-size-select" class="math-select">
+                    <option value="15">15 per page</option>
+                    <option value="25" selected>25 per page</option>
+                    <option value="50">50 per page</option>
+                    <option value="all">Show All</option>
+                </select>
+                <button id="toggle-all-btn" class="math-toggle-btn">
+                    <i class="far fa-eye"></i> <span id="toggle-all-text">Show All Solutions</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Subcategory Navigation Pills -->
+        <nav class="math-subcat-nav" id="subcats-bar">
+            <button class="math-subcat-pill active" data-subcat="all">
+                <i class="fas fa-layer-group"></i> All Modules <span class="pill-count" id="pill-all-count">300</span>
+            </button>
+            <button class="math-subcat-pill" data-subcat="Basic Math & IQ">
+                <i class="fas fa-brain"></i> Basic Math &amp; IQ <span class="pill-count" id="pill-iq-count">116</span>
+            </button>
+            <button class="math-subcat-pill" data-subcat="Percentages & Commercial Math">
+                <i class="fas fa-percent"></i> Percentages &amp; Commercial <span class="pill-count" id="pill-perc-count">65</span>
+            </button>
+            <button class="math-subcat-pill" data-subcat="Word Problems & Arithmetic">
+                <i class="fas fa-clock"></i> Word Problems &amp; Arithmetic <span class="pill-count" id="pill-word-count">89</span>
+            </button>
+            <button class="math-subcat-pill" data-subcat="Quantitative & Intermediate Math">
+                <i class="fas fa-square-root-variable"></i> Advanced &amp; PPSC Digest <span class="pill-count" id="pill-adv-count">30</span>
+            </button>
+        </nav>
+
+        <!-- Results Counter & Status -->
+        <div class="math-results-header">
+            <div>
+                Showing <strong id="shown-count">0</strong> of <strong id="total-filter-count">0</strong> questions
+                <span id="active-filter-label" style="margin-left: 8px; color: var(--q-primary); font-weight: 600;"></span>
+            </div>
+            <button id="reset-filters-btn" style="background: none; border: none; color: var(--q-text-muted); cursor: pointer; font-size: 0.85rem; text-decoration: underline;">
+                Reset Filters
+            </button>
+        </div>
+
+        <!-- MCQ Cards Container -->
+        <div class="math-mcq-list" id="math-mcq-container">
+            <!-- Dynamically populated by JS -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="math-pagination" id="math-pagination-container">
+            <!-- Dynamically populated by JS -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="background: #0f172a; color: #94a3b8; padding: 60px 20px 30px; margin-top: 60px; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-bottom: 40px;">
+            <div>
+                <h4 style="color: #ffffff; margin-bottom: 16px; font-family: 'Outfit', sans-serif;"><i class="fas fa-graduation-cap"></i> CSS Prep Central</h4>
+                <p style="font-size: 0.88rem; line-height: 1.6;">Pakistan's premier open-access preparation portal for CSS, PMS, FPSC, PPSC, SPSC, KPPSC, and all competitive civil service examinations.</p>
+            </div>
+            <div>
+                <h4 style="color: #ffffff; margin-bottom: 16px; font-family: 'Outfit', sans-serif;">Mathematics &amp; Ability</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2;">
+                    <li><a href="math-mcqs.html" style="color: #94a3b8; text-decoration: none;">300+ Solved Math MCQs</a></li>
+                    <li><a href="math-tricks.html" style="color: #94a3b8; text-decoration: none;">Math Shortcut Tricks Handbook</a></li>
+                    <li><a href="quiz.html" style="color: #94a3b8; text-decoration: none;">Interactive Practice Quiz</a></li>
+                    <li><a href="science-notes.html" style="color: #94a3b8; text-decoration: none;">General Science &amp; Ability Notes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ffffff; margin-bottom: 16px; font-family: 'Outfit', sans-serif;">Competitive Exam Hub</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2;">
+                    <li><a href="islamiat-mcqs.html" style="color: #94a3b8; text-decoration: none;">1,000 Islamiat MCQs Bank</a></li>
+                    <li><a href="recruitment-prep.html" style="color: #94a3b8; text-decoration: none;">Latest Jobs &amp; Recruitment</a></li>
+                    <li><a href="scholarships.html" style="color: #94a3b8; text-decoration: none;">Higher Studies Scholarships</a></li>
+                    <li><a href="written-prep.html" style="color: #94a3b8; text-decoration: none;">Written Exam Essays &amp; Outlines</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ffffff; margin-bottom: 16px; font-family: 'Outfit', sans-serif;">Legal &amp; Policy</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2;">
+                    <li><a href="privacy.html" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="terms.html" style="color: #94a3b8; text-decoration: none;">Terms of Service</a></li>
+                    <li><a href="disclaimer.html" style="color: #94a3b8; text-decoration: none;">Disclaimer</a></li>
+                    <li><a href="contact.html" style="color: #94a3b8; text-decoration: none;">Contact Editorial Team</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="max-width: 1240px; margin: 0 auto; padding-top: 24px; border-top: 1px solid #1e293b; text-align: center; font-size: 0.82rem;">
+            &copy; 2026 CSS Prep Central. All rights reserved. Designed for Pakistani civil service aspirants.
+        </div>
+    </footer>
+
+    <!-- Load Data and Application Scripts -->
+    <script src="js/data_math_mcqs.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theme toggle support
+            const themeBtn = document.getElementById('theme-toggle');
+            if (themeBtn) {
+                themeBtn.addEventListener('click', function () {
+                    document.documentElement.classList.toggle('dark-mode');
+                    const isDark = document.documentElement.classList.contains('dark-mode');
+                    localStorage.setItem('mcqs_dark_mode', isDark);
+                    themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                });
+                const isDarkInit = document.documentElement.classList.contains('dark-mode');
+                themeBtn.innerHTML = isDarkInit ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            }
+
+            // Verify Data
+            const rawData = window.MATH_MCQS_DATA || [];
+            if (!rawData || rawData.length === 0) {
+                document.getElementById('math-mcq-container').innerHTML = '<div style="text-align:center; padding: 40px; color: #ef4444;">Error loading questions dataset. Please check data_math_mcqs.js.</div>';
+                return;
+            }
+
+            // State
+            let currentSubcat = 'all';
+            let currentExam = 'all';
+            let currentSearch = '';
+            let currentPage = 1;
+            let pageSize = 25;
+            let allSolutionsVisible = false;
+            const userSelections = {}; // questionId -> selectedOption
+
+            // Elements
+            const container = document.getElementById('math-mcq-container');
+            const paginationEl = document.getElementById('math-pagination-container');
+            const searchInput = document.getElementById('math-search-input');
+            const examSelect = document.getElementById('exam-filter');
+            const pageSizeSelect = document.getElementById('page-size-select');
+            const toggleAllBtn = document.getElementById('toggle-all-btn');
+            const toggleAllText = document.getElementById('toggle-all-text');
+            const subcatsBar = document.getElementById('subcats-bar');
+            const shownCountEl = document.getElementById('shown-count');
+            const totalFilterCountEl = document.getElementById('total-filter-count');
+            const activeFilterLabel = document.getElementById('active-filter-label');
+            const resetBtn = document.getElementById('reset-filters-btn');
+
+            // Set Pill Counts
+            document.getElementById('pill-all-count').textContent = rawData.length;
+            document.getElementById('pill-iq-count').textContent = rawData.filter(q => q.subcategory === 'Basic Math & IQ').length;
+            document.getElementById('pill-perc-count').textContent = rawData.filter(q => q.subcategory === 'Percentages & Commercial Math').length;
+            document.getElementById('pill-word-count').textContent = rawData.filter(q => q.subcategory === 'Word Problems & Arithmetic').length;
+            document.getElementById('pill-adv-count').textContent = rawData.filter(q => q.subcategory === 'Quantitative & Intermediate Math').length;
+
+            // Filter Logic
+            function getFilteredQuestions() {
+                return rawData.filter(q => {
+                    // Subcategory filter
+                    if (currentSubcat !== 'all' && q.subcategory !== currentSubcat) {
+                        return false;
+                    }
+                    // Exam filter
+                    if (currentExam !== 'all' && !(q.examTags && q.examTags.includes(currentExam))) {
+                        return false;
+                    }
+                    // Search term
+                    if (currentSearch) {
+                        const term = currentSearch.toLowerCase();
+                        const matchQ = q.question.toLowerCase().includes(term);
+                        const matchExp = q.explanation ? q.explanation.toLowerCase().includes(term) : false;
+                        const matchOpts = Object.values(q.options || {}).some(opt => opt.toLowerCase().includes(term));
+                        if (!matchQ && !matchExp && !matchOpts) return false;
+                    }
+                    return true;
+                });
+            }
+
+            // Render Function
+            function render() {
+                const filtered = getFilteredQuestions();
+                totalFilterCountEl.textContent = filtered.length;
+
+                // Active filter label
+                let filterDesc = [];
+                if (currentSubcat !== 'all') filterDesc.push(currentSubcat);
+                if (currentExam !== 'all') filterDesc.push('Exam: ' + currentExam);
+                if (currentSearch) filterDesc.push('"' + currentSearch + '"');
+                activeFilterLabel.textContent = filterDesc.length ? '(' + filterDesc.join(' • ') + ')' : '';
+
+                if (filtered.length === 0) {
+                    container.innerHTML = \`
+                        <div style="text-align: center; padding: 60px 20px; background: var(--q-card-bg); border-radius: 16px; border: 1px dashed var(--q-border);">
+                            <i class="fas fa-search" style="font-size: 2.5rem; color: #94a3b8; margin-bottom: 14px;"></i>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">No matching questions found</h3>
+                            <p style="color: var(--q-text-muted); max-width: 480px; margin: 0 auto 16px;">Try adjusting your search terms or clearing the selected subcategory filters.</p>
+                            <button onclick="document.getElementById('reset-filters-btn').click()" class="math-toggle-btn">Clear All Filters</button>
+                        </div>
+                    \`;
+                    paginationEl.innerHTML = '';
+                    shownCountEl.textContent = '0';
+                    return;
+                }
+
+                // Pagination Slice
+                const effectivePageSize = pageSize === 'all' ? filtered.length : parseInt(pageSize, 10);
+                const totalPages = Math.ceil(filtered.length / effectivePageSize);
+                if (currentPage > totalPages) currentPage = 1;
+
+                const startIdx = (currentPage - 1) * effectivePageSize;
+                const endIdx = Math.min(startIdx + effectivePageSize, filtered.length);
+                const pageQuestions = filtered.slice(startIdx, endIdx);
+
+                shownCountEl.textContent = pageQuestions.length;
+
+                // Build HTML
+                let cardsHtml = '';
+                pageQuestions.forEach(q => {
+                    const userPick = userSelections[q.id];
+                    const isSolved = userPick !== undefined;
+                    const isExpOpen = allSolutionsVisible;
+
+                    let optionsHtml = '';
+                    const optKeys = ['A', 'B', 'C', 'D'];
+                    optKeys.forEach(k => {
+                        const optVal = q.options[k];
+                        if (!optVal) return;
+
+                        let optClass = 'math-opt';
+                        if (isSolved) {
+                            if (k === q.answer) {
+                                optClass += ' show-correct';
+                            }
+                            if (userPick === k) {
+                                if (k === q.answer) {
+                                    optClass += ' selected-correct';
+                                } else {
+                                    optClass += ' selected-wrong';
+                                }
+                            }
+                        }
+
+                        optionsHtml += \`
+                            <div class="\${optClass}" onclick="handleOptionClick(\${q.id}, '\${k}')" data-qid="\${q.id}" data-key="\${k}">
+                                <span class="math-opt-key">\${k}</span>
+                                <span>\${escapeHtml(optVal)}</span>
+                            </div>
+                        \`;
+                    });
+
+                    const examTagsHtml = (q.examTags || []).map(t => \`<span class="math-exam-tag">\${t}</span>\`).join('');
+
+                    cardsHtml += \`
+                        <article class="math-card" id="card-\${q.id}">
+                            <div class="math-card-header">
+                                <div class="math-card-meta">
+                                    <span class="math-qnum">#\${q.id}</span>
+                                    <span class="math-subcat-tag">\${q.subcategory || 'General Quantitative'}</span>
+                                    <div class="math-exam-tags">\${examTagsHtml}</div>
+                                </div>
+                                \${isSolved ? (userPick === q.answer ? 
+                                    '<span style="color: #10b981; font-weight: 700; font-size: 0.85rem;"><i class="fas fa-circle-check"></i> Correct</span>' : 
+                                    '<span style="color: #ef4444; font-weight: 700; font-size: 0.85rem;"><i class="fas fa-circle-xmark"></i> Incorrect</span>') : ''}
+                            </div>
+                            <h3 class="math-qtext">\${escapeHtml(q.question)}</h3>
+                            <div class="math-options-grid">
+                                \${optionsHtml}
+                            </div>
+                            <div class="math-card-footer">
+                                <button class="math-sol-btn" onclick="toggleSolution(\${q.id})">
+                                    <i class="fas fa-lightbulb"></i> <span id="btn-text-\${q.id}">\${isExpOpen ? 'Hide Solution' : 'Show Step-by-Step Solution'}</span>
+                                </button>
+                                <span style="font-size: 0.82rem; color: var(--q-text-muted);">
+                                    Answer: <strong>Option \${q.answer}</strong>
+                                </span>
+                            </div>
+                            <div class="math-exp-box \${isExpOpen ? 'active' : ''}" id="exp-\${q.id}">
+                                <div class="math-exp-title">
+                                    <i class="fas fa-circle-info"></i> Step-by-Step Mathematical Solution:
+                                </div>
+                                <p style="margin: 0;">\${escapeHtml(q.explanation || 'Direct arithmetic calculation.')}</p>
+                            </div>
+                        </article>
+                    \`;
+                });
+
+                container.innerHTML = cardsHtml;
+                renderPagination(totalPages);
+            }
+
+            // Pagination Rendering
+            function renderPagination(totalPages) {
+                if (totalPages <= 1) {
+                    paginationEl.innerHTML = '';
+                    return;
+                }
+
+                let phtml = '';
+                phtml += \`<button class="math-page-btn" \${currentPage === 1 ? 'disabled' : ''} onclick="changePage(1)"><i class="fas fa-angles-left"></i></button>\`;
+                phtml += \`<button class="math-page-btn" \${currentPage === 1 ? 'disabled' : ''} onclick="changePage(\${currentPage - 1})"><i class="fas fa-chevron-left"></i></button>\`;
+
+                const startP = Math.max(1, currentPage - 2);
+                const endP = Math.min(totalPages, currentPage + 2);
+
+                for (let p = startP; p <= endP; p++) {
+                    phtml += \`<button class="math-page-btn \${p === currentPage ? 'active' : ''}" onclick="changePage(\${p})">\${p}</button>\`;
+                }
+
+                phtml += \`<button class="math-page-btn" \${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(\${currentPage + 1})"><i class="fas fa-chevron-right"></i></button>\`;
+                phtml += \`<button class="math-page-btn" \${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(\${totalPages})"><i class="fas fa-angles-right"></i></button>\`;
+
+                phtml += \`<span class="math-page-info">Page \${currentPage} of \${totalPages}</span>\`;
+                paginationEl.innerHTML = phtml;
+            }
+
+            // Global Handlers
+            window.changePage = function (p) {
+                currentPage = p;
+                render();
+                window.scrollTo({ top: container.offsetTop - 120, behavior: 'smooth' });
+            };
+
+            window.handleOptionClick = function (qid, chosenKey) {
+                userSelections[qid] = chosenKey;
+                const card = document.getElementById('card-' + qid);
+                if (!card) return;
+
+                const question = rawData.find(q => q.id === qid);
+                if (!question) return;
+
+                // Automatically reveal explanation when an answer is chosen
+                const expBox = document.getElementById('exp-' + qid);
+                if (expBox) expBox.classList.add('active');
+                const btnText = document.getElementById('btn-text-' + qid);
+                if (btnText) btnText.textContent = 'Hide Solution';
+
+                // Re-render single card or full render
+                render();
+            };
+
+            window.toggleSolution = function (qid) {
+                const expBox = document.getElementById('exp-' + qid);
+                const btnText = document.getElementById('btn-text-' + qid);
+                if (!expBox) return;
+
+                const isOpen = expBox.classList.contains('active');
+                if (isOpen) {
+                    expBox.classList.remove('active');
+                    if (btnText) btnText.textContent = 'Show Step-by-Step Solution';
+                } else {
+                    expBox.classList.add('active');
+                    if (btnText) btnText.textContent = 'Hide Solution';
+                }
+            };
+
+            // Toggle All Solutions
+            toggleAllBtn.addEventListener('click', function () {
+                allSolutionsVisible = !allSolutionsVisible;
+                toggleAllText.textContent = allSolutionsVisible ? 'Hide All Solutions' : 'Show All Solutions';
+                toggleAllBtn.querySelector('i').className = allSolutionsVisible ? 'far fa-eye-slash' : 'far fa-eye';
+                render();
+            });
+
+            // Subcategory Filter Pills
+            subcatsBar.addEventListener('click', function (e) {
+                const pill = e.target.closest('.math-subcat-pill');
+                if (!pill) return;
+                subcatsBar.querySelectorAll('.math-subcat-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                currentSubcat = pill.getAttribute('data-subcat');
+                currentPage = 1;
+                render();
+            });
+
+            // Search Filter
+            let searchTimeout;
+            searchInput.addEventListener('input', function () {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    currentSearch = searchInput.value.trim();
+                    currentPage = 1;
+                    render();
+                }, 250);
+            });
+
+            // Exam Filter
+            examSelect.addEventListener('change', function () {
+                currentExam = examSelect.value;
+                currentPage = 1;
+                render();
+            });
+
+            // Page Size Filter
+            pageSizeSelect.addEventListener('change', function () {
+                pageSize = pageSizeSelect.value;
+                currentPage = 1;
+                render();
+            });
+
+            // Reset Button
+            resetBtn.addEventListener('click', function () {
+                currentSubcat = 'all';
+                currentExam = 'all';
+                currentSearch = '';
+                currentPage = 1;
+                searchInput.value = '';
+                examSelect.value = 'all';
+                subcatsBar.querySelectorAll('.math-subcat-pill').forEach(p => p.classList.remove('active'));
+                subcatsBar.querySelector('[data-subcat="all"]').classList.add('active');
+                render();
+            });
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
+            // Initial Render
+            render();
+        });
+    </script>
+</body>
+
+</html>
+`;
+
+fs.writeFileSync('frontend/math-mcqs.html', html, 'utf8');
+console.log('Successfully written frontend/math-mcqs.html');

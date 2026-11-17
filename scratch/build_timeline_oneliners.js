@@ -1,0 +1,148 @@
+const fs = require('fs');
+const path = require('path');
+
+const dataPath = path.join(__dirname, '../frontend/js/data_timeline.js');
+
+const oneLiners = [
+    // 1857 - 1905: Aligarh & Early Awakening
+    { year: 1857, era: 'era1', category: 'Freedom Movement', text: 'War of Independence erupts at Meerut on May 10; British suppress uprising, end Mughal rule, and exile Emperor Bahadur Shah Zafar to Rangoon.' },
+    { year: 1858, era: 'era1', category: 'Constitutional', text: 'Government of India Act 1858 passed on August 2; British Crown assumes direct rule over India, liquidating the East India Company.' },
+    { year: 1859, era: 'era1', category: 'Education', text: 'Sir Syed Ahmad Khan establishes a Persian Madrasa at Moradabad to pioneer modern education among Indian Muslims.' },
+    { year: 1862, era: 'era1', category: 'Education', text: 'Sir Syed Ahmad Khan founds Victoria High School at Ghazipur offering English, Persian, and Urdu curriculum.' },
+    { year: 1864, era: 'era1', category: 'Education', text: 'Sir Syed Ahmad Khan establishes the Scientific Society at Ghazipur to translate European scientific treatises into Urdu.' },
+    { year: 1866, era: 'era1', category: 'Journalism', text: 'Scientific Society relocates to Aligarh and launches the bilingual weekly "Aligarh Institute Gazette".' },
+    { year: 1867, era: 'era1', category: 'Ideology', text: 'Urdu-Hindi Controversy erupts in Banaras demanding Hindi replace Urdu, convincing Sir Syed of the distinctness of Muslim identity (Two-Nation foundation).' },
+    { year: 1870, era: 'era1', category: 'Reform', text: 'Sir Syed Ahmad Khan launches the influential reformist journal "Tahzib-ul-Akhlaq" (The Mohammedan Social Reformer).' },
+    { year: 1875, era: 'era1', category: 'Education', text: 'Muhammadan Anglo-Oriental (MAO) High School founded by Sir Syed at Aligarh on May 24 (upgraded to College in 1877; Aligarh Muslim University in 1920).' },
+    { year: 1877, era: 'era1', category: 'Milestone', text: 'Viceroy Lord Lytton lays foundation stone of MAO College on Jan 8; Dr. Allama Muhammad Iqbal is born in Sialkot on Nov 9.' },
+    { year: 1885, era: 'era1', category: 'Politics', text: 'Indian National Congress founded in Bombay by Allan Octavian (A.O.) Hume; Sir Syed advises Muslims to stay away from Congress agitational politics.' },
+    { year: 1886, era: 'era1', category: 'Education', text: 'All-India Muhammadan Educational Conference founded by Sir Syed Ahmad Khan to foster educational and intellectual awakening across Muslim India.' },
+    { year: 1893, era: 'era1', category: 'Treaty', text: 'Durand Line Agreement signed on Nov 12 between Sir Mortimer Durand and Afghan Amir Abdur Rahman Khan, demarcating the 2,640 km border.' },
+    { year: 1894, era: 'era1', category: 'Education', text: 'Nadwat-ul-Ulema established at Kanpur by Maulana Shibli Nomani and Syed Muhammad Ali Monghiri to synthesize religious and modern sciences.' },
+    { year: 1898, era: 'era1', category: 'Milestone', text: 'Sir Syed Ahmad Khan passes away at Aligarh on March 27 and is buried beside the grand mosque of MAO College.' },
+
+    // 1905 - 1947: Pakistan Movement
+    { year: 1905, era: 'era2', category: 'Administrative', text: 'Partition of Bengal enforced by Viceroy Lord Curzon on Oct 16, creating the Muslim-majority province of Eastern Bengal and Assam with Dhaka as capital.' },
+    { year: 1906, era: 'era2', category: 'Politics', text: 'Simla Deputation of 35 Muslim notables led by Sir Aga Khan III demands Separate Electorates from Viceroy Lord Minto on Oct 1.' },
+    { year: 1906, era: 'era2', category: 'Foundation', text: 'All-India Muslim League founded in Dhaka on Dec 30 under chairmanship of Nawab Viqar-ul-Mulk; founding resolution moved by Nawab Salimullah Khan.' },
+    { year: 1909, era: 'era2', category: 'Constitutional', text: 'Minto-Morley Reforms (Indian Councils Act 1909) officially concede Separate Electorates for Muslims in central and provincial councils.' },
+    { year: 1911, era: 'era2', category: 'Administrative', text: 'Annulment of Partition of Bengal announced by King George V at Delhi Durbar on Dec 12, causing grave disillusionment among Indian Muslims.' },
+    { year: 1913, era: 'era2', category: 'Politics', text: 'Quaid-e-Azam Muhammad Ali Jinnah joins the All-India Muslim League in London at the request of Maulana Muhammad Ali Johar and Syed Wazir Hasan.' },
+    { year: 1916, era: 'era2', category: 'Pact', text: 'Lucknow Pact concluded between Muslim League and Congress; Congress accepts separate electorates, and Jinnah is hailed as "Ambassador of Hindu-Muslim Unity".' },
+    { year: 1919, era: 'era2', category: 'Movement', text: 'Montagu-Chelmsford Reforms introduce provincial dyarchy; Jallianwala Bagh massacre takes place on April 13; Khilafat Movement launched under the Ali Brothers.' },
+    { year: 1920, era: 'era2', category: 'Politics', text: 'Quaid-e-Azam resigns from Indian National Congress in protest against Gandhi\\\\\\'s unconstitutional Non-Cooperation satyagraha tactics.' },
+    { year: 1922, era: 'era2', category: 'Movement', text: 'Chauri Chaura incident occurs on Feb 4; Gandhi abruptly calls off the Non-Cooperation Movement, causing collapse of Hindu-Muslim alliance.' },
+    { year: 1927, era: 'era2', category: 'Constitutional', text: 'Delhi Muslim Proposals formulated under Jinnah on March 20, offering to waive separate electorates conditionally in exchange for provincial safeguards.' },
+    { year: 1928, era: 'era2', category: 'Constitutional', text: 'Nehru Report published in August, rejecting separate electorates, weightage, and provincial autonomy, marking the definitive "parting of ways".' },
+    { year: 1929, era: 'era2', category: 'Charter', text: 'Quaid-e-Azam presents his historic Fourteen Points in Delhi on March 28 as the fundamental charter of Muslim constitutional demands.' },
+    { year: 1930, era: 'era2', category: 'Ideology', text: 'Dr. Allama Muhammad Iqbal delivers his historic Allahabad Address on Dec 29, philosophically proposing an autonomous consolidated Muslim state in NW India.' },
+    { year: 1931, era: 'era2', category: 'Milestone', text: 'Maulana Muhammad Ali Johar dies in London on Jan 4 and is buried in Jerusalem; 2nd Round Table Conference held in London with Gandhi and Iqbal.' },
+    { year: 1932, era: 'era2', category: 'Constitutional', text: 'Communal Award announced by British PM Ramsay MacDonald on August 16, retaining Separate Electorates for Muslims and minorities.' },
+    { year: 1933, era: 'era2', category: 'Naming', text: 'Choudhry Rahmat Ali publishes his pamphlet "Now or Never" on Jan 28 at Cambridge, coining the acronym name "PAKISTAN" (Punjab, Afghania, Kashmir, Sindh, Balochistan).' },
+    { year: 1934, era: 'era2', category: 'Leadership', text: 'Quaid-e-Azam returns permanently from England to reorganize the Muslim League and is elected its permanent President.' },
+    { year: 1935, era: 'era2', category: 'Constitutional', text: 'Government of India Act 1935 passed, abolishing provincial dyarchy, introducing provincial autonomy, and separating Sindh from Bombay Presidency.' },
+    { year: 1937, era: 'era2', category: 'Elections', text: 'Provincial elections held; Congress forms ministries in 7 provinces, imposing Wardha educational scheme, Vidya Mandir, and anti-Muslim policies.' },
+    { year: 1938, era: 'era2', category: 'Report', text: 'Pirpur Report published on Nov 15 by Raja Syed Muhammad Mehdi, documenting widespread Congress atrocities against Muslims.' },
+    { year: 1939, era: 'era2', category: 'Celebration', text: 'Congress ministries resign over WWII entry; Quaid-e-Azam calls on Muslims to observe the "Day of Deliverance" (Youm-e-Nijat) on Dec 22, 1939.' },
+    { year: 1940, era: 'era2', category: 'Resolution', text: 'Historic Lahore Resolution (Pakistan Resolution) moved by A.K. Fazlul Huq (Sher-e-Bengal) and unanimously adopted at Minto Park, Lahore, on March 23.' },
+    { year: 1942, era: 'era2', category: 'Mission', text: 'Cripps Mission arrives in March offering post-war dominion status; rejected by Muslim League for lacking clear partition; Congress launches Quit India Movement.' },
+    { year: 1944, era: 'era2', category: 'Diplomacy', text: 'Gandhi-Jinnah Talks held in Bombay in September; Gandhi attempts to reject the Two-Nation Theory while Jinnah firmly defends Pakistan sovereignty.' },
+    { year: 1945, era: 'era2', category: 'Conference', text: 'Simla Conference convened by Viceroy Lord Wavell in June; fails as Congress refuses to accept Muslim League as the sole representative of Muslims.' },
+    { year: 1946, era: 'era2', category: 'Elections', text: 'General elections yield landslide victory for Muslim League (100% Central Assembly Muslim seats, 87% provincial), cementing the Pakistan mandate.' },
+    { year: 1946, era: 'era2', category: 'Resolution', text: 'Delhi Convention of Muslim League Legislators on April 7-9 amends Lahore Resolution to demand "a single sovereign independent State" of Pakistan.' },
+    { year: 1946, era: 'era2', category: 'Action', text: 'Cabinet Mission Plan proposed on May 16; Muslim League observes Direct Action Day on August 16 to press for sovereign Pakistan.' },
+    { year: 1947, era: 'era2', category: 'Partition', text: '3rd June Plan announced by Lord Mountbatten accepting Partition; Indian Independence Act passed on July 18; Quaid delivers Aug 11 constitutional address.' },
+    { year: 1947, era: 'era2', category: 'Independence', text: 'Pakistan emerges on the world map on August 14 (27 Ramadan 1366 AH); Quaid-e-Azam takes oath as First Governor-General on August 15 in Karachi.' },
+    { year: 1947, era: 'era2', category: 'Boundary', text: 'Radcliffe Award boundary demarcations announced on August 17, controversially ceding Muslim-majority Gurdaspur and Ferozepur tehsils to India.' },
+
+    // 1948 - 1971: Early Statehood & Crises
+    { year: 1948, era: 'era3', category: 'Economy', text: 'Quaid-e-Azam inaugurates the State Bank of Pakistan on July 1 in Karachi, creating an independent financial and monetary system.' },
+    { year: 1948, era: 'era3', category: 'Bereavement', text: 'Quaid-e-Azam Muhammad Ali Jinnah passes away on September 11 in Karachi; Khawaja Nazimuddin becomes 2nd Governor-General.' },
+    { year: 1949, era: 'era3', category: 'Constitutional', text: 'First Constituent Assembly adopts the historic Objectives Resolution on March 12, moved by Prime Minister Liaquat Ali Khan.' },
+    { year: 1950, era: 'era3', category: 'Pact', text: 'Liaquat-Nehru Pact signed on April 8 in New Delhi to safeguard rights and property of minorities in both countries.' },
+    { year: 1951, era: 'era3', category: 'Tragedy', text: 'Prime Minister Liaquat Ali Khan is assassinated on Oct 16 at Company Bagh (Liaquat Bagh), Rawalpindi, by assassin Said Akbar.' },
+    { year: 1953, era: 'era3', category: 'Constitutional', text: 'PM Muhammad Ali Bogra presents the Bogra Formula on Oct 7, proposing a bicameral parity compromise between East and West wings.' },
+    { year: 1954, era: 'era3', category: 'Judicial', text: 'Governor-General Ghulam Muhammad dissolves the Constituent Assembly on Oct 24; Maulvi Tamizuddin Khan challenges the illegal dissolution.' },
+    { year: 1955, era: 'era3', category: 'Judicial', text: 'Chief Justice Muhammad Munir invents the controversial "Doctrine of State Necessity" on March 21, upholding the governor-general\\\\\\'s dissolution.' },
+    { year: 1955, era: 'era3', category: 'Administrative', text: 'One Unit Scheme enforced on Oct 14, merging the provinces of Punjab, Sindh, NWFP, and Balochistan into a single province of West Pakistan.' },
+    { year: 1956, era: 'era3', category: 'Constitution', text: 'First Constitution of Pakistan promulgated on March 23; country proclaimed "Islamic Republic of Pakistan"; Iskander Mirza becomes first President.' },
+    { year: 1958, era: 'era3', category: 'Martial Law', text: 'President Iskander Mirza abrogates the 1956 Constitution and imposes Martial Law on Oct 7; Gen Ayub Khan ousts Mirza and assumes presidency on Oct 27.' },
+    { year: 1959, era: 'era3', category: 'Electoral', text: 'President Ayub Khan promulgates the Basic Democracies Order on Oct 26, creating an 80,000-member electoral college.' },
+    { year: 1960, era: 'era3', category: 'Treaty', text: 'President Ayub Khan and Indian PM Jawaharlal Nehru sign the historic Indus Waters Treaty in Karachi on Sept 19, brokered by the World Bank.' },
+    { year: 1962, era: 'era3', category: 'Constitution', text: 'President Ayub Khan promulgates the 1962 Constitution on March 1, establishing a powerful presidential system without political party freedoms.' },
+    { year: 1965, era: 'era3', category: 'War', text: '17-Day Indo-Pak War begins on Sept 6 with Indian assault on Lahore and Sialkot; Pakistan forces mount legendary defense; ceasefire takes effect on Sept 23.' },
+    { year: 1966, era: 'era3', category: 'Declaration', text: 'Tashkent Declaration signed in Soviet Uzbekistan on Jan 10 between President Ayub Khan and Indian PM Lal Bahadur Shastri.' },
+    { year: 1966, era: 'era3', category: 'Politics', text: 'Sheikh Mujibur Rahman presents his controversial Six-Point Formula on Feb 5 in Lahore, demanding confederate regional autonomy for East Pakistan.' },
+    { year: 1967, era: 'era3', category: 'Party', text: 'Pakistan Peoples Party (PPP) founded in Lahore on Nov 30 under the chairmanship of former foreign minister Zulfikar Ali Bhutto.' },
+    { year: 1969, era: 'era3', category: 'Martial Law', text: 'President Ayub Khan resigns on March 25, handing over power to Army Chief Gen Agha Muhammad Yahya Khan, who imposes the second Martial Law.' },
+    { year: 1970, era: 'era3', category: 'Elections', text: 'Gen Yahya Khan issues LFO 1970 dissolving One Unit; first direct general elections held on Dec 7 (Awami League sweeps East, PPP sweeps West).' },
+    { year: 1971, era: 'era3', category: 'Tragedy', text: 'Military launches Operation Searchlight on March 25; Indo-Pak War leads to Fall of Dhaka on Dec 16 and secession of East Pakistan (Bangladesh).' },
+    { year: 1971, era: 'era3', category: 'Transition', text: 'Gen Yahya Khan resigns on Dec 20; Zulfikar Ali Bhutto assumes office as President and civilian Chief Martial Law Administrator.' },
+
+    // 1972 - 1999: 1973 Constitution, Zia Era & Nuclear Power
+    { year: 1972, era: 'era4', category: 'Accord', text: 'Simla Agreement signed on July 2 between PM Z.A. Bhutto and Indira Gandhi, establishing the Line of Control (LoC) and releasing 93,000 POWs.' },
+    { year: 1973, era: 'era4', category: 'Constitution', text: 'National Assembly unanimously passes the Constitution of Pakistan 1973 on April 10 (enforced Aug 14), establishing federal bicameral parliamentary democracy.' },
+    { year: 1974, era: 'era4', category: 'Diplomacy', text: 'Pakistan hosts the 2nd OIC Islamic Summit in Lahore on Feb 22-24, bringing together King Faisal, Gaddafi, Arafat, and recognizing Bangladesh.' },
+    { year: 1974, era: 'era4', category: 'Amendment', text: 'Parliament enacts the 2nd Constitutional Amendment on Sept 7, formally defining the finality of Prophethood (Khatam-un-Nabiyyin) in law.' },
+    { year: 1976, era: 'era4', category: 'Infrastructure', text: 'Karakoram Highway (KKH / Friendship Highway) linking Pakistan with China completed; Dr. A.Q. Khan Research Laboratories (KRL) founded at Kahuta.' },
+    { year: 1977, era: 'era4', category: 'Martial Law', text: 'Operation Fair Play: Gen Muhammad Zia-ul-Haq overthrows Z.A. Bhutto on July 5 following PNA rigging protests, imposing third Martial Law.' },
+    { year: 1979, era: 'era4', category: 'Tragedy', text: 'Former PM Zulfikar Ali Bhutto executed on April 4 at Central Jail Rawalpindi; Soviet Union invades Afghanistan on Dec 24, drawing Pakistan into frontlines.' },
+    { year: 1985, era: 'era4', category: 'Constitutional', text: 'Partyless elections held in Feb; Muhammad Khan Junejo appointed PM; 8th Amendment passed inserting Article 58(2)(b); Martial Law lifted on Dec 30.' },
+    { year: 1988, era: 'era4', category: 'Tragedy', text: 'Gen Zia-ul-Haq dies in a C-130 plane crash at Bahawalpur on Aug 17; Ghulam Ishaq Khan becomes President; elections held in Nov.' },
+    { year: 1988, era: 'era4', category: 'Milestone', text: 'Mohtarma Benazir Bhutto takes oath as Prime Minister on Dec 2, becoming the first female head of government in the Muslim world.' },
+    { year: 1990, era: 'era4', category: 'Politics', text: 'President Ghulam Ishaq Khan uses Article 58(2)(b) to dismiss Benazir Bhutto on Aug 6; Nawaz Sharif (IJI) elected PM in October.' },
+    { year: 1991, era: 'era4', category: 'Accord', text: 'Water Apportionment Accord signed on March 21 among the four provinces, creating the Indus River System Authority (IRSA).' },
+    { year: 1993, era: 'era4', category: 'Politics', text: 'Kakar Formula: Army Chief Gen Abdul Waheed Kakar secures simultaneous resignations of PM Nawaz Sharif and President Ghulam Ishaq Khan on July 18.' },
+    { year: 1996, era: 'era4', category: 'Politics', text: 'President Farooq Leghari uses Article 58(2)(b) on Nov 5 to dismiss Benazir Bhutto\\\\\\'s second government on corruption allegations.' },
+    { year: 1997, era: 'era4', category: 'Constitutional', text: 'PML-N wins heavy 2/3rd majority in Feb; Parliament passes 13th Amendment stripping Article 58(2)(b) and 14th Amendment against floor crossing.' },
+    { year: 1998, era: 'era4', category: 'Nuclear', text: 'Youm-e-Takbeer: Pakistan conducts five nuclear tests at Chagai on May 28 (sixth on May 30 at Kharan), establishing credible nuclear deterrence.' },
+    { year: 1999, era: 'era4', category: 'Diplomacy', text: 'Indian PM Atal Bihari Vajpayee visits Lahore via bus service on Feb 21, signing the historic Lahore Declaration with PM Nawaz Sharif.' },
+    { year: 1999, era: 'era4', category: 'War', text: 'Kargil Conflict erupts in high-altitude Kashmir peaks; concluded following Nawaz Sharif\\\\\\'s July 4 Washington Joint Statement with Bill Clinton.' },
+    { year: 1999, era: 'era4', category: 'Coup', text: 'Army Chief Gen Pervez Musharraf deposes PM Nawaz Sharif on Oct 12 following mid-air plane hijacking crisis, assuming title of Chief Executive.' },
+
+    // 2000 - 2024: Modern Pakistan & Reforms
+    { year: 2001, era: 'era5', category: 'Geopolitics', text: 'Gen Pervez Musharraf becomes President on June 20; Pakistan joins US Global War on Terror after 9/11 attacks as a frontline Non-NATO ally.' },
+    { year: 2002, era: 'era5', category: 'Elections', text: 'General elections held under Legal Framework Order (LFO 2002); Mir Zafarullah Khan Jamali elected PM; 17th Amendment passed in Dec 2003.' },
+    { year: 2005, era: 'era5', category: 'Catastrophe', text: 'Catastrophic 7.6 magnitude earthquake hits Kashmir and Hazara on Oct 8, claiming 86,000+ lives; ERRA established for reconstruction.' },
+    { year: 2007, era: 'era5', category: 'Movement', text: 'President Musharraf suspends Chief Justice Iftikhar Chaudhry on March 9, triggering the historic nationwide Lawyers\\\\\\' Movement (Adlia Bachao).' },
+    { year: 2007, era: 'era5', category: 'Operation', text: 'Operation Silence launched on July 3-11 against armed militants inside Lal Masjid (Red Mosque) and Jamia Hafsa in Islamabad.' },
+    { year: 2007, era: 'era5', category: 'Tragedy', text: 'State of emergency imposed on Nov 3; Mohtarma Benazir Bhutto assassinated in a suicide attack at Liaquat Bagh, Rawalpindi, on Dec 27.' },
+    { year: 2008, era: 'era5', category: 'Democracy', text: 'Elections held on Feb 18; Yousaf Raza Gillani becomes PM; Musharraf resigns on Aug 18; Asif Ali Zardari elected President on Sept 6.' },
+    { year: 2010, era: 'era5', category: 'Constitutional', text: '18th Constitutional Amendment signed on April 19: strips 58(2)(b), abolishes Concurrent List, renames NWFP to Khyber Pakhtunkhwa, and guarantees provincial NFC floor.' },
+    { year: 2010, era: 'era5', category: 'Disaster', text: 'Devastating super-floods submerge one-fifth of Pakistan\\\\\\'s territory, displacing 20 million citizens and destroying critical infrastructure.' },
+    { year: 2011, era: 'era5', category: 'Operation', text: 'US Navy SEALs raid a compound in Abbottabad on May 2 in Operation Neptune Spear, killing Al-Qaeda chief Osama bin Laden.' },
+    { year: 2013, era: 'era5', category: 'Democracy', text: 'May 11 elections mark first civilian-to-civilian democratic transfer of power; Nawaz Sharif elected PM for third term; Mamnoon Hussain elected President.' },
+    { year: 2013, era: 'era5', category: 'Economic', text: 'Pakistan and China sign primary memoranda of understanding initiating the \$46+ Billion China-Pakistan Economic Corridor (CPEC).' },
+    { year: 2014, era: 'era5', category: 'Operation', text: 'Pakistan Armed Forces launch Operation Zarb-e-Azb on June 15 in North Waziristan to eradicate terrorist sanctuaries.' },
+    { year: 2014, era: 'era5', category: 'Tragedy', text: 'Army Public School (APS) Peshawar massacre occurs on Dec 16 killing 149 (mostly children); all parties adopt 20-point National Action Plan (NAP).' },
+    { year: 2015, era: 'era5', category: 'CPEC', text: 'Chinese President Xi Jinping visits Islamabad on April 20, officially launching physical implementation of CPEC energy and Gwadar infrastructure.' },
+    { year: 2017, era: 'era5', category: 'Judicial', text: 'Supreme Court disqualifies PM Nawaz Sharif on July 28 in the Panama Papers verdict under Article 62(1)(f); Shahid Khaqan Abbasi elected PM.' },
+    { year: 2018, era: 'era5', category: 'Merger', text: '25th Constitutional Amendment enacted on May 31, officially merging FATA/PATA with Khyber Pakhtunkhwa and abolishing the 117-year-old FCR.' },
+    { year: 2018, era: 'era5', category: 'Elections', text: 'General elections held on July 25; PTI wins; Imran Khan takes oath as 22nd Prime Minister on August 18; Dr. Arif Alvi elected President.' },
+    { year: 2019, era: 'era5', category: 'Defense', text: 'Operation Swift Retort: PAF shoots down two Indian jets on Feb 27 after Balakot airstrike, capturing Wing Commander Abhinandan (returned as peace gesture).' },
+    { year: 2019, era: 'era5', category: 'Kashmir', text: 'India revokes Article 370 and 35A on August 5, revoking occupied Kashmir\\\\\\'s special status; Pakistan halts bilateral trade and downgrades diplomatic ties.' },
+    { year: 2020, era: 'era5', category: 'Health', text: 'NCOC established in March to combat COVID-19 pandemic; smart lockdown strategy praised globally by WHO for balancing lives and livelihood.' },
+    { year: 2022, era: 'era5', category: 'Politics', text: 'PM Imran Khan ousted through parliamentary Vote of No Confidence (VONC) on April 10; Shehbaz Sharif sworn in as 23rd PM leading PDM coalition.' },
+    { year: 2022, era: 'era5', category: 'Climate', text: 'Monsoon super-floods submerge one-third of Pakistan, causing \$30+ billion in damages; Pakistan champions Loss and Damage Fund adoption at COP27.' },
+    { year: 2024, era: 'era5', category: 'Democracy', text: '12th General Elections held on Feb 8; Shehbaz Sharif re-elected PM leading PML-N/PPP coalition; Asif Ali Zardari elected President for second term.' },
+    { year: 2024, era: 'era5', category: 'Summit', text: 'Pakistan successfully hosts the 23rd Council of Heads of Government of the Shanghai Cooperation Organization (SCO) in Islamabad on Oct 15-16.' },
+    { year: 2024, era: 'era5', category: 'Constitutional', text: '26th Constitutional Amendment enacted on Oct 21, reforming judicial appointments, establishing constitutional benches, and setting 2028 Riba abolition goal.' }
+];
+
+console.log('Total One-Liners prepared:', oneLiners.length);
+
+// Read current data_timeline.js
+let fileContent = fs.readFileSync(dataPath, 'utf8');
+
+// Insert PAKISTAN_ONELINERS before return
+const onelinersJs = '\n    const PAKISTAN_ONELINERS = ' + JSON.stringify(oneLiners, null, 8) + ';\n';
+
+if (!fileContent.includes('PAKISTAN_ONELINERS')) {
+    const returnTarget = '    return {';
+    const rep = onelinersJs + '\n    return {\n        getPakistanOneLiners: function() { return JSON.parse(JSON.stringify(PAKISTAN_ONELINERS)); },\n';
+    fileContent = fileContent.replace(returnTarget, rep);
+    fs.writeFileSync(dataPath, fileContent, 'utf8');
+    console.log('Successfully injected PAKISTAN_ONELINERS into frontend/js/data_timeline.js');
+} else {
+    console.log('PAKISTAN_ONELINERS already present in data_timeline.js');
+}

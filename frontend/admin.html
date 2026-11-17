@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Civil Services Portal Administration Panel. Manage MCQs, bulk imports, PDFs, articles, job ads, scheduling, pageviews, and reported errors.">
+    <title>Administration Control Center — MCQs Portal</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-wrapper {
+            display: flex;
+            min-height: calc(100vh - 120px);
+        }
+
+        .sidebar {
+            width: 270px;
+            background: var(--card-bg, #ffffff);
+            border-right: 1px solid var(--border-color, #e2e8f0);
+            padding: 20px 0;
+            flex-shrink: 0;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 22px;
+            color: var(--text-color, #334155);
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.15s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-menu li a:hover,
+        .sidebar-menu li a.active {
+            background: rgba(16, 185, 129, 0.08);
+            color: #047857;
+            border-left-color: #047857;
+        }
+
+        .sidebar-menu li a i {
+            width: 20px;
+            font-size: 1.05rem;
+            color: #64748b;
+        }
+
+        .sidebar-menu li a:hover i,
+        .sidebar-menu li a.active i {
+            color: #047857;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background: var(--bg-surface-subtle, #f8fafc);
+            overflow-y: auto;
+        }
+
+        .admin-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .admin-page-title {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: var(--text-color, #0f172a);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card i {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .stat-card h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-color, #0f172a);
+            margin: 4px 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-card p {
+            color: var(--text-muted, #64748b);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0;
+        }
+
+        .admin-section {
+            display: none;
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 30px;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        /* Tables */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color, #f1f5f9);
+            font-size: 0.9rem;
+            color: var(--text-color, #1e293b);
+        }
+
+        .data-table th {
+            background: var(--bg-surface-subtle, #f8fafc);
+            font-weight: 700;
+            color: var(--text-muted, #64748b);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+        }
+
+        .data-table tr:hover {
+            background: rgba(0, 0, 0, 0.015);
+        }
+
+        /* Form Controls */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--text-color, #1e293b);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color, #cbd5e1);
+            background: var(--card-bg, #ffffff);
+            color: var(--text-color, #0f172a);
+            font-size: 0.92rem;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #047857;
+            box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.1);
+        }
+
+        .btn-admin {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.15s ease;
+        }
+
+        .btn-admin-primary {
+            background: #047857;
+            color: #ffffff;
+        }
+
+        .btn-admin-primary:hover {
+            background: #065f46;
+        }
+
+        .btn-admin-secondary {
+            background: var(--bg-surface-subtle, #f1f5f9);
+            border: 1px solid var(--border-color, #cbd5e1);
+            color: var(--text-color, #1e293b);
+        }
+
+        .btn-admin-danger {
+            background: #ef4444;
+            color: #ffffff;
+        }
+
+        /* Bulk Upload Dropzone */
+        .dropzone-box {
+            border: 2px dashed #059669;
+            background: rgba(5, 150, 105, 0.04);
+            border-radius: 14px;
+            padding: 36px 20px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.2s;
+        }
+
+        .dropzone-box:hover {
+            background: rgba(5, 150, 105, 0.08);
+            border-color: #047857;
+        }
+
+        .dropzone-icon {
+            font-size: 2.8rem;
+            color: #059669;
+            margin-bottom: 12px;
+        }
+
+        /* Status badges */
+        .badge-status {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+        .status-active, .status-resolved { background: #d1fae5; color: #065f46; }
+        .status-pending, .status-expiring { background: #fef3c7; color: #b45309; }
+        .status-closed, .status-rejected { background: #fee2e2; color: #991b1b; }
+
+        /* Login Overlay */
+        #loginOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+        .login-card {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            padding: 36px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .admin-wrapper {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color, #e2e8f0);
+            }
+            .sidebar-menu {
+                display: flex;
+                overflow-x: auto;
+            }
+            .sidebar-menu li a {
+                white-space: nowrap;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+            .sidebar-menu li a:hover,
+            .sidebar-menu li a.active {
+                border-bottom-color: #047857;
+                border-left-color: transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>MCQs<span class="logo-accent">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="acts-rules.html">Acts &amp; Rules</a>
+                <a href="articles.html">Articles</a>
+                <a href="topic-united-nations.html">One-Topic: UN</a>
+                <a href="topic-european-union.html">One-Topic: EU</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="fia-sample-papers.html">FIA Papers</a>
+                <a href="grammar-rules.html">Grammar Rules</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="exam-guide.html">Exam Guide</a>
+                <a href="science-notes.html">Science Notes</a>
+                <a href="admin.html" class="admin-link active">Admin Panel</a>
+            </nav>
+            <div class="header-actions">
+                <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button type="button" class="mobile-menu" aria-label="Toggle navigation drawer">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Utility Navigation -->
+    <nav class="secondary-nav">
+        <div class="secondary-nav-container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="admin.html" class="active" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-lock"></i> Admin Console</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="quiz.html">Screening Engine</a></li>
+                <li><a href="articles.html">Articles Hub</a></li>
+                <li><a href="leaderboard.html">Daily Challenges</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Overlay -->
+    <div id="loginOverlay">
+        <div class="login-card">
+            <div style="font-size: 2.8rem; color: #047857; margin-bottom: 12px;"><i class="fa-solid fa-shield-halved"></i></div>
+            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-color, #0f172a); margin-bottom: 6px;">Administrator Login</h2>
+            <p style="color: var(--text-muted, #64748b); font-size: 0.88rem; margin-bottom: 24px;">Enter your credentials to access portal management.</p>
+            <div style="text-align: left; margin-bottom: 14px;">
+                <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-color, #1e293b); display: block; margin-bottom: 6px;">Username:</label>
+                <input type="text" id="username" style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.95rem;" placeholder="admin" value="admin">
+            </div>
+            <div style="text-align: left; margin-bottom: 20px;">
+                <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-color, #1e293b); display: block; margin-bottom: 6px;">Password:</label>
+                <input type="password" id="password" style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.95rem;" placeholder="••••••••" value="admin123">
+            </div>
+            <div id="loginError" style="display: none; color: #ef4444; font-size: 0.85rem; font-weight: 600; margin-bottom: 14px;">Invalid credentials. Please try again.</div>
+            <button type="button" class="btn-admin btn-admin-primary" id="loginBtn" style="width: 100%; justify-content: center; padding: 12px;">
+                <i class="fa-solid fa-right-to-bracket"></i> Login to Console
+            </button>
+            <div style="margin-top: 14px; font-size: 0.8rem; color: var(--text-muted, #64748b);">
+                Default demo access: <strong>admin</strong> / <strong>admin123</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Admin Layout (Revealed upon login) -->
+    <div class="admin-wrapper" id="adminDashboard" style="display: none;">
+        <!-- Left Sidebar Navigation -->
+        <aside class="sidebar">
+            <div style="padding: 0 22px 16px; border-bottom: 1px solid var(--border-color, #e2e8f0); margin-bottom: 12px;">
+                <div style="font-weight: 800; font-size: 1rem; color: #047857;"><i class="fa-solid fa-user-shield"></i> Portal Admin</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted, #64748b);">FPSC/CSS Management</div>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#dashboard" class="active" onclick="showSection('dashboard', this)"><i class="fa-solid fa-chart-pie"></i> Overview</a></li>
+                <li><a href="#manageQuestions" onclick="showSection('manageQuestions', this)"><i class="fa-solid fa-list-check"></i> Manage &amp; Edit MCQs</a></li>
+                <li><a href="#addQuestion" onclick="showSection('addQuestion', this)"><i class="fa-solid fa-circle-plus"></i> Add Single MCQ</a></li>
+                <li><a href="#bulkUpload" onclick="showSection('bulkUpload', this)" style="color:#059669; font-weight:700;"><i class="fa-solid fa-file-csv"></i> Bulk MCQ Importer</a></li>
+                <li><a href="#manageNotes" onclick="showSection('manageNotes', this)"><i class="fa-solid fa-file-pdf"></i> Upload Notes &amp; PDFs</a></li>
+                <li><a href="#manageArticles" onclick="showSection('manageArticles', this)"><i class="fa-solid fa-newspaper"></i> Publish Articles</a></li>
+                <li><a href="#manageJobs" onclick="showSection('manageJobs', this)"><i class="fa-solid fa-briefcase"></i> Job Advertisements</a></li>
+                <li><a href="#manageScheduler" onclick="showSection('manageScheduler', this)"><i class="fa-solid fa-calendar-days"></i> Schedule Daily Quizzes</a></li>
+                <li><a href="#manageCategories" onclick="showSection('manageCategories', this)"><i class="fa-solid fa-layer-group"></i> Exam Categories</a></li>
+                <li><a href="#pageAnalytics" onclick="showSection('pageAnalytics', this)"><i class="fa-solid fa-chart-line"></i> Most Visited Pages</a></li>
+                <li><a href="#studentAnalytics" onclick="showSection('studentAnalytics', this)"><i class="fa-solid fa-user-graduate"></i> Students &amp; Performance</a></li>
+                <li><a href="#manageReports" onclick="showSection('manageReports', this)" style="color:#dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> Reported Errors &amp; Bugs</a></li>
+                <li style="margin-top: 20px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 8px;">
+                    <a href="#" id="logoutBtn" style="color: #ef4444;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Right Main Workspace -->
+        <main class="main-content">
+            <!-- Top Action Header -->
+            <div class="admin-header-row">
+                <div>
+                    <h1 class="admin-page-title" id="adminCurrentTitle"><i class="fa-solid fa-chart-pie"></i> Portal Overview &amp; Control Hub</h1>
+                    <div style="font-size: 0.88rem; color: var(--text-muted, #64748b);">Real-time database, screening tests, content management &amp; student metrics</div>
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <button type="button" class="btn-admin btn-admin-primary" onclick="showSection('bulkUpload')">
+                        <i class="fa-solid fa-file-import"></i> Bulk Upload MCQs
+                    </button>
+                    <button type="button" class="btn-admin btn-admin-secondary" onclick="window.open('quiz.html', '_blank')">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Test Screening Engine
+                    </button>
+                </div>
+            </div>
+
+            <!-- SECTION 1: DASHBOARD OVERVIEW -->
+            <section id="dashboard" class="admin-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-list-ol" style="color: #047857;"></i>
+                        <h3 id="statTotalMCQs">2,850+</h3>
+                        <p>Total Active MCQs</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-user-graduate" style="color: #0284c7;"></i>
+                        <h3 id="statTotalStudents">1,436</h3>
+                        <p>Registered Aspirants</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-square-check" style="color: #8b5cf6;"></i>
+                        <h3 id="statTotalTests">4,210</h3>
+                        <p>Mock Tests Evaluated</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-briefcase" style="color: #f59e0b;"></i>
+                        <h3 id="statActiveJobs">18</h3>
+                        <p>Active Job Postings</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-file-pdf" style="color: #ec4899;"></i>
+                        <h3 id="statTotalPDFs">48</h3>
+                        <p>Uploaded PDF Notes</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i>
+                        <h3 id="statPendingReports">3</h3>
+                        <p>Reported Errors</p>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; color: var(--text-color, #0f172a);">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Recent Portal Screening Attempts
+                </h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Test Name</th>
+                                <th>Category / Cadre</th>
+                                <th>Candidate</th>
+                                <th>Score</th>
+                                <th>Accuracy</th>
+                                <th>Date &amp; Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="overviewAttemptsBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 2: MANAGE & EDIT MCQS -->
+            <section id="manageQuestions" class="admin-section">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+                    <div>
+                        <h2 style="font-size: 1.3rem; font-weight: 700; margin: 0; color: var(--text-color, #0f172a);">Question Repository</h2>
+                        <div style="font-size:0.85rem; color:var(--text-muted,#64748b);">Search, edit, or delete existing MCQs in the database</div>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" id="searchQuestionsInput" placeholder="Search question text..." style="padding:8px 14px; border-radius:8px; border:1px solid #cbd5e1; font-size:0.9rem;" oninput="filterQuestionsTable(this.value)">
+                        <select id="filterCategorySelect" style="padding:8px 14px; border-radius:8px; border:1px solid #cbd5e1; font-size:0.9rem;" onchange="filterQuestionsByCategory(this.value)">
+                            <option value="all">All Categories</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th style="width:50%;">Question</th>
+                                <th>Category</th>
+                                <th>Difficulty</th>
+                                <th>Key</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="questionsTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 3: ADD SINGLE MCQ -->
+            <section id="addQuestion" class="admin-section">
+                <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; color: var(--text-color, #0f172a);">Add Single Question</h2>
+                <p style="font-size: 0.88rem; color: var(--text-muted, #64748b); margin-bottom: 20px;">Add a new verified question to the portal question bank.</p>
+                <form id="questionForm">
+                    <div class="form-grid">
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label for="qText">Question Text *</label>
+                            <textarea id="qText" rows="3" required placeholder="e.g. Under Article 160(3A) of the 1973 Constitution, what is the statutory floor for provincial NFC shares?"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="qOptA">Option A *</label>
+                            <input type="text" id="qOptA" required placeholder="Option A text">
+                        </div>
+                        <div class="form-group">
+                            <label for="qOptB">Option B *</label>
+                            <input type="text" id="qOptB" required placeholder="Option B text">
+                        </div>
+                        <div class="form-group">
+                            <label for="qOptC">Option C *</label>
+                            <input type="text" id="qOptC" required placeholder="Option C text">
+                        </div>
+                        <div class="form-group">
+                            <label for="qOptD">Option D *</label>
+                            <input type="text" id="qOptD" required placeholder="Option D text">
+                        </div>
+                        <div class="form-group">
+                            <label for="qCorrect">Correct Option Key *</label>
+                            <select id="qCorrect" required>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="qDifficulty">Difficulty Level *</label>
+                            <select id="qDifficulty" required>
+                                <option value="Easy">Easy</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="qCategory">Category / Subject *</label>
+                            <select id="qCategory" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="qSubCategory">Subcategory / Examination Cadre</label>
+                            <input type="text" id="qSubCategory" placeholder="e.g. Constitutional Law / CSS 2025">
+                        </div>
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label for="qExplanation">Comprehensive Explanation &amp; Sourcing</label>
+                            <textarea id="qExplanation" rows="3" placeholder="Provide background, legal section, or rationale to help candidates learn."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-admin btn-admin-primary">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Question to Database
+                    </button>
+                </form>
+            </section>
+
+            <!-- SECTION 4: BULK MCQ IMPORTER (EXCEL & CSV) -->
+            <section id="bulkUpload" class="admin-section">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+                    <div>
+                        <h2 style="font-size: 1.35rem; font-weight: 700; color: #047857; margin: 0;">
+                            <i class="fa-solid fa-file-csv"></i> Bulk MCQ Importer (Excel &amp; CSV)
+                        </h2>
+                        <p style="font-size: 0.88rem; color: var(--text-muted, #64748b); margin: 4px 0 0;">
+                            Rapidly import hundreds or thousands of MCQs directly into the question bank in seconds.
+                        </p>
+                    </div>
+                    <button type="button" class="btn-admin btn-admin-secondary" onclick="downloadSampleCsv()">
+                        <i class="fa-solid fa-download"></i> Download Sample CSV Template
+                    </button>
+                </div>
+
+                <!-- Drag & Drop Zone -->
+                <div class="dropzone-box" onclick="document.getElementById('csvFileInput').click()">
+                    <div class="dropzone-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                    <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:6px; color:var(--text-color,#0f172a);">Click to browse or Drag &amp; Drop CSV / Excel file here</h3>
+                    <p style="color:var(--text-muted,#64748b); font-size:0.85rem; margin:0;">Supports standard .csv and .txt formats with comma or tab separation</p>
+                    <input type="file" id="csvFileInput" accept=".csv,.txt" style="display:none;" onchange="handleFileSelect(event)">
+                </div>
+
+                <!-- Raw Text Area Paste -->
+                <div style="margin-bottom:20px;">
+                    <label style="font-size:0.86rem; font-weight:600; display:block; margin-bottom:6px; color:var(--text-color,#1e293b);">
+                        Or Paste Raw CSV / Tab-Separated Data Directly:
+                    </label>
+                    <textarea id="rawCsvText" rows="6" style="width:100%; font-family:'JetBrains Mono',monospace; font-size:0.85rem; padding:12px; border-radius:10px; border:1px solid #cbd5e1; outline:none;" placeholder="Question,Option A,Option B,Option C,Option D,Correct Answer,Explanation,Category,Difficulty"></textarea>
+                </div>
+
+                <div style="display:flex; gap:10px; margin-bottom:24px;">
+                    <button type="button" class="btn-admin btn-admin-primary" onclick="parseAndPreviewCsv()">
+                        <i class="fa-solid fa-magnifying-glass"></i> Parse &amp; Validate Data
+                    </button>
+                    <button type="button" class="btn-admin btn-admin-secondary" onclick="clearBulkInputs()">
+                        Clear Inputs
+                    </button>
+                </div>
+
+                <!-- Preview Area -->
+                <div id="bulkPreviewArea" style="display:none;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                        <h4 style="font-size:1rem; font-weight:700; margin:0; color:var(--text-color,#0f172a);">
+                            Validation Result: <span id="bulkValidCount" style="color:#059669; font-weight:800;">0 Valid</span>, <span id="bulkInvalidCount" style="color:#ef4444; font-weight:800;">0 Errors</span>
+                        </h4>
+                        <button type="button" class="btn-admin btn-admin-primary" id="btnConfirmBulkUpload" onclick="confirmBulkUpload()">
+                            <i class="fa-solid fa-check-double"></i> Confirm &amp; Import All MCQs
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Question</th>
+                                    <th>Options</th>
+                                    <th>Key</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bulkPreviewTableBody">
+                                <!-- Preview rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: UPLOAD NOTES & PDFS -->
+            <section id="manageNotes" class="admin-section">
+                <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; color: var(--text-color, #0f172a);">
+                    <i class="fa-solid fa-file-pdf" style="color:#ec4899;"></i> Upload Notes &amp; PDF Study Material
+                </h2>
+                <p style="font-size: 0.88rem; color: var(--text-muted, #64748b); margin-bottom: 20px;">
+                    Manage downloadable compendiums, syllabi, past paper booklets, and summary notes.
+                </p>
+                <form id="noteUploadForm" style="margin-bottom: 30px;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Document Title *</label>
+                            <input type="text" id="noteTitle" required placeholder="e.g. 1973 Constitution Annotated Compendium">
+                        </div>
+                        <div class="form-group">
+                            <label>Target Examination</label>
+                            <input type="text" id="noteExam" placeholder="e.g. CSS, PMS, FIA">
+                        </div>
+                        <div class="form-group">
+                            <label>File Type &amp; Format</label>
+                            <select id="noteFileType">
+                                <option value="PDF Document">PDF Document (.pdf)</option>
+                                <option value="Word Document">Word Document (.docx)</option>
+                                <option value="Summary Notes">Summary Notes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>File Size / URL</label>
+                            <input type="text" id="noteUrl" placeholder="resources/my_notes.pdf">
+                        </div>
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label>Short Description &amp; Syllabus Coverage</label>
+                            <textarea id="noteDesc" rows="2" placeholder="Summary of topics covered in this document."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-admin btn-admin-primary">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload &amp; Publish Document
+                    </button>
+                </form>
+
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--text-color, #0f172a);">Uploaded Study Resources</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Target Exam</th>
+                                <th>Format &amp; Size</th>
+                                <th>Downloads</th>
+                                <th>Uploaded Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="notesTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 6: PUBLISH ARTICLES -->
+            <section id="manageArticles" class="admin-section">
+                <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; color: var(--text-color, #0f172a);">
+                    <i class="fa-solid fa-newspaper" style="color:#0284c7;"></i> Publish Current Affairs &amp; Study Articles
+                </h2>
+                <p style="font-size: 0.88rem; color: var(--text-muted, #64748b); margin-bottom: 20px;">
+                    Publish SEO-friendly articles, editorial explainers, and current affairs capsules.
+                </p>
+                <form id="articlePublishForm" style="margin-bottom: 30px;">
+                    <div class="form-grid">
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label>Article Title *</label>
+                            <input type="text" id="artTitle" required placeholder="e.g. SCO Islamabad Summit 2024: Strategic Takeaways for Pakistan">
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="artCategory">
+                                <option value="Current Affairs">Current Affairs</option>
+                                <option value="Pakistan Affairs">Pakistan Affairs</option>
+                                <option value="Constitutional Law">Constitutional Law</option>
+                                <option value="Geopolitics & Geography">Geopolitics &amp; Geography</option>
+                                <option value="International Organizations">International Organizations</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Estimated Reading Time</label>
+                            <input type="text" id="artReadingTime" placeholder="e.g. 10 min read">
+                        </div>
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label>Short Abstract / Excerpt</label>
+                            <textarea id="artExcerpt" rows="2" placeholder="Brief 2-3 line summary for search cards."></textarea>
+                        </div>
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label>Full Content / Section Analysis</label>
+                            <textarea id="artBody" rows="6" placeholder="Write or paste formatted analytical content here..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-admin btn-admin-primary">
+                        <i class="fa-solid fa-paper-plane"></i> Publish Article Online
+                    </button>
+                </form>
+
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--text-color, #0f172a);">Published Articles Repository</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Reading Time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="articlesTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 7: JOB ADVERTISEMENTS -->
+            <section id="manageJobs" class="admin-section">
+                <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; color: var(--text-color, #0f172a);">
+                    <i class="fa-solid fa-briefcase" style="color:#f59e0b;"></i> Add New Job Advertisements
+                </h2>
+                <p style="font-size: 0.88rem; color: var(--text-muted, #64748b); margin-bottom: 20px;">
+                    Post civil service, federal, and provincial job advertisements (FPSC, PPSC, FIA, NAB).
+                </p>
+                <form id="jobForm" style="margin-bottom: 30px;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Job Title &amp; Scale *</label>
+                            <input type="text" id="jobTitle" required placeholder="e.g. Assistant Director (Investigation) BS-17">
+                        </div>
+                        <div class="form-group">
+                            <label>Hiring Department / Commission *</label>
+                            <input type="text" id="jobDept" required placeholder="e.g. Federal Investigation Agency (FIA) / FPSC">
+                        </div>
+                        <div class="form-group">
+                            <label>Advertisement Reference No.</label>
+                            <input type="text" id="jobAdvtNo" placeholder="e.g. FPSC Consolidated Advt No. 11/2024">
+                        </div>
+                        <div class="form-group">
+                            <label>Total Vacancies</label>
+                            <input type="number" id="jobVacancies" placeholder="e.g. 45" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Eligibility &amp; Qualification</label>
+                            <input type="text" id="jobQual" placeholder="e.g. 16-Year Master's Degree">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Date to Apply (Deadline) *</label>
+                            <input type="date" id="jobDeadline" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Official Advertisement PDF Link</label>
+                            <input type="text" id="jobPdf" placeholder="resources/fia_ad_advt.pdf">
+                        </div>
+                        <div class="form-group">
+                            <label>Official Apply Link</label>
+                            <input type="text" id="jobApplyUrl" placeholder="https://www.fpsc.gov.pk">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-admin btn-admin-primary">
+                        <i class="fa-solid fa-plus"></i> Post Job Advertisement
+                    </button>
+                </form>
+
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--text-color, #0f172a);">Active Job Postings</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <th>Vacancies</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="jobsTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 8: SCHEDULE DAILY FACTS AND QUIZZES -->
+            <section id="manageScheduler" class="admin-section">
+                <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; color: var(--text-color, #0f172a);">
+                    <i class="fa-solid fa-calendar-days" style="color:#8b5cf6;"></i> Schedule Daily Facts &amp; Quizzes
+                </h2>
+                <p style="font-size: 0.88rem; color: var(--text-muted, #64748b); margin-bottom: 20px;">
+                    Automate daily challenges and daily facts for competitive aspirants.
+                </p>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px; margin-bottom:30px;">
+                    <!-- Schedule Fact -->
+                    <div style="background:var(--bg-surface-subtle,#f8fafc); border:1px solid var(--border-color,#e2e8f0); border-radius:14px; padding:20px;">
+                        <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:12px; color:#047857;"><i class="fa-solid fa-lightbulb"></i> Schedule Fact of the Day</h3>
+                        <form id="scheduleFactForm">
+                            <div class="form-group" style="margin-bottom:12px;">
+                                <label>Date to Feature</label>
+                                <input type="date" id="schedFactDate" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom:12px;">
+                                <label>Subject / Topic</label>
+                                <input type="text" id="schedFactTopic" placeholder="e.g. 1973 Constitution" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom:16px;">
+                                <label>Fact Content &amp; Historical Context</label>
+                                <textarea id="schedFactBody" rows="3" placeholder="Enter high-yield fact..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-admin btn-admin-primary" style="width:100%; justify-content:center;">
+                                <i class="fa-solid fa-calendar-plus"></i> Queue Fact for Date
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Schedule Daily Challenge Quiz -->
+                    <div style="background:var(--bg-surface-subtle,#f8fafc); border:1px solid var(--border-color,#e2e8f0); border-radius:14px; padding:20px;">
+                        <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:12px; color:#4338ca;"><i class="fa-solid fa-trophy"></i> Schedule Daily Challenge Quiz</h3>
+                        <form id="scheduleQuizForm">
+                            <div class="form-group" style="margin-bottom:12px;">
+                                <label>Challenge Date</label>
+                                <input type="date" id="schedQuizDate" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom:12px;">
+                                <label>Challenge Title</label>
+                                <input type="text" id="schedQuizTitle" placeholder="e.g. All-Pakistan Sprint #146" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom:16px;">
+                                <label>Question Set / Count</label>
+                                <select id="schedQuizCount">
+                                    <option value="15">15 Questions (10 Minutes, -0.25 Neg Marking)</option>
+                                    <option value="25">25 Questions (20 Minutes)</option>
+                                    <option value="50">50 Questions (40 Minutes)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-admin btn-admin-primary" style="width:100%; justify-content:center; background:#4338ca;">
+                                <i class="fa-solid fa-calendar-check"></i> Queue Daily Challenge
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--text-color, #0f172a);">Upcoming Scheduled Content Queue</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Title / Topic</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedulerTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 9: EXAM CATEGORIES -->
+            <section id="manageCategories" class="admin-section">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+                    <div>
+                        <h2 style="font-size: 1.3rem; font-weight: 700; margin: 0; color: var(--text-color, #0f172a);">Examination Taxonomy &amp; Categories</h2>
+                        <div style="font-size:0.85rem; color:var(--text-muted,#64748b);">Organize portal syllabus content by competitive examination</div>
+                    </div>
+                </div>
+                <form id="categoryForm" style="display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
+                    <input type="text" id="categoryName" placeholder="Category or Exam Name (e.g. FIA Assistant Director)" required style="flex:1; min-width:260px; padding:10px 14px; border-radius:8px; border:1px solid #cbd5e1;">
+                    <button type="submit" class="btn-admin btn-admin-primary">
+                        <i class="fa-solid fa-plus"></i> Add Examination Category
+                    </button>
+                </form>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Exam / Subject Name</th>
+                                <th>Total Active Questions</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoryTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 10: MOST VISITED PAGES -->
+            <section id="pageAnalytics" class="admin-section">
+                <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; color: var(--text-color, #0f172a);">
+                    <i class="fa-solid fa-chart-line" style="color:#0284c7;"></i> Most Visited Pages &amp; Traffic Analytics
+                </h2>
+                <p style="font-size: 0.88rem; color: var(--text-muted, #64748b); margin-bottom: 20px;">
+                    Understand which portals, sample papers, and study resources attract the most candidate traffic.
+                </p>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Page Path</th>
+                                <th>Page Title &amp; Module</th>
+                                <th>Total Pageviews</th>
+                                <th>Unique Visitors</th>
+                                <th>Avg Time on Page</th>
+                                <th>Bounce Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pageviewsTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 11: REGISTERED STUDENTS & PERFORMANCE -->
+            <section id="studentAnalytics" class="admin-section">
+                <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; color: var(--text-color, #0f172a);">
+                    <i class="fa-solid fa-user-graduate" style="color:#10b981;"></i> Registered Aspirants &amp; Performance
+                </h2>
+                <p style="font-size: 0.88rem; color: var(--text-muted, #64748b); margin-bottom: 20px;">
+                    Monitor candidate participation, accuracy benchmarks, and study hours logged across Pakistan.
+                </p>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Aspirant</th>
+                                <th>Location</th>
+                                <th>Target Exam</th>
+                                <th>Tests Completed</th>
+                                <th>Avg Accuracy</th>
+                                <th>Study Hours</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 12: REPORTED ERRORS & BUGS -->
+            <section id="manageReports" class="admin-section">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+                    <div>
+                        <h2 style="font-size: 1.3rem; font-weight: 700; color: #ef4444; margin: 0;">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Reported Errors &amp; Incorrect Answer Keys
+                        </h2>
+                        <div style="font-size:0.85rem; color:var(--text-muted,#64748b);">Review questions flagged by candidates during screening tests</div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Question Snippet</th>
+                                <th>Reported By</th>
+                                <th>Issue Type</th>
+                                <th>User Feedback &amp; Objection</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportsTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Question Modal -->
+    <div id="editQuestionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+        <div style="background:var(--card-bg,#ffffff); border-radius:18px; padding:28px; width:90%; max-width:680px; max-height:90vh; overflow-y:auto; box-shadow:0 15px 40px rgba(0,0,0,0.3);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                <h3 style="font-size:1.25rem; font-weight:700; margin:0; color:var(--text-color,#0f172a);">
+                    <i class="fa-solid fa-pen-to-square" style="color:#047857;"></i> Edit MCQ Details
+                </h3>
+                <button type="button" onclick="closeEditModal()" style="background:none; border:none; font-size:1.3rem; cursor:pointer; color:#64748b;">&times;</button>
+            </div>
+            <form id="editMcqForm">
+                <input type="hidden" id="editMcqId">
+                <div class="form-group" style="margin-bottom:12px;">
+                    <label>Question Text *</label>
+                    <textarea id="editMcqText" rows="3" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #cbd5e1;"></textarea>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+                    <div class="form-group">
+                        <label>Option A</label>
+                        <input type="text" id="editOptA" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Option B</label>
+                        <input type="text" id="editOptB" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Option C</label>
+                        <input type="text" id="editOptC" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Option D</label>
+                        <input type="text" id="editOptD" required>
+                    </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+                    <div class="form-group">
+                        <label>Correct Answer Key</label>
+                        <select id="editCorrectKey">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Difficulty</label>
+                        <select id="editDifficulty">
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:16px;">
+                    <label>Explanation / Legal Reference</label>
+                    <textarea id="editExplanation" rows="2" style="width:100%; padding:10px; border-radius:8px; border:1px solid #cbd5e1;"></textarea>
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:10px;">
+                    <button type="button" class="btn-admin btn-admin-secondary" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn-admin btn-admin-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data_learning_dashboard.js"></script>
+    <script src="js/data_fia_sample_papers.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI Study Assistant for CSS, PMS, FIA and Competitive Exam Aspirants. Ask questions about uploaded notes, statutory laws (FIA Act, Civil Servants Act, Constitution 1973), economics, and generate practice questions on demand.">
+    <title>AI Study Assistant — Laws, Notes &amp; Practice Question Generator</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .ai-portal-container {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        .ai-hero {
+            background: linear-gradient(135deg, #092c48 0%, #1e1b4b 50%, #312e81 100%);
+            color: #ffffff;
+            padding: 45px 0 36px;
+            text-align: center;
+            position: relative;
+        }
+
+        .ai-hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.25;
+        }
+
+        .ai-hero p {
+            font-size: 1.05rem;
+            max-width: 880px;
+            margin: 0 auto 18px;
+            opacity: 0.94;
+            line-height: 1.55;
+        }
+
+        .ai-hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .ai-hero-chip {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.86rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        /* Workspace Grid */
+        .ai-workspace-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 24px;
+            margin-top: 24px;
+            align-items: start;
+        }
+
+        /* Studio Panel (Left) */
+        .ai-studio-panel {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 20px;
+        }
+
+        .studio-tab-bar {
+            display: flex;
+            gap: 6px;
+            background: var(--bg-color);
+            padding: 4px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+        }
+
+        .studio-tab-btn {
+            flex: 1;
+            padding: 8px 10px;
+            border: none;
+            background: transparent;
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .studio-tab-btn.active {
+            background: var(--white);
+            color: #4338ca;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .studio-section-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+
+        .studio-select,
+        .studio-input,
+        .studio-textarea {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background: var(--bg-color);
+            color: var(--text-dark);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .studio-select:focus,
+        .studio-input:focus,
+        .studio-textarea:focus {
+            border-color: #4338ca;
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.15);
+        }
+
+        .studio-textarea {
+            min-height: 110px;
+            resize: vertical;
+            font-family: inherit;
+            line-height: 1.45;
+        }
+
+        .studio-btn {
+            width: 100%;
+            padding: 11px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .studio-btn-primary {
+            background: #4338ca;
+            color: #ffffff;
+        }
+
+        .studio-btn-primary:hover {
+            background: #3730a3;
+            transform: translateY(-1px);
+        }
+
+        .doc-status-badge {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            margin-top: 12px;
+            display: none;
+        }
+
+        /* Chat & Results Console (Right) */
+        .ai-chat-console {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            min-height: 620px;
+            overflow: hidden;
+        }
+
+        .chat-console-header {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chat-header-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-header-btn {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .chat-header-btn:hover {
+            border-color: #4338ca;
+            color: #4338ca;
+        }
+
+        /* Message Stream */
+        .chat-messages-stream {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            max-height: 520px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .chat-bubble {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            max-width: 90%;
+        }
+
+        .chat-bubble.user {
+            margin-left: auto;
+            flex-direction: row-reverse;
+        }
+
+        .chat-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .chat-avatar.ai {
+            background: #4338ca;
+            color: #ffffff;
+        }
+
+        .chat-avatar.user {
+            background: #0284c7;
+            color: #ffffff;
+        }
+
+        .chat-content-box {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 18px;
+            font-size: 0.94rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .chat-bubble.user .chat-content-box {
+            background: #4338ca;
+            color: #ffffff;
+            border-color: #4338ca;
+        }
+
+        .chat-content-box h3 {
+            font-size: 1.05rem;
+            margin: 0 0 10px;
+            color: #3730a3;
+        }
+
+        .chat-content-box p {
+            margin: 0 0 8px;
+        }
+
+        .chat-content-box ul,
+        .chat-content-box ol {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        /* Prompt Suggestions Bar */
+        .quick-prompts-bar {
+            padding: 10px 20px;
+            background: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+
+        .prompt-chip {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .prompt-chip:hover {
+            border-color: #4338ca;
+            color: #4338ca;
+            transform: translateY(-1px);
+        }
+
+        /* Chat Input Bar */
+        .chat-input-bar {
+            padding: 14px 20px;
+            border-top: 1px solid var(--border-color);
+            background: var(--white);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .chat-input-bar input {
+            flex: 1;
+            padding: 11px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.94rem;
+            background: var(--bg-color);
+            color: var(--text-dark);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .chat-input-bar input:focus {
+            border-color: #4338ca;
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.15);
+        }
+
+        .chat-send-btn {
+            background: #4338ca;
+            color: #ffffff;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .chat-send-btn:hover {
+            background: #3730a3;
+        }
+
+        /* Generated Questions Display */
+        .generated-test-container {
+            background: rgba(67, 56, 202, 0.04);
+            border: 1px solid rgba(67, 56, 202, 0.2);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 12px;
+        }
+
+        .gen-q-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .gen-q-stem {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .gen-opt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .gen-opt-btn {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.86rem;
+            text-align: left;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .gen-opt-btn:hover {
+            border-color: #4338ca;
+            background: #f5f3ff;
+        }
+
+        .gen-opt-btn.correct {
+            background: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #15803d !important;
+            font-weight: 700;
+        }
+
+        .gen-opt-btn.wrong {
+            background: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #b91c1c !important;
+        }
+
+        .gen-exp-box {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10b981;
+            padding: 10px 14px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.84rem;
+            color: var(--text-dark);
+            margin-top: 10px;
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .ai-workspace-grid {
+                grid-template-columns: 1fr;
+            }
+            .ai-studio-panel {
+                position: static;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="acts-rules.html">Acts &amp; Rules</a>
+                <a href="articles.html">Articles</a>
+                <a href="topic-united-nations.html">One-Topic: UN</a>
+                <a href="topic-european-union.html">One-Topic: EU</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-assistant.html" class="active">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="fia-sample-papers.html">FIA Papers</a>
+                <a href="grammar-rules.html">Grammar Rules</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="exam-guide.html">Exam Guide</a>
+                <a href="science-notes.html">Science Notes</a>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Navbar -->
+    <nav class="secondary-navbar" aria-label="Secondary Navigation">
+        <div class="container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="articles.html" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-book-open"></i> Study Articles</a></li>
+                <li><a href="timeline.html" style="font-weight: 700; color: #4338ca;"><i class="fa-solid fa-timeline"></i> Historical Timeline</a></li>
+                <li><a href="leaderboard.html" style="font-weight: 700; color: #f59e0b;"><i class="fa-solid fa-trophy"></i> Daily Challenge &amp; Leaderboard</a></li>
+                <li><a href="dashboard.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="ai-assistant.html" class="active" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-robot"></i> AI Study Assistant &amp; Generator</a></li>
+                <li><a href="editorial-explainer.html"><i class="fa-solid fa-newspaper"></i> Editorial Explainer</a></li>
+                <li><a href="world-map.html"><i class="fa-solid fa-earth-americas"></i> Interactive World Map</a></li>
+                <li><a href="digital-library.html"><i class="fa-solid fa-book-bookmark"></i> Digital Library &amp; Reports</a></li>
+                <li><a href="recommended-books.html"><i class="fa-solid fa-book"></i> Recommended Books</a></li>
+                <li><a href="fia-sample-papers.html"><i class="fa-solid fa-file-shield"></i> FIA AD 20 Sample Papers</a></li>
+                <li><a href="grammar-rules.html"><i class="fa-solid fa-spell-check"></i> Grammar Rules</a></li>
+                <li><a href="written-prep.html"><i class="fa-solid fa-pen-nib"></i> Essay &amp; Written Prep</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="ai-hero">
+        <div class="container">
+            <h1>🤖 AI Study Assistant &amp; Practice Question Generator</h1>
+            <p>Ask grounded questions about civil service statutory laws, constitutional articles, economic surveys, and your uploaded notes. Generate customized MCQs, 5-mark conceptual tests, and 20-mark CSS essay outlines on demand.</p>
+
+            <div class="ai-hero-chips">
+                <span class="ai-hero-chip"><i class="fa-solid fa-scale-balanced"></i> FIA Act 1974 &amp; Civil Servants Act 1973</span>
+                <span class="ai-hero-chip"><i class="fa-solid fa-landmark"></i> 1973 Constitution &amp; 26th Amendment</span>
+                <span class="ai-hero-chip"><i class="fa-solid fa-file-arrow-up"></i> Custom Notes Upload &amp; Querying</span>
+                <span class="ai-hero-chip"><i class="fa-solid fa-circle-question"></i> Instant Practice MCQ Generator</span>
+                <span class="ai-hero-chip"><i class="fa-solid fa-pen-fancy"></i> 20-Mark CSS Essay Outlines</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace Container -->
+    <div class="ai-portal-container">
+        <div class="ai-workspace-grid">
+            <!-- Left Pane: Studio & Ingestion Panel -->
+            <aside class="ai-studio-panel">
+                <div class="studio-tab-bar">
+                    <button class="studio-tab-btn active" id="tabBtnGenerator"><i class="fa-solid fa-wand-magic-sparkles"></i> Generator</button>
+                    <button class="studio-tab-btn" id="tabBtnUpload"><i class="fa-solid fa-file-arrow-up"></i> Upload Notes</button>
+                </div>
+
+                <!-- Tab 1: Practice Question Generator Form -->
+                <div id="paneGenerator">
+                    <div class="studio-section-title">
+                        <i class="fa-solid fa-sliders" style="color:#4338ca;"></i>
+                        <span>Generate Practice Test</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topicSelect">Select Subject / Law:</label>
+                        <select id="topicSelect" class="studio-select">
+                            <option value="fia_act">FIA Act 1974 (Sections 1-10 &amp; Schedule)</option>
+                            <option value="civil_servants_act">Civil Servants Act 1973 (Appointments &amp; Rules)</option>
+                            <option value="constitution_1973">Constitution 1973 &amp; 26th Amendment</option>
+                            <option value="pakistan_economy">Pakistan Economy &amp; IMF EFF 2024</option>
+                            <option value="english_grammar">English Grammar &amp; Sentence Rules</option>
+                            <option value="custom_upload">Custom Uploaded Notes (if loaded)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formatSelect">Question Format:</label>
+                        <select id="formatSelect" class="studio-select">
+                            <option value="mcq">Multiple Choice Questions (MCQs)</option>
+                            <option value="short">Short Conceptual Questions (5 Marks)</option>
+                            <option value="outline">20-Mark Essay / Long Question Outline</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="countSelect">Number of Questions:</label>
+                        <select id="countSelect" class="studio-select">
+                            <option value="3">3 Questions (Quick Test)</option>
+                            <option value="5" selected>5 Questions (Standard Practice)</option>
+                            <option value="10">10 Questions (Complete Mock)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diffSelect">Difficulty Rigor:</label>
+                        <select id="diffSelect" class="studio-select">
+                            <option value="Medium">Medium (Screening Standard)</option>
+                            <option value="Hard" selected>Hard (FPSC Competitive Grade)</option>
+                            <option value="Advanced">Advanced (Critical Thinking / Case Law)</option>
+                        </select>
+                    </div>
+
+                    <button class="studio-btn studio-btn-primary" id="btnGenerateQuestions">
+                        <i class="fa-solid fa-bolt"></i> Generate Practice Questions
+                    </button>
+                </div>
+
+                <!-- Tab 2: Upload / Paste Custom Notes Form -->
+                <div id="paneUpload" style="display:none;">
+                    <div class="studio-section-title">
+                        <i class="fa-solid fa-file-pen" style="color:#4338ca;"></i>
+                        <span>Upload or Paste Notes</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="docTitleInput">Document Title / Topic:</label>
+                        <input type="text" id="docTitleInput" class="studio-input" placeholder="e.g. CPEC Industrial Relocation Notes">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="docTextInput">Paste Notes Text:</label>
+                        <textarea id="docTextInput" class="studio-textarea" placeholder="Paste your study notes, law excerpts, or article text here..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Or Choose Text File (.txt / .md):</label>
+                        <input type="file" id="docFileInput" accept=".txt,.md" style="font-size:0.85rem; width:100%;">
+                    </div>
+
+                    <button class="studio-btn studio-btn-primary" id="btnIngestDoc">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Analyze &amp; Ingest Notes
+                    </button>
+
+                    <div class="doc-status-badge" id="docStatusBadge">
+                        <i class="fa-solid fa-circle-check"></i> <span id="docStatusText">Document ready for Q&amp;A and quiz generation.</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane: Interactive AI Assistant Console -->
+            <main class="ai-chat-console">
+                <!-- Header -->
+                <div class="chat-console-header">
+                    <div class="chat-header-title">
+                        <i class="fa-solid fa-brain" style="color:#4338ca;"></i>
+                        <span>Civil Services Intelligence Console</span>
+                    </div>
+                    <div class="chat-header-actions">
+                        <button class="chat-header-btn" id="btnClearChat"><i class="fa-solid fa-trash-can"></i> Clear Chat</button>
+                    </div>
+                </div>
+
+                <!-- Message Stream -->
+                <div class="chat-messages-stream" id="chatStream">
+                    <!-- Initial Welcome Message -->
+                    <div class="chat-bubble">
+                        <div class="chat-avatar ai"><i class="fa-solid fa-robot"></i></div>
+                        <div class="chat-content-box">
+                            <h3>👋 Welcome to your AI Civil Services Study Assistant!</h3>
+                            <p>I am programmed with authoritative statutory knowledge, constitutional articles, the Pakistan Economic Survey, and analytical exam methodologies.</p>
+                            <p><strong>What you can do:</strong></p>
+                            <ul>
+                                <li>Ask specific statutory questions (e.g., <em>"What are the search and arrest powers under Section 5 of FIA Act 1974?"</em>).</li>
+                                <li>Examine constitutional articles (e.g., <em>"Explain the 26th Amendment changes to CJP appointment"</em>).</li>
+                                <li>Upload or paste your own notes on the left panel to query them or generate practice questions!</li>
+                                <li>Use the <strong>Practice Question Generator</strong> on the left to create mock MCQs or 20-mark essay outlines.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Prompts Bar -->
+                <div class="quick-prompts-bar">
+                    <span style="font-size:0.8rem; font-weight:700; color:var(--text-light); display:inline-flex; align-items:center; gap:4px;"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> Quick Prompts:</span>
+                    <button class="prompt-chip" data-prompt="What are the powers of members of the Agency under Section 5 of FIA Act 1974?">⚖️ FIA Act Sec 5 Powers</button>
+                    <button class="prompt-chip" data-prompt="Explain Section 13 rules on retirement and superannuation under Civil Servants Act 1973.">📜 Civil Servants Retirement</button>
+                    <button class="prompt-chip" data-prompt="How did the 26th Constitutional Amendment change the appointment of the Chief Justice of Pakistan?">🏛️ 26th Amendment CJP Rule</button>
+                    <button class="prompt-chip" data-prompt="What is the non-reduction clause under Article 160(3B) of the Constitution?">💰 Article 160(3B) NFC Clause</button>
+                    <button class="prompt-chip" data-prompt="Explain how to identify and correct dangling modifiers in English precis.">✍️ Dangling Modifiers Rule</button>
+                </div>
+
+                <!-- Message Input Form -->
+                <form class="chat-input-bar" id="chatForm">
+                    <input type="text" id="chatInput" placeholder="Ask about statutory laws, constitutional articles, economics, or your uploaded notes..." autocomplete="off">
+                    <button type="submit" class="chat-send-btn">
+                        <i class="fa-solid fa-paper-plane"></i> Send
+                    </button>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <!-- Universal Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                        <span>MCQs<span class="highlight">Portal</span></span>
+                    </div>
+                    <p>Pakistan's premier educational platform for competitive examinations: CSS, PMS, FIA, NAB, AAO, Judiciary, and General Recruitment tests.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Civil Services Prep</h4>
+                    <ul>
+                        <li><a href="ai-assistant.html">AI Study Assistant</a></li>
+                        <li><a href="editorial-explainer.html">Editorial Explainer</a></li>
+                        <li><a href="world-map.html">Interactive World Map</a></li>
+                        <li><a href="digital-library.html">Digital Library &amp; Reports</a></li>
+                        <li><a href="recommended-books.html">Recommended Books by Exam</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Practice Portals</h4>
+                    <ul>
+                        <li><a href="fia-sample-papers.html">FIA AD 20 Sample Papers</a></li>
+                        <li><a href="quiz.html">Interactive Online Mock Quizzes</a></li>
+                        <li><a href="science-notes.html">General Science Capsule</a></li>
+                        <li><a href="index.html#categories">Subject-Wise MCQs</a></li>
+                        <li><a href="about.html">About &amp; Editorial Standards</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MCQs Portal Pakistan. All rights reserved. Built for competitive exam aspirants.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/ai_knowledge_base.js"></script>
+    <script src="js/ai_study_assistant.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ai = window.AI_STUDY_ASSISTANT;
+            const chatStream = document.getElementById('chatStream');
+            const chatForm = document.getElementById('chatForm');
+            const chatInput = document.getElementById('chatInput');
+
+            // Tab Switching in Studio
+            const tabBtnGen = document.getElementById('tabBtnGenerator');
+            const tabBtnUpload = document.getElementById('tabBtnUpload');
+            const paneGen = document.getElementById('paneGenerator');
+            const paneUpload = document.getElementById('paneUpload');
+
+            tabBtnGen.addEventListener('click', () => {
+                tabBtnGen.classList.add('active');
+                tabBtnUpload.classList.remove('active');
+                paneGen.style.display = 'block';
+                paneUpload.style.display = 'none';
+            });
+
+            tabBtnUpload.addEventListener('click', () => {
+                tabBtnUpload.classList.add('active');
+                tabBtnGen.classList.remove('active');
+                paneUpload.style.display = 'block';
+                paneGen.style.display = 'none';
+            });
+
+            // Append Chat Message
+            function appendMessage(sender, htmlContent) {
+                const bubble = document.createElement('div');
+                bubble.className = `chat-bubble ${sender}`;
+
+                const avatar = document.createElement('div');
+                avatar.className = `chat-avatar ${sender}`;
+                avatar.innerHTML = sender === 'ai' ? '<i class="fa-solid fa-robot"></i>' : '<i class="fa-solid fa-user"></i>';
+
+                const box = document.createElement('div');
+                box.className = 'chat-content-box';
+                box.innerHTML = htmlContent;
+
+                bubble.appendChild(avatar);
+                bubble.appendChild(box);
+                chatStream.appendChild(bubble);
+                chatStream.scrollTop = chatStream.scrollHeight;
+            }
+
+            // Handle Question Asking
+            function handleQuery(queryText) {
+                if (!queryText || !queryText.trim()) return;
+
+                // Append user query
+                appendMessage('user', queryText.trim());
+
+                // Get AI Answer
+                setTimeout(() => {
+                    const answerMarkdown = ai.answerQuestion(queryText.trim());
+                    // Simple markdown to HTML format
+                    const formattedHtml = answerMarkdown
+                        .replace(/### (.*?)\n/g, '<h3 style="font-size:1.05rem; margin:0 0 10px; color:#4338ca;">$1</h3>')
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                        .replace(/\n\n/g, '<p style="margin:8px 0;"></p>')
+                        .replace(/\n- (.*?)/g, '<li>$1</li>');
+
+                    appendMessage('ai', formattedHtml);
+                }, 300);
+            }
+
+            chatForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const q = chatInput.value;
+                chatInput.value = '';
+                handleQuery(q);
+            });
+
+            // Hook Quick Prompt Chips
+            document.querySelectorAll('.prompt-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const prompt = chip.getAttribute('data-prompt');
+                    handleQuery(prompt);
+                });
+            });
+
+            // Clear Chat
+            document.getElementById('btnClearChat').addEventListener('click', () => {
+                chatStream.innerHTML = '';
+                appendMessage('ai', 'Chat cleared. Ask a new question or generate practice tests using the left studio panel.');
+            });
+
+            // Ingest Custom Document Form
+            const btnIngest = document.getElementById('btnIngestDoc');
+            const docTitle = document.getElementById('docTitleInput');
+            const docText = document.getElementById('docTextInput');
+            const docFile = document.getElementById('docFileInput');
+            const docBadge = document.getElementById('docStatusBadge');
+            const docBadgeText = document.getElementById('docStatusText');
+
+            // Handle file input read
+            docFile.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        docText.value = event.target.result;
+                        if (!docTitle.value) docTitle.value = file.name.replace(/\.[^/.]+$/, "");
+                    };
+                    reader.readAsText(file);
+                }
+            });
+
+            btnIngest.addEventListener('click', () => {
+                const title = docTitle.value.trim() || 'Custom Uploaded Notes';
+                const content = docText.value.trim();
+
+                if (!content) {
+                    alert('Please paste some text or select a file to ingest.');
+                    return;
+                }
+
+                const doc = ai.ingestDocument(title, content);
+                if (doc) {
+                    docBadge.style.display = 'block';
+                    docBadgeText.textContent = `Ingested "${doc.title}" (${doc.wordCount} words, ${doc.paragraphs.length} paragraphs). Ready for Q&A!`;
+
+                    // Switch select to custom_upload
+                    const topicSelect = document.getElementById('topicSelect');
+                    if (topicSelect) topicSelect.value = 'custom_upload';
+
+                    // Post in chat
+                    appendMessage('ai', `
+                        <h3 style="color:#065f46;"><i class="fa-solid fa-file-circle-check"></i> Document Ingested Successfully!</h3>
+                        <p><strong>"${doc.title}"</strong> has been indexed into active memory (${doc.wordCount} words).</p>
+                        <p>You can now ask questions about these notes or generate custom practice MCQs using the Practice Question Generator on the left.</p>
+                    `);
+                }
+            });
+
+            // Generate Practice Questions Handler
+            const btnGen = document.getElementById('btnGenerateQuestions');
+            btnGen.addEventListener('click', () => {
+                const topic = document.getElementById('topicSelect').value;
+                const format = document.getElementById('formatSelect').value;
+                const count = document.getElementById('countSelect').value;
+                const diff = document.getElementById('diffSelect').value;
+
+                const questions = ai.generateQuestions(topic, format, count, diff);
+
+                if (!questions || questions.length === 0) {
+                    appendMessage('ai', 'No questions could be generated. If using custom notes, please ensure you have uploaded text first.');
+                    return;
+                }
+
+                // Render questions into chat
+                if (format === 'mcq') {
+                    let html = `
+                        <div class="generated-test-container">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                                <strong style="color:#4338ca; font-size:1.05rem;"><i class="fa-solid fa-circle-question"></i> Generated Practice Test (${questions.length} MCQs - ${diff} Tier)</strong>
+                                <span style="font-size:0.8rem; background:#e0e7ff; color:#3730a3; padding:3px 8px; border-radius:4px; font-weight:700;">Topic: ${topic.replace('_', ' ').toUpperCase()}</span>
+                            </div>
+                    `;
+
+                    questions.forEach((q, idx) => {
+                        const qId = 'gen_mcq_' + Math.random().toString(36).substr(2, 9);
+                        html += `
+                            <div class="gen-q-card" id="${qId}">
+                                <div class="gen-q-stem"><strong>Q${idx + 1}:</strong> ${q.q}</div>
+                                <div class="gen-opt-grid">
+                                    ${q.options.map((opt, oIdx) => `
+                                        <button type="button" class="gen-opt-btn"
+                                            data-card="${qId}"
+                                            data-opt-idx="${oIdx}"
+                                            data-correct="${q.correct}">
+                                            <strong>${['A', 'B', 'C', 'D'][oIdx]}.</strong> ${opt}
+                                        </button>
+                                    `).join('')}
+                                </div>
+                                <div class="gen-exp-box" id="${qId}_exp">
+                                    <strong><i class="fa-solid fa-circle-info"></i> Explanation:</strong> ${q.exp}
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    html += '</div>';
+                    appendMessage('ai', html);
+
+                    // Hook option clicks for immediate self-scoring
+                    chatStream.querySelectorAll('.gen-opt-btn').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const cardId = btn.getAttribute('data-card');
+                            const card = document.getElementById(cardId);
+                            const optIdx = parseInt(btn.getAttribute('data-opt-idx'), 10);
+                            const correctIdx = parseInt(btn.getAttribute('data-correct'), 10);
+                            const expBox = document.getElementById(`${cardId}_exp`);
+
+                            card.querySelectorAll('.gen-opt-btn').forEach(b => {
+                                b.classList.remove('correct', 'wrong');
+                                if (parseInt(b.getAttribute('data-opt-idx'), 10) === correctIdx) {
+                                    b.classList.add('correct');
+                                }
+                            });
+
+                            if (optIdx !== correctIdx) {
+                                btn.classList.add('wrong');
+                            }
+
+                            if (expBox) expBox.style.display = 'block';
+                        });
+                    });
+
+                } else if (format === 'short') {
+                    let html = `
+                        <div class="generated-test-container">
+                            <strong style="color:#4338ca; font-size:1.05rem; display:block; margin-bottom:12px;"><i class="fa-solid fa-pen"></i> Short Conceptual Questions (5 Marks Each)</strong>
+                    `;
+                    questions.forEach((q, idx) => {
+                        html += `
+                            <div class="gen-q-card">
+                                <div class="gen-q-stem"><strong>Q${idx + 1} (5 Marks):</strong> ${q.q}</div>
+                                <div style="font-size:0.88rem; line-height:1.55; color:var(--text-dark);">
+                                    ${q.answer.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                    appendMessage('ai', html);
+
+                } else {
+                    let html = `
+                        <div class="generated-test-container">
+                            <strong style="color:#4338ca; font-size:1.05rem; display:block; margin-bottom:12px;"><i class="fa-solid fa-pen-nib"></i> 20-Mark CSS/PMS Essay &amp; Question Outline</strong>
+                    `;
+                    questions.forEach((q) => {
+                        html += `
+                            <div class="gen-q-card">
+                                <h4 style="margin:0 0 6px; font-size:1.15rem; color:#1e1b4b;">${q.title}</h4>
+                                <div style="font-size:0.84rem; color:var(--text-light); margin-bottom:10px;"><strong>Exam:</strong> ${q.exam} | <strong>Marks:</strong> ${q.marks}</div>
+                                <div style="background:#f5f3ff; border-left:3px solid #6366f1; padding:10px 14px; border-radius:0 6px 6px 0; margin-bottom:12px;">
+                                    <strong style="color:#4338ca; font-size:0.86rem;">Thesis Statement:</strong>
+                                    <p style="margin:4px 0 0; font-size:0.88rem; font-style:italic;">"${q.thesis}"</p>
+                                </div>
+                                <strong style="font-size:0.88rem; text-transform:uppercase; color:#4338ca; display:block; margin-bottom:6px;">Model Examination Outline:</strong>
+                                <ol style="margin:0; padding-left:20px; font-size:0.88rem; line-height:1.6;">
+                                    ${q.outline.map(o => `<li>${o}</li>`).join('')}
+                                </ol>
+                                <div style="margin-top:10px; font-size:0.84rem; color:#065f46;">
+                                    <strong><i class="fa-solid fa-lightbulb"></i> Examiner Advice:</strong> ${q.examinerTip}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                    appendMessage('ai', html);
+                }
+            });
+
+            // Dark Mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    document.documentElement.classList.toggle('dark-mode', isDark);
+                    localStorage.setItem('mcqs_dark_mode', isDark ? 'true' : 'false');
+                });
+            }
+
+            if (localStorage.getItem('mcqs_dark_mode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

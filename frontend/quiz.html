@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take a Quiz & Mock Test Simulator | CSS Prep Central & MCQs Portal</title>
+    <meta name="description" content="Take timed competitive exam quizzes, practice tests, and simulated mocks for CSS, PMS, FPSC, SPSC, and academic subjects. Instant scoring, accuracy analytics, and verified answer explanations.">
+    <link rel="canonical" href="https://cssprepcentral.com/quiz.html">
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="acts-rules.html">Acts &amp; Rules</a>
+                <a href="articles.html">Articles</a>
+                <a href="topic-united-nations.html">One-Topic: UN</a>
+                <a href="topic-european-union.html">One-Topic: EU</a>
+                <a href="topic-nato.html">One-Topic: NATO</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html" class="active">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="fia-sample-papers.html">FIA Papers</a>
+                <a href="grammar-rules.html">Grammar Rules</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="exam-guide.html">Exam Guide</a>
+                <a href="science-notes.html">Science Notes</a>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Menu Bar -->
+    <nav class="secondary-navbar" aria-label="Secondary Navigation">
+        <div class="container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="topic-united-nations.html" style="font-weight: 700; color: #1d4ed8;"><i class="fa-solid fa-flag"></i> UN Master Hub</a></li>
+                <li><a href="topic-european-union.html" style="font-weight: 700; color: #003399;"><i class="fa-solid fa-shield-halved"></i> EU Master Hub</a></li>
+                <li><a href="articles.html" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-book-open"></i> Study Articles</a></li>
+                <li><a href="timeline.html" style="font-weight: 700; color: #4338ca;"><i class="fa-solid fa-timeline"></i> Historical Timeline</a></li>
+                <li><a href="leaderboard.html" style="font-weight: 700; color: #f59e0b;"><i class="fa-solid fa-trophy"></i> Daily Challenge &amp; Leaderboard</a></li>
+                <li><a href="dashboard.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="ai-assistant.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-robot"></i> AI Study Assistant</a></li>
+                <li><a href="editorial-explainer.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-newspaper"></i> Editorial Explainer</a></li>
+                <li><a href="world-map.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-earth-americas"></i> Interactive World Map</a></li>
+                <li><a href="guess-the-country.html" style="font-weight: 700; color: #8b5cf6;"><i class="fa-solid fa-gamepad"></i> Guess the Country</a></li>
+                <li><a href="locate-on-map.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-crosshairs"></i> Locate on Map</a></li>
+                <li><a href="match-the-following.html" style="font-weight: 700; color: #8b5cf6;"><i class="fa-solid fa-puzzle-piece"></i> Match Items</a></li>
+                <li><a href="arrange-chronologically.html" style="font-weight: 700; color: #d97706;"><i class="fa-solid fa-arrow-down-1-9"></i> Chronology Quiz</a></li>
+                <li><a href="crossword.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-chess-board"></i> Crossword</a></li>
+                <li><a href="word-search.html" style="font-weight: 700; color: #8b5cf6;"><i class="fa-solid fa-magnifying-glass"></i> Word Search</a></li>
+                <li><a href="unsc-simulator.html" style="font-weight: 700; color: #1d4ed8;"><i class="fa-solid fa-scale-balanced"></i> UNSC Simulator</a></li>
+                <li><a href="digital-library.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-book-bookmark"></i> Digital Library &amp; Reports</a></li>
+                <li><a href="recommended-books.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-book"></i> Recommended Books</a></li>
+                <li><a href="index.html#categories">Categories</a></li>
+                <li><a href="quiz.html" class="active">Take a Quiz</a></li>
+                <li><a href="written-prep.html" style="font-weight: 600; color: #38bdf8;"><i class="fa-solid fa-pen-nib"></i> Written Prep</a></li>
+                <li><a href="exam-guide.html" style="font-weight: 600; color: #f59e0b;"><i class="fa-solid fa-book-open-reader"></i> Exam Guide</a></li>
+                <li><a href="science-notes.html">Science Notes</a>
+                <a href="about.html">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Pre-Quiz Configuration Modal (Visible if no params passed) -->
+    <section id="quizSetup" class="quiz-container fade-in">
+        <div class="setup-card">
+            <h1 style="font-size: 1.8rem; margin-bottom: 8px;"><i class="fa-solid fa-sliders"></i> Interactive Quiz & Mock Test Simulator</h1>
+            <h2 style="font-size: 1.2rem; font-weight: 500; color: inherit; margin-top: 0;">Configure Your Test Session</h2>
+            <p>Customize your quiz session to match your preparation strategy.</p>
+
+            <!-- Guess the Country Banner -->
+            <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.05)); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 10px; padding: 12px 16px; margin: 12px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="background: #8b5cf6; color: white; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;"><i class="fa-solid fa-gamepad"></i></div>
+                    <div>
+                        <strong style="color: var(--text-dark, #0f172a); font-size: 0.95rem;">Looking for a Country Identification Challenge?</strong>
+                        <p style="margin: 2px 0 0; font-size: 0.82rem; color: var(--text-muted, #64748b);">Play "Guess the Country" — mystery clues, flags, silhouettes &amp; landmarks.</p>
+                    </div>
+                </div>
+                <a href="guess-the-country.html" style="background: #8b5cf6; color: #fff; text-decoration: none; padding: 7px 14px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 6px;">Play Game <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Arrange Events Chronologically Banner -->
+            <div style="background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(180, 83, 9, 0.05)); border: 1px solid rgba(217, 119, 6, 0.3); border-radius: 10px; padding: 12px 16px; margin: 0 0 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="background: #d97706; color: white; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;"><i class="fa-solid fa-arrow-down-1-9"></i></div>
+                    <div>
+                        <strong style="color: var(--text-dark, #0f172a); font-size: 0.95rem;">Master Historical Milestones, Wars, Treaties &amp; Amendments?</strong>
+                        <p style="margin: 2px 0 0; font-size: 0.82rem; color: var(--text-muted, #64748b);">Play "Arrange Events Chronologically" — interactive timeline sequencing game.</p>
+                    </div>
+                </div>
+                <a href="arrange-chronologically.html" style="background: #d97706; color: #fff; text-decoration: none; padding: 7px 14px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 6px;">Play Game <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Crossword & Word Search Academic Puzzles Banner -->
+            <div style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.1), rgba(139, 92, 246, 0.05)); border: 1px solid rgba(2, 132, 199, 0.3); border-radius: 10px; padding: 12px 16px; margin: 0 0 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="background: #0284c7; color: white; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;"><i class="fa-solid fa-chess-board"></i></div>
+                    <div>
+                        <strong style="color: var(--text-dark, #0f172a); font-size: 0.95rem;">Crossword &amp; Word Search Academic Puzzles</strong>
+                        <p style="margin: 2px 0 0; font-size: 0.82rem; color: var(--text-muted, #64748b);">Master terminology in Pakistan Affairs, IR, Science, Law, Geography &amp; Current Affairs.</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <a href="crossword.html" style="background: #0284c7; color: #fff; text-decoration: none; padding: 7px 12px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 5px;">Crossword <i class="fas fa-arrow-right"></i></a>
+                    <a href="word-search.html" style="background: #8b5cf6; color: #fff; text-decoration: none; padding: 7px 12px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 5px;">Word Search <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- UN Security Council Simulator Banner -->
+            <div style="background: linear-gradient(135deg, rgba(29, 78, 216, 0.1), rgba(15, 44, 89, 0.05)); border: 1px solid rgba(29, 78, 216, 0.3); border-radius: 10px; padding: 12px 16px; margin: 0 0 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="background: #1d4ed8; color: white; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <div>
+                        <strong style="color: var(--text-dark, #0f172a); font-size: 0.95rem;">UN Security Council Simulator &amp; Veto Engine</strong>
+                        <p style="margin: 2px 0 0; font-size: 0.82rem; color: var(--text-muted, #64748b);">Simulate 15-member roll-call voting on global crisis resolutions under Article 27.</p>
+                    </div>
+                </div>
+                <a href="unsc-simulator.html" style="background: #1d4ed8; color: #fff; text-decoration: none; padding: 7px 14px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 6px;">Launch Simulator <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="form-group">
+                <label for="setupCategory">Target Category</label>
+                <select id="setupCategory" class="form-control" title="Select Category" aria-label="Select Category">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="setupSubCategoryGroup" style="display:none;">
+                <label>Specific Topic (Optional)</label>
+                <select id="setupSubCategory" class="form-control">
+                    <option value="">All Topics</option>
+                </select>
+            </div>
+
+            <div class="form-row form-row-3">
+                <div class="form-group">
+                    <label for="setupLimit">Questions</label>
+                    <select id="setupLimit" class="form-control">
+                        <option value="10">10 Questions</option>
+                        <option value="20" selected>20 Questions</option>
+                        <option value="30">30 Questions</option>
+                        <option value="50">50 Questions</option>
+                        <option value="100">100 Questions (Full Paper Mock)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="setupDifficulty">Difficulty</label>
+                    <select id="setupDifficulty" class="form-control">
+                        <option value="Mixed" selected>Mixed (All Levels)</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="setupNegativeMarking">Negative Marking</label>
+                    <select id="setupNegativeMarking" class="form-control">
+                        <option value="0" selected>None (No Penalty)</option>
+                        <option value="0.25">-0.25 (1/4th Mark)</option>
+                        <option value="0.33">-0.33 (1/3rd Mark)</option>
+                        <option value="0.50">-0.50 (1/2 Mark)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="startQuizBtn" class="btn-primary"
+                style="width: 100%; margin-top: 15px; padding: 12px; font-size: 1.1rem;">
+                <i class="fa-solid fa-play"></i> Start Quiz Simulation
+            </button>
+        </div>
+    </section>
+
+    <!-- Active Quiz Engine (Hidden initially) -->
+    <section id="quizEngine" class="quiz-engine-container hidden">
+        <div class="quiz-header">
+            <div class="quiz-info">
+                <h3 id="activeQuizTitle">Category - Topic</h3>
+                <div class="quiz-badges">
+                    <span class="difficulty-badge" id="activeQuizDiff">Mixed</span>
+                    <span class="negative-badge" id="activeQuizNegMarking"><i class="fa-solid fa-scale-unbalanced"></i> No Neg. Marking</span>
+                </div>
+            </div>
+            <div class="timer-box">
+                <i class="fa-regular fa-clock"></i>
+                <span id="quizTimer">15:00</span>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-labels">
+                <span>Progress</span>
+                <span id="progressText">1 / 20</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+        </div>
+
+        <!-- Palette Toggle Button for Mobile Screens -->
+        <button id="paletteMobileToggle" class="palette-mobile-toggle" type="button" aria-label="Toggle Question Palette">
+            <i class="fa-solid fa-table-cells"></i> Question Palette (<span id="mobileAnsweredCount">0</span>/<span id="mobileTotalCount">0</span> Answered)
+        </button>
+
+        <div class="quiz-body-layout">
+            <!-- Main Question Area -->
+            <div class="quiz-main-column">
+                <!-- Question Card -->
+                <div class="quiz-card" id="questionCard">
+                    <!-- Injected dynamically -->
+                    <div class="loading text-center">Preparing Simulator...</div>
+                </div>
+
+                <!-- Controls -->
+                <div class="quiz-controls">
+                    <div class="quiz-action-group">
+                        <button id="markReviewBtn" class="btn-outline btn-action" type="button" title="Mark this question for later review">
+                            <i class="fa-regular fa-flag"></i> <span id="markReviewText">Mark for Review</span>
+                        </button>
+                        <button id="clearResponseBtn" class="btn-outline btn-action" type="button" title="Clear your selected answer for this question">
+                            <i class="fa-solid fa-rotate-left"></i> Clear Response
+                        </button>
+                    </div>
+                    <div class="quiz-nav-group">
+                        <button id="prevBtn" class="btn-outline" disabled><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                        <button id="nextBtn" class="btn-primary">Next <i class="fa-solid fa-arrow-right"></i></button>
+                        <button id="submitTestBtn" class="btn-danger hidden">Submit Test</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Palette Sidebar -->
+            <aside class="quiz-palette-panel" id="quizPalettePanel">
+                <div class="palette-card">
+                    <div class="palette-header">
+                        <h4><i class="fa-solid fa-table-cells"></i> Question Palette</h4>
+                    </div>
+
+                    <!-- Status Legend / Summary Badges -->
+                    <div class="palette-legend">
+                        <div class="legend-item" title="Answered">
+                            <span class="legend-dot status-answered"></span>
+                            <span class="legend-label">Answered (<strong id="palStatAnswered">0</strong>)</span>
+                        </div>
+                        <div class="legend-item" title="Visited but not answered">
+                            <span class="legend-dot status-unanswered"></span>
+                            <span class="legend-label">Unanswered (<strong id="palStatUnanswered">0</strong>)</span>
+                        </div>
+                        <div class="legend-item" title="Marked for review">
+                            <span class="legend-dot status-review"></span>
+                            <span class="legend-label">Review (<strong id="palStatReview">0</strong>)</span>
+                        </div>
+                        <div class="legend-item" title="Not visited yet">
+                            <span class="legend-dot status-not-visited"></span>
+                            <span class="legend-label">Not Visited (<strong id="palStatNotVisited">0</strong>)</span>
+                        </div>
+                    </div>
+
+                    <!-- Palette Grid -->
+                    <div id="paletteGrid" class="palette-grid">
+                        <!-- Numbered buttons injected by JS -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Results Dashboard (Hidden initially) -->
+    <section id="quizResults" class="results-container hidden">
+        <div class="results-card fade-in">
+            <h2><i class="fa-solid fa-trophy"></i> Quiz Results</h2>
+
+            <div class="score-grid">
+                <div class="score-metric primary">
+                    <span class="metric-value" id="resScore">0/20</span>
+                    <span class="metric-label">Final Score</span>
+                </div>
+                <div class="score-metric warning">
+                    <span class="metric-value" id="resPercentage">0%</span>
+                    <span class="metric-label">Accuracy</span>
+                </div>
+                <div class="score-metric info">
+                    <span class="metric-value" id="resTime">0m 0s</span>
+                    <span class="metric-label">Time Taken</span>
+                </div>
+                <div class="score-metric dark">
+                    <span class="metric-value" id="resStatus">Average</span>
+                    <span class="metric-label">Performance</span>
+                </div>
+            </div>
+
+            <!-- Detailed Scorecard Breakdown -->
+            <div class="results-breakdown-card">
+                <h4><i class="fa-solid fa-chart-pie"></i> Detailed Scorecard</h4>
+                <div class="breakdown-grid">
+                    <div class="breakdown-item item-correct">
+                        <span class="breakdown-title"><i class="fa-solid fa-circle-check"></i> Correct</span>
+                        <span class="breakdown-value" id="resCorrect">0</span>
+                    </div>
+                    <div class="breakdown-item item-wrong">
+                        <span class="breakdown-title"><i class="fa-solid fa-circle-xmark"></i> Incorrect</span>
+                        <span class="breakdown-value" id="resWrong">0</span>
+                    </div>
+                    <div class="breakdown-item item-penalty">
+                        <span class="breakdown-title"><i class="fa-solid fa-scale-unbalanced"></i> Penalty</span>
+                        <span class="breakdown-value" id="resPenalty">-0.00</span>
+                    </div>
+                    <div class="breakdown-item item-unattempted">
+                        <span class="breakdown-title"><i class="fa-regular fa-circle"></i> Unattempted</span>
+                        <span class="breakdown-value" id="resUnattempted">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-actions">
+                <button class="btn-primary" onclick="window.location.reload()"><i class="fa-solid fa-rotate-right"></i>
+                    Take Another Quiz</button>
+                <button class="btn-outline" onclick="window.location.href='index.html'"><i class="fa-solid fa-home"></i>
+                    Back to Home</button>
+            </div>
+
+            <!-- Detailed Answers Review -->
+            <div class="review-section">
+                <h3>Detailed Review</h3>
+                <div id="reviewList" class="review-list">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/data_2200.js"></script>
+    <script src="js/data_science_instruments.js"></script>
+    <script src="js/data_examveda.js"></script>
+    <script src="js/data_science_capsule.js"></script>
+    <script src="js/data_facts.js"></script>
+    <script src="js/data_facts_mcqs.js"></script>
+    <script src="js/data_aao.js"></script>
+    <script src="js/data_current_affairs_200.js"></script>
+    <script src="js/data_current_affairs_sts_200.js"></script>
+    <script src="js/data_ai.js"></script>
+    <script src="js/data_world_org.js"></script>
+    <script src="js/data_fia_sample_papers.js"></script>
+    <script src="js/data_fia_past_paper_2021_batch1.js"></script>
+    <script src="js/data_learning_dashboard.js"></script>
+    <script src="js/data_synonyms_antonyms.js"></script>
+    <script src="js/data_topic_un.js"></script>
+    <script src="js/data_topic_eu.js"></script>
+    <script src="js/data_topic_nato.js"></script>
+    <script src="js/data_islamiat_1000.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+
+</html>

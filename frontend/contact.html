@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contact CSS Prep Central & MCQs Portal. Get in touch with our editorial research team for inquiries, question verification, suggestions, or academic assistance.">
+    <meta name="keywords"
+        content="Contact CSS Prep Central, Contact Us, MCQs Support, Exam Prep Feedback, Editorial Team, Report Question Error">
+    <title>Contact Us | CSS Prep Central &amp; MCQs Portal</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contact-container {
+            max-width: 1100px;
+            margin: 40px auto 80px;
+            padding: 0 20px;
+        }
+
+        .contact-hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.4rem;
+            color: var(--primary-color, #002b66);
+            margin-bottom: 10px;
+        }
+
+        .dark-mode .contact-hero h1 {
+            color: #93c5fd;
+        }
+
+        .contact-hero p {
+            font-size: 1.05rem;
+            color: var(--text-light, #64748b);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 860px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 16px;
+            padding: 36px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .dark-mode .info-card {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f8fafc;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .dark-mode .contact-icon {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+        }
+
+        .contact-item-text h4 {
+            font-size: 1rem;
+            margin: 0 0 4px 0;
+            color: var(--primary-color, #002b66);
+        }
+
+        .dark-mode .contact-item-text h4 {
+            color: #93c5fd;
+        }
+
+        .contact-item-text p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-light, #64748b);
+            line-height: 1.5;
+        }
+
+        .dark-mode .contact-item-text p {
+            color: #94a3b8;
+        }
+
+        .form-card {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 16px;
+            padding: 36px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .form-card {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f8fafc;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark, #1e293b);
+        }
+
+        .dark-mode .form-group label {
+            color: #e2e8f0;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color, #cbd5e1);
+            background: var(--bg-light, #f8fafc);
+            color: inherit;
+            font-size: 0.95rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .dark-mode .form-control {
+            background: #0f172a;
+            border-color: #334155;
+            color: #f8fafc;
+        }
+
+        .form-control:focus {
+            border-color: #2563eb;
+        }
+
+        textarea.form-control {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 28px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .success-alert {
+            display: none;
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            color: #15803d;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-graduation-cap" style="color: #f59e0b; font-size: 1.5rem; margin-right: 8px;"></i>
+                    <span>CSS Prep<span class="highlight">Central</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="recruitment-prep.html">Recruitment Hub</a>
+                <a href="scholarships.html">Scholarships</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html" class="active" style="color: #2563eb; font-weight: 700;">Contact Us</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="contact-container">
+        <div class="contact-hero">
+            <h1>Get In Touch With Our Team</h1>
+            <p>Have questions about exam syllabi, spotted an answer discrepancy, or seeking guidance on civil service preparation? We are here to help.</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div class="info-card">
+                <h3 style="margin: 0 0 8px 0; font-family: 'Outfit', sans-serif; font-size: 1.3rem;">Contact Information</h3>
+                <p style="margin: 0; font-size: 0.92rem; color: var(--text-light, #64748b); line-height: 1.6;">Our dedicated editorial researchers and academic coordinators typically respond within 24 to 48 business hours.</p>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-item-text">
+                        <h4>General Inquiries</h4>
+                        <p><code>contact@cssprepcentral.com</code></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-spell-check"></i></div>
+                    <div class="contact-item-text">
+                        <h4>Question Corrections &amp; Editorial Verification</h4>
+                        <p><code>editorial@cssprepcentral.com</code></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="contact-item-text">
+                        <h4>Privacy &amp; Data Rights</h4>
+                        <p><code>privacy@cssprepcentral.com</code></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+                    <div class="contact-item-text">
+                        <h4>Editorial &amp; Research Hub</h4>
+                        <p>CSS Prep Central Research Office, Sector F-8, Islamabad / Gulshan-e-Iqbal, Karachi, Pakistan.</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-item-text">
+                        <h4>Operating Hours</h4>
+                        <p>Monday – Saturday: 9:00 AM – 6:00 PM (PKT)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="form-card">
+                <h3 style="margin: 0 0 18px 0; font-family: 'Outfit', sans-serif; font-size: 1.3rem;">Send Us a Direct Message</h3>
+
+                <div id="contactSuccessAlert" class="success-alert">
+                    <i class="fas fa-check-circle"></i> Thank you! Your message has been received. Our editorial team will review and reply within 24–48 hours.
+                </div>
+
+                <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label for="userName">Full Name *</label>
+                        <input type="text" id="userName" class="form-control" placeholder="e.g. Tariq Mehmood" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userEmail">Email Address *</label>
+                        <input type="email" id="userEmail" class="form-control" placeholder="e.g. candidate@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userCategory">Inquiry Type *</label>
+                        <select id="userCategory" class="form-control" required>
+                            <option value="" disabled selected>Select an inquiry category</option>
+                            <option value="exam-prep">CSS / PMS / CCE Exam Preparation Inquiry</option>
+                            <option value="recruitment">Recruitment Test (FIA, Sindh Police, AAO) Question</option>
+                            <option value="error-report">Report Error in MCQ / Question Key / Essay</option>
+                            <option value="scholarship">Master's / PhD Scholarship Question</option>
+                            <option value="editorial">Editorial / Content Contribution</option>
+                            <option value="technical">Website Technical Issue or Bug</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userSubject">Subject *</label>
+                        <input type="text" id="userSubject" class="form-control" placeholder="Brief summary of your query" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userMessage">Message / Details *</label>
+                        <textarea id="userMessage" class="form-control" placeholder="Please provide specific details or citation of the question / topic..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #0f172a; color: #94a3b8; padding: 40px 20px 25px; margin-top: 60px; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 30px;">
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">CSS Prep Central</h4>
+                <p style="font-size: 0.88rem; line-height: 1.6;">Your comprehensive, free academic repository for civil services, public service commissions, recruitment test preparation, and higher education scholarships.</p>
+            </div>
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">Academic Portals</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2;">
+                    <li><a href="written-prep.html" style="color: #cbd5e1; text-decoration: none;">Written Examination Prep</a></li>
+                    <li><a href="recruitment-prep.html" style="color: #cbd5e1; text-decoration: none;">Complete Recruitment Hub</a></li>
+                    <li><a href="scholarships.html" style="color: #cbd5e1; text-decoration: none;">Master's &amp; PhD Scholarships</a></li>
+                    <li><a href="international-relations-essays.html" style="color: #cbd5e1; text-decoration: none;">IR &amp; Geopolitics Essays</a></li>
+                    <li><a href="digital-library.html" style="color: #cbd5e1; text-decoration: none;">Digital Library &amp; Reports</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">Legal &amp; Trust</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2;">
+                    <li><a href="privacy.html" style="color: #cbd5e1; text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="terms.html" style="color: #cbd5e1; text-decoration: none;">Terms of Service</a></li>
+                    <li><a href="disclaimer.html" style="color: #cbd5e1; text-decoration: none;">Disclaimer</a></li>
+                    <li><a href="about.html" style="color: #cbd5e1; text-decoration: none;">About Us</a></li>
+                    <li><a href="contact.html" style="color: #60a5fa; font-weight: 600; text-decoration: none;">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 1px solid #1e293b; text-align: center; font-size: 0.82rem;">
+            <p>&copy; 2026 CSS Prep Central &amp; MCQs Portal. All rights reserved. Disclaimer: CSS Prep Central is an independent educational portal and is not affiliated with FPSC, SPSC, NTS, or any government agency.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('contactSuccessAlert');
+            alertBox.style.display = 'block';
+            document.getElementById('contactForm').reset();
+            alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        const darkToggle = document.getElementById('darkModeToggle');
+        if (darkToggle) {
+            darkToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                darkToggle.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                darkToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+        }
+    </script>
+</body>
+</html>

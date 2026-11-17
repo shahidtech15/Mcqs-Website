@@ -1,0 +1,1260 @@
+const fs = require('fs');
+const path = require('path');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Jobs: Sindh Police Mega Recruitment 2026 | 2,000 ASI & 15,500 Constables</title>
+    <meta name="description"
+        content="Official Sindh Police Mega Recruitment: Home Department Sindh receives proposal for 2,000 ASI Investigation (BPS-11) via SPSC, 5,000 Border Security Constables, and 10,500 General Constables via SJP & STS. Complete eligibility, physical standards, syllabus, and meeting minutes.">
+    <meta name="keywords"
+        content="Sindh Police Jobs, 2000 ASI Investigation Sindh Police, 15500 Constables Sindh Police, Border Security Police Constables, SPSC ASI Investigation, Sukkur IBA STS Sindh Police, Sindh Job Portal SJP, CPO Sindh Recruitment 2026">
+
+    <!-- Anti-FOUC Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Site Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --job-primary: #e11d48;
+            --job-primary-dark: #be123c;
+            --job-primary-light: #ffe4e6;
+            --job-accent: #0284c7;
+            --job-bg: #f8fafc;
+            --job-card-bg: #ffffff;
+            --job-border: #e2e8f0;
+            --job-text-main: #0f172a;
+            --job-text-muted: #64748b;
+        }
+
+        .dark-mode {
+            --job-bg: #0b0f19;
+            --job-card-bg: #111827;
+            --job-border: #1f2937;
+            --job-text-main: #f8fafc;
+            --job-text-muted: #94a3b8;
+            --job-primary-light: rgba(225, 29, 72, 0.15);
+        }
+
+        body {
+            background-color: var(--job-bg);
+            color: var(--job-text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Top Breaking Alert */
+        .breaking-bar {
+            background: linear-gradient(90deg, #be123c 0%, #e11d48 50%, #9f1239 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 2px 10px rgba(225, 29, 72, 0.2);
+        }
+
+        .breaking-tag {
+            background: #ffffff;
+            color: #be123c;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 900;
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .breaking-dot {
+            width: 7px;
+            height: 7px;
+            background: #e11d48;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulseDot 1.4s infinite ease-in-out;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+
+        /* Navigation */
+        .site-header {
+            background: var(--job-card-bg);
+            border-bottom: 1px solid var(--job-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--job-text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--job-primary);
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--job-text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--job-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: 1px solid var(--job-border);
+            color: var(--job-text-muted);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            color: var(--job-primary);
+            border-color: var(--job-primary);
+        }
+
+        /* Layout Container */
+        .main-container {
+            max-width: 1260px;
+            margin: 0 auto;
+            padding: 30px 20px 80px 20px;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(225, 29, 72, 0.2) 0%, rgba(225, 29, 72, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-badge-tag {
+            background: rgba(225, 29, 72, 0.25);
+            border: 1px solid rgba(225, 29, 72, 0.5);
+            color: #fca5a5;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin: 0 0 16px 0;
+            color: #ffffff;
+        }
+
+        .hero-title span.highlight-red {
+            color: #fb7185;
+        }
+
+        .hero-title span.highlight-blue {
+            color: #38bdf8;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            max-width: 960px;
+            margin: 0 0 24px 0;
+        }
+
+        .official-meta-strip {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .official-meta-strip strong {
+            color: #f1f5f9;
+        }
+
+        .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-cta-primary {
+            background: #e11d48;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
+        }
+
+        .btn-cta-primary:hover {
+            background: #be123c;
+            transform: translateY(-2px);
+        }
+
+        .btn-cta-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        /* 3 Main Highlights Cards */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+            margin-bottom: 36px;
+        }
+
+        .highlight-card {
+            background: var(--job-card-bg);
+            border: 1px solid var(--job-border);
+            border-radius: 16px;
+            padding: 26px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-scale-tag {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .tag-asi {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .tag-border {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .tag-constable {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .job-card-count {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            margin: 12px 0 4px 0;
+        }
+
+        .job-card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 14px 0;
+            color: var(--job-text-main);
+        }
+
+        .job-feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--job-text-muted);
+        }
+
+        .job-feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.45;
+        }
+
+        .job-feature-list li i {
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .testing-body-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            margin-top: 14px;
+            border: 1px dashed;
+        }
+
+        /* Section Headers */
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 40px 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--job-border);
+        }
+
+        .section-heading h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            margin: 0;
+            color: var(--job-text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Minutes Excerpt Box */
+        .minutes-box {
+            background: var(--job-card-bg);
+            border: 1px solid #fecdd3;
+            border-left: 6px solid #e11d48;
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 36px;
+            box-shadow: 0 4px 16px rgba(225, 29, 72, 0.05);
+        }
+
+        .minutes-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .minutes-badge {
+            background: #fff1f2;
+            color: #be123c;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .minutes-text {
+            font-family: 'Georgia', serif;
+            font-size: 1.02rem;
+            color: var(--job-text-main);
+            line-height: 1.75;
+            background: rgba(0, 0, 0, 0.02);
+            padding: 16px 20px;
+            border-radius: 10px;
+            border-left: 3px solid rgba(225, 29, 72, 0.4);
+        }
+
+        .dark-mode .minutes-text {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .minutes-footer {
+            font-size: 0.82rem;
+            color: var(--job-text-muted);
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Table Styling */
+        .table-wrap {
+            overflow-x: auto;
+            background: var(--job-card-bg);
+            border: 1px solid var(--job-border);
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            margin-bottom: 36px;
+        }
+
+        .job-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: left;
+        }
+
+        .job-table th {
+            background: rgba(0, 0, 0, 0.03);
+            color: var(--job-text-main);
+            font-weight: 800;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--job-border);
+            white-space: nowrap;
+        }
+
+        .dark-mode .job-table th {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .job-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--job-border);
+            color: var(--job-text-main);
+            vertical-align: top;
+        }
+
+        .job-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .job-table tr:hover td {
+            background: rgba(0, 0, 0, 0.015);
+        }
+
+        /* Syllabus Accordion Cards */
+        .syllabus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 22px;
+            margin-bottom: 36px;
+        }
+
+        .syllabus-card {
+            background: var(--job-card-bg);
+            border: 1px solid var(--job-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .syllabus-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--job-border);
+        }
+
+        .syllabus-card-header h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--job-text-main);
+        }
+
+        .syllabus-weight-bar {
+            margin-bottom: 14px;
+        }
+
+        .weight-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.84rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .progress-bar-bg {
+            height: 7px;
+            background: var(--job-border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        /* Portal Step Cards */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-bottom: 36px;
+        }
+
+        .step-card {
+            background: var(--job-card-bg);
+            border: 1px solid var(--job-border);
+            border-radius: 14px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .step-num {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--job-primary);
+            color: #ffffff;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .step-card h4 {
+            margin: 10px 0 8px 0;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--job-text-main);
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--job-text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Preparation CTA Banner */
+        .prep-banner {
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.1) 0%, rgba(2, 132, 199, 0.1) 100%);
+            border: 1px solid rgba(15, 118, 110, 0.25);
+            border-radius: 18px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        .prep-banner-content h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--job-text-main);
+        }
+
+        .prep-banner-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--job-text-muted);
+            max-width: 650px;
+        }
+
+        .prep-buttons-wrap {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Search Filter Controls */
+        .search-box-wrap {
+            position: relative;
+            min-width: 280px;
+        }
+
+        .search-box-wrap input {
+            width: 100%;
+            background: var(--job-card-bg);
+            border: 1px solid var(--job-border);
+            color: var(--job-text-main);
+            padding: 8px 14px 8px 36px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .search-box-wrap input:focus {
+            border-color: var(--job-primary);
+        }
+
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--job-text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--job-card-bg);
+            border-top: 1px solid var(--job-border);
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: var(--job-text-muted);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: var(--job-text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--job-primary);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            .hero-banner {
+                padding: 24px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Breaking Notification Bar -->
+    <div class="breaking-bar">
+        <span class="breaking-tag"><span class="breaking-dot"></span> Mega Recruitment Alert</span>
+        <span>Home Department Sindh Receives Official Proposal: 2,000 ASI Investigation &amp; 15,500 Constables via SPSC, SJP &amp; IBA</span>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="latest-jobs.html" class="active" style="color: #e11d48; font-weight: 800;"><i class="fas fa-bullhorn"></i> Latest Jobs <span style="background:#e11d48; color:#fff; font-size:0.65rem; padding:1px 6px; border-radius:10px;">17,500+</span></a>
+                <a href="scholarships.html"><i class="fas fa-graduation-cap"></i> Scholarships</a>
+                <a href="recruitment-prep.html">Recruitment Prep</a>
+                <a href="math-mcqs.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-calculator"></i> Math MCQs (300+)</a>
+                <a href="math-tricks.html">Math Tricks</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="cce-essays-2025.html">CCE Essays</a>
+                <a href="css-essays-2026.html">CSS Essays</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-banner">
+            <div class="hero-badge-tag">
+                <i class="fas fa-shield-halved"></i> Government of Sindh &bull; Office of the IGP Sindh
+            </div>
+            <h1 class="hero-title">
+                Sindh Police Mega Recruitment 2026: <br>
+                <span class="highlight-red">2,000 ASI Investigation</span> &amp; <span class="highlight-blue">15,500 Constables</span>
+            </h1>
+            <p class="hero-desc">
+                The Home Department, Government of Sindh has formally received a comprehensive recruitment proposal from the Office of the Inspector General of Police (IGP), Sindh. The sanctioned recruitment includes <strong>2,000 Assistant Sub-Inspectors (Investigation)</strong> via SPSC, <strong>5,000 Border Security Constables</strong>, and <strong>10,500 General Police Constables</strong> via Sukkur IBA (STS) and the Sindh Job Portal (SJP).
+            </p>
+            <div class="official-meta-strip">
+                <span><i class="fas fa-building-shield"></i> <strong>Authority:</strong> CPO Sindh, Karachi</span>
+                <span>&bull;</span>
+                <span><i class="fas fa-file-signature"></i> <strong>Letter No:</strong> AIGP/Admn/5454-90/2026</span>
+                <span>&bull;</span>
+                <span><i class="fas fa-calendar-check"></i> <strong>Meeting Date:</strong> 29-10-2026 (Issued: 03-11-2026)</span>
+                <span>&bull;</span>
+                <span><i class="fas fa-user-tie"></i> <strong>Chaired by:</strong> Worthy IGP Sindh</span>
+            </div>
+            <div class="cta-row">
+                <a href="#vacancies-matrix" class="btn-cta btn-cta-primary">
+                    <i class="fas fa-table-list"></i> View All Vacancies Breakdown
+                </a>
+                <a href="#meeting-minutes" class="btn-cta btn-cta-secondary">
+                    <i class="fas fa-stamp"></i> Read Verbatim Meeting Minutes
+                </a>
+                <a href="#syllabus-section" class="btn-cta btn-cta-secondary">
+                    <i class="fas fa-book-bookmark"></i> SPSC &amp; STS Exam Syllabus
+                </a>
+                <a href="math-mcqs.html" class="btn-cta btn-cta-secondary" style="background: rgba(2, 132, 199, 0.3); border-color: rgba(56, 189, 248, 0.4);">
+                    <i class="fas fa-pen-nib"></i> Practice Screening MCQs
+                </a>
+            </div>
+        </section>
+
+        <!-- 3 Core Vacancies Highlight Cards -->
+        <div class="section-heading">
+            <h2><i class="fas fa-layer-group" style="color: #e11d48;"></i> Core Sanctioned Recruitment Drives</h2>
+            <span style="font-size: 0.88rem; color: var(--job-text-muted); font-weight: 600;">Approved under Agenda Item No. 8 &amp; 6</span>
+        </div>
+
+        <div class="highlight-grid">
+            <!-- Card 1: ASI Investigation -->
+            <div class="highlight-card" style="border-top: 5px solid #0284c7;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="card-scale-tag tag-asi">BPS-11 &bull; Officer Cadre</span>
+                        <span style="font-size: 0.78rem; font-weight: 800; color: #0284c7; background: #e0f2fe; padding: 2px 8px; border-radius: 4px;">SPSC Cadre</span>
+                    </div>
+                    <div class="job-card-count" style="color: #0284c7;">2,000 Posts</div>
+                    <h3 class="job-card-title">ASI (Investigation) &bull; Sindh Police</h3>
+                    <ul class="job-feature-list">
+                        <li>
+                            <i class="fas fa-graduation-cap" style="color: #0284c7;"></i>
+                            <span><strong>Qualification:</strong> Graduate / Bachelor's Degree (14 Years Education) from HEC recognized university.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-magnifying-glass" style="color: #0284c7;"></i>
+                            <span><strong>Job Role:</strong> Specialized investigation officer: forensic evidence handling, criminal investigation, case dockets preparation, homicide &amp; cyber fraud.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-building-columns" style="color: #0284c7;"></i>
+                            <span><strong>Testing Agency:</strong> <strong>Sindh Public Service Commission (SPSC)</strong> for written screening, physical endurance, and viva-voce.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-arrows-spin" style="color: #0284c7;"></i>
+                            <span><strong>Current Stage:</strong> Proposal sent to Home Department for onward transmission to SPSC.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="testing-body-badge" style="color: #0284c7; border-color: rgba(2, 132, 199, 0.3); background: rgba(2, 132, 199, 0.05);">
+                        <i class="fas fa-landmark"></i> Advertised through SPSC (spsc.gov.pk)
+                    </div>
+                    <a href="recruitment-prep.html" class="btn-cta btn-cta-primary" style="width: 100%; box-sizing: border-box; justify-content: center; margin-top: 10px; background: #0284c7;">
+                        <i class="fas fa-crosshairs"></i> Prepare ASI Investigation
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2: Border Security Police Constables -->
+            <div class="highlight-card" style="border-top: 5px solid #d97706;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="card-scale-tag tag-border">BPS-07 &bull; Specialized Force</span>
+                        <span style="font-size: 0.78rem; font-weight: 800; color: #d97706; background: #fef3c7; padding: 2px 8px; border-radius: 4px;">Border Security</span>
+                    </div>
+                    <div class="job-card-count" style="color: #d97706;">5,000 Posts</div>
+                    <h3 class="job-card-title">Border Security Police Constables</h3>
+                    <ul class="job-feature-list">
+                        <li>
+                            <i class="fas fa-graduation-cap" style="color: #d97706;"></i>
+                            <span><strong>Qualification:</strong> Matriculation (SSC) from a recognized Board of Secondary Education.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-shield-halved" style="color: #d97706;"></i>
+                            <span><strong>Role &amp; Deployment:</strong> Securing inter-provincial borders (Sindh-Punjab, Sindh-Balochistan), anti-dacoit operations in riverine (Kacha) areas, and strategic transit checkpoints.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-triangle-exclamation" style="color: #d97706;"></i>
+                            <span><strong>Priority Directive:</strong> Worthy IGP directed recruitment to be pushed forward on top priority with relaxation of certain conditions.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-network-wired" style="color: #d97706;"></i>
+                            <span><strong>Testing Agency:</strong> <strong>Sindh Job Portal (SJP) &amp; Sukkur IBA (STS)</strong>.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="testing-body-badge" style="color: #d97706; border-color: rgba(217, 119, 6, 0.3); background: rgba(217, 119, 6, 0.05);">
+                        <i class="fas fa-id-card"></i> Advertised via SJP &amp; Sukkur IBA (STS)
+                    </div>
+                    <a href="recruitment-prep.html" class="btn-cta btn-cta-primary" style="width: 100%; box-sizing: border-box; justify-content: center; margin-top: 10px; background: #d97706;">
+                        <i class="fas fa-crosshairs"></i> Prepare Border Security Force
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3: General Police Constables -->
+            <div class="highlight-card" style="border-top: 5px solid #16a34a;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="card-scale-tag tag-constable">BPS-07 &bull; Field Cadre</span>
+                        <span style="font-size: 0.78rem; font-weight: 800; color: #16a34a; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">Sindh Ranges</span>
+                    </div>
+                    <div class="job-card-count" style="color: #16a34a;">10,500 Posts</div>
+                    <h3 class="job-card-title">Police Constables (General Duty)</h3>
+                    <ul class="job-feature-list">
+                        <li>
+                            <i class="fas fa-calculator" style="color: #16a34a;"></i>
+                            <span><strong>Sanction Formula:</strong> 7,500 present vacancies + 3,000 anticipated retirement vacancies added = <strong>10,500 Total Vacancies</strong>.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-graduation-cap" style="color: #16a34a;"></i>
+                            <span><strong>Qualification:</strong> Matriculation (SSC) from a recognized Board of Secondary Education.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-location-dot" style="color: #16a34a;"></i>
+                            <span><strong>Coverage:</strong> All 6 Police Ranges (Karachi, Hyderabad, Mirpurkhas, Shaheed Benazirabad, Sukkur, Larkana).</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-laptop-code" style="color: #16a34a;"></i>
+                            <span><strong>Testing Agency:</strong> <strong>Sukkur IBA Testing Services (STS)</strong> and dedicated Sindh Police slot on SJP.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="testing-body-badge" style="color: #16a34a; border-color: rgba(22, 163, 74, 0.3); background: rgba(22, 163, 74, 0.05);">
+                        <i class="fas fa-laptop-file"></i> Advertised through IBA (STS) &amp; SJP
+                    </div>
+                    <a href="recruitment-prep.html" class="btn-cta btn-cta-primary" style="width: 100%; box-sizing: border-box; justify-content: center; margin-top: 10px; background: #16a34a;">
+                        <i class="fas fa-crosshairs"></i> Prepare Constable Screening
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verbatim Excerpt from Official Staff Officers' Meeting Minutes -->
+        <div id="meeting-minutes" class="minutes-box">
+            <div class="minutes-header">
+                <span class="minutes-badge"><i class="fas fa-stamp"></i> Verbatim Official Minutes Record</span>
+                <span style="font-size: 0.82rem; color: #be123c; font-weight: 700;">Meeting held at Ibrahim Hall, 6th Floor, CPO Sindh, Karachi</span>
+            </div>
+            <div class="minutes-text">
+                <p style="margin: 0 0 12px 0;">
+                    <strong>&ldquo;Item 8: Future Recruitment of Police Constables, Border Security Police and ASIs Investigation:</strong><br>
+                    The proposals for future recruitment were discussed. A proposal for the recruitment of <strong>2,000 ASIs Investigation</strong> has been sent to the Home Department for onward transmission to the <strong>Sindh Public Service Commission</strong>. A proposal for the recruitment of <strong>5,000 Police Constables in the Border Security Police</strong> has been sent to the Government of Sindh, seeking relaxation of certain conditions. The Chair directed that the recruitment of Police Constables in the Border Security Police be pushed forward on priority, and that the new recruitment be expedited.<br>
+                    For general recruitment, <strong>7,500 vacancies of Police Constable</strong> are presently available. As the process takes about one year, <strong>3,000 anticipated vacancies</strong> have been added, bringing the total to <strong>10,500</strong>.&rdquo;
+                </p>
+                <p style="margin: 0 0 12px 0; font-size: 0.95rem; border-top: 1px dashed rgba(225, 29, 72, 0.2); padding-top: 10px;">
+                    <strong>&ldquo;Item 6: Recruitment in T&amp;T Sindh and Creation of a Sindh Police Slot on the Sindh Job Portal:</strong><br>
+                    The recruitment of <strong>896 Head Constables (Wireless Operator)</strong> and <strong>4,968 Driver Constables</strong> in T&amp;T Sindh was discussed. The recruitment was advertised through the SIBA Testing Service; however, it is held up owing to... The Chair directed that the matter be pursued with the Services and Home Departments for the early creation of a separate Sindh Police slot on the Sindh Job Portal, so that the recruitment can commence and the shortage of staff in Telecommunication and MT can be addressed.&rdquo;
+                </p>
+                <p style="margin: 0; font-size: 0.95rem; border-top: 1px dashed rgba(225, 29, 72, 0.2); padding-top: 10px;">
+                    <strong>&ldquo;Item 9: Recruitment and Promotion against Vacancies of Junior Clerk:</strong><br>
+                    The filling of <strong>455 vacancies of Junior Clerk</strong>, which arose after the recent promotion of Junior Clerks to Senior Clerks, was discussed. It was agreed that, under the existing formula, <strong>30% of the vacancies would be reserved for the promotion of Class-IV employees</strong> and the remaining vacancies would be filled through new recruitment. The Chair approved the reservation... and directed that the process for the remaining posts be initiated immediately after the recruitment of Police Constables and Border Security Police has been pushed forward.&rdquo;
+                </p>
+            </div>
+            <div class="minutes-footer">
+                <i class="fas fa-file-circle-check" style="color: #be123c;"></i>
+                <span>Official Source: Office of the Inspector General of Police, Sindh Karachi (Letter No. AIGP/Admn/5454-90/2026, Agenda Items 6, 8, 9 &amp; 10, Pages 1–5 of 16).</span>
+            </div>
+        </div>
+
+        <!-- Comprehensive Post Specifications & Comparison Matrix -->
+        <div id="vacancies-matrix" class="section-heading">
+            <h2><i class="fas fa-table-list" style="color: #0284c7;"></i> Complete Vacancy Breakdown &amp; Eligibility Criteria</h2>
+            <div class="search-box-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" id="jobTableSearch" placeholder="Search posts, scale, or testing agency..." onkeyup="filterJobTable(this.value)">
+            </div>
+        </div>
+
+        <div class="table-wrap">
+            <table class="job-table" id="recruitmentTable">
+                <thead>
+                    <tr>
+                        <th>Post Title</th>
+                        <th>Pay Scale</th>
+                        <th>Total Posts</th>
+                        <th>Testing Body</th>
+                        <th>Minimum Education</th>
+                        <th>Physical Standards</th>
+                        <th>Exam Syllabus / Pattern</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong style="color: #0284c7;">ASI (Investigation)</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--job-text-muted);">Sindh Police Investigation Cadre</span>
+                        </td>
+                        <td><span class="card-scale-tag tag-asi">BPS-11</span></td>
+                        <td><strong style="font-size: 1.05rem; color: #0284c7;">2,000 Posts</strong></td>
+                        <td><strong>SPSC</strong> (Sindh Public Service Commission)</td>
+                        <td>Graduate / Bachelor's (14 Years, 2nd Div)</td>
+                        <td>Height: 5' 5" (Chest: 33"x34.5")<br>Running: 1600m in 8 mins</td>
+                        <td>English (20%), Current Affairs &amp; GK (20%), Pak Affairs &amp; Islam (20%), Everyday Science &amp; Math (20%), CrPC/Criminal Law (20%)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong style="color: #d97706;">Border Security Constables</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--job-text-muted);">Border Security Police Unit</span>
+                        </td>
+                        <td><span class="card-scale-tag tag-border">BPS-07</span></td>
+                        <td><strong style="font-size: 1.05rem; color: #d97706;">5,000 Posts</strong></td>
+                        <td><strong>SJP &amp; Sukkur IBA (STS)</strong></td>
+                        <td>Matriculation (SSC from recognized board)</td>
+                        <td>Height: 5' 5" (Relaxation requested)<br>Running: 1600m in 8 mins</td>
+                        <td>General Knowledge, Everyday Science, Basic Arithmetic, English Grammar &amp; Urdu/Sindhi Language (100 Marks MCQs)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong style="color: #16a34a;">Police Constables (General Duty)</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--job-text-muted);">All 6 Police Ranges of Sindh</span>
+                        </td>
+                        <td><span class="card-scale-tag tag-constable">BPS-07</span></td>
+                        <td><strong style="font-size: 1.05rem; color: #16a34a;">10,500 Posts</strong><br><span style="font-size: 0.75rem; color: var(--job-text-muted);">(7,500 + 3,000)</span></td>
+                        <td><strong>Sukkur IBA (STS) &amp; SJP</strong></td>
+                        <td>Matriculation (SSC)</td>
+                        <td>Height: 5' 5" (Female: 5' 0")<br>Running: 1600m in 8 mins</td>
+                        <td>Basic English, Arithmetic, Sindh &amp; Pakistan Studies, General Knowledge &amp; Ethics (100 Marks MCQs)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Head Constables (Wireless Operator)</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--job-text-muted);">Telecommunication &amp; Transport (T&amp;T)</span>
+                        </td>
+                        <td><span class="card-scale-tag" style="background:#ede9fe; color:#6d28d9;">BPS-09</span></td>
+                        <td><strong>896 Posts</strong></td>
+                        <td><strong>SIBA Testing Service (STS) / SJP</strong></td>
+                        <td>Intermediate (F.Sc / ICS / DAE Telecom)</td>
+                        <td>Height: 5' 5", Chest: 33"x34.5"</td>
+                        <td>Telecommunications, Basic Electronics, Computer Literacy &amp; General Science (100 Marks)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Driver Constables (T&amp;T Sindh)</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--job-text-muted);">Motor Transport (MT) Branch</span>
+                        </td>
+                        <td><span class="card-scale-tag tag-constable">BPS-07</span></td>
+                        <td><strong>4,968 Posts</strong></td>
+                        <td><strong>SIBA Testing Service (STS) / SJP</strong></td>
+                        <td>Matriculation + Valid LTV/HTV License</td>
+                        <td>Driving Skill Trial + Medical Fitness</td>
+                        <td>Traffic Regulations, Motor Vehicles Ordinance, Signboards &amp; Basic Arithmetic (50 MCQs + 50 Practical)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Junior Clerks (Ministerial Cadre)</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--job-text-muted);">Sindh Police Administrative Offices</span>
+                        </td>
+                        <td><span class="card-scale-tag tag-asi">BPS-11</span></td>
+                        <td><strong>455 Posts</strong><br><span style="font-size: 0.75rem; color: var(--job-text-muted);">(30% Promo, 70% Direct)</span></td>
+                        <td><strong>Departmental Selection / SJP</strong></td>
+                        <td>Intermediate (12 Years) + 30 WPM Typing</td>
+                        <td>Standard Medical Fitness</td>
+                        <td>English Composition, MS Office (Word/Excel), General Knowledge &amp; Secretariat Procedures</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>SSU Constables &amp; Driver Constables</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--job-text-muted);">Special Security Unit (SSU)</span>
+                        </td>
+                        <td><span class="card-scale-tag tag-constable">BPS-07</span></td>
+                        <td><strong>1,550 Posts</strong><br><span style="font-size: 0.75rem; color: var(--job-text-muted);">(1,100 PC + 450 DC)</span></td>
+                        <td><strong>SSU Selection Board / STS</strong></td>
+                        <td>Matriculation (SSC)</td>
+                        <td>Commando Endurance Standards</td>
+                        <td>IQ, Psychometric Evaluation, General Knowledge &amp; Physical Agility</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Detailed Examination Syllabus & Weightage Breakdown -->
+        <div id="syllabus-section" class="section-heading">
+            <h2><i class="fas fa-graduation-cap" style="color: #4f46e5;"></i> Official Examination Pattern &amp; Syllabus Weightage</h2>
+            <span style="font-size: 0.88rem; color: var(--job-text-muted); font-weight: 600;">100 Marks MCQ Screening Tests</span>
+        </div>
+
+        <div class="syllabus-grid">
+            <!-- SPSC ASI Syllabus -->
+            <div class="syllabus-card">
+                <div class="syllabus-card-header">
+                    <span style="background: #0284c7; color: #fff; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800;">SPSC</span>
+                    <div>
+                        <h3>ASI (Investigation) &bull; SPSC Syllabus</h3>
+                        <span style="font-size: 0.78rem; color: var(--job-text-muted);">BPS-11 &bull; 100 MCQs &bull; 90 Minutes</span>
+                    </div>
+                </div>
+                <div class="syllabus-weight-bar">
+                    <div class="weight-item"><span>English Language &amp; Grammar</span><span>20% (20 Marks)</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%; background: #0284c7;"></div></div>
+
+                    <div class="weight-item"><span>Pakistan Affairs &amp; History of Sindh</span><span>20% (20 Marks)</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%; background: #10b981;"></div></div>
+
+                    <div class="weight-item"><span>Current Affairs &amp; International Relations</span><span>20% (20 Marks)</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%; background: #f59e0b;"></div></div>
+
+                    <div class="weight-item"><span>Everyday Science &amp; Basic Mathematics</span><span>20% (20 Marks)</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%; background: #8b5cf6;"></div></div>
+
+                    <div class="weight-item"><span>Criminal Law, CrPC &amp; Police Rules</span><span>20% (20 Marks)</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%; background: #e11d48;"></div></div>
+                </div>
+                <p style="font-size: 0.84rem; color: var(--job-text-muted); margin: 12px 0 0 0;">
+                    <i class="fas fa-info-circle" style="color: #0284c7;"></i> Candidates qualifying the written screening will undergo physical measurements, running (1600m), and viva-voce before the SPSC interview board.
+                </p>
+            </div>
+
+            <!-- STS Police Constable Syllabus -->
+            <div class="syllabus-card">
+                <div class="syllabus-card-header">
+                    <span style="background: #16a34a; color: #fff; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800;">STS</span>
+                    <div>
+                        <h3>Police Constable &bull; Sukkur IBA Syllabus</h3>
+                        <span style="font-size: 0.78rem; color: var(--job-text-muted);">BPS-07 &bull; 100 MCQs &bull; Matric Level</span>
+                    </div>
+                </div>
+                <div class="syllabus-weight-bar">
+                    <div class="weight-item"><span>Basic English (Grammar, Vocabulary, Synonyms)</span><span>20% (20 Marks)</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%; background: #16a34a;"></div></div>
+
+                    <div class="weight-item"><span>Mathematics / Arithmetic (Percentages, Ratios, Speed)</span><span>20% (20 Marks)</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%; background: #0284c7;"></div></div>
+
+                    <div class="weight-item"><span>General Knowledge &amp; Current Affairs</span><span>20% (20 Marks)</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%; background: #d97706;"></div></div>
+
+                    <div class="weight-item"><span>Pakistan Studies &amp; Geography of Sindh</span><span>20% (20 Marks)</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%; background: #7c3aed;"></div></div>
+
+                    <div class="weight-item"><span>Sindhi / Urdu Language &amp; Islamic Studies / Ethics</span><span>20% (20 Marks)</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%; background: #ec4899;"></div></div>
+                </div>
+                <p style="font-size: 0.84rem; color: var(--job-text-muted); margin: 12px 0 0 0;">
+                    <i class="fas fa-running" style="color: #16a34a;"></i> <strong>Physical Test:</strong> 1.6 km (1 Mile) running in 8 minutes for male candidates; 14 minutes for female candidates.
+                </p>
+            </div>
+        </div>
+
+        <!-- Application Gateway & Portals Step-by-Step Guide -->
+        <div class="section-heading">
+            <h2><i class="fas fa-network-wired" style="color: #059669;"></i> How to Apply: Official Portals &amp; Step-by-Step Process</h2>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <h4>Register Profile on Sindh Job Portal</h4>
+                <p>Visit <strong>sindhjobs.gov.pk</strong> and create your National CNIC-based profile. Upload your matriculation certificate, domicile, PRC Form-D, and recent photographs.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <h4>Check SPSC Portal for ASI Investigation</h4>
+                <p>For BPS-11 ASI posts, monitor <strong>spsc.gov.pk</strong>. Pay the official Challan of PKR 500 at the State Bank or National Bank of Pakistan prior to online submission.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <h4>Apply via Sukkur IBA (STS) Portal</h4>
+                <p>For Constable &amp; Border Security posts, log into <strong>apply.sts.net.pk</strong>. Generate the system challan and submit the candidate application form with accurate district allocation.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">4</div>
+                <h4>Prepare Early on CSS Prep Central</h4>
+                <p>Access our 300+ Solved Math MCQs, 1,000+ authentic Islamiat MCQs, Current Affairs notes, and 100-mark simulated screening mock exams to secure merit.</p>
+            </div>
+        </div>
+
+        <!-- Integrated Preparation Banner -->
+        <div class="prep-banner">
+            <div class="prep-banner-content">
+                <h3>Start Your Preparation Today with Curated Resources</h3>
+                <p>
+                    Don't wait for the official advertisement release. High merit scores in SPSC and STS tests require mastering basic arithmetic, English grammar, general knowledge, and timed test-taking techniques.
+                </p>
+            </div>
+            <div class="prep-buttons-wrap">
+                <a href="math-mcqs.html" class="btn-cta btn-cta-primary" style="background: #0284c7;">
+                    <i class="fas fa-calculator"></i> 300+ Solved Math MCQs
+                </a>
+                <a href="math-tricks.html" class="btn-cta btn-cta-primary" style="background: #10b981;">
+                    <i class="fas fa-bolt"></i> Speed Calculation Tricks
+                </a>
+                <a href="recruitment-prep.html" class="btn-cta btn-cta-primary" style="background: #7c3aed;">
+                    <i class="fas fa-stopwatch"></i> Take 100-Mark Mock
+                </a>
+                <a href="islamiat-mcqs.html" class="btn-cta btn-cta-primary" style="background: #e11d48;">
+                    <i class="fas fa-book-quran"></i> 1,000+ Islamiat MCQs
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="latest-jobs.html">Latest Jobs</a>
+            <a href="scholarships.html">Scholarships</a>
+            <a href="recruitment-prep.html">Recruitment Prep</a>
+            <a href="math-mcqs.html">Math MCQs</a>
+            <a href="math-tricks.html">Math Tricks</a>
+            <a href="written-prep.html">Written Prep</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+        </div>
+        <p>&copy; 2026 CSS Prep Central. All rights reserved. Educational portal for civil service, recruitment screening, and scholarship aspirants.</p>
+    </footer>
+
+    <!-- Interactive Search Script -->
+    <script>
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Live Table Search Filter
+        function filterJobTable(query) {
+            const trs = document.querySelectorAll('#recruitmentTable tbody tr');
+            const q = query.toLowerCase().trim();
+            trs.forEach(tr => {
+                const text = tr.innerText.toLowerCase();
+                tr.style.display = text.includes(q) ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
+`;
+
+fs.writeFileSync(path.join(__dirname, '..', 'frontend', 'latest-jobs.html'), htmlContent, 'utf-8');
+console.log('Successfully wrote frontend/latest-jobs.html (' + htmlContent.length + ' bytes)');
