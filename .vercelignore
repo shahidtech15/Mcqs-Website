@@ -1,0 +1,8 @@
+backend/
+backend/**
+scratch/
+scratch/**
+jurisdictional-plugin/
+jurisdictional-plugin/**
+*.pdf
+*.log
