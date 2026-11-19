@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Body Explorer | Interactive Anatomy, Organ Systems &amp; General Science</title>
+    <meta name="description"
+        content="Interactive Human Body Explorer for CSS, PMS, and competitive science examinations. Explore 12 vital organs, 8 organ systems, clinical diagnostics, anatomical records, and system-wise MCQs with interactive anatomy diagrams.">
+    <link rel="canonical" href="https://cssprepcentral.com/human-body-explorer.html" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --body-bg: #f8fafc;
+            --body-card-bg: #ffffff;
+            --body-card-sub: #f1f5f9;
+            --body-border: #e2e8f0;
+            --body-text-main: #0f172a;
+            --body-text-muted: #64748b;
+            --body-primary: #e11d48; /* Crimson / Anatomical Heart Rose */
+            --body-primary-dark: #be123c;
+            --body-primary-light: rgba(225, 29, 72, 0.1);
+            --body-blue: #0284c7;
+            --body-green: #059669;
+            --body-purple: #8b5cf6;
+            --body-gold: #d97706;
+            --body-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --body-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            --anatomy-bg: #f1f5f9;
+        }
+
+        .dark-mode {
+            --body-bg: #0b1120;
+            --body-card-bg: #131c31;
+            --body-card-sub: #1e293b;
+            --body-border: #1e293b;
+            --body-text-main: #f8fafc;
+            --body-text-muted: #94a3b8;
+            --body-primary: #fb7185;
+            --body-primary-dark: #f43f5e;
+            --body-primary-light: rgba(251, 113, 133, 0.15);
+            --body-blue: #38bdf8;
+            --body-green: #34d399;
+            --body-purple: #a78bfa;
+            --body-gold: #fbbf24;
+            --body-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --body-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+            --anatomy-bg: #0d1527;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--body-bg);
+            color: var(--body-text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Top Academic Suites Switcher */
+        .site-switcher-bar {
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            z-index: 1001;
+        }
+
+        .switcher-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .switcher-label {
+            color: #94a3b8;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .switcher-btn.active {
+            color: #fb7185;
+            background: rgba(251, 113, 133, 0.15);
+            font-weight: 700;
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background: var(--body-card-bg);
+            border-bottom: 1px solid var(--body-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--body-text-main);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .logo i {
+            color: var(--body-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--body-text-muted);
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--body-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--body-bg);
+            border: 1px solid var(--body-border);
+            color: var(--body-text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--body-primary);
+            color: var(--body-primary);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
+            border-bottom: 1px solid var(--body-border);
+            padding: 28px 20px 22px;
+        }
+
+        .hero-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .hero-title-area h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-title-area h1 i {
+            color: var(--body-primary);
+        }
+
+        .hero-title-area p {
+            color: var(--body-text-muted);
+            font-size: 0.95rem;
+            max-width: 860px;
+            line-height: 1.55;
+        }
+
+        .search-container {
+            position: relative;
+            min-width: 280px;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--body-card-bg);
+            border: 1.5px solid var(--body-border);
+            padding: 10px 16px 10px 42px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--body-text-main);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--body-primary);
+            box-shadow: 0 0 0 3px var(--body-primary-light);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--body-text-muted);
+            pointer-events: none;
+        }
+
+        .hero-badges-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .hero-stat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--body-card-bg);
+            border: 1px solid var(--body-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--body-text-muted);
+        }
+
+        .hero-stat-badge strong {
+            color: var(--body-text-main);
+        }
+
+        .hero-stat-badge i {
+            color: var(--body-primary);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 20px 48px;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        /* Suite Tabs */
+        .suite-tabs-nav {
+            display: flex;
+            gap: 8px;
+            border-bottom: 2px solid var(--body-border);
+            margin-bottom: 24px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 12px 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--body-text-muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--body-text-main);
+        }
+
+        .tab-btn.active {
+            color: var(--body-primary);
+            border-bottom-color: var(--body-primary);
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==================== TAB 1: ANATOMY MAP & ORGAN INSPECTOR ==================== */
+        .anatomy-layout-grid {
+            display: grid;
+            grid-template-columns: 460px 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .anatomy-layout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .anatomy-card {
+            background: var(--body-card-bg);
+            border: 1px solid var(--body-border);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: var(--body-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .anatomy-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .anatomy-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--body-text-main);
+        }
+
+        .svg-container {
+            width: 100%;
+            max-width: 400px;
+            background: var(--anatomy-bg);
+            border: 1px solid var(--body-border);
+            border-radius: 14px;
+            padding: 12px;
+            position: relative;
+        }
+
+        #anatomySvg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .organ-hotspot {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .organ-hotspot:hover {
+            filter: drop-shadow(0 0 8px var(--body-primary));
+        }
+
+        .organ-hotspot.active circle {
+            stroke: var(--body-primary) !important;
+            stroke-width: 3px !important;
+            filter: drop-shadow(0 0 10px var(--body-primary));
+        }
+
+        /* Organ Selector Carousel */
+        .organ-carousel-pills {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            width: 100%;
+            padding: 14px 4px 4px;
+            margin-top: 10px;
+        }
+
+        .organ-pill-btn {
+            background: var(--body-card-sub);
+            border: 1px solid var(--body-border);
+            color: var(--body-text-muted);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .organ-pill-btn:hover {
+            border-color: var(--body-primary);
+            color: var(--body-text-main);
+            transform: translateY(-1px);
+        }
+
+        .organ-pill-btn.active {
+            background: var(--body-primary);
+            border-color: var(--body-primary);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* Organ Inspector Panel */
+        .inspector-panel {
+            background: var(--body-card-bg);
+            border: 1px solid var(--body-border);
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: var(--body-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .inspector-header-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--body-border);
+            padding-bottom: 14px;
+        }
+
+        .organ-title-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .organ-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            flex-shrink: 0;
+        }
+
+        .organ-name-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--body-text-main);
+            line-height: 1.2;
+        }
+
+        .organ-latin-sub {
+            font-size: 0.84rem;
+            color: var(--body-text-muted);
+            font-style: italic;
+        }
+
+        .organ-system-tag {
+            background: var(--body-primary-light);
+            color: var(--body-primary);
+            border: 1px solid var(--body-primary);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Quick Anatomical Stats */
+        .organ-stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .organ-stat-box {
+            background: var(--body-card-sub);
+            border: 1px solid var(--body-border);
+            border-radius: 10px;
+            padding: 10px 14px;
+        }
+
+        .organ-stat-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--body-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .organ-stat-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.96rem;
+            font-weight: 800;
+            color: var(--body-text-main);
+        }
+
+        /* Sections inside Inspector */
+        .dossier-section {
+            background: var(--body-card-sub);
+            border: 1px solid var(--body-border);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .dossier-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.94rem;
+            font-weight: 800;
+            color: var(--body-primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dossier-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .dossier-item {
+            font-size: 0.86rem;
+            color: var(--body-text-main);
+            display: flex;
+            gap: 8px;
+            line-height: 1.45;
+        }
+
+        .dossier-item i {
+            color: var(--body-primary);
+            margin-top: 3px;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .exam-tip-container {
+            background: rgba(225, 29, 72, 0.06);
+            border-left: 4px solid var(--body-primary);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.86rem;
+            color: var(--body-text-main);
+        }
+
+        /* ==================== TAB 2: 8 BODY SYSTEMS ==================== */
+        .systems-carousel-nav {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            padding-bottom: 6px;
+        }
+
+        .system-pill-btn {
+            background: var(--body-card-bg);
+            border: 1.5px solid var(--body-border);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--body-text-muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .system-pill-btn:hover {
+            color: var(--body-text-main);
+            border-color: var(--body-primary);
+            transform: translateY(-1px);
+        }
+
+        .system-pill-btn.active {
+            background: var(--body-primary);
+            color: #ffffff;
+            border-color: var(--body-primary);
+        }
+
+        .system-display-card {
+            background: var(--body-card-bg);
+            border: 1px solid var(--body-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--body-shadow);
+            margin-bottom: 24px;
+        }
+
+        .system-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .system-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--body-text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .system-summary-text {
+            font-size: 0.94rem;
+            color: var(--body-text-muted);
+            line-height: 1.55;
+            margin-bottom: 18px;
+        }
+
+        .system-concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .concept-item-box {
+            background: var(--body-card-sub);
+            border: 1px solid var(--body-border);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+
+        .concept-title-tag {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--body-primary);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .concept-desc-text {
+            font-size: 0.84rem;
+            color: var(--body-text-main);
+            line-height: 1.45;
+        }
+
+        /* ==================== TAB 3: ANATOMICAL RECORDS ==================== */
+        .records-card {
+            background: var(--body-card-bg);
+            border: 1px solid var(--body-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--body-shadow);
+        }
+
+        .records-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .record-box-item {
+            background: var(--body-card-sub);
+            border: 1px solid var(--body-border);
+            border-radius: 12px;
+            padding: 16px 18px;
+            transition: all 0.2s ease;
+        }
+
+        .record-box-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--body-primary);
+            box-shadow: var(--body-shadow);
+        }
+
+        .record-label-title {
+            font-size: 0.76rem;
+            font-weight: 800;
+            color: var(--body-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .record-value-highlight {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--body-primary);
+            margin-bottom: 4px;
+        }
+
+        .record-detail-sub {
+            font-size: 0.8rem;
+            color: var(--body-text-main);
+            line-height: 1.4;
+        }
+
+        /* ==================== TAB 4: CLINICAL DIAGNOSTICS ==================== */
+        .diagnostic-card {
+            background: var(--body-card-bg);
+            border: 1px solid var(--body-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--body-shadow);
+        }
+
+        .case-block {
+            background: var(--body-card-sub);
+            border: 1px solid var(--body-border);
+            border-left: 4px solid var(--body-primary);
+            border-radius: 0 12px 12px 0;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+        }
+
+        .case-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--body-text-main);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .case-scenario {
+            font-size: 0.9rem;
+            color: var(--body-text-main);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .case-question {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--body-primary);
+            margin-bottom: 12px;
+        }
+
+        .case-organ-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .case-opt-btn {
+            background: var(--body-card-bg);
+            border: 1px solid var(--body-border);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--body-text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .case-opt-btn:hover {
+            border-color: var(--body-primary);
+            color: var(--body-primary);
+        }
+
+        .case-opt-btn.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: var(--body-green) !important;
+            color: #065f46 !important;
+            font-weight: 700;
+        }
+
+        .case-opt-btn.incorrect {
+            background: rgba(225, 29, 72, 0.15) !important;
+            border-color: var(--body-primary) !important;
+            color: #9f1239 !important;
+            font-weight: 700;
+        }
+
+        .case-revealed-diagnosis {
+            display: none;
+            background: var(--body-card-bg);
+            border: 1px solid var(--body-border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            color: var(--body-text-muted);
+            margin-top: 10px;
+        }
+
+        /* ==================== TAB 5: SYSTEM QUIZZES ==================== */
+        .quiz-panel-card {
+            background: var(--body-card-bg);
+            border: 1px solid var(--body-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--body-shadow);
+        }
+
+        .quiz-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--body-border);
+            padding-bottom: 14px;
+        }
+
+        .quiz-filter-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .quiz-filter-btn {
+            background: var(--body-card-sub);
+            border: 1px solid var(--body-border);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--body-text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quiz-filter-btn:hover {
+            color: var(--body-text-main);
+            border-color: var(--body-primary);
+        }
+
+        .quiz-filter-btn.active {
+            background: var(--body-primary);
+            color: #ffffff;
+            border-color: var(--body-primary);
+        }
+
+        .score-pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--body-card-sub);
+            border: 1px solid var(--body-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .reset-quiz-button {
+            background: var(--body-card-sub);
+            border: 1px solid var(--body-border);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--body-text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .reset-quiz-button:hover {
+            border-color: var(--body-primary);
+            color: var(--body-primary);
+        }
+
+        .mcq-question-card {
+            background: var(--body-card-sub);
+            border: 1px solid var(--body-border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+        }
+
+        .mcq-prompt-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .mcq-num-pill {
+            background: var(--body-primary);
+            color: #ffffff;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .mcq-opt-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .mcq-choice-btn {
+            background: var(--body-card-bg);
+            border: 1.5px solid var(--body-border);
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--body-text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mcq-choice-btn:hover:not(:disabled) {
+            border-color: var(--body-primary);
+            background: var(--body-primary-light);
+        }
+
+        .mcq-choice-btn.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: var(--body-green) !important;
+            color: #065f46 !important;
+            font-weight: 700;
+        }
+
+        .dark-mode .mcq-choice-btn.correct {
+            color: #34d399 !important;
+        }
+
+        .mcq-choice-btn.incorrect {
+            background: rgba(225, 29, 72, 0.15) !important;
+            border-color: var(--body-primary) !important;
+            color: #9f1239 !important;
+            font-weight: 700;
+        }
+
+        .dark-mode .mcq-choice-btn.incorrect {
+            color: #fb7185 !important;
+        }
+
+        .mcq-letter-box {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: var(--body-card-sub);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.76rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .mcq-expl-box {
+            display: none;
+            background: var(--body-card-bg);
+            border: 1px solid var(--body-border);
+            border-left: 4px solid var(--body-primary);
+            border-radius: 0 8px 8px 0;
+            padding: 12px 14px;
+            font-size: 0.84rem;
+            line-height: 1.5;
+            color: var(--body-text-muted);
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 20px 24px;
+            margin-top: auto;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.84rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fb7185;
+        }
+    </style>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/human-body-explorer.html">
+    <meta property="og:title" content="Human Body Explorer | Interactive Anatomy, Organ Systems &amp; General Science">
+    <meta property="og:description" content="Interactive Human Body Explorer for CSS, PMS, and competitive science examinations. Explore 12 vital organs, 8 organ systems, clinical diagnostics, anatomical records, and system-wise MCQs with int...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Human Body Explorer | Interactive Anatomy, Organ Systems &amp; General Science">
+    <meta name="twitter:description" content="Interactive Human Body Explorer for CSS, PMS, and competitive science examinations. Explore 12 vital organs, 8 organ systems, clinical diagnostics, anatomical records, and system-wise MCQs with int...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+
+    <!-- Academic Suites Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes Map
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+            <a href="guess-the-country.html" class="switcher-btn">
+                <i class="fas fa-gamepad"></i> Guess Country
+            </a>
+            <a href="locate-on-map.html" class="switcher-btn">
+                <i class="fas fa-crosshairs"></i> Locate on Map
+            </a>
+            <a href="match-the-following.html" class="switcher-btn">
+                <i class="fas fa-puzzle-piece"></i> Match Items
+            </a>
+            <a href="arrange-chronologically.html" class="switcher-btn">
+                <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz
+            </a>
+            <a href="crossword.html" class="switcher-btn">
+                <i class="fas fa-chess-board"></i> Crossword
+            </a>
+            <a href="word-search.html" class="switcher-btn">
+                <i class="fas fa-magnifying-glass"></i> Word Search
+            </a>
+            <a href="unsc-simulator.html" class="switcher-btn">
+                <i class="fas fa-scale-balanced"></i> UNSC Simulator
+            </a>
+            <a href="international-organizations-explorer.html" class="switcher-btn">
+                <i class="fas fa-sitemap"></i> Org Explorer
+            </a>
+            <a href="world-history-timeline.html" class="switcher-btn">
+                <i class="fas fa-timeline"></i> World Timeline
+            </a>
+            <a href="global-power-comparison.html" class="switcher-btn">
+                <i class="fas fa-shield-halved"></i> Global Power
+            </a>
+            <a href="solar-system-explorer.html" class="switcher-btn">
+                <i class="fas fa-sun"></i> Solar System
+            </a>
+            <a href="human-body-explorer.html" class="switcher-btn active">
+                <i class="fas fa-heart-pulse"></i> Human Body
+            </a>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-atom"></i> Periodic Table</a>
+            <a href="climate-change-explorer.html" class="switcher-btn"><i class="fas fa-temperature-high"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn"><i class="fas fa-microchip"></i> Technology</a>
+            <a href="constitution-explorer.html" class="switcher-btn"><i class="fas fa-scale-balanced"></i> Constitution</a>
+            <a href="ppc-section-finder.html" class="switcher-btn"><i class="fas fa-gavel"></i> PPC Finder</a>
+            <a href="crpc-procedure-flowchart.html" class="switcher-btn"><i class="fas fa-diagram-project"></i> CrPC Flowchart</a>
+            <a href="identify-legal-provision.html" class="switcher-btn"><i class="fas fa-scale-unbalanced-flip"></i> Legal Provision</a>
+            <a href="court-structure-explorer.html" class="switcher-btn"><i class="fas fa-landmark"></i> Court Structure</a>
+            <a href="fia-laws-explorer.html" class="switcher-btn"><i class="fas fa-building-shield"></i> FIA Laws</a>
+            <a href="world-economy-dashboard.html" class="switcher-btn"><i class="fas fa-chart-line"></i> World Economy</a>
+            <a href="currency-exchange-explorer.html" class="switcher-btn"><i class="fas fa-coins"></i> Currency &amp; Exchange</a>
+            <a href="who-trades-what.html" class="switcher-btn"><i class="fas fa-ship"></i> Who Trades What?</a>
+            <a href="daily-challenges.html" class="switcher-btn"><i class="fas fa-bolt"></i> Daily Challenges</a>
+            <a href="daily-fact.html" class="switcher-btn"><i class="fas fa-calendar-check"></i> Daily Fact</a>
+        </div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>CSS PREP CENTRAL</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i> Practice Quiz</a>
+                <a href="science-notes.html"><i class="fa-solid fa-atom"></i> General Science</a>
+                <a href="solar-system-explorer.html"><i class="fa-solid fa-sun"></i> Solar System</a>
+                <a href="human-body-explorer.html" class="active"><i class="fa-solid fa-heart-pulse"></i> Human Body</a>
+                <a href="global-power-comparison.html"><i class="fa-solid fa-shield-halved"></i> Global Power</a>
+            </nav>
+            <div class="header-actions">
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="hero-title-row">
+                <div class="hero-title-area">
+                    <h1><i class="fa-solid fa-heart-pulse"></i> Human Body Explorer</h1>
+                    <p>Interactive anatomical and physiological explorer for CSS General Science &amp; Ability (Biological Sciences). Click organs and body systems to discover their functions, chemical secretions, pathologies, and test your knowledge with clinical case studies and quizzes.</p>
+                </div>
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="bodySearchInput" class="search-input" placeholder="Search organ or system (e.g., Heart, Nephron, Liver)...">
+                </div>
+            </div>
+            <div class="hero-badges-row">
+                <span class="hero-stat-badge"><i class="fa-solid fa-lungs"></i> <strong>12</strong> Vital Organs</span>
+                <span class="hero-stat-badge"><i class="fa-solid fa-dna"></i> <strong>8</strong> Major Physiological Systems</span>
+                <span class="hero-stat-badge"><i class="fa-solid fa-medal"></i> <strong>12</strong> Anatomical World Records</span>
+                <span class="hero-stat-badge"><i class="fa-solid fa-stethoscope"></i> <strong>5</strong> Clinical Case Diagnostics</span>
+                <span class="hero-stat-badge"><i class="fa-solid fa-graduation-cap"></i> <strong>12</strong> System-Wise MCQs</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="main-container">
+
+        <!-- Suite Tabs Nav -->
+        <div class="suite-tabs-nav" role="tablist">
+            <button class="tab-btn active" data-tab="tab-anatomy" role="tab">
+                <i class="fa-solid fa-child"></i> Anatomical Organ Map
+            </button>
+            <button class="tab-btn" data-tab="tab-systems" role="tab">
+                <i class="fa-solid fa-network-wired"></i> 8 Body Systems
+            </button>
+            <button class="tab-btn" data-tab="tab-records" role="tab">
+                <i class="fa-solid fa-medal"></i> Human Body Records
+            </button>
+            <button class="tab-btn" data-tab="tab-diagnostics" role="tab">
+                <i class="fa-solid fa-stethoscope"></i> Clinical Case Diagnostics
+            </button>
+            <button class="tab-btn" data-tab="tab-quizzes" role="tab">
+                <i class="fa-solid fa-circle-question"></i> System-Wise Quizzes
+            </button>
+        </div>
+
+        <!-- ==================== TAB 1: ANATOMY MAP & ORGAN INSPECTOR ==================== -->
+        <section id="tab-anatomy" class="tab-pane active">
+            
+            <div class="anatomy-layout-grid">
+                
+                <!-- Left: SVG Anatomical Human Body Diagram -->
+                <div class="anatomy-card">
+                    <div class="anatomy-header">
+                        <div class="anatomy-title">
+                            <i class="fa-solid fa-child" style="color:var(--body-primary);"></i>
+                            <span>Interactive Anatomy Model</span>
+                        </div>
+                        <span style="font-size:0.75rem; color:var(--body-text-muted);">Click any organ marker</span>
+                    </div>
+
+                    <div class="svg-container">
+                        <svg id="anatomySvg" viewBox="0 0 400 560" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Body Silhouette Outline -->
+                            <path d="M 200 20 
+                                     C 180 20, 165 35, 165 65
+                                     C 165 95, 180 105, 185 115
+                                     L 150 140 L 110 200 L 95 300 L 115 300 L 130 220 L 155 190
+                                     L 155 380 L 160 520 L 185 520 L 195 400
+                                     L 205 400 L 215 520 L 240 520 L 245 380
+                                     L 245 190 L 270 220 L 285 300 L 305 300 L 290 200 L 250 140
+                                     L 215 115
+                                     C 220 105, 235 95, 235 65
+                                     C 235 35, 220 20, 200 20 Z" 
+                                  fill="rgba(148, 163, 184, 0.12)" 
+                                  stroke="var(--body-border)" 
+                                  stroke-width="2" />
+
+                            <!-- Skeletal Ribcage & Cranium Guide Hints -->
+                            <ellipse cx="200" cy="65" rx="28" ry="32" fill="none" stroke="rgba(148, 163, 184, 0.25)" stroke-dasharray="3,3" />
+                            <path d="M 170 160 Q 200 180 230 160 M 165 180 Q 200 200 235 180 M 165 200 Q 200 220 235 200 M 170 220 Q 200 240 230 220" 
+                                  fill="none" stroke="rgba(148, 163, 184, 0.2)" stroke-width="2" />
+                            <!-- Spine axis -->
+                            <line x1="200" y1="100" x2="200" y2="400" stroke="rgba(148, 163, 184, 0.2)" stroke-dasharray="4,4" />
+
+                            <!-- Clickable Organ Hotspots -->
+                            <!-- Brain -->
+                            <g class="organ-hotspot" data-organ="brain">
+                                <circle cx="200" cy="65" r="22" fill="#8b5cf6" opacity="0.85" />
+                                <text x="200" y="69" text-anchor="middle" fill="#ffffff" font-size="11" font-family="Outfit, sans-serif" font-weight="bold">BRAIN</text>
+                            </g>
+
+                            <!-- Thyroid -->
+                            <g class="organ-hotspot" data-organ="thyroid">
+                                <circle cx="200" cy="115" r="12" fill="#d946ef" opacity="0.85" />
+                                <text x="200" y="119" text-anchor="middle" fill="#ffffff" font-size="8" font-family="Outfit, sans-serif" font-weight="bold">THYROID</text>
+                            </g>
+
+                            <!-- Lungs -->
+                            <g class="organ-hotspot" data-organ="lungs">
+                                <ellipse cx="172" cy="185" rx="18" ry="24" fill="#38bdf8" opacity="0.85" />
+                                <ellipse cx="228" cy="185" rx="16" ry="24" fill="#38bdf8" opacity="0.85" />
+                                <text x="172" y="189" text-anchor="middle" fill="#ffffff" font-size="9" font-family="Outfit, sans-serif" font-weight="bold">LUNGS</text>
+                            </g>
+
+                            <!-- Heart -->
+                            <g class="organ-hotspot active" data-organ="heart">
+                                <circle cx="212" cy="195" r="18" fill="#ef4444" opacity="0.9" />
+                                <text x="212" y="199" text-anchor="middle" fill="#ffffff" font-size="9" font-family="Outfit, sans-serif" font-weight="bold">HEART</text>
+                            </g>
+
+                            <!-- Spleen -->
+                            <g class="organ-hotspot" data-organ="spleen">
+                                <circle cx="242" cy="245" r="13" fill="#9333ea" opacity="0.85" />
+                                <text x="242" y="248" text-anchor="middle" fill="#ffffff" font-size="8" font-family="Outfit, sans-serif" font-weight="bold">SPLEEN</text>
+                            </g>
+
+                            <!-- Liver -->
+                            <g class="organ-hotspot" data-organ="liver">
+                                <path d="M 165 240 Q 195 240 200 265 Q 165 270 165 240 Z" fill="#b45309" opacity="0.9" />
+                                <circle cx="178" cy="252" r="14" fill="#b45309" opacity="0.85" />
+                                <text x="178" y="255" text-anchor="middle" fill="#ffffff" font-size="8" font-family="Outfit, sans-serif" font-weight="bold">LIVER</text>
+                            </g>
+
+                            <!-- Stomach -->
+                            <g class="organ-hotspot" data-organ="stomach">
+                                <ellipse cx="220" cy="265" rx="15" ry="13" fill="#f59e0b" opacity="0.85" />
+                                <text x="220" y="268" text-anchor="middle" fill="#ffffff" font-size="8" font-family="Outfit, sans-serif" font-weight="bold">STOMACH</text>
+                            </g>
+
+                            <!-- Pancreas -->
+                            <g class="organ-hotspot" data-organ="pancreas">
+                                <rect x="185" y="285" width="30" height="10" rx="5" fill="#e11d48" opacity="0.9" />
+                                <text x="200" y="293" text-anchor="middle" fill="#ffffff" font-size="7" font-family="Outfit, sans-serif" font-weight="bold">PANCREAS</text>
+                            </g>
+
+                            <!-- Kidneys -->
+                            <g class="organ-hotspot" data-organ="kidneys">
+                                <ellipse cx="168" cy="305" rx="10" ry="14" fill="#059669" opacity="0.85" />
+                                <ellipse cx="232" cy="305" rx="10" ry="14" fill="#059669" opacity="0.85" />
+                                <text x="168" y="309" text-anchor="middle" fill="#ffffff" font-size="7" font-family="Outfit, sans-serif" font-weight="bold">KIDNEY</text>
+                            </g>
+
+                            <!-- Small Intestine -->
+                            <g class="organ-hotspot" data-organ="small_intestine">
+                                <circle cx="200" cy="345" r="17" fill="#ea580c" opacity="0.85" />
+                                <text x="200" y="348" text-anchor="middle" fill="#ffffff" font-size="8" font-family="Outfit, sans-serif" font-weight="bold">SM. INT.</text>
+                            </g>
+
+                            <!-- Large Intestine -->
+                            <g class="organ-hotspot" data-organ="large_intestine">
+                                <rect x="175" y="375" width="50" height="15" rx="6" fill="#ca8a04" opacity="0.85" />
+                                <text x="200" y="386" text-anchor="middle" fill="#ffffff" font-size="7" font-family="Outfit, sans-serif" font-weight="bold">COLON</text>
+                            </g>
+
+                            <!-- Skin Indicator -->
+                            <g class="organ-hotspot" data-organ="skin">
+                                <circle cx="118" cy="225" r="14" fill="#f97316" opacity="0.85" />
+                                <text x="118" y="228" text-anchor="middle" fill="#ffffff" font-size="8" font-family="Outfit, sans-serif" font-weight="bold">SKIN</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Organ Selection Pills Carousel -->
+                    <div class="organ-carousel-pills" id="organCarouselPills"></div>
+                </div>
+
+                <!-- Right: Organ Detail Dossier Inspector Panel -->
+                <div class="inspector-panel" id="organInspectorPanel">
+                    
+                    <div class="inspector-header-box">
+                        <div class="organ-title-area">
+                            <div class="organ-icon-circle" id="inspIconCircle">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <div>
+                                <h2 class="organ-name-text" id="inspOrganName">Heart</h2>
+                                <div class="organ-latin-sub" id="inspLatinRoot">Cardia / Cardio-</div>
+                            </div>
+                        </div>
+                        <span class="organ-system-tag" id="inspSystemTag">Circulatory System</span>
+                    </div>
+
+                    <!-- Quick Physical Facts Grid -->
+                    <div class="organ-stats-row">
+                        <div class="organ-stat-box">
+                            <div class="organ-stat-label"><i class="fa-solid fa-weight-hanging"></i> Average Mass / Size</div>
+                            <div class="organ-stat-val" id="inspWeight">250 – 350 grams</div>
+                        </div>
+                        <div class="organ-stat-box">
+                            <div class="organ-stat-label"><i class="fa-solid fa-map-pin"></i> Anatomical Location</div>
+                            <div class="organ-stat-val" id="inspLocation" style="font-size:0.86rem;">Thoracic cavity</div>
+                        </div>
+                    </div>
+
+                    <div class="organ-stat-box">
+                        <div class="organ-stat-label"><i class="fa-solid fa-droplet"></i> Blood Supply &amp; Perfusion</div>
+                        <div class="organ-stat-val" id="inspBloodSupply" style="font-size:0.84rem; font-weight:500;">
+                            Coronary arteries branching from ascending aorta
+                        </div>
+                    </div>
+
+                    <!-- Primary Functions -->
+                    <div class="dossier-section">
+                        <div class="dossier-heading"><i class="fa-solid fa-gears"></i> Primary Physiological Functions</div>
+                        <ul class="dossier-list" id="inspFunctionsList"></ul>
+                    </div>
+
+                    <!-- Chemical Secretions / Hormones -->
+                    <div class="dossier-section">
+                        <div class="dossier-heading"><i class="fa-solid fa-flask"></i> Key Secretions, Enzymes &amp; Hormones</div>
+                        <div style="font-size:0.86rem; color:var(--body-text-main); line-height:1.45;" id="inspSecretionsText">
+                            Atrial Natriuretic Peptide (ANP)
+                        </div>
+                    </div>
+
+                    <!-- Common Pathologies -->
+                    <div class="dossier-section">
+                        <div class="dossier-heading"><i class="fa-solid fa-virus"></i> Common Clinical Pathologies &amp; Diseases</div>
+                        <ul class="dossier-list" id="inspPathologiesList"></ul>
+                    </div>
+
+                    <!-- CSS/PMS Exam Relevance -->
+                    <div class="exam-tip-container" id="inspExamTip">
+                        Exam tips loading...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================== TAB 2: 8 BODY SYSTEMS ==================== -->
+        <section id="tab-systems" class="tab-pane">
+            <div class="systems-carousel-nav" id="systemsPillsNav"></div>
+
+            <div class="system-display-card" id="systemDisplayCard">
+                <div class="system-card-header">
+                    <h2 class="system-title" id="sysTitle">
+                        <i class="fa-solid fa-heart-pulse"></i> Circulatory / Cardiovascular System
+                    </h2>
+                    <span class="organ-system-tag" id="sysOrgansCount">5 Components</span>
+                </div>
+                <p class="system-summary-text" id="sysSummary">Summary loading...</p>
+
+                <h3 style="font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:800; margin-bottom:12px; color:var(--body-text-main);">
+                    <i class="fa-solid fa-layer-group" style="color:var(--body-primary);"></i> Core Physiological Concepts &amp; Mechanisms
+                </h3>
+                <div class="system-concepts-grid" id="sysConceptsGrid"></div>
+
+                <div class="exam-tip-container" id="sysExamTip">
+                    Exam utility...
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: ANATOMICAL RECORDS ==================== -->
+        <section id="tab-records" class="tab-pane">
+            <div class="records-card">
+                <div style="margin-bottom:14px;">
+                    <h2 style="font-family:'Outfit',sans-serif; font-size:1.4rem; font-weight:800; color:var(--body-text-main);">
+                        <i class="fa-solid fa-medal" style="color:var(--body-gold);"></i> Human Body World Records &amp; Vital Numbers
+                    </h2>
+                    <p style="font-size:0.9rem; color:var(--body-text-muted);">
+                        High-yield anatomical extremes and physiological benchmarks frequently asked in competitive exams (FPSC, PPSC, CSS, NTS).
+                    </p>
+                </div>
+                <div class="records-grid" id="recordsGrid"></div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: CLINICAL DIAGNOSTICS ==================== -->
+        <section id="tab-diagnostics" class="tab-pane">
+            <div class="diagnostic-card">
+                <div style="margin-bottom:18px;">
+                    <h2 style="font-family:'Outfit',sans-serif; font-size:1.4rem; font-weight:800; color:var(--body-text-main);">
+                        <i class="fa-solid fa-stethoscope" style="color:var(--body-primary);"></i> "Diagnose the Organ" Clinical Scenarios
+                    </h2>
+                    <p style="font-size:0.9rem; color:var(--body-text-muted);">
+                        Read the clinical presentation, identify the affected organ, and inspect the underlying physiological failure.
+                    </p>
+                </div>
+                <div id="diagnosticsListContainer"></div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: SYSTEM-WISE QUIZZES ==================== -->
+        <section id="tab-quizzes" class="tab-pane">
+            <div class="quiz-panel-card">
+                <div class="quiz-toolbar">
+                    <div>
+                        <h2 style="font-family:'Outfit',sans-serif; font-size:1.35rem; font-weight:800;">
+                            <i class="fa-solid fa-circle-question" style="color:var(--body-primary);"></i> General Science Anatomy &amp; Physiology Quizzes
+                        </h2>
+                        <p style="font-size:0.86rem; color:var(--body-text-muted);">
+                            Sharpen your preparation for CSS/PMS Biological Sciences with system-calibrated questions.
+                        </p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <span class="score-pill-badge">
+                            <i class="fa-solid fa-trophy" style="color:var(--body-gold);"></i> Score: <span id="quizScoreText">0 / 12</span>
+                        </span>
+                        <button type="button" class="reset-quiz-button" id="resetQuizBtn">
+                            <i class="fa-solid fa-rotate-right"></i> Reset Quiz
+                        </button>
+                    </div>
+                </div>
+
+                <!-- System Filter Pills -->
+                <div class="quiz-filter-group" id="quizFilterGroup">
+                    <button class="quiz-filter-btn active" data-filter="all">All Systems (12)</button>
+                    <button class="quiz-filter-btn" data-filter="circulatory">Circulatory</button>
+                    <button class="quiz-filter-btn" data-filter="respiratory">Respiratory</button>
+                    <button class="quiz-filter-btn" data-filter="digestive">Digestive</button>
+                    <button class="quiz-filter-btn" data-filter="nervous">Nervous</button>
+                    <button class="quiz-filter-btn" data-filter="endocrine">Endocrine</button>
+                    <button class="quiz-filter-btn" data-filter="excretory">Excretory</button>
+                    <button class="quiz-filter-btn" data-filter="immune">Immune</button>
+                    <button class="quiz-filter-btn" data-filter="skeletal_muscular">Skeletal</button>
+                </div>
+
+                <div id="quizContainer"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo">
+                <i class="fa-solid fa-graduation-cap"></i> CSS PREP CENTRAL
+            </a>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="quiz.html">Practice Hub</a>
+                <a href="science-notes.html">General Science Capsule</a>
+                <a href="solar-system-explorer.html">Solar System</a>
+                <a href="human-body-explorer.html">Human Body Explorer</a>
+                <a href="periodic-table.html">Periodic Table</a>
+                <a href="global-power-comparison.html">Global Power</a>
+                <a href="pakistan-map.html">Pakistan Map</a>
+            </div>
+            <p style="font-size:0.8rem; color:#64748b;">
+                &copy; 2026 CSS Prep Central. High-Yield CSS/PMS Biological Sciences Preparation Platform.
+            </p>
+        </div>
+    
+        <div class="footer-legal-bar" style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; color:#94a3b8;">
+            <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+            <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+            <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+            <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Dataset Script -->
+    <script src="js/data_human_body.js"></script>
+
+    <!-- Main Application Script -->
+    <script>
+        (function () {
+            'use strict';
+
+            // Theme Management
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            const savedTheme = localStorage.getItem('mcqs_dark_mode');
+            if (savedTheme === 'true') {
+                document.body.classList.add('dark-mode');
+                if (themeToggleBtn) themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', function () {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    localStorage.setItem('mcqs_dark_mode', isDark);
+                    themeToggleBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+                });
+            }
+
+            // Web Audio API Synthesizer (Heartbeat & Harmonious Chimes)
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            let audioCtx = null;
+
+            function playSound(type) {
+                try {
+                    if (!audioCtx) audioCtx = new AudioContext();
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+                    const now = audioCtx.currentTime;
+
+                    if (type === 'heartbeat') {
+                        // Synthesized biological "lub-dub" heart sound
+                        // First tone: Lub (low frequency ~65 Hz)
+                        const osc1 = audioCtx.createOscillator();
+                        const gain1 = audioCtx.createGain();
+                        osc1.type = 'sine';
+                        osc1.frequency.setValueAtTime(75, now);
+                        osc1.frequency.exponentialRampToValueAtTime(45, now + 0.12);
+
+                        gain1.gain.setValueAtTime(0.3, now);
+                        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
+
+                        osc1.connect(gain1);
+                        gain1.connect(audioCtx.destination);
+                        osc1.start(now);
+                        osc1.stop(now + 0.14);
+
+                        // Second tone: Dub (slightly higher pitch ~90 Hz, after 0.18s)
+                        const osc2 = audioCtx.createOscillator();
+                        const gain2 = audioCtx.createGain();
+                        osc2.type = 'sine';
+                        osc2.frequency.setValueAtTime(95, now + 0.18);
+                        osc2.frequency.exponentialRampToValueAtTime(55, now + 0.28);
+
+                        gain2.gain.setValueAtTime(0.25, now + 0.18);
+                        gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+
+                        osc2.connect(gain2);
+                        gain2.connect(audioCtx.destination);
+                        osc2.start(now + 0.18);
+                        osc2.stop(now + 0.32);
+                    } else if (type === 'correct') {
+                        // Major harmonic success chime
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(523.25, now); // C5
+                        osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.15); // G5
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start(now);
+                        osc.stop(now + 0.4);
+                    } else if (type === 'incorrect') {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(150, now);
+                        osc.frequency.linearRampToValueAtTime(100, now + 0.2);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start(now);
+                        osc.stop(now + 0.25);
+                    }
+                } catch (e) {
+                    // Fail silently
+                }
+            }
+
+            // Verify Data Access
+            if (typeof window.HUMAN_BODY_DATA === 'undefined') {
+                console.error('HUMAN_BODY_DATA not loaded.');
+                return;
+            }
+
+            const API = window.HUMAN_BODY_DATA;
+            const organs = API.getAllOrgans();
+            const systems = API.getAllSystems();
+            const records = API.getRecords();
+            const diagnostics = API.getDiagnostics();
+
+            // Tab Navigation Handling
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const targetTabId = this.getAttribute('data-tab');
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    tabPanes.forEach(p => p.classList.remove('active'));
+
+                    this.classList.add('active');
+                    const targetPane = document.getElementById(targetTabId);
+                    if (targetPane) targetPane.classList.add('active');
+                });
+            });
+
+            // ==================== TAB 1: ANATOMY MAP & ORGAN INSPECTOR ====================
+            let selectedOrganId = 'heart';
+
+            // Populate Organ Selection Carousel
+            const carouselContainer = document.getElementById('organCarouselPills');
+            organs.forEach(o => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `organ-pill-btn ${o.id === selectedOrganId ? 'active' : ''}`;
+                btn.setAttribute('data-organ', o.id);
+                btn.innerHTML = `<i class="fa-solid ${o.icon}" style="color:${o.color};"></i> ${o.name}`;
+
+                btn.addEventListener('click', function () {
+                    selectOrgan(o.id);
+                    if (o.id === 'heart') playSound('heartbeat');
+                    else playSound('correct');
+                });
+
+                carouselContainer.appendChild(btn);
+            });
+
+            // SVG Hotspots event listeners
+            const svgHotspots = document.querySelectorAll('.organ-hotspot');
+            svgHotspots.forEach(hotspot => {
+                hotspot.addEventListener('click', function () {
+                    const organId = this.getAttribute('data-organ');
+                    if (organId) {
+                        selectOrgan(organId);
+                        if (organId === 'heart') playSound('heartbeat');
+                        else playSound('correct');
+                    }
+                });
+            });
+
+            function selectOrgan(id) {
+                selectedOrganId = id;
+
+                // Sync SVG active class
+                svgHotspots.forEach(h => {
+                    h.classList.toggle('active', h.getAttribute('data-organ') === id);
+                });
+
+                // Sync Carousel pills
+                document.querySelectorAll('.organ-pill-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-organ') === id);
+                });
+
+                const organ = API.getOrganById(id);
+                if (!organ) return;
+
+                // Update Inspector Header
+                const iconCircle = document.getElementById('inspIconCircle');
+                iconCircle.style.backgroundColor = organ.color;
+                iconCircle.innerHTML = `<i class="fa-solid ${organ.icon}"></i>`;
+
+                document.getElementById('inspOrganName').textContent = organ.name;
+                document.getElementById('inspLatinRoot').textContent = organ.latinRoot;
+                document.getElementById('inspSystemTag').textContent = organ.systemName;
+
+                // Stats
+                document.getElementById('inspWeight').textContent = organ.averageWeight;
+                document.getElementById('inspLocation').textContent = organ.location;
+                document.getElementById('inspBloodSupply').textContent = organ.bloodSupply;
+
+                // Functions
+                const funcList = document.getElementById('inspFunctionsList');
+                funcList.innerHTML = '';
+                organ.primaryFunctions.forEach(fn => {
+                    const li = document.createElement('li');
+                    li.className = 'dossier-item';
+                    li.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${fn}</span>`;
+                    funcList.appendChild(li);
+                });
+
+                // Secretions
+                document.getElementById('inspSecretionsText').textContent = organ.secretions;
+
+                // Pathologies
+                const pathList = document.getElementById('inspPathologiesList');
+                pathList.innerHTML = '';
+                organ.pathologies.forEach(pt => {
+                    const li = document.createElement('li');
+                    li.className = 'dossier-item';
+                    li.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <span>${pt}</span>`;
+                    pathList.appendChild(li);
+                });
+
+                // Exam Tip
+                document.getElementById('inspExamTip').innerHTML = `
+                    <strong><i class="fa-solid fa-graduation-cap"></i> CSS/PMS General Science Exam Utility:</strong> ${organ.examRelevance}
+                `;
+            }
+
+            // ==================== TAB 2: 8 BODY SYSTEMS ====================
+            let selectedSystemId = 'circulatory';
+            const systemsNav = document.getElementById('systemsPillsNav');
+
+            systems.forEach((sys, idx) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `system-pill-btn ${idx === 0 ? 'active' : ''}`;
+                btn.setAttribute('data-sys', sys.id);
+                btn.innerHTML = `<i class="fa-solid ${sys.icon}"></i> ${sys.name.split(' ')[0]}`;
+
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('.system-pill-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    renderSystem(sys.id);
+                    if (sys.id === 'circulatory') playSound('heartbeat');
+                    else playSound('correct');
+                });
+
+                systemsNav.appendChild(btn);
+            });
+
+            function renderSystem(sysId) {
+                const sys = API.getSystemById(sysId);
+                if (!sys) return;
+
+                document.getElementById('sysTitle').innerHTML = `<i class="fa-solid ${sys.icon}" style="color:${sys.color};"></i> ${sys.name}`;
+                document.getElementById('sysOrgansCount').textContent = `${sys.organsIncluded.length} Primary Components`;
+                document.getElementById('sysSummary').textContent = sys.summary;
+
+                const conceptsGrid = document.getElementById('sysConceptsGrid');
+                conceptsGrid.innerHTML = '';
+                sys.keyConcepts.forEach(c => {
+                    const box = document.createElement('div');
+                    box.className = 'concept-item-box';
+                    box.innerHTML = `
+                        <div class="concept-title-tag"><i class="fa-solid fa-check"></i> ${c.title}</div>
+                        <div class="concept-desc-text">${c.desc}</div>
+                    `;
+                    conceptsGrid.appendChild(box);
+                });
+
+                document.getElementById('sysExamTip').innerHTML = `
+                    <strong><i class="fa-solid fa-graduation-cap"></i> CSS General Science Paper Relevance:</strong> ${sys.examRelevance}
+                `;
+            }
+
+            // ==================== TAB 3: RECORDS GRID ====================
+            function renderRecords() {
+                const grid = document.getElementById('recordsGrid');
+                grid.innerHTML = '';
+
+                records.forEach(rec => {
+                    const card = document.createElement('div');
+                    card.className = 'record-box-item';
+                    card.innerHTML = `
+                        <div class="record-label-title"><i class="fa-solid fa-award"></i> ${rec.label}</div>
+                        <div class="record-value-highlight">${rec.value}</div>
+                        <div class="record-detail-sub">${rec.detail}</div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            // ==================== TAB 4: CLINICAL DIAGNOSTICS ====================
+            function renderDiagnostics() {
+                const container = document.getElementById('diagnosticsListContainer');
+                container.innerHTML = '';
+
+                diagnostics.forEach(diag => {
+                    const card = document.createElement('div');
+                    card.className = 'case-block';
+
+                    let buttonsHtml = '';
+                    // 4 choices for each case
+                    const options = [diag.targetOrganId, 'stomach', 'kidneys', 'heart', 'liver', 'lungs'].filter((v, i, a) => a.indexOf(v) === i).slice(0, 4);
+                    // Shuffle options deterministically
+                    options.sort();
+
+                    options.forEach(optId => {
+                        const organ = API.getOrganById(optId);
+                        if (organ) {
+                            buttonsHtml += `
+                                <button type="button" class="case-opt-btn" data-diag="${diag.id}" data-organ="${optId}">
+                                    <i class="fa-solid ${organ.icon}"></i> ${organ.name}
+                                </button>
+                            `;
+                        }
+                    });
+
+                    const targetOrgan = API.getOrganById(diag.targetOrganId);
+
+                    card.innerHTML = `
+                        <div class="case-title"><i class="fa-solid fa-notes-medical" style="color:var(--body-primary);"></i> ${diag.title}</div>
+                        <div class="case-scenario">${diag.scenario}</div>
+                        <div class="case-question"><i class="fa-solid fa-circle-question"></i> ${diag.question}</div>
+                        <div class="case-organ-buttons">${buttonsHtml}</div>
+                        <div class="case-revealed-diagnosis" id="diag-rev-${diag.id}">
+                            <strong style="color:var(--body-green);"><i class="fa-solid fa-circle-check"></i> Confirmed Diagnosis: ${targetOrgan.name}</strong>
+                            <div style="margin-top:4px;">${targetOrgan.primaryFunctions[0]}</div>
+                        </div>
+                    `;
+
+                    container.appendChild(card);
+                });
+
+                // Attach button click handling
+                container.querySelectorAll('.case-opt-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        const diagId = this.getAttribute('data-diag');
+                        const selectedId = this.getAttribute('data-organ');
+                        const diagData = diagnostics.find(d => d.id === diagId);
+
+                        const isCorrect = selectedId === diagData.targetOrganId;
+                        const parent = this.closest('.case-block');
+
+                        parent.querySelectorAll('.case-opt-btn').forEach(b => {
+                            b.disabled = true;
+                            if (b.getAttribute('data-organ') === diagData.targetOrganId) {
+                                b.classList.add('correct');
+                            }
+                        });
+
+                        if (!isCorrect) {
+                            this.classList.add('incorrect');
+                            playSound('incorrect');
+                        } else {
+                            playSound('correct');
+                        }
+
+                        const revBox = document.getElementById(`diag-rev-${diagId}`);
+                        if (revBox) revBox.style.display = 'block';
+                    });
+                });
+            }
+
+            // ==================== TAB 5: SYSTEM QUIZZES ====================
+            let answeredQuiz = {};
+            let currentFilter = 'all';
+
+            function renderQuiz() {
+                const container = document.getElementById('quizContainer');
+                container.innerHTML = '';
+
+                const mcqsList = API.getQuizMCQs(currentFilter);
+
+                mcqsList.forEach((mcq, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'mcq-question-card';
+                    card.id = `mcq-card-${mcq.id}`;
+
+                    let optsHtml = '';
+                    const letters = ['A', 'B', 'C', 'D'];
+                    mcq.options.forEach((opt, optIdx) => {
+                        optsHtml += `
+                            <button type="button" class="mcq-choice-btn" data-mcq="${mcq.id}" data-opt="${optIdx}">
+                                <span class="mcq-letter-box">${letters[optIdx]}</span>
+                                <span>${opt}</span>
+                            </button>
+                        `;
+                    });
+
+                    card.innerHTML = `
+                        <div class="mcq-prompt-title">
+                            <span class="mcq-num-pill">${idx + 1}</span>
+                            <span>${mcq.question}</span>
+                        </div>
+                        <div class="mcq-opt-group">${optsHtml}</div>
+                        <div class="mcq-expl-box" id="mcq-expl-${mcq.id}">
+                            <strong><i class="fa-solid fa-circle-info"></i> Physiology Explanation:</strong> ${mcq.explanation}
+                        </div>
+                    `;
+
+                    container.appendChild(card);
+                });
+
+                container.querySelectorAll('.mcq-choice-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        const mcqId = parseInt(this.getAttribute('data-mcq'), 10);
+                        const chosenOpt = parseInt(this.getAttribute('data-opt'), 10);
+                        if (answeredQuiz[mcqId] !== undefined) return;
+
+                        const allMCQs = API.getQuizMCQs('all');
+                        const qData = allMCQs.find(q => q.id === mcqId);
+                        const isCorrect = chosenOpt === qData.answer;
+                        answeredQuiz[mcqId] = isCorrect;
+
+                        const parent = document.getElementById(`mcq-card-${mcqId}`);
+                        parent.querySelectorAll('.mcq-choice-btn').forEach((b, i) => {
+                            b.disabled = true;
+                            if (i === qData.answer) b.classList.add('correct');
+                        });
+
+                        if (!isCorrect) {
+                            this.classList.add('incorrect');
+                            playSound('incorrect');
+                        } else {
+                            playSound('correct');
+                        }
+
+                        const expl = document.getElementById(`mcq-expl-${mcqId}`);
+                        if (expl) expl.style.display = 'block';
+
+                        updateScoreCounter();
+                    });
+                });
+            }
+
+            function updateScoreCounter() {
+                let correct = 0;
+                for (let k in answeredQuiz) {
+                    if (answeredQuiz[k]) correct++;
+                }
+                const scoreText = document.getElementById('quizScoreText');
+                if (scoreText) scoreText.textContent = `${correct} / 12`;
+            }
+
+            document.getElementById('resetQuizBtn').addEventListener('click', function () {
+                answeredQuiz = {};
+                renderQuiz();
+                updateScoreCounter();
+            });
+
+            // Quiz Filter Buttons
+            const filterBtns = document.querySelectorAll('.quiz-filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.getAttribute('data-filter');
+                    renderQuiz();
+                });
+            });
+
+            // Real-time Search Input
+            const searchInput = document.getElementById('bodySearchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', function () {
+                    const term = this.value.toLowerCase().trim();
+                    if (!term) return;
+
+                    const match = organs.find(o =>
+                        o.name.toLowerCase().includes(term) ||
+                        o.id.toLowerCase() === term ||
+                        o.latinRoot.toLowerCase().includes(term) ||
+                        o.primaryFunctions.some(f => f.toLowerCase().includes(term))
+                    );
+
+                    if (match) {
+                        selectOrgan(match.id);
+                    }
+                });
+            }
+
+            // Initialize Everything
+            selectOrgan('heart');
+            renderSystem('circulatory');
+            renderRecords();
+            renderDiagnostics();
+            renderQuiz();
+
+        })();
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

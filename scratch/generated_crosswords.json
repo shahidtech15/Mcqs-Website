@@ -1,0 +1,247 @@
+{
+  "pakistan_affairs": {
+    "size": 13,
+    "words": [
+      {
+        "answer": "OBJECTIVES",
+        "clue": "Landmark 1949 resolution moving Pakistan towards Islamic constitutional foundations.",
+        "examFact": "Moved by Liaquat Ali Khan on March 7, 1949; made a substantive part of the Constitution via Article 2A.",
+        "row": 1,
+        "col": 2,
+        "direction": "down",
+        "number": 1
+      },
+      {
+        "answer": "BICAMERAL",
+        "clue": "Two-chamber legislative system established in Pakistan under the 1973 Constitution (Senate & National Assembly).",
+        "examFact": "Replaced the unicameral systems of the 1956 and 1962 Constitutions to ensure provincial parity.",
+        "row": 2,
+        "col": 2,
+        "direction": "across",
+        "number": 2
+      },
+      {
+        "answer": "DEVOLUTION",
+        "clue": "Transfer of governance powers to provincial and local authorities under the 18th Amendment.",
+        "examFact": "Article 140A requires each province to establish a local government system with administrative and financial authority.",
+        "row": 4,
+        "col": 1,
+        "direction": "across",
+        "number": 3
+      },
+      {
+        "answer": "AUTONOMY",
+        "clue": "Provincial self-rule guaranteed under federalism and the 18th Amendment.",
+        "examFact": "Abolished the Concurrent Legislative List, granting exclusive provincial competence over 40+ subjects.",
+        "row": 6,
+        "col": 0,
+        "direction": "across",
+        "number": 4
+      },
+      {
+        "answer": "SENATE",
+        "clue": "Upper house of Pakistan's parliament providing equal provincial representation.",
+        "examFact": "Permanent legislative body with 6-year terms; half its members retire every 3 years.",
+        "row": 7,
+        "col": 10,
+        "direction": "down",
+        "number": 5
+      },
+      {
+        "answer": "FEDERATION",
+        "clue": "Constitutional union of four provinces governed under Article 1 of the 1973 Constitution.",
+        "examFact": "Federation of Pakistan comprises Punjab, Sindh, Khyber Pakhtunkhwa, Balochistan, and Islamabad Capital Territory.",
+        "row": 9,
+        "col": 1,
+        "direction": "across",
+        "number": 6
+      }
+    ]
+  },
+  "international_relations": {
+    "size": 13,
+    "words": [
+      {
+        "answer": "DETERRENCE",
+        "clue": "Strategic military doctrine of preventing aggression by threatening unacceptable retaliatory damage.",
+        "examFact": "Pillar of South Asian strategic stability following Pakistan and India's May 1998 nuclear detonations.",
+        "row": 0,
+        "col": 5,
+        "direction": "down",
+        "number": 1
+      },
+      {
+        "answer": "MULTIPOLAR",
+        "clue": "International order with three or more competing superpowers (e.g., US, China, Russia, EU).",
+        "examFact": "Core theme in contemporary IR examining the decline of unipolarity and rise of the Global South.",
+        "row": 0,
+        "col": 7,
+        "direction": "down",
+        "number": 2
+      },
+      {
+        "answer": "SANCTIONS",
+        "clue": "Economic or financial coercive penalties imposed to force compliance with international norms.",
+        "examFact": "Imposed by the UN Security Council under Article 41 of Chapter VII of the UN Charter.",
+        "row": 0,
+        "col": 10,
+        "direction": "down",
+        "number": 3
+      },
+      {
+        "answer": "CHOKEPOINT",
+        "clue": "Strategic narrow maritime passage vulnerable to blockade or military disruption (e.g. Hormuz).",
+        "examFact": "Strait of Hormuz conveys approximately 20-25% of global petroleum consumption daily.",
+        "row": 2,
+        "col": 2,
+        "direction": "down",
+        "number": 4
+      },
+      {
+        "answer": "SOVEREIGNTY",
+        "clue": "Supreme and independent political authority of a state over its territory and population.",
+        "examFact": "Principle of Westphalian sovereignty rooted in the 1648 Peace of Westphalia.",
+        "row": 4,
+        "col": 1,
+        "direction": "across",
+        "number": 5
+      }
+    ]
+  },
+  "law": {
+    "size": 13,
+    "words": [
+      {
+        "answer": "CERTIORARI",
+        "clue": "Prerogative writ issued by superior courts to quash illegal orders of inferior courts or tribunals.",
+        "examFact": "Governed under Article 199(1)(a)(ii) of Pakistan's 1973 Constitution to correct jurisdictional errors.",
+        "row": 0,
+        "col": 3,
+        "direction": "down",
+        "number": 1
+      },
+      {
+        "answer": "ADJUDICATION",
+        "clue": "Formal legal judgment or determination delivered by a court in a contested dispute.",
+        "examFact": "Fundamental requirement of administrative law enforcing the principles of natural justice.",
+        "row": 0,
+        "col": 8,
+        "direction": "down",
+        "number": 2
+      },
+      {
+        "answer": "INJUNCTION",
+        "clue": "Judicial remedy restraining a party from committing or continuing an injurious act.",
+        "examFact": "Granted under the Specific Relief Act 1877; categorized as temporary, permanent, or mandatory.",
+        "row": 0,
+        "col": 10,
+        "direction": "down",
+        "number": 3
+      },
+      {
+        "answer": "TORT",
+        "clue": "Civil wrong other than breach of contract that causes injury, entitling claimant to compensation.",
+        "examFact": "Common law doctrine encompassing negligence, libel, slander, nuisance, and strict liability.",
+        "row": 2,
+        "col": 6,
+        "direction": "down",
+        "number": 4
+      },
+      {
+        "answer": "SEDITION",
+        "clue": "Offense of inciting disaffection or rebellion against the lawfully established government.",
+        "examFact": "Codified under Section 124-A of the Pakistan Penal Code (PPC 1860); heavily debated in constitutional law.",
+        "row": 3,
+        "col": 12,
+        "direction": "down",
+        "number": 5
+      },
+      {
+        "answer": "JURISPRUDENCE",
+        "clue": "Philosophy, theory, and structural science of positive law.",
+        "examFact": "Includes natural law, legal positivism (Austin, Hart), and historical and sociological schools.",
+        "row": 4,
+        "col": 0,
+        "direction": "across",
+        "number": 6
+      },
+      {
+        "answer": "BAILMENT",
+        "clue": "Delivery of goods in trust from bailor to bailee for a specific legal purpose.",
+        "examFact": "Defined in Section 148 of the Contract Act 1872; requires return or disposal of goods upon completion.",
+        "row": 11,
+        "col": 2,
+        "direction": "across",
+        "number": 7
+      }
+    ]
+  },
+  "geography": {
+    "size": 13,
+    "words": [
+      {
+        "answer": "PENINSULA",
+        "clue": "Landform surrounded by water on three sides while connected to mainland on the fourth.",
+        "examFact": "The Arabian Peninsula is the largest peninsula in the world, spanning over 3.2 million sq km.",
+        "row": 1,
+        "col": 5,
+        "direction": "down",
+        "number": 1
+      },
+      {
+        "answer": "PLATEAU",
+        "clue": "Extensive elevated upland area characterized by a relatively flat summit and steep slopes.",
+        "examFact": "The Potohar Plateau and Balochistan Plateau form major physiographic regions of Pakistan.",
+        "row": 1,
+        "col": 5,
+        "direction": "across",
+        "number": 1
+      },
+      {
+        "answer": "TRIBUTARY",
+        "clue": "Freshwater river or stream that flows into a larger stem river rather than directly into a sea.",
+        "examFact": "The Jhelum, Chenab, Ravi, and Sutlej are the principal eastern tributaries of the Indus.",
+        "row": 3,
+        "col": 2,
+        "direction": "down",
+        "number": 2
+      },
+      {
+        "answer": "ARCHIPELAGO",
+        "clue": "Extensive group or cluster of scattered islands in a sea or ocean (e.g. Indonesia).",
+        "examFact": "Indonesia is the world's largest archipelagic state, comprising over 17,500 islands.",
+        "row": 4,
+        "col": 1,
+        "direction": "across",
+        "number": 3
+      },
+      {
+        "answer": "ISTHMUS",
+        "clue": "Narrow neck of land connecting two larger land masses with water on both sides (e.g. Panama).",
+        "examFact": "The Isthmus of Panama links North and South America and was excavated for the canal in 1914.",
+        "row": 6,
+        "col": 4,
+        "direction": "across",
+        "number": 4
+      },
+      {
+        "answer": "STRAIT",
+        "clue": "Narrow natural maritime corridor connecting two large seas or oceans (e.g. Malacca).",
+        "examFact": "The Strait of Malacca connects the Indian and Pacific Oceans; conveys over 90,000 ships annually.",
+        "row": 6,
+        "col": 10,
+        "direction": "down",
+        "number": 5
+      },
+      {
+        "answer": "GLACIER",
+        "clue": "Persistent dense mass of moving ice formed by snow accumulation over centuries.",
+        "examFact": "Pakistan contains over 7,200 glaciers, the highest volume outside the polar regions (Siachen, Baltoro).",
+        "row": 8,
+        "col": 4,
+        "direction": "across",
+        "number": 6
+      }
+    ]
+  }
+}

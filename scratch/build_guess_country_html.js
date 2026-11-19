@@ -1,0 +1,1519 @@
+const fs = require('fs');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Country | Interactive World Geography Quiz &amp; Challenge</title>
+    <meta name="description"
+        content="Interactive 'Guess the Country' world geography quiz for CSS, PMS, FPSC, PPSC, and competitive exam students. Identify countries by their national flag, map outline, famous landmarks, and progressive geopolitical clues.">
+    <meta name="keywords"
+        content="Guess the Country, World Geography Quiz, Flag Quiz, Country Outline Quiz, Landmark Quiz, World Map Game, CSS General Knowledge, FPSC Geography MCQs, Geography Trivia">
+
+    <!-- Anti-FOUC: Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --quiz-primary: #0284c7;
+            --quiz-primary-dark: #0369a1;
+            --quiz-primary-light: #e0f2fe;
+            --quiz-accent: #f59e0b;
+            --quiz-success: #10b981;
+            --quiz-danger: #ef4444;
+            --quiz-bg: #f8fafc;
+            --quiz-card-bg: #ffffff;
+            --quiz-border: #e2e8f0;
+            --quiz-text-main: #0f172a;
+            --quiz-text-muted: #64748b;
+        }
+
+        .dark-mode {
+            --quiz-bg: #090d16;
+            --quiz-card-bg: #111827;
+            --quiz-border: #1f2937;
+            --quiz-text-main: #f8fafc;
+            --quiz-text-muted: #94a3b8;
+            --quiz-primary-light: rgba(2, 132, 199, 0.15);
+        }
+
+        body {
+            background-color: var(--quiz-bg);
+            color: var(--quiz-text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        /* Top Announcement / Switcher Bar */
+        .top-switcher-bar {
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 0.86rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .switcher-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .switcher-btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--quiz-card-bg);
+            border-bottom: 1px solid var(--quiz-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--quiz-text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #0284c7;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--quiz-text-muted);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0284c7;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--quiz-bg);
+            border: 1px solid var(--quiz-border);
+            color: var(--quiz-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        /* Hero Masthead */
+        .quiz-hero {
+            background: radial-gradient(circle at 50% 30%, rgba(2, 132, 199, 0.08) 0%, rgba(15, 23, 42, 0.02) 70%);
+            padding: 36px 20px 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--quiz-border);
+        }
+
+        .quiz-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(2, 132, 199, 0.12);
+            color: #0284c7;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(2, 132, 199, 0.28);
+            margin-bottom: 14px;
+        }
+
+        .quiz-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.35rem;
+            font-weight: 900;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            color: var(--quiz-text-main);
+        }
+
+        .quiz-hero p {
+            max-width: 860px;
+            margin: 0 auto 20px;
+            color: var(--quiz-text-muted);
+            font-size: 1.02rem;
+            line-height: 1.6;
+        }
+
+        /* Game Controls & Mode Bar */
+        .game-controls-bar {
+            max-width: 1080px;
+            margin: 24px auto 0;
+            padding: 0 20px;
+        }
+
+        .controls-inner-box {
+            background: var(--quiz-card-bg);
+            border: 1px solid var(--quiz-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+        }
+
+        .mode-tabs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .mode-btn {
+            background: var(--quiz-bg);
+            border: 1px solid var(--quiz-border);
+            color: var(--quiz-text-muted);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .mode-btn:hover {
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        .mode-btn.active {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
+            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+        }
+
+        .game-options-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .toggle-chip {
+            background: var(--quiz-bg);
+            border: 1px solid var(--quiz-border);
+            color: var(--quiz-text-main);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s;
+        }
+
+        .toggle-chip.active {
+            background: var(--quiz-primary-light);
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        /* Main Quiz Arena Card */
+        .quiz-stage-container {
+            max-width: 900px;
+            margin: 24px auto 40px;
+            padding: 0 20px;
+        }
+
+        .quiz-card {
+            background: var(--quiz-card-bg);
+            border: 1px solid var(--quiz-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* HUD Header */
+        .hud-header {
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.06) 0%, rgba(15, 23, 42, 0.02) 100%);
+            border-bottom: 1px solid var(--quiz-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hud-stat {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--quiz-text-main);
+        }
+
+        .flame-streak {
+            color: #f59e0b;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .timer-badge {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 0.84rem;
+        }
+
+        /* Clue Display Section */
+        .clue-stage-area {
+            padding: 30px 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 18px;
+        }
+
+        .clue-type-pill {
+            background: rgba(2, 132, 199, 0.1);
+            color: #0284c7;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Visual Media Box: Flag / Landmark / Silhouette */
+        .visual-display-card {
+            width: 100%;
+            max-width: 480px;
+            min-height: 180px;
+            background: var(--quiz-bg);
+            border: 2px dashed var(--quiz-border);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 20px;
+            position: relative;
+            box-sizing: border-box;
+            transition: all 0.25s;
+        }
+
+        .flag-emoji-giant {
+            font-size: 6.5rem;
+            line-height: 1;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+            user-select: none;
+            transition: transform 0.2s;
+        }
+
+        .landmark-badge-icon {
+            font-size: 3.5rem;
+            color: #0284c7;
+            margin-bottom: 10px;
+        }
+
+        .landmark-name-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--quiz-text-main);
+            margin: 0 0 6px;
+        }
+
+        .landmark-desc-text {
+            font-size: 0.88rem;
+            color: var(--quiz-text-muted);
+            max-width: 380px;
+            line-height: 1.5;
+        }
+
+        .map-silhouette-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .geo-borders-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .border-pill {
+            background: var(--quiz-card-bg);
+            border: 1px solid var(--quiz-border);
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--quiz-text-main);
+        }
+
+        /* Progressive Clue Cards */
+        .progressive-clues-box {
+            width: 100%;
+            max-width: 680px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .clue-item-card {
+            background: var(--quiz-bg);
+            border: 1px solid var(--quiz-border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            transition: all 0.2s;
+        }
+
+        .clue-step-badge {
+            background: #0284c7;
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .reveal-clue-btn {
+            background: var(--quiz-card-bg);
+            border: 1px dashed var(--quiz-border);
+            color: #0284c7;
+            font-weight: 700;
+            font-size: 0.84rem;
+            padding: 10px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .reveal-clue-btn:hover {
+            border-color: #0284c7;
+            background: var(--quiz-primary-light);
+        }
+
+        /* Answer Input Section */
+        .answer-action-area {
+            padding: 0 28px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .mcq-options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .option-answer-btn {
+            background: var(--quiz-bg);
+            border: 1.5px solid var(--quiz-border);
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: var(--quiz-text-main);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: left;
+        }
+
+        .option-answer-btn:hover {
+            border-color: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12);
+        }
+
+        .option-answer-btn.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: #10b981 !important;
+            color: #059669 !important;
+        }
+
+        .option-answer-btn.wrong {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: #ef4444 !important;
+            color: #dc2626 !important;
+        }
+
+        /* Autocomplete Input Box */
+        .autocomplete-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .autocomplete-input {
+            width: 100%;
+            padding: 14px 18px 14px 44px;
+            background: var(--quiz-bg);
+            border: 1.5px solid var(--quiz-border);
+            border-radius: 12px;
+            font-size: 1rem;
+            color: var(--quiz-text-main);
+            outline: none;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .autocomplete-input:focus {
+            border-color: #0284c7;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+
+        .input-icon-left {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--quiz-text-muted);
+            font-size: 1.1rem;
+        }
+
+        .dropdown-suggestions {
+            position: absolute;
+            top: 105%;
+            left: 0;
+            right: 0;
+            background: var(--quiz-card-bg);
+            border: 1px solid var(--quiz-border);
+            border-radius: 12px;
+            max-height: 220px;
+            overflow-y: auto;
+            z-index: 50;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .dropdown-suggestions.active {
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: 10px 16px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--quiz-border);
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-item:hover {
+            background: var(--quiz-primary-light);
+            color: #0284c7;
+        }
+
+        .action-buttons-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .skip-btn {
+            background: transparent;
+            border: none;
+            color: var(--quiz-text-muted);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: color 0.15s;
+        }
+
+        .skip-btn:hover {
+            color: var(--quiz-text-main);
+        }
+
+        /* Learning Dossier Card (Post-Answer) */
+        .dossier-result-modal {
+            display: none;
+            background: var(--quiz-card-bg);
+            border-top: 2px solid var(--quiz-border);
+            padding: 24px 28px;
+            animation: slideUp 0.25s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dossier-result-modal.active {
+            display: block;
+        }
+
+        .feedback-banner {
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .feedback-banner.correct {
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #059669;
+        }
+
+        .feedback-banner.wrong {
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #dc2626;
+        }
+
+        .dossier-facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .fact-box {
+            background: var(--quiz-bg);
+            border: 1px solid var(--quiz-border);
+            padding: 10px 14px;
+            border-radius: 10px;
+        }
+
+        .fact-box-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--quiz-text-muted);
+            margin-bottom: 3px;
+        }
+
+        .fact-box-val {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--quiz-text-main);
+        }
+
+        .exam-knowledge-tip {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%);
+            border: 1px solid rgba(2, 132, 199, 0.25);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: var(--quiz-text-main);
+            margin-bottom: 18px;
+        }
+
+        .next-country-btn {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+            transition: transform 0.15s;
+        }
+
+        .next-country-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--quiz-card-bg);
+            border-top: 1px solid var(--quiz-border);
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: var(--quiz-text-muted);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: var(--quiz-text-muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #0284c7;
+        }
+
+        @media (max-width: 640px) {
+            .mcq-options-grid {
+                grid-template-columns: 1fr;
+            }
+            .hud-header {
+                padding: 12px 16px;
+            }
+            .clue-stage-area {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Announcement / 6-Map Switcher Bar -->
+    <div class="top-switcher-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="background: #0284c7; color: #fff; font-size: 0.7rem; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">
+                Interactive Hub
+            </span>
+            <span>Switch between Cartographic Portals &amp; Quiz Challenges:</span>
+        </div>
+        <div class="switcher-links">
+            <a href="guess-the-country.html" class="switcher-btn" style="background:#0284c7; border-color:#38bdf8; color:#fff;">
+                <i class="fas fa-gamepad"></i> Guess the Country Quiz
+            </a>
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes Map
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="guess-the-country.html" class="active" style="color: #0284c7; font-weight: 800;"><i class="fas fa-gamepad"></i> Guess Country</a>
+                <a href="world-map.html"><i class="fas fa-globe"></i> World Map</a>
+                <a href="pakistan-map.html"><i class="fas fa-flag"></i> Pakistan Map</a>
+                <a href="sindh-map.html"><i class="fas fa-map-marked-alt"></i> Sindh Map</a>
+                <a href="quiz.html"><i class="fas fa-pen-to-square"></i> Full Mock Quiz</a>
+                <a href="latest-jobs.html" style="color: #e11d48; font-weight: 700;"><i class="fas fa-bullhorn"></i> Latest Jobs <span style="background:#e11d48; color:#fff; font-size:0.65rem; padding:1px 6px; border-radius:10px;">17,500+</span></a>
+                <a href="math-mcqs.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-calculator"></i> Math MCQs</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Masthead -->
+    <section class="quiz-hero">
+        <div class="quiz-hero-badge">
+            <i class="fas fa-earth-americas"></i> Interactive Geography Challenge &bull; CSS &bull; PMS &bull; FPSC &bull; PPSC &bull; General Knowledge
+        </div>
+        <h1>Guess the Country: World Geography Quiz</h1>
+        <p>
+            Identify countries across the globe by their <strong>national flag</strong>, <strong>map outline &amp; borders</strong>, <strong>famous landmarks</strong>, or <strong>progressive geopolitical clues</strong>. Test your memory, earn streak multipliers, and master competitive exam geography.
+        </p>
+    </section>
+
+    <!-- Game Mode & Settings Bar -->
+    <div class="game-controls-bar">
+        <div class="controls-inner-box">
+            <div class="mode-tabs">
+                <button type="button" class="mode-btn active" onclick="setGameMode('mystery')" id="modeBtnMystery">
+                    <i class="fas fa-magnifying-glass"></i> Progressive Clues
+                </button>
+                <button type="button" class="mode-btn" onclick="setGameMode('flag')" id="modeBtnFlag">
+                    <i class="fas fa-flag"></i> Flag Clue
+                </button>
+                <button type="button" class="mode-btn" onclick="setGameMode('landmark')" id="modeBtnLandmark">
+                    <i class="fas fa-landmark"></i> Landmark Clue
+                </button>
+                <button type="button" class="mode-btn" onclick="setGameMode('map')" id="modeBtnMap">
+                    <i class="fas fa-map"></i> Map Outline Clue
+                </button>
+            </div>
+
+            <div class="game-options-group">
+                <button type="button" class="toggle-chip active" id="btnInputMode" onclick="toggleInputMode()">
+                    <i class="fas fa-list-check"></i> <span id="inputModeText">Multiple Choice (4)</span>
+                </button>
+                <button type="button" class="toggle-chip" id="btnTimerToggle" onclick="toggleTimer()">
+                    <i class="fas fa-clock"></i> <span id="timerText">Timer: Off</span>
+                </button>
+                <button type="button" class="toggle-chip active" id="btnSoundToggle" onclick="toggleSound()">
+                    <i class="fas fa-volume-high"></i> <span id="soundText">Sound: On</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Quiz Arena Stage -->
+    <main class="quiz-stage-container">
+        <div class="quiz-card" id="quizCard">
+            <!-- HUD Header -->
+            <div class="hud-header">
+                <div class="hud-stat">
+                    <i class="fas fa-layer-group" style="color:#0284c7;"></i>
+                    <span id="hudQuestionCount">Country 1 of 40</span>
+                </div>
+                <div class="hud-stat flame-streak">
+                    <i class="fas fa-fire"></i>
+                    <span id="hudStreak">Streak: 0</span>
+                </div>
+                <div class="hud-stat">
+                    <i class="fas fa-trophy" style="color:#f59e0b;"></i>
+                    <span id="hudScore">Score: 0 pts</span>
+                </div>
+                <div class="timer-badge" id="hudTimerBadge" style="display:none;">
+                    <i class="fas fa-stopwatch"></i> <span id="hudTimerValue">30s</span>
+                </div>
+            </div>
+
+            <!-- Clue Stage Area -->
+            <div class="clue-stage-area">
+                <div class="clue-type-pill" id="clueStagePill">
+                    <i class="fas fa-lightbulb"></i> <span id="clueStageTitle">CLUE 1: GEOGRAPHIC OUTLINE &amp; BORDERS</span>
+                </div>
+
+                <!-- Visual Display Card -->
+                <div class="visual-display-card" id="visualDisplayCard">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <!-- Progressive Clues Area (Mystery Mode) -->
+                <div class="progressive-clues-box" id="progressiveCluesBox">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <div id="clueButtonsWrapper" style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <button type="button" class="reveal-clue-btn" id="btnRevealClue2" onclick="revealClue(2)">
+                        <i class="fas fa-unlock"></i> Reveal Clue 2 (Landmark &bull; -100 pts)
+                    </button>
+                    <button type="button" class="reveal-clue-btn" id="btnRevealClue3" onclick="revealClue(3)" style="display:none;">
+                        <i class="fas fa-unlock"></i> Reveal Clue 3 (Flag &bull; -100 pts)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Answer Options Area -->
+            <div class="answer-action-area" id="answerActionArea">
+                <!-- Multiple Choice Grid -->
+                <div class="mcq-options-grid" id="mcqOptionsGrid">
+                    <!-- 4 Option Buttons Populated via JS -->
+                </div>
+
+                <!-- Autocomplete Input Box (Alternative Mode) -->
+                <div class="autocomplete-wrapper" id="autocompleteWrapper" style="display:none;">
+                    <i class="fas fa-earth-americas input-icon-left"></i>
+                    <input type="text" id="countryTypeInput" class="autocomplete-input" placeholder="Type country name (e.g., Pakistan, Turkey, Japan, Brazil, France)..." autocomplete="off" oninput="handleAutocomplete(this.value)">
+                    <div class="dropdown-suggestions" id="dropdownSuggestions"></div>
+                </div>
+
+                <div class="action-buttons-row">
+                    <span style="font-size:0.8rem; color:var(--quiz-text-muted);" id="currentPointsValue">
+                        🏆 Maximum Points: <strong>300 pts</strong>
+                    </span>
+                    <button type="button" class="skip-btn" onclick="skipCountry()">
+                        <i class="fas fa-forward"></i> Skip Country
+                    </button>
+                </div>
+            </div>
+
+            <!-- Learning Dossier Modal (Post-Answer) -->
+            <div class="dossier-result-modal" id="dossierResultModal">
+                <div class="feedback-banner" id="feedbackBanner">
+                    <span id="feedbackText">Correct!</span>
+                    <span id="feedbackPointsBadge">+300 pts</span>
+                </div>
+
+                <div class="dossier-facts-grid">
+                    <div class="fact-box">
+                        <div class="fact-box-title">Country &amp; Flag</div>
+                        <div class="fact-box-val" id="resCountryName">🇵🇰 Pakistan</div>
+                    </div>
+                    <div class="fact-box">
+                        <div class="fact-box-title">Capital City</div>
+                        <div class="fact-box-val" id="resCapital">Islamabad</div>
+                    </div>
+                    <div class="fact-box">
+                        <div class="fact-box-title">Currency</div>
+                        <div class="fact-box-val" id="resCurrency">Pakistani Rupee</div>
+                    </div>
+                    <div class="fact-box">
+                        <div class="fact-box-title">Continent &amp; Region</div>
+                        <div class="fact-box-val" id="resRegion">Asia &bull; South Asia</div>
+                    </div>
+                </div>
+
+                <div class="exam-knowledge-tip" id="resExamTip">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <button type="button" class="next-country-btn" onclick="nextCountry()" id="btnNextCountry">
+                        Next Country <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="guess-the-country.html">Guess Country Quiz</a>
+            <a href="world-map.html">World Map</a>
+            <a href="pakistan-map.html">Pakistan Map</a>
+            <a href="sindh-map.html">Sindh Map</a>
+            <a href="international-trade-routes-map.html">Trade Routes Map</a>
+            <a href="geopolitical-hotspots-map.html">Hotspots Map</a>
+            <a href="physical-geography-map.html">Physical Map</a>
+            <a href="latest-jobs.html">Latest Jobs</a>
+            <a href="scholarships.html">Scholarships</a>
+            <a href="math-mcqs.html">Math MCQs</a>
+            <a href="written-prep.html">Written Prep</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+        </div>
+        <p>&copy; 2026 CSS Prep Central. Interactive World Geography &amp; Country Identification Quiz for competitive exam candidates.</p>
+    </footer>
+
+    <!-- Dataset Script -->
+    <script src="js/data_guess_country.js"></script>
+
+    <script>
+        // State
+        let allCountries = [];
+        let shuffledQueue = [];
+        let currentIndex = 0;
+        let currentCountry = null;
+        let gameMode = 'mystery'; // 'mystery', 'flag', 'landmark', 'map'
+        let inputMode = 'mcq';    // 'mcq', 'type'
+        let currentClueLevel = 1; // 1, 2, 3
+        let score = 0;
+        let streak = 0;
+        let bestStreak = parseInt(localStorage.getItem('guess_best_streak') || '0', 10);
+        let isAnswered = false;
+        let timerEnabled = false;
+        let timerSeconds = 30;
+        let timerInterval = null;
+        let soundEnabled = true;
+
+        // Web Audio Synthesizer (No external MP3 required)
+        let audioCtx = null;
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) audioCtx = new AudioContext();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                const now = ctx.currentTime;
+
+                if (type === 'correct') {
+                    // Ascending cheerful arpeggio
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(440, now); // A4
+                    osc.frequency.setValueAtTime(554.37, now + 0.08); // C#5
+                    osc.frequency.setValueAtTime(659.25, now + 0.16); // E5
+                    osc.frequency.setValueAtTime(880, now + 0.24); // A5
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+                    osc.start(now);
+                    osc.stop(now + 0.5);
+                } else if (type === 'wrong') {
+                    // Low buzz
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.linearRampToValueAtTime(120, now + 0.25);
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                }
+            } catch (e) {
+                // Audio safely fails silently
+            }
+        }
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Shuffle Utility
+        function shuffle(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // Initialize Game
+        function initGame() {
+            allCountries = window.GUESS_COUNTRY_DATA || [];
+            if (!allCountries.length) return;
+
+            shuffledQueue = shuffle(allCountries);
+            currentIndex = 0;
+            score = 0;
+            streak = 0;
+            updateHud();
+            loadCountry(currentIndex);
+        }
+
+        // Update HUD display
+        function updateHud() {
+            document.getElementById('hudQuestionCount').textContent = \`Country \${currentIndex + 1} of \${shuffledQueue.length}\`;
+            document.getElementById('hudScore').textContent = \`Score: \${score} pts\`;
+            document.getElementById('hudStreak').textContent = \`🔥 Streak: \${streak}\`;
+        }
+
+        // Load Country into Stage
+        function loadCountry(index) {
+            if (index >= shuffledQueue.length) {
+                // Reshuffle for infinite play
+                shuffledQueue = shuffle(allCountries);
+                currentIndex = 0;
+            }
+
+            currentCountry = shuffledQueue[currentIndex];
+            isAnswered = false;
+            currentClueLevel = (gameMode === 'mystery') ? 1 : 3;
+
+            // Reset UI
+            document.getElementById('dossierResultModal').classList.remove('active');
+            document.getElementById('countryTypeInput').value = '';
+            document.getElementById('dropdownSuggestions').classList.remove('active');
+
+            updateClueDisplay();
+            renderOptions();
+            updateHud();
+
+            if (timerEnabled) {
+                startTimer();
+            }
+        }
+
+        // Update Clue Presentation according to Mode & Level
+        function updateClueDisplay() {
+            const visualCard = document.getElementById('visualDisplayCard');
+            const cluesBox = document.getElementById('progressiveCluesBox');
+            const cluePillTitle = document.getElementById('clueStageTitle');
+            const btnClue2 = document.getElementById('btnRevealClue2');
+            const btnClue3 = document.getElementById('btnRevealClue3');
+            const ptsVal = document.getElementById('currentPointsValue');
+
+            // Hide/Show Reveal Buttons
+            if (gameMode === 'mystery') {
+                cluesBox.style.display = 'flex';
+                if (currentClueLevel === 1) {
+                    cluePillTitle.textContent = 'CLUE 1/3: MAP OUTLINE & BORDERS';
+                    btnClue2.style.display = 'inline-flex';
+                    btnClue3.style.display = 'none';
+                    ptsVal.innerHTML = '🏆 Maximum Points: <strong>300 pts</strong>';
+                } else if (currentClueLevel === 2) {
+                    cluePillTitle.textContent = 'CLUE 2/3: FAMOUS LANDMARK & CURRENCY';
+                    btnClue2.style.display = 'none';
+                    btnClue3.style.display = 'inline-flex';
+                    ptsVal.innerHTML = '🏆 Maximum Points: <strong>200 pts</strong>';
+                } else {
+                    cluePillTitle.textContent = 'CLUE 3/3: NATIONAL FLAG & TRIVIA';
+                    btnClue2.style.display = 'none';
+                    btnClue3.style.display = 'none';
+                    ptsVal.innerHTML = '🏆 Maximum Points: <strong>100 pts</strong>';
+                }
+            } else {
+                cluesBox.style.display = 'none';
+                btnClue2.style.display = 'none';
+                btnClue3.style.display = 'none';
+                ptsVal.innerHTML = '🏆 Maximum Points: <strong>250 pts</strong>';
+
+                if (gameMode === 'flag') cluePillTitle.textContent = 'FLAG GUESS MODE';
+                else if (gameMode === 'landmark') cluePillTitle.textContent = 'LANDMARK EXPLORER MODE';
+                else if (gameMode === 'map') cluePillTitle.textContent = 'MAP OUTLINE & BORDERS MODE';
+            }
+
+            // Render Visual Card Content
+            if (gameMode === 'flag' || (gameMode === 'mystery' && currentClueLevel === 3)) {
+                visualCard.innerHTML = \`
+                    <div class="flag-emoji-giant">\${currentCountry.flag}</div>
+                    <div style="font-weight:700; color:var(--quiz-text-muted); font-size:0.85rem; margin-top:8px;">
+                        <i class="fas fa-compass"></i> Continent: \${currentCountry.continent} &bull; \${currentCountry.region}
+                    </div>
+                \`;
+            } else if (gameMode === 'landmark' || (gameMode === 'mystery' && currentClueLevel === 2)) {
+                visualCard.innerHTML = \`
+                    <div class="landmark-badge-icon"><i class="fas \${currentCountry.landmark.icon}"></i></div>
+                    <h3 class="landmark-name-title">\${currentCountry.landmark.name}</h3>
+                    <p class="landmark-desc-text">\${currentCountry.landmark.desc}</p>
+                    <div style="font-weight:700; color:var(--quiz-text-muted); font-size:0.82rem; margin-top:6px;">
+                        <i class="fas fa-coins"></i> Currency: \${currentCountry.currency}
+                    </div>
+                \`;
+            } else {
+                // Map Outline / Borders
+                const borderTags = (currentCountry.mapOutline.borders || []).map(b => \`<span class="border-pill">\${b}</span>\`).join('');
+                visualCard.innerHTML = \`
+                    <div class="map-silhouette-box">
+                        <div style="font-size:2.8rem; color:#0284c7;"><i class="fas fa-earth-americas"></i></div>
+                        <p style="font-size:0.92rem; font-weight:600; max-width:440px; margin:4px 0 8px;">\${currentCountry.mapOutline.shape}</p>
+                        <div style="font-size:0.82rem; font-weight:700; color:var(--quiz-text-muted);">
+                            Neighboring Borders:
+                        </div>
+                        <div class="geo-borders-row">\${borderTags}</div>
+                    </div>
+                \`;
+            }
+
+            // Render Progressive Clue Text Items
+            if (gameMode === 'mystery') {
+                let cluesHtml = '';
+                for (let i = 0; i < currentClueLevel; i++) {
+                    const stepNum = i + 1;
+                    const clueText = currentCountry.clues[i] || '';
+                    cluesHtml += \`
+                        <div class="clue-item-card">
+                            <span class="clue-step-badge">Clue \${stepNum}</span>
+                            <div>\${clueText}</div>
+                        </div>
+                    \`;
+                }
+                cluesBox.innerHTML = cluesHtml;
+            }
+        }
+
+        // Reveal Next Progressive Clue
+        function revealClue(level) {
+            currentClueLevel = level;
+            updateClueDisplay();
+        }
+
+        // Render Answer Options (MCQ)
+        function renderOptions() {
+            const grid = document.getElementById('mcqOptionsGrid');
+            if (!grid) return;
+
+            // Generate 3 distractors from same continent or random
+            const sameContinent = allCountries.filter(c => c.id !== currentCountry.id && c.continent === currentCountry.continent);
+            const otherCountries = allCountries.filter(c => c.id !== currentCountry.id && c.continent !== currentCountry.continent);
+
+            let distractors = shuffle(sameContinent).slice(0, 3);
+            if (distractors.length < 3) {
+                const extra = shuffle(otherCountries).slice(0, 3 - distractors.length);
+                distractors = [...distractors, ...extra];
+            }
+
+            const options = shuffle([currentCountry, ...distractors]);
+
+            grid.innerHTML = options.map(opt => \`
+                <button type="button" class="option-answer-btn" onclick="submitAnswer('\${opt.id}')">
+                    <span>\${opt.name}</span>
+                    <i class="fas fa-chevron-right" style="opacity:0.35; font-size:0.8rem;"></i>
+                </button>
+            \`).join('');
+        }
+
+        // Submit Answer
+        function submitAnswer(chosenId) {
+            if (isAnswered) return;
+            isAnswered = true;
+            stopTimer();
+
+            const isCorrect = chosenId === currentCountry.id;
+            let earnedPoints = 0;
+
+            if (isCorrect) {
+                if (gameMode === 'mystery') {
+                    if (currentClueLevel === 1) earnedPoints = 300;
+                    else if (currentClueLevel === 2) earnedPoints = 200;
+                    else earnedPoints = 100;
+                } else {
+                    earnedPoints = 250;
+                }
+
+                // Autocomplete bonus
+                if (inputMode === 'type') earnedPoints += 50;
+
+                score += earnedPoints;
+                streak++;
+                if (streak > bestStreak) {
+                    bestStreak = streak;
+                    localStorage.setItem('guess_best_streak', bestStreak);
+                }
+
+                playSound('correct');
+            } else {
+                streak = 0;
+                playSound('wrong');
+            }
+
+            // Highlight buttons
+            const buttons = document.querySelectorAll('.option-answer-btn');
+            buttons.forEach(btn => {
+                const btnText = btn.querySelector('span').textContent.trim();
+                if (btnText === currentCountry.name) {
+                    btn.classList.add('correct');
+                } else if (!isCorrect && btnText === allCountries.find(c => c.id === chosenId)?.name) {
+                    btn.classList.add('wrong');
+                }
+            });
+
+            updateHud();
+            showDossierModal(isCorrect, earnedPoints);
+        }
+
+        // Show Post-Answer Learning Dossier
+        function showDossierModal(isCorrect, points) {
+            const modal = document.getElementById('dossierResultModal');
+            const banner = document.getElementById('feedbackBanner');
+            const bannerText = document.getElementById('feedbackText');
+            const badge = document.getElementById('feedbackPointsBadge');
+
+            banner.className = 'feedback-banner ' + (isCorrect ? 'correct' : 'wrong');
+            bannerText.innerHTML = isCorrect 
+                ? \`<i class="fas fa-circle-check"></i> Correct! It's \${currentCountry.name}!\`
+                : \`<i class="fas fa-circle-xmark"></i> Incorrect! That was \${currentCountry.name}.\`;
+            
+            badge.textContent = isCorrect ? \`+\${points} pts\` : '0 pts';
+
+            document.getElementById('resCountryName').textContent = \`\${currentCountry.flag} \${currentCountry.name}\`;
+            document.getElementById('resCapital').textContent = currentCountry.capital;
+            document.getElementById('resCurrency').textContent = currentCountry.currency;
+            document.getElementById('resRegion').textContent = \`\${currentCountry.continent} &bull; \${currentCountry.region}\`;
+
+            document.getElementById('resExamTip').innerHTML = \`
+                <strong><i class="fas fa-graduation-cap" style="color:#0284c7;"></i> High-Yield Exam Point:</strong> \${currentCountry.examPoints}<br>
+                <small style="color:var(--quiz-text-muted);"><i class="fas fa-star" style="color:#f59e0b;"></i> Fun Fact: \${currentCountry.funFact}</small>
+            \`;
+
+            modal.classList.add('active');
+            modal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Next Country
+        function nextCountry() {
+            currentIndex++;
+            loadCountry(currentIndex);
+        }
+
+        // Skip Country
+        function skipCountry() {
+            if (isAnswered) return;
+            submitAnswer('skipped');
+        }
+
+        // Game Mode Change
+        function setGameMode(mode) {
+            gameMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            if (mode === 'mystery') document.getElementById('modeBtnMystery').classList.add('active');
+            else if (mode === 'flag') document.getElementById('modeBtnFlag').classList.add('active');
+            else if (mode === 'landmark') document.getElementById('modeBtnLandmark').classList.add('active');
+            else if (mode === 'map') document.getElementById('modeBtnMap').classList.add('active');
+
+            loadCountry(currentIndex);
+        }
+
+        // Toggle Input Mode (MCQ vs Type)
+        function toggleInputMode() {
+            inputMode = (inputMode === 'mcq') ? 'type' : 'mcq';
+            const btn = document.getElementById('btnInputMode');
+            const text = document.getElementById('inputModeText');
+            const mcqGrid = document.getElementById('mcqOptionsGrid');
+            const autoWrapper = document.getElementById('autocompleteWrapper');
+
+            if (inputMode === 'type') {
+                btn.classList.add('active');
+                text.textContent = 'Typing Input (+50 Bonus)';
+                mcqGrid.style.display = 'none';
+                autoWrapper.style.display = 'block';
+                document.getElementById('countryTypeInput').focus();
+            } else {
+                btn.classList.remove('active');
+                text.textContent = 'Multiple Choice (4)';
+                mcqGrid.style.display = 'grid';
+                autoWrapper.style.display = 'none';
+            }
+        }
+
+        // Autocomplete search
+        function handleAutocomplete(val) {
+            const dropdown = document.getElementById('dropdownSuggestions');
+            const query = val.toLowerCase().trim();
+            if (!query) {
+                dropdown.classList.remove('active');
+                return;
+            }
+
+            const matches = allCountries.filter(c => c.name.toLowerCase().includes(query)).slice(0, 5);
+            if (!matches.length) {
+                dropdown.classList.remove('active');
+                return;
+            }
+
+            dropdown.innerHTML = matches.map(c => \`
+                <div class="suggestion-item" onclick="selectSuggestion('\${c.id}')">
+                    <span>\${c.flag}</span>
+                    <span>\${c.name}</span>
+                    <small style="margin-left:auto; color:var(--quiz-text-muted);">\${c.continent}</small>
+                </div>
+            \`).join('');
+
+            dropdown.classList.add('active');
+        }
+
+        function selectSuggestion(countryId) {
+            document.getElementById('dropdownSuggestions').classList.remove('active');
+            submitAnswer(countryId);
+        }
+
+        // Timer toggles
+        function toggleTimer() {
+            timerEnabled = !timerEnabled;
+            const btn = document.getElementById('btnTimerToggle');
+            const badge = document.getElementById('hudTimerBadge');
+            const text = document.getElementById('timerText');
+
+            if (timerEnabled) {
+                btn.classList.add('active');
+                text.textContent = 'Timer: 30s';
+                badge.style.display = 'inline-flex';
+                startTimer();
+            } else {
+                btn.classList.remove('active');
+                text.textContent = 'Timer: Off';
+                badge.style.display = 'none';
+                stopTimer();
+            }
+        }
+
+        function startTimer() {
+            stopTimer();
+            timerSeconds = 30;
+            document.getElementById('hudTimerValue').textContent = \`\${timerSeconds}s\`;
+
+            timerInterval = setInterval(() => {
+                timerSeconds--;
+                document.getElementById('hudTimerValue').textContent = \`\${timerSeconds}s\`;
+                if (timerSeconds <= 0) {
+                    stopTimer();
+                    skipCountry();
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('btnSoundToggle');
+            const text = document.getElementById('soundText');
+            btn.classList.toggle('active');
+            text.textContent = soundEnabled ? 'Sound: On' : 'Sound: Off';
+        }
+
+        // Keyboard Shortcuts: Enter or Space triggers Next Country
+        window.addEventListener('keydown', (e) => {
+            if ((e.code === 'Enter' || e.code === 'Space') && isAnswered) {
+                e.preventDefault();
+                nextCountry();
+            }
+        });
+
+        // Auto Boot
+        window.addEventListener('DOMContentLoaded', initGame);
+    </script>
+</body>
+
+</html>
+`;
+
+fs.writeFileSync('frontend/guess-the-country.html', htmlContent, 'utf8');
+console.log('Successfully generated frontend/guess-the-country.html!');

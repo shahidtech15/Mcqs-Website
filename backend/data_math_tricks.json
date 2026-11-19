@@ -1,0 +1,874 @@
+{
+  "metadata": {
+    "title": "Quantitative Ability & Math Shortcut Tricks Handbook",
+    "subtitle": "Complete Fast Mental Math, Arithmetic Formulas, and Past Paper Solutions for CSS, PMS, FPSC, PPSC & NTS",
+    "totalModules": 12,
+    "totalShortcuts": 52,
+    "totalDrills": 40
+  },
+  "modules": [
+    {
+      "id": "percentages",
+      "title": "Percentages & Fast Conversions",
+      "icon": "fa-solid fa-percent",
+      "color": "#0284c7",
+      "description": "Master percentage calculations mentally using the fraction equivalent table, split method, commutative rule, and depreciation formulas.",
+      "rules": [
+        {
+          "name": "Fraction to Percentage Fast Conversion Table",
+          "rule": "Convert standard fractions to exact percentages instantaneously to eliminate long divisions.",
+          "formula": "1/2=50%, 1/3=33.33%, 1/4=25%, 1/5=20%, 1/6=16.67%, 1/7=14.28%, 1/8=12.5%, 1/9=11.11%, 1/11=9.09%, 1/12=8.33%, 1/16=6.25%",
+          "example": "What is 12.5% of 640? Instead of 0.125 × 640, compute 640 / 8 = 80.",
+          "tip": "Remember that 1/7 = 14.28% and 2/7 = 28.57% (digits double: 14 -> 28)."
+        },
+        {
+          "name": "The Commutative Percentage Trick (x% of y = y% of x)",
+          "rule": "Whenever calculating x% of y seems awkward, reverse the numbers: x% of y is mathematically identical to y% of x.",
+          "formula": "x% of y = (x × y) / 100 = (y × x) / 100 = y% of x",
+          "example": "Find 16% of 50. Swap it: 50% of 16 = half of 16 = 8!",
+          "tip": "Extremely helpful when one number is 25, 50, 75, or 20."
+        },
+        {
+          "name": "The Mental Split Method (10%, 5%, 1% Building Blocks)",
+          "rule": "Break any percentage into 10% (move decimal 1 place left), 1% (move decimal 2 places left), and 5% (half of 10%).",
+          "formula": "Target% = a(10%) + b(5%) + c(1%)",
+          "example": "Find 36% of 450: 10% = 45 -> 30% = 135; 5% = 22.5; 1% = 4.5. Total = 135 + 22.5 + 4.5 = 162.",
+          "tip": "For 98% of X, compute 100% - 2% (X - 2 × 1%)."
+        },
+        {
+          "name": "Annual Depreciation / Compounded Decay",
+          "rule": "When a value depreciates by r% annually, multiply the current value by (1 - r/100) for each year.",
+          "formula": "Value after n years = P × (1 - r/100)^n",
+          "example": "A computer worth Rs. 100,000 depreciates by 10% annually. Value after 2 years: Year 1 = 100,000 - 10,000 = 90,000; Year 2 = 90,000 - 9,000 = Rs. 81,000.",
+          "tip": "Do not subtract 20%! 10% depreciation for 2 years equals 19% total depreciation, leaving 81%."
+        },
+        {
+          "name": "Successive Percentage Changes (Net Change Formula)",
+          "rule": "When a quantity changes by a% and then by b%, the net percentage change is given by the universal formula.",
+          "formula": "Net % Change = a + b + (a × b) / 100",
+          "example": "If price increases by 20% and then decreases by 10%: Net = +20 - 10 + (20 × -10)/100 = 10 - 2 = +8% increase.",
+          "tip": "Use (+) for increases and (-) for decreases/discounts."
+        },
+        {
+          "name": "Consumption Adjustment to Maintain Constant Budget",
+          "rule": "If price of a commodity increases by R%, consumption must decrease by a specific fraction to keep total expenditure constant.",
+          "formula": "Reduction in Consumption % = [R / (100 + R)] × 100%",
+          "example": "If petrol price increases by 25%: Reduction = [25 / (100 + 25)] × 100% = (25/125) × 100% = 20% reduction.",
+          "tip": "If price decreases by R%, consumption can increase by [R / (100 - R)] × 100%."
+        }
+      ],
+      "drills": [
+        {
+          "question": "What percent of 120 is 90? (FPSC Past Paper)",
+          "options": [
+            "0.25",
+            "0.5",
+            "0.75",
+            "75%"
+          ],
+          "solution": "0.75 (or 75%)",
+          "shortcut": "Percentage = (Part / Whole) × 100% = (90 / 120) = 9/12 = 3/4 = 0.75 or 75%."
+        },
+        {
+          "question": "If X% of Y is 100 and Y% of Z is 200, find the relation between X and Z. (FPSC Past Paper)",
+          "options": [
+            "Z = 2X",
+            "Z = X/2",
+            "X = Z/4",
+            "None of these"
+          ],
+          "solution": "Z = 2X",
+          "shortcut": "X% of Y = (X × Y)/100 = 100 => XY = 10,000. Y% of Z = (Y × Z)/100 = 200 => YZ = 20,000. Divide the two equations: (XY)/(YZ) = 10,000 / 20,000 => X/Z = 1/2 => Z = 2X."
+        },
+        {
+          "question": "The value of a computer depreciates by 10% annually. If the present value is Rs. 100,000, what will be its value after 2 years? (FPSC Past Paper)",
+          "options": [
+            "Rs. 18,000",
+            "Rs. 10,000",
+            "Rs. 81,000",
+            "Rs. 80,000"
+          ],
+          "solution": "Rs. 81,000",
+          "shortcut": "Value = 100,000 × (0.90) × (0.90) = 100,000 × 0.81 = Rs. 81,000."
+        },
+        {
+          "question": "The tank full of petrol in Haroon's motorcycle lasts for 10 days. If he starts using 25% more every day, for how many days will the tank full of petrol last? (FPSC Past Paper)",
+          "options": [
+            "5 days",
+            "7 days",
+            "8 days",
+            "None of these"
+          ],
+          "solution": "8 days",
+          "shortcut": "Let original daily consumption be 1 unit/day. Total petrol = 10 days × 1 unit = 10 units. New consumption = 1 + 25% = 1.25 units/day. Days = 10 / 1.25 = 10 / (5/4) = 10 × 4/5 = 8 days."
+        }
+      ]
+    },
+    {
+      "id": "multiplication",
+      "title": "Mental Multiplication & Squaring",
+      "icon": "fa-solid fa-xmark",
+      "color": "#6366f1",
+      "description": "Perform lightning-fast multiplications and squaring using Vedic techniques, base methods, and algebraic identities.",
+      "rules": [
+        {
+          "name": "Multiplying Any Number by 11",
+          "rule": "Keep the outer digits identical and sum adjacent digits from right to left.",
+          "formula": "For ab × 11: write 'a', then (a+b), then 'b'. If (a+b) >= 10, carry over 1 to 'a'.",
+          "example": "52 × 11: outer digits 5 and 2; middle = 5+2 = 7 -> 572. 87 × 11: 8 [8+7] 7 = 8 [15] 7 = (8+1) 5 7 = 957.",
+          "tip": "For 3 digits: 342 × 11 -> First digit 3, then (3+4)=7, then (4+2)=6, last digit 2 -> 3,762."
+        },
+        {
+          "name": "Squaring Numbers Ending in 5",
+          "rule": "Multiply the leading number by its consecutive integer (N × (N+1)) and append 25 to the end.",
+          "formula": "(N5)^2 = [N × (N + 1)] 25",
+          "example": "65^2: Leading is 6. 6 × 7 = 42. Append 25 -> 4,225! 85^2: 8 × 9 = 72 -> 7,225.",
+          "tip": "Works for 3-digit numbers too: 115^2 -> 11 × 12 = 132 -> 13,225."
+        },
+        {
+          "name": "Multiplying Numbers Near Base 100",
+          "rule": "Find the deviation of each number from 100. Left part = (Num1 + Dev2). Right part = (Dev1 × Dev2) in 2 digits.",
+          "formula": "(100 + a)(100 + b) = [100 + a + b] | (a × b)",
+          "example": "104 × 107: Devs are +4 and +7. Left = 104 + 7 = 111. Right = 4 × 7 = 28 -> 11,128! For below 100: 96 × 93 -> Devs -4 and -7. Left = 96 - 7 = 89. Right = (-4) × (-7) = 28 -> 8,928.",
+          "tip": "Ensure the right-hand part always has 2 digits (e.g., 2 × 3 = 06)."
+        },
+        {
+          "name": "Product of Numbers with Difference of 2 (a^2 - 1)",
+          "rule": "When two numbers differ by 2, their product is the square of the middle number minus 1.",
+          "formula": "(x - 1)(x + 1) = x^2 - 1",
+          "example": "29 × 31: Middle number is 30. 30^2 - 1 = 900 - 1 = 899. 49 × 51 = 50^2 - 1 = 2,499.",
+          "tip": "For difference of 4: (x - 2)(x + 2) = x^2 - 4. E.g., 28 × 32 = 30^2 - 4 = 896."
+        },
+        {
+          "name": "Multiplication by 25, 50, and 125",
+          "rule": "Instead of multiplying, divide by the reciprocal fraction and add zeros.",
+          "formula": "× 25 = (÷ 4) × 100;  × 50 = (÷ 2) × 100;  × 125 = (÷ 8) × 1000",
+          "example": "64 × 25: 64 ÷ 4 = 16 -> 1,600. 72 × 125: 72 ÷ 8 = 9 -> 9,000.",
+          "tip": "Faster than standard column multiplication by a factor of four."
+        }
+      ],
+      "drills": [
+        {
+          "question": "What is the value of 85^2?",
+          "options": [
+            "7125",
+            "7225",
+            "7325",
+            "7425"
+          ],
+          "solution": "7225",
+          "shortcut": "8 × 9 = 72. Append 25 => 7,225."
+        },
+        {
+          "question": "Find the product of 94 × 98 without pen and paper.",
+          "options": [
+            "9212",
+            "9112",
+            "9312",
+            "9216"
+          ],
+          "solution": "9212",
+          "shortcut": "Deviations from 100 are -6 and -2. Left = 94 - 2 = 92. Right = (-6) × (-2) = 12 => 9,212."
+        },
+        {
+          "question": "Calculate 48 × 52.",
+          "options": [
+            "2496",
+            "2486",
+            "2504",
+            "2492"
+          ],
+          "solution": "2496",
+          "shortcut": "Middle is 50. 50^2 - 2^2 = 2500 - 4 = 2,496."
+        }
+      ]
+    },
+    {
+      "id": "division",
+      "title": "Division & Divisibility Tests",
+      "icon": "fa-solid fa-divide",
+      "color": "#10b981",
+      "description": "Quick tests to determine divisibility and rapid division tricks for competitive exams.",
+      "rules": [
+        {
+          "name": "Master Divisibility Test for 3 and 9",
+          "rule": "A number is divisible by 3 (or 9) if the sum of its digits is divisible by 3 (or 9).",
+          "formula": "Sum(digits) mod 3 = 0 => Divisible by 3; Sum(digits) mod 9 = 0 => Divisible by 9",
+          "example": "Is 48,726 divisible by 9? Sum = 4+8+7+2+6 = 27. 27 is divisible by 9, so YES.",
+          "tip": "'Cast out nines': cancel out any digits that add to 9 as you go to calculate faster."
+        },
+        {
+          "name": "Divisibility Test for 4 and 8",
+          "rule": "For 4: check only the last 2 digits. For 8: check only the last 3 digits.",
+          "formula": "Last 2 digits divisible by 4 => Num div by 4; Last 3 digits div by 8 => Num div by 8",
+          "example": "753,824: Last 2 digits = 24 (div by 4 -> YES). Last 3 digits = 824 (824 ÷ 8 = 103 -> YES, div by 8).",
+          "tip": "For 8: If the hundreds digit is even, check if last 2 digits are divisible by 8. If odd, add 4 to last 2 digits."
+        },
+        {
+          "name": "Alternating Sum Divisibility Test for 11",
+          "rule": "Take the difference between the sum of digits at odd places and sum of digits at even places. If the difference is 0 or divisible by 11, the number is divisible by 11.",
+          "formula": "|Sum(odd places) - Sum(even places)| = 0, 11, 22...",
+          "example": "Test 9,183,724: Odd places (from right): 4+7+8+9 = 28. Even places: 2+3+1 = 6. Difference = 28 - 6 = 22 (divisible by 11 -> YES).",
+          "tip": "Extremely common in FPSC, CSS, and PPSC aptitude tests."
+        },
+        {
+          "name": "Fast Division by 5 and 50",
+          "rule": "To divide by 5, double the number and shift the decimal one place left. To divide by 50, double and shift two places left.",
+          "formula": "X / 5 = (2X) / 10;  X / 50 = (2X) / 100",
+          "example": "342 ÷ 5: Double 342 = 684. Shift decimal -> 68.4. 1,450 ÷ 50: Double = 2,900. Shift two decimals -> 29.",
+          "tip": "To divide by 25: Multiply by 4 and shift two decimals left."
+        },
+        {
+          "name": "Converting Recurring Decimals to Fractions",
+          "rule": "Pure recurring decimals have 9s in the denominator. Mixed recurring have 9s followed by 0s.",
+          "formula": "0.aaaa... = a/9;  0.abab... = ab/99;  0.ab_bar = (ab - a) / 90",
+          "example": "0.4777... = (47 - 4) / 90 = 43/90. 0.2323... = 23/99.",
+          "tip": "Number of 9s = count of repeating digits; number of 0s = count of non-repeating digits after decimal."
+        }
+      ],
+      "drills": [
+        {
+          "question": "Which of the following numbers is divisible by 11?",
+          "options": [
+            "483,271",
+            "594,286",
+            "283,912",
+            "194,821"
+          ],
+          "solution": "283,912",
+          "shortcut": "For 283,912: (2+3+1) = 6; (8+9+2) = 19. Difference = 19 - 6 = 13 (No). Let's check 594,286: (5+4+8) = 17; (9+2+6) = 17. 17 - 17 = 0 => Exactly divisible by 11!"
+        },
+        {
+          "question": "Convert the recurring decimal 0.363636... into a simplified fraction.",
+          "options": [
+            "4/11",
+            "36/100",
+            "12/33",
+            "18/55"
+          ],
+          "solution": "4/11",
+          "shortcut": "Two repeating digits '36' => 36 / 99 = divide top and bottom by 9 => 4/11."
+        }
+      ]
+    },
+    {
+      "id": "ratio",
+      "title": "Ratio, Proportion & Variations",
+      "icon": "fa-solid fa-scale-balanced",
+      "color": "#f59e0b",
+      "description": "Fast techniques for combining multiple ratios, finding fourth proportionals, and solving mixture replacement problems.",
+      "rules": [
+        {
+          "name": "The 'N-Method' to Combine Two Ratios (A:B and B:C -> A:B:C)",
+          "rule": "Multiply vertically and diagonally to find the unified ratio without finding common multiples.",
+          "formula": "A : B : C = (A × B2) : (B1 × B2) : (B1 × C)",
+          "example": "If A:B = 2:3 and B:C = 4:5. A = 2×4 = 8; B = 3×4 = 12; C = 3×5 = 15. A:B:C = 8:12:15.",
+          "tip": "Keep A:B on top and B:C on bottom aligned at B."
+        },
+        {
+          "name": "Combining 4 Ratios (A:B:C:D)",
+          "rule": "Align ratios in a table and fill empty spaces with the adjacent number.",
+          "formula": "Row 1: [A, B, B, B]; Row 2: [A, B, C, C]; Row 3: [A, B, C, D] -> multiply columns.",
+          "example": "If A:B = 1:2, B:C = 3:4, C:D = 5:6. A = 1×3×5 = 15; B = 2×3×5 = 30; C = 2×4×5 = 40; D = 2×4×6 = 48. Unified = 15:30:40:48.",
+          "tip": "Simplify the final ratio by dividing by common factors if any."
+        },
+        {
+          "name": "Equivalent Ratio Property",
+          "rule": "Multiplying or dividing both antecedent and consequent by the same non-zero number produces an equivalent ratio.",
+          "formula": "a : b = ka : kb",
+          "example": "A ratio equivalent to 3:7 is (3×3) : (7×3) = 9:21 (FPSC Exam Question).",
+          "tip": "Check each option by dividing both numbers by their GCD to see if it reduces to original."
+        },
+        {
+          "name": "Mixture Replacement Formula (Successive Dilution)",
+          "rule": "If a container has V liters of pure liquid and x liters are drawn out and replaced with water n times, the remaining pure liquid quantity is given by:",
+          "formula": "Remaining Liquid = Initial Volume × [1 - (x / V)]^n",
+          "example": "A vessel has 40L of milk. 4L are drawn and replaced with water, repeated twice (total 2 operations). Remaining = 40 × [1 - 4/40]^2 = 40 × (0.9)^2 = 40 × 0.81 = 32.4 Liters.",
+          "tip": "Saves up to 3 minutes over step-by-step fractional calculation."
+        }
+      ],
+      "drills": [
+        {
+          "question": "A ratio equivalent to 3 : 7 is: (FPSC Past Paper)",
+          "options": [
+            "3 : 9",
+            "6 : 10",
+            "9 : 21",
+            "None of these"
+          ],
+          "solution": "9 : 21",
+          "shortcut": "Multiply both terms by 3: 3 × 3 = 9 and 7 × 3 = 21 => 9 : 21."
+        },
+        {
+          "question": "If A : B = 3 : 4 and B : C = 8 : 9, find A : C.",
+          "options": [
+            "1 : 2",
+            "2 : 3",
+            "3 : 5",
+            "4 : 5"
+          ],
+          "solution": "2 : 3",
+          "shortcut": "A/C = (A/B) × (B/C) = (3/4) × (8/9) = 24 / 36 = 2/3 => 2 : 3."
+        },
+        {
+          "question": "Rs. 1,200 is divided among A, B, and C in the ratio 2 : 3 : 5. What is B's share?",
+          "options": [
+            "Rs. 240",
+            "Rs. 360",
+            "Rs. 600",
+            "Rs. 400"
+          ],
+          "solution": "Rs. 360",
+          "shortcut": "Total parts = 2 + 3 + 5 = 10 parts. 1 part = 1,200 / 10 = Rs. 120. B's share = 3 parts = 3 × 120 = Rs. 360."
+        }
+      ]
+    },
+    {
+      "id": "work-time",
+      "title": "Work, Time & Wages",
+      "icon": "fa-solid fa-clock",
+      "color": "#ea580c",
+      "description": "Master individual work, team work, pipes & cisterns, and man-days formulas without cumbersome fractions.",
+      "rules": [
+        {
+          "name": "Two Workers Together Shortcut (Product over Sum)",
+          "rule": "If Person A completes work in A hours and Person B in B hours, working together they finish in (A × B) / (A + B) hours.",
+          "formula": "Time = (A × B) / (A + B)",
+          "example": "Mr. A completes work in 6 hours, Mr. B in 12 hours. Together: (6 × 12) / (6 + 12) = 72 / 18 = 4 hours! (FPSC Past Paper).",
+          "tip": "Instant 5-second solution; avoids adding 1/6 + 1/12."
+        },
+        {
+          "name": "The Universal LCM (Unit Work) Method",
+          "rule": "Assume total work is the LCM of the individual times. Calculate daily/hourly units of work for each person.",
+          "formula": "Total Units = LCM(t1, t2, t3); Combined Daily Units = u1 + u2 + u3; Time = Total Units / Combined Units",
+          "example": "A does work in 10 days, B in 15 days, C in 30 days. LCM = 30 units. A = 3 units/day, B = 2 units/day, C = 1 unit/day. Combined = 3+2+1 = 6 units/day. Time = 30 / 6 = 5 days.",
+          "tip": "Handles workers leaving early, alternate day working, and negative work (leaks) effortlessly."
+        },
+        {
+          "name": "Man-Days-Hours-Work Formula (MDH / W)",
+          "rule": "The relation between workers, days, daily hours, efficiency, and work done across two scenarios is constant.",
+          "formula": "(M1 × D1 × H1 × E1) / W1 = (M2 × D2 × H2 × E2) / W2",
+          "example": "If 15 men can build a 100m wall in 10 days working 8 hrs/day, how many days will 20 men take to build a 200m wall working 6 hrs/day? (15 × 10 × 8) / 100 = (20 × D2 × 6) / 200 => 12 = (120 × D2)/200 => D2 = 20 days.",
+          "tip": "If work is identical, simply equate M1×D1×H1 = M2×D2×H2."
+        },
+        {
+          "name": "Pipes & Cisterns (Inlet and Leak Combined)",
+          "rule": "Inlets perform positive work; leaks/outlets perform negative work. If Inlet fills in A hours and Outlet empties in B hours (where B > A):",
+          "formula": "Net Time to Fill = (A × B) / (B - A)",
+          "example": "A pipe fills a tank in 6 hours, but a leak empties it in 10 hours. Time to fill: (6 × 10) / (10 - 6) = 60 / 4 = 15 hours.",
+          "tip": "If tank is emptying, time = (A × B) / (A - B)."
+        }
+      ],
+      "drills": [
+        {
+          "question": "Mr. A can do a particular work in 6 hours, and Mr. B can do the same work in 12 hours. How much time will it take if they do the work together? (FPSC Past Paper)",
+          "options": [
+            "7 hours",
+            "5 hours",
+            "4 hours",
+            "None of these"
+          ],
+          "solution": "4 hours",
+          "shortcut": "Time = (6 × 12) / (6 + 12) = 72 / 18 = 4 hours."
+        },
+        {
+          "question": "12 workers can complete a project in 18 days. In how many days can 9 workers complete the same project?",
+          "options": [
+            "20 days",
+            "24 days",
+            "22 days",
+            "26 days"
+          ],
+          "solution": "24 days",
+          "shortcut": "M1 × D1 = M2 × D2 => 12 × 18 = 9 × D2 => D2 = (12 × 18) / 9 = 12 × 2 = 24 days."
+        },
+        {
+          "question": "Pipe A can fill a pool in 20 minutes and Pipe B can fill it in 30 minutes. If both are opened together, how long will it take?",
+          "options": [
+            "10 minutes",
+            "12 minutes",
+            "15 minutes",
+            "25 minutes"
+          ],
+          "solution": "12 minutes",
+          "shortcut": "Time = (20 × 30) / (20 + 30) = 600 / 50 = 12 minutes."
+        }
+      ]
+    },
+    {
+      "id": "speed-distance",
+      "title": "Time, Speed & Distance",
+      "icon": "fa-solid fa-gauge-high",
+      "color": "#8b5cf6",
+      "description": "Solve train crossings, relative speed, average speed, and river boat problems with instant formulas.",
+      "rules": [
+        {
+          "name": "Instant Speed Unit Conversion (km/h <-> m/s)",
+          "rule": "To convert km/h to m/s multiply by 5/18. To convert m/s to km/h multiply by 18/5.",
+          "formula": "Speed(m/s) = Speed(km/h) × (5 / 18);  Speed(km/h) = Speed(m/s) × (18 / 5)",
+          "example": "Convert 72 km/h to m/s: 72 × (5/18) = 4 × 5 = 20 m/s. Convert 25 m/s to km/h: 25 × (18/5) = 5 × 18 = 90 km/h.",
+          "tip": "Notice that 18 km/h = 5 m/s, 36 km/h = 10 m/s, 54 km/h = 15 m/s, 72 km/h = 20 m/s."
+        },
+        {
+          "name": "Average Speed for Equal Distance (Harmonic Mean)",
+          "rule": "If a journey covers equal distance at speed x and returns at speed y, the average speed is not the arithmetic average.",
+          "formula": "Average Speed = (2 × x × y) / (x + y)",
+          "example": "A car travels from A to B at 60 km/h and returns at 40 km/h. Avg Speed = (2 × 60 × 40) / (60 + 40) = 4,800 / 100 = 48 km/h (NOT 50 km/h!).",
+          "tip": "For 3 equal distances: Avg Speed = 3xyz / (xy + yz + zx)."
+        },
+        {
+          "name": "Train Crossing Relative Speed Rules",
+          "rule": "Total distance is always the sum of lengths. Speeds add if traveling in opposite directions; subtract if in same direction.",
+          "formula": "Opposite: S_rel = S1 + S2;  Same: S_rel = |S1 - S2|;  Time = (L_train1 + L_object) / S_rel",
+          "example": "A 150m train at 54 km/h crosses a pole: Dist = 150m, Speed = 54 × (5/18) = 15 m/s. Time = 150 / 15 = 10 seconds.",
+          "tip": "For stationary objects with length (platform, bridge), Distance = Length(train) + Length(platform)."
+        },
+        {
+          "name": "Boats and Streams (Upstream & Downstream)",
+          "rule": "Let Boat speed in still water = B, Stream speed = S. Downstream D = B + S. Upstream U = B - S.",
+          "formula": "Boat in Still Water B = (D + U) / 2;  Stream Speed S = (D - U) / 2",
+          "example": "A boat moves at 14 km/h downstream and 8 km/h upstream. Boat speed = (14 + 8) / 2 = 11 km/h. Stream speed = (14 - 8) / 2 = 3 km/h.",
+          "tip": "D is always greater than U."
+        }
+      ],
+      "drills": [
+        {
+          "question": "A person travels from Lahore to Islamabad at 80 km/h and returns at 120 km/h. What is his average speed for the entire trip?",
+          "options": [
+            "100 km/h",
+            "96 km/h",
+            "92 km/h",
+            "104 km/h"
+          ],
+          "solution": "96 km/h",
+          "shortcut": "Avg Speed = (2 × 80 × 120) / (80 + 120) = 19,200 / 200 = 96 km/h."
+        },
+        {
+          "question": "A 200m long train is running at 72 km/h. How many seconds will it take to pass an electric pole?",
+          "options": [
+            "8 sec",
+            "10 sec",
+            "12 sec",
+            "15 sec"
+          ],
+          "solution": "10 sec",
+          "shortcut": "Speed in m/s = 72 × (5/18) = 20 m/s. Time = Distance / Speed = 200 / 20 = 10 seconds."
+        }
+      ]
+    },
+    {
+      "id": "profit-loss",
+      "title": "Profit, Loss & Discount",
+      "icon": "fa-solid fa-tags",
+      "color": "#ec4899",
+      "description": "Quick calculations for markup, selling price multipliers, successive discounts, and dishonest dealer problems.",
+      "rules": [
+        {
+          "name": "The Multiplier Factor Method",
+          "rule": "Convert profit or loss into a direct multiplier to obtain Selling Price from Cost Price instantly.",
+          "formula": "Profit of p%: SP = CP × (1 + p/100);  Loss of l%: SP = CP × (1 - l/100)",
+          "example": "An item costs Rs. 450. Find SP at 20% profit: SP = 450 × 1.2 = Rs. 540. At 15% loss: SP = 450 × 0.85 = Rs. 382.5.",
+          "tip": "To find CP from SP: CP = SP / Multiplier."
+        },
+        {
+          "name": "Successive Discounts Shortcut",
+          "rule": "Two successive discounts of d1% and d2% are equivalent to a single net discount.",
+          "formula": "Single Equivalent Discount = d1 + d2 - (d1 × d2) / 100",
+          "example": "Successive discounts of 20% and 10%: Net Discount = 20 + 10 - (20 × 10)/100 = 30 - 2 = 28% (NOT 30%!).",
+          "tip": "For three discounts: compute net of first two, then combine result with third."
+        },
+        {
+          "name": "Same SP with Equal % Profit and % Loss",
+          "rule": "When two articles are sold at the same price—one at x% profit and the other at x% loss—there is ALWAYS an overall net loss.",
+          "formula": "Net Loss % = (x / 10)^2 % = (x^2 / 100) %",
+          "example": "Two horses sold for Rs. 20,000 each; one at 20% gain, other at 20% loss. Net Result = Loss of (20^2 / 100)% = 400/100 = 4% loss.",
+          "tip": "The selling price value does not affect the percentage loss result."
+        },
+        {
+          "name": "Dishonest Dealer (Cheating with Weights)",
+          "rule": "If a trader sells goods at cost price but uses a false weight:",
+          "formula": "Gain % = [Error / (True Weight - Error)] × 100%",
+          "example": "A shopkeeper sells sugar at cost price but uses 900g instead of 1kg (1000g). Error = 100g. Gain% = [100 / (1000 - 100)] × 100% = (100/900) × 100% = 11.11%.",
+          "tip": "True Weight - Error is the actual weight handed to the customer."
+        }
+      ],
+      "drills": [
+        {
+          "question": "What is the single discount equivalent to successive discounts of 30% and 20%?",
+          "options": [
+            "50%",
+            "44%",
+            "46%",
+            "42%"
+          ],
+          "solution": "44%",
+          "shortcut": "Net Discount = 30 + 20 - (30 × 20)/100 = 50 - 6 = 44%."
+        },
+        {
+          "question": "A man sells two watches for Rs. 1,000 each. On one he gains 10% and on the other he loses 10%. His overall result is:",
+          "options": [
+            "No profit no loss",
+            "1% gain",
+            "1% loss",
+            "2% loss"
+          ],
+          "solution": "1% loss",
+          "shortcut": "Always a loss = (10^2 / 100)% = 100/100 = 1% loss."
+        }
+      ]
+    },
+    {
+      "id": "interest",
+      "title": "Simple & Compound Interest",
+      "icon": "fa-solid fa-coins",
+      "color": "#059669",
+      "description": "Quick difference formulas between CI and SI, the Rule of 72, and doubling-time shortcuts.",
+      "rules": [
+        {
+          "name": "Difference Between CI and SI for 2 Years",
+          "rule": "The difference between compound interest and simple interest over 2 years at annual rate r% on principal P:",
+          "formula": "Diff_2yr = P × (r / 100)^2",
+          "example": "P = Rs. 5,000, r = 10%, t = 2 years. Diff = 5,000 × (10/100)^2 = 5,000 × 0.01 = Rs. 50.",
+          "tip": "Saves having to calculate both CI and SI separately and subtracting."
+        },
+        {
+          "name": "The Rule of 72 (Time to Double Money)",
+          "rule": "At r% compound interest, an investment doubles in approximately 72 / r years.",
+          "formula": "Doubling Years ≈ 72 / Annual Interest Rate (r)",
+          "example": "At 8% compound interest, money doubles in 72 / 8 = 9 years. At 12%, it doubles in 72 / 12 = 6 years.",
+          "tip": "Rule of 114 gives tripling time; Rule of 144 gives quadrupling time."
+        },
+        {
+          "name": "Doubling Time for Simple Interest",
+          "rule": "Under simple interest, for a sum to double, the interest earned must equal the principal (SI = P).",
+          "formula": "Years to Double (t) = 100 / r;  Rate to Double (r) = 100 / t",
+          "example": "At what SI rate will a sum double in 8 years? r = 100 / 8 = 12.5%.",
+          "tip": "To triple under SI: t = 200 / r. To n-fold under SI: t = (n - 1) × 100 / r."
+        }
+      ],
+      "drills": [
+        {
+          "question": "The difference between SI and CI on Rs. 8,000 for 2 years at 5% per annum is:",
+          "options": [
+            "Rs. 15",
+            "Rs. 20",
+            "Rs. 25",
+            "Rs. 30"
+          ],
+          "solution": "Rs. 20",
+          "shortcut": "Diff = P × (r/100)^2 = 8,000 × (5/100)^2 = 8,000 × 0.0025 = Rs. 20."
+        },
+        {
+          "question": "In how many years will an amount double itself under Simple Interest at 5% per annum?",
+          "options": [
+            "15 years",
+            "20 years",
+            "25 years",
+            "10 years"
+          ],
+          "solution": "20 years",
+          "shortcut": "t = 100 / r = 100 / 5 = 20 years."
+        }
+      ]
+    },
+    {
+      "id": "averages-alligation",
+      "title": "Averages & Rule of Alligation",
+      "icon": "fa-solid fa-chart-simple",
+      "color": "#0284c7",
+      "description": "Solve complex mixture ratios, price blending, and changing-average problems in seconds.",
+      "rules": [
+        {
+          "name": "The Assumed Mean / Deviation Method",
+          "rule": "Pick a convenient assumed average A near the middle. Average = A + (Sum of Deviations / Count).",
+          "formula": "Average = A + [Sum(x_i - A) / n]",
+          "example": "Numbers: 182, 186, 188, 194, 190. Pick A = 190. Deviations: -8, -4, -2, +4, 0 = -10. Avg = 190 + (-10/5) = 190 - 2 = 188.",
+          "tip": "Avoids adding large multi-digit numbers."
+        },
+        {
+          "name": "The Rule of Alligation (Cross Mixture Method)",
+          "rule": "Find the ratio in which two ingredients of different prices/qualities must be blended to produce a desired mixture price.",
+          "formula": "(Quantity of Cheaper) / (Quantity of Dearer) = (Dearer Price - Mean Price) / (Mean Price - Cheaper Price)",
+          "example": "In what ratio must rice at Rs. 60/kg be mixed with rice at Rs. 90/kg to sell at Rs. 72/kg? Cheaper = 60, Dearer = 90, Mean = 72. Cross differences: (90 - 72) = 18; (72 - 60) = 12. Ratio = 18 : 12 = 3 : 2.",
+          "tip": "Always place Cheaper on left, Dearer on right, Mean in center."
+        },
+        {
+          "name": "New Member Joining Average Shift",
+          "rule": "When a new member joins an existing group of n people and increases average by x:",
+          "formula": "Weight/Age of New Person = Old Average + (n_new × Increase)",
+          "example": "Average weight of 19 students is 40 kg. With teacher included (n=20), average becomes 41 kg (+1 kg). Teacher's weight = 40 + (20 × 1) = 60 kg.",
+          "tip": "If average decreases by x, use: Old Average - (n_new × Decrease)."
+        }
+      ],
+      "drills": [
+        {
+          "question": "In what ratio must a merchant mix tea worth Rs. 150/kg and Rs. 200/kg to get a blend worth Rs. 165/kg?",
+          "options": [
+            "7 : 3",
+            "3 : 7",
+            "2 : 3",
+            "4 : 1"
+          ],
+          "solution": "7 : 3",
+          "shortcut": "Cross differences: (200 - 165) = 35; (165 - 150) = 15. Ratio = 35 : 15 = 7 : 3."
+        },
+        {
+          "question": "The average score of 10 players is 45 runs. When the captain's score is included, the average increases by 3 runs. The captain scored:",
+          "options": [
+            "75 runs",
+            "78 runs",
+            "80 runs",
+            "72 runs"
+          ],
+          "solution": "78 runs",
+          "shortcut": "Captain's score = Old Avg + (New Count × Increase) = 45 + (11 × 3) = 45 + 33 = 78 runs."
+        }
+      ]
+    },
+    {
+      "id": "progressions",
+      "title": "Arithmetic & Geometric Progressions",
+      "icon": "fa-solid fa-arrow-trend-up",
+      "color": "#d97706",
+      "description": "Sequence formulas, n-th terms, arithmetic means, and series sums frequently tested in competitive examinations.",
+      "rules": [
+        {
+          "name": "Arithmetic Progression (AP) n-th Term",
+          "rule": "In an arithmetic progression with first term a and common difference d = (T_n - T_{n-1}):",
+          "formula": "T_n = a + (n - 1) × d",
+          "example": "If AP is -15, -22, -29, ..., find the 11th term: a = -15, d = -22 - (-15) = -7. T_11 = -15 + (11 - 1) × (-7) = -15 - 70 = -85 (FPSC Past Paper).",
+          "tip": "Be vigilant with negative common differences."
+        },
+        {
+          "name": "Arithmetic Mean (AM) Properties",
+          "rule": "A single AM between two numbers a and b is (a + b) / 2. The sum of n AMs between a and b is n × [(a + b) / 2].",
+          "formula": "Single AM = (a + b) / 2;  Sum of n AMs = n × [(a + b) / 2]",
+          "example": "Sum of 4 AMs between 18 and 3: 4 × [(18 + 3) / 2] = 4 × 10.5 = 42 (FPSC Past Paper). Single AM between (x-3) and (x+3) = [(x-3) + (x+3)] / 2 = 2x / 2 = x (FPSC Past Paper).",
+          "tip": "Sum of any number of AMs is simply n times the average of the two extremes."
+        },
+        {
+          "name": "Sum of First n Natural, Even, and Odd Numbers",
+          "rule": "Standard closed formulas to calculate series sums in 3 seconds.",
+          "formula": "Natural: n(n + 1) / 2;  Even: n(n + 1);  Odd: n^2;  Squares: n(n + 1)(2n + 1) / 6",
+          "example": "Sum of first 20 odd numbers = 20^2 = 400. Sum of first 50 natural numbers = 50 × 51 / 2 = 1,275.",
+          "tip": "Number of odd numbers from 1 to L is (L + 1) / 2."
+        }
+      ],
+      "drills": [
+        {
+          "question": "If AP is -15, -22, -29, ..., then the 11th term is: (FPSC Past Paper)",
+          "options": [
+            "-85",
+            "85",
+            "-66",
+            "None of these"
+          ],
+          "solution": "-85",
+          "shortcut": "a = -15, d = -7. T_11 = a + 10d = -15 + 10(-7) = -15 - 70 = -85."
+        },
+        {
+          "question": "The single Arithmetic Mean between (x - 3) and (x + 3) is: (FPSC Past Paper)",
+          "options": [
+            "-6",
+            "6",
+            "x",
+            "None of these"
+          ],
+          "solution": "x",
+          "shortcut": "AM = [(x - 3) + (x + 3)] / 2 = 2x / 2 = x."
+        },
+        {
+          "question": "The sum of 4 Arithmetic Means between 18 and 3 is: (FPSC Past Paper)",
+          "options": [
+            "15",
+            "12",
+            "42",
+            "None of these"
+          ],
+          "solution": "42",
+          "shortcut": "Sum of n AMs = n × (a + b)/2 = 4 × (18 + 3)/2 = 4 × 21/2 = 42."
+        }
+      ]
+    },
+    {
+      "id": "algebra-bodmas",
+      "title": "BODMAS, Inequalities & Set Theory",
+      "icon": "fa-solid fa-square-root-variable",
+      "color": "#4f46e5",
+      "description": "Order of operations, linear inequality intervals, and three-set Venn diagram formulas.",
+      "rules": [
+        {
+          "name": "BODMAS Order of Operations",
+          "rule": "Operations must be performed strictly from left to right in order: Brackets -> Orders (Powers/Roots) -> Division & Multiplication -> Addition & Subtraction.",
+          "formula": "B -> O -> D -> M -> A -> S",
+          "example": "Evaluate 27 ÷ 32 ÷ 4 × 2 - 1 or 24 ÷ 6 × 2 + 5: 24 ÷ 6 = 4 -> 4 × 2 = 8 -> 8 + 5 = 13.",
+          "tip": "Consecutive divisions evaluate strictly from left to right: a ÷ b ÷ c = (a / b) / c = a / (b × c)."
+        },
+        {
+          "name": "Solving Linear Inequalities",
+          "rule": "When multiplying or dividing both sides of an inequality by a negative number, reverse the inequality sign.",
+          "formula": "ax + b >= c => ax >= c - b => x >= (c - b) / a (if a > 0)",
+          "example": "What is the solution interval of 6x - 2 >= 3x + 10? 6x - 3x >= 10 + 2 => 3x >= 12 => x >= 4. Interval = [4, ∞) (FPSC Past Paper).",
+          "tip": "Use square bracket [ for >= or <= and round parenthesis ( for > or <."
+        },
+        {
+          "name": "Three-Set Venn Diagram Formula (Inclusion-Exclusion)",
+          "rule": "To find the number of elements belonging to at least one set among three overlapping categories:",
+          "formula": "n(A ∪ B ∪ C) = n(A) + n(B) + n(C) - [n(A∩B) + n(B∩C) + n(A∩C)] + n(A∩B∩C)",
+          "example": "In a town: 45% read magazine A, 55% B, 40% C. 30% read A&B, 15% B&C, 25% A&C. 10% read all three. Percentage reading NONE: n(A∪B∪C) = 45+55+40 - (30+15+25) + 10 = 140 - 70 + 10 = 80%. None = 100% - 80% = 20%! (FPSC Past Paper).",
+          "tip": "Add individuals, subtract pair-wise intersections, add back the three-way intersection."
+        },
+        {
+          "name": "Age Word Problem Formulation",
+          "rule": "Express time-shifted statements with parentheses before scaling.",
+          "formula": "n times age k years ago = n × (x - k);  n times age k years hence = n × (x + k)",
+          "example": "If Amna is x years old then 5 times Amna's age three years ago is: 5(x - 3) (FPSC Past Paper).",
+          "tip": "Do not write 5x - 3; the subtraction happens before the multiplication."
+        }
+      ],
+      "drills": [
+        {
+          "question": "What is the solution interval of the inequality 6x - 2 >= 3x + 10? (FPSC Past Paper)",
+          "options": [
+            "(∞, 4]",
+            "(-∞, 4]",
+            "[-4, ∞)",
+            "[4, ∞)"
+          ],
+          "solution": "[4, ∞)",
+          "shortcut": "6x - 3x >= 10 + 2 => 3x >= 12 => x >= 4 => interval is [4, ∞)."
+        },
+        {
+          "question": "If Amna is x years old, then 5 times Amna's age three years ago is: (FPSC Past Paper)",
+          "options": [
+            "3(x - 5)",
+            "5(x - 3)",
+            "3(x + 5)",
+            "5x - 3"
+          ],
+          "solution": "5(x - 3)",
+          "shortcut": "Amna's age 3 years ago was (x - 3). 5 times that age is 5(x - 3)."
+        },
+        {
+          "question": "In a town 45% read magazine A, 55% read magazine B, 40% read magazine C. 30% read A and B, 15% read B and C, 25% read A and C, and 10% read all three. What percentage does not read any magazine? (FPSC Past Paper)",
+          "options": [
+            "15%",
+            "10%",
+            "20%",
+            "25%"
+          ],
+          "solution": "20%",
+          "shortcut": "n(At least one) = (45 + 55 + 40) - (30 + 15 + 25) + 10 = 140 - 70 + 10 = 80%. None = 100% - 80% = 20%."
+        }
+      ]
+    },
+    {
+      "id": "geometry-mensuration",
+      "title": "Geometry & Mensuration Shortcuts",
+      "icon": "fa-solid fa-shapes",
+      "color": "#0d9488",
+      "description": "Pythagorean triples, circle ratios, cylinder/cone volume relationships, and polygon diagonal shortcuts.",
+      "rules": [
+        {
+          "name": "Standard Pythagorean Triples",
+          "rule": "Memorize base right-triangle side lengths to find hypotenuse without squaring.",
+          "formula": "(3, 4, 5), (5, 12, 13), (7, 24, 25), (8, 15, 17), (9, 40, 41), (11, 60, 61), (12, 35, 37), (20, 21, 29)",
+          "example": "A triangle has sides 15 and 20. Divide by 5 -> (3, 4, ?). The missing side is 5 × 5 = 25.",
+          "tip": "Any scalar multiple of a triple is also a triple: (6, 8, 10), (9, 12, 15), etc."
+        },
+        {
+          "name": "Number of Diagonals in an n-Sided Polygon",
+          "rule": "The total number of diagonals in a regular or irregular polygon with n vertices:",
+          "formula": "Diagonals = [n × (n - 3)] / 2",
+          "example": "Number of diagonals in an octagon (n = 8): [8 × (8 - 3)] / 2 = (8 × 5) / 2 = 20 diagonals.",
+          "tip": "A triangle (n=3) has 3×0 / 2 = 0 diagonals."
+        },
+        {
+          "name": "Percentage Increase in Circle Area",
+          "rule": "If radius of a circle increases by r%, the area increases by [2r + (r^2 / 100)]%.",
+          "formula": "% Area Increase = 2r + (r^2 / 100) %",
+          "example": "If radius increases by 20%: Area increases by 2(20) + (400/100) = 40 + 4 = 44%.",
+          "tip": "Applies to squares when side increases by s%."
+        }
+      ],
+      "drills": [
+        {
+          "question": "How many diagonals does a regular hexagon (6 sides) have?",
+          "options": [
+            "6",
+            "9",
+            "12",
+            "15"
+          ],
+          "solution": "9",
+          "shortcut": "Diagonals = n(n - 3)/2 = 6(3)/2 = 9 diagonals."
+        },
+        {
+          "question": "If the radius of a circle is doubled (increased by 100%), by what percentage does its area increase?",
+          "options": [
+            "100%",
+            "200%",
+            "300%",
+            "400%"
+          ],
+          "solution": "300%",
+          "shortcut": "New Area = π(2r)^2 = 4πr^2 (4 times original). Increase = (4 - 1) × 100% = 300% increase."
+        }
+      ]
+    },
+    {
+      "id": "probability-combinations",
+      "title": "Permutations & Combinations (Counting Tricks)",
+      "icon": "fa-solid fa-dice",
+      "color": "#be185d",
+      "description": "Quick handshakes formula, circular arrangements, and probability complement tricks.",
+      "rules": [
+        {
+          "name": "Handshakes / Match Matches Formula",
+          "rule": "If n persons in a room shake hands with each other exactly once, the total number of handshakes is:",
+          "formula": "Total Handshakes = [n × (n - 1)] / 2",
+          "example": "12 people attend a meeting and each shakes hands with everyone else. Handshakes = (12 × 11) / 2 = 66.",
+          "tip": "Identical to round-robin tournament matches among n teams."
+        },
+        {
+          "name": "The Complementary Probability Trick (At Least One)",
+          "rule": "Whenever asked to find the probability of 'at least one' occurrence, calculate 1 minus the probability of NONE.",
+          "formula": "P(At least 1 success) = 1 - P(Zero successes)",
+          "example": "A coin is tossed 3 times. What is the probability of getting at least one Head? P(Zero heads / all tails) = (1/2)^3 = 1/8. P(At least 1 Head) = 1 - 1/8 = 7/8.",
+          "tip": "Reduces multiple case computations to a single fraction."
+        },
+        {
+          "name": "Circular Arrangements",
+          "rule": "The number of ways to arrange n distinct objects around a circular table is (n - 1)!.",
+          "formula": "Circular Permutations = (n - 1)!",
+          "example": "In how many ways can 5 people be seated at a round table? (5 - 1)! = 4! = 4 × 3 × 2 × 1 = 24 ways.",
+          "tip": "For necklaces or garlands where clockwise/anticlockwise are identical, divide by 2: (n - 1)! / 2."
+        }
+      ],
+      "drills": [
+        {
+          "question": "At a conference, 10 delegates shake hands with each other once. How many total handshakes took place?",
+          "options": [
+            "45",
+            "90",
+            "50",
+            "100"
+          ],
+          "solution": "45",
+          "shortcut": "Handshakes = n(n - 1)/2 = 10(9)/2 = 45."
+        },
+        {
+          "question": "Two dice are thrown simultaneously. What is the probability of getting a sum of 7?",
+          "options": [
+            "1/6",
+            "1/12",
+            "5/36",
+            "7/36"
+          ],
+          "solution": "1/6",
+          "shortcut": "Pairs that sum to 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) = 6 outcomes out of 36 => 6/36 = 1/6."
+        }
+      ]
+    }
+  ]
+}

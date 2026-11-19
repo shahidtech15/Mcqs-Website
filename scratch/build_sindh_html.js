@@ -1,0 +1,1550 @@
+const fs = require('fs');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Sindh Provincial Map | 7 Divisions, 30 Districts, Barrages, Heritage &amp; SPSC Guide</title>
+    <meta name="description"
+        content="Interactive Sindh Provincial Geography Map for SPSC, CCE, IBA Sukkur STS, and competitive exam aspirants. Click all 7 divisions, 30 districts, Indus barrages (Sukkur, Guddu, Kotri), Manchar and Keenjhar lakes, and historical heritage sites.">
+    <meta name="keywords"
+        content="Sindh Map, Sindh Districts Map, SPSC Sindh Geography, CCE Exam Prep, Karachi Districts, Hyderabad Division, Sukkur Barrage, Mohenjo-Daro, Ranikot Fort, Makli Thatta, Thar Coal, Gorakh Hill Station, Manchar Lake, Keenjhar Lake">
+
+    <!-- Anti-FOUC: Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet CSS for Map Rendering -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --sindh-primary: #059669;
+            --sindh-primary-dark: #047857;
+            --sindh-primary-light: #d1fae5;
+            --sindh-accent: #0284c7;
+            --sindh-bg: #f8fafc;
+            --sindh-card-bg: #ffffff;
+            --sindh-border: #e2e8f0;
+            --sindh-text-main: #0f172a;
+            --sindh-text-muted: #64748b;
+            --sindh-sidebar-w: 490px;
+        }
+
+        .dark-mode {
+            --sindh-bg: #090d16;
+            --sindh-card-bg: #111827;
+            --sindh-border: #1f2937;
+            --sindh-text-main: #f8fafc;
+            --sindh-text-muted: #94a3b8;
+            --sindh-primary-light: rgba(5, 150, 105, 0.15);
+        }
+
+        body {
+            background-color: var(--sindh-bg);
+            color: var(--sindh-text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        /* Top Announcement / Switcher Bar */
+        .top-switcher-bar {
+            background: linear-gradient(90deg, #064e3b 0%, #059669 50%, #0f172a 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 0.86rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .switcher-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .switcher-btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        .switcher-btn.active {
+            background: #059669;
+            border-color: #34d399;
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(5, 150, 105, 0.5);
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--sindh-card-bg);
+            border-bottom: 1px solid var(--sindh-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--sindh-text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #059669;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--sindh-text-muted);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #059669;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--sindh-bg);
+            border: 1px solid var(--sindh-border);
+            color: var(--sindh-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        /* Hero Masthead */
+        .sindh-hero {
+            background: radial-gradient(circle at 50% 30%, rgba(5, 150, 105, 0.08) 0%, rgba(15, 23, 42, 0.02) 70%);
+            padding: 36px 20px 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--sindh-border);
+        }
+
+        .sindh-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(5, 150, 105, 0.12);
+            color: #059669;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(5, 150, 105, 0.28);
+            margin-bottom: 14px;
+        }
+
+        .sindh-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.35rem;
+            font-weight: 900;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            color: var(--sindh-text-main);
+        }
+
+        .sindh-hero p {
+            max-width: 900px;
+            margin: 0 auto 20px;
+            color: var(--sindh-text-muted);
+            font-size: 1.02rem;
+            line-height: 1.6;
+        }
+
+        .sindh-stats-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sindh-stat-pill {
+            background: var(--sindh-card-bg);
+            border: 1px solid var(--sindh-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--sindh-text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        .sindh-stat-pill i {
+            color: #059669;
+        }
+
+        /* Controls Section */
+        .controls-card {
+            max-width: 1480px;
+            margin: 22px auto 16px;
+            padding: 0 20px;
+        }
+
+        .controls-inner {
+            background: var(--sindh-card-bg);
+            border: 1px solid var(--sindh-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+        }
+
+        .search-and-tools {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .search-box-wrap {
+            flex: 1;
+            min-width: 290px;
+            position: relative;
+        }
+
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--sindh-text-muted);
+        }
+
+        .search-box-wrap input {
+            width: 100%;
+            padding: 11px 16px 11px 40px;
+            background: var(--sindh-bg);
+            border: 1px solid var(--sindh-border);
+            border-radius: 10px;
+            color: var(--sindh-text-main);
+            font-size: 0.92rem;
+            outline: none;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .search-box-wrap input:focus {
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+        }
+
+        .challenge-mode-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.86rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+            transition: transform 0.15s;
+        }
+
+        .challenge-mode-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Division Filter Pills */
+        .division-pills-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+
+        .div-pill {
+            background: var(--sindh-bg);
+            border: 1px solid var(--sindh-border);
+            color: var(--sindh-text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .div-pill:hover {
+            border-color: #059669;
+            color: #059669;
+        }
+
+        .div-pill.active {
+            background: #059669;
+            color: #ffffff;
+            border-color: #059669;
+        }
+
+        .div-pill .pill-badge {
+            background: rgba(0, 0, 0, 0.12);
+            color: inherit;
+            font-size: 0.72rem;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-weight: 800;
+        }
+
+        .div-pill.active .pill-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* Main Workspace Split Grid */
+        .workspace-container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .map-workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr var(--sindh-sidebar-w);
+            gap: 22px;
+            align-items: start;
+        }
+
+        /* Map Canvas Card */
+        .map-canvas-card {
+            background: var(--sindh-card-bg);
+            border: 1px solid var(--sindh-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+
+        .map-toolbar-strip {
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--sindh-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: var(--sindh-card-bg);
+        }
+
+        .map-info-text {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--sindh-text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .map-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tool-btn {
+            background: var(--sindh-bg);
+            border: 1px solid var(--sindh-border);
+            color: var(--sindh-text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.82rem;
+            transition: all 0.15s;
+        }
+
+        .tool-btn:hover {
+            border-color: #059669;
+            color: #059669;
+        }
+
+        /* Leaflet Map Height */
+        #sindhMapContainer {
+            width: 100%;
+            height: 650px;
+            background: #090d16;
+            position: relative;
+        }
+
+        /* Custom Marker Pins */
+        .sindh-marker-pin {
+            position: relative;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.88rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid #ffffff;
+        }
+
+        .sindh-marker-pin:hover,
+        .sindh-marker-pin.active {
+            transform: scale(1.3);
+            z-index: 1000 !important;
+            box-shadow: 0 0 20px rgba(5, 150, 105, 0.8);
+        }
+
+        /* Map Legend Strip */
+        .map-legend-row {
+            padding: 10px 18px;
+            border-top: 1px solid var(--sindh-border);
+            background: var(--sindh-card-bg);
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .legend-items {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            color: var(--sindh-text-muted);
+        }
+
+        .legend-color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* SPSC & CCE Examination Dossier Sidebar */
+        .dossier-sidebar {
+            background: var(--sindh-card-bg);
+            border: 1px solid var(--sindh-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 84px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .dossier-header {
+            padding: 20px 22px 16px;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(15, 23, 42, 0.03) 100%);
+            border-bottom: 1px solid var(--sindh-border);
+        }
+
+        .dossier-meta-tags {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .type-badge {
+            font-size: 0.74rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 12px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .category-badge {
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: var(--sindh-bg);
+            border: 1px solid var(--sindh-border);
+            color: var(--sindh-text-muted);
+        }
+
+        .dossier-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--sindh-text-main);
+            margin: 0 0 6px;
+            line-height: 1.25;
+        }
+
+        .dossier-region-row {
+            font-size: 0.84rem;
+            color: var(--sindh-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .dossier-region-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dossier-body {
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .dossier-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dossier-section-title {
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--sindh-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .dossier-text-block {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--sindh-text-main);
+        }
+
+        .metrics-card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .metric-box {
+            background: var(--sindh-bg);
+            border: 1px solid var(--sindh-border);
+            padding: 10px 12px;
+            border-radius: 10px;
+        }
+
+        .metric-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--sindh-text-muted);
+            margin-bottom: 2px;
+        }
+
+        .metric-val {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--sindh-text-main);
+            line-height: 1.3;
+        }
+
+        .bullet-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: var(--sindh-text-main);
+        }
+
+        .bullet-list li {
+            margin-bottom: 6px;
+        }
+
+        .exam-analysis-box {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.05) 0%, rgba(2, 132, 199, 0.05) 100%);
+            border: 1px solid rgba(5, 150, 105, 0.25);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .exam-analysis-title {
+            color: #059669;
+            font-weight: 800;
+            font-size: 0.84rem;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 8px;
+        }
+
+        /* Master Directory Table */
+        .table-section {
+            max-width: 1480px;
+            margin: 20px auto 40px;
+            padding: 0 20px;
+        }
+
+        .table-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin: 0 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--sindh-text-main);
+        }
+
+        .table-wrap {
+            background: var(--sindh-card-bg);
+            border: 1px solid var(--sindh-border);
+            border-radius: 16px;
+            overflow-x: auto;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .sindh-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            text-align: left;
+        }
+
+        .sindh-table th {
+            background: var(--sindh-bg);
+            color: var(--sindh-text-muted);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.74rem;
+            letter-spacing: 0.05em;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--sindh-border);
+            white-space: nowrap;
+        }
+
+        .sindh-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--sindh-border);
+            vertical-align: top;
+            color: var(--sindh-text-main);
+        }
+
+        .sindh-table tr:hover td {
+            background: rgba(5, 150, 105, 0.03);
+        }
+
+        .table-btn {
+            background: var(--sindh-bg);
+            border: 1px solid var(--sindh-border);
+            color: #059669;
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .table-btn:hover {
+            background: #059669;
+            border-color: #059669;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--sindh-card-bg);
+            border-top: 1px solid var(--sindh-border);
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: var(--sindh-text-muted);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: var(--sindh-text-muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #059669;
+        }
+
+        /* Quiz Banner Overlay */
+        .quiz-banner {
+            display: none;
+            background: linear-gradient(135deg, #064e3b 0%, #059669 100%);
+            color: #ffffff;
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .quiz-banner.active {
+            display: flex;
+        }
+
+        @media (max-width: 1024px) {
+            .map-workspace-grid {
+                grid-template-columns: 1fr;
+            }
+            .dossier-sidebar {
+                position: static;
+                max-height: none;
+            }
+            #sindhMapContainer {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Switcher Bar -->
+    <div class="top-switcher-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="background: #059669; color: #fff; font-size: 0.7rem; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">
+                Sindh Hub
+            </span>
+            <span>Switch between Global &amp; National Cartographic Portals:</span>
+        </div>
+        <div class="switcher-links">
+            <a href="sindh-map.html" class="switcher-btn active">
+                <i class="fas fa-map-marked-alt"></i> Dedicated Sindh Map
+            </a>
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Geography Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes Map
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="sindh-map.html" class="active" style="color: #059669; font-weight: 800;"><i class="fas fa-map-marked-alt"></i> Sindh Map</a>
+                <a href="pakistan-map.html"><i class="fas fa-flag"></i> Pakistan Map</a>
+                <a href="international-trade-routes-map.html"><i class="fas fa-ship"></i> Trade Routes</a>
+                <a href="geopolitical-hotspots-map.html"><i class="fas fa-satellite-dish"></i> Hotspots Map</a>
+                <a href="latest-jobs.html" style="color: #e11d48; font-weight: 700;"><i class="fas fa-bullhorn"></i> Latest Jobs <span style="background:#e11d48; color:#fff; font-size:0.65rem; padding:1px 6px; border-radius:10px;">17,500+</span></a>
+                <a href="cce-essays-2025.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-book-open"></i> CCE Sindh Essays</a>
+                <a href="recruitment-prep.html">Recruitment Prep</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Masthead -->
+    <section class="sindh-hero">
+        <div class="sindh-hero-badge">
+            <i class="fas fa-landmark"></i> Dedicated Sindh Provincial Portal &bull; SPSC &bull; CCE &bull; IBA Sukkur STS &bull; Town Officer
+        </div>
+        <h1>Interactive Sindh Provincial Map</h1>
+        <p>
+            Explore all <strong>7 administrative divisions</strong>, <strong>30 districts</strong>, <strong>3 great Indus barrages</strong> (Sukkur, Guddu, Kotri), <strong>legendary lakes</strong> (Manchar, Keenjhar, Haleji), and <strong>revered Sufi &amp; historical heritage sites</strong> across the province of Sindh.
+        </p>
+        <div class="sindh-stats-row">
+            <div class="sindh-stat-pill"><i class="fas fa-sitemap" style="color:#059669;"></i> 7 Divisions</div>
+            <div class="sindh-stat-pill"><i class="fas fa-city" style="color:#2563eb;"></i> 30 Districts</div>
+            <div class="sindh-stat-pill"><i class="fas fa-archway" style="color:#d97706;"></i> 3 Indus Barrages</div>
+            <div class="sindh-stat-pill"><i class="fas fa-water" style="color:#0284c7;"></i> 3 Major Lakes</div>
+            <div class="sindh-stat-pill"><i class="fas fa-monument" style="color:#e11d48;"></i> 10 Cultural &amp; Sufi Sites</div>
+            <div class="sindh-stat-pill"><i class="fas fa-users" style="color:#7c3aed;"></i> 55.69M Population (2023)</div>
+        </div>
+    </section>
+
+    <!-- Controls & Filters Card -->
+    <section class="controls-card">
+        <!-- Interactive Quiz Banner -->
+        <div class="quiz-banner" id="quizBanner">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 1.5rem;"><i class="fas fa-bullseye" style="color: #f59e0b;"></i></span>
+                <div>
+                    <strong style="font-size: 1rem;" id="quizPromptTitle">SPSC Sindh Geography Challenge:</strong>
+                    <div style="font-size: 0.88rem; opacity: 0.9;" id="quizPromptQuestion">Locate the district or landmark in Sindh...</div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="font-weight: 700; font-size: 0.9rem;" id="quizScoreText">Score: 0 / 0</span>
+                <button type="button" onclick="nextQuizQuestion()" style="background:#f59e0b; color:#fff; border:none; padding:6px 14px; border-radius:6px; font-weight:700; cursor:pointer;">
+                    Next Question &rarr;
+                </button>
+                <button type="button" onclick="toggleQuizMode()" style="background:rgba(255,255,255,0.2); color:#fff; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;">
+                    Exit Quiz
+                </button>
+            </div>
+        </div>
+
+        <div class="controls-inner">
+            <div class="search-and-tools">
+                <div class="search-box-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="sindhSearchInput" placeholder="Search Sindh districts, talukas, barrages, shrines, or lakes (e.g., 'Karachi', 'Sukkur Barrage', 'Manchar', 'Mohenjo-Daro', 'Tharparkar', 'Ranikot', 'Bhit Shah')..." oninput="handleSearch(this.value)">
+                </div>
+
+                <button type="button" class="challenge-mode-btn" id="btnToggleQuiz" onclick="toggleQuizMode()">
+                    <i class="fas fa-bullseye"></i> <span id="quizBtnText">Start SPSC Sindh Quiz</span>
+                </button>
+            </div>
+
+            <!-- Division Filter Pills -->
+            <div class="division-pills-row" id="divisionPillsContainer">
+                <!-- Dynamically Rendered -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace Split Grid -->
+    <main class="workspace-container">
+        <div class="map-workspace-grid">
+            <!-- Left: Interactive Map Canvas -->
+            <div class="map-canvas-card">
+                <div class="map-toolbar-strip">
+                    <div class="map-info-text">
+                        <i class="fas fa-map-marked-alt" style="color: #059669;"></i>
+                        <span id="activeSindhTitle">Active: Sukkur Barrage (Lloyd Barrage 1932)</span>
+                    </div>
+                    <div class="map-actions">
+                        <button class="tool-btn" onclick="zoomInMap()" title="Zoom In"><i class="fas fa-plus"></i></button>
+                        <button class="tool-btn" onclick="zoomOutMap()" title="Zoom Out"><i class="fas fa-minus"></i></button>
+                        <button class="tool-btn" onclick="resetMapView()" title="Reset Sindh View"><i class="fas fa-compass"></i></button>
+                    </div>
+                </div>
+
+                <!-- Leaflet Sindh Map Container -->
+                <div id="sindhMapContainer"></div>
+
+                <!-- Map Legend -->
+                <div class="map-legend-row">
+                    <span style="font-weight: 700; color: var(--sindh-text-main);"><i class="fas fa-layer-group"></i> Sindh Legend:</span>
+                    <div class="legend-items">
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#2563eb;"></span> Administrative District</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#d97706;"></span> Indus Barrage</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#0284c7;"></span> Freshwater Lake</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#e11d48;"></span> Heritage / World Site</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#7c3aed;"></span> Sufi Shrine</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: SPSC Examination Dossier Sidebar -->
+            <aside class="dossier-sidebar" id="dossierSidebar">
+                <div class="dossier-header">
+                    <div class="dossier-meta-tags">
+                        <span class="type-badge" id="dossierTypeBadge" style="background:#d97706;">
+                            <i class="fas fa-archway"></i> <span id="dossierTypeText">Indus Barrage</span>
+                        </span>
+                        <span class="category-badge" id="dossierCategoryBadge">Sukkur Division</span>
+                    </div>
+                    <h2 class="dossier-title" id="dossierTitle">Sukkur Barrage</h2>
+                    <div class="dossier-region-row">
+                        <span><i class="fas fa-location-dot" style="color: #059669;"></i> <span id="dossierRegionText">Sukkur, Sindh</span></span>
+                        <span><i class="fas fa-crosshairs"></i> <span id="dossierCoords">27.7&deg; N, 68.9&deg; E</span></span>
+                    </div>
+                </div>
+
+                <div class="dossier-body">
+                    <!-- Metrics Card Grid -->
+                    <div class="metrics-card-grid">
+                        <div class="metric-box">
+                            <div class="metric-label" id="metricLabel1">Population / Year</div>
+                            <div class="metric-val" id="dossierMetric1">1932 (Built)</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label" id="metricLabel2">Area / Length</div>
+                            <div class="metric-val" id="dossierMetric2">1,524 Meters</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label" id="metricLabel3">Division</div>
+                            <div class="metric-val" id="dossierMetric3">Sukkur Division</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label" id="metricLabel4">Gates / Spans</div>
+                            <div class="metric-val" id="dossierMetric4">66 Gates &bull; 7 Canals</div>
+                        </div>
+                    </div>
+
+                    <!-- Situation & Overview Summary -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-align-left" style="color: #059669;"></i> Administrative &amp; Physical Overview</div>
+                        <div class="dossier-text-block" id="dossierSummary">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Highlights & Agriculture / Culture -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-seedling" style="color: #0284c7;"></i> Key Landmarks, Crops &amp; Economy</div>
+                        <div class="dossier-text-block" id="dossierHighlights">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- High-Yield SPSC / CCE Points -->
+                    <div class="exam-analysis-box">
+                        <div class="exam-analysis-title">
+                            <i class="fas fa-award"></i> SPSC / CCE / STS Exam High-Yield Points
+                        </div>
+                        <ul class="bullet-list" id="dossierExamPoints">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Master Sindh Directory Table -->
+    <section class="table-section">
+        <h3 class="table-section-title">
+            <i class="fas fa-table-list" style="color: #059669;"></i> Master Sindh Provincial Directory (All 30 Districts, Barrages, Lakes &amp; Heritage Sites)
+        </h3>
+        <div class="table-wrap">
+            <table class="sindh-table" id="masterSindhTable">
+                <thead>
+                    <tr>
+                        <th>District / Feature Name</th>
+                        <th>Type</th>
+                        <th>Division</th>
+                        <th>Population / Metric</th>
+                        <th>Administrative &amp; Exam Highlights</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="masterTableBody">
+                    <!-- Populated dynamically via JS -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="sindh-map.html">Sindh Map</a>
+            <a href="pakistan-map.html">Pakistan Map</a>
+            <a href="cce-essays-2025.html">CCE Sindh Essays</a>
+            <a href="international-trade-routes-map.html">Trade Routes Map</a>
+            <a href="geopolitical-hotspots-map.html">Hotspots Map</a>
+            <a href="physical-geography-map.html">Physical Map</a>
+            <a href="world-map.html">Political Map</a>
+            <a href="latest-jobs.html">Latest Jobs</a>
+            <a href="scholarships.html">Scholarships</a>
+            <a href="recruitment-prep.html">Recruitment Prep</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+        </div>
+        <p>&copy; 2026 CSS Prep Central. Comprehensive Sindh Provincial Geography &amp; Administrative Explorer for SPSC, CCE, and competitive examinations.</p>
+    </footer>
+
+    <!-- Leaflet JS & Sindh Dataset -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="js/data_sindh_map.js"></script>
+
+    <script>
+        // State
+        let map;
+        let markersGroup;
+        let currentFilter = 'all';
+        let currentItem = null;
+        let allItems = [];
+        let isQuizMode = false;
+        let quizTarget = null;
+        let quizScore = 0;
+        let quizTotal = 0;
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                updateMapTiles();
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        let tileLayer;
+        function updateMapTiles() {
+            if (!map) return;
+            if (tileLayer) map.removeLayer(tileLayer);
+
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            const tileUrl = isDark 
+                ? 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png'
+                : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+
+            tileLayer = L.tileLayer(tileUrl, {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+        }
+
+        // Initialize Map
+        function initMap() {
+            const data = window.SINDH_MAP_DATA;
+            const districts = (data.districts || []).map(d => ({ ...d, itemCategory: 'districts', type: 'District', icon: 'fa-city', color: '#2563eb' }));
+            const barragesLakes = (data.barragesAndLakes || []).map(b => ({
+                ...b,
+                itemCategory: b.type === 'Barrage' ? 'barrages' : 'lakes',
+                icon: b.type === 'Barrage' ? 'fa-archway' : 'fa-water',
+                color: b.type === 'Barrage' ? '#d97706' : '#0284c7'
+            }));
+            const heritage = (data.heritageSites || []).map(h => ({
+                ...h,
+                itemCategory: h.type.includes('Sufi') ? 'sufi' : 'heritage',
+                icon: h.type.includes('Sufi') ? 'fa-mosque' : 'fa-landmark',
+                color: h.type.includes('Sufi') ? '#7c3aed' : '#e11d48'
+            }));
+
+            allItems = [...districts, ...barragesLakes, ...heritage];
+
+            // Center on Sindh
+            map = L.map('sindhMapContainer', {
+                center: [26.0, 68.6],
+                zoom: 7.0,
+                minZoom: 6.0,
+                maxZoom: 14,
+                scrollWheelZoom: true,
+                zoomControl: false
+            });
+
+            updateMapTiles();
+            markersGroup = L.layerGroup().addTo(map);
+
+            renderDivisionPills();
+            renderMarkers();
+            renderMasterTable();
+
+            // Default Select: Sukkur Barrage or Karachi South
+            const defaultItem = barragesLakes.find(b => b.id === 'sindh-sukkur-barrage') || allItems[0];
+            if (defaultItem) {
+                selectItem(defaultItem, false);
+            }
+        }
+
+        // Render Division & Category Filter Pills
+        function renderDivisionPills() {
+            const container = document.getElementById('divisionPillsContainer');
+            if (!container) return;
+
+            const pillOptions = [
+                { id: "all", name: "All Sindh (53 Nodes)", icon: "fa-map" },
+                { id: "Karachi Division", name: "Karachi (7)", icon: "fa-building" },
+                { id: "Hyderabad Division", name: "Hyderabad (6)", icon: "fa-city" },
+                { id: "Sukkur Division", name: "Sukkur (3)", icon: "fa-water" },
+                { id: "Larkana Division", name: "Larkana (5)", icon: "fa-tree" },
+                { id: "Mirpurkhas Division", name: "Mirpurkhas (3)", icon: "fa-sun" },
+                { id: "Shaheed Benazirabad", name: "SBA (3)", icon: "fa-wheat-awn" },
+                { id: "Banbhore Division", name: "Banbhore (3)", icon: "fa-anchor" },
+                { id: "barrages", name: "Barrages & Lakes", icon: "fa-archway" },
+                { id: "heritage", name: "Heritage & Shrines", icon: "fa-landmark" }
+            ];
+
+            container.innerHTML = pillOptions.map(p => {
+                const isActive = p.id === currentFilter ? 'active' : '';
+                return \`
+                    <button type="button" class="div-pill \${isActive}" onclick="filterByDivision('\${p.id}')">
+                        <i class="fas \${p.icon}"></i> \${p.name}
+                    </button>
+                \`;
+            }).join('');
+        }
+
+        // Render Markers based on filter and search
+        function renderMarkers() {
+            markersGroup.clearLayers();
+
+            const query = (document.getElementById('sindhSearchInput').value || '').toLowerCase().trim();
+
+            const filtered = allItems.filter(item => {
+                let matchFilter = true;
+                if (currentFilter !== 'all') {
+                    if (currentFilter === 'barrages') {
+                        matchFilter = item.itemCategory === 'barrages' || item.itemCategory === 'lakes';
+                    } else if (currentFilter === 'heritage') {
+                        matchFilter = item.itemCategory === 'heritage' || item.itemCategory === 'sufi';
+                    } else {
+                        matchFilter = item.division && item.division.includes(currentFilter);
+                    }
+                }
+
+                const matchSearch = !query ||
+                    item.name.toLowerCase().includes(query) ||
+                    (item.highlights && item.highlights.toLowerCase().includes(query)) ||
+                    (item.significance && item.significance.toLowerCase().includes(query)) ||
+                    (item.division && item.division.toLowerCase().includes(query));
+
+                return matchFilter && matchSearch;
+            });
+
+            filtered.forEach(item => {
+                if (!item.lat || !item.lng) return;
+
+                const isSelected = currentItem && currentItem.id === item.id;
+                const iconHtml = \`
+                    <div class="sindh-marker-pin \${isSelected ? 'active' : ''}" style="background: \${item.color};">
+                        <i class="fas \${item.icon}"></i>
+                    </div>
+                \`;
+
+                const customIcon = L.divIcon({
+                    html: iconHtml,
+                    className: 'custom-sindh-icon',
+                    iconSize: [34, 34],
+                    iconAnchor: [17, 17]
+                });
+
+                const marker = L.marker([item.lat, item.lng], { icon: customIcon });
+
+                marker.on('click', () => {
+                    if (isQuizMode) handleQuizAnswer(item);
+                    else selectItem(item, true);
+                });
+
+                marker.bindTooltip(\`<strong>\${item.name}</strong><br><span style="font-size:0.75rem; color:\${item.color}">\${item.type || item.division}</span>\`, {
+                    direction: 'top',
+                    offset: [0, -18],
+                    opacity: 0.95
+                });
+
+                markersGroup.addLayer(marker);
+            });
+        }
+
+        // Select and Populate Dossier
+        function selectItem(item, panTo = true) {
+            currentItem = item;
+
+            const activeTitle = document.getElementById('activeSindhTitle');
+            if (activeTitle) activeTitle.textContent = \`Active: \${item.name}\`;
+
+            document.getElementById('dossierTitle').textContent = item.name;
+
+            const typeBadge = document.getElementById('dossierTypeBadge');
+            const typeText = document.getElementById('dossierTypeText');
+            const categoryBadge = document.getElementById('dossierCategoryBadge');
+
+            typeBadge.style.background = item.color || '#059669';
+            typeText.textContent = item.type || 'District';
+            categoryBadge.textContent = item.division || item.type || 'Sindh';
+
+            document.getElementById('dossierCoords').textContent = \`\${Math.abs(item.lat).toFixed(1)}° N, \${Math.abs(item.lng).toFixed(1)}° E\`;
+
+            const mLabel1 = document.getElementById('metricLabel1');
+            const mLabel2 = document.getElementById('metricLabel2');
+            const mLabel3 = document.getElementById('metricLabel3');
+            const mLabel4 = document.getElementById('metricLabel4');
+
+            const mVal1 = document.getElementById('dossierMetric1');
+            const mVal2 = document.getElementById('dossierMetric2');
+            const mVal3 = document.getElementById('dossierMetric3');
+            const mVal4 = document.getElementById('dossierMetric4');
+
+            if (item.itemCategory === 'districts') {
+                document.getElementById('dossierRegionText').textContent = \`Headquarters: \${item.hq} &bull; \${item.division}\`;
+                mLabel1.textContent = 'Population (2023)';
+                mVal1.textContent = item.pop;
+
+                mLabel2.textContent = 'District Area';
+                mVal2.textContent = item.area;
+
+                mLabel3.textContent = 'Administrative Division';
+                mVal3.textContent = item.division;
+
+                mLabel4.textContent = 'Headquarters';
+                mVal4.textContent = item.hq;
+
+                document.getElementById('dossierSummary').textContent = \`District \${item.name} is situated in the \${item.division} of Sindh with its administrative headquarters at \${item.hq}.\`;
+                document.getElementById('dossierHighlights').textContent = item.highlights;
+
+                const examList = document.getElementById('dossierExamPoints');
+                examList.innerHTML = \`
+                    <li><strong>Census 2023:</strong> Total recorded population is \${item.pop} across \${item.area}.</li>
+                    <li><strong>Key SPSC Knowledge:</strong> \${item.highlights}</li>
+                    <li><strong>Administrative Unit:</strong> Functions under \${item.division} for local governance.</li>
+                \`;
+            } else if (item.itemCategory === 'barrages') {
+                document.getElementById('dossierRegionText').textContent = \`Indus River &bull; \${item.location}, Sindh\`;
+                mLabel1.textContent = 'Completion Year';
+                mVal1.textContent = item.completionYear;
+
+                mLabel2.textContent = 'Spans / Gates';
+                mVal2.textContent = \`\${item.gatesCount} Gates\`;
+
+                mLabel3.textContent = 'Canal Network';
+                mVal3.textContent = \`\${item.canalsCount} Major Canals\`;
+
+                mLabel4.textContent = 'Location';
+                mVal4.textContent = item.location;
+
+                document.getElementById('dossierSummary').textContent = item.significance;
+                document.getElementById('dossierHighlights').textContent = \`Feeder Canals: \${(item.canalsList || []).join('; ')}\`;
+
+                const examList = document.getElementById('dossierExamPoints');
+                examList.innerHTML = \`
+                    <li><strong>Commissioned:</strong> Built in \${item.completionYear} on the Indus River.</li>
+                    <li><strong>Irrigation Span:</strong> Feeds \${item.canalsCount} canals with \${item.gatesCount} total barrage sluice gates.</li>
+                    <li><strong>SPSC Core Question:</strong> World's largest irrigation network origin point.</li>
+                \`;
+            } else if (item.itemCategory === 'lakes') {
+                document.getElementById('dossierRegionText').textContent = item.location;
+                mLabel1.textContent = 'Type of Lake';
+                mVal1.textContent = item.type;
+
+                mLabel2.textContent = 'Surface Area';
+                mVal2.textContent = item.areaKm2;
+
+                mLabel3.textContent = 'District Location';
+                mVal3.textContent = item.location;
+
+                mLabel4.textContent = 'Ecological Status';
+                mVal4.textContent = 'Freshwater Wetland';
+
+                document.getElementById('dossierSummary').textContent = item.significance;
+                document.getElementById('dossierHighlights').textContent = \`Freshwater reservoir located in \${item.location}.\`;
+
+                const examList = document.getElementById('dossierExamPoints');
+                examList.innerHTML = \`
+                    <li><strong>Significance:</strong> \${item.significance}</li>
+                    <li><strong>Exam Relevance:</strong> Frequently queried in SPSC CCE General Knowledge papers.</li>
+                \`;
+            } else {
+                document.getElementById('dossierRegionText').textContent = \`\${item.district}, Sindh\`;
+                mLabel1.textContent = 'Heritage Classification';
+                mVal1.textContent = item.type ? item.type.substring(0, 22) : 'Historical Site';
+
+                mLabel2.textContent = 'District';
+                mVal2.textContent = item.district;
+
+                mLabel3.textContent = 'Cultural Status';
+                mVal3.textContent = item.itemCategory === 'sufi' ? 'Spiritual Shrine' : 'Monuments';
+
+                mLabel4.textContent = 'Province';
+                mVal4.textContent = 'Sindh';
+
+                document.getElementById('dossierSummary').textContent = item.significance;
+                document.getElementById('dossierHighlights').textContent = \`Located in District \${item.district}. Represents Sindh's timeless spiritual and archaeological legacy.\`;
+
+                const examList = document.getElementById('dossierExamPoints');
+                examList.innerHTML = \`
+                    <li><strong>Landmark Details:</strong> \${item.significance}</li>
+                    <li><strong>SPSC Preparation:</strong> Critical topic in Sindh History, Culture, and CCE Pakistan Affairs.</li>
+                \`;
+            }
+
+            if (panTo && item.lat && item.lng && map) {
+                map.flyTo([item.lat, item.lng], Math.max(map.getZoom(), 8.5), {
+                    animate: true,
+                    duration: 1.2
+                });
+            }
+
+            renderMarkers();
+        }
+
+        // Filter Handlers
+        function filterByDivision(divId) {
+            currentFilter = divId;
+            renderDivisionPills();
+            renderMarkers();
+            renderMasterTable();
+        }
+
+        function handleSearch(val) {
+            renderMarkers();
+            renderMasterTable();
+        }
+
+        function zoomInMap() { if (map) map.zoomIn(); }
+        function zoomOutMap() { if (map) map.zoomOut(); }
+        function resetMapView() {
+            if (map) map.flyTo([26.0, 68.6], 7.0, { duration: 1.2 });
+        }
+
+        // Render Master Table
+        function renderMasterTable() {
+            const tbody = document.getElementById('masterTableBody');
+            if (!tbody) return;
+
+            const query = (document.getElementById('sindhSearchInput').value || '').toLowerCase().trim();
+
+            const filtered = allItems.filter(item => {
+                let matchFilter = true;
+                if (currentFilter !== 'all') {
+                    if (currentFilter === 'barrages') {
+                        matchFilter = item.itemCategory === 'barrages' || item.itemCategory === 'lakes';
+                    } else if (currentFilter === 'heritage') {
+                        matchFilter = item.itemCategory === 'heritage' || item.itemCategory === 'sufi';
+                    } else {
+                        matchFilter = item.division && item.division.includes(currentFilter);
+                    }
+                }
+
+                const matchSearch = !query ||
+                    item.name.toLowerCase().includes(query) ||
+                    (item.highlights && item.highlights.toLowerCase().includes(query)) ||
+                    (item.significance && item.significance.toLowerCase().includes(query));
+
+                return matchFilter && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = \`<tr><td colspan="6" style="text-align:center; padding:30px; color:var(--sindh-text-muted);">No Sindh features match your search.</td></tr>\`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(item => {
+                const metricStr = item.pop || item.areaKm2 || item.completionYear || item.district || '';
+                const descStr = item.highlights || item.significance || '';
+
+                return \`
+                    <tr>
+                        <td style="font-weight:700;">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="background:\${item.color}; color:#fff; width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem;">
+                                    <i class="fas \${item.icon}"></i>
+                                </span>
+                                <div>
+                                    <div>\${item.name}</div>
+                                    <small style="color:var(--sindh-text-muted);">\${item.hq ? 'HQ: ' + item.hq : item.type}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="category-badge" style="border-color:\${item.color}; color:\${item.color};">
+                                \${item.type || 'District'}
+                            </span>
+                        </td>
+                        <td><strong>\${item.division || item.location || 'Sindh'}</strong></td>
+                        <td>\${metricStr}</td>
+                        <td style="max-width:320px; font-size:0.83rem; line-height:1.5;">\${descStr.substring(0, 130)}...</td>
+                        <td>
+                            <button type="button" class="table-btn" onclick="scrollToMapAndSelect('\${item.id}')">
+                                <i class="fas fa-crosshairs"></i> Inspect
+                            </button>
+                        </td>
+                    </tr>
+                \`;
+            }).join('');
+        }
+
+        function scrollToMapAndSelect(itemId) {
+            const item = allItems.find(i => i.id === itemId);
+            if (!item) return;
+
+            document.getElementById('sindhMapContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            selectItem(item, true);
+        }
+
+        // Quiz Mode
+        function toggleQuizMode() {
+            isQuizMode = !isQuizMode;
+            const banner = document.getElementById('quizBanner');
+            const btnText = document.getElementById('quizBtnText');
+
+            if (isQuizMode) {
+                banner.classList.add('active');
+                btnText.textContent = 'Exit Quiz Mode';
+                quizScore = 0;
+                quizTotal = 0;
+                nextQuizQuestion();
+            } else {
+                banner.classList.remove('active');
+                btnText.textContent = 'Start SPSC Sindh Quiz';
+                quizTarget = null;
+            }
+        }
+
+        function nextQuizQuestion() {
+            if (!allItems.length) return;
+            const randomIndex = Math.floor(Math.random() * allItems.length);
+            quizTarget = allItems[randomIndex];
+
+            const questionElem = document.getElementById('quizPromptQuestion');
+            questionElem.innerHTML = \`Target: Find <strong>\${quizTarget.name}</strong> (\${quizTarget.division || quizTarget.type || 'Sindh'}) on the map!\`;
+        }
+
+        function handleQuizAnswer(clickedItem) {
+            if (!quizTarget) return;
+            quizTotal++;
+
+            if (clickedItem.id === quizTarget.id) {
+                quizScore++;
+                alert(\`Correct! You located \${quizTarget.name}.\`);
+                selectItem(clickedItem, false);
+                nextQuizQuestion();
+            } else {
+                alert(\`Incorrect! That was \${clickedItem.name}. Look for \${quizTarget.name} in \${quizTarget.division || 'Sindh'}.\`);
+            }
+
+            document.getElementById('quizScoreText').textContent = \`Score: \${quizScore} / \${quizTotal}\`;
+        }
+
+        // Auto Boot
+        window.addEventListener('DOMContentLoaded', initMap);
+    </script>
+</body>
+
+</html>
+`;
+
+fs.writeFileSync('frontend/sindh-map.html', htmlContent, 'utf8');
+console.log('Successfully generated frontend/sindh-map.html!');

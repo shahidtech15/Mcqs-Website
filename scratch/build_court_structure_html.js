@@ -1,0 +1,1814 @@
+const fs = require('fs');
+const path = require('path');
+
+const targetHtmlPath = path.join(__dirname, '../frontend/court-structure-explorer.html');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Court Structure Explorer | Pakistan Judicial Hierarchy &amp; Jurisdictions</title>
+    <meta name="description" content="Explore the hierarchy, jurisdiction, and appellate pathways of courts in Pakistan under the 1973 Constitution (Part VII), Civil Courts Ordinance 1962, and CrPC. Updated with 26th Constitutional Amendment 2024.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('mcqs_dark_mode');
+            if (savedTheme === 'true' || (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <style>
+        :root {
+            --court-bg: #f8fafc;
+            --court-card-bg: #ffffff;
+            --court-surface: #f1f5f9;
+            --court-surface-hover: #e2e8f0;
+            --court-text: #0f172a;
+            --court-text-muted: #64748b;
+            --court-border: #e2e8f0;
+            --court-border-strong: #cbd5e1;
+            --court-primary: #0f766e;
+            --court-primary-hover: #115e59;
+            --court-primary-light: #f0fdfa;
+            --court-navy: #1e3a8a;
+            --court-navy-light: #eff6ff;
+            --court-gold: #d97706;
+            --court-gold-light: #fef3c7;
+            --court-crimson: #991b1b;
+            --court-crimson-light: #fef2f2;
+            --court-success: #15803d;
+            --court-success-light: #dcfce7;
+            --court-purple: #4338ca;
+            --court-purple-light: #eef2ff;
+            --font-ui: 'Plus Jakarta Sans', sans-serif;
+            --font-legal: 'Merriweather', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode {
+            --court-bg: #0b0f19;
+            --court-card-bg: #151d30;
+            --court-surface: #1e293b;
+            --court-surface-hover: #293548;
+            --court-text: #f8fafc;
+            --court-text-muted: #94a3b8;
+            --court-border: #26334d;
+            --court-border-strong: #3b4d6e;
+            --court-primary: #14b8a6;
+            --court-primary-hover: #2dd4bf;
+            --court-primary-light: rgba(20, 184, 166, 0.15);
+            --court-navy: #3b82f6;
+            --court-navy-light: rgba(59, 130, 246, 0.15);
+            --court-gold: #f59e0b;
+            --court-gold-light: rgba(245, 158, 11, 0.15);
+            --court-crimson: #ef4444;
+            --court-crimson-light: rgba(239, 68, 68, 0.15);
+            --court-success: #22c55e;
+            --court-success-light: rgba(34, 197, 94, 0.15);
+            --court-purple: #818cf8;
+            --court-purple-light: rgba(129, 140, 248, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--court-bg);
+            color: var(--court-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.25s, color 0.25s;
+        }
+
+        /* Top Academic Switcher Bar */
+        .site-switcher-bar {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 7px 16px;
+            font-size: 0.78rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .switcher-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .switcher-label {
+            color: #cbd5e1;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-right: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .switcher-btn {
+            color: #cbd5e1;
+            padding: 3px 9px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+        }
+        .switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+        .switcher-btn.active {
+            background: var(--court-primary);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--court-card-bg);
+            border-bottom: 1px solid var(--court-border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: background-color 0.25s, border-color 0.25s;
+        }
+        .header-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #0f766e, #134e4a);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 10px rgba(15, 118, 110, 0.35);
+        }
+        .brand-text h1 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand-text h1 span.badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            background: var(--court-gold-light);
+            color: var(--court-gold);
+            padding: 2px 7px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            border: 1px solid rgba(217, 119, 6, 0.3);
+        }
+        .brand-text p {
+            font-size: 0.78rem;
+            color: var(--court-text-muted);
+            line-height: 1.2;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tab-nav-btn {
+            background: var(--court-surface);
+            border: 1px solid var(--court-border);
+            color: var(--court-text);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .tab-nav-btn:hover {
+            background: var(--court-surface-hover);
+        }
+        .tab-nav-btn.active {
+            background: var(--court-primary);
+            color: #ffffff;
+            border-color: var(--court-primary);
+            box-shadow: 0 2px 8px rgba(15, 118, 110, 0.25);
+        }
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--court-border);
+            background: var(--court-card-bg);
+            color: var(--court-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .icon-btn:hover {
+            background: var(--court-surface);
+            color: var(--court-primary);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(30, 58, 138, 0.04) 100%);
+            border-bottom: 1px solid var(--court-border);
+            padding: 32px 20px;
+        }
+        .hero-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .hero-title-area {
+            max-width: 820px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: var(--court-primary-light);
+            color: var(--court-primary);
+            border: 1px solid rgba(15, 118, 110, 0.2);
+            margin-bottom: 12px;
+        }
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: var(--court-text-muted);
+            line-height: 1.55;
+            font-family: var(--font-legal);
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .stat-card {
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .stat-icon.teal { background: var(--court-primary-light); color: var(--court-primary); }
+        .stat-icon.navy { background: var(--court-navy-light); color: var(--court-navy); }
+        .stat-icon.gold { background: var(--court-gold-light); color: var(--court-gold); }
+        .stat-icon.crimson { background: var(--court-crimson-light); color: var(--court-crimson); }
+        .stat-info .stat-num {
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        .stat-info .stat-desc {
+            font-size: 0.72rem;
+            color: var(--court-text-muted);
+            margin-top: 2px;
+        }
+
+        /* Workspace */
+        .workspace-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px 20px 48px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* View Panels */
+        .view-panel {
+            display: none;
+        }
+        .view-panel.active {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* View 1: Hierarchy Tree & Dossiers */
+        .hierarchy-controls {
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-lg);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .search-box-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+        }
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--court-text-muted);
+            font-size: 0.9rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px 14px 10px 40px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--court-border);
+            background: var(--court-surface);
+            color: var(--court-text);
+            font-size: 0.88rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .search-input:focus {
+            border-color: var(--court-primary);
+            background: var(--court-card-bg);
+            box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+        }
+        .tier-filter-pills {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+        }
+        .tier-pill {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--court-border);
+            background: var(--court-surface);
+            color: var(--court-text);
+            font-size: 0.78rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tier-pill:hover {
+            background: var(--court-surface-hover);
+        }
+        .tier-pill.active {
+            background: var(--court-primary);
+            color: #ffffff;
+            border-color: var(--court-primary);
+        }
+
+        /* Tree Flow Architecture */
+        .tree-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .tree-level-block {
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+        .tree-level-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--court-border);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tree-level-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tree-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+        }
+        .court-node-card {
+            background: var(--court-surface);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .court-node-card:hover {
+            background: var(--court-card-bg);
+            border-color: var(--court-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .court-node-card.active {
+            border-color: var(--court-primary);
+            background: var(--court-primary-light);
+            box-shadow: 0 0 0 2px var(--court-primary);
+        }
+        .court-node-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .court-node-name {
+            font-size: 0.95rem;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+        .court-node-urdu {
+            font-size: 0.8rem;
+            color: var(--court-text-muted);
+            font-family: var(--font-legal);
+        }
+        .court-node-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            color: var(--court-primary);
+        }
+
+        /* Dossier Drawer / Modal */
+        .dossier-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .dossier-modal-overlay.open {
+            display: flex;
+        }
+        .dossier-modal-box {
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-xl);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+        }
+        .dossier-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--court-text-muted);
+            cursor: pointer;
+        }
+        .dossier-header {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--court-border);
+        }
+        .dossier-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .dossier-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.25;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .dossier-section {
+            background: var(--court-surface);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            margin-bottom: 16px;
+        }
+        .dossier-section-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--court-primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .jurisdiction-item {
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin-bottom: 10px;
+        }
+        .jurisdiction-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* View 2: Appellate Route Simulator */
+        .route-picker-bar {
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-lg);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+        }
+        .route-pills-wrap {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+        }
+        .route-pill-btn {
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--court-border);
+            background: var(--court-surface);
+            color: var(--court-text);
+            font-size: 0.85rem;
+            font-weight: 700;
+            white-space: nowrap;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        .route-pill-btn:hover {
+            background: var(--court-surface-hover);
+        }
+        .route-pill-btn.active {
+            background: var(--court-navy);
+            color: #ffffff;
+            border-color: var(--court-navy);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+        }
+
+        .ladder-stage {
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+        .ladder-header {
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--court-border);
+        }
+        .ladder-steps-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            padding-left: 36px;
+        }
+        .ladder-steps-timeline::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 10px;
+            bottom: 20px;
+            width: 3px;
+            background: linear-gradient(180deg, var(--court-primary), var(--court-navy));
+            border-radius: 2px;
+        }
+        .ladder-step-card {
+            background: var(--court-surface);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            position: relative;
+            transition: all 0.2s;
+        }
+        .ladder-step-card:hover {
+            border-color: var(--court-primary);
+            background: var(--court-card-bg);
+            transform: translateX(4px);
+        }
+        .step-circle {
+            position: absolute;
+            left: -43px;
+            top: 18px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--court-primary);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+            box-shadow: 0 2px 6px rgba(15, 118, 110, 0.4);
+        }
+        .step-forum-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--court-text);
+            margin-bottom: 4px;
+        }
+        .step-desc {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--court-text);
+            margin-bottom: 8px;
+        }
+        .step-ref {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: var(--court-primary);
+        }
+
+        /* View 3: Comparison Tables */
+        .comp-card {
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .comp-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        .comp-table th, .comp-table td {
+            padding: 12px 16px;
+            border: 1px solid var(--court-border);
+            text-align: left;
+        }
+        .comp-table th {
+            background: var(--court-surface);
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+        .comp-table th:first-child {
+            width: 25%;
+        }
+
+        /* View 4: Judicial Quiz */
+        .quiz-stage-card {
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--court-border);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .quiz-progress-track {
+            width: 100%;
+            height: 8px;
+            background: var(--court-surface);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--court-primary), var(--court-gold));
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .quiz-question-box {
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            color: var(--court-text);
+        }
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .quiz-opt-btn {
+            background: var(--court-surface);
+            border: 2px solid var(--court-border);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-family: inherit;
+            color: var(--court-text);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .quiz-opt-btn:hover:not(:disabled) {
+            border-color: var(--court-primary);
+            background: var(--court-primary-light);
+            transform: translateX(4px);
+        }
+        .quiz-opt-letter {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            background: var(--court-card-bg);
+            border: 1px solid var(--court-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .quiz-opt-btn.correct {
+            background: var(--court-success-light) !important;
+            border-color: var(--court-success) !important;
+        }
+        .quiz-opt-btn.correct .quiz-opt-letter {
+            background: var(--court-success) !important;
+            color: #ffffff !important;
+        }
+        .quiz-opt-btn.wrong {
+            background: var(--court-crimson-light) !important;
+            border-color: var(--court-crimson) !important;
+        }
+        .quiz-opt-btn.wrong .quiz-opt-letter {
+            background: var(--court-crimson) !important;
+            color: #ffffff !important;
+        }
+
+        .quiz-feedback-box {
+            display: none;
+            padding: 18px;
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .quiz-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--court-border);
+            padding-top: 18px;
+        }
+
+        /* Buttons */
+        .btn-action {
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--court-border);
+            background: var(--court-card-bg);
+            color: var(--court-text);
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        .btn-action:hover {
+            background: var(--court-surface);
+            border-color: var(--court-border-strong);
+        }
+        .btn-action.primary {
+            background: var(--court-primary);
+            color: #ffffff;
+            border-color: var(--court-primary);
+        }
+        .btn-action.primary:hover {
+            background: var(--court-primary-hover);
+        }
+
+        /* Site Footer */
+        .site-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 20px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+        .footer-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+        .footer-col ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            font-size: 0.78rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Academic Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+            <a href="international-organizations-explorer.html" class="switcher-btn"><i class="fas fa-sitemap"></i> Organizations</a>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> World Timeline</a>
+            <a href="global-power-comparison.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Global Power</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-atom"></i> Periodic Table</a>
+            <a href="climate-change-explorer.html" class="switcher-btn"><i class="fas fa-temperature-high"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn"><i class="fas fa-microchip"></i> Technology</a>
+            <a href="constitution-explorer.html" class="switcher-btn"><i class="fas fa-scale-balanced"></i> Constitution</a>
+            <a href="ppc-section-finder.html" class="switcher-btn"><i class="fas fa-gavel"></i> PPC Finder</a>
+            <a href="crpc-procedure-flowchart.html" class="switcher-btn"><i class="fas fa-diagram-project"></i> CrPC Flowchart</a>
+            <a href="identify-legal-provision.html" class="switcher-btn"><i class="fas fa-scale-unbalanced-flip"></i> Legal Provision</a>
+            <a href="court-structure-explorer.html" class="switcher-btn active"><i class="fas fa-landmark"></i> Court Structure</a>
+        </div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="court-structure-explorer.html" class="brand-group">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Court Structure Explorer <span class="badge">Pakistani Judiciary</span></h1>
+                    <p>Hierarchy &bull; Original &amp; Appellate Jurisdiction &bull; 26th Amendment Updates</p>
+                </div>
+            </a>
+            <div class="header-actions">
+                <button type="button" class="tab-nav-btn active" id="btnTabHierarchy" onclick="switchMainTab('hierarchy')">
+                    <i class="fa-solid fa-sitemap"></i> Court Hierarchy
+                </button>
+                <button type="button" class="tab-nav-btn" id="btnTabLadder" onclick="switchMainTab('ladder')">
+                    <i class="fa-solid fa-route"></i> Appellate Ladder
+                </button>
+                <button type="button" class="tab-nav-btn" id="btnTabCompare" onclick="switchMainTab('compare')">
+                    <i class="fa-solid fa-code-compare"></i> Compare Jurisdictions
+                </button>
+                <button type="button" class="tab-nav-btn" id="btnTabQuiz" onclick="switchMainTab('quiz')">
+                    <i class="fa-solid fa-graduation-cap"></i> Judicial Quiz (15)
+                </button>
+                <button type="button" class="icon-btn" id="soundToggleBtn" title="Toggle Sound" onclick="toggleSound()">
+                    <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+                </button>
+                <button type="button" class="icon-btn" id="themeToggleBtn" title="Toggle Theme" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="hero-top">
+                <div class="hero-title-area">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-scale-balanced"></i> Unified Judicial Architecture of Pakistan
+                    </div>
+                    <h2 class="hero-title">Judicial Hierarchy &amp; Jurisdiction Explorer</h2>
+                    <p class="hero-subtitle">Explore the tiers of Pakistan's judiciary under Part VII of the 1973 Constitution (Articles 175-212), Civil Courts Ordinance 1962, and CrPC 1898 — featuring the 26th Constitutional Amendment changes (Constitutional Benches &amp; 3-year CJP term).</p>
+                </div>
+                <div>
+                    <button type="button" class="btn-action primary" onclick="switchMainTab('ladder')">
+                        <i class="fa-solid fa-route"></i> Trace Appellate Routes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-icon teal"><i class="fa-solid fa-layer-group"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">4 Judicial Tiers</div>
+                        <div class="stat-desc">Apex SC, High Courts &amp; FSC, District &amp; Special</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon navy"><i class="fa-solid fa-building-columns"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num" id="kpiCourtsCount">22 Courts &amp; Tribunals</div>
+                        <div class="stat-desc">Complete civil, criminal &amp; administrative profiling</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon gold"><i class="fa-solid fa-arrows-split-up-and-left"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">8 Appellate Routes</div>
+                        <div class="stat-desc">From trial bench to Supreme Court &amp; Mercy</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon crimson"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">26th Amendment</div>
+                        <div class="stat-desc">Arts 175A, 191A &amp; 202A Constitutional Benches</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="workspace-wrapper">
+
+        <!-- VIEW 1: COURT HIERARCHY TREE & DOSSIERS -->
+        <section class="view-panel active" id="viewHierarchy">
+            <div class="hierarchy-controls">
+                <div class="search-box-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="courtSearchInput" class="search-input" placeholder="Search courts by name, jurisdiction, statute, or sentencing power..." oninput="filterCourts()">
+                </div>
+                <div class="tier-filter-pills" id="tierFilterRow">
+                    <button type="button" class="tier-pill active" data-tier="all" onclick="selectTierFilter('all')">All Courts (22)</button>
+                    <button type="button" class="tier-pill" data-tier="tier-1" onclick="selectTierFilter('tier-1')">Apex (SC)</button>
+                    <button type="button" class="tier-pill" data-tier="tier-2" onclick="selectTierFilter('tier-2')">High Courts &amp; FSC</button>
+                    <button type="button" class="tier-pill" data-tier="tier-3" onclick="selectTierFilter('tier-3')">District Judiciary</button>
+                    <button type="button" class="tier-pill" data-tier="tier-4" onclick="selectTierFilter('tier-4')">Specialized Tribunals</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Hierarchy Tree -->
+            <div class="tree-container" id="treeContainer">
+                <!-- Rendered dynamically -->
+            </div>
+        </section>
+
+        <!-- VIEW 2: APPELLATE LADDER SIMULATOR -->
+        <section class="view-panel" id="viewLadder">
+            <div class="route-picker-bar">
+                <div style="font-size:0.85rem; font-weight:800; text-transform:uppercase; color:var(--court-navy); margin-bottom:10px;">
+                    <i class="fa-solid fa-route"></i> Select a Case Scenario to Trace Its Appellate Pathway:
+                </div>
+                <div class="route-pills-wrap" id="routePillsWrap">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Ladder Stage Container -->
+            <div class="ladder-stage" id="ladderStage">
+                <div class="ladder-header">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                        <span class="step-ref" id="ladderRouteDomain">Criminal Law</span>
+                        <span style="font-size:0.8rem; font-weight:700; color:var(--court-text-muted);" id="ladderRouteStart">Trial: Court of Session</span>
+                    </div>
+                    <h2 style="font-size:1.6rem; font-weight:800; margin-top:6px;" id="ladderRouteTitle">Capital Murder Case (Qatl-e-Amd Sec 302 PPC)</h2>
+                </div>
+
+                <div class="ladder-steps-timeline" id="ladderTimeline">
+                    <!-- Steps rendered dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 3: JURISDICTION COMPARATOR -->
+        <section class="view-panel" id="viewCompare">
+            <div id="comparisonList">
+                <!-- Populated dynamically -->
+            </div>
+        </section>
+
+        <!-- VIEW 4: JUDICIAL EXAM QUIZ -->
+        <section class="view-panel" id="viewQuiz">
+            <div class="quiz-stage-card">
+                <div class="quiz-header">
+                    <div>
+                        <span style="font-family:var(--font-mono); font-size:0.78rem; font-weight:700; color:var(--court-primary);" id="quizCounterText">QUESTION 1 OF 15</span>
+                        <h3 style="font-size:1.25rem; font-weight:800; margin-top:2px;">Judicial Hierarchy &amp; Jurisdiction Benchmark</h3>
+                    </div>
+                    <div style="display:flex; gap:12px; align-items:center;">
+                        <div style="font-size:0.85rem; font-weight:700;"><i class="fa-solid fa-trophy" style="color:var(--court-gold);"></i> Score: <span id="quizScoreText">0</span></div>
+                    </div>
+                </div>
+
+                <div class="quiz-progress-track">
+                    <div class="quiz-progress-bar" id="quizProgressBar"></div>
+                </div>
+
+                <div class="quiz-question-box" id="quizQuestionText">
+                    Loading question text...
+                </div>
+
+                <div class="quiz-options" id="quizOptionsList">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div class="quiz-feedback-box" id="quizFeedbackBox"></div>
+
+                <div class="quiz-footer">
+                    <button type="button" class="btn-action" onclick="resetQuiz()">
+                        <i class="fa-solid fa-rotate-left"></i> Restart Quiz
+                    </button>
+                    <button type="button" class="btn-action primary" id="btnNextQuiz" onclick="nextQuizQuestion()" style="display:none;">
+                        Next Question <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- COURT DOSSIER MODAL -->
+    <div class="dossier-modal-overlay" id="dossierModal">
+        <div class="dossier-modal-box">
+            <button type="button" class="dossier-close" onclick="closeDossierModal()">&times;</button>
+            <div class="dossier-header">
+                <div class="dossier-badges">
+                    <span class="step-ref" id="dossierCategory">Apex Constitutional</span>
+                    <span class="step-ref" id="dossierSeat" style="color:var(--court-gold);">Islamabad</span>
+                </div>
+                <h2 class="dossier-title" id="dossierTitle">Supreme Court of Pakistan</h2>
+                <div style="font-size:0.95rem; color:var(--court-text-muted); font-family:var(--font-legal); margin-top:4px;" id="dossierUrduName">عدالت عظمیٰ پاکستان</div>
+            </div>
+
+            <div class="dossier-section">
+                <div class="dossier-section-title"><i class="fa-solid fa-book"></i> Constitutional Authority &amp; Composition</div>
+                <div style="font-size:0.92rem; line-height:1.6;" id="dossierAuthorityComp"></div>
+            </div>
+
+            <div class="dossier-section">
+                <div class="dossier-section-title"><i class="fa-solid fa-user-check"></i> Appointment Process &amp; Tenure</div>
+                <div style="font-size:0.92rem; line-height:1.6;" id="dossierAppointment"></div>
+            </div>
+
+            <div class="dossier-section">
+                <div class="dossier-section-title"><i class="fa-solid fa-scale-balanced"></i> Specific Jurisdictions</div>
+                <div id="dossierJurisdictionsList"></div>
+            </div>
+
+            <div class="dossier-section">
+                <div class="dossier-section-title"><i class="fa-solid fa-arrow-up-right-from-square"></i> Next Appellate Forum / Review</div>
+                <div style="font-size:0.92rem; line-height:1.6;" id="dossierAppeal"></div>
+            </div>
+
+            <div class="dossier-section">
+                <div class="dossier-section-title"><i class="fa-solid fa-lightbulb"></i> Landmark Precedent &amp; Judicial Exam Tip</div>
+                <div style="font-size:0.92rem; line-height:1.6;" id="dossierPrecedent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>⚖️ Law &amp; Governance Suite</h4>
+                    <p style="margin-bottom:12px; font-size:0.82rem; line-height:1.5;">Comprehensive statutory and procedural exploration suites designed for Pakistani judicial, CSS, and Bar examinations.</p>
+                    <ul>
+                        <li><a href="constitution-explorer.html"><i class="fa-solid fa-scale-balanced"></i> Constitution Explorer (1973)</a></li>
+                        <li><a href="ppc-section-finder.html"><i class="fa-solid fa-gavel"></i> PPC Section Finder (1860)</a></li>
+                        <li><a href="crpc-procedure-flowchart.html"><i class="fa-solid fa-diagram-project"></i> CrPC Procedure Flowchart (1898)</a></li>
+                        <li><a href="identify-legal-provision.html"><i class="fa-solid fa-scale-unbalanced-flip"></i> Identify the Legal Provision</a></li>
+                        <li><a href="court-structure-explorer.html" style="font-weight:700; color:#fff;"><i class="fa-solid fa-landmark"></i> Court Structure Explorer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>🏛️ Geographic &amp; Cartographic Suites</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-solid fa-house"></i> Central Portal Home</a></li>
+                        <li><a href="pakistan-map.html"><i class="fa-solid fa-map-location-dot"></i> Pakistan Geography Map</a></li>
+                        <li><a href="sindh-map.html"><i class="fa-solid fa-map"></i> Sindh Administrative Map</a></li>
+                        <li><a href="geopolitical-hotspots-map.html"><i class="fa-solid fa-crosshairs"></i> Geopolitical Hotspots</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>🔬 Science &amp; Technology</h4>
+                    <ul>
+                        <li><a href="solar-system-explorer.html"><i class="fa-solid fa-sun"></i> Solar System Explorer</a></li>
+                        <li><a href="human-body-explorer.html"><i class="fa-solid fa-heartbeat"></i> Human Body Explorer</a></li>
+                        <li><a href="periodic-table.html"><i class="fa-solid fa-atom"></i> Periodic Table</a></li>
+                        <li><a href="climate-change-explorer.html"><i class="fa-solid fa-temperature-high"></i> Climate Change Explorer</a></li>
+                        <li><a href="technology-explorer.html"><i class="fa-solid fa-microchip"></i> Technology Explorer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Competitive Exam Preparation Portal &bull; Pakistan Judicial Architecture Resource. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Court Structure Database -->
+    <script src="js/data_court_structure.js"></script>
+
+    <!-- Application Script -->
+    <script>
+        (function() {
+            // State
+            let courtData = null;
+            let currentTierFilter = 'all';
+            let courtSearchQuery = '';
+            let activeRouteIdx = 0;
+            let currentQuizIdx = 0;
+            let quizScore = 0;
+            let soundEnabled = true;
+
+            // Audio Context for Pure Web Audio Synthesis
+            let audioCtx = null;
+            function initAudio() {
+                if (!audioCtx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContext) audioCtx = new AudioContext();
+                }
+            }
+
+            window.playChime = function(type) {
+                if (!soundEnabled) return;
+                try {
+                    initAudio();
+                    if (!audioCtx) return;
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                    const now = audioCtx.currentTime;
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    if (type === 'correct') {
+                        // Harmonious two-tone chime (F#5 -> C#6)
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(739.99, now);
+                        osc.frequency.setValueAtTime(1108.73, now + 0.12);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+                        osc.start(now);
+                        osc.stop(now + 0.45);
+                    } else if (type === 'wrong') {
+                        // Low tone buzz
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(196.00, now);
+                        osc.frequency.setValueAtTime(164.81, now + 0.12);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                        osc.start(now);
+                        osc.stop(now + 0.35);
+                    }
+                } catch(e) {}
+            };
+
+            // Init on DOM ready
+            document.addEventListener('DOMContentLoaded', () => {
+                if (window.COURT_STRUCTURE_DATA) {
+                    courtData = window.COURT_STRUCTURE_DATA;
+                } else {
+                    console.error('COURT_STRUCTURE_DATA not found!');
+                    return;
+                }
+
+                document.getElementById('kpiCourtsCount').textContent = courtData.courts.length + ' Courts & Tribunals';
+
+                renderHierarchyTree();
+                renderRoutePills();
+                renderActiveRoute();
+                renderComparisons();
+                renderQuizQuestion();
+
+                try {
+                    const savedSound = localStorage.getItem('mcqs_sound_enabled');
+                    if (savedSound !== null) soundEnabled = savedSound === 'true';
+                } catch(e) {}
+                updateSoundIcon();
+            });
+
+            // Tab Switching
+            window.switchMainTab = function(tabName) {
+                const tabs = ['hierarchy', 'ladder', 'compare', 'quiz'];
+                tabs.forEach(t => {
+                    const btn = document.getElementById('btnTab' + capitalize(t));
+                    const panel = document.getElementById('view' + capitalize(t));
+                    if (btn && panel) {
+                        if (t === tabName) {
+                            btn.classList.add('active');
+                            panel.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                            panel.classList.remove('active');
+                        }
+                    }
+                });
+            };
+
+            function capitalize(s) {
+                return s.charAt(0).toUpperCase() + s.slice(1);
+            }
+
+            // VIEW 1: Hierarchy Tree
+            function renderHierarchyTree() {
+                const container = document.getElementById('treeContainer');
+                container.innerHTML = '';
+
+                const q = courtSearchQuery.toLowerCase().trim();
+
+                courtData.hierarchyTiers.forEach(tier => {
+                    if (currentTierFilter !== 'all' && currentTierFilter !== tier.id) return;
+
+                    // Filter courts for this tier
+                    const tierCourts = courtData.courts.filter(c => {
+                        if (c.tierId !== tier.id) return false;
+                        if (!q) return true;
+                        const hay = (c.name + ' ' + (c.urduName || '') + ' ' + c.category + ' ' + c.seat + ' ' + c.constitutionalProvisions + ' ' + JSON.stringify(c.jurisdictions)).toLowerCase();
+                        return hay.includes(q);
+                    });
+
+                    if (tierCourts.length === 0 && q) return;
+
+                    const block = document.createElement('div');
+                    block.className = 'tree-level-block';
+
+                    block.innerHTML = \`
+                        <div class="tree-level-header">
+                            <div class="tree-level-title" style="color:\${tier.color};">
+                                <i class="fa-solid \${tier.icon}"></i> \${escapeHtml(tier.name)}
+                            </div>
+                            <span class="step-ref">\${tierCourts.length} Courts</span>
+                        </div>
+                        <p style="font-size:0.85rem; color:var(--court-text-muted); margin-bottom:16px;">\${escapeHtml(tier.description)}</p>
+                        <div class="tree-cards-grid" id="grid-\${tier.id}"></div>
+                    \`;
+
+                    container.appendChild(block);
+
+                    const grid = block.querySelector(\`#grid-\${tier.id}\`);
+                    tierCourts.forEach(c => {
+                        const card = document.createElement('div');
+                        card.className = 'court-node-card';
+                        card.onclick = () => openDossierModal(c.id);
+
+                        card.innerHTML = \`
+                            <div class="court-node-top">
+                                <span class="court-node-tag">\${escapeHtml(c.category)}</span>
+                                <span style="font-size:0.75rem; color:var(--court-text-muted); font-weight:600;"><i class="fa-solid fa-location-dot"></i> \${escapeHtml(c.seat.split('(')[0].trim())}</span>
+                            </div>
+                            <div class="court-node-name">\${escapeHtml(c.name)}</div>
+                            <div class="court-node-urdu">\${escapeHtml(c.urduName || '')}</div>
+                            <div style="font-size:0.75rem; color:var(--court-text-muted); margin-top:4px;">
+                                <strong>Head:</strong> \${escapeHtml(c.headOfCourt.split('(')[0].trim())}
+                            </div>
+                            <div style="font-size:0.72rem; color:var(--court-primary); font-weight:700; margin-top:auto; display:flex; align-items:center; gap:4px;">
+                                View Full Dossier <i class="fa-solid fa-arrow-right" style="font-size:0.65rem;"></i>
+                            </div>
+                        \`;
+                        grid.appendChild(card);
+                    });
+                });
+
+                if (container.children.length === 0) {
+                    container.innerHTML = '<div style="background:var(--court-card-bg); padding:32px; text-align:center; border-radius:var(--radius-lg); border:1px solid var(--court-border); color:var(--court-text-muted);"><i class="fa-solid fa-building-circle-xmark" style="font-size:2rem; margin-bottom:8px; display:block;"></i>No courts or tribunals match your search query.</div>';
+                }
+            }
+
+            window.filterCourts = function() {
+                courtSearchQuery = document.getElementById('courtSearchInput').value;
+                renderHierarchyTree();
+            };
+
+            window.selectTierFilter = function(tierId) {
+                currentTierFilter = tierId;
+                const btns = document.querySelectorAll('#tierFilterRow .tier-pill');
+                btns.forEach(b => {
+                    b.classList.toggle('active', b.dataset.tier === tierId);
+                });
+                renderHierarchyTree();
+            };
+
+            // Dossier Modal
+            window.openDossierModal = function(courtId) {
+                const c = courtData.courts.find(item => item.id === courtId);
+                if (!c) return;
+
+                document.getElementById('dossierCategory').textContent = c.category;
+                document.getElementById('dossierSeat').textContent = c.seat;
+                document.getElementById('dossierTitle').textContent = c.name;
+                document.getElementById('dossierUrduName').textContent = c.urduName || '';
+
+                // Authority & Comp
+                let compHtml = \`<strong>Statutory/Constitutional Base:</strong> \${escapeHtml(c.constitutionalProvisions)}<br>\`;
+                compHtml += \`<strong>Head of Court:</strong> \${escapeHtml(c.headOfCourt)}<br>\`;
+                compHtml += \`<strong>Composition:</strong> \${escapeHtml(c.composition)}<br>\`;
+                if (c.branchRegistries && c.branchRegistries.length > 0) {
+                    compHtml += \`<strong>Benches / Circuits:</strong> \${escapeHtml(c.branchRegistries.join(', '))}\`;
+                }
+                document.getElementById('dossierAuthorityComp').innerHTML = compHtml;
+
+                // Appointment & Tenure
+                let apptHtml = \`<strong>Appointment Method:</strong> \${escapeHtml(c.appointmentProcess)}<br>\`;
+                if (c.retirementAge) {
+                    apptHtml += \`<strong>Retirement Age:</strong> \${escapeHtml(c.retirementAge)}\`;
+                }
+                document.getElementById('dossierAppointment').innerHTML = apptHtml;
+
+                // Jurisdictions List
+                const jList = document.getElementById('dossierJurisdictionsList');
+                jList.innerHTML = '';
+                if (c.jurisdictions && c.jurisdictions.length > 0) {
+                    c.jurisdictions.forEach(j => {
+                        const item = document.createElement('div');
+                        item.className = 'jurisdiction-item';
+                        item.innerHTML = \`
+                            <div style="font-weight:800; font-size:0.88rem; color:var(--court-primary); margin-bottom:4px; display:flex; justify-content:space-between;">
+                                <span>\${escapeHtml(j.type)}</span>
+                                <span class="step-ref" style="font-size:0.7rem;">\${escapeHtml(j.article || '')}</span>
+                            </div>
+                            <div style="font-size:0.85rem; line-height:1.5;">\${escapeHtml(j.description)}</div>
+                        \`;
+                        jList.appendChild(item);
+                    });
+                }
+
+                // Next Appellate Forum
+                let appealHtml = \`\${escapeHtml(c.nextAppellateForum || 'Apex forum')}\`;
+                if (c.bindingEffect) {
+                    appealHtml += \`<br><br><strong>Binding Effect:</strong> \${escapeHtml(c.bindingEffect)}\`;
+                }
+                document.getElementById('dossierAppeal').innerHTML = appealHtml;
+
+                // Precedent & Exam Tip
+                let precHtml = '';
+                if (c.landmarkPrecedent) {
+                    precHtml += \`<strong>Landmark Precedent:</strong> <em>\${escapeHtml(c.landmarkPrecedent)}</em><br><br>\`;
+                }
+                if (c.examTip) {
+                    precHtml += \`<span style="color:var(--court-crimson); font-weight:700;"><i class="fa-solid fa-graduation-cap"></i> Judicial Exam Tip:</span> \${escapeHtml(c.examTip)}\`;
+                }
+                document.getElementById('dossierPrecedent').innerHTML = precHtml;
+
+                document.getElementById('dossierModal').classList.add('open');
+            };
+
+            window.closeDossierModal = function() {
+                document.getElementById('dossierModal').classList.remove('open');
+            };
+
+            // VIEW 2: Appellate Ladder
+            function renderRoutePills() {
+                const wrap = document.getElementById('routePillsWrap');
+                wrap.innerHTML = '';
+                courtData.appellateRoutes.forEach((r, idx) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'route-pill-btn' + (idx === activeRouteIdx ? ' active' : '');
+                    btn.onclick = () => {
+                        activeRouteIdx = idx;
+                        renderRoutePills();
+                        renderActiveRoute();
+                    };
+                    btn.innerHTML = \`<i class="fa-solid \${r.icon}"></i> \${escapeHtml(r.title)}\`;
+                    wrap.appendChild(btn);
+                });
+            }
+
+            function renderActiveRoute() {
+                const r = courtData.appellateRoutes[activeRouteIdx];
+                if (!r) return;
+
+                document.getElementById('ladderRouteDomain').textContent = r.domain;
+                document.getElementById('ladderRouteStart').textContent = 'Starting Point: ' + r.startingCourt;
+                document.getElementById('ladderRouteTitle').textContent = r.title;
+
+                const timeline = document.getElementById('ladderTimeline');
+                timeline.innerHTML = '';
+
+                r.steps.forEach((step, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'ladder-step-card';
+                    card.innerHTML = \`
+                        <div class="step-circle">\${idx + 1}</div>
+                        <div class="step-forum-name">\${escapeHtml(step.forum)}</div>
+                        <div class="step-desc">\${escapeHtml(step.description)}</div>
+                        <span class="step-ref"><i class="fa-solid fa-scale-balanced"></i> \${escapeHtml(step.statutoryRef)}</span>
+                    \`;
+                    timeline.appendChild(card);
+                });
+            }
+
+            // VIEW 3: Comparisons
+            function renderComparisons() {
+                const list = document.getElementById('comparisonList');
+                list.innerHTML = '';
+
+                courtData.comparisonPairs.forEach(cp => {
+                    const card = document.createElement('div');
+                    card.className = 'comp-card';
+
+                    let tableRows = '';
+                    cp.criteria.forEach(row => {
+                        tableRows += \`
+                            <tr>
+                                <td><strong>\${escapeHtml(row.feature)}</strong></td>
+                                <td>\${escapeHtml(row.courtAVal)}</td>
+                                <td>\${escapeHtml(row.courtBVal)}</td>
+                            </tr>
+                        \`;
+                    });
+
+                    card.innerHTML = \`
+                        <div class="comp-title">
+                            <i class="fa-solid fa-code-compare" style="color:var(--court-primary);"></i> \${escapeHtml(cp.title)}
+                        </div>
+                        <table class="comp-table">
+                            <thead>
+                                <tr>
+                                    <th>Jurisdictional Feature</th>
+                                    <th style="color:var(--court-primary);">\${escapeHtml(cp.courtA)}</th>
+                                    <th style="color:var(--court-navy);">\${escapeHtml(cp.courtB)}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                \${tableRows}
+                            </tbody>
+                        </table>
+                    \`;
+                    list.appendChild(card);
+                });
+            }
+
+            // VIEW 4: Judicial Quiz
+            function renderQuizQuestion() {
+                const q = courtData.quiz[currentQuizIdx];
+                if (!q) return;
+
+                document.getElementById('quizCounterText').textContent = \`QUESTION \${currentQuizIdx + 1} OF \${courtData.quiz.length}\`;
+                document.getElementById('quizScoreText').textContent = quizScore;
+
+                const pct = (currentQuizIdx / courtData.quiz.length) * 100;
+                document.getElementById('quizProgressBar').style.width = pct + '%';
+
+                document.getElementById('quizQuestionText').textContent = q.question;
+
+                const feedback = document.getElementById('quizFeedbackBox');
+                feedback.style.display = 'none';
+                document.getElementById('btnNextQuiz').style.display = 'none';
+
+                const optsList = document.getElementById('quizOptionsList');
+                optsList.innerHTML = '';
+
+                const letters = ['A', 'B', 'C', 'D'];
+                q.opts.forEach((optText, idx) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'quiz-opt-btn';
+                    btn.onclick = () => handleQuizChoice(idx);
+
+                    btn.innerHTML = \`
+                        <div class="quiz-opt-letter">\${letters[idx]}</div>
+                        <div>\${escapeHtml(optText)}</div>
+                    \`;
+                    optsList.appendChild(btn);
+                });
+            }
+
+            function handleQuizChoice(chosenIdx) {
+                const q = courtData.quiz[currentQuizIdx];
+                if (!q) return;
+
+                const isCorrect = chosenIdx === q.ans;
+                if (isCorrect) {
+                    quizScore += 10;
+                    playChime('correct');
+                } else {
+                    playChime('wrong');
+                }
+
+                // Highlight buttons
+                const btns = document.querySelectorAll('#quizOptionsList .quiz-opt-btn');
+                btns.forEach((btn, idx) => {
+                    btn.disabled = true;
+                    if (idx === q.ans) {
+                        btn.classList.add('correct');
+                    } else if (idx === chosenIdx && !isCorrect) {
+                        btn.classList.add('wrong');
+                    }
+                });
+
+                // Show feedback box
+                const feedback = document.getElementById('quizFeedbackBox');
+                feedback.style.display = 'block';
+                if (isCorrect) {
+                    feedback.style.background = 'var(--court-success-light)';
+                    feedback.style.border = '1px solid var(--court-success)';
+                    feedback.innerHTML = \`<strong style="color:var(--court-success);"><i class="fa-solid fa-circle-check"></i> Correct!</strong> \${escapeHtml(q.article)}: \${escapeHtml(q.explanation)}<br><small style="color:var(--court-crimson); font-weight:700; margin-top:4px; display:block;">\${escapeHtml(q.examTip)}</small>\`;
+                } else {
+                    feedback.style.background = 'var(--court-crimson-light)';
+                    feedback.style.border = '1px solid var(--court-crimson)';
+                    feedback.innerHTML = \`<strong style="color:var(--court-crimson);"><i class="fa-solid fa-circle-xmark"></i> Incorrect.</strong> Correct answer is <strong>\${escapeHtml(q.opts[q.ans])}</strong>.<br>\${escapeHtml(q.article)}: \${escapeHtml(q.explanation)}<br><small style="color:var(--court-crimson); font-weight:700; margin-top:4px; display:block;">\${escapeHtml(q.examTip)}</small>\`;
+                }
+
+                document.getElementById('quizScoreText').textContent = quizScore;
+                document.getElementById('btnNextQuiz').style.display = 'inline-flex';
+            }
+
+            window.nextQuizQuestion = function() {
+                currentQuizIdx++;
+                if (currentQuizIdx >= courtData.quiz.length) {
+                    showQuizCompletion();
+                } else {
+                    renderQuizQuestion();
+                }
+            };
+
+            function showQuizCompletion() {
+                const card = document.querySelector('.quiz-stage-card');
+                const maxScore = courtData.quiz.length * 10;
+                const pct = Math.round((quizScore / maxScore) * 100);
+
+                let badge = '📜 Judicial Magistrate Level';
+                if (pct >= 85) badge = '⚖️ Supreme Court Jurist Distinction';
+                else if (pct >= 60) badge = '🏛️ Additional Sessions Judge Level';
+
+                card.innerHTML = \`
+                    <div style="text-align:center; padding:20px 0;">
+                        <div style="width:80px; height:80px; border-radius:50%; background:var(--court-gold-light); color:var(--court-gold); font-size:2.2rem; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h2 style="font-size:1.8rem; font-weight:800; margin-bottom:8px;">Judicial Quiz Complete!</h2>
+                        <p style="font-size:0.95rem; color:var(--court-text-muted); margin-bottom:24px;">Bench Evaluation &amp; Jurisdictional Proficiency</p>
+
+                        <div style="display:flex; justify-content:center; gap:20px; margin-bottom:24px;">
+                            <div style="background:var(--court-surface); padding:16px 24px; border-radius:var(--radius-md);">
+                                <div style="font-size:1.8rem; font-weight:800; color:var(--court-primary);">\${quizScore} / \${maxScore}</div>
+                                <div style="font-size:0.75rem; color:var(--court-text-muted);">Points Earned</div>
+                            </div>
+                            <div style="background:var(--court-surface); padding:16px 24px; border-radius:var(--radius-md);">
+                                <div style="font-size:1.8rem; font-weight:800; color:var(--court-gold);">\${pct}%</div>
+                                <div style="font-size:0.75rem; color:var(--court-text-muted);">Accuracy</div>
+                            </div>
+                        </div>
+
+                        <div style="background:var(--court-primary-light); border:1px solid rgba(15, 118, 110, 0.2); padding:16px; border-radius:var(--radius-md); max-width:500px; margin:0 auto 24px;">
+                            <div style="font-weight:800; font-size:1.1rem; color:var(--court-primary);">\${badge}</div>
+                            <p style="font-size:0.85rem; color:var(--court-text); margin-top:4px;">Mastery of constitutional articles, statutory pecuniary caps, and appellate ladders.</p>
+                        </div>
+
+                        <button type="button" class="btn-action primary" onclick="resetQuiz()">
+                            <i class="fa-solid fa-rotate-left"></i> Retake Benchmark Quiz
+                        </button>
+                    </div>
+                \`;
+            }
+
+            window.resetQuiz = function() {
+                currentQuizIdx = 0;
+                quizScore = 0;
+                // re-render original markup
+                const card = document.querySelector('.quiz-stage-card');
+                card.innerHTML = \`
+                    <div class="quiz-header">
+                        <div>
+                            <span style="font-family:var(--font-mono); font-size:0.78rem; font-weight:700; color:var(--court-primary);" id="quizCounterText">QUESTION 1 OF 15</span>
+                            <h3 style="font-size:1.25rem; font-weight:800; margin-top:2px;">Judicial Hierarchy &amp; Jurisdiction Benchmark</h3>
+                        </div>
+                        <div style="display:flex; gap:12px; align-items:center;">
+                            <div style="font-size:0.85rem; font-weight:700;"><i class="fa-solid fa-trophy" style="color:var(--court-gold);"></i> Score: <span id="quizScoreText">0</span></div>
+                        </div>
+                    </div>
+                    <div class="quiz-progress-track">
+                        <div class="quiz-progress-bar" id="quizProgressBar"></div>
+                    </div>
+                    <div class="quiz-question-box" id="quizQuestionText"></div>
+                    <div class="quiz-options" id="quizOptionsList"></div>
+                    <div class="quiz-feedback-box" id="quizFeedbackBox"></div>
+                    <div class="quiz-footer">
+                        <button type="button" class="btn-action" onclick="resetQuiz()">
+                            <i class="fa-solid fa-rotate-left"></i> Restart Quiz
+                        </button>
+                        <button type="button" class="btn-action primary" id="btnNextQuiz" onclick="nextQuizQuestion()" style="display:none;">
+                            Next Question <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                \`;
+                renderQuizQuestion();
+            };
+
+            // Audio & Theme toggles
+            window.toggleSound = function() {
+                soundEnabled = !soundEnabled;
+                try {
+                    localStorage.setItem('mcqs_sound_enabled', String(soundEnabled));
+                } catch(e) {}
+                updateSoundIcon();
+            };
+
+            function updateSoundIcon() {
+                const icon = document.getElementById('soundIcon');
+                if (soundEnabled) {
+                    icon.className = 'fa-solid fa-volume-high';
+                } else {
+                    icon.className = 'fa-solid fa-volume-xmark';
+                }
+            }
+
+            window.toggleTheme = function() {
+                const isDark = document.documentElement.classList.toggle('dark-mode');
+                try {
+                    localStorage.setItem('mcqs_dark_mode', String(isDark));
+                } catch(e) {}
+                updateThemeIcon();
+            };
+
+            function updateThemeIcon() {
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                const icon = document.getElementById('themeIcon');
+                if (isDark) {
+                    icon.className = 'fa-solid fa-sun';
+                } else {
+                    icon.className = 'fa-solid fa-moon';
+                }
+            }
+            updateThemeIcon();
+
+            function escapeHtml(text) {
+                if (!text) return '';
+                return String(text)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+        })();
+    </script>
+</body>
+</html>
+`;
+
+fs.writeFileSync(targetHtmlPath, htmlContent, 'utf-8');
+console.log('Successfully generated frontend/court-structure-explorer.html!');

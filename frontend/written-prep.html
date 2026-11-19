@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Master CSS, PMS and CCE Essay Writing and Written Examination Preparation. Essay outlines, thesis statements, introductions, conclusions, PEEL argument development, precis writing, comprehension exercises, Pakistan Affairs analytical model answers, and essay evaluation checklist.">
+    <title>Essay Writing &amp; Written Examination Preparation | CSS, PMS, CCE</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .written-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .written-block {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+            scroll-margin-top: 100px;
+            transition: var(--transition);
+        }
+
+        .written-block:hover {
+            box-shadow: var(--hover-shadow);
+        }
+
+        .written-header-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+        .written-header-title h2 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .written-icon-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .essay-tab-switcher {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .essay-topic-btn {
+            padding: 8px 16px;
+            border-radius: 50px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .essay-topic-btn:hover,
+        .essay-topic-btn.active {
+            background: var(--secondary-color);
+            color: #fff;
+            border-color: var(--secondary-color);
+        }
+
+        .checklist-score-counter {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            padding: 12px 18px;
+            font-weight: 600;
+            color: var(--success);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .written-block {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        body.dark-mode .essay-topic-btn {
+            background: #0f172a;
+            border-color: #334155;
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .essay-topic-btn:hover,
+        body.dark-mode .essay-topic-btn.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/written-prep.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/written-prep.html">
+    <meta property="og:title" content="Essay Writing &amp; Written Examination Preparation | CSS, PMS, CCE">
+    <meta property="og:description" content="Master CSS, PMS and CCE Essay Writing and Written Examination Preparation. Essay outlines, thesis statements, introductions, conclusions, PEEL argument development, precis writing, comprehension ex...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Essay Writing &amp; Written Examination Preparation | CSS, PMS, CCE">
+    <meta name="twitter:description" content="Master CSS, PMS and CCE Essay Writing and Written Examination Preparation. Essay outlines, thesis statements, introductions, conclusions, PEEL argument development, precis writing, comprehension ex...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="acts-rules.html">Acts &amp; Rules</a>
+                <a href="articles.html">Articles</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="recruitment-prep.html" style="font-weight: 700; color: #0f766e;"><i class="fa-solid fa-briefcase"></i> Recruitment Prep <span style="background:#fde047; color:#115e59; font-size:0.68rem; padding:1px 5px; border-radius:4px;">NEW</span></a>
+                <a href="latest-jobs.html" style="font-weight: 700; color: #e11d48;"><i class="fa-solid fa-bullhorn"></i> Latest Jobs <span style="background:#e11d48; color:#fff; font-size:0.65rem; padding:1px 5px; border-radius:4px;">17,500+</span></a>
+                <a href="scholarships.html" style="font-weight: 700; color: #4338ca;"><i class="fa-solid fa-graduation-cap"></i> Scholarships <span style="background:#4338ca; color:#fff; font-size:0.65rem; padding:1px 5px; border-radius:4px;">MS/PhD</span></a>
+                <a href="math-mcqs.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-check-to-slot"></i> Math MCQs <span style="background:#0284c7; color:#fff; font-size:0.65rem; padding:1px 5px; border-radius:4px;">300+</span></a>
+                <a href="math-tricks.html" style="font-weight: 700; color: #0369a1;"><i class="fa-solid fa-calculator"></i> Math Tricks <span style="background:#e0f2fe; color:#0369a1; font-size:0.68rem; padding:1px 5px; border-radius:4px;">NEW</span></a>
+                <a href="essay-pakistan-education-crisis.html" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-graduation-cap"></i> Pakistan Education Crisis Essay <span style="background:#fde047; color:#064e3b; font-size:0.68rem; padding:1px 5px; border-radius:4px;">NEW</span></a>
+                <a href="essay-russia-ukraine-war.html" style="font-weight: 700; color: #2563eb;"><i class="fa-solid fa-feather-pointed"></i> Russia-Ukraine War Essay <span style="background:#fde047; color:#1e3a8a; font-size:0.68rem; padding:1px 5px; border-radius:4px;">HOT</span></a>
+                <a href="upsc-essays-2023.html" style="font-weight: 700; color: #7c2d12;">UPSC Essays 2023 <span style="background:#fde047; color:#431407; font-size:0.68rem; padding:1px 5px; border-radius:4px;">NEW</span></a>
+                <a href="cce-essays-2025.html" style="font-weight: 700; color: #0d9488;">CCE Essays 2025 <span style="background:#fde047; color:#115e59; font-size:0.68rem; padding:1px 5px; border-radius:4px;">NEW</span></a>
+                <a href="css-essays-2026.html" style="font-weight: 700; color: #002b66;">CSS Essays 2026 <span style="background:#fde047; color:#002b66; font-size:0.68rem; padding:1px 5px; border-radius:4px;">NEW</span></a>
+                <a href="css-essays-2021.html" style="font-weight: 700; color: #831843;">CSS Essays 2021</a>
+                <a href="written-prep.html" class="active">Written Prep</a>
+                <a href="exam-guide.html">Exam Guide</a>
+                <a href="science-notes.html">Science Notes</a>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Menu Bar -->
+    <nav class="secondary-navbar" aria-label="Secondary Navigation">
+        <div class="container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="articles.html" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-book-open"></i> Study Articles</a></li>
+                <li><a href="timeline.html" style="font-weight: 700; color: #4338ca;"><i class="fa-solid fa-timeline"></i> Historical Timeline</a></li>
+                <li><a href="leaderboard.html" style="font-weight: 700; color: #f59e0b;"><i class="fa-solid fa-trophy"></i> Daily Challenge &amp; Leaderboard</a></li>
+                <li><a href="dashboard.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="ai-assistant.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-robot"></i> AI Study Assistant</a></li>
+                <li><a href="editorial-explainer.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-newspaper"></i> Editorial Explainer</a></li>
+                <li><a href="world-map.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-earth-americas"></i> Interactive World Map</a></li>
+                <li><a href="digital-library.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-book-bookmark"></i> Digital Library &amp; Reports</a></li>
+                <li><a href="recommended-books.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-book"></i> Recommended Books</a></li>
+                <li><a href="recruitment-prep.html" style="font-weight: 700; color: #0f766e;"><i class="fa-solid fa-briefcase"></i> Recruitment Prep Hub</a></li>
+                <li><a href="written-prep.html" class="active" style="font-weight: 700; color: #38bdf8;"><i class="fa-solid fa-pen-nib"></i> Essay &amp; Written Prep</a></li>
+                <li><a href="exam-guide.html"><i class="fa-solid fa-book-open-reader"></i> Exam Guide (FIA/NAB/CSS)</a></li>
+                <li><a href="quiz.html">Take a Quiz</a></li>
+                <li><a href="science-notes.html">Science Capsule</a></li>
+                <li><a href="index.html#interesting-facts">Interesting Facts</a></li>
+                <li><a href="index.html#study-resources">Study Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="written-hero">
+        <div class="container">
+            <h1>✍️ Essay Writing &amp; Written Examination Preparation</h1>
+            <p>Comprehensive analytical roadmaps for CSS, PMS &amp; CCE candidates. Master essay outlines, thesis statements, funnel introductions, P.E.E.L. argument development, précis writing, and 20-mark descriptive answers.</p>
+
+            <div class="quick-nav-pills">
+                <a href="#sec-outlines" class="quick-nav-pill"><i class="fa-solid fa-list-ol"></i> Essay Outlines</a>
+                <a href="#sec-thesis" class="quick-nav-pill"><i class="fa-solid fa-lightbulb"></i> Thesis Statements</a>
+                <a href="#sec-intro-conclusion" class="quick-nav-pill"><i class="fa-solid fa-paragraph"></i> Intro &amp; Conclusion</a>
+                <a href="#sec-argumentation" class="quick-nav-pill"><i class="fa-solid fa-layer-group"></i> P.E.E.L. Arguments</a>
+                <a href="#sec-precis" class="quick-nav-pill"><i class="fa-solid fa-compress"></i> Précis Writing</a>
+                <a href="#sec-pak-affairs" class="quick-nav-pill"><i class="fa-solid fa-landmark"></i> 20-Mark Model Answers</a>
+                <a href="#sec-dos-donts" class="quick-nav-pill"><i class="fa-solid fa-check-double"></i> Do's &amp; Don'ts</a>
+                <a href="#sec-checklist" class="quick-nav-pill"><i class="fa-solid fa-clipboard-check"></i> Evaluation Checklist</a>
+                <a href="#sec-how-to-answer" class="quick-nav-pill"><i class="fa-solid fa-feather-pointed"></i> How to Answer 20-M</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="written-container">
+        <!-- Complete Recruitment Test Preparation Hub Banner -->
+        <div style="background: linear-gradient(135deg, #042f2e 0%, #0f766e 60%, #115e59 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(15, 118, 110, 0.25); display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid rgba(245, 158, 11, 0.4); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: #fef08a; text-transform: uppercase;">
+                    <i class="fa-solid fa-briefcase"></i> One-Stop Job-Centric Test Prep
+                </span>
+                <span style="font-size: 0.85rem; color: #99f6e4; font-weight: 500;">
+                    <i class="fa-solid fa-building-columns"></i> FPSC, SPSC, PPSC &amp; Federal Bodies
+                </span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <h2 style="color: #ffffff; font-size: 1.6rem; font-weight: 800; margin: 0; font-family: 'Outfit', sans-serif;">
+                    Complete Recruitment Test Preparation Hub
+                </h2>
+                <p style="color: #ccfbf1; font-size: 0.96rem; line-height: 1.6; margin: 0; max-width: 950px;">
+                    Select your targeted competitive post (FIA Assistant Director, FIA Inspector, Customs Inspector, Assistant Audit Officer, NAB AD, or MOD AD) and instantly access its official syllabus, curated subject notes, recommended books, interactive practice tests, 100-mark mock exams, and personalized readiness tracking.
+                </p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 6px;">
+                <a href="recruitment-prep.html" style="background: #f59e0b; color: #0f172a; padding: 10px 22px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);">
+                    <i class="fa-solid fa-arrow-right"></i> Open Recruitment Test Prep Hub
+                </a>
+                <a href="fia-sample-papers.html" style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.92rem;">
+                    <i class="fa-solid fa-file-shield"></i> FIA AD 20 Sample Papers (2,000 MCQs)
+                </a>
+            </div>
+        </div>
+        
+        <!-- Pakistan Education System Crisis Master Essay Banner -->
+        <div style="background: linear-gradient(135deg, #064e3b 0%, #047857 60%, #0f766e 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(4, 120, 87, 0.25); display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid rgba(245, 158, 11, 0.4); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: #fef08a; text-transform: uppercase;">
+                    <i class="fa-solid fa-graduation-cap"></i> High-Yield National Issues Master Essay
+                </span>
+                <span style="font-size: 0.85rem; color: #d1fae5; font-weight: 500;">
+                    <i class="fa-solid fa-feather-pointed"></i> 3,500+ Words • 10-Tier Policy Outline
+                </span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <h2 style="color: #ffffff; font-size: 1.6rem; font-weight: 800; margin: 0; font-family: 'Outfit', sans-serif;">
+                    Why Pakistan's Education System is Broken: Out-of-School Children, Devolution &amp; Reform
+                </h2>
+                <p style="color: #d1fae5; font-size: 0.96rem; line-height: 1.6; margin: 0; max-width: 950px;">
+                    Exhaustive empirical analysis of the 26.2 million out-of-school children, the 18th Amendment devolution paradox, 77% learning poverty, tripartite educational apartheid, unranked universities, paper-mill academic research, and concrete policy roadmaps.
+                </p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 6px;">
+                <a href="essay-pakistan-education-crisis.html" style="background: #f59e0b; color: #0f172a; padding: 10px 22px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);">
+                    <i class="fa-solid fa-book-open"></i> Read Full 3,500+ Word Essay &amp; Outline
+                </a>
+            </div>
+        </div>
+
+        <!-- International Relations & Global Geopolitics Solved Essays Banner -->
+        <div style="background: linear-gradient(135deg, #091e42 0%, #1e3a8a 50%, #1d4ed8 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.25); display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid rgba(245, 158, 11, 0.45); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: #fef08a; text-transform: uppercase;">
+                    <i class="fa-solid fa-globe"></i> International Relations &amp; Strategic Affairs
+                </span>
+                <span style="font-size: 0.85rem; color: #bfdbfe; font-weight: 500;">
+                    <i class="fa-solid fa-book-reader"></i> 12 Master Solved Essays • Hierarchical Outlines (~14,800 Words)
+                </span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <h2 style="color: #ffffff; font-size: 1.6rem; font-weight: 800; margin: 0; font-family: 'Outfit', sans-serif;">
+                    12 Master Essays on International Relations &amp; Global Geopolitics
+                </h2>
+                <p style="color: #dbeafe; font-size: 0.96rem; line-height: 1.6; margin: 0; max-width: 950px;">
+                    In-depth, examination-grade model essays and complete outlines covering: Multipolarity &amp; American Hegemony, Rise of China, US-China Rivalry, New Cold War, Declining Western Influence, Rise of Global South, BRICS Transformation, Role of Middle Powers, Indo-Pacific Geopolitics, Weaponization of Trade &amp; Tech, Future of Liberal International Order, and UN Relevance.
+                </p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 6px;">
+                <a href="international-relations-essays.html" style="background: #f59e0b; color: #0f172a; padding: 10px 22px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);">
+                    <i class="fa-solid fa-book-open"></i> Read All 12 IR Master Essays &amp; Outlines
+                </a>
+            </div>
+        </div>
+
+        <!-- Global Security, Modern Warfare & Conflict Solved Essays Banner -->
+        <div style="background: linear-gradient(135deg, #4c0519 0%, #881337 50%, #9f1239 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(136, 19, 55, 0.25); display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid rgba(245, 158, 11, 0.45); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: #fef08a; text-transform: uppercase;">
+                    <i class="fa-solid fa-shield-halved"></i> Global Security, Warfare &amp; Conflict Studies
+                </span>
+                <span style="font-size: 0.85rem; color: #fecdd3; font-weight: 500;">
+                    <i class="fa-solid fa-book-reader"></i> 12 Master Solved Essays • Hierarchical Outlines (~15,660 Words)
+                </span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <h2 style="color: #ffffff; font-size: 1.6rem; font-weight: 800; margin: 0; font-family: 'Outfit', sans-serif;">
+                    12 Master Essays on Global Security, Modern Warfare &amp; Regional Conflicts
+                </h2>
+                <p style="color: #ffe4e6; font-size: 0.96rem; line-height: 1.6; margin: 0; max-width: 950px;">
+                    In-depth strategic analyses and comprehensive outlines: European Security &amp; Ukraine, Israel-Palestine &amp; International Law, Gaza Humanitarian Crisis, Middle East Rivalries, Iran-Israel Conflict, Future of NATO, Indo-Pacific Militarization, South China Sea Dispute, Nuclear Deterrence in 21st Century, Cyber Warfare, Drones &amp; AI Warfare, and the Decline of International Humanitarian Law.
+                </p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 6px;">
+                <a href="global-security-conflict-essays.html" style="background: #f59e0b; color: #0f172a; padding: 10px 22px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);">
+                    <i class="fa-solid fa-book-open"></i> Read All 12 Security Master Essays &amp; Outlines
+                </a>
+            </div>
+        </div>
+
+        <!-- Geoeconomics & Global Finance Banner Card -->
+        <div style="background: linear-gradient(135deg, #042f2e 0%, #115e59 50%, #0f766e 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(15, 118, 110, 0.25); display: flex; flex-direction: column; gap: 14px; border-left: 5px solid #d97706;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <span style="background: rgba(20, 184, 166, 0.25); border: 1px solid rgba(94, 234, 212, 0.45); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: #5eead4; text-transform: uppercase;">
+                    <i class="fa-solid fa-chart-line"></i> Global Political Economy, Trade &amp; Finance
+                </span>
+                <span style="font-size: 0.85rem; color: #ccfbf1; font-weight: 500;">
+                    <i class="fa-solid fa-book-reader"></i> 12 Master Solved Essays • Hierarchical Outlines (~17,540 Words)
+                </span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <h2 style="color: #ffffff; font-size: 1.6rem; font-weight: 800; margin: 0; font-family: 'Outfit', sans-serif;">
+                    12 Master Essays on Geoeconomics, Dollar Hegemony &amp; Global Finance
+                </h2>
+                <p style="color: #ccfbf1; font-size: 0.96rem; line-height: 1.6; margin: 0; max-width: 950px;">
+                    Comprehensive model answers and examination outlines: Globalization in Retreat, Dollar Weaponization, Future of the US Dollar as Reserve Currency, Rise of Protectionism, US-China Trade War, Global Debt Crisis, IMF &amp; World Bank Role, Future of Global Supply Chains, Economic Sanctions, Digital Economy &amp; Global Finance, Cryptocurrency &amp; CBDCs, and Red Sea &amp; Hormuz Chokepoint Disruptions.
+                </p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 6px;">
+                <a href="geoeconomics-finance-essays.html" style="background: #d97706; color: #ffffff; padding: 10px 22px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.35);">
+                    <i class="fa-solid fa-book-open"></i> Read All 12 Geoeconomics Master Essays &amp; Outlines
+                </a>
+                <a href="geoeconomics-finance-essays.html#topic-1" style="background: rgba(255, 255, 255, 0.15); color: #ffffff; padding: 10px 18px; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; border: 1px solid rgba(255, 255, 255, 0.25);">
+                    <i class="fa-solid fa-compass"></i> Topic Quick Navigator
+                </a>
+            </div>
+        </div>
+
+        <!-- Math Shortcut Tricks & Quantitative Ability Banner Card -->
+        <div style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0284c7 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25); display: flex; flex-direction: column; gap: 14px; border-left: 5px solid #f59e0b;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <span style="background: rgba(56, 189, 248, 0.25); border: 1px solid rgba(125, 211, 252, 0.45); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: #7dd3fc; text-transform: uppercase;">
+                    <i class="fa-solid fa-calculator"></i> Quantitative Ability &amp; Arithmetic Shortcuts
+                </span>
+                <span style="font-size: 0.85rem; color: #e0f2fe; font-weight: 500;">
+                    <i class="fa-solid fa-bolt"></i> 12 Core Modules • 52+ Fast Formulas • 40+ Solved Exam Drills
+                </span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <h2 style="color: #ffffff; font-size: 1.6rem; font-weight: 800; margin: 0; font-family: 'Outfit', sans-serif;">
+                    Math Shortcut Tricks Handbook: Mental Arithmetic, Percentages &amp; Work-Time
+                </h2>
+                <p style="color: #e0f2fe; font-size: 0.96rem; line-height: 1.6; margin: 0; max-width: 950px;">
+                    Comprehensive fast math techniques for CSS GSA, PMS, FPSC (FIA, Custom, IB), PPSC, and NTS: Percentage Split &amp; Commutative Tricks, Work &amp; Time (2 &amp; 3 workers, LCM method, pipes &amp; cisterns), Mental Multiplication (by 11, 25, 99, squaring ending in 5), Ratio &amp; Proportion bridging, Relative Speed &amp; Trains, Profit &amp; Loss multipliers, CI vs SI differences, Alligation cross rule, AP/GP progressions, and Venn diagrams.
+                </p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 6px;">
+                <a href="math-tricks.html" style="background: #f59e0b; color: #0f172a; padding: 10px 22px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Open Math Shortcut Tricks Handbook
+                </a>
+                <a href="math-mcqs.html" style="background: #0284c7; color: #ffffff; padding: 10px 20px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);">
+                    <i class="fa-solid fa-check-to-slot"></i> Practice 300+ Solved Math MCQs
+                </a>
+                <a href="math-tricks.html#module-work-time" style="background: rgba(255, 255, 255, 0.15); color: #ffffff; padding: 10px 18px; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; border: 1px solid rgba(255, 255, 255, 0.25);">
+                    <i class="fa-solid fa-clock"></i> Work &amp; Time Problems
+                </a>
+                <a href="math-tricks.html#module-percentages" style="background: rgba(255, 255, 255, 0.15); color: #ffffff; padding: 10px 18px; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; border: 1px solid rgba(255, 255, 255, 0.25);">
+                    <i class="fa-solid fa-percent"></i> Percentages Tricks
+                </a>
+            </div>
+        </div>
+
+        <!-- UPSC CSE 2023 Solved Essay Paper Banner -->
+        <div style="background: linear-gradient(135deg, #431407 0%, #7c2d12 60%, #9a3412 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(124, 45, 18, 0.25); display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid rgba(245, 158, 11, 0.4); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: #fef08a; text-transform: uppercase;">
+                    <i class="fa-solid fa-landmark"></i> UPSC Civil Services (Mains) 2023 Solved Paper
+                </span>
+                <span style="font-size: 0.85rem; color: #fed7aa; font-weight: 500;">
+                    <i class="fa-solid fa-feather-pointed"></i> 8 Solved Topics • Sections A &amp; B (10,250 Words)
+                </span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <h2 style="color: #ffffff; font-size: 1.6rem; font-weight: 800; margin: 0; font-family: 'Outfit', sans-serif;">
+                    UPSC CSE 2023 Master Solved Essay Collection
+                </h2>
+                <p style="color: #ffedd5; font-size: 0.96rem; line-height: 1.6; margin: 0; max-width: 950px;">
+                    Philosophical, epistemological, gender, and socio-ethical essays strictly following UPSC word limits (1,000–1,200 words each). Features thinking as a game, visionary decision-making, wandering, finding magic in the mundane, gender disciplines, mathematics as music of reason, justice vs charity, and the enduring residue of education.
+                </p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 6px;">
+                <a href="upsc-essays-2023.html" style="background: #f59e0b; color: #0f172a; padding: 10px 22px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);">
+                    <i class="fa-solid fa-book-open"></i> Read All 8 UPSC 2023 Solved Essays
+                </a>
+            </div>
+        </div>
+
+        <!-- Russia-Ukraine War Master Essay Banner -->
+        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #172554 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.25); display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid rgba(245, 158, 11, 0.4); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: #fef08a; text-transform: uppercase;">
+                    <i class="fa-solid fa-star"></i> Featured High-Scoring Master Essay
+                </span>
+                <span style="font-size: 0.85rem; color: #bfdbfe; font-weight: 500;">
+                    <i class="fa-solid fa-feather-pointed"></i> 3,000+ Words • 10-Tier Comprehensive Outline
+                </span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <h2 style="color: #ffffff; font-size: 1.6rem; font-weight: 800; margin: 0; font-family: 'Outfit', sans-serif;">
+                    The Russia-Ukraine War: Geopolitical Genesis, Global Fractures &amp; Pathways to Peace
+                </h2>
+                <p style="color: #dbeafe; font-size: 0.96rem; line-height: 1.6; margin: 0; max-width: 950px;">
+                    Exhaustive analytical monograph covering historical roots (Kievan Rus', 1991 Belovezha, 1994 Budapest Memorandum), Offensive Realism vs Liberal Internationalism, modern drone &amp; electronic attrition warfare, Global South non-alignment, economic sanctions, energy decoupling, nuclear deterrence, and actionable peace frameworks.
+                </p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 6px;">
+                <a href="essay-russia-ukraine-war.html" style="background: #f59e0b; color: #0f172a; padding: 10px 22px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);">
+                    <i class="fa-solid fa-book-open"></i> Read Full 3,000+ Word Essay &amp; Outline
+                </a>
+            </div>
+        </div>
+
+        <!-- CSS 2021 Complete Solved Essays Hub Showcase Banner -->
+        <div style="background: linear-gradient(135deg, #4c0519 0%, #831843 60%, #1e1b4b 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(131, 24, 67, 0.25); display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <span style="background: rgba(251, 191, 36, 0.25); border: 1px solid rgba(251, 191, 36, 0.4); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: #fde047; text-transform: uppercase;">
+                    <i class="fa-solid fa-award"></i> FPSC CSS 2021 Solved Paper
+                </span>
+                <span style="font-size: 0.85rem; color: #fce7f3; font-weight: 600;"><i class="fa-solid fa-book"></i> 10 Complete Essays | 25,457 Words</span>
+            </div>
+            <h2 style="font-size: 1.6rem; margin: 0; color: #ffffff; font-family: 'Outfit', 'Inter', sans-serif;">
+                Complete Model Essays on All 10 Topics of CSS 2021 English Essay Paper
+            </h2>
+            <p style="margin: 0; font-size: 0.95rem; color: #fce7f3; line-height: 1.6; max-width: 950px;">
+                Comprehensive civil services model essays with complete multi-tier formal outlines, unambiguous thesis statements, and rigorous integration of all four mandated discourses (exposition, argumentation, description, and narration) across all ten paper prompts.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px;">
+                <a href="cce-essays-2025.html" style="background: #0d9488; color: #ffffff; font-weight: 800; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    <i class="fa-solid fa-landmark"></i> SPSC CCE 2025 Solved Essays <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="css-essays-2026.html" style="background: #fde047; color: #002b66; font-weight: 800; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    <i class="fa-solid fa-graduation-cap"></i> CSS 2026 Solved Essays Hub (30k+ Words) <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="css-essays-2021.html" style="background: rgba(255, 255, 255, 0.2); color: #ffffff; font-weight: 700; padding: 10px 18px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255, 255, 255, 0.4);">
+                    <i class="fa-solid fa-book-open"></i> CSS 2021 Essays
+                    <i class="fa-solid fa-book-open"></i> Open CSS 2021 Solved Essays Hub <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <button type="button" onclick="window.open('css-essays-2021.html', '_blank')" style="background: rgba(255, 255, 255, 0.15); color: #ffffff; font-weight: 700; padding: 10px 18px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.3); cursor: pointer;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in New Tab
+                </button>
+            </div>
+        </div>
+
+
+        <!-- 1. IMPORTANT ESSAY TOPICS & COMPLETE OUTLINES -->
+        <article class="written-block" id="sec-outlines">
+            <div class="written-header-title">
+                <div class="written-icon-badge" style="background: #2563eb;">
+                    <i class="fa-solid fa-list-ol"></i>
+                </div>
+                <div>
+                    <h2>Important Essay Topics &amp; Complete Structural Outlines</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Exemplary multi-tier outlines with thesis statements, body arguments, and policy recommendations.</p>
+                </div>
+            </div>
+
+            <div class="essay-tab-switcher" id="essayTopicTabs">
+                <!-- Dynamically populated via data_written_prep.js -->
+            </div>
+
+            <!-- Dynamic Active Outline Display -->
+            <div id="activeOutlineDisplay">
+                <!-- Injected via JS -->
+            </div>
+        </article>
+
+        <!-- 2. THESIS STATEMENT MASTERY -->
+        <article class="written-block" id="sec-thesis">
+            <div class="written-header-title">
+                <div class="written-icon-badge" style="background: #f59e0b;">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div>
+                    <h2>The Science of Crafting a Winning Thesis Statement</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">The intellectual backbone of your essay: moving from vague descriptions to definitive claims.</p>
+                </div>
+            </div>
+
+            <div style="line-height: 1.6; color: var(--text-dark); margin-bottom: 24px;">
+                <p>
+                    According to recurring FPSC and PPSC examiner reports, over <strong>70% of candidate failures</strong> in the English Essay paper stem directly from either the absence of a thesis statement or the formulation of a vague, descriptive sentence. A thesis statement is not a topic announcement (e.g. <em>"This essay will discuss corruption in Pakistan"</em>); it is your <strong>central arguable contention</strong> that answers the prompt decisively and defines your scope.
+                </p>
+
+                <div class="thesis-box" style="border-left-color: #f59e0b; background: rgba(245, 158, 11, 0.08);">
+                    <strong style="color: #f59e0b;"><i class="fa-solid fa-square-root-variable"></i> The Proven 4-Part Thesis Formula:</strong>
+                    <p>[Specific Prompt Topic] + [Definitive Analytical Claim] + [Primary Causal Rationale / Concession] + [Strategic Policy Roadmap]</p>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.25rem; color: var(--text-dark); margin-bottom: 16px;"><i class="fa-solid fa-code-compare" style="color:var(--secondary-color);"></i> Weak vs. Strong Thesis Statements: Comparative Analysis</h3>
+            
+            <div id="thesisExamplesContainer">
+                <!-- Dynamically rendered from data_written_prep.js -->
+            </div>
+        </article>
+
+        <!-- 3. FUNNEL INTRODUCTIONS & INVERTED-FUNNEL CONCLUSIONS -->
+        <article class="written-block" id="sec-intro-conclusion">
+            <div class="written-header-title">
+                <div class="written-icon-badge" style="background: #10b981;">
+                    <i class="fa-solid fa-paragraph"></i>
+                </div>
+                <div>
+                    <h2>Funnel Introductions &amp; Inverted-Funnel Conclusions</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Architecting the critical opening and closing paragraphs that shape the examiner's perception.</p>
+                </div>
+            </div>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-filter" style="color: #10b981;"></i> The Funnel Introduction Structure</h3>
+                    <ul>
+                        <li><strong>1. The Hook (1–2 sentences):</strong> An authoritative quote, epochal historical paradox, or profound philosophical observation establishing thematic gravitas.</li>
+                        <li><strong>2. General Context &amp; Significance (2–3 sentences):</strong> Broad context explaining why this prompt matters in current national or international dynamics.</li>
+                        <li><strong>3. The Problem Statement / Core Conflict (2 sentences):</strong> Highlighting the tension, contradiction, or policy crisis at hand.</li>
+                        <li><strong>4. Structural Outline Roadmap (2–3 sentences):</strong> Guiding the reader through the subsequent analytical trajectory of the essay.</li>
+                        <li><strong>5. The Thesis Statement (1–2 sentences):</strong> The definitive, decisive claim positioned strategically as the climax of the opening paragraph.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-trophy" style="color: #10b981;"></i> The Inverted-Funnel Conclusion</h3>
+                    <ul>
+                        <li><strong>1. Restatement of Thesis (1–2 sentences):</strong> Reassert your core contention using fresh vocabulary and synthetic phrasing (never copy verbatim from the intro).</li>
+                        <li><strong>2. Synthesis of Major Pillars (2–3 sentences):</strong> Weave together the primary analytical threads explored in the body paragraphs into a cohesive whole.</li>
+                        <li><strong>3. Rebuttal of Fatalism (1–2 sentences):</strong> Rejecting cynical surrender; demonstrating that structural obstacles are surmountable through dedicated statecraft.</li>
+                        <li><strong>4. The Visionary Closing Cadence (1–2 sentences):</strong> An inspiring, memorable concluding thought projecting a prosperous, dignified future.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;" id="sampleIntroConclusionContainer">
+                <!-- Injected via JS -->
+            </div>
+        </article>
+
+        <!-- 4. ARGUMENT DEVELOPMENT (THE P.E.E.L. FORMULA) -->
+        <article class="written-block" id="sec-argumentation">
+            <div class="written-header-title">
+                <div class="written-icon-badge" style="background: #6366f1;">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div>
+                    <h2>Argument Development: The P.E.E.L. Paragraphing Framework</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Transforming disjointed facts into rigorous, analytical, and substantiated academic arguments.</p>
+                </div>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark);">
+                A frequent critique in FPSC examiner reports is that candidates write <em>"narrative, journalistic paragraphs that wander aimlessly without proving a point."</em> In competitive examinations, every single body paragraph must be an autonomous block of persuasion adhering to the <strong>P.E.E.L. Framework</strong>:
+            </p>
+
+            <div class="peel-grid" id="peelGridContainer">
+                <!-- Injected via JS -->
+            </div>
+
+            <div style="background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; margin-top: 20px;">
+                <h4 style="color: var(--primary-color); font-size: 1.05rem; margin-bottom: 8px;"><i class="fa-solid fa-magnifying-glass-chart"></i> Exemplar P.E.E.L. Body Paragraph in Action:</h4>
+                <div id="samplePeelParagraph" style="line-height: 1.7; font-size: 0.95rem; color: var(--text-dark);">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+        </article>
+
+        <!-- 5. PRÉCIS WRITING RULES & PASSAGES -->
+        <article class="written-block" id="sec-precis">
+            <div class="written-header-title">
+                <div class="written-icon-badge" style="background: #ec4899;">
+                    <i class="fa-solid fa-compress"></i>
+                </div>
+                <div>
+                    <h2>Précis Writing Mastery: Rules, Step-by-Step Method &amp; Solved Exercises</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">The decisive 20-mark component of the English Précis &amp; Composition paper.</p>
+                </div>
+            </div>
+
+            <div class="guide-card-inner" style="margin-bottom: 24px;">
+                <h3><i class="fa-solid fa-gavel" style="color: #ec4899;"></i> The Golden Rules of Précis Writing</h3>
+                <ul id="precisRulesList">
+                    <!-- Injected via JS -->
+                </ul>
+            </div>
+
+            <h3 style="font-size: 1.25rem; color: var(--text-dark); margin-bottom: 16px;"><i class="fa-solid fa-pen-ruler" style="color: #ec4899;"></i> Solved Précis Exercise (Original vs. Notes vs. Final Précis)</h3>
+            <div id="precisExercisesContainer">
+                <!-- Injected via JS -->
+            </div>
+        </article>
+
+        <!-- 6. PAKISTAN AFFAIRS ANALYTICAL DESCRIPTIVE MODEL ANSWERS -->
+        <article class="written-block" id="sec-pak-affairs">
+            <div class="written-header-title">
+                <div class="written-icon-badge" style="background: #0d9488;">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                <div>
+                    <h2>Pakistan Affairs Analytical Questions &amp; 20-Mark Model Answers</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Full-length, high-scoring model answers structured with analytical headings, constitutional references, and policy roadmaps.</p>
+                </div>
+            </div>
+
+            <div id="pakAffairsContainer">
+                <!-- Injected via JS -->
+            </div>
+        </article>
+
+        <!-- 7. WHAT TO WRITE VS WHAT NOT TO WRITE (EXAMINER INSIGHTS) -->
+        <article class="written-block" id="sec-dos-donts">
+            <div class="written-header-title">
+                <div class="written-icon-badge" style="background: #14b8a6;">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+                <div>
+                    <h2>What to Write vs. What NOT to Write in an Essay</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Insider guidelines distilled directly from official FPSC and PPSC annual examiner evaluation reports.</p>
+                </div>
+            </div>
+
+            <div class="dos-donts-grid" id="dosDontsContainer">
+                <!-- Injected via JS -->
+            </div>
+        </article>
+
+        <!-- 8. ESSAY EVALUATION CHECKLIST RUBRIC -->
+        <article class="written-block" id="sec-checklist">
+            <div class="written-header-title">
+                <div class="written-icon-badge" style="background: #8b5cf6;">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <div>
+                    <h2>Interactive Essay Evaluation Checklist Rubric</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Use this 25-point self-assessment rubric to audit your draft before submitting it for evaluation.</p>
+                </div>
+            </div>
+
+            <div class="checklist-score-counter" id="checklistCounter">
+                <i class="fa-solid fa-chart-pie"></i> Evaluation Progress: <span id="checkedCount">0</span> / <span id="totalChecklistItems">0</span> criteria met (<span id="scorePercent">0%</span>)
+            </div>
+
+            <div class="eval-checklist-box" id="evalChecklistContainer">
+                <!-- Injected via JS -->
+            </div>
+        </article>
+
+        <!-- 9. HOW TO ANSWER 20-MARK DESCRIPTIVE QUESTIONS -->
+        <article class="written-block" id="sec-how-to-answer">
+            <div class="written-header-title">
+                <div class="written-icon-badge" style="background: #0284c7;">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div>
+                    <h2>The Anatomy of a High-Scoring 20-Mark Descriptive Answer</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Step-by-step methodology to score 16+ marks out of 20 in Current Affairs, Pakistan Affairs, and Islamic Studies.</p>
+                </div>
+            </div>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-clock" style="color: #0284c7;"></i> Time &amp; Space Management</h3>
+                    <ul>
+                        <li><strong>Time Allocation:</strong> Exactly 35 minutes per 20-mark question (4 questions = 140 minutes, leaving 10 minutes for review in a 3-hour paper).</li>
+                        <li><strong>Standard Length:</strong> 5 to 7 handwritten sides (approximately 750–900 words) of dense, analytical prose.</li>
+                        <li><strong>Equitable Distribution:</strong> Never spend 50 minutes on your favorite question and leave the 4th question rushed into 15 minutes. All questions carry equal marks!</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-sitemap" style="color: #0284c7;"></i> The 6-Tier Answer Structure</h3>
+                    <ul>
+                        <li><strong>1. Deconstructed Outline / Mind Map:</strong> Draw a neat, boxed 4–6 line outline right below the question title showing your structure.</li>
+                        <li><strong>2. Conceptual Introduction (1 paragraph):</strong> Define key terms and frame the historical or geopolitical context.</li>
+                        <li><strong>3. Core Analytical Pillars (5–7 distinct headings):</strong> Each heading must explore a distinct dimension (Political, Economic, Strategic, Social, Institutional).</li>
+                        <li><strong>4. Data Tables &amp; Conceptual Diagrams:</strong> Incorporate simple visual flowcharts, tabular comparisons, or constitutional article citations.</li>
+                        <li><strong>5. Critical Synthesis / Counter-Perspective:</strong> Address counter-arguments or international critiques.</li>
+                        <li><strong>6. Pragmatic Policy Recommendations &amp; Way Forward (5–6 bullet points):</strong> Tangible, realistic policy solutions followed by a forward-looking conclusion.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Professional Footer with Mandatory Policy Links -->
+    <footer style="background: #0f172a; color: #94a3b8; padding: 45px 20px 25px; margin-top: 60px; border-top: 1px solid #1e293b;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 30px;">
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 12px; font-family: 'Outfit', sans-serif;"><i class="fas fa-graduation-cap" style="color:#f59e0b; margin-right:8px;"></i>CSS Prep Central</h4>
+                <p style="font-size: 0.88rem; line-height: 1.6; color:#94a3b8;">Written Examination &amp; Essay Preparation Wing. Providing model solved essays, structured outlines, and academic guidance for civil service examinations.</p>
+            </div>
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">Master Essay Portals</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2;">
+                    <li><a href="international-relations-essays.html" style="color: #cbd5e1; text-decoration: none;">12 IR &amp; Geopolitics Essays</a></li>
+                    <li><a href="css-essays-2026.html" style="color: #cbd5e1; text-decoration: none;">CSS 2026 Solved Essays (10)</a></li>
+                    <li><a href="cce-essays-2025.html" style="color: #cbd5e1; text-decoration: none;">SPSC CCE 2025 Solved Essays (8)</a></li>
+                    <li><a href="upsc-essays-2023.html" style="color: #cbd5e1; text-decoration: none;">UPSC CSE 2023 Solved Papers (8)</a></li>
+                    <li><a href="essay-russia-ukraine-war.html" style="color: #cbd5e1; text-decoration: none;">Russia-Ukraine War Monograph</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">Legal &amp; Trust</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2;">
+                    <li><a href="privacy.html" style="color: #60a5fa; font-weight:600; text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="terms.html" style="color: #cbd5e1; text-decoration: none;">Terms of Service</a></li>
+                    <li><a href="disclaimer.html" style="color: #f87171; font-weight:600; text-decoration: none;">Official Disclaimer</a></li>
+                    <li><a href="about.html" style="color: #cbd5e1; text-decoration: none;">About Us &amp; Standards</a></li>
+                    <li><a href="contact.html" style="color: #cbd5e1; text-decoration: none;">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 1px solid #1e293b; text-align: center; font-size: 0.82rem; color: #64748b;">
+            <p>&copy; 2026 CSS Prep Central. All rights reserved. Disclaimer: Independent educational resource not affiliated with FPSC, SPSC, or any government authority.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data_written_prep.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = window.WRITTEN_PREP_DATA;
+            if (!data) return;
+
+            // 1. Render Essay Outlines
+            const topicTabs = document.getElementById('essayTopicTabs');
+            const outlineDisplay = document.getElementById('activeOutlineDisplay');
+            let activeTopicId = data.essayTopics[0].id;
+
+            function renderOutline() {
+                const topic = data.essayTopics.find(t => t.id === activeTopicId) || data.essayTopics[0];
+                topicTabs.innerHTML = data.essayTopics.map(t => `
+                    <button type="button" class="essay-topic-btn ${t.id === activeTopicId ? 'active' : ''}" data-id="${t.id}">
+                        ${t.title}
+                    </button>
+                `).join('');
+
+                topicTabs.querySelectorAll('.essay-topic-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        activeTopicId = btn.getAttribute('data-id');
+                        renderOutline();
+                    });
+                });
+
+                outlineDisplay.innerHTML = `
+                    <div class="essay-outline-wrapper fade-in">
+                        <div class="outline-title">
+                            <i class="fa-solid fa-book-open"></i> ${topic.title}
+                        </div>
+                        <div class="precis-meta-badge"><i class="fa-solid fa-tag"></i> ${topic.category}</div>
+
+                        <div class="thesis-box">
+                            <strong><i class="fa-solid fa-bullseye"></i> Thesis Statement:</strong>
+                            <p>${topic.thesisStatement}</p>
+                        </div>
+
+                        <h4 style="margin: 20px 0 10px; color: var(--text-dark); font-size: 1.1rem;"><i class="fa-solid fa-list-ol"></i> Comprehensive Structural Outline:</h4>
+                        ${topic.outline.roman.map(r => `
+                            <div class="outline-roman">${r.num}</div>
+                            ${r.points.map(p => `<div class="outline-alpha">${p}</div>`).join('')}
+                        `).join('')}
+
+                        <div style="margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                            <h4 style="color: var(--primary-color); font-size: 1.05rem; margin-bottom: 8px;"><i class="fa-solid fa-feather"></i> Exemplary Introduction Paragraph:</h4>
+                            <p style="font-size: 0.94rem; line-height: 1.7; color: var(--text-dark); font-style: italic; background: rgba(37,99,235,0.03); padding: 16px; border-radius: 8px;">${topic.sampleIntro}</p>
+
+                            <h4 style="color: var(--primary-color); font-size: 1.05rem; margin-top: 18px; margin-bottom: 8px;"><i class="fa-solid fa-flag-checkered"></i> Exemplary Conclusion Paragraph:</h4>
+                            <p style="font-size: 0.94rem; line-height: 1.7; color: var(--text-dark); font-style: italic; background: rgba(16,185,129,0.03); padding: 16px; border-radius: 8px;">${topic.sampleConclusion}</p>
+                        </div>
+                    </div>
+                `;
+            }
+            renderOutline();
+
+            // 2. Render Thesis Examples
+            const thesisContainer = document.getElementById('thesisExamplesContainer');
+            thesisContainer.innerHTML = data.thesisGuide.examples.map(ex => `
+                <div style="background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+                    <h4 style="color: var(--text-dark); font-size: 1.05rem; margin-bottom: 10px;"><i class="fa-solid fa-heading" style="color:var(--secondary-color);"></i> Prompt: "${ex.topic}"</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 12px;">
+                        <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 14px;">
+                            <span style="color: var(--danger); font-weight: 700; font-size: 0.85rem;"><i class="fa-solid fa-xmark"></i> WEAK / DESCRIPTIVE:</span>
+                            <p style="margin: 6px 0; font-size: 0.9rem; color: var(--text-dark);">${ex.weak}</p>
+                            <span style="font-size: 0.8rem; color: var(--text-light); font-style: italic;">Critique: ${ex.critique}</span>
+                        </div>
+                        <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 14px;">
+                            <span style="color: var(--success); font-weight: 700; font-size: 0.85rem;"><i class="fa-solid fa-check"></i> STRONG / ANALYTICAL:</span>
+                            <p style="margin: 6px 0; font-size: 0.9rem; color: var(--text-dark); font-weight: 500;">${ex.strong}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // 3. Render PEEL Framework
+            const peelContainer = document.getElementById('peelGridContainer');
+            peelContainer.innerHTML = data.peelFramework.components.map(c => `
+                <div class="peel-card">
+                    <h4>${c.step}</h4>
+                    <p>${c.desc}</p>
+                </div>
+            `).join('');
+            document.getElementById('samplePeelParagraph').innerText = data.peelFramework.sampleParagraph;
+
+            // 4. Render Précis Rules & Exercises
+            const precisRulesList = document.getElementById('precisRulesList');
+            precisRulesList.innerHTML = data.precisGuide.coreRules.map(r => `<li>${r}</li>`).join('');
+
+            const precisContainer = document.getElementById('precisExercisesContainer');
+            precisContainer.innerHTML = data.precisGuide.exercises.map(ex => `
+                <div style="background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; margin-bottom: 20px;">
+                    <h4 style="color: var(--text-dark); font-size: 1.1rem; margin-bottom: 8px;">${ex.title}</h4>
+                    <div style="display: flex; gap: 10px; margin-bottom: 14px;">
+                        <span class="precis-meta-badge">Original: ${ex.originalWordCount} words</span>
+                        <span class="precis-meta-badge" style="background: rgba(16,185,129,0.1); color: var(--success);">Target: ${ex.targetWordCount}</span>
+                    </div>
+
+                    <div class="precis-comparison">
+                        <div class="precis-original">
+                            <strong style="display:block; margin-bottom: 8px; color: var(--text-dark);"><i class="fa-solid fa-file-lines"></i> Original Passage:</strong>
+                            ${ex.originalText}
+                        </div>
+                        <div class="precis-solution">
+                            <strong style="display:block; margin-bottom: 8px; color: var(--success);"><i class="fa-solid fa-award"></i> Model Précis (Title: "${ex.finalPrecisTitle}"):</strong>
+                            <p style="margin-bottom: 10px;">${ex.finalPrecisText}</p>
+                            <span style="font-size: 0.82rem; font-weight: 700; color: var(--success);"><i class="fa-solid fa-check-circle"></i> Word Count: ${ex.finalPrecisWordCount} words (Exactly 1/3rd)</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // 5. Render Pakistan Affairs Analytical Models
+            const paContainer = document.getElementById('pakAffairsContainer');
+            paContainer.innerHTML = data.pakAffairsModels.map(q => `
+                <div class="model-answer-card">
+                    <div class="model-question-header">
+                        <h3><i class="fa-solid fa-circle-question" style="color:var(--secondary-color);"></i> ${q.question}</h3>
+                        <div class="model-answer-meta">
+                            <span class="exam-badge badge-fpsc"><i class="fa-solid fa-award"></i> ${q.marks}</span>
+                            <span class="exam-badge badge-bs16"><i class="fa-solid fa-clock"></i> Suggested Time: ${q.suggestedTime}</span>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(37,99,235,0.04); border-left: 4px solid var(--secondary-color); padding: 14px 18px; border-radius: 6px; margin-bottom: 20px;">
+                        <strong style="color: var(--primary-color); display: block; margin-bottom: 6px;"><i class="fa-solid fa-sitemap"></i> Deconstructed Answer Blueprint:</strong>
+                        <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: var(--text-dark);">
+                            ${q.outlineStructure.map(s => `<li>${s}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="model-answer-content">
+                        ${q.modelAnswerText}
+                    </div>
+                </div>
+            `).join('');
+
+            // 6. Render Do's and Don'ts
+            const dosDontsContainer = document.getElementById('dosDontsContainer');
+            dosDontsContainer.innerHTML = `
+                <div class="do-card">
+                    <h3><i class="fa-solid fa-circle-check"></i> What to DO in Your Essay</h3>
+                    <ul>
+                        ${data.dosAndDonts.dos.map(d => `<li>${d}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="dont-card">
+                    <h3><i class="fa-solid fa-circle-xmark"></i> What NOT to Do (Examiner Red Flags)</h3>
+                    <ul>
+                        ${data.dosAndDonts.donts.map(d => `<li>${d}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+
+            // 7. Render Interactive Checklist
+            const checklistContainer = document.getElementById('evalChecklistContainer');
+            let totalItems = 0;
+            let checkedItems = 0;
+
+            checklistContainer.innerHTML = data.checklist.map((cat, catIdx) => {
+                totalItems += cat.items.length;
+                return `
+                    <div class="eval-category-title"><i class="fa-solid fa-check-to-slot"></i> ${cat.category}</div>
+                    ${cat.items.map((item, itemIdx) => `
+                        <div class="eval-check-item">
+                            <input type="checkbox" id="check_${catIdx}_${itemIdx}" class="eval-cb" />
+                            <label for="check_${catIdx}_${itemIdx}">${item}</label>
+                        </div>
+                    `).join('')}
+                `;
+            }).join('');
+
+            document.getElementById('totalChecklistItems').innerText = totalItems;
+
+            function updateChecklistProgress() {
+                const checked = document.querySelectorAll('.eval-cb:checked').length;
+                document.getElementById('checkedCount').innerText = checked;
+                const pct = Math.round((checked / totalItems) * 100);
+                document.getElementById('scorePercent').innerText = `${pct}%`;
+            }
+
+            document.querySelectorAll('.eval-cb').forEach(cb => {
+                cb.addEventListener('change', updateChecklistProgress);
+            });
+
+            // Dark Mode Toggle Support
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    document.documentElement.classList.toggle('dark-mode', isDark);
+                    localStorage.setItem('mcqs_dark_mode', isDark ? 'true' : 'false');
+                });
+            }
+
+            if (localStorage.getItem('mcqs_dark_mode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

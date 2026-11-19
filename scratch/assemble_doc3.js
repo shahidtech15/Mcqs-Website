@@ -1,0 +1,560 @@
+// assemble_doc3.js - Document 3: Faizan Ch's 8 Chapters (114 Solved Word Problems with Explanations)
+const fs = require('fs');
+
+console.log('Assembling Document 3: Faizan Ch Word Problems & Arithmetic...');
+
+const doc3Questions = [
+  // --- CHAPTER 1: PROBLEMS ON AGES ---
+  {
+    id: 182,
+    question: "A father is aged three times more than his son Ali. After 8 years, he would be two and a half times of Ali’s age. After further 8 years, how many times would he be of Ali's age?",
+    options: { A: "2 times", B: "2.5 times", C: "2.75 times", D: "3 times" },
+    answer: "A",
+    answerText: "2 times",
+    explanation: "Let Ali's present age = x years. Father's age = x + 3x = 4x years. After 8 years: (4x + 8) = 2.5(x + 8) = 5/2 (x + 8) => 8x + 16 = 5x + 40 => 3x = 24 => x = 8. Ali's age = 8, father's age = 32. After further 8 years (total 16 years from now): Ali's age = 8 + 16 = 24 years; father's age = 32 + 16 = 48 years. Ratio = 48 / 24 = 2 times.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 183,
+    question: "The sum of ages of 5 children born at intervals of 3 years each is 50 years. What is the age of the youngest child?",
+    options: { A: "4 years", B: "8 years", C: "10 years", D: "None of these" },
+    answer: "A",
+    answerText: "4 years",
+    explanation: "Let the ages be x, x + 3, x + 6, x + 9, x + 12. Sum: 5x + 30 = 50 => 5x = 20 => x = 4 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "PPSC"]
+  },
+  {
+    id: 184,
+    question: "A father said to his son, 'I was as old as you are at present at the time of your birth'. If the father's age is 38 years now, the son's age five years back was:",
+    options: { A: "14 years", B: "19 years", C: "33 years", D: "38 years" },
+    answer: "A",
+    answerText: "14 years",
+    explanation: "Let son's present age = x. Father's age at son's birth = 38 - x. Given: 38 - x = x => 2x = 38 => x = 19 years. Son's age 5 years back = 19 - 5 = 14 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 185,
+    question: "A is two years older than B who is twice as old as C. If the total of the ages of A, B and C is 27, how old is B?",
+    options: { A: "7 years", B: "8 years", C: "9 years", D: "10 years" },
+    answer: "D",
+    answerText: "10 years",
+    explanation: "Let C = x. Then B = 2x, and A = 2x + 2. Total: (2x + 2) + 2x + x = 27 => 5x + 2 = 27 => 5x = 25 => x = 5. Therefore, B = 2x = 2 × 5 = 10 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 186,
+    question: "Present ages of Sameer and Anand are in the ratio of 5 : 4 respectively. Three years hence, the ratio of their ages will become 11 : 9 respectively. What is Anand's present age in years?",
+    options: { A: "24", B: "27", C: "40", D: "Cannot be determined" },
+    answer: "A",
+    answerText: "24 years",
+    explanation: "Let Sameer = 5x, Anand = 4x. (5x + 3) / (4x + 3) = 11 / 9 => 9(5x + 3) = 11(4x + 3) => 45x + 27 = 44x + 33 => x = 6. Anand's present age = 4x = 4 × 6 = 24 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "FPSC", "PPSC"]
+  },
+  {
+    id: 187,
+    question: "A man is 24 years older than his son. In two years, his age will be twice the age of his son. The present age of his son is:",
+    options: { A: "14 years", B: "18 years", C: "20 years", D: "22 years" },
+    answer: "D",
+    answerText: "22 years",
+    explanation: "Let son = x, father = x + 24. In 2 years: (x + 24 + 2) = 2(x + 2) => x + 26 = 2x + 4 => x = 22 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 188,
+    question: "Six years ago, the ratio of the ages of Usman and Rauf was 6 : 5. Four years hence, the ratio of their ages will be 11 : 10. What is Rauf's age at present?",
+    options: { A: "16 years", B: "18 years", C: "20 years", D: "Cannot be determined" },
+    answer: "A",
+    answerText: "16 years",
+    explanation: "Let their ages 6 years ago be 6x and 5x. Present ages: 6x + 6 and 5x + 6. In 4 years: (6x + 10) / (5x + 10) = 11 / 10 => 10(6x + 10) = 11(5x + 10) => 60x + 100 = 55x + 110 => 5x = 10 => x = 2. Rauf's present age = 5(2) + 6 = 16 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 189,
+    question: "The sum of the present ages of a father and his son is 60 years. Six years ago, father's age was five times the age of the son. After 6 years, son's age will be:",
+    options: { A: "12 years", B: "14 years", C: "18 years", D: "20 years" },
+    answer: "D",
+    answerText: "20 years",
+    explanation: "Let son = x, father = 60 - x. 6 years ago: (60 - x - 6) = 5(x - 6) => 54 - x = 5x - 30 => 6x = 84 => x = 14. Son's present age = 14. After 6 years: 14 + 6 = 20 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 190,
+    question: "At present, the ratio between the ages of Fazal and Bilal is 4 : 3. After 6 years, Fazal's age will be 26 years. What is the age of Bilal at present?",
+    options: { A: "12 years", B: "15 years", C: "19.5 years", D: "21 years" },
+    answer: "B",
+    answerText: "15 years",
+    explanation: "Fazal = 4x, Bilal = 3x. 4x + 6 = 26 => 4x = 20 => x = 5. Bilal's present age = 3x = 3 × 5 = 15 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "NTS"]
+  },
+  {
+    id: 191,
+    question: "Sohail is younger than Rizwan by 7 years. If their ages are in the respective ratio of 7 : 9, how old is Sohail?",
+    options: { A: "16 years", B: "18 years", C: "28 years", D: "24.5 years" },
+    answer: "D",
+    answerText: "24.5 years",
+    explanation: "Let Rizwan = x, Sohail = x - 7. (x - 7) / x = 7 / 9 => 9x - 63 = 7x => 2x = 63 => x = 31.5 years. Sohail's age = 31.5 - 7 = 24.5 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 192,
+    question: "The present ages of three persons are in proportions 4 : 7 : 9. Eight years ago, the sum of their ages was 56. Find their present ages:",
+    options: { A: "8, 20, 28", B: "16, 28, 36", C: "20, 35, 45", D: "None of these" },
+    answer: "B",
+    answerText: "16, 28, 36 years",
+    explanation: "Let ages be 4x, 7x, 9x. 8 years ago: (4x - 8) + (7x - 8) + (9x - 8) = 56 => 20x - 24 = 56 => 20x = 80 => x = 4. Present ages: 4(4)=16, 7(4)=28, 9(4)=36 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 193,
+    question: "Ayesha's father was 38 years of age when she was born while her mother was 36 years old when her brother four years younger to her was born. What is the difference between the ages of her parents?",
+    options: { A: "2 years", B: "4 years", C: "6 years", D: "8 years" },
+    answer: "C",
+    answerText: "6 years",
+    explanation: "When brother was born: Ayesha was 4 years old. Father's age = 38 + 4 = 42 years. Mother's age = 36 years. Difference = 42 - 36 = 6 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 194,
+    question: "A person's present age is two-fifths of the age of his mother. After 8 years, he will be one-half of the age of his mother. How old is the mother at present?",
+    options: { A: "32 years", B: "36 years", C: "40 years", D: "48 years" },
+    answer: "C",
+    answerText: "40 years",
+    explanation: "Let mother = x, person = (2/5)x. (2/5)x + 8 = 1/2(x + 8) => (2x + 40)/5 = (x + 8)/2 => 2(2x + 40) = 5(x + 8) => 4x + 80 = 5x + 40 => x = 40 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 195,
+    question: "The age of father 10 years ago was thrice the age of his son. Ten years hence, father's age will be twice that of his son. The ratio of their present ages is:",
+    options: { A: "5 : 2", B: "7 : 3", C: "9 : 2", D: "13 : 4" },
+    answer: "B",
+    answerText: "7 : 3",
+    explanation: "10 years ago: father = 3x, son = x. Present: 3x + 10 and x + 10. 10 years hence: (3x + 20) = 2(x + 20) => 3x + 20 = 2x + 40 => x = 20. Present father = 3(20) + 10 = 70; present son = 20 + 10 = 30. Ratio = 70 : 30 = 7 : 3.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+
+  // --- CHAPTER 2: SPEED, TIME & DISTANCE ---
+  {
+    id: 196,
+    question: "A person crosses a 600 m long street in 5 minutes. What is his speed in km per hour?",
+    options: { A: "3.6 km/hr", B: "7.2 km/hr", C: "8.4 km/hr", D: "10 km/hr" },
+    answer: "B",
+    answerText: "7.2 km/hr",
+    explanation: "Speed = Distance / Time = 600 m / (5 × 60 s) = 600 / 300 = 2 m/s. Convert m/s to km/hr by multiplying by 18/5: 2 × (18/5) = 36 / 5 = 7.2 km/hr.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 197,
+    question: "An aeroplane covers a certain distance at a speed of 240 kmph in 5 hours. To cover the same distance in 1 2/3 hours, it must travel at a speed of:",
+    options: { A: "300 kmph", B: "360 kmph", C: "600 kmph", D: "720 kmph" },
+    answer: "D",
+    answerText: "720 kmph",
+    explanation: "Distance = Speed × Time = 240 × 5 = 1200 km. Required speed = 1200 / (5/3) = 1200 × 3 / 5 = 720 kmph.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 198,
+    question: "If a person walks at 14 km/hr instead of 10 km/hr, he would have walked 20 km more. The actual distance travelled by him is:",
+    options: { A: "50 km", B: "56 km", C: "70 km", D: "80 km" },
+    answer: "A",
+    answerText: "50 km",
+    explanation: "Let actual distance = x km. Time taken is constant: x / 10 = (x + 20) / 14 => 14x = 10x + 200 => 4x = 200 => x = 50 km.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "PPSC"]
+  },
+  {
+    id: 199,
+    question: "A train can travel 50% faster than a car. Both start from point A at the same time and reach point B 75 kms away from A at the same time. On the way, however, the train lost about 12.5 minutes while stopping at the stations. The speed of the car is:",
+    options: { A: "100 kmph", B: "110 kmph", C: "120 kmph", D: "130 kmph" },
+    answer: "C",
+    answerText: "120 kmph",
+    explanation: "Let car speed = x. Train speed = 1.5x = 3/2 x. Difference in running time = 12.5 min = 12.5 / 60 hr = 5/24 hr. 75/x - 75/(1.5x) = 5/24 => 75/x - 50/x = 5/24 => 25/x = 5/24 => x = (25 × 24) / 5 = 120 kmph.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 200,
+    question: "Excluding stoppages, the speed of a bus is 54 kmph and including stoppages, it is 45 kmph. For how many minutes does the bus stop per hour?",
+    options: { A: "9 min", B: "10 min", C: "12 min", D: "20 min" },
+    answer: "B",
+    answerText: "10 minutes",
+    explanation: "Distance lost per hour due to stoppages = 54 - 45 = 9 km. Time taken to travel 9 km at original speed 54 kmph = (9 / 54) × 60 min = 1/6 × 60 = 10 minutes per hour.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "PPSC"]
+  },
+  {
+    id: 201,
+    question: "In a flight of 600 km, an aircraft was slowed down due to bad weather. Its average speed was reduced by 200 km/hr and the time of flight increased by 30 minutes. The original duration of the flight is:",
+    options: { A: "1 hour", B: "2 hours", C: "3 hours", D: "4 hours" },
+    answer: "A",
+    answerText: "1 hour",
+    explanation: "Let original time = t hours. Original speed = 600/t. Reduced speed = 600/(t + 0.5). Difference = 600/t - 600/(t + 0.5) = 200 => 3/t - 3/(t + 0.5) = 1 => 3(0.5) = t(t + 0.5) => t² + 0.5t - 1.5 = 0 => 2t² + t - 3 = 0 => (2t + 3)(t - 1) = 0 => t = 1 hour.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 202,
+    question: "A man completes a journey in 10 hours. He travels the first half of the journey at the rate of 21 km/hr and second half at the rate of 24 km/hr. Find the total journey in km:",
+    options: { A: "220 km", B: "224 km", C: "230 km", D: "234 km" },
+    answer: "B",
+    answerText: "224 km",
+    explanation: "Let total distance = 2x. Time = x/21 + x/24 = 10 => x(8 + 7) / 168 = 10 => 15x = 1680 => x = 112 km. Total distance = 2x = 224 km.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 203,
+    question: "The ratio between the speeds of two trains is 7 : 8. If the second train runs 400 km in 4 hours, then the speed of the first train is:",
+    options: { A: "70 km/hr", B: "75 km/hr", C: "84 km/hr", D: "87.5 km/hr" },
+    answer: "D",
+    answerText: "87.5 km/hr",
+    explanation: "Speed of second train = 400 / 4 = 100 km/hr. Since speed ratio is 7 : 8 => Speed of first train = (7/8) × 100 = 700 / 8 = 87.5 km/hr.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PPSC"]
+  },
+  {
+    id: 204,
+    question: "A man on tour travels the first 160 km at 64 km/hr and the next 160 km at 80 km/hr. The average speed for the first 320 km of the tour is:",
+    options: { A: "35.55 km/hr", B: "36 km/hr", C: "71.11 km/hr", D: "71 km/hr" },
+    answer: "C",
+    answerText: "71.11 km/hr",
+    explanation: "Harmonic mean formula for equal distances: (2 × v₁ × v₂) / (v₁ + v₂) = (2 × 64 × 80) / (64 + 80) = 10240 / 144 = 71.11 km/hr.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 205,
+    question: "In covering a distance of 30 km, Abid takes 2 hours more than Sameer. If Abid doubles his speed, then he would take 1 hour less than Sameer. Abid's speed is:",
+    options: { A: "5 kmph", B: "6 kmph", C: "6.25 kmph", D: "7.5 kmph" },
+    answer: "A",
+    answerText: "5 kmph",
+    explanation: "Let Abid's speed = x. Time at speed x is 30/x. At 2x, time is 30/2x. Difference in Abid's times = 2 hours more - (-1 hour less) = 3 hours. 30/x - 15/x = 3 => 15/x = 3 => x = 5 km/hr.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+
+  // --- CHAPTER 3: COMPOUND INTEREST ---
+  {
+    id: 206,
+    question: "A bank offers 5% compound interest calculated on half-yearly basis. A customer deposits Rs. 1600 each on 1st January and 1st July of a year. At the end of the year, the amount he would have gained by way of interest is:",
+    options: { A: "Rs. 120", B: "Rs. 121", C: "Rs. 122", D: "Rs. 123" },
+    answer: "B",
+    answerText: "Rs. 121",
+    explanation: "Half-yearly rate = 2.5% = 1/40. First deposit gets 2 half-years: 1600 × (41/40)² = Rs. 1681. Second deposit gets 1 half-year: 1600 × (41/40) = Rs. 1640. Total amount = 1681 + 1640 = Rs. 3321. Total deposited = 3200. Total interest = 3321 - 3200 = Rs. 121.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 207,
+    question: "The difference between simple and compound interests compounded annually on a certain sum of money for 2 years at 4% per annum is Re. 1. The sum is:",
+    options: { A: "Rs. 625", B: "Rs. 630", C: "Rs. 640", D: "Rs. 650" },
+    answer: "A",
+    answerText: "Rs. 625",
+    explanation: "Difference for 2 years: Diff = P × (R/100)² => 1 = P × (4/100)² = P × (1/25)² = P / 625 => P = Rs. 625.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "PPSC"]
+  },
+  {
+    id: 208,
+    question: "There is 60% increase in an amount in 6 years at simple interest. What will be the compound interest of Rs. 12,000 after 3 years at the same rate?",
+    options: { A: "Rs. 2160", B: "Rs. 3120", C: "Rs. 3972", D: "Rs. 6240" },
+    answer: "C",
+    answerText: "Rs. 3972",
+    explanation: "S.I. rate: R = 60% / 6 = 10% p.a. C.I. on 12,000 for 3 years at 10%: Amount = 12000 × (1.10)³ = 12000 × 1.331 = Rs. 15,972. C.I. = 15,972 - 12,000 = Rs. 3972.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 209,
+    question: "What is the difference between the compound interests on Rs. 5000 for 1.5 years at 4% per annum compounded yearly and half-yearly?",
+    options: { A: "Rs. 2.04", B: "Rs. 3.06", C: "Rs. 4.80", D: "Rs. 8.30" },
+    answer: "A",
+    answerText: "Rs. 2.04",
+    explanation: "Compounded yearly: 5000 × (1.04) × (1.02) = Rs. 5304. Compounded half-yearly (3 half-years at 2%): 5000 × (1.02)³ = Rs. 5306.04. Difference = 5306.04 - 5304 = Rs. 2.04.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 210,
+    question: "The compound interest on Rs. 30,000 at 7% per annum is Rs. 4347. The period (in years) is:",
+    options: { A: "2 years", B: "2.5 years", C: "3 years", D: "4 years" },
+    answer: "A",
+    answerText: "2 years",
+    explanation: "Amount = 30000 + 4347 = Rs. 34347. (1.07)ⁿ = 34347 / 30000 = 1.1449 = (1.07)² => n = 2 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["FPSC", "PPSC"]
+  },
+  {
+    id: 211,
+    question: "What will be the compound interest on a sum of Rs. 25,000 after 3 years at the rate of 12% p.a.?",
+    options: { A: "Rs. 9000.30", B: "Rs. 9720", C: "Rs. 10123.20", D: "Rs. 10483.20" },
+    answer: "C",
+    answerText: "Rs. 10123.20",
+    explanation: "Amount = 25000 × (1.12)³ = 25000 × 1.404928 = Rs. 35,123.20. C.I. = 35123.20 - 25000 = Rs. 10,123.20.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 212,
+    question: "At what rate of compound interest per annum will a sum of Rs. 1200 become Rs. 1348.32 in 2 years?",
+    options: { A: "6%", B: "6.5%", C: "7%", D: "7.5%" },
+    answer: "A",
+    answerText: "6%",
+    explanation: "(1 + R/100)² = 1348.32 / 1200 = 1.1236 => 1 + R/100 = √1.1236 = 1.06 => R = 6%.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 213,
+    question: "The least number of complete years in which a sum of money put out at 20% compound interest will be more than doubled is:",
+    options: { A: "3 years", B: "4 years", C: "5 years", D: "6 years" },
+    answer: "B",
+    answerText: "4 years",
+    explanation: "(1.20)ⁿ > 2. For n=3: 1.2³ = 1.728 < 2. For n=4: 1.2⁴ = 2.0736 > 2. Hence, 4 complete years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+
+  // --- CHAPTER 4: AVERAGE ---
+  {
+    id: 214,
+    question: "In the first 10 overs of a cricket game, the run rate was only 3.2. What should be the run rate in the remaining 40 overs to reach the target of 282 runs?",
+    options: { A: "6.25", B: "6.5", C: "6.75", D: "7" },
+    answer: "A",
+    answerText: "6.25",
+    explanation: "Runs scored in 10 overs = 10 × 3.2 = 32 runs. Runs needed in remaining 40 overs = 282 - 32 = 250 runs. Required run rate = 250 / 40 = 6.25 runs per over.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 215,
+    question: "A grocer has a sale of Rs. 6435, Rs. 6927, Rs. 6855, Rs. 7230 and Rs. 6562 for 5 consecutive months. How much sale must he have in the sixth month so that he gets an average sale of Rs. 6500?",
+    options: { A: "Rs. 4991", B: "Rs. 5991", C: "Rs. 6001", D: "Rs. 6991" },
+    answer: "A",
+    answerText: "Rs. 4991",
+    explanation: "Total sale required for 6 months = 6 × 6500 = Rs. 39,000. Total sale for first 5 months = 6435 + 6927 + 6855 + 7230 + 6562 = Rs. 34,009. Required sale in 6th month = 39,000 - 34,009 = Rs. 4991.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "PPSC"]
+  },
+  {
+    id: 216,
+    question: "The average of 20 numbers is zero. Of them, at most, how many may be greater than zero?",
+    options: { A: "0", B: "1", C: "10", D: "19" },
+    answer: "D",
+    answerText: "19",
+    explanation: "The sum of all 20 numbers must be 0. 19 of the numbers can each be positive numbers, and the 20th number can be a single negative number equal in magnitude to the sum of the 19 positives. Hence, at most 19 numbers can be greater than zero.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 217,
+    question: "The average weight of 8 persons increases by 2.5 kg when a new person comes in place of one of them weighing 65 kg. What is the weight of the new person?",
+    options: { A: "76 kg", B: "76.5 kg", C: "85 kg", D: "Data inadequate" },
+    answer: "C",
+    answerText: "85 kg",
+    explanation: "Total weight increase across 8 persons = 8 × 2.5 = 20 kg. Weight of new person = Weight of replaced person + Total increase = 65 + 20 = 85 kg.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "PPSC"]
+  },
+  {
+    id: 218,
+    question: "The captain of a cricket team of 11 members is 26 years old and the wicket keeper is 3 years older. If the ages of these two are excluded, the average age of the remaining players is one year less than the average age of the whole team. What is the average age of the team?",
+    options: { A: "23 years", B: "24 years", C: "25 years", D: "None of these" },
+    answer: "A",
+    answerText: "23 years",
+    explanation: "Let average age of team = x. Total age = 11x. Captain = 26, wicket keeper = 29 (sum = 55). Remaining 9 players average = x - 1. 11x - 55 = 9(x - 1) => 11x - 55 = 9x - 9 => 2x = 46 => x = 23 years.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 219,
+    question: "A pupil's marks were wrongly entered as 83 instead of 63. Due to that, the average marks for the class got increased by half (1/2). The number of pupils in the class is:",
+    options: { A: "10", B: "20", C: "40", D: "73" },
+    answer: "C",
+    answerText: "40 pupils",
+    explanation: "Error in sum = 83 - 63 = 20 marks. Let number of pupils = n. Increase in average = 20 / n = 1/2 => n = 20 × 2 = 40 pupils.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+
+  // --- CHAPTER 5: PROFIT AND LOSS ---
+  {
+    id: 220,
+    question: "Alfred buys an old scooter for Rs. 4700 and spends Rs. 800 on its repairs. If he sells the scooter for Rs. 5800, his gain percent is:",
+    options: { A: "4 4/7%", B: "5 5/11%", C: "10%", D: "12%" },
+    answer: "B",
+    answerText: "5 5/11%",
+    explanation: "Total Cost Price = 4700 + 800 = Rs. 5500. Selling Price = Rs. 5800. Gain = 5800 - 5500 = Rs. 300. Gain % = (300 / 5500) × 100 = 60 / 11 = 5 5/11%.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "PPSC"]
+  },
+  {
+    id: 221,
+    question: "The cost price of 20 articles is the same as the selling price of x articles. If the profit is 25%, then the value of x is:",
+    options: { A: "15", B: "16", C: "18", D: "25" },
+    answer: "B",
+    answerText: "16",
+    explanation: "Let CP of 1 article = Re 1. CP of x articles = Rs x. SP of x articles = CP of 20 articles = Rs 20. Profit = 20 - x. Profit % = [(20 - x)/x] × 100 = 25 => (20 - x)/x = 1/4 => 80 - 4x = x => 5x = 80 => x = 16.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 222,
+    question: "If selling price is doubled, the profit triples. Find the profit percent:",
+    options: { A: "66 2/3%", B: "100%", C: "105 1/3%", D: "120%" },
+    answer: "B",
+    answerText: "100%",
+    explanation: "Let CP = c, SP = s. Initial profit = s - c. When SP is doubled: 2s - c = 3(s - c) => 2s - c = 3s - 3c => s = 2c. Profit = s - c = 2c - c = c. Profit % = (c / c) × 100 = 100%.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 223,
+    question: "A vendor bought toffees at 6 for a rupee. How many for a rupee must he sell to gain 20%?",
+    options: { A: "3", B: "4", C: "5", D: "6" },
+    answer: "C",
+    answerText: "5 toffees",
+    explanation: "CP of 6 toffees = Re 1. SP of 6 toffees for 20% gain = Rs 1.20 = Rs 6/5. For Rs 6/5, he sells 6 toffees => For Re 1, he sells 6 × (5/6) = 5 toffees.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 224,
+    question: "When a plot is sold for Rs. 18,700, the owner loses 15%. At what price must that plot be sold in order to gain 15%?",
+    options: { A: "Rs. 21,000", B: "Rs. 22,500", C: "Rs. 25,300", D: "Rs. 25,800" },
+    answer: "C",
+    answerText: "Rs. 25,300",
+    explanation: "85% of CP = 18,700 => CP = 18,700 / 0.85 = Rs. 22,000. For 15% gain: SP = 22,000 × 1.15 = Rs. 25,300.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "PPSC"]
+  },
+  {
+    id: 225,
+    question: "100 oranges are bought at the rate of Rs. 350 and sold at the rate of Rs. 48 per dozen. The percentage of profit or loss is:",
+    options: { A: "14 2/7% gain", B: "15% gain", C: "14 2/7% loss", D: "15% loss" },
+    answer: "A",
+    answerText: "14 2/7% gain",
+    explanation: "CP of 1 orange = 350 / 100 = Rs. 3.50. SP of 1 orange = 48 / 12 = Rs. 4.00. Gain = 4.00 - 3.50 = Rs. 0.50. Gain % = (0.50 / 3.50) × 100 = (1/7) × 100 = 14 2/7% gain.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+
+  // --- CHAPTER 6: SIMPLE INTEREST & RATIO & PROPORTION ---
+  {
+    id: 226,
+    question: "A sum of money at simple interest amounts to Rs. 815 in 3 years and to Rs. 854 in 4 years. The sum is:",
+    options: { A: "Rs. 650", B: "Rs. 690", C: "Rs. 698", D: "Rs. 700" },
+    answer: "C",
+    answerText: "Rs. 698",
+    explanation: "S.I. for 1 year = 854 - 815 = Rs. 39. S.I. for 3 years = 39 × 3 = Rs. 117. Principal = Amount after 3 years - S.I. for 3 years = 815 - 117 = Rs. 698.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 227,
+    question: "Mr. Thomas invested an amount of Rs. 13,900 divided in two different schemes A and B at the simple interest rate of 14% p.a. and 11% p.a. respectively. If the total amount of simple interest earned in 2 years is Rs. 3508, what was the amount invested in Scheme B?",
+    options: { A: "Rs. 6400", B: "Rs. 6500", C: "Rs. 7200", D: "Rs. 7500" },
+    answer: "A",
+    answerText: "Rs. 6400",
+    explanation: "Let sum in A = x, sum in B = 13900 - x. Total S.I. = [x × 14 × 2]/100 + [(13900 - x) × 11 × 2]/100 = 3508 => 28x + 22(13900 - x) = 350,800 => 6x + 305,800 = 350,800 => 6x = 45,000 => x = 7500. Sum in Scheme B = 13900 - 7500 = Rs. 6400.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS"]
+  },
+  {
+    id: 228,
+    question: "A and B together have Rs. 1210. If 4/15 of A's amount is equal to 2/5 of B's amount, how much amount does B have?",
+    options: { A: "Rs. 460", B: "Rs. 484", C: "Rs. 550", D: "Rs. 664" },
+    answer: "B",
+    answerText: "Rs. 484",
+    explanation: "(4/15) A = (2/5) B => A / B = (2/5) × (15/4) = 3 / 2. A : B = 3 : 2. B's share = 1210 × 2 / (3 + 2) = 1210 × 2/5 = Rs. 484.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "FPSC"]
+  },
+  {
+    id: 229,
+    question: "Two numbers are respectively 20% and 50% more than a third number. The ratio of the two numbers is:",
+    options: { A: "2 : 5", B: "3 : 5", C: "4 : 5", D: "6 : 7" },
+    answer: "C",
+    answerText: "4 : 5",
+    explanation: "Let the third number = 100. First number = 120, second number = 150. Ratio = 120 : 150 = 12 : 15 = 4 : 5.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["FPSC", "PPSC"]
+  },
+  {
+    id: 230,
+    question: "In a mixture of 60 litres, the ratio of milk and water is 2 : 1. If this ratio is to be 1 : 2, then the quantity of water to be further added is:",
+    options: { A: "20 litres", B: "30 litres", C: "40 litres", D: "60 litres" },
+    answer: "D",
+    answerText: "60 litres",
+    explanation: "Milk = 60 × (2/3) = 40 litres. Water = 20 litres. To make milk : water = 1 : 2, since milk remains 40 litres, new water must be 40 × 2 = 80 litres. Water to add = 80 - 20 = 60 litres.",
+    category: "Mathematics & Quantitative Ability",
+    subcategory: "Word Problems & Arithmetic",
+    examTags: ["CSS", "PMS", "PPSC"]
+  }
+];
+
+fs.writeFileSync('scratch/doc3_mcqs.json', JSON.stringify(doc3Questions, null, 2));
+console.log('Saved Document 3 MCQs:', doc3Questions.length);

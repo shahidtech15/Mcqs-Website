@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="All-Pakistan Leaderboard & Daily Challenge for CSS, PMS, FIA, and Competitive Exam Candidates. Compete in daily 15-minute timed quizzes, track rankings, scores, streaks, and personal improvement.">
+    <title>All-Pakistan Leaderboard &amp; Daily Challenge — MCQs Portal</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .lb-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 24px 20px 80px;
+        }
+
+        /* Top Hero Header */
+        .lb-hero {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 36px 32px;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 30px rgba(6, 78, 59, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lb-hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .lb-hero-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lb-hero-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .lb-hero-subtitle {
+            font-size: 1.05rem;
+            color: #a7f3d0;
+            max-width: 780px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .lb-hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lb-stat-pill {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+        }
+
+        /* User Standings Card */
+        .user-standing-card {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .user-profile-summary {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-right: 24px;
+            border-right: 1px solid var(--border-color, #e2e8f0);
+        }
+
+        .user-avatar-lg {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: #10b981;
+            color: #ffffff;
+            font-size: 1.7rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+            flex-shrink: 0;
+        }
+
+        .user-meta-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-color, #0f172a);
+            margin-bottom: 4px;
+        }
+
+        .user-meta-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted, #64748b);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .user-edit-btn {
+            background: none;
+            border: none;
+            color: #10b981;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            margin-top: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .user-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .user-kpi {
+            background: var(--bg-surface-subtle, #f8fafc);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        .user-kpi-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted, #64748b);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+        }
+
+        .user-kpi-val {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-color, #0f172a);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .user-kpi-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 4px;
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+        }
+
+        .badge-up {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .badge-streak {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        /* Daily Challenge Arena */
+        .challenge-arena-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 36px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .challenge-banner-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .challenge-badge-live {
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            animation: pulse-live 2s infinite;
+        }
+
+        @keyframes pulse-live {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .challenge-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .challenge-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .challenge-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .challenge-tag {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .challenge-action-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-start-challenge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-start-challenge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-review-challenge {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-review-challenge:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* In-Page Quiz Runner */
+        #quizRunnerArea {
+            display: none;
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 36px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            color: var(--text-color, #0f172a);
+        }
+
+        .runner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
+        }
+
+        .runner-progress-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .runner-timer {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #ef4444;
+            background: #fef2f2;
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid #fecaca;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .runner-question-card {
+            background: var(--bg-surface-subtle, #f8fafc);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .runner-subject-pill {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+        }
+
+        .runner-qtext {
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text-color, #0f172a);
+        }
+
+        .runner-options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .runner-opt-btn {
+            background: var(--card-bg, #ffffff);
+            border: 1.5px solid var(--border-color, #cbd5e1);
+            border-radius: 12px;
+            padding: 14px 18px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.98rem;
+            font-weight: 500;
+            color: var(--text-color, #1e293b);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.15s ease;
+        }
+
+        .runner-opt-btn:hover {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.04);
+        }
+
+        .runner-opt-btn.selected {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.12);
+            font-weight: 700;
+            box-shadow: 0 0 0 1px #10b981;
+        }
+
+        .runner-opt-ltr {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .runner-opt-btn.selected .runner-opt-ltr {
+            background: #10b981;
+            color: #ffffff;
+        }
+
+        .runner-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .runner-grid-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .q-chip {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            background: var(--card-bg, #ffffff);
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+        }
+
+        .q-chip.active {
+            border-color: #0284c7;
+            box-shadow: 0 0 0 2px #0284c7;
+        }
+
+        .q-chip.answered {
+            background: #10b981;
+            color: #ffffff;
+            border-color: #10b981;
+        }
+
+        /* Results Modal / Panel */
+        #challengeResultArea {
+            display: none;
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 36px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .result-score-header {
+            text-align: center;
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
+        }
+
+        .result-congrats {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #10b981;
+            margin-bottom: 8px;
+        }
+
+        .result-kpi-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto 24px;
+        }
+
+        /* Leaderboard Podium */
+        .podium-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            margin: 36px 0 40px;
+            padding: 0 20px;
+        }
+
+        .podium-slot {
+            text-align: center;
+            flex: 1;
+            max-width: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .podium-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+            position: relative;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .podium-crown {
+            position: absolute;
+            top: -18px;
+            font-size: 1.5rem;
+        }
+
+        .podium-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-color, #0f172a);
+            margin-bottom: 2px;
+        }
+
+        .podium-city {
+            font-size: 0.8rem;
+            color: var(--text-muted, #64748b);
+            margin-bottom: 8px;
+        }
+
+        .podium-block {
+            width: 100%;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 800;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            padding: 16px 12px;
+        }
+
+        .podium-first .podium-block {
+            height: 160px;
+            background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .podium-second .podium-block {
+            height: 125px;
+            background: linear-gradient(180deg, #94a3b8 0%, #64748b 100%);
+        }
+
+        .podium-third .podium-block {
+            height: 100px;
+            background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
+        }
+
+        .podium-rank-num {
+            font-size: 2.2rem;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .podium-score-pill {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        /* Leaderboard Table & Filters */
+        .lb-section-card {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 36px;
+        }
+
+        .lb-controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .lb-tabs-group {
+            display: flex;
+            background: var(--bg-surface-subtle, #f1f5f9);
+            padding: 4px;
+            border-radius: 12px;
+            gap: 4px;
+        }
+
+        .lb-tab-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted, #64748b);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .lb-tab-btn.active {
+            background: var(--card-bg, #ffffff);
+            color: #10b981;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .lb-filter-select {
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color, #cbd5e1);
+            background: var(--card-bg, #ffffff);
+            color: var(--text-color, #0f172a);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .lb-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .lb-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .lb-table th {
+            padding: 14px 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted, #64748b);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid var(--border-color, #e2e8f0);
+        }
+
+        .lb-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color, #f1f5f9);
+            font-size: 0.92rem;
+            color: var(--text-color, #1e293b);
+            vertical-align: middle;
+        }
+
+        .lb-table tr.user-row {
+            background: rgba(16, 185, 129, 0.08) !important;
+            border-left: 4px solid #10b981;
+            font-weight: 600;
+        }
+
+        .lb-user-badge-cell {
+            display: inline-block;
+            background: #10b981;
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+
+        .lb-aspirant-col {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lb-avatar-sm {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .lb-rank-cell {
+            font-weight: 800;
+            font-size: 1.05rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .rank-gold { color: #f59e0b; }
+        .rank-silver { color: #64748b; }
+        .rank-bronze { color: #d97706; }
+
+        /* Review Details Cards */
+        .review-card-item {
+            background: var(--bg-surface-subtle, #f8fafc);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 16px;
+        }
+
+        .review-card-item.correct {
+            border-left: 4px solid #10b981;
+        }
+
+        .review-card-item.wrong {
+            border-left: 4px solid #ef4444;
+        }
+
+        /* Achievements Badges */
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .badge-box {
+            background: var(--bg-surface-subtle, #f8fafc);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 14px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .badge-icon {
+            font-size: 2.2rem;
+            flex-shrink: 0;
+        }
+
+        .badge-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-color, #0f172a);
+            margin-bottom: 4px;
+        }
+
+        .badge-info p {
+            font-size: 0.82rem;
+            color: var(--text-muted, #64748b);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .user-standing-card {
+                grid-template-columns: 1fr;
+            }
+            .user-profile-summary {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color, #e2e8f0);
+                padding-bottom: 20px;
+            }
+            .user-metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .podium-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .podium-slot {
+                max-width: 100%;
+            }
+            .podium-block {
+                height: 80px !important;
+                border-radius: 12px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .lb-hero {
+                padding: 24px 20px;
+            }
+            .lb-hero-title {
+                font-size: 1.6rem;
+            }
+            .user-metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            .result-kpi-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/leaderboard.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/leaderboard.html">
+    <meta property="og:title" content="All-Pakistan Leaderboard &amp; Daily Challenge — MCQs Portal">
+    <meta property="og:description" content="All-Pakistan Leaderboard & Daily Challenge for CSS, PMS, FIA, and Competitive Exam Candidates. Compete in daily 15-minute timed quizzes, track rankings, scores, streaks, and personal improvement.">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="All-Pakistan Leaderboard &amp; Daily Challenge — MCQs Portal">
+    <meta name="twitter:description" content="All-Pakistan Leaderboard & Daily Challenge for CSS, PMS, FIA, and Competitive Exam Candidates. Compete in daily 15-minute timed quizzes, track rankings, scores, streaks, and personal improvement.">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>MCQs<span class="logo-accent">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="acts-rules.html">Acts &amp; Rules</a>
+                <a href="articles.html">Articles</a>
+                <a href="topic-united-nations.html">One-Topic: UN</a>
+                <a href="topic-european-union.html">One-Topic: EU</a>
+                <a href="topic-nato.html">One-Topic: NATO</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="leaderboard.html" class="active">Leaderboard</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="fia-sample-papers.html">FIA Papers</a>
+                <a href="grammar-rules.html">Grammar Rules</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="exam-guide.html">Exam Guide</a>
+                <a href="science-notes.html">Science Notes</a>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+            <div class="header-actions">
+                <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button type="button" class="mobile-menu" aria-label="Toggle navigation drawer">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Utility Navigation -->
+    <nav class="secondary-nav">
+        <div class="secondary-nav-container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="articles.html" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-book-open"></i> Study Articles</a></li>
+                <li><a href="timeline.html" style="font-weight: 700; color: #4338ca;"><i class="fa-solid fa-timeline"></i> Historical Timeline</a></li>
+                <li><a href="leaderboard.html" class="active" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-trophy"></i> Daily Challenge &amp; Leaderboard</a></li>
+                <li><a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="quiz.html">Screening Practice</a></li>
+                <li><a href="fia-sample-papers.html">FIA Papers (20 Sets)</a></li>
+                <li><a href="ai-assistant.html">AI Assistant</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="lb-container">
+        <!-- Top Hero Section -->
+        <section class="lb-hero">
+            <div class="lb-hero-header">
+                <div>
+                    <h1 class="lb-hero-title">
+                        <i class="fa-solid fa-trophy" style="color: #fde047;"></i> All-Pakistan Leaderboard &amp; Daily Challenge
+                    </h1>
+                    <p class="lb-hero-subtitle">
+                        Compete every day against 1,400+ serious civil services candidates across Pakistan. Test your speed and accuracy in high-yield CSS, PMS, and FIA screening questions with live ranking and detailed performance diagnostics.
+                    </p>
+                </div>
+            </div>
+            <div class="lb-hero-stats">
+                <div class="lb-stat-pill"><i class="fa-solid fa-users" style="color:#6ee7b7;"></i> 1,436 Active Contenders</div>
+                <div class="lb-stat-pill"><i class="fa-solid fa-calendar-day" style="color:#fde047;"></i> Daily Challenge #145 Active</div>
+                <div class="lb-stat-pill"><i class="fa-solid fa-stopwatch" style="color:#fca5a5;"></i> Next Reset In: <span id="heroResetCountdown">05h 28m</span></div>
+                <div class="lb-stat-pill"><i class="fa-solid fa-fire" style="color:#fdba74;"></i> Highest Streak: 21 Days</div>
+            </div>
+        </section>
+
+        <!-- User Standing & Performance Card -->
+        <section class="user-standing-card">
+            <div class="user-profile-summary">
+                <div class="user-avatar-lg" id="userAvatarLg">ME</div>
+                <div>
+                    <div class="user-meta-name" id="userDisplayName">Candidate (You)</div>
+                    <div class="user-meta-sub">
+                        <span id="userExamTarget"><i class="fa-solid fa-graduation-cap"></i> Target: CSS 2025 &amp; FIA AD</span>
+                        <span id="userCity"><i class="fa-solid fa-location-dot"></i> Lahore, Punjab</span>
+                    </div>
+                    <button type="button" class="user-edit-btn" onclick="openProfileModal()">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+                    </button>
+                </div>
+            </div>
+            <div class="user-metrics-grid">
+                <div class="user-kpi">
+                    <div class="user-kpi-label">National Rank</div>
+                    <div class="user-kpi-val" id="kpiNationalRank" style="color:#10b981;">#8</div>
+                    <span class="user-kpi-badge badge-up" id="kpiPercentile">Top 0.8% Merit</span>
+                </div>
+                <div class="user-kpi">
+                    <div class="user-kpi-label">Rank Shift</div>
+                    <div class="user-kpi-val" id="kpiRankShift" style="color:#0284c7;">▲ +3</div>
+                    <span class="user-kpi-badge badge-up" id="kpiImprovement">+8.4% This Week</span>
+                </div>
+                <div class="user-kpi">
+                    <div class="user-kpi-label">Today's Score</div>
+                    <div class="user-kpi-val" id="kpiTodayScore">13.75<span style="font-size:0.9rem;color:#64748b;">/15</span></div>
+                    <span class="user-kpi-badge badge-up" id="kpiTodayTime">4m 20s (93.3%)</span>
+                </div>
+                <div class="user-kpi">
+                    <div class="user-kpi-label">Active Streak</div>
+                    <div class="user-kpi-val" id="kpiStreak" style="color:#f59e0b;">15 <span style="font-size:1.1rem;">🔥</span></div>
+                    <span class="user-kpi-badge badge-streak">Consistency Titan</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Challenge Arena -->
+        <section class="challenge-arena-card" id="challengeBannerCard">
+            <div class="challenge-banner-top">
+                <div>
+                    <span class="challenge-badge-live"><i class="fa-solid fa-bolt"></i> Today's Live Challenge</span>
+                    <span style="color:#94a3b8; font-size:0.88rem; margin-left:12px;" id="challengeDateText">November 15, 2024</span>
+                </div>
+                <div style="font-family:'JetBrains Mono', monospace; font-size:0.95rem; color:#fde047;">
+                    <i class="fa-regular fa-clock"></i> 10 Mins • 15 Questions • -0.25 Neg Marking
+                </div>
+            </div>
+            <h2 class="challenge-title" id="challengeTitleText">All-Pakistan Civil Services Sprint - Set B</h2>
+            <p class="challenge-desc">
+                High-yield competitive screening test featuring authentic questions across English Vocabulary, Pakistan Affairs (18th Amendment), Current Affairs (SCO &amp; COP29), Everyday Science, Quantitative Reasoning, and the FIA Act 1974.
+            </p>
+            <div class="challenge-tags">
+                <span class="challenge-tag"><i class="fa-solid fa-book"></i> English Vocab &amp; Grammar</span>
+                <span class="challenge-tag"><i class="fa-solid fa-landmark"></i> Pakistan Affairs &amp; Constitution</span>
+                <span class="challenge-tag"><i class="fa-solid fa-globe"></i> Current Affairs &amp; SCO 2024</span>
+                <span class="challenge-tag"><i class="fa-solid fa-flask"></i> Everyday Science</span>
+                <span class="challenge-tag"><i class="fa-solid fa-calculator"></i> General Ability Math</span>
+                <span class="challenge-tag"><i class="fa-solid fa-scale-balanced"></i> FIA Act 1974</span>
+            </div>
+            <div class="challenge-action-row">
+                <button type="button" class="btn-start-challenge" id="btnStartChallenge" onclick="startDailyChallenge()">
+                    <i class="fa-solid fa-play"></i> Start Today's Challenge
+                </button>
+                <button type="button" class="btn-review-challenge" id="btnReviewAnswers" onclick="viewDetailedAnswers()" style="display:none;">
+                    <i class="fa-solid fa-list-check"></i> Review Explanations
+                </button>
+            </div>
+        </section>
+
+        <!-- In-Page Interactive Quiz Runner (Hidden until clicked) -->
+        <section id="quizRunnerArea">
+            <div class="runner-header">
+                <div>
+                    <span class="runner-progress-text" id="runnerQuestionNum">Question 1 of 15</span>
+                    <span style="color:#64748b; font-size:0.88rem; margin-left:10px;" id="runnerSubjectLabel">English Vocabulary</span>
+                </div>
+                <div class="runner-timer" id="runnerTimerDisplay">
+                    <i class="fa-solid fa-stopwatch"></i> <span id="timerCountdown">10:00</span>
+                </div>
+            </div>
+
+            <!-- Question Jump Grid -->
+            <div class="runner-grid-nav" id="runnerNavGrid"></div>
+
+            <!-- Question Box -->
+            <div class="runner-question-card">
+                <div class="runner-subject-pill" id="runnerQSubject">Subject Pill</div>
+                <div class="runner-qtext" id="runnerQText">Question text appears here...</div>
+                <div class="runner-options-grid" id="runnerOptionsContainer"></div>
+            </div>
+
+            <!-- Runner Footer Controls -->
+            <div class="runner-footer">
+                <button type="button" class="btn-review-challenge" style="color:var(--text-color,#0f172a); border-color:#cbd5e1;" onclick="prevQuestion()" id="btnPrevQ">
+                    <i class="fa-solid fa-arrow-left"></i> Previous
+                </button>
+                <div style="display:flex; gap:12px;">
+                    <button type="button" class="btn-review-challenge" style="color:var(--text-color,#0f172a); border-color:#cbd5e1;" onclick="nextQuestion()" id="btnNextQ">
+                        Next <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button type="button" class="btn-start-challenge" onclick="submitTestNow()" style="background:#ef4444;">
+                        <i class="fa-solid fa-check-double"></i> Submit Challenge
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Test Results Area (Hidden until submitted) -->
+        <section id="challengeResultArea">
+            <div class="result-score-header">
+                <div class="result-congrats" id="resHeading">🎯 Daily Challenge Completed!</div>
+                <p style="color:var(--text-muted,#64748b); margin:0;" id="resSubheading">
+                    Your answers have been graded against national civil services marking standards (-0.25 penalty).
+                </p>
+            </div>
+            <div class="result-kpi-row">
+                <div class="user-kpi">
+                    <div class="user-kpi-label">Final Score</div>
+                    <div class="user-kpi-val" id="resFinalScore" style="color:#10b981;">14.0/15</div>
+                </div>
+                <div class="user-kpi">
+                    <div class="user-kpi-label">Accuracy</div>
+                    <div class="user-kpi-val" id="resAccuracy" style="color:#0284c7;">93.3%</div>
+                </div>
+                <div class="user-kpi">
+                    <div class="user-kpi-label">Time Taken</div>
+                    <div class="user-kpi-val" id="resTimeTaken">4m 32s</div>
+                </div>
+                <div class="user-kpi">
+                    <div class="user-kpi-label">Earned Rank</div>
+                    <div class="user-kpi-val" id="resEarnedRank" style="color:#f59e0b;">#8</div>
+                </div>
+            </div>
+            <div style="text-align:center; margin-bottom:24px;">
+                <button type="button" class="btn-start-challenge" onclick="toggleDetailedExplanations()">
+                    <i class="fa-solid fa-file-lines"></i> View Detailed Rationale &amp; Explanations
+                </button>
+            </div>
+            <!-- Detailed Explanations Container -->
+            <div id="detailedExplanationsArea" style="display:none; margin-top:24px;"></div>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section class="lb-section-card">
+            <div class="lb-controls-bar">
+                <div class="lb-tabs-group">
+                    <button type="button" class="lb-tab-btn active" onclick="switchLeaderboardTab('today', this)">
+                        <i class="fa-solid fa-sun"></i> Today's Challenge
+                    </button>
+                    <button type="button" class="lb-tab-btn" onclick="switchLeaderboardTab('weekly', this)">
+                        <i class="fa-solid fa-calendar-week"></i> Weekly Champions
+                    </button>
+                    <button type="button" class="lb-tab-btn" onclick="switchLeaderboardTab('alltime', this)">
+                        <i class="fa-solid fa-award"></i> All-Time Hall of Fame
+                    </button>
+                </div>
+                <div>
+                    <label for="cadreFilter" style="font-size:0.85rem; font-weight:600; color:var(--text-muted,#64748b); margin-right:8px;">Filter by Cadre:</label>
+                    <select id="cadreFilter" class="lb-filter-select" onchange="filterLeaderboardByCadre(this.value)">
+                        <option value="all">All Examination Cadres</option>
+                        <option value="css">CSS Aspirants</option>
+                        <option value="fia">FIA Assistant Director &amp; Inspectors</option>
+                        <option value="pms">PMS Provincial Services</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Top 3 Podium -->
+            <div class="podium-container" id="podiumArea">
+                <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Full Standings Table -->
+            <div class="lb-table-wrapper">
+                <table class="lb-table" id="leaderboardTable">
+                    <thead>
+                        <tr>
+                            <th style="width:70px;">Rank</th>
+                            <th>Candidate</th>
+                            <th>City &amp; Province</th>
+                            <th id="thScoreOrPoints">Score</th>
+                            <th>Accuracy</th>
+                            <th id="thTimeOrTests">Time</th>
+                            <th>Streak</th>
+                            <th>Badges</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lbTableBody">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Badges & Milestone Rewards Section -->
+        <section class="lb-section-card">
+            <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:6px; color:var(--text-color,#0f172a);">
+                <i class="fa-solid fa-medal" style="color:#f59e0b;"></i> Civil Services Achievement Milestones
+            </h2>
+            <p style="color:var(--text-muted,#64748b); font-size:0.9rem; margin-bottom:16px;">
+                Earn recognition badges by maintaining consistent streaks, speed benchmarks, and top provincial standings.
+            </p>
+            <div class="badges-grid">
+                <div class="badge-box">
+                    <div class="badge-icon">🥇</div>
+                    <div class="badge-info">
+                        <h4>Daily Sprint Champion</h4>
+                        <p>Awarded to contestants who place in the top 3 nationwide in today's daily challenge.</p>
+                    </div>
+                </div>
+                <div class="badge-box">
+                    <div class="badge-icon">🔥</div>
+                    <div class="badge-info">
+                        <h4>Consistency Titan</h4>
+                        <p>Complete 14 or more consecutive daily challenges without missing a single day.</p>
+                    </div>
+                </div>
+                <div class="badge-box">
+                    <div class="badge-icon">⚡</div>
+                    <div class="badge-info">
+                        <h4>Speed Ace (<5 Mins)</h4>
+                        <p>Finish all 15 screening questions in under 5 minutes with over 90% accuracy.</p>
+                    </div>
+                </div>
+                <div class="badge-box">
+                    <div class="badge-icon">🎯</div>
+                    <div class="badge-info">
+                        <h4>Precision Master</h4>
+                        <p>Score 15/15 with 100% accuracy and zero penalty deductions on negative marking.</p>
+                    </div>
+                </div>
+                <div class="badge-box">
+                    <div class="badge-icon">⚖️</div>
+                    <div class="badge-info">
+                        <h4>Statute &amp; Law Specialist</h4>
+                        <p>Maintain 100% correct answers on FIA Act 1974 and Constitutional law questions.</p>
+                    </div>
+                </div>
+                <div class="badge-box">
+                    <div class="badge-icon">🏛️</div>
+                    <div class="badge-info">
+                        <h4>FPSC Merit Tier Contender</h4>
+                        <p>Maintain national ranking in the Top 1% of all registered civil services candidates.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Profile Edit Modal -->
+    <div id="profileModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+        <div style="background:var(--card-bg,#ffffff); border-radius:18px; padding:28px; width:90%; max-width:440px; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:16px; color:var(--text-color,#0f172a);">
+                <i class="fa-solid fa-user-pen" style="color:#10b981;"></i> Update Candidate Profile
+            </h3>
+            <div style="margin-bottom:14px;">
+                <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px; color:var(--text-color,#1e293b);">Your Full Name / Alias:</label>
+                <input type="text" id="modalInputName" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #cbd5e1; font-size:0.95rem;" placeholder="e.g. Muhammad Zeeshan">
+            </div>
+            <div style="margin-bottom:14px;">
+                <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px; color:var(--text-color,#1e293b);">Target Exam:</label>
+                <input type="text" id="modalInputExam" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #cbd5e1; font-size:0.95rem;" placeholder="e.g. CSS 2025 &amp; FIA AD">
+            </div>
+            <div style="margin-bottom:20px;">
+                <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px; color:var(--text-color,#1e293b);">City &amp; Province:</label>
+                <input type="text" id="modalInputCity" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #cbd5e1; font-size:0.95rem;" placeholder="e.g. Lahore, Punjab">
+            </div>
+            <div style="display:flex; justify-content:flex-end; gap:10px;">
+                <button type="button" onclick="closeProfileModal()" style="background:#f1f5f9; border:none; padding:10px 18px; border-radius:8px; font-weight:600; color:#475569; cursor:pointer;">Cancel</button>
+                <button type="button" onclick="saveProfileFromModal()" style="background:#10b981; border:none; padding:10px 20px; border-radius:8px; font-weight:700; color:#ffffff; cursor:pointer;">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data_learning_dashboard.js"></script>
+    <script src="js/data_leaderboard.js"></script>
+    <script>
+        // State variables
+        let currentPeriod = 'today';
+        let currentCadre = 'all';
+        let activeChallenge = null;
+        let userSelections = {};
+        let currentQuestionIdx = 0;
+        let testTimerInterval = null;
+        let timeRemainingSeconds = 600;
+        let testStartTime = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initLeaderboardPage();
+            initCountdown();
+        });
+
+        function initLeaderboardPage() {
+            activeChallenge = window.LEADERBOARD_ENGINE.getTodayChallenge();
+            
+            // Populate challenge banner
+            if (activeChallenge) {
+                document.getElementById('challengeTitleText').innerText = activeChallenge.title;
+                document.getElementById('challengeDateText').innerText = activeChallenge.date;
+            }
+
+            renderUserStanding();
+            renderLeaderboard();
+
+            // Check if user has already completed today's challenge
+            const attempts = window.LEADERBOARD_ENGINE.getUserAttempts();
+            const todayKey = activeChallenge.date;
+            if (attempts[todayKey]) {
+                const btn = document.getElementById('btnStartChallenge');
+                if (btn) btn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Retake Today\'s Challenge';
+                const revBtn = document.getElementById('btnReviewAnswers');
+                if (revBtn) revBtn.style.display = 'inline-flex';
+            }
+        }
+
+        // Live Countdown until midnight reset
+        function initCountdown() {
+            function updateClock() {
+                const now = new Date();
+                const midnight = new Date();
+                midnight.setHours(24, 0, 0, 0);
+                const diff = midnight - now;
+
+                if (diff <= 0) {
+                    document.getElementById('heroResetCountdown').innerText = 'Resetting...';
+                    return;
+                }
+
+                const hrs = Math.floor(diff / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                const fmt = String(hrs).padStart(2, '0') + 'h ' + String(mins).padStart(2, '0') + 'm ' + String(secs).padStart(2, '0') + 's';
+                const el = document.getElementById('heroResetCountdown');
+                if (el) el.innerText = fmt;
+            }
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        // Render User Standing Card
+        function renderUserStanding() {
+            const profile = window.LEADERBOARD_ENGINE.getUserProfile();
+            const standing = window.LEADERBOARD_ENGINE.getUserStanding(currentPeriod);
+
+            document.getElementById('userDisplayName').innerText = profile.name;
+            document.getElementById('userExamTarget').innerHTML = '<i class="fa-solid fa-graduation-cap"></i> Target: ' + (profile.targetExam || 'CSS & FIA AD');
+            document.getElementById('userCity').innerHTML = '<i class="fa-solid fa-location-dot"></i> ' + (profile.city || 'Lahore, Punjab');
+            
+            const initials = profile.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'ME';
+            document.getElementById('userAvatarLg').innerText = initials;
+
+            document.getElementById('kpiNationalRank').innerText = '#' + standing.rank;
+            document.getElementById('kpiPercentile').innerText = 'Top ' + (100 - standing.percentile).toFixed(1) + '% Merit';
+            document.getElementById('kpiRankShift').innerText = (standing.rankShift.startsWith('+') ? '▲ ' : '▼ ') + standing.rankShift;
+            document.getElementById('kpiImprovement').innerText = standing.weeklyImprovement + ' This Week';
+            document.getElementById('kpiStreak').innerHTML = standing.streak + ' <span style="font-size:1.1rem;">🔥</span>';
+
+            const attempts = window.LEADERBOARD_ENGINE.getUserAttempts();
+            const todayKey = activeChallenge ? activeChallenge.date : '';
+            const todayAtt = attempts[todayKey];
+
+            if (todayAtt) {
+                document.getElementById('kpiTodayScore').innerHTML = todayAtt.score + '<span style="font-size:0.9rem;color:#64748b;">/' + todayAtt.total + '</span>';
+                document.getElementById('kpiTodayTime').innerText = todayAtt.timeFormatted + ' (' + todayAtt.accuracy + '%)';
+            } else {
+                document.getElementById('kpiTodayScore').innerHTML = '13.75<span style="font-size:0.9rem;color:#64748b;">/15</span>';
+                document.getElementById('kpiTodayTime').innerText = '4m 20s (93.3%)';
+            }
+        }
+
+        // Render Leaderboard & Podium
+        function renderLeaderboard() {
+            const list = window.LEADERBOARD_ENGINE.getLeaderboard(currentPeriod, currentCadre);
+            const podiumEl = document.getElementById('podiumArea');
+            const tbody = document.getElementById('lbTableBody');
+
+            // Set column headers according to period
+            const thScore = document.getElementById('thScoreOrPoints');
+            const thTime = document.getElementById('thTimeOrTests');
+
+            if (currentPeriod === 'today') {
+                thScore.innerText = 'Score';
+                thTime.innerText = 'Time';
+            } else if (currentPeriod === 'weekly') {
+                thScore.innerText = 'Weekly Pts';
+                thTime.innerText = 'Avg Time';
+            } else {
+                thScore.innerText = 'All-Time Pts';
+                thTime.innerText = 'Tests Completed';
+            }
+
+            // Top 3 for Podium
+            const first = list[0];
+            const second = list[1];
+            const third = list[2];
+
+            if (first && second && third) {
+                podiumEl.innerHTML = `
+                    <!-- 2nd Place -->
+                    <div class="podium-slot podium-second">
+                        <div class="podium-avatar" style="background:${second.avatarBg};">${second.avatar}</div>
+                        <div class="podium-name">${second.name} ${second.isUser ? '<span class="lb-user-badge-cell">YOU</span>' : ''}</div>
+                        <div class="podium-city">${second.city}</div>
+                        <div class="podium-block">
+                            <div class="podium-rank-num">2</div>
+                            <div class="podium-score-pill">${currentPeriod === 'today' ? second.score + '/15 (' + second.timeFormatted + ')' : (currentPeriod === 'weekly' ? second.weeklyPoints + ' pts' : second.allTimePoints + ' pts')}</div>
+                        </div>
+                    </div>
+                    <!-- 1st Place -->
+                    <div class="podium-slot podium-first">
+                        <div class="podium-avatar" style="background:${first.avatarBg};">
+                            <span class="podium-crown">👑</span>
+                            ${first.avatar}
+                        </div>
+                        <div class="podium-name">${first.name} ${first.isUser ? '<span class="lb-user-badge-cell">YOU</span>' : ''}</div>
+                        <div class="podium-city">${first.city}</div>
+                        <div class="podium-block">
+                            <div class="podium-rank-num">1</div>
+                            <div class="podium-score-pill">${currentPeriod === 'today' ? first.score + '/15 (' + first.timeFormatted + ')' : (currentPeriod === 'weekly' ? first.weeklyPoints + ' pts' : first.allTimePoints + ' pts')}</div>
+                        </div>
+                    </div>
+                    <!-- 3rd Place -->
+                    <div class="podium-slot podium-third">
+                        <div class="podium-avatar" style="background:${third.avatarBg};">${third.avatar}</div>
+                        <div class="podium-name">${third.name} ${third.isUser ? '<span class="lb-user-badge-cell">YOU</span>' : ''}</div>
+                        <div class="podium-city">${third.city}</div>
+                        <div class="podium-block">
+                            <div class="podium-rank-num">3</div>
+                            <div class="podium-score-pill">${currentPeriod === 'today' ? third.score + '/15 (' + third.timeFormatted + ')' : (currentPeriod === 'weekly' ? third.weeklyPoints + ' pts' : third.allTimePoints + ' pts')}</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                podiumEl.innerHTML = '';
+            }
+
+            // Table Rows
+            let rowsHtml = '';
+            list.forEach(item => {
+                let rankClass = '';
+                if (item.rank === 1) rankClass = 'rank-gold';
+                else if (item.rank === 2) rankClass = 'rank-silver';
+                else if (item.rank === 3) rankClass = 'rank-bronze';
+
+                const isUserClass = item.isUser ? ' user-row' : '';
+                const userBadge = item.isUser ? '<span class="lb-user-badge-cell">YOU</span>' : '';
+
+                let scoreDisplay = item.score + '/15';
+                let timeDisplay = item.timeFormatted;
+                if (currentPeriod === 'weekly') {
+                    scoreDisplay = item.weeklyPoints + ' pts';
+                    timeDisplay = item.timeFormatted || '5m 15s';
+                } else if (currentPeriod === 'alltime') {
+                    scoreDisplay = item.allTimePoints + ' pts';
+                    timeDisplay = '42 Tests';
+                }
+
+                const badgesHtml = (item.badges || []).map(b => `<span style="background:rgba(255,255,255,0.7); border:1px solid #cbd5e1; font-size:0.75rem; font-weight:600; padding:2px 8px; border-radius:999px; margin-right:4px;">${b}</span>`).join('');
+
+                rowsHtml += `
+                    <tr class="${isUserClass}">
+                        <td class="lb-rank-cell ${rankClass}">#${item.rank}</td>
+                        <td>
+                            <div class="lb-aspirant-col">
+                                <div class="lb-avatar-sm" style="background:${item.avatarBg};">${item.avatar}</div>
+                                <div>
+                                    <div style="font-weight:700;">${item.name} ${userBadge}</div>
+                                    <div style="font-size:0.78rem; color:#64748b;">${item.targetExam}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>${item.city}</td>
+                        <td style="font-weight:700; font-family:'JetBrains Mono', monospace;">${scoreDisplay}</td>
+                        <td style="font-weight:700; color:#10b981;">${item.accuracy}%</td>
+                        <td style="font-family:'JetBrains Mono', monospace; font-size:0.88rem;">${timeDisplay}</td>
+                        <td><span style="color:#f59e0b; font-weight:700;">🔥 ${item.streak}d</span></td>
+                        <td>${badgesHtml}</td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = rowsHtml;
+        }
+
+        function switchLeaderboardTab(period, btn) {
+            currentPeriod = period;
+            document.querySelectorAll('.lb-tab-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderLeaderboard();
+            renderUserStanding();
+        }
+
+        function filterLeaderboardByCadre(cadre) {
+            currentCadre = cadre;
+            renderLeaderboard();
+        }
+
+        // --- DAILY CHALLENGE QUIZ RUNNER ---
+        function startDailyChallenge() {
+            activeChallenge = window.LEADERBOARD_ENGINE.getTodayChallenge();
+            userSelections = {};
+            currentQuestionIdx = 0;
+            timeRemainingSeconds = activeChallenge.timeLimitSeconds || 600;
+            testStartTime = Date.now();
+
+            document.getElementById('challengeBannerCard').style.display = 'none';
+            document.getElementById('challengeResultArea').style.display = 'none';
+            document.getElementById('quizRunnerArea').style.display = 'block';
+
+            buildRunnerNavGrid();
+            renderRunnerQuestion();
+            startTestTimer();
+
+            // Scroll to quiz runner
+            document.getElementById('quizRunnerArea').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function buildRunnerNavGrid() {
+            const grid = document.getElementById('runnerNavGrid');
+            grid.innerHTML = '';
+            activeChallenge.questions.forEach((q, idx) => {
+                const chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'q-chip' + (idx === currentQuestionIdx ? ' active' : '') + (userSelections[q.id] ? ' answered' : '');
+                chip.id = 'chip_q_' + idx;
+                chip.innerText = (idx + 1);
+                chip.onclick = function() {
+                    currentQuestionIdx = idx;
+                    renderRunnerQuestion();
+                };
+                grid.appendChild(chip);
+            });
+        }
+
+        function renderRunnerQuestion() {
+            const q = activeChallenge.questions[currentQuestionIdx];
+            document.getElementById('runnerQuestionNum').innerText = 'Question ' + (currentQuestionIdx + 1) + ' of ' + activeChallenge.questions.length;
+            document.getElementById('runnerSubjectLabel').innerText = q.subject;
+            document.getElementById('runnerQSubject').innerText = q.subject;
+            document.getElementById('runnerQText').innerText = q.questionText;
+
+            // Options
+            const container = document.getElementById('runnerOptionsContainer');
+            container.innerHTML = '';
+
+            ['A', 'B', 'C', 'D'].forEach(ltr => {
+                if (q.options[ltr]) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    const isSelected = userSelections[q.id] === ltr;
+                    btn.className = 'runner-opt-btn' + (isSelected ? ' selected' : '');
+                    btn.onclick = function() {
+                        userSelections[q.id] = ltr;
+                        renderRunnerQuestion();
+                        buildRunnerNavGrid();
+                    };
+                    btn.innerHTML = `<span class="runner-opt-ltr">${ltr}</span> <span>${q.options[ltr]}</span>`;
+                    container.appendChild(btn);
+                }
+            });
+
+            document.getElementById('btnPrevQ').disabled = currentQuestionIdx === 0;
+            const nextBtn = document.getElementById('btnNextQ');
+            if (currentQuestionIdx === activeChallenge.questions.length - 1) {
+                nextBtn.innerText = 'Submit Test';
+                nextBtn.onclick = submitTestNow;
+            } else {
+                nextBtn.innerHTML = 'Next <i class="fa-solid fa-arrow-right"></i>';
+                nextBtn.onclick = nextQuestion;
+            }
+
+            buildRunnerNavGrid();
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIdx > 0) {
+                currentQuestionIdx--;
+                renderRunnerQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIdx < activeChallenge.questions.length - 1) {
+                currentQuestionIdx++;
+                renderRunnerQuestion();
+            }
+        }
+
+        function startTestTimer() {
+            if (testTimerInterval) clearInterval(testTimerInterval);
+
+            function tick() {
+                if (timeRemainingSeconds <= 0) {
+                    clearInterval(testTimerInterval);
+                    alert("Time is up! Submitting your challenge now.");
+                    submitTestNow();
+                    return;
+                }
+                timeRemainingSeconds--;
+                const mins = Math.floor(timeRemainingSeconds / 60);
+                const secs = timeRemainingSeconds % 60;
+                const fmt = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+                const timerEl = document.getElementById('timerCountdown');
+                if (timerEl) timerEl.innerText = fmt;
+            }
+
+            testTimerInterval = setInterval(tick, 1000);
+        }
+
+        function submitTestNow() {
+            if (testTimerInterval) clearInterval(testTimerInterval);
+
+            const totalTimeSpentSeconds = Math.max(1, Math.round((Date.now() - testStartTime) / 1000));
+            const result = window.LEADERBOARD_ENGINE.submitDailyChallenge(userSelections, totalTimeSpentSeconds);
+
+            document.getElementById('quizRunnerArea').style.display = 'none';
+            document.getElementById('challengeResultArea').style.display = 'block';
+            document.getElementById('challengeBannerCard').style.display = 'block';
+
+            // Fill results
+            document.getElementById('resFinalScore').innerText = result.score + ' / ' + result.total;
+            document.getElementById('resAccuracy').innerText = result.accuracy + '%';
+            document.getElementById('resTimeTaken').innerText = result.timeFormatted;
+
+            const standing = window.LEADERBOARD_ENGINE.getUserStanding('today');
+            document.getElementById('resEarnedRank').innerText = '#' + standing.rank;
+
+            // Render Explanations
+            renderDetailedExplanations(result.gradedQuestions);
+
+            // Re-render UI & standings
+            renderUserStanding();
+            renderLeaderboard();
+
+            // Update Start Button text
+            document.getElementById('btnStartChallenge').innerHTML = '<i class="fa-solid fa-rotate-right"></i> Retake Today\'s Challenge';
+            document.getElementById('btnReviewAnswers').style.display = 'inline-flex';
+
+            document.getElementById('challengeResultArea').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function renderDetailedExplanations(gradedQuestions) {
+            const container = document.getElementById('detailedExplanationsArea');
+            let html = '';
+
+            gradedQuestions.forEach((q, idx) => {
+                const isCorrect = q.isCorrect;
+                const statusBadge = isCorrect 
+                    ? '<span style="color:#10b981; font-weight:700;"><i class="fa-solid fa-check"></i> Correct (+1)</span>'
+                    : (q.isAttempted ? '<span style="color:#ef4444; font-weight:700;"><i class="fa-solid fa-xmark"></i> Incorrect (-0.25)</span>' : '<span style="color:#64748b; font-weight:600;"><i class="fa-regular fa-circle"></i> Unattempted</span>');
+
+                html += `
+                    <div class="review-card-item ${isCorrect ? 'correct' : (q.isAttempted ? 'wrong' : '')}">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                            <span style="font-size:0.8rem; font-weight:700; color:#0284c7; background:#e0f2fe; padding:2px 8px; border-radius:999px;">${q.subject}</span>
+                            ${statusBadge}
+                        </div>
+                        <div style="font-weight:600; font-size:1rem; margin-bottom:12px; color:var(--text-color,#0f172a);">
+                            Q${idx + 1}. ${q.questionText}
+                        </div>
+                        <div style="font-size:0.9rem; margin-bottom:8px;">
+                            <strong>Your Answer:</strong> ${q.userAnswer ? q.userAnswer + '. ' + q.options[q.userAnswer] : 'None'}
+                        </div>
+                        <div style="font-size:0.9rem; color:#10b981; margin-bottom:10px;">
+                            <strong>Correct Answer:</strong> ${q.correctAnswer}. ${q.options[q.correctAnswer]}
+                        </div>
+                        <div style="background:rgba(2,132,199,0.06); border-left:3px solid #0284c7; padding:10px 14px; border-radius:6px; font-size:0.88rem; color:var(--text-color,#1e293b); line-height:1.5;">
+                            <strong>Explanation:</strong> ${q.explanation}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function toggleDetailedExplanations() {
+            const el = document.getElementById('detailedExplanationsArea');
+            if (el.style.display === 'none') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        function viewDetailedAnswers() {
+            document.getElementById('challengeResultArea').style.display = 'block';
+            document.getElementById('detailedExplanationsArea').style.display = 'block';
+            document.getElementById('challengeResultArea').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Profile Modal
+        function openProfileModal() {
+            const profile = window.LEADERBOARD_ENGINE.getUserProfile();
+            document.getElementById('modalInputName').value = profile.name || '';
+            document.getElementById('modalInputExam').value = profile.targetExam || '';
+            document.getElementById('modalInputCity').value = profile.city || '';
+            document.getElementById('profileModal').style.display = 'flex';
+        }
+
+        function closeProfileModal() {
+            document.getElementById('profileModal').style.display = 'none';
+        }
+
+        function saveProfileFromModal() {
+            const name = document.getElementById('modalInputName').value.trim();
+            const exam = document.getElementById('modalInputExam').value.trim();
+            const city = document.getElementById('modalInputCity').value.trim();
+
+            if (name) {
+                window.LEADERBOARD_ENGINE.updateUserProfile({
+                    name: name,
+                    targetExam: exam || 'CSS & FIA AD',
+                    city: city || 'Lahore, Punjab'
+                });
+                renderUserStanding();
+                renderLeaderboard();
+            }
+            closeProfileModal();
+        }
+
+        // Dark mode toggle handler
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+            });
+        }
+
+        // Mobile drawer toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        if (mobileMenu && navLinks) {
+            mobileMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('nav-open');
+            });
+        }
+    </script>
+
+    <!-- Standard Academic & Legal Footer -->
+    <footer class="site-footer" style="background:#0f172a; color:#94a3b8; padding:36px 20px 24px; margin-top:50px; border-top:1px solid #1e293b; font-family:'Plus Jakarta Sans', sans-serif;">
+        <div style="max-width:1200px; margin:0 auto; text-align:center;">
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px; font-size:0.88rem; margin-bottom:14px;">
+                <a href="index.html" style="color:#ffffff; font-weight:700; text-decoration:none;"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="quiz.html" style="color:#cbd5e1; text-decoration:none;"><i class="fa-solid fa-graduation-cap"></i> Practice Quiz</a>
+                <a href="daily-challenges.html" style="color:#a78bfa; font-weight:700; text-decoration:none;"><i class="fa-solid fa-bolt"></i> Daily Challenges</a>
+                <a href="daily-fact.html" style="color:#2dd4bf; font-weight:700; text-decoration:none;"><i class="fa-solid fa-calendar-day"></i> Daily Fact</a>
+                <a href="digital-library.html" style="color:#cbd5e1; text-decoration:none;"><i class="fa-solid fa-book-bookmark"></i> Digital Library</a>
+                <a href="pakistan-map.html" style="color:#cbd5e1; text-decoration:none;"><i class="fa-solid fa-map"></i> Pakistan Map</a>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:18px; font-size:0.8rem; padding-top:12px; border-top:1px solid #1e293b; color:#94a3b8;">
+                <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+                <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+                <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+                <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+                <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+                <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+            </div>
+            <p style="font-size:0.78rem; margin-top:14px; color:#64748b;">
+                &copy; 2026 CSS Prep Central &bull; Pakistan's Premier Open-Access Civil Services Preparation Repository.
+            </p>
+        </div>
+    </footer>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

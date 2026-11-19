@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIA Laws Explorer | FIA Act 1974, PECA, AMLA, 118 PPC Sections, 37 Special Acts &amp; Investigation SOP</title>
+    <meta name="description" content="Explore federal investigation statutes of Pakistan: FIA Act 1974, PECA 2016, AMLA 2010, Emigration Ordinance 1979, PCA 1947, all 118 scheduled PPC offences, 37 special scheduled enactments, 7 operational wings, and step-by-step FIA investigation SOPs.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('mcqs_dark_mode');
+            if (savedTheme === 'true' || (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <style>
+        :root {
+            --fia-bg: #f8fafc;
+            --fia-card-bg: #ffffff;
+            --fia-surface: #f1f5f9;
+            --fia-surface-hover: #e2e8f0;
+            --fia-text: #0f172a;
+            --fia-text-muted: #64748b;
+            --fia-border: #e2e8f0;
+            --fia-border-strong: #cbd5e1;
+            --fia-primary: #1e3a8a; /* Federal Navy */
+            --fia-primary-hover: #172554;
+            --fia-primary-light: #eff6ff;
+            --fia-gold: #b45309; /* Official Gold */
+            --fia-gold-light: #fef3c7;
+            --fia-teal: #0f766e;
+            --fia-teal-light: #f0fdfa;
+            --fia-crimson: #991b1b;
+            --fia-crimson-light: #fef2f2;
+            --fia-success: #15803d;
+            --fia-success-light: #dcfce7;
+            --font-ui: 'Plus Jakarta Sans', sans-serif;
+            --font-legal: 'Merriweather', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode {
+            --fia-bg: #0b0f19;
+            --fia-card-bg: #151d30;
+            --fia-surface: #1e293b;
+            --fia-surface-hover: #293548;
+            --fia-text: #f8fafc;
+            --fia-text-muted: #94a3b8;
+            --fia-border: #26334d;
+            --fia-border-strong: #3b4d6e;
+            --fia-primary: #3b82f6;
+            --fia-primary-hover: #60a5fa;
+            --fia-primary-light: rgba(59, 130, 246, 0.15);
+            --fia-gold: #f59e0b;
+            --fia-gold-light: rgba(245, 158, 11, 0.15);
+            --fia-teal: #14b8a6;
+            --fia-teal-light: rgba(20, 184, 166, 0.15);
+            --fia-crimson: #ef4444;
+            --fia-crimson-light: rgba(239, 68, 68, 0.15);
+            --fia-success: #22c55e;
+            --fia-success-light: rgba(34, 197, 94, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--fia-bg);
+            color: var(--fia-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.25s, color 0.25s;
+        }
+
+        /* Top Academic Switcher Bar */
+        .site-switcher-bar {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 7px 16px;
+            font-size: 0.78rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .switcher-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .switcher-label {
+            color: #cbd5e1;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-right: 4px;
+        }
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 3px 9px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .switcher-btn.active {
+            color: #60a5fa;
+            background: rgba(59, 130, 246, 0.18);
+            border-color: rgba(59, 130, 246, 0.35);
+            font-weight: 700;
+        }
+
+        /* Header */
+        .site-header {
+            background: var(--fia-card-bg);
+            border-bottom: 1px solid var(--fia-border);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        .header-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #1e3a8a, #0f766e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3);
+        }
+        .brand-text h1 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand-text .badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            background: var(--fia-gold-light);
+            color: var(--fia-gold);
+            padding: 2px 7px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            border: 1px solid rgba(180, 83, 9, 0.3);
+        }
+        .brand-text p {
+            font-size: 0.78rem;
+            color: var(--fia-text-muted);
+            line-height: 1.2;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tab-nav-btn {
+            background: var(--fia-surface);
+            border: 1px solid var(--fia-border);
+            color: var(--fia-text);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .tab-nav-btn:hover {
+            background: var(--fia-surface-hover);
+        }
+        .tab-nav-btn.active {
+            background: var(--fia-primary);
+            color: #ffffff;
+            border-color: var(--fia-primary);
+            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.25);
+        }
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--fia-border);
+            background: var(--fia-card-bg);
+            color: var(--fia-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .icon-btn:hover {
+            background: var(--fia-surface);
+            color: var(--fia-primary);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.08) 0%, rgba(180, 83, 9, 0.04) 100%);
+            border-bottom: 1px solid var(--fia-border);
+            padding: 32px 20px;
+        }
+        .hero-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .hero-title-area {
+            max-width: 860px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: var(--fia-primary-light);
+            color: var(--fia-primary);
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            margin-bottom: 12px;
+        }
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: var(--fia-text-muted);
+            line-height: 1.55;
+            font-family: var(--font-legal);
+        }
+        .hero-cta-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-action.primary {
+            background: var(--fia-primary);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+        }
+        .btn-action.primary:hover {
+            background: var(--fia-primary-hover);
+            transform: translateY(-1px);
+        }
+        .btn-action.gold {
+            background: var(--fia-gold);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(180, 83, 9, 0.25);
+        }
+        .btn-action.gold:hover {
+            background: #92400e;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Stats Cards (Interactive Tabs Shortcuts) */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .stat-card {
+            background: var(--fia-card-bg);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--fia-primary);
+        }
+        .stat-card::after {
+            content: 'View Tab →';
+            position: absolute;
+            right: 12px;
+            bottom: 8px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--fia-text-muted);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .stat-card:hover::after {
+            opacity: 1;
+            color: var(--fia-primary);
+        }
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        .stat-icon.navy { background: var(--fia-primary-light); color: var(--fia-primary); }
+        .stat-icon.gold { background: var(--fia-gold-light); color: var(--fia-gold); }
+        .stat-icon.teal { background: var(--fia-teal-light); color: var(--fia-teal); }
+        .stat-icon.crimson { background: var(--fia-crimson-light); color: var(--fia-crimson); }
+        .stat-info .stat-num {
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        .stat-info .stat-desc {
+            font-size: 0.74rem;
+            color: var(--fia-text-muted);
+            margin-top: 3px;
+        }
+
+        /* Dedicated Sticky Tab Bar */
+        .main-tab-bar-wrap {
+            background: var(--fia-card-bg);
+            border-bottom: 2px solid var(--fia-border);
+            position: sticky;
+            top: 69px;
+            z-index: 90;
+            box-shadow: var(--shadow-sm);
+        }
+        .main-tab-bar {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 8px 20px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+        }
+        .bar-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--fia-text-muted);
+            font-family: var(--font-ui);
+            font-size: 0.86rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .bar-tab-btn:hover {
+            color: var(--fia-text);
+            background: var(--fia-surface);
+        }
+        .bar-tab-btn.active {
+            color: var(--fia-primary);
+            background: var(--fia-primary-light);
+            font-weight: 800;
+        }
+        .bar-tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 16px;
+            right: 16px;
+            height: 3px;
+            background: var(--fia-primary);
+            border-radius: 3px 3px 0 0;
+        }
+        .bar-badge {
+            background: rgba(0,0,0,0.06);
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .bar-tab-btn.active .bar-badge {
+            background: var(--fia-primary);
+            color: #ffffff;
+        }
+
+        /* Workspace Wrapper */
+        .workspace-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* View Panels */
+        .view-panel {
+            display: none;
+        }
+        .view-panel.active {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Generic Controls & Filters */
+        .controls-card {
+            background: var(--fia-card-bg);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-lg);
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .search-box-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+        }
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--fia-text-muted);
+            font-size: 0.9rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px 14px 10px 38px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--fia-border);
+            background: var(--fia-surface);
+            color: var(--fia-text);
+            font-family: var(--font-ui);
+            font-size: 0.88rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .search-input:focus {
+            border-color: var(--fia-primary);
+            background: var(--fia-card-bg);
+            box-shadow: 0 0 0 3px var(--fia-primary-light);
+        }
+        .filter-select {
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--fia-border);
+            background: var(--fia-surface);
+            color: var(--fia-text);
+            font-family: var(--font-ui);
+            font-size: 0.88rem;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-select:focus {
+            border-color: var(--fia-primary);
+        }
+        .category-pills-wrap {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-top: 12px;
+            margin-top: 12px;
+            border-top: 1px solid var(--fia-border);
+            scrollbar-width: thin;
+        }
+        .pill-filter-btn {
+            background: var(--fia-surface);
+            border: 1px solid var(--fia-border);
+            color: var(--fia-text-muted);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .pill-filter-btn:hover {
+            color: var(--fia-text);
+            background: var(--fia-surface-hover);
+        }
+        .pill-filter-btn.active {
+            background: var(--fia-primary);
+            color: #ffffff;
+            border-color: var(--fia-primary);
+        }
+
+        /* TAB 1: Statutes Layout */
+        .statutes-layout {
+            display: grid;
+            grid-template-columns: 310px 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        .statutes-sidebar {
+            background: var(--fia-card-bg);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        .statute-sidebar-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .law-sidebar-btn {
+            background: var(--fia-surface);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--fia-text);
+            font-family: var(--font-ui);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .law-sidebar-btn:hover {
+            background: var(--fia-surface-hover);
+            border-color: var(--fia-border-strong);
+        }
+        .law-sidebar-btn.active {
+            background: var(--fia-primary-light);
+            border-color: var(--fia-primary);
+            border-left: 4px solid var(--fia-primary);
+        }
+        .law-btn-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .law-btn-sub {
+            font-size: 0.72rem;
+            color: var(--fia-text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .statute-main-content {
+            background: var(--fia-card-bg);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .statute-meta-strip {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .meta-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: var(--fia-surface);
+            color: var(--fia-text-muted);
+            border: 1px solid var(--fia-border);
+            font-family: var(--font-mono);
+        }
+        .statute-header-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .statute-preamble {
+            font-family: var(--font-legal);
+            font-style: italic;
+            color: var(--fia-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-left: 14px;
+            border-left: 3px solid var(--fia-gold);
+            margin-bottom: 16px;
+        }
+        .statute-extent {
+            background: var(--fia-surface);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.84rem;
+            border: 1px solid var(--fia-border);
+            margin-bottom: 24px;
+        }
+
+        /* Section Accordion Cards */
+        .sections-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .section-card {
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-md);
+            background: var(--fia-card-bg);
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .section-card:hover {
+            border-color: var(--fia-border-strong);
+        }
+        .section-header {
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            cursor: pointer;
+            user-select: none;
+            background: var(--fia-surface);
+            transition: background 0.2s;
+        }
+        .section-header:hover {
+            background: var(--fia-surface-hover);
+        }
+        .section-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+        .section-num-pill {
+            background: var(--fia-primary);
+            color: #ffffff;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .section-body {
+            padding: 16px 18px;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            border-top: 1px solid var(--fia-border);
+            display: block;
+        }
+        .section-exam-note {
+            background: var(--fia-gold-light);
+            color: #78350f;
+            border-left: 3px solid var(--fia-gold);
+            padding: 10px 14px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.82rem;
+            margin-top: 10px;
+        }
+        .dark-mode .section-exam-note {
+            color: #fef3c7;
+        }
+
+        /* TAB 2: Scheduled Special Acts Table */
+        .table-responsive {
+            overflow-x: auto;
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-lg);
+            background: var(--fia-card-bg);
+            box-shadow: var(--shadow-sm);
+        }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+        .schedule-table th {
+            background: var(--fia-surface);
+            padding: 14px 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.74rem;
+            letter-spacing: 0.04em;
+            color: var(--fia-text-muted);
+            border-bottom: 2px solid var(--fia-border);
+        }
+        .schedule-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--fia-border);
+            vertical-align: middle;
+        }
+        .schedule-table tr:hover td {
+            background: var(--fia-surface);
+        }
+
+        /* TAB 3: 118 PPC Sections Grid */
+        .ppc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+        .ppc-card {
+            background: var(--fia-card-bg);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            position: relative;
+        }
+        .ppc-card:hover {
+            border-color: var(--fia-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .ppc-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .ppc-sec-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--fia-primary);
+            background: var(--fia-primary-light);
+            padding: 3px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+        }
+        .ppc-wing-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--fia-gold);
+            background: var(--fia-gold-light);
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+        .ppc-title {
+            font-size: 0.96rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+        .ppc-punishment {
+            font-size: 0.8rem;
+            color: var(--fia-crimson);
+            font-weight: 600;
+            background: var(--fia-crimson-light);
+            padding: 6px 10px;
+            border-radius: var(--radius-sm);
+            line-height: 1.4;
+        }
+        .ppc-nexus {
+            font-size: 0.8rem;
+            color: var(--fia-text-muted);
+            line-height: 1.45;
+            background: var(--fia-surface);
+            padding: 8px 10px;
+            border-radius: var(--radius-sm);
+        }
+        .btn-investigate-sec {
+            margin-top: auto;
+            background: var(--fia-surface);
+            border: 1px solid var(--fia-border);
+            color: var(--fia-primary);
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-investigate-sec:hover {
+            background: var(--fia-primary);
+            color: #ffffff;
+            border-color: var(--fia-primary);
+        }
+
+        /* TAB 4: Operational Wings */
+        .wings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .wing-card {
+            background: var(--fia-card-bg);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: all 0.2s;
+        }
+        .wing-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--fia-border-strong);
+        }
+        .wing-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .wing-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: var(--fia-primary-light);
+            color: var(--fia-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .wing-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+        .wing-urdu {
+            font-size: 0.95rem;
+            color: var(--fia-gold);
+            font-weight: 700;
+        }
+
+        /* TAB 5: Interactive Investigation Explainer */
+        .explainer-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        .explainer-dossier-card {
+            background: var(--fia-card-bg);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-xl);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+        }
+        .dossier-header {
+            border-bottom: 2px solid var(--fia-border);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+        }
+        .dossier-badge-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .dossier-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+        .dossier-statutory-basis {
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            color: var(--fia-text-muted);
+        }
+
+        .dossier-grid-two {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .dossier-info-box {
+            background: var(--fia-surface);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-md);
+            padding: 18px;
+        }
+        .dossier-box-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--fia-primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* SOP Steps Timeline */
+        .sop-timeline-wrap {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .sop-step-card {
+            background: var(--fia-card-bg);
+            border: 1px solid var(--fia-border);
+            border-left: 4px solid var(--fia-teal);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 16px 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .sop-step-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--fia-teal);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sop-step-desc {
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* Legal Matrix Cards */
+        .legal-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .matrix-cell {
+            background: var(--fia-surface);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            text-align: center;
+        }
+        .matrix-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--fia-text-muted);
+            margin-bottom: 4px;
+        }
+        .matrix-val {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: var(--fia-text);
+        }
+
+        /* Quick section selector pills */
+        .quick-sec-pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .quick-sec-btn {
+            background: var(--fia-surface);
+            border: 1px solid var(--fia-border);
+            color: var(--fia-text);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quick-sec-btn:hover {
+            background: var(--fia-surface-hover);
+            border-color: var(--fia-primary);
+        }
+        .quick-sec-btn.active {
+            background: var(--fia-primary);
+            color: #ffffff;
+            border-color: var(--fia-primary);
+        }
+
+        /* TAB 6: Scenarios Solver */
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 20px;
+        }
+        .scenario-card {
+            background: var(--fia-card-bg);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .scenario-pill {
+            display: inline-flex;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: var(--fia-primary-light);
+            color: var(--fia-primary);
+            padding: 3px 8px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+        .scenario-text {
+            font-family: var(--font-legal);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--fia-text);
+        }
+        .scenario-q {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--fia-text);
+            padding-top: 10px;
+            border-top: 1px dashed var(--fia-border);
+        }
+        .scenario-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .scenario-opt-btn {
+            background: var(--fia-surface);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-md);
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-ui);
+            color: var(--fia-text);
+        }
+        .scenario-opt-btn:hover {
+            background: var(--fia-surface-hover);
+        }
+        .scenario-opt-btn.correct {
+            background: var(--fia-success-light);
+            border-color: var(--fia-success);
+            color: #14532d;
+            font-weight: 700;
+        }
+        .scenario-opt-btn.wrong {
+            background: var(--fia-crimson-light);
+            border-color: var(--fia-crimson);
+            color: #7f1d1d;
+        }
+        .scenario-feedback {
+            padding: 12px;
+            border-radius: var(--radius-md);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            display: none;
+        }
+
+        /* TAB 7: FPSC Quiz Card */
+        .quiz-container {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--fia-card-bg);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+        .quiz-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--fia-border);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .quiz-counter {
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--fia-primary);
+        }
+        .quiz-score {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--fia-gold);
+        }
+        .quiz-q-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        .quiz-options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        .quiz-opt-btn {
+            background: var(--fia-surface);
+            border: 1px solid var(--fia-border);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            text-align: left;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-ui);
+            color: var(--fia-text);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .quiz-opt-btn:hover {
+            background: var(--fia-surface-hover);
+        }
+        .quiz-opt-btn.correct {
+            background: var(--fia-success-light);
+            border-color: var(--fia-success);
+            color: #14532d;
+            font-weight: 700;
+        }
+        .quiz-opt-btn.wrong {
+            background: var(--fia-crimson-light);
+            border-color: var(--fia-crimson);
+            color: #7f1d1d;
+        }
+        .quiz-explanation-box {
+            background: var(--fia-primary-light);
+            border-left: 4px solid var(--fia-primary);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            display: none;
+            margin-bottom: 24px;
+        }
+        .quiz-nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 32px 20px;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.84rem;
+        }
+        .footer-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .statutes-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            .explainer-dossier-card {
+                padding: 20px;
+            }
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/fia-laws-explorer.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/fia-laws-explorer.html">
+    <meta property="og:title" content="FIA Laws Explorer | FIA Act 1974, PECA, AMLA, 118 PPC Sections, 37 Special Acts &amp; Investigation SOP">
+    <meta property="og:description" content="Explore federal investigation statutes of Pakistan: FIA Act 1974, PECA 2016, AMLA 2010, Emigration Ordinance 1979, PCA 1947, all 118 scheduled PPC offences, 37 special scheduled enactments, 7 opera...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FIA Laws Explorer | FIA Act 1974, PECA, AMLA, 118 PPC Sections, 37 Special Acts &amp; Investigation SOP">
+    <meta name="twitter:description" content="Explore federal investigation statutes of Pakistan: FIA Act 1974, PECA 2016, AMLA 2010, Emigration Ordinance 1979, PCA 1947, all 118 scheduled PPC offences, 37 special scheduled enactments, 7 opera...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+<body>
+
+    <!-- Academic Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+            <a href="international-organizations-explorer.html" class="switcher-btn"><i class="fas fa-sitemap"></i> Organizations</a>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> World Timeline</a>
+            <a href="global-power-comparison.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Global Power</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-atom"></i> Periodic Table</a>
+            <a href="climate-change-explorer.html" class="switcher-btn"><i class="fas fa-temperature-high"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn"><i class="fas fa-microchip"></i> Technology</a>
+            <a href="constitution-explorer.html" class="switcher-btn"><i class="fas fa-scale-balanced"></i> Constitution</a>
+            <a href="ppc-section-finder.html" class="switcher-btn"><i class="fas fa-gavel"></i> PPC Finder</a>
+            <a href="crpc-procedure-flowchart.html" class="switcher-btn"><i class="fas fa-diagram-project"></i> CrPC Flowchart</a>
+            <a href="identify-legal-provision.html" class="switcher-btn"><i class="fas fa-scale-unbalanced-flip"></i> Legal Provision</a>
+            <a href="court-structure-explorer.html" class="switcher-btn"><i class="fas fa-landmark"></i> Court Structure</a>
+            <a href="fia-laws-explorer.html" class="switcher-btn active"><i class="fas fa-building-shield"></i> FIA Laws</a>
+            <a href="world-economy-dashboard.html" class="switcher-btn"><i class="fas fa-chart-line"></i> World Economy</a>
+            <a href="currency-exchange-explorer.html" class="switcher-btn"><i class="fas fa-coins"></i> Currency &amp; Exchange</a>
+            <a href="who-trades-what.html" class="switcher-btn"><i class="fas fa-ship"></i> Who Trades What?</a>
+            <a href="daily-challenges.html" class="switcher-btn"><i class="fas fa-bolt"></i> Daily Challenges</a>
+            <a href="daily-fact.html" class="switcher-btn"><i class="fas fa-calendar-check"></i> Daily Fact</a>
+        </div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="fia-laws-explorer.html" class="brand-group">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-building-shield"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>FIA Laws Explorer <span class="badge">Federal Investigation Agency</span></h1>
+                    <p>FIA Act 1974 &bull; PECA &bull; AMLA &bull; 118 PPC Sections &bull; 37 Scheduled Acts &bull; Investigation SOP</p>
+                </div>
+            </a>
+            <div class="header-actions">
+                <a href="index.html" class="tab-nav-btn" style="text-decoration:none; background:rgba(30,58,138,0.3); border-color:#3b82f6; color:#93c5fd;" title="Return to CSS Prep Central Home"><i class="fa-solid fa-house"></i> Main Portal</a>
+                <button type="button" class="tab-nav-btn active" id="btnTabStatutes" onclick="switchMainTab('statutes')">
+                    <i class="fa-solid fa-book-journal-whills"></i> Core Statutes
+                </button>
+                <button type="button" class="tab-nav-btn" id="btnTabSchedule" onclick="switchMainTab('schedule')">
+                    <i class="fa-solid fa-list-ol"></i> 37 Scheduled Laws
+                </button>
+                <button type="button" class="tab-nav-btn" id="btnTabPpc" onclick="switchMainTab('ppc')">
+                    <i class="fa-solid fa-gavel"></i> 118 PPC Sections
+                </button>
+                <button type="button" class="tab-nav-btn" id="btnTabWings" onclick="switchMainTab('wings')">
+                    <i class="fa-solid fa-shield-halved"></i> 7 FIA Wings
+                </button>
+                <button type="button" class="tab-nav-btn" id="btnTabExplainer" onclick="switchMainTab('explainer')">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i> Investigation Explainer
+                </button>
+                <button type="button" class="tab-nav-btn" id="btnTabScenarios" onclick="switchMainTab('scenarios')">
+                    <i class="fa-solid fa-user-secret"></i> Case Solver
+                </button>
+                <button type="button" class="tab-nav-btn" id="btnTabQuiz" onclick="switchMainTab('quiz')">
+                    <i class="fa-solid fa-graduation-cap"></i> FPSC Quiz
+                </button>
+                <button type="button" class="icon-btn" id="soundToggleBtn" title="Toggle Sound" onclick="toggleSound()">
+                    <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+                </button>
+                <button type="button" class="icon-btn" id="themeToggleBtn" title="Toggle Theme" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="hero-top">
+                <div class="hero-title-area">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-certificate"></i> Official Statutory Repository &bull; FIA Act VIII of 1975 &bull; SRO 1620(I)/2026
+                    </div>
+                    <h2 class="hero-title">Federal Investigation Agency Laws &amp; Scheduled Offences Explorer</h2>
+                    <p class="hero-subtitle">Comprehensive statutory repository, investigation manual, and problem-solving database for FPSC exams (FIA Assistant Director, Inspector Investigation, AD Legal), CSS, and Law GAT. Study verbatim legal sections, examine official scheduled enactments, understand the federal jurisdictional nexus, and master step-by-step investigation SOPs.</p>
+                </div>
+                <div class="hero-cta-group">
+                    <button type="button" onclick="switchMainTab('explainer')" class="btn-action gold">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i> Search &amp; Investigate Any Section
+                    </button>
+                    <a href="fia-sample-papers.html" class="btn-action primary">
+                        <i class="fa-solid fa-file-pen"></i> FIA AD 1,000 MCQs Papers
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats (Clickable Direct Tab Selectors) -->
+            <div class="hero-stats">
+                <div class="stat-card" onclick="switchMainTab('statutes')" title="Click to open Core Statutes">
+                    <div class="stat-icon navy"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">6 Core Statutes</div>
+                        <div class="stat-desc">FIA Act, PECA, AMLA, Emigration, PCA &amp; Passports</div>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="switchMainTab('schedule')" title="Click to open 37 Scheduled Laws">
+                    <div class="stat-icon gold"><i class="fa-solid fa-list-check"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num" id="kpiScheduledCount">37 Scheduled Acts</div>
+                        <div class="stat-desc">From SRO 1975 to 2026 Gazette amendments</div>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="switchMainTab('ppc')" title="Click to open 118 Scheduled PPC Sections">
+                    <div class="stat-icon teal"><i class="fa-solid fa-gavel"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num" id="kpiPpcCount">118 PPC Sections</div>
+                        <div class="stat-desc">All scheduled Penal Code offences triable by FIA</div>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="switchMainTab('wings')" title="Click to open 7 Operational Wings">
+                    <div class="stat-icon crimson"><i class="fa-solid fa-building-shield"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">7 Operational Wings</div>
+                        <div class="stat-desc">Anti-Corruption, Cyber, AHTD, Economic, CTW &amp; Interpol</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Tab Strip (Sticky Navigation for Seamless Switching on all Devices) -->
+    <div class="main-tab-bar-wrap">
+        <nav class="main-tab-bar" aria-label="Main Navigation Tabs">
+            <button type="button" class="bar-tab-btn active" id="btnBarStatutes" onclick="switchMainTab('statutes')">
+                <i class="fa-solid fa-book-journal-whills"></i> Core Statutes <span class="bar-badge">6</span>
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarSchedule" onclick="switchMainTab('schedule')">
+                <i class="fa-solid fa-list-ol"></i> 37 Scheduled Acts <span class="bar-badge">37</span>
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarPpc" onclick="switchMainTab('ppc')">
+                <i class="fa-solid fa-gavel"></i> 118 PPC Sections <span class="bar-badge">118</span>
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarWings" onclick="switchMainTab('wings')">
+                <i class="fa-solid fa-shield-halved"></i> 7 Operational Wings <span class="bar-badge">7</span>
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarExplainer" onclick="switchMainTab('explainer')">
+                <i class="fa-solid fa-magnifying-glass-chart"></i> Investigation Explainer &amp; SOP
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarScenarios" onclick="switchMainTab('scenarios')">
+                <i class="fa-solid fa-user-secret"></i> Case Solver <span class="bar-badge">8</span>
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarQuiz" onclick="switchMainTab('quiz')">
+                <i class="fa-solid fa-graduation-cap"></i> FPSC Mock Quiz <span class="bar-badge">20</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="workspace-wrapper">
+
+        <!-- TAB 1: CORE STATUTES EXPLORER -->
+        <section class="view-panel active" id="viewStatutes">
+            <div class="statutes-layout">
+                <!-- Sidebar of Core Laws -->
+                <aside class="statutes-sidebar">
+                    <h3 style="font-size:0.92rem; font-weight:800; text-transform:uppercase; color:var(--fia-primary); display:flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-landmark"></i> Core Federal Statutes
+                    </h3>
+                    <p style="font-size:0.75rem; color:var(--fia-text-muted); margin-top:2px;">Select a statute to view verbatim sections and exam notes:</p>
+                    <div class="statute-sidebar-list" id="lawSidebarList">
+                        <!-- Populated by JS -->
+                    </div>
+                </aside>
+
+                <!-- Active Statute Detail -->
+                <div class="statute-main-content">
+                    <div class="statute-meta-strip">
+                        <span class="meta-tag" id="statuteActNo">Act VIII of 1975</span>
+                        <span class="meta-tag" id="statuteDate">17th Jan 1975</span>
+                        <span class="meta-tag" style="color:var(--fia-gold);" id="statuteWing">All Wings</span>
+                    </div>
+                    <h2 class="statute-header-title" id="statuteName">Federal Investigation Agency Act, 1974</h2>
+                    <div class="statute-preamble" id="statutePreamble">
+                        An Act to provide for the constitution of a Federal Investigation Agency...
+                    </div>
+                    <div class="statute-extent" id="statuteExtent">
+                        <strong>Jurisdiction:</strong> Extends to the whole of Pakistan and also applies to all citizens of Pakistan and Public Servants, wherever they may be.
+                    </div>
+
+                    <!-- Search within Statute Sections -->
+                    <div class="controls-card" style="padding: 12px 16px; margin-bottom: 16px;">
+                        <div class="search-box-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="statuteSectionFilter" class="search-input" placeholder="Filter sections in this statute (e.g. Section 5, Search, Arrest)..." oninput="filterActiveStatuteSections()">
+                        </div>
+                    </div>
+
+                    <h3 style="font-size:1.05rem; font-weight:800; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-list-check" style="color:var(--fia-primary);"></i> Key Statutory Sections (FPSC Exam Focus)
+                    </h3>
+                    <div class="sections-accordion" id="sectionsAccordion">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: 37 SCHEDULED SPECIAL ACTS -->
+        <section class="view-panel" id="viewSchedule">
+            <div class="controls-card">
+                <div class="controls-row">
+                    <div class="search-box-wrap">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="scheduleSearchInput" class="search-input" placeholder="Search scheduled law title, entry no, SRO or section (e.g. Drugs, Passport, Banking, 2026)..." oninput="filterSchedule()">
+                    </div>
+                    <div>
+                        <select id="scheduleCategoryFilter" class="filter-select" onchange="filterSchedule()">
+                            <option value="all">All Statutory Categories (37 Acts)</option>
+                            <option value="Banking & Finance">Banking &amp; Finance</option>
+                            <option value="Anti-Corruption">Anti-Corruption</option>
+                            <option value="Public Health & Safety">Public Health &amp; Drugs</option>
+                            <option value="State Property & Antiquities">State Property &amp; Antiquities</option>
+                            <option value="Energy & Utilities">Energy &amp; Utilities</option>
+                            <option value="Immigration & Passports">Immigration &amp; Passports</option>
+                            <option value="Cyber & Telecommunications">Cyber &amp; Telecom</option>
+                            <option value="Explosives & Arms">Explosives &amp; Arms</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">Entry No.</th>
+                            <th>Statute Title / Act Name</th>
+                            <th>Specific Sections Included</th>
+                            <th>Notification / SRO Citation</th>
+                            <th>Offence Domain</th>
+                            <th style="text-align: right;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TAB 3: 118 PPC SECTIONS EXPLORER -->
+        <section class="view-panel" id="viewPpc">
+            <div class="controls-card">
+                <div class="controls-row">
+                    <div class="search-box-wrap">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="ppcSearchInput" class="search-input" placeholder="Search PPC section (e.g. 161, 409, 420, 489-F, Bribery, Cheating, Gas, Forgery)..." oninput="filterPpcSections()">
+                    </div>
+                    <div>
+                        <span style="font-size:0.84rem; font-weight:700; color:var(--fia-text-muted);" id="ppcMatchesCount">Showing 118 Scheduled Sections</span>
+                    </div>
+                </div>
+                <div class="category-pills-wrap">
+                    <button type="button" class="pill-filter-btn active" onclick="setPpcCategory('all', this)">All (118)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setPpcCategory('Bribery & Corruption', this)">Bribery (161-169)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setPpcCategory('Public Servants & Contempt', this)">Public Servants (175-189, 216-225)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setPpcCategory('Conspiracy & State Security', this)">State Security (120B-124A, 505)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setPpcCategory('Forgery, Fraud & Cheating', this)">Forgery &amp; Cheating (418-420, 466-477A)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setPpcCategory('Counterfeit Currency & Stamps', this)">Currency &amp; Stamps (245, 255-263, 489A-F)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setPpcCategory('Gas & Utility Theft', this)">Gas Theft (462A-462M)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setPpcCategory('Kidnapping & Abduction', this)">Kidnapping (365A, 366B)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setPpcCategory('Offences Against Property', this)">Property &amp; CBT (402A-409, 411, 435-440)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setPpcCategory('Religious Offences', this)">Religious (295A-298A)</button>
+                </div>
+            </div>
+
+            <div class="ppc-grid" id="ppcGridContainer">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- TAB 4: 7 OPERATIONAL WINGS -->
+        <section class="view-panel" id="viewWings">
+            <div style="margin-bottom:20px;">
+                <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:4px;">Federal Investigation Agency Operational Structure</h3>
+                <p style="font-size:0.9rem; color:var(--fia-text-muted);">The 7 primary specialized directorates executing investigation mandates under Section 3 &amp; 5 of the FIA Act 1974.</p>
+            </div>
+            <div class="wings-grid" id="wingsGridContainer">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- TAB 5: INVESTIGATION EXPLAINER & SECTION SEARCH ENGINE -->
+        <section class="view-panel" id="viewExplainer">
+            <div class="explainer-layout">
+                <!-- Interactive Search Card -->
+                <div class="controls-card">
+                    <div style="margin-bottom:12px;">
+                        <h3 style="font-size:1.15rem; font-weight:800; display:flex; align-items:center; gap:8px;">
+                            <i class="fa-solid fa-magnifying-glass-chart" style="color:var(--fia-primary);"></i>
+                            Section Investigation Explainer &amp; Federal SOP Engine
+                        </h3>
+                        <p style="font-size:0.84rem; color:var(--fia-text-muted); margin-top:2px;">
+                            Search any scheduled section (PPC, PECA, AMLA, Emigration, PCA) to discover its federal jurisdictional nexus, legal ingredients (actus reus &amp; mens rea), and the exact step-by-step SOP on how the FIA investigates it:
+                        </p>
+                    </div>
+
+                    <div class="search-box-wrap">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="explainerSearchInput" class="search-input" placeholder="Type any section or offence (e.g. 161, 409, 420, 489-F, PECA 14, AMLA 3, Emigration 17, 462-I)..." oninput="onExplainerSearchInput()">
+                    </div>
+
+                    <div style="margin-top:14px;">
+                        <div style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--fia-text-muted); margin-bottom:6px;">
+                            Popular FPSC Exam &amp; Investigation Targets:
+                        </div>
+                        <div class="quick-sec-pills">
+                            <button type="button" class="quick-sec-btn active" onclick="loadExplainerPreset('exp-bribery')">PPC 161 &amp; PCA 5 (Bribery / Trap Raid)</button>
+                            <button type="button" class="quick-sec-btn" onclick="loadExplainerPreset('exp-peca-fraud')">PECA Sec 14 &amp; PPC 420 (Cyber Fraud)</button>
+                            <button type="button" class="quick-sec-btn" onclick="loadExplainerPreset('exp-human-trafficking')">Emigration Ord Sec 17/18 (Human Trafficking)</button>
+                            <button type="button" class="quick-sec-btn" onclick="loadExplainerPreset('exp-gas-theft')">PPC 462A-462M (Industrial Gas Theft)</button>
+                            <button type="button" class="quick-sec-btn" onclick="loadExplainerPreset('exp-currency-forgery')">PPC 489-A to 489-E (Fake Currency)</button>
+                            <button type="button" class="quick-sec-btn" onclick="searchAndExplainSection('409')">PPC 409 (CBT by Public Servant)</button>
+                            <button type="button" class="quick-sec-btn" onclick="searchAndExplainSection('489-F')">PPC 489-F (Dishonored Cheque)</button>
+                            <button type="button" class="quick-sec-btn" onclick="searchAndExplainSection('3')">AMLA Sec 3 (Money Laundering)</button>
+                            <button type="button" class="quick-sec-btn" onclick="searchAndExplainSection('6')">Passport Act Sec 6 (Forged Passports)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Dynamic Explainer Dossier -->
+                <div class="explainer-dossier-card" id="explainerDossierArea">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 6: PRACTICAL CASE SOLVER -->
+        <section class="view-panel" id="viewScenarios">
+            <div style="margin-bottom:20px;">
+                <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:4px;">FPSC FIA Assistant Director &amp; Inspector Investigation Scenarios</h3>
+                <p style="font-size:0.9rem; color:var(--fia-text-muted);">Real-world case dilemmas testing your understanding of federal jurisdiction, search &amp; seizure powers under Section 5 FIA Act, and applicable special laws.</p>
+            </div>
+            <div class="scenarios-grid" id="scenarioGridContainer">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- TAB 7: FPSC 20-QUESTION QUIZ -->
+        <section class="view-panel" id="viewQuiz">
+            <div class="quiz-container">
+                <div class="quiz-top-bar">
+                    <span class="quiz-counter" id="quizCounter">Question 1 of 20</span>
+                    <span class="quiz-score" id="quizScore">Score: 0 / 0</span>
+                </div>
+                <div class="quiz-q-title" id="quizQuestionText">
+                    Loading question...
+                </div>
+                <div class="quiz-options-list" id="quizOptionsList">
+                    <!-- Options populated by JS -->
+                </div>
+                <div class="quiz-explanation-box" id="quizExplanationBox">
+                    <!-- Explanation populated by JS -->
+                </div>
+                <div class="quiz-nav-row">
+                    <button type="button" class="btn-action primary" id="btnNextQuiz" onclick="nextQuizQuestion()" style="margin-left:auto; display:none;">
+                        Next Question <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button type="button" class="btn-action gold" id="btnRestartQuiz" onclick="restartQuiz()" style="display:none;">
+                        <i class="fa-solid fa-rotate-right"></i> Restart Quiz
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <strong style="color:#ffffff;">FIA Laws Explorer &bull; Statutory &amp; Investigative Compendium</strong>
+                <p style="margin-top:4px; font-size:0.78rem;">Designed for FPSC FIA Assistant Director (Investigation/Legal), Inspector, and CSS Aspirants.</p>
+            </div>
+            <div style="font-size:0.78rem;">
+                Based on FIA Act 1974 (Act VIII of 1975) &bull; Updated via Gazette Notifications through 2026.
+            </div>
+        </div>
+    
+        <div class="footer-legal-bar" style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; color:#94a3b8;">
+            <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+            <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+            <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+            <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Comprehensive FIA Data Script -->
+    <script src="js/data_fia_laws.js"></script>
+
+    <!-- Application Script -->
+    <script>
+        (function() {
+            let fiaData = null;
+            let activeLawIndex = 0;
+            let scheduleSearchQuery = '';
+            let scheduleCategory = 'all';
+            let ppcSearchQuery = '';
+            let ppcCategory = 'all';
+            let currentExplainerTopicId = 'exp-bribery';
+            let currentQuizIndex = 0;
+            let quizScore = 0;
+            let answeredQuizQuestions = 0;
+            let audioCtx = null;
+            let soundEnabled = true;
+
+            function initAudio() {
+                if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            }
+
+            window.toggleSound = function() {
+                soundEnabled = !soundEnabled;
+                try { localStorage.setItem('mcqs_sound_enabled', soundEnabled); } catch(e) {}
+                updateSoundIcon();
+            };
+
+            function updateSoundIcon() {
+                const icon = document.getElementById('soundIcon');
+                if (icon) {
+                    icon.className = soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+                }
+            }
+
+            window.toggleTheme = function() {
+                const isDark = document.documentElement.classList.toggle('dark-mode');
+                try { localStorage.setItem('mcqs_dark_mode', isDark); } catch(e) {}
+                const icon = document.getElementById('themeIcon');
+                if (icon) {
+                    icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+            };
+
+            function playSound(type) {
+                if (!soundEnabled) return;
+                try {
+                    initAudio();
+                    if (!audioCtx) return;
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                    const now = audioCtx.currentTime;
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    if (type === 'correct') {
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(659.25, now);
+                        osc.frequency.setValueAtTime(880.00, now + 0.12);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                        osc.start(now);
+                        osc.stop(now + 0.4);
+                    } else if (type === 'wrong') {
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(220.00, now);
+                        osc.frequency.setValueAtTime(174.61, now + 0.12);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                        osc.start(now);
+                        osc.stop(now + 0.35);
+                    }
+                } catch(e) {}
+            }
+
+            // Init on DOM ready
+            document.addEventListener('DOMContentLoaded', () => {
+                if (window.FIA_LAWS_DATA) {
+                    fiaData = window.FIA_LAWS_DATA;
+                } else {
+                    console.error('FIA_LAWS_DATA not found!');
+                    return;
+                }
+
+                // Update hero stats from data
+                if (document.getElementById('kpiScheduledCount')) {
+                    document.getElementById('kpiScheduledCount').textContent = fiaData.fiaScheduleSpecialActs.length + ' Scheduled Acts';
+                }
+                if (document.getElementById('kpiPpcCount')) {
+                    document.getElementById('kpiPpcCount').textContent = fiaData.ppcScheduledSections.length + ' PPC Sections';
+                }
+
+                renderLawSidebar();
+                renderActiveLaw();
+                renderScheduleTable();
+                renderPpcGrid();
+                renderWings();
+                loadExplainerPreset('exp-bribery');
+                renderScenarios();
+                renderQuizQuestion();
+
+                try {
+                    const savedSound = localStorage.getItem('mcqs_sound_enabled');
+                    if (savedSound !== null) soundEnabled = savedSound === 'true';
+                } catch(e) {}
+                updateSoundIcon();
+            });
+
+            // TAB SWITCHING LOGIC (Guarantees every tab switches reliably)
+            window.switchMainTab = function(tabName) {
+                const tabs = ['statutes', 'schedule', 'ppc', 'wings', 'explainer', 'scenarios', 'quiz'];
+                if (!tabs.includes(tabName)) return;
+
+                tabs.forEach(t => {
+                    const btnHeader = document.getElementById('btnTab' + capitalize(t));
+                    const btnBar = document.getElementById('btnBar' + capitalize(t));
+                    const panel = document.getElementById('view' + capitalize(t));
+
+                    const isActive = (t === tabName);
+
+                    if (btnHeader) {
+                        if (isActive) btnHeader.classList.add('active');
+                        else btnHeader.classList.remove('active');
+                    }
+                    if (btnBar) {
+                        if (isActive) btnBar.classList.add('active');
+                        else btnBar.classList.remove('active');
+                    }
+                    if (panel) {
+                        if (isActive) {
+                            panel.classList.add('active');
+                            panel.style.display = 'block';
+                        } else {
+                            panel.classList.remove('active');
+                            panel.style.display = 'none';
+                        }
+                    }
+                });
+
+                // Smooth scroll to top of workspace if user clicked from hero cards
+                const workspace = document.querySelector('.workspace-wrapper');
+                if (workspace && window.scrollY > 400) {
+                    workspace.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            function capitalize(s) {
+                return s.charAt(0).toUpperCase() + s.slice(1);
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
+            // TAB 1: Core Statutes
+            function renderLawSidebar() {
+                const list = document.getElementById('lawSidebarList');
+                if (!list) return;
+                list.innerHTML = '';
+
+                fiaData.coreLaws.forEach((law, idx) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'law-sidebar-btn' + (idx === activeLawIndex ? ' active' : '');
+                    btn.onclick = () => {
+                        activeLawIndex = idx;
+                        renderLawSidebar();
+                        renderActiveLaw();
+                    };
+
+                    btn.innerHTML = `
+                        <div class="law-btn-name">${escapeHtml(law.name)}</div>
+                        <div class="law-btn-sub">${escapeHtml(law.actNo)} &bull; ${escapeHtml(law.investigatingWing)}</div>
+                    `;
+                    list.appendChild(btn);
+                });
+            }
+
+            function renderActiveLaw() {
+                const law = fiaData.coreLaws[activeLawIndex];
+                if (!law) return;
+
+                document.getElementById('statuteActNo').textContent = law.actNo;
+                document.getElementById('statuteDate').textContent = law.dateEnacted;
+                document.getElementById('statuteWing').textContent = law.investigatingWing;
+                document.getElementById('statuteName').textContent = law.name;
+                document.getElementById('statutePreamble').textContent = law.preamble;
+                document.getElementById('statuteExtent').innerHTML = '<strong>Jurisdictional Extent:</strong> ' + escapeHtml(law.extentJurisdiction);
+
+                renderActiveStatuteSections(law.keySections);
+            }
+
+            function renderActiveStatuteSections(sections) {
+                const accordion = document.getElementById('sectionsAccordion');
+                if (!accordion) return;
+                accordion.innerHTML = '';
+
+                if (!sections || sections.length === 0) {
+                    accordion.innerHTML = '<div style="padding:20px; text-align:center; color:var(--fia-text-muted);">No sections match your search filter.</div>';
+                    return;
+                }
+
+                sections.forEach((sec, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'section-card';
+
+                    card.innerHTML = `
+                        <div class="section-header" onclick="toggleSection(${idx})">
+                            <div class="section-header-title">
+                                <span class="section-num-pill">${escapeHtml(sec.section)}</span>
+                                <span>${escapeHtml(sec.title)}</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down" id="secIcon${idx}" style="font-size:0.8rem; color:var(--fia-text-muted); transition:transform 0.2s;"></i>
+                        </div>
+                        <div class="section-body" id="secBody${idx}">
+                            <div style="margin-bottom:8px; line-height:1.6;">${escapeHtml(sec.summary)}</div>
+                            <div class="section-exam-note">
+                                <strong><i class="fa-solid fa-lightbulb" style="color:var(--fia-gold);"></i> FPSC Exam Focus:</strong> ${escapeHtml(sec.examNote)}
+                            </div>
+                        </div>
+                    `;
+                    accordion.appendChild(card);
+                });
+            }
+
+            window.filterActiveStatuteSections = function() {
+                const law = fiaData.coreLaws[activeLawIndex];
+                if (!law) return;
+                const q = (document.getElementById('statuteSectionFilter').value || '').toLowerCase().trim();
+                if (!q) {
+                    renderActiveStatuteSections(law.keySections);
+                    return;
+                }
+                const filtered = law.keySections.filter(s => {
+                    return (s.section + ' ' + s.title + ' ' + s.summary + ' ' + s.examNote).toLowerCase().includes(q);
+                });
+                renderActiveStatuteSections(filtered);
+            };
+
+            window.toggleSection = function(idx) {
+                const body = document.getElementById('secBody' + idx);
+                const icon = document.getElementById('secIcon' + idx);
+                if (!body) return;
+                if (body.style.display === 'none') {
+                    body.style.display = 'block';
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                } else {
+                    body.style.display = 'none';
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
+            };
+
+            // TAB 2: 37 Scheduled Special Acts Table
+            function renderScheduleTable() {
+                const tbody = document.getElementById('scheduleTableBody');
+                if (!tbody) return;
+                tbody.innerHTML = '';
+
+                const q = scheduleSearchQuery.toLowerCase().trim();
+
+                const filtered = fiaData.fiaScheduleSpecialActs.filter(item => {
+                    if (scheduleCategory !== 'all' && item.category !== scheduleCategory) return false;
+                    if (!q) return true;
+                    const hay = (item.entryNo + ' ' + item.actTitle + ' ' + item.sections + ' ' + item.sro + ' ' + item.category).toLowerCase();
+                    return hay.includes(q);
+                });
+
+                if (filtered.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:var(--fia-text-muted);"><i class="fa-solid fa-circle-exclamation" style="font-size:1.5rem; margin-bottom:6px; display:block;"></i>No scheduled special laws match your filter.</td></tr>';
+                    return;
+                }
+
+                filtered.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><span class="section-num-pill">${escapeHtml(item.entryNo)}</span></td>
+                        <td><strong>${escapeHtml(item.actTitle)}</strong></td>
+                        <td><span style="font-family:var(--font-mono); font-size:0.82rem;">${escapeHtml(item.sections)}</span></td>
+                        <td><span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--fia-gold); font-weight:700;">${escapeHtml(item.sro)}</span></td>
+                        <td><span class="meta-tag">${escapeHtml(item.category)}</span></td>
+                        <td style="text-align: right;">
+                            <button type="button" class="btn-investigate-sec" onclick="investigateSpecialAct('${escapeHtml(item.entryNo)}')">
+                                <i class="fa-solid fa-magnifying-glass-chart"></i> Investigate &rarr;
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            window.filterSchedule = function() {
+                scheduleSearchQuery = document.getElementById('scheduleSearchInput').value;
+                scheduleCategory = document.getElementById('scheduleCategoryFilter').value;
+                renderScheduleTable();
+            };
+
+            window.investigateSpecialAct = function(entryNo) {
+                const act = fiaData.fiaScheduleSpecialActs.find(a => a.entryNo === entryNo);
+                if (!act) return;
+                switchMainTab('explainer');
+                explainCustomAct(act);
+            };
+
+            // TAB 3: 118 PPC Sections Grid
+            function renderPpcGrid() {
+                const container = document.getElementById('ppcGridContainer');
+                if (!container) return;
+                container.innerHTML = '';
+
+                const q = ppcSearchQuery.toLowerCase().trim();
+
+                const filtered = fiaData.ppcScheduledSections.filter(sec => {
+                    if (ppcCategory !== 'all') {
+                        if (sec.category !== ppcCategory && sec.group !== ppcCategory) return false;
+                    }
+                    if (!q) return true;
+                    const hay = (sec.sec + ' ' + sec.title + ' ' + sec.group + ' ' + sec.category + ' ' + sec.wing + ' ' + sec.punishment + ' ' + sec.fiaNexus).toLowerCase();
+                    return hay.includes(q);
+                });
+
+                document.getElementById('ppcMatchesCount').textContent = `Showing ${filtered.length} of ${fiaData.ppcScheduledSections.length} Scheduled PPC Sections`;
+
+                if (filtered.length === 0) {
+                    container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--fia-text-muted);"><i class="fa-solid fa-scale-unbalanced" style="font-size:2rem; margin-bottom:10px; display:block;"></i>No PPC sections match your search or category filter.</div>';
+                    return;
+                }
+
+                filtered.forEach(sec => {
+                    const card = document.createElement('div');
+                    card.className = 'ppc-card';
+
+                    card.innerHTML = `
+                        <div class="ppc-top-row">
+                            <span class="ppc-sec-badge">PPC Section ${escapeHtml(sec.sec)}</span>
+                            <span class="ppc-wing-badge"><i class="fa-solid fa-shield"></i> ${escapeHtml(sec.wing)}</span>
+                        </div>
+                        <div class="ppc-title">${escapeHtml(sec.title)}</div>
+                        <div style="font-size:0.75rem; color:var(--fia-text-muted); font-weight:700;">Group: ${escapeHtml(sec.group)}</div>
+                        <div class="ppc-punishment">
+                            <i class="fa-solid fa-gavel"></i> Punishment: ${escapeHtml(sec.punishment)}
+                        </div>
+                        <div class="ppc-nexus">
+                            <strong><i class="fa-solid fa-building-flag"></i> Federal Nexus:</strong> ${escapeHtml(sec.fiaNexus)}
+                        </div>
+                        <button type="button" class="btn-investigate-sec" onclick="investigatePpcSection('${escapeHtml(sec.sec)}')">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i> View Investigation Dossier &amp; SOP &rarr;
+                        </button>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            window.filterPpcSections = function() {
+                ppcSearchQuery = document.getElementById('ppcSearchInput').value;
+                renderPpcGrid();
+            };
+
+            window.setPpcCategory = function(cat, btn) {
+                ppcCategory = cat;
+                document.querySelectorAll('.pill-filter-btn').forEach(b => b.classList.remove('active'));
+                if (btn) btn.classList.add('active');
+                renderPpcGrid();
+            };
+
+            window.investigatePpcSection = function(secNum) {
+                switchMainTab('explainer');
+                searchAndExplainSection(secNum);
+            };
+
+            // TAB 4: Operational Wings
+            function renderWings() {
+                const container = document.getElementById('wingsGridContainer');
+                if (!container) return;
+                container.innerHTML = '';
+
+                fiaData.fiaWings.forEach(w => {
+                    const card = document.createElement('div');
+                    card.className = 'wing-card';
+
+                    let lawsHtml = '';
+                    w.statutesEnforced.forEach(s => {
+                        lawsHtml += `<li style="margin-bottom:4px;"><i class="fa-solid fa-check" style="color:var(--fia-primary); font-size:0.75rem;"></i> ${escapeHtml(s)}</li>`;
+                    });
+
+                    card.innerHTML = `
+                        <div class="wing-top">
+                            <div class="wing-icon"><i class="fa-solid ${w.icon}"></i></div>
+                            <span class="meta-tag" style="font-weight:700; color:var(--fia-primary);">${escapeHtml(w.headRank)}</span>
+                        </div>
+                        <div>
+                            <div class="wing-title">${escapeHtml(w.name)}</div>
+                            <div class="wing-urdu">${escapeHtml(w.urduName)}</div>
+                        </div>
+                        <p style="font-size:0.88rem; line-height:1.55;">${escapeHtml(w.mandate)}</p>
+                        <div style="background:var(--fia-surface); padding:12px; border-radius:var(--radius-sm); border:1px solid var(--fia-border);">
+                            <div style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--fia-primary); margin-bottom:6px;">
+                                Primary Statutes Enforced:
+                            </div>
+                            <ul style="list-style:none; font-size:0.82rem;">
+                                ${lawsHtml}
+                            </ul>
+                        </div>
+                        <div style="font-size:0.8rem; color:var(--fia-text-muted); margin-top:auto;">
+                            <strong>Typical Caseload:</strong> ${escapeHtml(w.sampleTargetCases)}
+                        </div>
+                        <button type="button" class="btn-investigate-sec" onclick="filterSectionsByWing('${escapeHtml(w.name)}')">
+                            <i class="fa-solid fa-list-check"></i> View All Offences Under This Wing &rarr;
+                        </button>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            window.filterSectionsByWing = function(wingName) {
+                switchMainTab('ppc');
+                document.getElementById('ppcSearchInput').value = wingName.split(' ')[0];
+                filterPpcSections();
+            };
+
+            // TAB 5: Interactive Investigation Explainer Engine
+            window.loadExplainerPreset = function(topicId) {
+                currentExplainerTopicId = topicId;
+                const exp = fiaData.investigationExplainers.find(e => e.topicId === topicId);
+                if (!exp) return;
+
+                // Highlight preset button
+                document.querySelectorAll('.quick-sec-btn').forEach(b => b.classList.remove('active'));
+                const matchedBtn = Array.from(document.querySelectorAll('.quick-sec-btn')).find(b => b.getAttribute('onclick')?.includes(topicId));
+                if (matchedBtn) matchedBtn.classList.add('active');
+
+                renderDossier(exp);
+            };
+
+            window.onExplainerSearchInput = function() {
+                const q = (document.getElementById('explainerSearchInput').value || '').trim();
+                if (!q) return;
+                searchAndExplainSection(q);
+            };
+
+            window.searchAndExplainSection = function(query) {
+                const rawQ = String(query).toLowerCase().trim();
+                const q = rawQ.replace(/^ppc\s*/i, '').replace(/^sec(tion)?\s*/i, '').trim();
+                const cleanQ = q.replace(/[-\s]/g, '');
+                
+                // 1. Try finding in curated explainers
+                const curated = fiaData.investigationExplainers.find(e => {
+                    const hay = (e.title + ' ' + e.sectionsCovered + ' ' + e.wing).toLowerCase();
+                    return hay.includes(q) || hay.replace(/[-\s]/g, '').includes(cleanQ);
+                });
+                if (curated) {
+                    renderDossier(curated);
+                    return;
+                }
+
+                // 2. Try finding exact or partial PPC section in 118 sections
+                const ppcExact = fiaData.ppcScheduledSections.find(s => {
+                    const secClean = s.sec.toLowerCase().replace(/[-\s]/g, '');
+                    return s.sec.toLowerCase() === q || secClean === cleanQ;
+                });
+
+                if (ppcExact) {
+                    explainDynamicPpc(ppcExact);
+                    return;
+                }
+
+                const ppcPartial = fiaData.ppcScheduledSections.find(s => {
+                    const secClean = s.sec.toLowerCase().replace(/[-\s]/g, '');
+                    return s.sec.toLowerCase().startsWith(q) || secClean.startsWith(cleanQ) || s.title.toLowerCase().includes(q);
+                });
+
+                if (ppcPartial) {
+                    explainDynamicPpc(ppcPartial);
+                    return;
+                }
+
+                // 3. Try finding in 37 Scheduled Special Acts
+                const act = fiaData.fiaScheduleSpecialActs.find(a => {
+                    const actClean = a.entryNo.toLowerCase().replace(/[-\s]/g, '');
+                    return a.entryNo.toLowerCase() === q || actClean === cleanQ || a.actTitle.toLowerCase().includes(q) || a.sections.toLowerCase().includes(q);
+                });
+
+                if (act) {
+                    explainCustomAct(act);
+                    return;
+                }
+
+                // If not found, render helpful fallback
+                const dossierArea = document.getElementById('explainerDossierArea');
+                dossierArea.innerHTML = `
+                    <div style="text-align:center; padding:40px; color:var(--fia-text-muted);">
+                        <i class="fa-solid fa-triangle-exclamation" style="font-size:2.5rem; color:var(--fia-gold); margin-bottom:12px; display:block;"></i>
+                        <h3 style="font-size:1.2rem; font-weight:800; color:var(--fia-text);">No Exact Statutory Section Found for "${escapeHtml(query)}"</h3>
+                        <p style="font-size:0.88rem; margin-top:6px; max-width:600px; margin-left:auto; margin-right:auto;">
+                            Try searching for specific scheduled sections like <strong>161, 409, 420, 489-F, 462-I, PECA 14, AMLA 3, Emigration 17</strong> or click one of the quick preset buttons above!
+                        </p>
+                    </div>
+                `;
+            };
+
+            function renderDossier(exp) {
+                const dossierArea = document.getElementById('explainerDossierArea');
+                if (!dossierArea) return;
+
+                let stepsHtml = '';
+                exp.investigationSteps.forEach(s => {
+                    stepsHtml += `
+                        <div class="sop-step-card">
+                            <div class="sop-step-title"><i class="fa-solid fa-circle-check"></i> ${escapeHtml(s.step)}</div>
+                            <div class="sop-step-desc">${escapeHtml(s.detail)}</div>
+                        </div>
+                    `;
+                });
+
+                dossierArea.innerHTML = `
+                    <div class="dossier-header">
+                        <div class="dossier-badge-row">
+                            <span class="meta-tag" style="background:var(--fia-primary); color:#ffffff;"><i class="fa-solid fa-scale-balanced"></i> Scheduled Offence</span>
+                            <span class="meta-tag" style="color:var(--fia-gold); font-weight:800;"><i class="fa-solid fa-shield"></i> ${escapeHtml(exp.wing)}</span>
+                        </div>
+                        <h2 class="dossier-title">${escapeHtml(exp.title)}</h2>
+                        <div class="dossier-statutory-basis">
+                            <strong>Statutory Provisions:</strong> ${escapeHtml(exp.sectionsCovered)}
+                        </div>
+                    </div>
+
+                    <div class="dossier-grid-two">
+                        <div class="dossier-info-box">
+                            <div class="dossier-box-title">
+                                <i class="fa-solid fa-building-flag"></i> Federal Jurisdictional Nexus (Why FIA?)
+                            </div>
+                            <p style="font-size:0.88rem; line-height:1.6;">${escapeHtml(exp.nexus)}</p>
+                        </div>
+                        <div class="dossier-info-box">
+                            <div class="dossier-box-title">
+                                <i class="fa-solid fa-balance-scale"></i> Essential Legal Ingredients
+                            </div>
+                            <div style="font-size:0.85rem; line-height:1.55;">
+                                <div style="margin-bottom:6px;"><strong>Actus Reus:</strong> ${escapeHtml(exp.actusReus)}</div>
+                                <div><strong>Mens Rea:</strong> ${escapeHtml(exp.mensRea)}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="legal-matrix-grid">
+                        <div class="matrix-cell">
+                            <div class="matrix-label">Trial Forum</div>
+                            <div class="matrix-val">${escapeHtml(exp.trialForum)}</div>
+                        </div>
+                        <div class="matrix-cell">
+                            <div class="matrix-label">Cognizability</div>
+                            <div class="matrix-val" style="color:var(--fia-primary);">Cognizable (Sec 5 FIA Act)</div>
+                        </div>
+                        <div class="matrix-cell">
+                            <div class="matrix-label">Bailability</div>
+                            <div class="matrix-val" style="color:var(--fia-crimson);">Non-Bailable</div>
+                        </div>
+                        <div class="matrix-cell">
+                            <div class="matrix-label">Investigation Authority</div>
+                            <div class="matrix-val" style="color:var(--fia-teal);">${escapeHtml(exp.wing)}</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:24px;">
+                        <h3 style="font-size:1.1rem; font-weight:800; display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                            <i class="fa-solid fa-route" style="color:var(--fia-teal);"></i> Step-by-Step FIA Standard Operating Procedure (SOP)
+                        </h3>
+                        <div class="sop-timeline-wrap">
+                            ${stepsHtml}
+                        </div>
+                    </div>
+
+                    <div class="section-exam-note" style="margin-top:20px; font-size:0.88rem;">
+                        <strong><i class="fa-solid fa-shield-halved"></i> Prosecution &amp; Exam Master Tip:</strong> ${escapeHtml(exp.prosecutionTip)}
+                    </div>
+                `;
+            }
+
+            function explainDynamicPpc(ppc) {
+                const dossierArea = document.getElementById('explainerDossierArea');
+                dossierArea.innerHTML = `
+                    <div class="dossier-header">
+                        <div class="dossier-badge-row">
+                            <span class="meta-tag" style="background:var(--fia-primary); color:#ffffff;">PPC Section ${escapeHtml(ppc.sec)}</span>
+                            <span class="meta-tag" style="color:var(--fia-gold); font-weight:800;">${escapeHtml(ppc.wing)}</span>
+                            <span class="meta-tag">${escapeHtml(ppc.category)}</span>
+                        </div>
+                        <h2 class="dossier-title">${escapeHtml(ppc.title)}</h2>
+                        <div class="dossier-statutory-basis">
+                            Pakistan Penal Code, 1860 (Act XLV of 1860) &bull; Entry in FIA Act Schedule
+                        </div>
+                    </div>
+
+                    <div class="dossier-grid-two">
+                        <div class="dossier-info-box">
+                            <div class="dossier-box-title">
+                                <i class="fa-solid fa-building-flag"></i> Federal Jurisdictional Nexus (Why FIA?)
+                            </div>
+                            <p style="font-size:0.88rem; line-height:1.6;">${escapeHtml(ppc.fiaNexus)}</p>
+                        </div>
+                        <div class="dossier-info-box">
+                            <div class="dossier-box-title">
+                                <i class="fa-solid fa-gavel"></i> Statutory Punishment
+                            </div>
+                            <p style="font-size:0.95rem; font-weight:700; color:var(--fia-crimson);">${escapeHtml(ppc.punishment)}</p>
+                            <p style="font-size:0.8rem; color:var(--fia-text-muted); margin-top:6px;">Offence is scheduled under the FIA Act 1974; confers full police powers under CrPC to FIA Investigating Officers.</p>
+                        </div>
+                    </div>
+
+                    <div class="legal-matrix-grid">
+                        <div class="matrix-cell">
+                            <div class="matrix-label">Trial Forum</div>
+                            <div class="matrix-val">Court of Special Judge (Central)</div>
+                        </div>
+                        <div class="matrix-cell">
+                            <div class="matrix-label">Cognizability</div>
+                            <div class="matrix-val" style="color:var(--fia-primary);">Cognizable under Sec 5(1) FIA Act</div>
+                        </div>
+                        <div class="matrix-cell">
+                            <div class="matrix-label">Primary Wing</div>
+                            <div class="matrix-val" style="color:var(--fia-teal);">${escapeHtml(ppc.wing)}</div>
+                        </div>
+                        <div class="matrix-cell">
+                            <div class="matrix-label">Challan Forum</div>
+                            <div class="matrix-val">Sec 173 CrPC via AD Legal</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:24px;">
+                        <h3 style="font-size:1.1rem; font-weight:800; display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                            <i class="fa-solid fa-route" style="color:var(--fia-teal);"></i> Standard Operating Procedure (SOP) for FIA Investigation
+                        </h3>
+                        <div class="sop-timeline-wrap">
+                            <div class="sop-step-card">
+                                <div class="sop-step-title"><i class="fa-solid fa-1"></i> Phase 1: Complaint Verification &amp; Inquiry Registration</div>
+                                <div class="sop-step-desc">Register Preliminary Enquiry (PE) or Regular Enquiry (RE) under Rule 5 of FIA (Inquiry &amp; Investigation) Rules 2002. Examine complainant and verify the federal connection.</div>
+                            </div>
+                            <div class="sop-step-card">
+                                <div class="sop-step-title"><i class="fa-solid fa-2"></i> Phase 2: FIR Registration &amp; Arrest</div>
+                                <div class="sop-step-desc">Register FIR under PPC Section ${escapeHtml(ppc.sec)} read with FIA Act. Exercising powers of Station House Officer (SHO) under Section 5(1), arrest the accused or conduct custodial interrogation.</div>
+                            </div>
+                            <div class="sop-step-card">
+                                <div class="sop-step-title"><i class="fa-solid fa-3"></i> Phase 3: Search, Seizure &amp; Asset Freezing</div>
+                                <div class="sop-step-desc">Execute search warrants or conduct emergent searches under Section 165 CrPC. Issue freezing orders for bank accounts and properties under Section 5(5) of the FIA Act 1974.</div>
+                            </div>
+                            <div class="sop-step-card">
+                                <div class="sop-step-title"><i class="fa-solid fa-4"></i> Phase 4: Forensic Examination &amp; Expert Witness</div>
+                                <div class="sop-step-desc">Forward physical, documentary, or digital evidence to the FIA Forensic Laboratory, PFSA, or handwriting expert for forensic opinion.</div>
+                            </div>
+                            <div class="sop-step-card">
+                                <div class="sop-step-title"><i class="fa-solid fa-5"></i> Phase 5: Submission of Final Report (Challan)</div>
+                                <div class="sop-step-desc">Prepare Final Report under Section 173 CrPC. Scrutinized by Assistant Director (Legal) and submitted to the Court of Special Judge (Central).</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function explainCustomAct(act) {
+                const dossierArea = document.getElementById('explainerDossierArea');
+                dossierArea.innerHTML = `
+                    <div class="dossier-header">
+                        <div class="dossier-badge-row">
+                            <span class="meta-tag" style="background:var(--fia-primary); color:#ffffff;">Schedule Entry [${escapeHtml(act.entryNo)}]</span>
+                            <span class="meta-tag" style="color:var(--fia-gold); font-weight:800;">${escapeHtml(act.category)}</span>
+                        </div>
+                        <h2 class="dossier-title">${escapeHtml(act.actTitle)}</h2>
+                        <div class="dossier-statutory-basis">
+                            <strong>Gazette Notification / SRO Citation:</strong> ${escapeHtml(act.sro)}
+                        </div>
+                    </div>
+
+                    <div class="dossier-grid-two">
+                        <div class="dossier-info-box">
+                            <div class="dossier-box-title">
+                                <i class="fa-solid fa-scale-balanced"></i> Scheduled Sections Triable by FIA
+                            </div>
+                            <p style="font-family:var(--font-mono); font-size:0.95rem; font-weight:700; color:var(--fia-primary);">${escapeHtml(act.sections)}</p>
+                            <p style="font-size:0.82rem; color:var(--fia-text-muted); margin-top:8px;">Only offences under these specific sections of the enactment are placed within the jurisdictional competence of the Agency.</p>
+                        </div>
+                        <div class="dossier-info-box">
+                            <div class="dossier-box-title">
+                                <i class="fa-solid fa-building-flag"></i> Investigative Authority &amp; Wing
+                            </div>
+                            <p style="font-size:0.88rem; line-height:1.6;">Offences investigated by designated officers of the Agency holding powers equivalent to provincial police officers under Section 5(1) FIA Act.</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:20px;">
+                        <h3 style="font-size:1.1rem; font-weight:800; display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                            <i class="fa-solid fa-route" style="color:var(--fia-teal);"></i> Statutory Investigation Flow
+                        </h3>
+                        <div class="sop-timeline-wrap">
+                            <div class="sop-step-card">
+                                <div class="sop-step-title"><i class="fa-solid fa-check"></i> Verification of Authority</div>
+                                <div class="sop-step-desc">Confirm that the complaint squarely falls within the scheduled sections (${escapeHtml(act.sections)}) and satisfies the federal subject-matter criteria.</div>
+                            </div>
+                            <div class="sop-step-card">
+                                <div class="sop-step-title"><i class="fa-solid fa-check"></i> Joint Technical Inspection</div>
+                                <div class="sop-step-desc">Coordinate with the concerned regulatory department or statutory authority (e.g. SBP, SECP, OGRA, DRAP, Pemra) during inspection and seizure.</div>
+                            </div>
+                            <div class="sop-step-card">
+                                <div class="sop-step-title"><i class="fa-solid fa-check"></i> Prosecution before Special Forum</div>
+                                <div class="sop-step-desc">Trial conducted before the Special Judge (Central) or the designated Special Tribunal as prescribed under the Special Enactment.</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // TAB 6: Scenarios Solver
+            function renderScenarios() {
+                const container = document.getElementById('scenarioGridContainer');
+                if (!container) return;
+                container.innerHTML = '';
+
+                fiaData.practicalScenarios.forEach((sc, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'scenario-card';
+
+                    let optionsHtml = '';
+                    sc.options.forEach((opt, optIdx) => {
+                        optionsHtml += `
+                            <button type="button" class="scenario-opt-btn" onclick="checkScenarioAnswer(${idx}, ${optIdx}, this)">
+                                <strong>${String.fromCharCode(65 + optIdx)}.</strong> ${escapeHtml(opt)}
+                            </button>
+                        `;
+                    });
+
+                    card.innerHTML = `
+                        <div class="scenario-pill">${escapeHtml(sc.category)}</div>
+                        <h4 style="font-size:1.05rem; font-weight:800; line-height:1.35;">${escapeHtml(sc.title)}</h4>
+                        <div class="scenario-text">${escapeHtml(sc.scenario)}</div>
+                        <div class="scenario-q">${escapeHtml(sc.question)}</div>
+                        <div class="scenario-options" id="scOptBox${idx}">
+                            ${optionsHtml}
+                        </div>
+                        <div class="scenario-feedback" id="scFeedback${idx}">
+                            <!-- Feedback shown on choice -->
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            window.checkScenarioAnswer = function(scIdx, optIdx, btn) {
+                const sc = fiaData.practicalScenarios[scIdx];
+                const box = document.getElementById('scOptBox' + scIdx);
+                const feedback = document.getElementById('scFeedback' + scIdx);
+
+                // Disable all option buttons for this scenario
+                const buttons = box.querySelectorAll('button');
+                buttons.forEach(b => b.disabled = true);
+
+                if (optIdx === sc.correctIndex) {
+                    btn.classList.add('correct');
+                    playSound('correct');
+                    feedback.style.display = 'block';
+                    feedback.style.background = 'var(--fia-success-light)';
+                    feedback.style.color = '#14532d';
+                    feedback.style.borderLeft = '4px solid var(--fia-success)';
+                    feedback.innerHTML = `<strong><i class="fa-solid fa-circle-check"></i> Correct Legal Analysis!</strong><br>${escapeHtml(sc.explanation)}`;
+                } else {
+                    btn.classList.add('wrong');
+                    buttons[sc.correctIndex].classList.add('correct');
+                    playSound('wrong');
+                    feedback.style.display = 'block';
+                    feedback.style.background = 'var(--fia-crimson-light)';
+                    feedback.style.color = '#7f1d1d';
+                    feedback.style.borderLeft = '4px solid var(--fia-crimson)';
+                    feedback.innerHTML = `<strong><i class="fa-solid fa-circle-xmark"></i> Incorrect!</strong><br>${escapeHtml(sc.explanation)}`;
+                }
+            };
+
+            // TAB 7: FPSC Quiz
+            function renderQuizQuestion() {
+                if (!fiaData || !fiaData.quiz || fiaData.quiz.length === 0) return;
+
+                const q = fiaData.quiz[currentQuizIndex];
+                document.getElementById('quizCounter').textContent = `Question ${currentQuizIndex + 1} of ${fiaData.quiz.length}`;
+                document.getElementById('quizScore').textContent = `Score: ${quizScore} / ${answeredQuizQuestions}`;
+                document.getElementById('quizQuestionText').textContent = q.question;
+
+                const list = document.getElementById('quizOptionsList');
+                list.innerHTML = '';
+
+                const expBox = document.getElementById('quizExplanationBox');
+                expBox.style.display = 'none';
+                expBox.innerHTML = '';
+
+                document.getElementById('btnNextQuiz').style.display = 'none';
+                document.getElementById('btnRestartQuiz').style.display = 'none';
+
+                q.options.forEach((opt, optIdx) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'quiz-opt-btn';
+                    btn.innerHTML = `<span><strong>${String.fromCharCode(65 + optIdx)}.</strong> ${escapeHtml(opt)}</span> <i class="fa-regular fa-circle"></i>`;
+                    btn.onclick = () => selectQuizAnswer(optIdx, btn);
+                    list.appendChild(btn);
+                });
+            }
+
+            function selectQuizAnswer(selectedIndex, clickedBtn) {
+                const q = fiaData.quiz[currentQuizIndex];
+                const list = document.getElementById('quizOptionsList');
+                const buttons = list.querySelectorAll('.quiz-opt-btn');
+
+                buttons.forEach(b => b.disabled = true);
+                answeredQuizQuestions++;
+
+                const expBox = document.getElementById('quizExplanationBox');
+                expBox.style.display = 'block';
+
+                if (selectedIndex === q.correctAnswer) {
+                    clickedBtn.classList.add('correct');
+                    clickedBtn.querySelector('i').className = 'fa-solid fa-circle-check';
+                    quizScore++;
+                    playSound('correct');
+                    expBox.innerHTML = `<strong><i class="fa-solid fa-circle-check" style="color:var(--fia-success);"></i> Correct!</strong><br>${escapeHtml(q.explanation)}`;
+                } else {
+                    clickedBtn.classList.add('wrong');
+                    clickedBtn.querySelector('i').className = 'fa-solid fa-circle-xmark';
+                    buttons[q.correctAnswer].classList.add('correct');
+                    buttons[q.correctAnswer].querySelector('i').className = 'fa-solid fa-circle-check';
+                    playSound('wrong');
+                    expBox.innerHTML = `<strong><i class="fa-solid fa-circle-xmark" style="color:var(--fia-crimson);"></i> Incorrect.</strong> Correct answer is <strong>${String.fromCharCode(65 + q.correctAnswer)}.</strong><br>${escapeHtml(q.explanation)}`;
+                }
+
+                document.getElementById('quizScore').textContent = `Score: ${quizScore} / ${answeredQuizQuestions}`;
+
+                if (currentQuizIndex < fiaData.quiz.length - 1) {
+                    document.getElementById('btnNextQuiz').style.display = 'inline-flex';
+                } else {
+                    document.getElementById('btnRestartQuiz').style.display = 'inline-flex';
+                }
+            }
+
+            window.nextQuizQuestion = function() {
+                if (currentQuizIndex < fiaData.quiz.length - 1) {
+                    currentQuizIndex++;
+                    renderQuizQuestion();
+                }
+            };
+
+            window.restartQuiz = function() {
+                currentQuizIndex = 0;
+                quizScore = 0;
+                answeredQuizQuestions = 0;
+                renderQuizQuestion();
+            };
+
+        })();
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+</html>

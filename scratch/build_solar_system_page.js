@@ -1,0 +1,2510 @@
+const fs = require('fs');
+const path = require('path');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore the Solar System | Interactive Planetary Science &amp; Astronomy</title>
+    <meta name="description"
+        content="Interactive Solar System Explorer for CSS, PMS, and competitive science examinations. Explore planets, sizes, moons, atmospheres, distances from the Sun, Kepler's laws, and space missions with an animated orrery and 3D-inspired tools.">
+    <link rel="canonical" href="https://cssprepcentral.com/solar-system-explorer.html" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --space-bg: #f8fafc;
+            --space-card-bg: #ffffff;
+            --space-card-sub: #f1f5f9;
+            --space-border: #e2e8f0;
+            --space-text-main: #0f172a;
+            --space-text-muted: #64748b;
+            --space-primary: #0284c7;
+            --space-primary-dark: #0369a1;
+            --space-primary-light: rgba(2, 132, 199, 0.1);
+            --space-sun: #f59e0b;
+            --space-accent: #6366f1;
+            --space-gold: #f59e0b;
+            --space-green: #10b981;
+            --space-red: #ef4444;
+            --space-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --space-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            --canvas-bg: #070b19;
+        }
+
+        .dark-mode {
+            --space-bg: #0b1120;
+            --space-card-bg: #131c31;
+            --space-card-sub: #1e293b;
+            --space-border: #1e293b;
+            --space-text-main: #f8fafc;
+            --space-text-muted: #94a3b8;
+            --space-primary: #38bdf8;
+            --space-primary-dark: #0284c7;
+            --space-primary-light: rgba(56, 189, 248, 0.15);
+            --space-sun: #fbbf24;
+            --space-accent: #818cf8;
+            --space-gold: #fbbf24;
+            --space-green: #34d399;
+            --space-red: #f87171;
+            --space-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --space-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+            --canvas-bg: #040714;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--space-bg);
+            color: var(--space-text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Top Academic Suites Switcher */
+        .site-switcher-bar {
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            z-index: 1001;
+        }
+
+        .switcher-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .switcher-label {
+            color: #94a3b8;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .switcher-btn.active {
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+            font-weight: 700;
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background: var(--space-card-bg);
+            border-bottom: 1px solid var(--space-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--space-text-main);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .logo i {
+            color: var(--space-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--space-text-muted);
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--space-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--space-bg);
+            border: 1px solid var(--space-border);
+            color: var(--space-text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--space-primary);
+            color: var(--space-primary);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(99, 102, 241, 0.04) 100%);
+            border-bottom: 1px solid var(--space-border);
+            padding: 28px 20px 22px;
+        }
+
+        .hero-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .hero-title-area h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-title-area h1 i {
+            color: var(--space-sun);
+        }
+
+        .hero-title-area p {
+            color: var(--space-text-muted);
+            font-size: 0.95rem;
+            max-width: 860px;
+            line-height: 1.55;
+        }
+
+        .search-container {
+            position: relative;
+            min-width: 280px;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--space-card-bg);
+            border: 1.5px solid var(--space-border);
+            padding: 10px 16px 10px 42px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--space-text-main);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--space-primary);
+            box-shadow: 0 0 0 3px var(--space-primary-light);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--space-text-muted);
+            pointer-events: none;
+        }
+
+        .hero-badges-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .hero-stat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--space-card-bg);
+            border: 1px solid var(--space-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--space-text-muted);
+        }
+
+        .hero-stat-badge strong {
+            color: var(--space-text-main);
+        }
+
+        .hero-stat-badge i {
+            color: var(--space-primary);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 20px 48px;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        /* Suite Tabs */
+        .suite-tabs-nav {
+            display: flex;
+            gap: 8px;
+            border-bottom: 2px solid var(--space-border);
+            margin-bottom: 24px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 12px 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--space-text-muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--space-text-main);
+        }
+
+        .tab-btn.active {
+            color: var(--space-primary);
+            border-bottom-color: var(--space-primary);
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==================== TAB 1: INTERACTIVE ORRERY & INSPECTOR ==================== */
+        .orrery-layout-grid {
+            display: grid;
+            grid-template-columns: 1fr 440px;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 1100px) {
+            .orrery-layout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .orrery-card {
+            background: var(--canvas-bg);
+            border: 1px solid #1e293b;
+            border-radius: 18px;
+            padding: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .orrery-controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+            z-index: 10;
+        }
+
+        .orrery-title {
+            color: #f8fafc;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .orrery-buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .orrery-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .orrery-btn:hover {
+            background: var(--space-primary);
+            border-color: var(--space-primary);
+        }
+
+        .orrery-btn.active {
+            background: var(--space-primary);
+            border-color: var(--space-primary);
+        }
+
+        .orrery-canvas-container {
+            width: 100%;
+            height: 520px;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        #orreryCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: crosshair;
+        }
+
+        .orrery-hint-overlay {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            pointer-events: none;
+        }
+
+        /* Planet Selection Pills Carousel */
+        .planets-carousel {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 12px 4px 4px;
+            margin-top: 10px;
+        }
+
+        .planet-pill-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .planet-pill-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .planet-pill-btn.active {
+            background: var(--space-primary);
+            border-color: var(--space-primary);
+            color: #ffffff;
+            font-weight: 800;
+            box-shadow: 0 0 12px var(--space-primary);
+        }
+
+        .planet-pill-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Detail Inspector Panel */
+        .inspector-panel {
+            background: var(--space-card-bg);
+            border: 1px solid var(--space-border);
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: var(--space-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: 640px;
+            overflow-y: auto;
+        }
+
+        .inspector-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--space-border);
+            padding-bottom: 14px;
+        }
+
+        .inspector-title-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .inspector-symbol-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .inspector-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--space-text-main);
+            line-height: 1.2;
+        }
+
+        .inspector-designation {
+            font-size: 0.8rem;
+            color: var(--space-text-muted);
+            font-weight: 500;
+        }
+
+        .inspector-type-badge {
+            background: var(--space-primary-light);
+            color: var(--space-primary);
+            border: 1px solid var(--space-primary);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Quick Stat Grid */
+        .inspector-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat-box {
+            background: var(--space-card-sub);
+            border: 1px solid var(--space-border);
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .stat-box-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--space-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 2px;
+        }
+
+        .stat-box-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--space-text-main);
+        }
+
+        .stat-box-sub {
+            font-size: 0.7rem;
+            color: var(--space-text-muted);
+        }
+
+        /* Inspector Accordion / Sections */
+        .inspector-section {
+            background: var(--space-card-sub);
+            border: 1px solid var(--space-border);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .section-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: var(--space-primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-body-text {
+            font-size: 0.85rem;
+            color: var(--space-text-muted);
+            line-height: 1.5;
+        }
+
+        .feature-bullets-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .feature-bullet-item {
+            font-size: 0.84rem;
+            color: var(--space-text-main);
+            display: flex;
+            gap: 8px;
+            line-height: 1.45;
+        }
+
+        .feature-bullet-item i {
+            color: var(--space-primary);
+            margin-top: 3px;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* Space Missions Timeline in Inspector */
+        .missions-timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .mission-pill-item {
+            background: var(--space-card-bg);
+            border: 1px solid var(--space-border);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 0.82rem;
+        }
+
+        .mission-meta-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 3px;
+        }
+
+        .mission-agency-tag {
+            color: var(--space-primary);
+        }
+
+        /* ==================== TAB 2: WEIGHT ON OTHER WORLDS ==================== */
+        .calculator-card {
+            background: var(--space-card-bg);
+            border: 1px solid var(--space-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--space-shadow);
+        }
+
+        .calc-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--space-border);
+            padding-bottom: 16px;
+        }
+
+        .calc-input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .weight-input-field {
+            background: var(--space-card-sub);
+            border: 1.5px solid var(--space-border);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--space-text-main);
+            width: 120px;
+            outline: none;
+        }
+
+        .weight-input-field:focus {
+            border-color: var(--space-primary);
+        }
+
+        .unit-toggle-btn {
+            background: var(--space-card-sub);
+            border: 1px solid var(--space-border);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--space-text-main);
+            cursor: pointer;
+        }
+
+        .weight-worlds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .world-weight-box {
+            background: var(--space-card-sub);
+            border: 1px solid var(--space-border);
+            border-radius: 14px;
+            padding: 16px;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .world-weight-box:hover {
+            transform: translateY(-2px);
+            border-color: var(--space-primary);
+            box-shadow: var(--space-shadow);
+        }
+
+        .world-top-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .world-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .world-name-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .world-gravity-sub {
+            font-size: 0.74rem;
+            color: var(--space-text-muted);
+        }
+
+        .calculated-weight-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--space-text-main);
+            margin-bottom: 4px;
+        }
+
+        .weight-ratio-bar-track {
+            height: 6px;
+            background: var(--space-border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .weight-ratio-bar-fill {
+            height: 100%;
+            background: var(--space-primary);
+            border-radius: 4px;
+        }
+
+        .world-fact-note {
+            font-size: 0.76rem;
+            color: var(--space-text-muted);
+            line-height: 1.4;
+        }
+
+        /* ==================== TAB 3: PLANET COMPARATOR ==================== */
+        .comparator-controls-card {
+            background: var(--space-card-bg);
+            border: 1px solid var(--space-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--space-shadow);
+        }
+
+        .comp-dropdown-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        @media (max-width: 640px) {
+            .comp-dropdown-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comp-select-box {
+            background: var(--space-card-sub);
+            border: 1px solid var(--space-border);
+            border-radius: 12px;
+            padding: 14px 18px;
+        }
+
+        .comp-select {
+            width: 100%;
+            background: var(--space-card-bg);
+            border: 1.5px solid var(--space-border);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--space-text-main);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .comp-vs-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--space-primary);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .comparison-results-card {
+            background: var(--space-card-bg);
+            border: 1px solid var(--space-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--space-shadow);
+        }
+
+        .visual-size-circles-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--space-border);
+            margin-bottom: 20px;
+        }
+
+        .size-circle-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            min-width: 120px;
+        }
+
+        .size-circle-disc {
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        }
+
+        .size-circle-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .comp-metric-row {
+            margin-bottom: 16px;
+        }
+
+        .comp-metric-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.86rem;
+            margin-bottom: 6px;
+        }
+
+        .comp-val-a {
+            font-weight: 800;
+            color: var(--space-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .comp-val-b {
+            font-weight: 800;
+            color: #ec4899;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .comp-bar-track {
+            height: 10px;
+            background: var(--space-card-sub);
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .comp-bar-fill-a {
+            height: 100%;
+            background: var(--space-primary);
+            transition: width 0.3s;
+        }
+
+        .comp-bar-fill-b {
+            height: 100%;
+            background: #ec4899;
+            transition: width 0.3s;
+        }
+
+        /* ==================== TAB 4: ASTRONOMY SYLLABUS DOSSIER ==================== */
+        .concept-card {
+            background: var(--space-card-bg);
+            border: 1px solid var(--space-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--space-shadow);
+        }
+
+        .concept-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .concept-context {
+            font-size: 0.9rem;
+            color: var(--space-text-muted);
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+
+        .laws-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .law-item-box {
+            background: var(--space-card-sub);
+            border: 1px solid var(--space-border);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .law-name-tag {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.96rem;
+            font-weight: 800;
+            color: var(--space-primary);
+            margin-bottom: 4px;
+        }
+
+        .law-statement-text {
+            font-size: 0.84rem;
+            color: var(--space-text-main);
+            margin-bottom: 6px;
+            line-height: 1.45;
+        }
+
+        .law-formula-code {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--space-accent);
+            margin-bottom: 6px;
+        }
+
+        .law-significance-text {
+            font-size: 0.78rem;
+            color: var(--space-text-muted);
+            line-height: 1.4;
+        }
+
+        .exam-utility-badge {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--space-gold);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.84rem;
+            color: var(--space-text-main);
+        }
+
+        /* ==================== TAB 5: EXAM QUIZ & RIDDLES ==================== */
+        .quiz-panel-card {
+            background: var(--space-card-bg);
+            border: 1px solid var(--space-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--space-shadow);
+        }
+
+        .quiz-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--space-border);
+            padding-bottom: 14px;
+        }
+
+        .score-pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--space-card-sub);
+            border: 1px solid var(--space-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .reset-quiz-button {
+            background: var(--space-card-sub);
+            border: 1px solid var(--space-border);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--space-text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .reset-quiz-button:hover {
+            border-color: var(--space-primary);
+            color: var(--space-primary);
+        }
+
+        .mcq-question-card {
+            background: var(--space-card-sub);
+            border: 1px solid var(--space-border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+        }
+
+        .mcq-prompt-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .mcq-num-pill {
+            background: var(--space-primary);
+            color: #ffffff;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .mcq-opt-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .mcq-choice-btn {
+            background: var(--space-card-bg);
+            border: 1.5px solid var(--space-border);
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--space-text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mcq-choice-btn:hover:not(:disabled) {
+            border-color: var(--space-primary);
+            background: var(--space-primary-light);
+        }
+
+        .mcq-choice-btn.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: var(--space-green) !important;
+            color: #065f46 !important;
+            font-weight: 700;
+        }
+
+        .dark-mode .mcq-choice-btn.correct {
+            color: #34d399 !important;
+        }
+
+        .mcq-choice-btn.incorrect {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: var(--space-red) !important;
+            color: #991b1b !important;
+            font-weight: 700;
+        }
+
+        .dark-mode .mcq-choice-btn.incorrect {
+            color: #f87171 !important;
+        }
+
+        .mcq-letter-box {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: var(--space-card-sub);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.76rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .mcq-expl-box {
+            display: none;
+            background: var(--space-card-bg);
+            border: 1px solid var(--space-border);
+            border-left: 4px solid var(--space-primary);
+            border-radius: 0 8px 8px 0;
+            padding: 12px 14px;
+            font-size: 0.84rem;
+            line-height: 1.5;
+            color: var(--space-text-muted);
+            margin-top: 10px;
+        }
+
+        /* Riddles Section */
+        .riddle-card-item {
+            background: var(--space-card-bg);
+            border: 1.5px dashed var(--space-border);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+        }
+
+        .riddle-clues-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 10px 0;
+        }
+
+        .riddle-clue-line {
+            font-size: 0.88rem;
+            display: flex;
+            gap: 8px;
+        }
+
+        .riddle-clue-line i {
+            color: var(--space-gold);
+            margin-top: 3px;
+        }
+
+        .reveal-answer-btn {
+            background: var(--space-primary-light);
+            color: var(--space-primary);
+            border: 1px solid var(--space-primary);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .reveal-answer-btn:hover {
+            background: var(--space-primary);
+            color: #ffffff;
+        }
+
+        .riddle-revealed-answer {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 12px;
+            background: var(--space-card-sub);
+            border-radius: 8px;
+            font-weight: 700;
+            color: var(--space-green);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 20px 24px;
+            margin-top: auto;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.84rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #38bdf8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Academic Suites Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes Map
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+            <a href="guess-the-country.html" class="switcher-btn">
+                <i class="fas fa-gamepad"></i> Guess Country
+            </a>
+            <a href="locate-on-map.html" class="switcher-btn">
+                <i class="fas fa-crosshairs"></i> Locate on Map
+            </a>
+            <a href="match-the-following.html" class="switcher-btn">
+                <i class="fas fa-puzzle-piece"></i> Match Items
+            </a>
+            <a href="arrange-chronologically.html" class="switcher-btn">
+                <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz
+            </a>
+            <a href="crossword.html" class="switcher-btn">
+                <i class="fas fa-chess-board"></i> Crossword
+            </a>
+            <a href="word-search.html" class="switcher-btn">
+                <i class="fas fa-magnifying-glass"></i> Word Search
+            </a>
+            <a href="unsc-simulator.html" class="switcher-btn">
+                <i class="fas fa-scale-balanced"></i> UNSC Simulator
+            </a>
+            <a href="international-organizations-explorer.html" class="switcher-btn">
+                <i class="fas fa-sitemap"></i> Org Explorer
+            </a>
+            <a href="world-history-timeline.html" class="switcher-btn">
+                <i class="fas fa-timeline"></i> World Timeline
+            </a>
+            <a href="global-power-comparison.html" class="switcher-btn">
+                <i class="fas fa-shield-halved"></i> Global Power
+            </a>
+            <a href="solar-system-explorer.html" class="switcher-btn active">
+                <i class="fas fa-sun"></i> Solar System
+            </a>
+        </div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>CSS PREP CENTRAL</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i> Practice Quiz</a>
+                <a href="science-notes.html"><i class="fa-solid fa-atom"></i> General Science</a>
+                <a href="solar-system-explorer.html" class="active"><i class="fa-solid fa-sun"></i> Solar System</a>
+                <a href="global-power-comparison.html"><i class="fa-solid fa-shield-halved"></i> Global Power</a>
+                <a href="world-history-timeline.html"><i class="fa-solid fa-timeline"></i> World Timeline</a>
+            </nav>
+            <div class="header-actions">
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="hero-title-row">
+                <div class="hero-title-area">
+                    <h1><i class="fa-solid fa-sun"></i> Explore the Solar System</h1>
+                    <p>Interactive planetary exploration suite for CSS General Science &amp; Ability (Astronomy &amp; Physical Sciences). Click any planet to explore its physical diameter, gravitational force, atmospheric composition, moons, distance from the Sun, and historic space missions.</p>
+                </div>
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="planetSearchInput" class="search-input" placeholder="Search planet, moon or feature (e.g., Jupiter, Titan, Mars)...">
+                </div>
+            </div>
+            <div class="hero-badges-row">
+                <span class="hero-stat-badge"><i class="fa-solid fa-circle-dot"></i> <strong>8</strong> Planets &amp; 2 Dwarf Planets</span>
+                <span class="hero-stat-badge"><i class="fa-solid fa-moon"></i> <strong>290+</strong> Moons Cataloged</span>
+                <span class="hero-stat-badge"><i class="fa-solid fa-scale-balanced"></i> Weight on Other Worlds Calc</span>
+                <span class="hero-stat-badge"><i class="fa-solid fa-shuttle-space"></i> <strong>30+</strong> Historic Space Missions</span>
+                <span class="hero-stat-badge"><i class="fa-solid fa-graduation-cap"></i> Kepler's Laws &amp; GSA Dossier</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="main-container">
+
+        <!-- Suite Tabs Nav -->
+        <div class="suite-tabs-nav" role="tablist">
+            <button class="tab-btn active" data-tab="tab-orrery" role="tab">
+                <i class="fa-solid fa-circle-nodes"></i> Interactive Solar Orrery
+            </button>
+            <button class="tab-btn" data-tab="tab-weight" role="tab">
+                <i class="fa-solid fa-scale-balanced"></i> Weight on Other Worlds
+            </button>
+            <button class="tab-btn" data-tab="tab-comparator" role="tab">
+                <i class="fa-solid fa-code-compare"></i> Planet Comparator
+            </button>
+            <button class="tab-btn" data-tab="tab-syllabus" role="tab">
+                <i class="fa-solid fa-book-journal-whills"></i> GSA Astronomy Dossier
+            </button>
+            <button class="tab-btn" data-tab="tab-quiz" role="tab">
+                <i class="fa-solid fa-circle-question"></i> Exam Quiz &amp; Riddles
+            </button>
+        </div>
+
+        <!-- ==================== TAB 1: ORRERY & PLANET INSPECTOR ==================== -->
+        <section id="tab-orrery" class="tab-pane active">
+            
+            <div class="orrery-layout-grid">
+                
+                <!-- Left: Animated Orrery Canvas -->
+                <div class="orrery-card">
+                    <div class="orrery-controls-bar">
+                        <div class="orrery-title">
+                            <i class="fa-solid fa-sun" style="color:var(--space-sun);"></i>
+                            <span>Heliocentric Orbital Simulator</span>
+                        </div>
+                        <div class="orrery-buttons">
+                            <button type="button" class="orrery-btn" id="playPauseBtn">
+                                <i class="fa-solid fa-pause"></i> Pause
+                            </button>
+                            <button type="button" class="orrery-btn" id="speed1xBtn" data-speed="1">1x</button>
+                            <button type="button" class="orrery-btn active" id="speed5xBtn" data-speed="3">3x</button>
+                            <button type="button" class="orrery-btn" id="speed10xBtn" data-speed="8">8x</button>
+                            <button type="button" class="orrery-btn" id="resetZoomBtn" title="Reset View">
+                                <i class="fa-solid fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="orrery-canvas-container">
+                        <canvas id="orreryCanvas" width="800" height="520"></canvas>
+                        <div class="orrery-hint-overlay">
+                            <i class="fa-solid fa-hand-pointer"></i> Click any planet or orb to inspect full scientific data &bull; Drag to pan
+                        </div>
+                    </div>
+
+                    <!-- Planet Selector Carousel -->
+                    <div class="planets-carousel" id="planetsCarouselPills"></div>
+                </div>
+
+                <!-- Right: Detailed Planet Inspector Dossier -->
+                <div class="inspector-panel" id="inspectorPanel">
+                    
+                    <div class="inspector-header">
+                        <div class="inspector-title-area">
+                            <div class="inspector-symbol-circle" id="inspSymbol">♃</div>
+                            <div>
+                                <h3 class="inspector-name" id="inspName">Jupiter</h3>
+                                <div class="inspector-designation" id="inspDesignation">King of the Planets</div>
+                            </div>
+                        </div>
+                        <span class="inspector-type-badge" id="inspTypeBadge">Gas Giant</span>
+                    </div>
+
+                    <!-- Quick Physical Facts Grid -->
+                    <div class="inspector-stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-box-label"><i class="fa-solid fa-arrows-left-right"></i> Diameter</div>
+                            <div class="stat-box-val" id="inspDiameter">139,820 km</div>
+                            <div class="stat-box-sub" id="inspDiameterSub">11.0× Earth</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-label"><i class="fa-solid fa-sun"></i> Dist. from Sun</div>
+                            <div class="stat-box-val" id="inspDist">5.20 AU</div>
+                            <div class="stat-box-sub" id="inspLightTime">43 min light time</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-label"><i class="fa-solid fa-weight-hanging"></i> Surface Gravity</div>
+                            <div class="stat-box-val" id="inspGravity">24.79 m/s²</div>
+                            <div class="stat-box-sub" id="inspGravitySub">2.53× Earth gravity</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-label"><i class="fa-solid fa-moon"></i> Confirmed Moons</div>
+                            <div class="stat-box-val" id="inspMoons">95 Moons</div>
+                            <div class="stat-box-sub" id="inspRings">Faint rings</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-label"><i class="fa-solid fa-rotate"></i> Day Length</div>
+                            <div class="stat-box-val" id="inspDay">9h 55m</div>
+                            <div class="stat-box-sub">Rotation period</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-label"><i class="fa-solid fa-calendar"></i> Year Length</div>
+                            <div class="stat-box-val" id="inspYear">11.86 Earth Yrs</div>
+                            <div class="stat-box-sub" id="inspOrbitDays">4,333 days</div>
+                        </div>
+                    </div>
+
+                    <!-- Atmosphere & Climate -->
+                    <div class="inspector-section">
+                        <div class="section-heading"><i class="fa-solid fa-wind"></i> Atmosphere &amp; Climate</div>
+                        <div class="section-body-text" id="inspAtmosphere">Atmospheric details loading...</div>
+                        <div style="margin-top:6px; font-size:0.8rem; font-weight:700; color:var(--space-text-main);">
+                            Surface Pressure: <span id="inspPressure" style="font-weight:400; color:var(--space-text-muted);">--</span>
+                        </div>
+                        <div style="font-size:0.8rem; font-weight:700; color:var(--space-text-main);">
+                            Mean Temperature: <span id="inspTemp" style="font-weight:400; color:var(--space-text-muted);">--</span>
+                        </div>
+                    </div>
+
+                    <!-- Moons Spotlight -->
+                    <div class="inspector-section">
+                        <div class="section-heading"><i class="fa-solid fa-moon"></i> Moons &amp; Satellites Spotlight</div>
+                        <div class="section-body-text" id="inspMajorMoons">Moons list loading...</div>
+                    </div>
+
+                    <!-- Key Scientific Features -->
+                    <div class="inspector-section">
+                        <div class="section-heading"><i class="fa-solid fa-star"></i> Key Astronomical Features</div>
+                        <ul class="feature-bullets-list" id="inspFeaturesList"></ul>
+                    </div>
+
+                    <!-- Space Exploration Missions -->
+                    <div class="inspector-section">
+                        <div class="section-heading"><i class="fa-solid fa-shuttle-space"></i> Landmark Space Missions</div>
+                        <div class="missions-timeline-list" id="inspMissionsList"></div>
+                    </div>
+
+                    <!-- CSS/PMS Exam Relevance -->
+                    <div class="exam-utility-badge" id="inspExamRelevance">
+                        Exam relevance details...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================== TAB 2: WEIGHT ON OTHER WORLDS ==================== -->
+        <section id="tab-weight" class="tab-pane">
+            <div class="calculator-card">
+                <div class="calc-header-row">
+                    <div>
+                        <h3 style="font-family:'Outfit',sans-serif; font-size:1.35rem; font-weight:800; margin-bottom:4px;">
+                            <i class="fa-solid fa-scale-balanced" style="color:var(--space-primary);"></i> How Much Would You Weigh on Other Worlds?
+                        </h3>
+                        <p style="font-size:0.9rem; color:var(--space-text-muted);">
+                            Weight is a measurement of gravitational pull (\(W = m \cdot g\)). Your mass remains constant, but your weight changes drastically across the celestial bodies of our Solar System!
+                        </p>
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="userWeightInput" style="font-size:0.86rem; font-weight:700;">Your Earth Weight:</label>
+                        <input type="number" id="userWeightInput" class="weight-input-field" value="70" min="1" max="500">
+                        <button type="button" class="unit-toggle-btn" id="unitToggleBtn">KG</button>
+                    </div>
+                </div>
+
+                <div class="weight-worlds-grid" id="weightWorldsGrid"></div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: PLANET COMPARATOR ==================== -->
+        <section id="tab-comparator" class="tab-pane">
+            <div class="comparator-controls-card">
+                <div class="comp-dropdown-grid">
+                    <div class="comp-select-box">
+                        <label for="compSelectA" style="font-size:0.75rem; font-weight:800; color:var(--space-primary); text-transform:uppercase; margin-bottom:6px; display:block;">First Planet (A)</label>
+                        <select id="compSelectA" class="comp-select"></select>
+                    </div>
+                    <div class="comp-vs-badge">VS</div>
+                    <div class="comp-select-box">
+                        <label for="compSelectB" style="font-size:0.75rem; font-weight:800; color:#ec4899; text-transform:uppercase; margin-bottom:6px; display:block;">Second Planet (B)</label>
+                        <select id="compSelectB" class="comp-select"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-results-card">
+                <!-- Relative Physical Size Visualizer -->
+                <div class="visual-size-circles-row">
+                    <div class="size-circle-wrapper">
+                        <div class="size-circle-disc" id="compCircleA" style="width:100px; height:100px; background:#0284c7;"></div>
+                        <div class="size-circle-label" id="compNameA" style="color:var(--space-primary);">Earth</div>
+                        <div style="font-size:0.8rem; color:var(--space-text-muted);" id="compDiameterA">12,742 km</div>
+                    </div>
+                    <div style="font-family:'Outfit',sans-serif; font-weight:800; color:var(--space-text-muted); font-size:0.9rem;">
+                        Scale Diameter Ratio: <span id="compRatioText" style="color:var(--space-text-main); font-weight:900;">1.0 : 1.0</span>
+                    </div>
+                    <div class="size-circle-wrapper">
+                        <div class="size-circle-disc" id="compCircleB" style="width:53px; height:53px; background:#ef4444;"></div>
+                        <div class="size-circle-label" id="compNameB" style="color:#ec4899;">Mars</div>
+                        <div style="font-size:0.8rem; color:var(--space-text-muted);" id="compDiameterB">6,779 km</div>
+                    </div>
+                </div>
+
+                <!-- Metric Differentials -->
+                <div id="comparatorMetricsList" style="margin-top:20px;"></div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: ASTRONOMY DOSSIER ==================== -->
+        <section id="tab-syllabus" class="tab-pane">
+            <div id="astronomyConceptsContainer"></div>
+        </section>
+
+        <!-- ==================== TAB 5: EXAM QUIZ & RIDDLES ==================== -->
+        <section id="tab-quiz" class="tab-pane">
+            <div class="quiz-panel-card">
+                <div class="quiz-top-row">
+                    <div>
+                        <h3 style="font-family:'Outfit',sans-serif; font-size:1.3rem; font-weight:800;">
+                            <i class="fa-solid fa-circle-question" style="color:var(--space-primary);"></i> General Science Astronomy Practice Questions
+                        </h3>
+                        <p style="font-size:0.86rem; color:var(--space-text-muted);">
+                            Test your understanding of Kepler's laws, planetary atmospheres, Galilean moons, and space exploration missions.
+                        </p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <span class="score-pill-badge">
+                            <i class="fa-solid fa-trophy" style="color:var(--space-gold);"></i> Score: <span id="quizScoreDisplay">0 / 10</span>
+                        </span>
+                        <button type="button" class="reset-quiz-button" id="resetQuizButton">
+                            <i class="fa-solid fa-rotate-right"></i> Reset Quiz
+                        </button>
+                    </div>
+                </div>
+
+                <div id="quizQuestionsContainer"></div>
+            </div>
+
+            <!-- "Guess the Planet" Riddles -->
+            <div class="quiz-panel-card">
+                <h3 style="font-family:'Outfit',sans-serif; font-size:1.3rem; font-weight:800; margin-bottom:6px;">
+                    <i class="fa-solid fa-lightbulb" style="color:var(--space-gold);"></i> "Who Am I?" Celestial Riddles
+                </h3>
+                <p style="font-size:0.86rem; color:var(--space-text-muted); margin-bottom:18px;">
+                    Read the clues carefully and test your ability to identify planets based on their unique atmospheric and orbital fingerprints.
+                </p>
+                <div id="riddlesContainer"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo">
+                <i class="fa-solid fa-graduation-cap"></i> CSS PREP CENTRAL
+            </a>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="quiz.html">Practice Hub</a>
+                <a href="science-notes.html">General Science Capsule</a>
+                <a href="solar-system-explorer.html">Solar System Explorer</a>
+                <a href="global-power-comparison.html">Global Power</a>
+                <a href="world-history-timeline.html">World Timeline</a>
+                <a href="pakistan-map.html">Pakistan Map</a>
+            </div>
+            <p style="font-size:0.8rem; color:#64748b;">
+                &copy; 2026 CSS Prep Central. High-Yield CSS/PMS Science Preparation Platform.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Solar System Dataset -->
+    <script src="js/data_solar_system.js"></script>
+
+    <!-- Main Orrery & Explorer Application Script -->
+    <script>
+        (function () {
+            'use strict';
+
+            // Theme Management
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            const savedTheme = localStorage.getItem('mcqs_dark_mode');
+            if (savedTheme === 'true') {
+                document.body.classList.add('dark-mode');
+                if (themeToggleBtn) themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', function () {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    localStorage.setItem('mcqs_dark_mode', isDark);
+                    themeToggleBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+                });
+            }
+
+            // Web Audio API Synthesized Chimes (Zero external audio assets)
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            let audioCtx = null;
+
+            function playSound(type) {
+                try {
+                    if (!audioCtx) audioCtx = new AudioContext();
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+                    const now = audioCtx.currentTime;
+
+                    if (type === 'correct') {
+                        // Harmonious space chime (G5 -> C6 major harmonic)
+                        const osc1 = audioCtx.createOscillator();
+                        const osc2 = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+
+                        osc1.type = 'sine';
+                        osc2.type = 'triangle';
+                        osc1.frequency.setValueAtTime(783.99, now); // G5
+                        osc1.frequency.exponentialRampToValueAtTime(1046.50, now + 0.18); // C6
+                        osc2.frequency.setValueAtTime(1046.50, now);
+                        osc2.frequency.exponentialRampToValueAtTime(1318.51, now + 0.18); // E6
+
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+
+                        osc1.connect(gain);
+                        osc2.connect(gain);
+                        gain.connect(audioCtx.destination);
+
+                        osc1.start(now);
+                        osc2.start(now);
+                        osc1.stop(now + 0.5);
+                        osc2.stop(now + 0.5);
+                    } else if (type === 'incorrect') {
+                        // Low soft dull blip
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(140, now);
+                        osc.frequency.linearRampToValueAtTime(90, now + 0.22);
+
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+
+                        osc.start(now);
+                        osc.stop(now + 0.28);
+                    }
+                } catch (e) {
+                    // Fail gracefully
+                }
+            }
+
+            // Verify Data Loading
+            if (typeof window.SOLAR_SYSTEM_DATA === 'undefined') {
+                console.error('SOLAR_SYSTEM_DATA not found.');
+                return;
+            }
+
+            const API = window.SOLAR_SYSTEM_DATA;
+            const bodies = API.getAllBodies();
+            const concepts = API.getConcepts();
+            const mcqs = API.getMCQs();
+            const riddles = API.getRiddles();
+
+            // Tab Navigation Handling
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const targetTabId = this.getAttribute('data-tab');
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    tabPanes.forEach(p => p.classList.remove('active'));
+
+                    this.classList.add('active');
+                    const targetPane = document.getElementById(targetTabId);
+                    if (targetPane) targetPane.classList.add('active');
+                });
+            });
+
+            // ==================== TAB 1: ORRERY SIMULATOR ====================
+            const canvas = document.getElementById('orreryCanvas');
+            const ctx = canvas.getContext('2d');
+
+            let isRunning = true;
+            let simSpeed = 3; // multiplier
+            let zoomLevel = 1.0;
+            let panOffsetX = 0;
+            let panOffsetY = 0;
+            let isDragging = false;
+            let startDragX = 0;
+            let startDragY = 0;
+
+            // Selected planet ID for inspector
+            let selectedBodyId = 'jupiter';
+
+            // High-DPI canvas adjustment
+            function resizeCanvas() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                ctx.scale(dpr, dpr);
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            // Orbital configuration for visually pleasing representation
+            // We scale the distances logarithmically so Neptune and Mercury are both clearly visible!
+            const orbitalVisuals = [
+                { id: "mercury", orbitR: 55,  size: 5,  color: "#94a3b8", speed: 0.040, angle: 0.5 },
+                { id: "venus",   orbitR: 85,  size: 8,  color: "#eab308", speed: 0.025, angle: 2.1 },
+                { id: "earth",   orbitR: 120, size: 8.5,color: "#0284c7", speed: 0.018, angle: 4.2 },
+                { id: "mars",    orbitR: 155, size: 6.5,color: "#ef4444", speed: 0.012, angle: 1.0 },
+                { id: "ceres",   orbitR: 185, size: 3.5,color: "#78716c", speed: 0.008, angle: 3.4 },
+                { id: "jupiter", orbitR: 235, size: 16, color: "#d97706", speed: 0.005, angle: 5.5 },
+                { id: "saturn",  orbitR: 295, size: 13, color: "#facc15", speed: 0.003, angle: 0.2, hasRings: true },
+                { id: "uranus",  orbitR: 350, size: 10, color: "#38bdf8", speed: 0.0018, angle: 2.8 },
+                { id: "neptune", orbitR: 405, size: 9.5,color: "#2563eb", speed: 0.0011, angle: 4.9 },
+                { id: "pluto",   orbitR: 450, size: 4,  color: "#ca8a04", speed: 0.0007, angle: 1.7 }
+            ];
+
+            // Render Stars Background
+            const stars = [];
+            for (let i = 0; i < 120; i++) {
+                stars.push({
+                    x: Math.random() * 1000 - 500,
+                    y: Math.random() * 800 - 400,
+                    r: Math.random() * 1.2 + 0.3,
+                    alpha: Math.random() * 0.7 + 0.3
+                });
+            }
+
+            // Render loop
+            function animateOrrery() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                const width = rect.width;
+                const height = rect.height;
+
+                ctx.clearRect(0, 0, width, height);
+
+                ctx.save();
+                // Center and pan/zoom
+                const centerX = width / 2 + panOffsetX;
+                const centerY = height / 2 + panOffsetY;
+                ctx.translate(centerX, centerY);
+                ctx.scale(zoomLevel, zoomLevel);
+
+                // Draw background stars
+                stars.forEach(s => {
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = \`rgba(255, 255, 255, \${s.alpha})\`;
+                    ctx.fill();
+                });
+
+                // Draw Asteroid Belt ring (between Mars R:155 and Jupiter R:235)
+                ctx.beginPath();
+                ctx.arc(0, 0, 195, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(148, 163, 184, 0.12)';
+                ctx.lineWidth = 14;
+                ctx.stroke();
+
+                // Draw Kuiper Belt faint boundary
+                ctx.beginPath();
+                ctx.arc(0, 0, 440, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+                ctx.lineWidth = 20;
+                ctx.stroke();
+
+                // Draw Orbit Rings & Moving Planets
+                orbitalVisuals.forEach(obj => {
+                    // Orbit trace
+                    ctx.beginPath();
+                    ctx.arc(0, 0, obj.orbitR, 0, Math.PI * 2);
+                    ctx.strokeStyle = obj.id === selectedBodyId ? 'rgba(56, 189, 248, 0.5)' : 'rgba(255, 255, 255, 0.08)';
+                    ctx.lineWidth = obj.id === selectedBodyId ? 1.5 : 1;
+                    if (obj.id === selectedBodyId) {
+                        ctx.setLineDash([4, 4]);
+                    } else {
+                        ctx.setLineDash([]);
+                    }
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+
+                    // Update angle
+                    if (isRunning) {
+                        obj.angle += obj.speed * (simSpeed * 0.2);
+                    }
+
+                    // Calculate planet coordinates
+                    const px = Math.cos(obj.angle) * obj.orbitR;
+                    const py = Math.sin(obj.angle) * obj.orbitR;
+                    obj.currentX = px;
+                    obj.currentY = py;
+
+                    // If selected, draw highlight ring
+                    if (obj.id === selectedBodyId) {
+                        ctx.beginPath();
+                        ctx.arc(px, py, obj.size + 6, 0, Math.PI * 2);
+                        ctx.strokeStyle = '#38bdf8';
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
+                    }
+
+                    // Saturn's Rings
+                    if (obj.hasRings) {
+                        ctx.save();
+                        ctx.translate(px, py);
+                        ctx.rotate(0.4);
+                        ctx.beginPath();
+                        ctx.ellipse(0, 0, obj.size * 2.1, obj.size * 0.6, 0, 0, Math.PI * 2);
+                        ctx.strokeStyle = 'rgba(234, 179, 8, 0.6)';
+                        ctx.lineWidth = 3.5;
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+
+                    // Planet Body
+                    ctx.beginPath();
+                    ctx.arc(px, py, obj.size, 0, Math.PI * 2);
+                    ctx.fillStyle = obj.color;
+                    ctx.shadowColor = obj.color;
+                    ctx.shadowBlur = 8;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+
+                    // Planet Name Label
+                    ctx.font = '10px Inter, sans-serif';
+                    ctx.fillStyle = obj.id === selectedBodyId ? '#38bdf8' : '#cbd5e1';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(obj.id.toUpperCase(), px, py + obj.size + 13);
+                });
+
+                // Central Sun with Glowing Corona
+                const sunGradient = ctx.createRadialGradient(0, 0, 8, 0, 0, 34);
+                sunGradient.addColorStop(0, '#ffffff');
+                sunGradient.addColorStop(0.3, '#fef08a');
+                sunGradient.addColorStop(0.6, '#f59e0b');
+                sunGradient.addColorStop(1, 'rgba(245, 158, 11, 0)');
+
+                ctx.beginPath();
+                ctx.arc(0, 0, 34, 0, Math.PI * 2);
+                ctx.fillStyle = sunGradient;
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.arc(0, 0, 18, 0, Math.PI * 2);
+                ctx.fillStyle = '#f59e0b';
+                ctx.shadowColor = '#f59e0b';
+                ctx.shadowBlur = 18;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                // Sun label
+                ctx.font = 'bold 11px Outfit, sans-serif';
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'center';
+                ctx.fillText('SUN', 0, 4);
+
+                ctx.restore();
+
+                requestAnimationFrame(animateOrrery);
+            }
+            requestAnimationFrame(animateOrrery);
+
+            // Click handling on Canvas to select planets
+            canvas.addEventListener('click', function (e) {
+                const rect = canvas.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+
+                const centerX = rect.width / 2 + panOffsetX;
+                const centerY = rect.height / 2 + panOffsetY;
+
+                // Convert click to transformed canvas space
+                const localX = (clickX - centerX) / zoomLevel;
+                const localY = (clickY - centerY) / zoomLevel;
+
+                // Check Sun
+                const distToSun = Math.sqrt(localX * localX + localY * localY);
+                if (distToSun <= 25) {
+                    selectCelestialBody('sun');
+                    playSound('correct');
+                    return;
+                }
+
+                // Check Planets
+                for (let i = 0; i < orbitalVisuals.length; i++) {
+                    const p = orbitalVisuals[i];
+                    const distToP = Math.sqrt((localX - p.currentX) * (localX - p.currentX) + (localY - p.currentY) * (localY - p.currentY));
+                    if (distToP <= Math.max(16, p.size + 8)) {
+                        selectCelestialBody(p.id);
+                        playSound('correct');
+                        return;
+                    }
+                }
+            });
+
+            // Drag to Pan
+            canvas.addEventListener('mousedown', function (e) {
+                isDragging = true;
+                startDragX = e.clientX - panOffsetX;
+                startDragY = e.clientY - panOffsetY;
+            });
+            window.addEventListener('mousemove', function (e) {
+                if (isDragging) {
+                    panOffsetX = e.clientX - startDragX;
+                    panOffsetY = e.clientY - startDragY;
+                }
+            });
+            window.addEventListener('mouseup', function () {
+                isDragging = false;
+            });
+
+            // Controls
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            playPauseBtn.addEventListener('click', function () {
+                isRunning = !isRunning;
+                this.innerHTML = isRunning ? '<i class="fa-solid fa-pause"></i> Pause' : '<i class="fa-solid fa-play"></i> Play';
+            });
+
+            document.querySelectorAll('[data-speed]').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('[data-speed]').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    simSpeed = parseFloat(this.getAttribute('data-speed'));
+                });
+            });
+
+            document.getElementById('resetZoomBtn').addEventListener('click', function () {
+                zoomLevel = 1.0;
+                panOffsetX = 0;
+                panOffsetY = 0;
+            });
+
+            // Populate Carousel Pills
+            const carouselContainer = document.getElementById('planetsCarouselPills');
+            bodies.forEach(b => {
+                const pill = document.createElement('button');
+                pill.type = 'button';
+                pill.className = \`planet-pill-btn \${b.id === selectedBodyId ? 'active' : ''}\`;
+                pill.setAttribute('data-id', b.id);
+                pill.innerHTML = \`<span class="planet-pill-dot" style="background:\${b.color};"></span> \${b.name}\`;
+
+                pill.addEventListener('click', function () {
+                    selectCelestialBody(b.id);
+                    playSound('correct');
+                });
+
+                carouselContainer.appendChild(pill);
+            });
+
+            // Select Planet Function
+            function selectCelestialBody(id) {
+                selectedBodyId = id;
+
+                // Update active pill
+                document.querySelectorAll('.planet-pill-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-id') === id);
+                });
+
+                const body = API.getBodyById(id);
+                if (!body) return;
+
+                // Update Inspector DOM
+                const symbolEl = document.getElementById('inspSymbol');
+                symbolEl.textContent = body.symbol;
+                symbolEl.style.backgroundColor = body.color;
+
+                document.getElementById('inspName').textContent = body.name;
+                document.getElementById('inspDesignation').textContent = body.designation;
+                document.getElementById('inspTypeBadge').textContent = body.type;
+
+                document.getElementById('inspDiameter').textContent = \`\${body.diameterKm.toLocaleString()} km\`;
+                document.getElementById('inspDiameterSub').textContent = \`\${body.diameterEarthRatio}× Earth\`;
+
+                document.getElementById('inspDist').textContent = body.id === 'sun' ? 'Center (0 AU)' : \`\${body.distFromSunAu} AU\`;
+                document.getElementById('inspLightTime').textContent = body.lightTimeToSun;
+
+                document.getElementById('inspGravity').textContent = \`\${body.gravityMs2} m/s²\`;
+                document.getElementById('inspGravitySub').textContent = \`\${body.gravityEarthRatio}× Earth Gravity\`;
+
+                document.getElementById('inspMoons').textContent = \`\${body.moonsCount} Moons\`;
+                document.getElementById('inspRings').textContent = body.rings === 'None' ? 'No rings' : 'Ring system';
+
+                document.getElementById('inspDay').textContent = body.rotationPeriod.split(' ')[0] + ' ' + (body.rotationPeriod.split(' ')[1] || '');
+                document.getElementById('inspYear').textContent = body.orbitalPeriodYears;
+                document.getElementById('inspOrbitDays').textContent = body.orbitalPeriodDays > 0 ? \`\${body.orbitalPeriodDays.toLocaleString()} Earth days\` : 'Galactic Orbit';
+
+                document.getElementById('inspAtmosphere').textContent = body.atmosphereSummary;
+                document.getElementById('inspPressure').textContent = body.surfacePressure;
+                document.getElementById('inspTemp').textContent = \`Mean: \${body.meanTempC}°C (\${body.tempRangeC})\`;
+
+                document.getElementById('inspMajorMoons').textContent = body.majorMoonsList;
+
+                // Features list
+                const featList = document.getElementById('inspFeaturesList');
+                featList.innerHTML = '';
+                body.keyFeatures.forEach(feat => {
+                    const li = document.createElement('li');
+                    li.className = 'feature-bullet-item';
+                    li.innerHTML = \`<i class="fa-solid fa-circle-check"></i> <span>\${feat}</span>\`;
+                    featList.appendChild(li);
+                });
+
+                // Space missions timeline
+                const missionsList = document.getElementById('inspMissionsList');
+                missionsList.innerHTML = '';
+                body.spaceMissions.forEach(m => {
+                    const mBox = document.createElement('div');
+                    mBox.className = 'mission-pill-item';
+                    mBox.innerHTML = \`
+                        <div class="mission-meta-row">
+                            <span>\${m.name} (\${m.year})</span>
+                            <span class="mission-agency-tag">\${m.agency} &bull; \${m.status}</span>
+                        </div>
+                        <div style="font-size:0.78rem; color:var(--space-text-muted);">\${m.desc}</div>
+                    \`;
+                    missionsList.appendChild(mBox);
+                });
+
+                // Exam Relevance
+                document.getElementById('inspExamRelevance').innerHTML = \`
+                    <strong><i class="fa-solid fa-graduation-cap"></i> CSS/PMS General Science Focus:</strong> \${body.examRelevance}
+                \`;
+            }
+
+            // ==================== TAB 2: WEIGHT ON OTHER WORLDS ====================
+            let isKg = true;
+
+            function renderWeightGrid() {
+                const grid = document.getElementById('weightWorldsGrid');
+                grid.innerHTML = '';
+
+                const inputVal = parseFloat(document.getElementById('userWeightInput').value) || 70;
+                const unitText = isKg ? 'kg' : 'lbs';
+
+                bodies.forEach(b => {
+                    const box = document.createElement('div');
+                    box.className = 'world-weight-box';
+
+                    const calculatedVal = (inputVal * b.gravityEarthRatio).toFixed(1);
+                    const pctOfEarth = Math.min(100, (b.gravityEarthRatio / 2.54) * 100);
+
+                    box.innerHTML = \`
+                        <div class="world-top-row">
+                            <div class="world-avatar" style="background:\${b.color};">\${b.symbol}</div>
+                            <div>
+                                <div class="world-name-title">\${b.name}</div>
+                                <div class="world-gravity-sub">\${b.gravityMs2} m/s² (\${b.gravityEarthRatio}g)</div>
+                            </div>
+                        </div>
+                        <div class="calculated-weight-val">\${calculatedVal} <span style="font-size:1rem; font-weight:600; color:var(--space-text-muted);">\${unitText}</span></div>
+                        <div class="weight-ratio-bar-track">
+                            <div class="weight-ratio-bar-fill" style="width:\${pctOfEarth}%; background:\${b.color};"></div>
+                        </div>
+                        <div class="world-fact-note">
+                            \${b.id === 'earth' ? 'Your standard reference weight.' : \`A 70kg person weighs \${(70 * b.gravityEarthRatio).toFixed(1)}kg here.\`}
+                        </div>
+                    \`;
+
+                    grid.appendChild(box);
+                });
+            }
+
+            const weightInput = document.getElementById('userWeightInput');
+            weightInput.addEventListener('input', renderWeightGrid);
+
+            const unitToggleBtn = document.getElementById('unitToggleBtn');
+            unitToggleBtn.addEventListener('click', function () {
+                isKg = !isKg;
+                this.textContent = isKg ? 'KG' : 'LBS';
+                renderWeightGrid();
+            });
+
+            // ==================== TAB 3: PLANET COMPARATOR ====================
+            const selectA = document.getElementById('compSelectA');
+            const selectB = document.getElementById('compSelectB');
+
+            bodies.forEach(b => {
+                const optA = document.createElement('option');
+                optA.value = b.id;
+                optA.textContent = \`\${b.symbol} \${b.name}\`;
+                selectA.appendChild(optA);
+
+                const optB = document.createElement('option');
+                optB.value = b.id;
+                optB.textContent = \`\${b.symbol} \${b.name}\`;
+                selectB.appendChild(optB);
+            });
+
+            selectA.value = 'earth';
+            selectB.value = 'mars';
+
+            function updateComparator() {
+                const bA = API.getBodyById(selectA.value);
+                const bB = API.getBodyById(selectB.value);
+                if (!bA || !bB) return;
+
+                // Visual size circles
+                const maxDiameter = Math.max(bA.diameterKm, bB.diameterKm) || 1;
+                const sizePxA = Math.max(24, Math.min(180, (bA.diameterKm / maxDiameter) * 160));
+                const sizePxB = Math.max(24, Math.min(180, (bB.diameterKm / maxDiameter) * 160));
+
+                const circleA = document.getElementById('compCircleA');
+                circleA.style.width = \`\${sizePxA}px\`;
+                circleA.style.height = \`\${sizePxA}px\`;
+                circleA.style.backgroundColor = bA.color;
+
+                const circleB = document.getElementById('compCircleB');
+                circleB.style.width = \`\${sizePxB}px\`;
+                circleB.style.height = \`\${sizePxB}px\`;
+                circleB.style.backgroundColor = bB.color;
+
+                document.getElementById('compNameA').textContent = bA.name;
+                document.getElementById('compDiameterA').textContent = \`\${bA.diameterKm.toLocaleString()} km\`;
+
+                document.getElementById('compNameB').textContent = bB.name;
+                document.getElementById('compDiameterB').textContent = \`\${bB.diameterKm.toLocaleString()} km\`;
+
+                const ratio = (bA.diameterKm / (bB.diameterKm || 1)).toFixed(2);
+                document.getElementById('compRatioText').textContent = \`\${ratio} : 1.0\`;
+
+                // Metrics comparison
+                const metrics = [
+                    { label: "Diameter (km)", valA: bA.diameterKm, valB: bB.diameterKm, suf: " km" },
+                    { label: "Surface Gravity (m/s²)", valA: bA.gravityMs2, valB: bB.gravityMs2, suf: " m/s²" },
+                    { label: "Distance from Sun (AU)", valA: bA.distFromSunAu, valB: bB.distFromSunAu, suf: " AU" },
+                    { label: "Orbital Period (Earth Days)", valA: bA.orbitalPeriodDays, valB: bB.orbitalPeriodDays, suf: " days" },
+                    { label: "Confirmed Moons Count", valA: bA.moonsCount, valB: bB.moonsCount, suf: " moons" },
+                    { label: "Density (g/cm³)", valA: bA.densityGcm3, valB: bB.densityGcm3, suf: " g/cm³" },
+                    { label: "Escape Velocity (km/s)", valA: bA.escapeVelocityKms, valB: bB.escapeVelocityKms, suf: " km/s" }
+                ];
+
+                const container = document.getElementById('comparatorMetricsList');
+                container.innerHTML = '';
+
+                metrics.forEach(m => {
+                    const sum = (m.valA + m.valB) || 1;
+                    let pctA = Math.round((m.valA / sum) * 100);
+                    let pctB = 100 - pctA;
+
+                    if (m.valA === 0 && m.valB === 0) {
+                        pctA = 50;
+                        pctB = 50;
+                    }
+
+                    const row = document.createElement('div');
+                    row.className = 'comp-metric-row';
+                    row.innerHTML = \`
+                        <div class="comp-metric-labels">
+                            <span class="comp-val-a">\${m.valA.toLocaleString()}\${m.suf}</span>
+                            <span style="font-weight:700; color:var(--space-text-main);">\${m.label}</span>
+                            <span class="comp-val-b">\${m.valB.toLocaleString()}\${m.suf}</span>
+                        </div>
+                        <div class="comp-bar-track">
+                            <div class="comp-bar-fill-a" style="width:\${pctA}%;"></div>
+                            <div class="comp-bar-fill-b" style="width:\${pctB}%;"></div>
+                        </div>
+                    \`;
+                    container.appendChild(row);
+                });
+            }
+
+            selectA.addEventListener('change', updateComparator);
+            selectB.addEventListener('change', updateComparator);
+
+            // ==================== TAB 4: ASTRONOMY DOSSIER ====================
+            function renderConcepts() {
+                const container = document.getElementById('astronomyConceptsContainer');
+                container.innerHTML = '';
+
+                concepts.forEach(c => {
+                    const card = document.createElement('div');
+                    card.className = 'concept-card';
+
+                    let lawsHtml = '';
+                    c.laws.forEach(l => {
+                        lawsHtml += \`
+                            <div class="law-item-box">
+                                <div class="law-name-tag"><i class="fa-solid fa-atom"></i> \${l.name}</div>
+                                <div class="law-statement-text">\${l.statement}</div>
+                                <div class="law-formula-code">\${l.formula}</div>
+                                <div class="law-significance-text"><strong>Physical Impact:</strong> \${l.significance}</div>
+                            </div>
+                        \`;
+                    });
+
+                    card.innerHTML = \`
+                        <h3 class="concept-title"><i class="fa-solid fa-book-bookmark" style="color:var(--space-primary);"></i> \${c.title}</h3>
+                        <div class="concept-context">\${c.historicalContext}</div>
+                        <div class="laws-grid">\${lawsHtml}</div>
+                        <div class="exam-utility-badge">
+                            <strong><i class="fa-solid fa-graduation-cap"></i> CSS/PMS General Science Paper Tip:</strong> \${c.examRelevance}
+                        </div>
+                    \`;
+
+                    container.appendChild(card);
+                });
+            }
+
+            // ==================== TAB 5: QUIZ & RIDDLES ====================
+            let answeredQuiz = {};
+
+            function renderQuiz() {
+                const container = document.getElementById('quizQuestionsContainer');
+                container.innerHTML = '';
+
+                mcqs.forEach((mcq, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'mcq-question-card';
+                    card.id = \`mcq-block-\${mcq.id}\`;
+
+                    let optsHtml = '';
+                    const letters = ['A', 'B', 'C', 'D'];
+                    mcq.options.forEach((opt, optIdx) => {
+                        optsHtml += \`
+                            <button type="button" class="mcq-choice-btn" data-mcq="\${mcq.id}" data-opt="\${optIdx}">
+                                <span class="mcq-letter-box">\${letters[optIdx]}</span>
+                                <span>\${opt}</span>
+                            </button>
+                        \`;
+                    });
+
+                    card.innerHTML = \`
+                        <div class="mcq-prompt-title">
+                            <span class="mcq-num-pill">\${idx + 1}</span>
+                            <span>\${mcq.question}</span>
+                        </div>
+                        <div class="mcq-opt-group">\${optsHtml}</div>
+                        <div class="mcq-expl-box" id="mcq-expl-\${mcq.id}">
+                            <strong><i class="fa-solid fa-circle-info"></i> Explanation:</strong> \${mcq.explanation}
+                        </div>
+                    \`;
+
+                    container.appendChild(card);
+                });
+
+                container.querySelectorAll('.mcq-choice-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        const mcqId = parseInt(this.getAttribute('data-mcq'), 10);
+                        const chosenOpt = parseInt(this.getAttribute('data-opt'), 10);
+                        if (answeredQuiz[mcqId] !== undefined) return;
+
+                        const qData = mcqs.find(q => q.id === mcqId);
+                        const isCorrect = chosenOpt === qData.answer;
+                        answeredQuiz[mcqId] = isCorrect;
+
+                        const parent = document.getElementById(\`mcq-block-\${mcqId}\`);
+                        parent.querySelectorAll('.mcq-choice-btn').forEach((b, i) => {
+                            b.disabled = true;
+                            if (i === qData.answer) b.classList.add('correct');
+                        });
+
+                        if (!isCorrect) {
+                            this.classList.add('incorrect');
+                            playSound('incorrect');
+                        } else {
+                            playSound('correct');
+                        }
+
+                        const explBox = document.getElementById(\`mcq-expl-\${mcqId}\`);
+                        if (explBox) explBox.style.display = 'block';
+
+                        updateQuizScore();
+                    });
+                });
+            }
+
+            function updateQuizScore() {
+                let correct = 0;
+                for (let k in answeredQuiz) {
+                    if (answeredQuiz[k]) correct++;
+                }
+                const scoreDisplay = document.getElementById('quizScoreDisplay');
+                if (scoreDisplay) scoreDisplay.textContent = \`\${correct} / \${mcqs.length}\`;
+            }
+
+            document.getElementById('resetQuizButton').addEventListener('click', function () {
+                answeredQuiz = {};
+                renderQuiz();
+                updateQuizScore();
+            });
+
+            // Render Riddles
+            function renderRiddles() {
+                const container = document.getElementById('riddlesContainer');
+                container.innerHTML = '';
+
+                riddles.forEach((r, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'riddle-card-item';
+
+                    let cluesHtml = '';
+                    r.clues.forEach(clue => {
+                        cluesHtml += \`<li class="riddle-clue-line"><i class="fa-solid fa-star"></i> <span>\${clue}</span></li>\`;
+                    });
+
+                    const targetBody = API.getBodyById(r.planetId);
+
+                    card.innerHTML = \`
+                        <div style="font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:800; color:var(--space-primary);">
+                            Riddle #\${idx + 1}
+                        </div>
+                        <ul class="riddle-clues-list">\${cluesHtml}</ul>
+                        <div style="font-size:0.8rem; color:var(--space-text-muted); margin-bottom:10px;">
+                            <strong>Hint:</strong> \${r.hint}
+                        </div>
+                        <button type="button" class="reveal-answer-btn">
+                            <i class="fa-solid fa-eye"></i> Reveal Planet
+                        </button>
+                        <div class="riddle-revealed-answer">
+                            <i class="fa-solid fa-check-circle"></i> Answer: <strong>\${targetBody.name} (\${targetBody.symbol})</strong> — \${targetBody.designation}
+                        </div>
+                    \`;
+
+                    const btn = card.querySelector('.reveal-answer-btn');
+                    const answerBox = card.querySelector('.riddle-revealed-answer');
+                    btn.addEventListener('click', function () {
+                        answerBox.style.display = 'block';
+                        btn.style.display = 'none';
+                        playSound('correct');
+                    });
+
+                    container.appendChild(card);
+                });
+            }
+
+            // Real-time search filter
+            const searchInput = document.getElementById('planetSearchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', function () {
+                    const term = this.value.toLowerCase().trim();
+                    if (!term) return;
+
+                    const match = bodies.find(b =>
+                        b.name.toLowerCase().includes(term) ||
+                        b.id.toLowerCase() === term ||
+                        b.majorMoonsList.toLowerCase().includes(term) ||
+                        b.keyFeatures.some(f => f.toLowerCase().includes(term))
+                    );
+
+                    if (match) {
+                        selectCelestialBody(match.id);
+                    }
+                });
+            }
+
+            // Initialize Everything
+            selectCelestialBody('jupiter');
+            renderWeightGrid();
+            updateComparator();
+            renderConcepts();
+            renderQuiz();
+            renderRiddles();
+
+        })();
+    </script>
+</body>
+
+</html>
+`;
+
+const outputPath = path.join(__dirname, '..', 'frontend', 'solar-system-explorer.html');
+fs.writeFileSync(outputPath, htmlContent.trim(), 'utf8');
+console.log('Successfully wrote solar-system-explorer.html. Size:', fs.statSync(outputPath).size, 'bytes');

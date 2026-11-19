@@ -1,0 +1,1891 @@
+{
+  "title": "General Science Revision Capsule",
+  "subtitle": "High-Yield Science Notes, One-Liners, Formulas, Instruments & Laws for Competitive Exams",
+  "source": "Career Power / SSC Adda / Bankers Adda General Science Capsule",
+  "oneLiners": [
+    {
+      "id": 1,
+      "q": "The temperature at which all substances have zero thermal energy",
+      "a": "-273°C (Absolute Zero)",
+      "topic": "Physics"
+    },
+    {
+      "id": 2,
+      "q": "Any substance which alters the rate of a chemical reaction but remains chemically unchanged at the end",
+      "a": "Catalyst",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 3,
+      "q": "The study of the inter-relations of animals and plants with their environment",
+      "a": "Ecology",
+      "topic": "Biology"
+    },
+    {
+      "id": 4,
+      "q": "Study of insects is called",
+      "a": "Entomology",
+      "topic": "Biology"
+    },
+    {
+      "id": 5,
+      "q": "A unit used to express the focal power of optical lenses",
+      "a": "Dioptre",
+      "topic": "Physics"
+    },
+    {
+      "id": 6,
+      "q": "The velocity a body must achieve to escape the gravitational attraction of a planet",
+      "a": "Escape Velocity (11.2 km/s on Earth)",
+      "topic": "Physics"
+    },
+    {
+      "id": 7,
+      "q": "Laughing gas is chemically known as",
+      "a": "Nitrous Oxide (N₂O)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 8,
+      "q": "The blood vessels carrying blood from the heart to various parts of the body",
+      "a": "Artery",
+      "topic": "Biology"
+    },
+    {
+      "id": 9,
+      "q": "The distance travelled by light in one year is called",
+      "a": "Light year (approx. 9.46 × 10¹² km)",
+      "topic": "Physics"
+    },
+    {
+      "id": 10,
+      "q": "An organism which derives its nourishment from another living organism",
+      "a": "Parasite",
+      "topic": "Biology"
+    },
+    {
+      "id": 11,
+      "q": "Law stating that rate of change of momentum is directly proportional to applied force",
+      "a": "Newton's Second Law of Motion",
+      "topic": "Physics"
+    },
+    {
+      "id": 12,
+      "q": "The world's first man-made satellite",
+      "a": "Sputnik-I (4 Oct 1957 by USSR)",
+      "topic": "Space"
+    },
+    {
+      "id": 13,
+      "q": "Brightest of all the planets in the solar system",
+      "a": "Venus",
+      "topic": "Space"
+    },
+    {
+      "id": 14,
+      "q": "Small pieces of solid matter found scattered in interplanetary space",
+      "a": "Meteoroids",
+      "topic": "Space"
+    },
+    {
+      "id": 15,
+      "q": "The largest gland in the human body, dark red in colour",
+      "a": "Liver",
+      "topic": "Biology"
+    },
+    {
+      "id": 16,
+      "q": "Inadequate secretion of insulin hormone causes",
+      "a": "Diabetes mellitus",
+      "topic": "Biology"
+    },
+    {
+      "id": 17,
+      "q": "Common cold, Influenza, Chickenpox and Measles are caused due to",
+      "a": "Virus",
+      "topic": "Biology"
+    },
+    {
+      "id": 18,
+      "q": "Atmospheric layer where communication satellites and ionized layers are located",
+      "a": "Ionosphere",
+      "topic": "Space"
+    },
+    {
+      "id": 19,
+      "q": "The scientific principle behind Optical Fibre communication",
+      "a": "Total Internal Reflection of Light",
+      "topic": "Physics"
+    },
+    {
+      "id": 20,
+      "q": "Ginger is an underground modified stem and not a root because",
+      "a": "It has nodes and internodes",
+      "topic": "Biology"
+    },
+    {
+      "id": 21,
+      "q": "Energy stored in a wound mechanical watch spring",
+      "a": "Potential Energy",
+      "topic": "Physics"
+    },
+    {
+      "id": 22,
+      "q": "Phenomenon on which kidney dialysis machine operates",
+      "a": "Osmosis / Selective Diffusion",
+      "topic": "Biology"
+    },
+    {
+      "id": 23,
+      "q": "When a piece of ice floating in a beaker of water melts, water level",
+      "a": "Remains the same",
+      "topic": "Physics"
+    },
+    {
+      "id": 24,
+      "q": "Energy stored in a dry electric cell battery",
+      "a": "Chemical energy",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 25,
+      "q": "A cricketer lowers his hands while catching a fast ball to reduce impact due to",
+      "a": "Conservation of Momentum / Increasing time of contact",
+      "topic": "Physics"
+    },
+    {
+      "id": 26,
+      "q": "Full form of AIDS",
+      "a": "Acquired Immune Deficiency Syndrome",
+      "topic": "Biology"
+    },
+    {
+      "id": 27,
+      "q": "Ancient chemical technology dealing with conversion of base metals into gold",
+      "a": "Alchemy",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 28,
+      "q": "Substances produced by micro-organisms that kill or inhibit other bacteria",
+      "a": "Antibiotics",
+      "topic": "Biology"
+    },
+    {
+      "id": 29,
+      "q": "Substances which react with acids to neutralize and form salts and water",
+      "a": "Base",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 30,
+      "q": "The ancient Japanese/oriental art of growing miniature trees in pots",
+      "a": "Bonsai",
+      "topic": "Biology"
+    },
+    {
+      "id": 31,
+      "q": "Unit of thermal energy / heat",
+      "a": "Calorie / Joule",
+      "topic": "Physics"
+    },
+    {
+      "id": 32,
+      "q": "Ability of a body to recover original shape and size when deforming stress is removed",
+      "a": "Elasticity",
+      "topic": "Physics"
+    },
+    {
+      "id": 33,
+      "q": "Negatively charged subatomic particles revolving around nucleus in orbits",
+      "a": "Electrons",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 34,
+      "q": "The branch of biology dealing with the study of heredity and variation",
+      "a": "Genetics",
+      "topic": "Biology"
+    },
+    {
+      "id": 35,
+      "q": "Kwashiorkor disease in children is caused due to deficiency of",
+      "a": "Protein",
+      "topic": "Biology"
+    },
+    {
+      "id": 36,
+      "q": "Optical illusion commonly witnessed in deserts on hot sunny days",
+      "a": "Mirage (due to Total Internal Reflection)",
+      "topic": "Physics"
+    },
+    {
+      "id": 37,
+      "q": "Branch of science dealing with nature and behavior of light",
+      "a": "Optics",
+      "topic": "Physics"
+    },
+    {
+      "id": 38,
+      "q": "Scale used to measure the magnitude and energy released by earthquakes",
+      "a": "Richter scale",
+      "topic": "Earth Science"
+    },
+    {
+      "id": 39,
+      "q": "Heat required to raise the temperature of 1 kg of a substance by 1°C",
+      "a": "Specific heat capacity",
+      "topic": "Physics"
+    },
+    {
+      "id": 40,
+      "q": "Speed greater than the speed of sound in air (Mach > 1)",
+      "a": "Supersonic speed",
+      "topic": "Physics"
+    },
+    {
+      "id": 41,
+      "q": "Volatile substance powerfully irritating eyes and provoking tears",
+      "a": "Tear gas (CS / Chloropicrin)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 42,
+      "q": "Inventor of Dynamite and founder of the Nobel Prizes",
+      "a": "Alfred Nobel (1867)",
+      "topic": "Inventions"
+    },
+    {
+      "id": 43,
+      "q": "Scientist who demonstrated life and response to stimuli in plants with Crescograph",
+      "a": "Jagadish Chandra Bose",
+      "topic": "Inventions"
+    },
+    {
+      "id": 44,
+      "q": "Unit used to measure the intensity and loudness of sound",
+      "a": "Decibel (dB)",
+      "topic": "Physics"
+    },
+    {
+      "id": 45,
+      "q": "Smallest particle of an element that can participate in a chemical reaction",
+      "a": "Atom",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 46,
+      "q": "Substances applied on living tissue to destroy or stop micro-organism growth",
+      "a": "Antiseptic",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 47,
+      "q": "Water containing dissolved bicarbonates/chlorides/sulphates of Ca & Mg that resists soap lather",
+      "a": "Hard water",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 48,
+      "q": "Lines on a meteorological map connecting places of equal barometric atmospheric pressure",
+      "a": "Isobars",
+      "topic": "Earth Science"
+    },
+    {
+      "id": 49,
+      "q": "Lymph differs from blood in that it lacks",
+      "a": "Red Blood Corpuscles (RBCs / Erythrocytes)",
+      "topic": "Biology"
+    },
+    {
+      "id": 50,
+      "q": "Universal recipient blood group that can receive blood from all groups (O, A, B, AB)",
+      "a": "Group AB",
+      "topic": "Biology"
+    },
+    {
+      "id": 51,
+      "q": "Scientific study of grasses is known as",
+      "a": "Agrostology",
+      "topic": "Biology"
+    },
+    {
+      "id": 52,
+      "q": "Study and treatment of tumors and cancer is called",
+      "a": "Oncology",
+      "topic": "Biology"
+    },
+    {
+      "id": 53,
+      "q": "Physical intensive property that remains unchanged when quantity of matter increases",
+      "a": "Density",
+      "topic": "Physics"
+    },
+    {
+      "id": 54,
+      "q": "Oil spreads over the surface of water because",
+      "a": "Oil has less surface tension than water",
+      "topic": "Physics"
+    },
+    {
+      "id": 55,
+      "q": "Bleeding through the nose occurs at high altitudes because",
+      "a": "Blood pressure in capillaries exceeds external low atmospheric air pressure",
+      "topic": "Biology"
+    },
+    {
+      "id": 56,
+      "q": "A person weighs more at the poles than at the equator because",
+      "a": "Gravitational pull (g) is greater at poles due to flattened shape of Earth",
+      "topic": "Physics"
+    },
+    {
+      "id": 57,
+      "q": "A real gas behaves most like an ideal gas at",
+      "a": "Very low pressure and high temperature",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 58,
+      "q": "Oology is the branch of ornithology dealing with",
+      "a": "Birds' eggs",
+      "topic": "Biology"
+    },
+    {
+      "id": 59,
+      "q": "A falling drop of liquid assumes a spherical shape because",
+      "a": "A sphere has the minimum surface area for a given volume due to surface tension",
+      "topic": "Physics"
+    },
+    {
+      "id": 60,
+      "q": "When cream is separated from milk, the density of the remaining skimmed milk",
+      "a": "Increases",
+      "topic": "Physics"
+    },
+    {
+      "id": 61,
+      "q": "Diamond is harder than graphite due to differences in",
+      "a": "Crystalline structure (tetrahedral sp³ vs layered sp²)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 62,
+      "q": "Combination of colours most convenient for visibility during both day and night",
+      "a": "Red and Green",
+      "topic": "Physics"
+    },
+    {
+      "id": 63,
+      "q": "Noble inert element which does not react with oxygen under ordinary conditions",
+      "a": "Helium (He)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 64,
+      "q": "Instrument that measures and records relative humidity of air",
+      "a": "Hygrometer",
+      "topic": "Physics"
+    },
+    {
+      "id": 65,
+      "q": "Different colours observed in different stars are due to variation in their",
+      "a": "Surface Temperature",
+      "topic": "Space"
+    },
+    {
+      "id": 66,
+      "q": "Particle left behind when a neutral hydrogen atom loses its single electron",
+      "a": "A proton (H⁺ ion)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 67,
+      "q": "Fundamental electrochemical process operating inside electrical batteries",
+      "a": "Oxidation-Reduction (Redox) reaction",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 68,
+      "q": "Metal coated on iron to protect it from rusting in galvanization",
+      "a": "Zinc (Zn)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 69,
+      "q": "Instrument used to measure wind speed and velocity",
+      "a": "Anemometer",
+      "topic": "Physics"
+    },
+    {
+      "id": 70,
+      "q": "English physician Edward Jenner developed the first vaccine against",
+      "a": "Smallpox (1796)",
+      "topic": "Biology"
+    },
+    {
+      "id": 71,
+      "q": "Scientist who discovered and described blood circulation in human body",
+      "a": "William Harvey (1628)",
+      "topic": "Biology"
+    },
+    {
+      "id": 72,
+      "q": "Nitroglycerine is primarily used as",
+      "a": "An explosive (active ingredient in dynamite)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 73,
+      "q": "Source of solar energy inside the Sun",
+      "a": "Nuclear Fusion reactions (Hydrogen fusing into Helium)",
+      "topic": "Physics"
+    },
+    {
+      "id": 74,
+      "q": "Chemicals used as electrolytes in standard Leclanché dry cell batteries",
+      "a": "Ammonium Chloride (NH₄Cl) and Zinc Chloride (ZnCl₂)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 75,
+      "q": "First permanent Indian Antarctic research station",
+      "a": "Dakshin Gangotri",
+      "topic": "Earth Science"
+    },
+    {
+      "id": 76,
+      "q": "Electromagnetic radiation used in night vision cameras and thermal scopes",
+      "a": "Infrared waves",
+      "topic": "Physics"
+    },
+    {
+      "id": 77,
+      "q": "To stay over the exact same spot on Earth, a geostationary satellite must orbit directly above",
+      "a": "The Equator (at altitude ~35,786 km)",
+      "topic": "Space"
+    },
+    {
+      "id": 78,
+      "q": "Water is preferred as coolant in automobile radiators because",
+      "a": "It has high specific heat capacity",
+      "topic": "Physics"
+    },
+    {
+      "id": 79,
+      "q": "Hypermetropia (long-sightedness) is optically corrected by using a",
+      "a": "Convex (converging) lens",
+      "topic": "Physics"
+    },
+    {
+      "id": 80,
+      "q": "Rainwater collected after 30 to 40 minutes of rainfall in industrial cities is",
+      "a": "Acidic (Acid rain due to SO₂ and NO₂)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 81,
+      "q": "Petroleum crude oil is separated into gasoline, kerosene and diesel by",
+      "a": "Fractional Distillation",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 82,
+      "q": "Study of chemical elements, reactions and molecules in outer space",
+      "a": "Astrochemistry",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 83,
+      "q": "The Birbal Sahni Institute of Palaeobotany is situated in",
+      "a": "Lucknow, Uttar Pradesh",
+      "topic": "Biology"
+    },
+    {
+      "id": 84,
+      "q": "Cellular organelle called the powerhouse of the cell",
+      "a": "Mitochondria",
+      "topic": "Biology"
+    },
+    {
+      "id": 85,
+      "q": "Photosynthesis rate in plants is maximum in red light and minimum in",
+      "a": "Violet / Green light",
+      "topic": "Biology"
+    },
+    {
+      "id": 86,
+      "q": "Scientific medical term for White Blood Cells",
+      "a": "Leukocytes",
+      "topic": "Biology"
+    },
+    {
+      "id": 87,
+      "q": "Scientific medical term for Red Blood Cells",
+      "a": "Erythrocytes",
+      "topic": "Biology"
+    },
+    {
+      "id": 88,
+      "q": "Active antiseptic chemical compound present in Dettol liquid",
+      "a": "Chloroxylenol",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 89,
+      "q": "Hygroscopic white solid compound used as desiccant to absorb water vapour from air",
+      "a": "Calcium chloride (CaCl₂)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 90,
+      "q": "Equivalent weight multiplied by valency of an element equals its",
+      "a": "Atomic weight",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 91,
+      "q": "Element in the periodic table forming the largest number of compounds after carbon",
+      "a": "Silicon / Hydrogen",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 92,
+      "q": "Ethylene dibromide was added to leaded petrol to",
+      "a": "Eliminate lead oxide as volatile lead bromide",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 93,
+      "q": "Process of vaporizing water and condensing vapour to remove dissolved non-volatile impurities",
+      "a": "Distillation",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 94,
+      "q": "Primary hydrocarbon gas present in both natural gas and biogas",
+      "a": "Methane (CH₄, ~70-90%)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 95,
+      "q": "Alloy traditionally used to manufacture electrical safety fuse wires",
+      "a": "Alloy of Tin (63%) and Lead (37%)",
+      "topic": "Physics"
+    },
+    {
+      "id": 96,
+      "q": "Alcohol obtained as valuable by-product during saponification (soap-making)",
+      "a": "Glycerol / Glycerin",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 97,
+      "q": "Inert gas used to dilute oxygen in deep-sea divers' breathing cylinders to prevent bends",
+      "a": "Helium",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 98,
+      "q": "High-speed cathode rays (electrons) striking heavy metal targets produce",
+      "a": "X-rays (Roentgen rays)",
+      "topic": "Physics"
+    },
+    {
+      "id": 99,
+      "q": "Liquid exhibiting anomalous thermal expansion between 0°C and 4°C",
+      "a": "Water",
+      "topic": "Physics"
+    },
+    {
+      "id": 100,
+      "q": "Thick construction paste of cement, sand and water used for brick masonry",
+      "a": "Mortar",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 101,
+      "q": "Ethanol containing approximately 5% water (95% alcohol) is known as",
+      "a": "Rectified spirit",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 102,
+      "q": "Heavy metal container in which radioactive materials must be stored",
+      "a": "Lead (Pb)",
+      "topic": "Physics"
+    },
+    {
+      "id": 103,
+      "q": "Common chemical solvent that is NOT used as an anesthetic in surgeries",
+      "a": "Acetone",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 104,
+      "q": "Percentage of Nitrogen present in ammonium sulphate fertilizer [(NH₄)₂SO₄]",
+      "a": "21%",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 105,
+      "q": "Subatomic particle having no electric charge, virtually zero rest mass, and 1/2 spin",
+      "a": "Neutrino",
+      "topic": "Physics"
+    },
+    {
+      "id": 106,
+      "q": "The pH of fresh milk is 6.0; when it turns sour due to lactic acid, pH becomes",
+      "a": "Less than 6.0 (more acidic)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 107,
+      "q": "Electrical fuse wire metal must have which two essential properties",
+      "a": "Low melting point and high resistance / low resistivity",
+      "topic": "Physics"
+    },
+    {
+      "id": 108,
+      "q": "Sodium stearate is a chemical salt widely used as",
+      "a": "Soap",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 109,
+      "q": "Two primary mineral constituents of granite rock",
+      "a": "Silica (Quartz) and Iron/Feldspar",
+      "topic": "Earth Science"
+    },
+    {
+      "id": 110,
+      "q": "Method of water treatment that separates suspended particles but does NOT kill bacteria",
+      "a": "Filtration",
+      "topic": "Biology"
+    },
+    {
+      "id": 111,
+      "q": "Atmospheric gas essential to support combustion of fuels",
+      "a": "Oxygen (O₂)",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 112,
+      "q": "Chemical qualitative test that established the presence of Cobalt in Vitamin B-12",
+      "a": "Borax-Bead test",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 113,
+      "q": "Metal which can displace and deposit copper from copper sulphate solution",
+      "a": "Iron (Fe) [Fe + CuSO₄ → FeSO₄ + Cu]",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 114,
+      "q": "Primary greenhouse gases contributing to global warming",
+      "a": "Carbon dioxide (CO₂) and Methane (CH₄)",
+      "topic": "Earth Science"
+    },
+    {
+      "id": 115,
+      "q": "When Gypsum (CaSO₄·2H₂O) is heated to 100°C (373 K), it loses 3/4 water to become",
+      "a": "Plaster of Paris [CaSO₄·½H₂O]",
+      "topic": "Chemistry"
+    },
+    {
+      "id": 116,
+      "q": "Liquid that contracts on cooling down to 4°C but expands when cooled from 4°C to 0°C",
+      "a": "Water",
+      "topic": "Physics"
+    },
+    {
+      "id": 117,
+      "q": "Category of forces comprising magnetic, electrostatic and gravitational interactions",
+      "a": "Non-contact forces (field forces)",
+      "topic": "Physics"
+    },
+    {
+      "id": 118,
+      "q": "If an upright/erect image is formed regardless of your distance from a mirror, the mirror is",
+      "a": "Either plane or convex",
+      "topic": "Physics"
+    },
+    {
+      "id": 119,
+      "q": "Advanced sunrise (2 min before) and delayed sunset (2 min after) occur due to",
+      "a": "Atmospheric refraction of sunlight",
+      "topic": "Physics"
+    },
+    {
+      "id": 120,
+      "q": "Vibrant iridescent colours seen on soap bubbles and thin oil slicks are caused by",
+      "a": "Interference of light",
+      "topic": "Physics"
+    },
+    {
+      "id": 121,
+      "q": "Operating thermodynamic principle of a domestic pressure cooker",
+      "a": "Elevating the boiling point of water by increasing pressure inside",
+      "topic": "Physics"
+    },
+    {
+      "id": 122,
+      "q": "Pressure of an enclosed gas increases with temperature because",
+      "a": "Kinetic energy and velocity of gas molecules increase, causing harder wall collisions",
+      "topic": "Physics"
+    },
+    {
+      "id": 123,
+      "q": "The weight of an object on any celestial body is determined by",
+      "a": "Newton's Law of Universal Gravitation (W = mg)",
+      "topic": "Physics"
+    },
+    {
+      "id": 124,
+      "q": "Surrounding every electrical conductor carrying direct current is",
+      "a": "A magnetic field",
+      "topic": "Physics"
+    },
+    {
+      "id": 125,
+      "q": "Linear thermal expansion of a metal rod is independent of",
+      "a": "Duration of heat flow (depends on length, temperature change & material)",
+      "topic": "Physics"
+    },
+    {
+      "id": 126,
+      "q": "Parameter that has NO effect on the speed of sound in air at constant temperature",
+      "a": "Atmospheric Pressure",
+      "topic": "Physics"
+    },
+    {
+      "id": 127,
+      "q": "Splitting of white sunlight into spectrum colours through a glass prism is called",
+      "a": "Dispersion of light",
+      "topic": "Physics"
+    },
+    {
+      "id": 128,
+      "q": "Type of lenses used in cinema movie projectors to cast enlarged real images",
+      "a": "Convex lens",
+      "topic": "Physics"
+    },
+    {
+      "id": 129,
+      "q": "Which of the following is NOT radioactive radiation: Alpha, Beta, Gamma, or Cathode rays?",
+      "a": "Cathode rays (they are streams of electrons emitted from electrical discharge tubes)",
+      "topic": "Physics"
+    },
+    {
+      "id": 130,
+      "q": "For a body undergoing non-accelerated (constant velocity) motion, rate of change of momentum is",
+      "a": "Zero",
+      "topic": "Physics"
+    },
+    {
+      "id": 131,
+      "q": "For any moving particle with non-zero mass and velocity, kinetic energy is",
+      "a": "Always strictly positive (KE > 0)",
+      "topic": "Physics"
+    },
+    {
+      "id": 132,
+      "q": "When a body moves along a circular path at uniform speed, its acceleration is",
+      "a": "Centripetal acceleration directed toward the centre (velocity direction changes)",
+      "topic": "Physics"
+    },
+    {
+      "id": 133,
+      "q": "Orbital period of a geostationary communications satellite around Earth",
+      "a": "24 hours (matching Earth's rotation)",
+      "topic": "Physics"
+    },
+    {
+      "id": 134,
+      "q": "A Miniature Circuit Breaker (MCB) trips and cuts off current on short-circuit based on",
+      "a": "Magnetic effect of electric current",
+      "topic": "Physics"
+    },
+    {
+      "id": 135,
+      "q": "Net acceleration of a car driving at uniform speed in a circle is directed",
+      "a": "Toward the centre of the circle",
+      "topic": "Physics"
+    },
+    {
+      "id": 136,
+      "q": "Property of a proton that changes while moving freely across a magnetic field",
+      "a": "Velocity (direction changes due to Lorentz force)",
+      "topic": "Physics"
+    },
+    {
+      "id": 137,
+      "q": "The sun appears reddish-orange during sunrise and sunset because",
+      "a": "Red light has the longest wavelength and is least scattered by atmosphere",
+      "topic": "Physics"
+    },
+    {
+      "id": 138,
+      "q": "Ball bearings are installed in wheel axles of cars and bicycles to",
+      "a": "Replace sliding friction with rolling friction and reduce contact area",
+      "topic": "Physics"
+    },
+    {
+      "id": 139,
+      "q": "Television broadcast channels are uniquely tuned and characterized by",
+      "a": "Frequency of transmitted carrier signal",
+      "topic": "Physics"
+    },
+    {
+      "id": 140,
+      "q": "An electrical copper wire carrying a current remains as a whole",
+      "a": "Electrically neutral (equal positive protons and negative conduction electrons)",
+      "topic": "Physics"
+    },
+    {
+      "id": 141,
+      "q": "Device used to measure the crystal structure and wavelength of X-rays",
+      "a": "Bragg Spectrometer",
+      "topic": "Physics"
+    },
+    {
+      "id": 142,
+      "q": "Visual phenomenon responsible for the blending of colors in Newton's spinning color disc",
+      "a": "Persistence of vision (approx. 1/16th second)",
+      "topic": "Physics"
+    },
+    {
+      "id": 143,
+      "q": "Founder of the Quantum Theory of Radiation",
+      "a": "Max Planck (1900)",
+      "topic": "Physics"
+    },
+    {
+      "id": 144,
+      "q": "A photon is defined as",
+      "a": "The fundamental quantum (discrete packet) of electromagnetic light energy",
+      "topic": "Physics"
+    },
+    {
+      "id": 145,
+      "q": "When a liquid stirred in a beaker is left alone, it gradually comes to rest due to",
+      "a": "Viscosity (internal fluid friction)",
+      "topic": "Physics"
+    }
+  ],
+  "instruments": [
+    {
+      "name": "Altimeter",
+      "use": "Measures altitude (height) in aircraft"
+    },
+    {
+      "name": "Ammeter",
+      "use": "Measures electric current intensity in amperes"
+    },
+    {
+      "name": "Anemometer",
+      "use": "Measures force, speed and direction of wind"
+    },
+    {
+      "name": "Audiometer",
+      "use": "Measures differences and acuity of hearing"
+    },
+    {
+      "name": "Barometer",
+      "use": "Measures atmospheric pressure"
+    },
+    {
+      "name": "Barograph",
+      "use": "Continuously records variations in atmospheric pressure"
+    },
+    {
+      "name": "Binoculars",
+      "use": "Magnifies distant objects using stereoscopic lenses"
+    },
+    {
+      "name": "Bolometer",
+      "use": "Measures radiant heat and infrared radiation"
+    },
+    {
+      "name": "Callipers",
+      "use": "Measures internal and external diameter of wires, rods or tubes"
+    },
+    {
+      "name": "Calorimeter",
+      "use": "Measures quantities of heat absorbed or evolved in reactions"
+    },
+    {
+      "name": "Carburettor",
+      "use": "Blends air with petrol vapour in internal combustion engines"
+    },
+    {
+      "name": "Cardiograph",
+      "use": "Traces electrical activity and movements of the heart (ECG)"
+    },
+    {
+      "name": "Chronometer",
+      "use": "Precision marine clock determining longitude of ship at sea"
+    },
+    {
+      "name": "Crescograph",
+      "use": "Measures tiny growth rates in living plants (invented by J.C. Bose)"
+    },
+    {
+      "name": "Cryometer",
+      "use": "Measures extremely low temperatures"
+    },
+    {
+      "name": "Dynamo",
+      "use": "Converts mechanical energy into electrical energy"
+    },
+    {
+      "name": "Electrometer",
+      "use": "Measures electric potential differences"
+    },
+    {
+      "name": "Electroscope",
+      "use": "Detects the presence and sign of electrostatic electric charge"
+    },
+    {
+      "name": "Endoscope",
+      "use": "Examines internal cavities and organs of the human body"
+    },
+    {
+      "name": "Eudiometer",
+      "use": "Glass tube measuring volume changes during gas reactions"
+    },
+    {
+      "name": "Fathometer",
+      "use": "Measures depth of ocean water using sonic depth finding"
+    },
+    {
+      "name": "Galvanometer",
+      "use": "Detects and indicates minute electric currents"
+    },
+    {
+      "name": "Gramophone",
+      "use": "Mechanical apparatus for reproducing recorded sound"
+    },
+    {
+      "name": "Hydrometer",
+      "use": "Measures relative density / specific gravity of liquids"
+    },
+    {
+      "name": "Hydrophone",
+      "use": "Underwater microphone for detecting acoustic sound in water"
+    },
+    {
+      "name": "Hygrometer",
+      "use": "Measures relative humidity and moisture in air or gases"
+    },
+    {
+      "name": "Lactometer",
+      "use": "Determines relative density and purity of milk"
+    },
+    {
+      "name": "Machmeter",
+      "use": "Displays airspeed of aircraft relative to speed of sound (Mach)"
+    },
+    {
+      "name": "Manometer",
+      "use": "Measures gaseous pressure inside closed vessels"
+    },
+    {
+      "name": "Microphone",
+      "use": "Converts sound waves into electrical audio signals"
+    },
+    {
+      "name": "Microscope",
+      "use": "Magnifies microscopic objects not visible to naked eye"
+    },
+    {
+      "name": "Odometer",
+      "use": "Measures distance traversed by a wheeled vehicle"
+    },
+    {
+      "name": "Optometer",
+      "use": "Tests the refractive power and accommodation of human eye"
+    },
+    {
+      "name": "Otoscope",
+      "use": "Medical device for visual examination of ear canal and eardrum"
+    },
+    {
+      "name": "Periscope",
+      "use": "Enables submarine crew to view surface objects from underwater"
+    },
+    {
+      "name": "Phonograph",
+      "use": "Apparatus for recording and reproducing sound from cylinder/disc"
+    },
+    {
+      "name": "Photometer",
+      "use": "Compares luminous intensity and brightness of two light sources"
+    },
+    {
+      "name": "Pyrometer",
+      "use": "Measures extremely high temperatures from a distance"
+    },
+    {
+      "name": "Pyrheliometer",
+      "use": "Measures direct beam solar radiation"
+    },
+    {
+      "name": "Quadrant",
+      "use": "Measures altitudes and angular distances in astronomy/navigation"
+    },
+    {
+      "name": "Rain Gauge",
+      "use": "Measures depth of precipitation and rainfall"
+    },
+    {
+      "name": "Refractometer",
+      "use": "Measures refractive index of liquids and solids"
+    },
+    {
+      "name": "Seismograph",
+      "use": "Records intensity, origin and duration of earthquake waves"
+    },
+    {
+      "name": "Sextant",
+      "use": "Measures angular distance between two visible objects (for celestial navigation)"
+    },
+    {
+      "name": "Spectroscope",
+      "use": "Analyzes light spectra and atomic chemical emission/absorption"
+    },
+    {
+      "name": "Speedometer",
+      "use": "Indicates instantaneous travel speed of a moving vehicle"
+    },
+    {
+      "name": "Sphygmomanometer",
+      "use": "Measures human blood pressure in arteries"
+    },
+    {
+      "name": "Stethoscope",
+      "use": "Acoustic medical instrument for listening to heart and lungs"
+    },
+    {
+      "name": "Telemeter",
+      "use": "Measures physical parameters and transmits data remotely via radio"
+    },
+    {
+      "name": "Telescope",
+      "use": "Optical instrument providing magnified view of astronomical objects"
+    },
+    {
+      "name": "Thermometer",
+      "use": "Measures and indicates temperature"
+    },
+    {
+      "name": "Thermostat",
+      "use": "Automatically regulates temperature at a constant set point"
+    },
+    {
+      "name": "Transformer",
+      "use": "Steps up or steps down alternating voltage and current levels"
+    },
+    {
+      "name": "Vernier Scale",
+      "use": "High-precision sliding scale for fractional measurements"
+    },
+    {
+      "name": "Viscometer",
+      "use": "Measures internal viscosity and flow resistance of fluids"
+    },
+    {
+      "name": "Voltmeter",
+      "use": "Measures electric potential difference in volts between two points"
+    }
+  ],
+  "chemicalCompounds": [
+    {
+      "common": "Baking Powder / Soda",
+      "chemical": "Sodium Bicarbonate",
+      "formula": "NaHCO₃"
+    },
+    {
+      "common": "Blue Vitriol",
+      "chemical": "Copper Sulphate Pentahydrate",
+      "formula": "CuSO₄·5H₂O"
+    },
+    {
+      "common": "Bleaching Powder",
+      "chemical": "Calcium Oxychloride",
+      "formula": "CaOCl₂"
+    },
+    {
+      "common": "Chloroform",
+      "chemical": "Trichloromethane",
+      "formula": "CHCl₃"
+    },
+    {
+      "common": "Chalk / Marble / Limestone",
+      "chemical": "Calcium Carbonate",
+      "formula": "CaCO₃"
+    },
+    {
+      "common": "Caustic Potash",
+      "chemical": "Potassium Hydroxide",
+      "formula": "KOH"
+    },
+    {
+      "common": "Caustic Soda",
+      "chemical": "Sodium Hydroxide",
+      "formula": "NaOH"
+    },
+    {
+      "common": "Dry Ice",
+      "chemical": "Solid Carbon Dioxide",
+      "formula": "CO₂"
+    },
+    {
+      "common": "Epsom Salt",
+      "chemical": "Magnesium Sulphate Heptahydrate",
+      "formula": "MgSO₄·7H₂O"
+    },
+    {
+      "common": "Gypsum",
+      "chemical": "Calcium Sulphate Dihydrate",
+      "formula": "CaSO₄·2H₂O"
+    },
+    {
+      "common": "Plaster of Paris",
+      "chemical": "Calcium Sulphate Hemihydrate",
+      "formula": "CaSO₄·½H₂O"
+    },
+    {
+      "common": "Green Vitriol",
+      "chemical": "Ferrous Sulphate Heptahydrate",
+      "formula": "FeSO₄·7H₂O"
+    },
+    {
+      "common": "Heavy Water",
+      "chemical": "Deuterium Oxide",
+      "formula": "D₂O"
+    },
+    {
+      "common": "Vinegar",
+      "chemical": "Dilute Acetic Acid (5-8%)",
+      "formula": "CH₃COOH"
+    },
+    {
+      "common": "Washing Soda",
+      "chemical": "Sodium Carbonate Decahydrate",
+      "formula": "Na₂CO₃·10H₂O"
+    },
+    {
+      "common": "Slaked Lime",
+      "chemical": "Calcium Hydroxide",
+      "formula": "Ca(OH)₂"
+    },
+    {
+      "common": "Quick Lime",
+      "chemical": "Calcium Oxide",
+      "formula": "CaO"
+    },
+    {
+      "common": "Potash Alum",
+      "chemical": "Potassium Aluminium Sulphate",
+      "formula": "KAl(SO₄)₂·12H₂O"
+    },
+    {
+      "common": "Mohr's Salt",
+      "chemical": "Ammonium Ferrous Sulphate",
+      "formula": "FeSO₄·(NH₄)₂SO₄·6H₂O"
+    },
+    {
+      "common": "White Vitriol",
+      "chemical": "Zinc Sulphate Heptahydrate",
+      "formula": "ZnSO₄·7H₂O"
+    },
+    {
+      "common": "Marsh Gas",
+      "chemical": "Methane",
+      "formula": "CH₄"
+    },
+    {
+      "common": "Magnesia",
+      "chemical": "Magnesium Oxide",
+      "formula": "MgO"
+    },
+    {
+      "common": "Laughing Gas",
+      "chemical": "Nitrous Oxide",
+      "formula": "N₂O"
+    },
+    {
+      "common": "Vermilion (Cinnabar)",
+      "chemical": "Mercuric Sulphide",
+      "formula": "HgS"
+    },
+    {
+      "common": "Table Sugar",
+      "chemical": "Sucrose",
+      "formula": "C₁₂H₂₂O₁₁"
+    },
+    {
+      "common": "T.N.T.",
+      "chemical": "Trinitrotoluene",
+      "formula": "C₇H₅N₃O₆"
+    },
+    {
+      "common": "Sand / Quartz",
+      "chemical": "Silicon Dioxide",
+      "formula": "SiO₂"
+    }
+  ],
+  "vitamins": [
+    {
+      "name": "Vitamin A",
+      "chemical": "Retinol",
+      "soluble": "Fat",
+      "sources": "Milk, eggs, fish, butter, liver, carrots",
+      "deficiency": "Night blindness (Nyctalopia), Xerophthalmia (dry skin/eyes)"
+    },
+    {
+      "name": "Vitamin B₁",
+      "chemical": "Thiamine",
+      "soluble": "Water",
+      "sources": "Whole grains, legumes, yeast, nuts",
+      "deficiency": "Beri-beri (neurological/cardiac dysfunction)"
+    },
+    {
+      "name": "Vitamin B₂",
+      "chemical": "Riboflavin",
+      "soluble": "Water",
+      "sources": "Milk, cheese, eggs, green vegetables",
+      "deficiency": "Ariboflavinosis, Cheilosis (sores at mouth corners), glossitis"
+    },
+    {
+      "name": "Vitamin B₃",
+      "chemical": "Niacin / Nicotinic acid",
+      "soluble": "Water",
+      "sources": "Meat, fish, peanuts, whole wheat",
+      "deficiency": "Pellagra (4Ds: Dermatitis, Diarrhoea, Dementia, Death)"
+    },
+    {
+      "name": "Vitamin B₅",
+      "chemical": "Pantothenic acid",
+      "soluble": "Water",
+      "sources": "Eggs, liver, dairy, mushrooms",
+      "deficiency": "Paresthesia, muscle cramps, fatigue"
+    },
+    {
+      "name": "Vitamin B₆",
+      "chemical": "Pyridoxine",
+      "soluble": "Water",
+      "sources": "Organ meats, cereals, bananas",
+      "deficiency": "Microcytic anaemia, peripheral neuropathy, convulsions"
+    },
+    {
+      "name": "Vitamin B₁₂",
+      "chemical": "Cyanocobalamin",
+      "soluble": "Water",
+      "sources": "Meat, fish, liver, dairy (Cobalt-containing)",
+      "deficiency": "Pernicious anaemia, pale skin, fatigue, nerve damage"
+    },
+    {
+      "name": "Vitamin C",
+      "chemical": "Ascorbic acid",
+      "soluble": "Water",
+      "sources": "Citrus fruits (oranges, lemons), tomatoes, amla",
+      "deficiency": "Scurvy (bleeding gums), delayed wound healing"
+    },
+    {
+      "name": "Vitamin D",
+      "chemical": "Calciferol",
+      "soluble": "Fat",
+      "sources": "Sunlight on skin, fish liver oil, eggs",
+      "deficiency": "Rickets in children (soft bones), Osteomalacia in adults"
+    },
+    {
+      "name": "Vitamin E",
+      "chemical": "Tocopherol",
+      "soluble": "Fat",
+      "sources": "Wheat germ oil, vegetable oils, almonds, leafy greens",
+      "deficiency": "Sterility, neurological issues, red blood cell fragility"
+    },
+    {
+      "name": "Vitamin K",
+      "chemical": "Phylloquinone / Naphthoquinone",
+      "soluble": "Fat",
+      "sources": "Green leafy vegetables, soyabeans, gut flora",
+      "deficiency": "Impaired blood clotting, delayed prothrombin formation"
+    }
+  ],
+  "humanBodyFacts": [
+    {
+      "label": "Largest & Strongest Bone",
+      "val": "Femur (thigh bone)"
+    },
+    {
+      "label": "Smallest Bone",
+      "val": "Stapes (middle ear bone, ~3 mm)"
+    },
+    {
+      "label": "Estimated Number of Cells",
+      "val": "~75 Trillion cells"
+    },
+    {
+      "label": "Total Volume of Blood",
+      "val": "5 to 6 Litres (approx. 7% of body weight)"
+    },
+    {
+      "label": "RBC Count",
+      "val": "Male: 5-6 million/mm³, Female: 4-5 million/mm³"
+    },
+    {
+      "label": "Life Span of RBC (Erythrocyte)",
+      "val": "100 to 120 days"
+    },
+    {
+      "label": "Life Span of WBC (Leukocyte)",
+      "val": "3 to 4 days (up to weeks depending on type)"
+    },
+    {
+      "label": "Normal WBC Count",
+      "val": "5,000 to 10,000 / mm³ of blood"
+    },
+    {
+      "label": "Blood Circulation Cycle Time",
+      "val": "20 seconds to complete full cycle"
+    },
+    {
+      "label": "Largest White Blood Cell",
+      "val": "Monocyte"
+    },
+    {
+      "label": "Smallest White Blood Cell",
+      "val": "Lymphocyte"
+    },
+    {
+      "label": "Discoverer of ABO Blood Groups",
+      "val": "Karl Landsteiner (1900, Nobel 1930)"
+    },
+    {
+      "label": "Normal Blood Platelet Count",
+      "val": "150,000 – 400,000 platelets per µL"
+    },
+    {
+      "label": "Normal Haemoglobin (Hb) Content",
+      "val": "Men: 14-16 g/100 ml, Women: 12-14 g/100 ml"
+    },
+    {
+      "label": "pH of Normal Human Urine",
+      "val": "6.0 (range 4.8 – 8.0)"
+    },
+    {
+      "label": "pH of Normal Human Blood",
+      "val": "7.35 – 7.45 (slightly alkaline)"
+    },
+    {
+      "label": "Normal Blood Clotting Time",
+      "val": "3 to 5 minutes"
+    },
+    {
+      "label": "Weight of Adult Brain",
+      "val": "1,300 to 1,400 grams"
+    },
+    {
+      "label": "Normal Blood Pressure (BP)",
+      "val": "120/80 mm Hg (Systolic/Diastolic)"
+    },
+    {
+      "label": "Universal Blood Donor Group",
+      "val": "Group O (specifically O negative)"
+    },
+    {
+      "label": "Universal Blood Recipient Group",
+      "val": "Group AB (specifically AB positive)"
+    },
+    {
+      "label": "Normal Body Core Temperature",
+      "val": "37°C (98.6°F)"
+    },
+    {
+      "label": "Normal Resting Respiratory Rate",
+      "val": "12 to 16 breaths per minute"
+    },
+    {
+      "label": "Number of Spinal Nerves",
+      "val": "31 pairs (62 nerves total)"
+    },
+    {
+      "label": "Number of Cranial Nerves",
+      "val": "12 pairs (24 nerves total)"
+    },
+    {
+      "label": "Largest Endocrine Gland",
+      "val": "Thyroid gland"
+    },
+    {
+      "label": "Human Gestation Period",
+      "val": "40 weeks (280 days / 9 calendar months)"
+    },
+    {
+      "label": "Normal Resting Heart Rate",
+      "val": "72 beats per minute"
+    },
+    {
+      "label": "Largest Gland / Internal Organ",
+      "val": "Liver (~1.5 kg)"
+    },
+    {
+      "label": "Largest Muscle in the Body",
+      "val": "Gluteus Maximus (buttock muscle)"
+    },
+    {
+      "label": "Smallest Muscle in the Body",
+      "val": "Stapedius (in ear, stabilizes stapes)"
+    },
+    {
+      "label": "Largest Artery",
+      "val": "Aorta"
+    },
+    {
+      "label": "Largest Vein",
+      "val": "Inferior Vena Cava"
+    },
+    {
+      "label": "Longest & Thickest Nerve",
+      "val": "Sciatic Nerve"
+    },
+    {
+      "label": "Longest Cell in the Body",
+      "val": "Neuron (nerve cell, can exceed 1 meter)"
+    },
+    {
+      "label": "Least Distance of Distinct Vision",
+      "val": "25 cm for normal human eye"
+    },
+    {
+      "label": "Thinnest Skin",
+      "val": "Eyelids (~0.5 mm)"
+    }
+  ],
+  "diseases": [
+    {
+      "name": "Chickenpox",
+      "pathogen": "Varicella-zoster virus",
+      "type": "Viral"
+    },
+    {
+      "name": "Smallpox",
+      "pathogen": "Variola virus",
+      "type": "Viral"
+    },
+    {
+      "name": "Common Cold",
+      "pathogen": "Rhinovirus / Coronavirus",
+      "type": "Viral"
+    },
+    {
+      "name": "AIDS",
+      "pathogen": "Human Immunodeficiency Virus (HIV)",
+      "type": "Viral"
+    },
+    {
+      "name": "Measles",
+      "pathogen": "Measles morbillivirus",
+      "type": "Viral"
+    },
+    {
+      "name": "Mumps",
+      "pathogen": "Mumps virus (Paramyxoviridae)",
+      "type": "Viral"
+    },
+    {
+      "name": "Rabies",
+      "pathogen": "Rabies lyssavirus (Rhabdoviridae)",
+      "type": "Viral"
+    },
+    {
+      "name": "Dengue Fever",
+      "pathogen": "Dengue virus (Flavivirus, spread by Aedes)",
+      "type": "Viral"
+    },
+    {
+      "name": "Poliomyelitis",
+      "pathogen": "Poliovirus",
+      "type": "Viral"
+    },
+    {
+      "name": "Whooping Cough (Pertussis)",
+      "pathogen": "Bordetella pertussis",
+      "type": "Bacterial"
+    },
+    {
+      "name": "Diphtheria",
+      "pathogen": "Corynebacterium diphtheriae",
+      "type": "Bacterial"
+    },
+    {
+      "name": "Cholera",
+      "pathogen": "Vibrio cholerae",
+      "type": "Bacterial"
+    },
+    {
+      "name": "Leprosy (Hansen's Disease)",
+      "pathogen": "Mycobacterium leprae",
+      "type": "Bacterial"
+    },
+    {
+      "name": "Pneumonia",
+      "pathogen": "Streptococcus pneumoniae",
+      "type": "Bacterial"
+    },
+    {
+      "name": "Tetanus (Lockjaw)",
+      "pathogen": "Clostridium tetani",
+      "type": "Bacterial"
+    },
+    {
+      "name": "Typhoid",
+      "pathogen": "Salmonella typhi",
+      "type": "Bacterial"
+    },
+    {
+      "name": "Tuberculosis (TB)",
+      "pathogen": "Mycobacterium tuberculosis",
+      "type": "Bacterial"
+    },
+    {
+      "name": "Plague (Black Death)",
+      "pathogen": "Yersinia pestis",
+      "type": "Bacterial"
+    },
+    {
+      "name": "Malaria",
+      "pathogen": "Plasmodium protozoa (spread by female Anopheles)",
+      "type": "Protozoan"
+    },
+    {
+      "name": "Amoebic Dysentery",
+      "pathogen": "Entamoeba histolytica",
+      "type": "Protozoan"
+    },
+    {
+      "name": "Sleeping Sickness",
+      "pathogen": "Trypanosoma brucei (spread by Tsetse fly)",
+      "type": "Protozoan"
+    },
+    {
+      "name": "Kala-Azar (Leishmaniasis)",
+      "pathogen": "Leishmania donovani (spread by Sandfly)",
+      "type": "Protozoan"
+    },
+    {
+      "name": "Filariasis (Elephantiasis)",
+      "pathogen": "Wuchereria bancrofti nematode",
+      "type": "Worm / Helminthic"
+    }
+  ],
+  "diseasesAffectedOrgans": [
+    {
+      "disease": "Arthritis",
+      "affected": "Joints"
+    },
+    {
+      "disease": "Asthma",
+      "affected": "Bronchial muscles & airways"
+    },
+    {
+      "disease": "Bronchitis",
+      "affected": "Lungs & bronchial tubes"
+    },
+    {
+      "disease": "Carditis",
+      "affected": "Heart"
+    },
+    {
+      "disease": "Cataract",
+      "affected": "Eye lens (becomes opaque)"
+    },
+    {
+      "disease": "Glaucoma",
+      "affected": "Eye (optic nerve from high intraocular pressure)"
+    },
+    {
+      "disease": "Conjunctivitis",
+      "affected": "Eye (outer membrane of eyeball)"
+    },
+    {
+      "disease": "Trachoma",
+      "affected": "Eye"
+    },
+    {
+      "disease": "Cystitis",
+      "affected": "Urinary Bladder"
+    },
+    {
+      "disease": "Colitis",
+      "affected": "Large Intestine (colon)"
+    },
+    {
+      "disease": "Dermatitis / Eczema",
+      "affected": "Skin"
+    },
+    {
+      "disease": "Diabetes",
+      "affected": "Pancreas (islets of Langerhans) & blood sugar"
+    },
+    {
+      "disease": "Diphtheria",
+      "affected": "Throat & upper airway"
+    },
+    {
+      "disease": "Goitre",
+      "affected": "Thyroid gland (due to iodine deficiency)"
+    },
+    {
+      "disease": "Glossitis",
+      "affected": "Tongue"
+    },
+    {
+      "disease": "Gastritis",
+      "affected": "Stomach lining"
+    },
+    {
+      "disease": "Hepatitis / Jaundice",
+      "affected": "Liver"
+    },
+    {
+      "disease": "Meningitis",
+      "affected": "Meninges (brain and spinal cord membranes)"
+    },
+    {
+      "disease": "Nephritis",
+      "affected": "Kidneys"
+    },
+    {
+      "disease": "Otitis",
+      "affected": "Ear"
+    },
+    {
+      "disease": "Osteomyelitis",
+      "affected": "Bones & bone marrow"
+    },
+    {
+      "disease": "Pyorrhoea",
+      "affected": "Teeth and gums"
+    },
+    {
+      "disease": "Peritonitis",
+      "affected": "Abdominal lining"
+    },
+    {
+      "disease": "Pneumonia / Tuberculosis",
+      "affected": "Lungs"
+    },
+    {
+      "disease": "Rhinitis",
+      "affected": "Nose mucous membrane"
+    },
+    {
+      "disease": "Tonsillitis",
+      "affected": "Tonsils"
+    }
+  ],
+  "pHValues": [
+    {
+      "substance": "Lemon Juice",
+      "ph": "2.2 – 2.5",
+      "type": "Strongly Acidic"
+    },
+    {
+      "substance": "Apple Juice",
+      "ph": "3.0",
+      "type": "Acidic"
+    },
+    {
+      "substance": "Vinegar (Acetic acid)",
+      "ph": "2.8 – 3.0",
+      "type": "Acidic"
+    },
+    {
+      "substance": "Human Urine",
+      "ph": "6.0 (range 4.8 – 8.0)",
+      "type": "Mildly Acidic"
+    },
+    {
+      "substance": "Human Saliva",
+      "ph": "6.5 – 7.5",
+      "type": "Near Neutral"
+    },
+    {
+      "substance": "Fresh Cow's Milk",
+      "ph": "6.5 – 6.7",
+      "type": "Near Neutral"
+    },
+    {
+      "substance": "Pure Water (25°C)",
+      "ph": "7.0",
+      "type": "Neutral"
+    },
+    {
+      "substance": "Human Blood",
+      "ph": "7.35 – 7.45",
+      "type": "Slightly Alkaline"
+    },
+    {
+      "substance": "Sea Water",
+      "ph": "8.1 – 8.3",
+      "type": "Alkaline"
+    },
+    {
+      "substance": "Toothpaste",
+      "ph": "8.5 – 9.0",
+      "type": "Alkaline"
+    },
+    {
+      "substance": "Milk of Magnesia [Mg(OH)₂]",
+      "ph": "10.5",
+      "type": "Strongly Alkaline"
+    }
+  ],
+  "ores": [
+    {
+      "metal": "Aluminium (Al)",
+      "ores": "Bauxite (Al₂O₃·2H₂O), Corundum, Cryolite, Kaolin"
+    },
+    {
+      "metal": "Iron (Fe)",
+      "ores": "Hematite (Fe₂O₃), Magnetite (Fe₃O₄), Limonite, Siderite"
+    },
+    {
+      "metal": "Copper (Cu)",
+      "ores": "Copper Pyrites (CuFeS₂), Malachite, Cuprite, Chalcocite"
+    },
+    {
+      "metal": "Lead (Pb)",
+      "ores": "Galena (PbS)"
+    },
+    {
+      "metal": "Mercury (Hg)",
+      "ores": "Cinnabar (HgS)"
+    },
+    {
+      "metal": "Zinc (Zn)",
+      "ores": "Zinc Blende / Sphalerite (ZnS), Calamine (ZnCO₃), Zincite"
+    },
+    {
+      "metal": "Silver (Ag)",
+      "ores": "Argentite (Ag₂S), Horn silver"
+    },
+    {
+      "metal": "Uranium (U)",
+      "ores": "Pitchblende (Uraninite)"
+    },
+    {
+      "metal": "Tin (Sn)",
+      "ores": "Cassiterite (SnO₂)"
+    },
+    {
+      "metal": "Calcium (Ca)",
+      "ores": "Limestone (CaCO₃), Gypsum (CaSO₄·2H₂O), Dolomite"
+    },
+    {
+      "metal": "Magnesium (Mg)",
+      "ores": "Magnesite (MgCO₃), Dolomite, Carnallite, Epsom salt"
+    },
+    {
+      "metal": "Manganese (Mn)",
+      "ores": "Pyrolusite (MnO₂)"
+    }
+  ],
+  "alloys": [
+    {
+      "alloy": "Brass",
+      "composition": "Copper (Cu 70%) + Zinc (Zn 30%)",
+      "use": "Utensils, musical instruments, cartridge cases"
+    },
+    {
+      "alloy": "Bronze",
+      "composition": "Copper (Cu 88%) + Tin (Sn 12%)",
+      "use": "Statues, coins, medals, ship propellers"
+    },
+    {
+      "alloy": "German Silver",
+      "composition": "Copper (50%) + Zinc (30%) + Nickel (20%) [No silver!]",
+      "use": "Silverware, artificial jewelry, electrical resistance"
+    },
+    {
+      "alloy": "Gun Metal",
+      "composition": "Copper (88%) + Tin (10%) + Zinc (2%)",
+      "use": "Gears, bearings, heavy machinery casings"
+    },
+    {
+      "alloy": "Duralumin",
+      "composition": "Aluminium (95%) + Copper (4%) + Magnesium (0.5%) + Manganese (0.5%)",
+      "use": "Aircraft body parts, speed boats"
+    },
+    {
+      "alloy": "Solder (Fuse wire)",
+      "composition": "Lead (Pb 50-63%) + Tin (Sn 37-50%)",
+      "use": "Joining electrical wires, fuse wire (low melting point)"
+    },
+    {
+      "alloy": "Stainless Steel",
+      "composition": "Iron (Fe) + Chromium (Cr 18%) + Nickel (Ni 8%) + Carbon",
+      "use": "Cutlery, surgical instruments, kitchen equipment"
+    },
+    {
+      "alloy": "Invar",
+      "composition": "Iron (64%) + Nickel (36%)",
+      "use": "Measuring tapes, clock pendulums (near-zero thermal expansion)"
+    }
+  ],
+  "scientificLaws": [
+    {
+      "law": "Archimedes' Principle",
+      "text": "A body immersed wholly or partly in a fluid experiences an upthrust equal to the weight of fluid displaced by it."
+    },
+    {
+      "law": "Bernoulli's Principle",
+      "text": "For an inviscid, incompressible fluid in streamline flow, an increase in fluid speed occurs simultaneously with a decrease in pressure. Explains aerodynamic lift on aeroplane wings."
+    },
+    {
+      "law": "Boyle's Law",
+      "text": "At constant temperature, the volume of a given mass of gas is inversely proportional to its pressure: P × V = Constant."
+    },
+    {
+      "law": "Charles's Law",
+      "text": "At constant pressure, volume of a given mass of gas is directly proportional to its absolute temperature: V / T = Constant."
+    },
+    {
+      "law": "Avogadro's Law",
+      "text": "Equal volumes of all gases under identical conditions of temperature and pressure contain equal numbers of molecules (6.022 × 10²³ per mole)."
+    },
+    {
+      "law": "Newton's 1st Law (Inertia)",
+      "text": "Every object continues in its state of rest or uniform motion in a straight line unless acted upon by an external net unbalanced force."
+    },
+    {
+      "law": "Newton's 2nd Law",
+      "text": "The rate of change of momentum of a body is directly proportional to the applied force and acts in the direction of the force: F = m × a."
+    },
+    {
+      "law": "Newton's 3rd Law",
+      "text": "To every action, there is always an equal and opposite reaction."
+    },
+    {
+      "law": "Newton's Law of Gravitation",
+      "text": "Every particle in the universe attracts every other particle with a force proportional to product of masses and inversely proportional to square of distance: F = G(m₁m₂)/r²."
+    },
+    {
+      "law": "Ohm's Law",
+      "text": "Current passing through a conductor between two points is directly proportional to potential difference across them at constant temperature: V = I × R."
+    },
+    {
+      "law": "Kepler's Laws of Planetary Motion",
+      "text": "1. Planets move in elliptical orbits with the Sun at one focus. 2. Radius vector sweeps out equal areas in equal intervals of time. 3. Square of orbital period (T²) is proportional to cube of semi-major axis (R³)."
+    },
+    {
+      "law": "Law of Conservation of Energy",
+      "text": "Energy can neither be created nor destroyed; it can only be transformed from one form to another. Total energy of the universe remains constant."
+    }
+  ]
+}

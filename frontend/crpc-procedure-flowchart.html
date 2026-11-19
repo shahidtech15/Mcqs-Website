@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrPC Procedure Flowchart | Criminal Case Stages in Pakistan (Act V of 1898)</title>
+    <meta name="description" content="Interactive criminal case procedure flowchart under Pakistan's Code of Criminal Procedure (CrPC 1898). Follow all stages from complaint and FIR through investigation, physical remand, challan, charge, trial, judgment, and appeals.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('mcqs_dark_mode');
+            if (savedTheme === 'true' || (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <style>
+        :root {
+            --law-bg: #f8fafc;
+            --law-card-bg: #ffffff;
+            --law-surface: #f1f5f9;
+            --law-text: #0f172a;
+            --law-text-muted: #64748b;
+            --law-border: #e2e8f0;
+            --law-primary: #1d4ed8;
+            --law-primary-hover: #1e40af;
+            --law-primary-light: #eff6ff;
+            --law-gold: #d97706;
+            --law-gold-light: #fef3c7;
+            --law-teal: #0f766e;
+            --law-teal-light: #f0fdfa;
+            --law-crimson: #991b1b;
+            --law-crimson-light: #fef2f2;
+            --law-success: #16a34a;
+            --font-ui: 'Plus Jakarta Sans', sans-serif;
+            --font-legal: 'Merriweather', serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode {
+            --law-bg: #090d16;
+            --law-card-bg: #111827;
+            --law-surface: #1e293b;
+            --law-text: #f8fafc;
+            --law-text-muted: #94a3b8;
+            --law-border: #334155;
+            --law-primary: #3b82f6;
+            --law-primary-hover: #60a5fa;
+            --law-primary-light: rgba(59, 130, 246, 0.12);
+            --law-gold: #f59e0b;
+            --law-gold-light: rgba(245, 158, 11, 0.12);
+            --law-teal: #14b8a6;
+            --law-teal-light: rgba(20, 184, 166, 0.12);
+            --law-crimson: #ef4444;
+            --law-crimson-light: rgba(239, 68, 68, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--law-bg);
+            color: var(--law-text);
+            line-height: 1.5;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Site Switcher Bar */
+        .site-switcher-bar {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 7px 16px;
+            font-size: 0.78rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .switcher-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .switcher-label {
+            color: #cbd5e1;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-right: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .switcher-btn {
+            color: #cbd5e1;
+            padding: 3px 9px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+        .switcher-btn.active {
+            background: var(--law-primary);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--law-card-bg);
+            border-bottom: 1px solid var(--law-border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: background-color 0.25s, border-color 0.25s;
+        }
+        .header-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            border: 1px solid rgba(29, 78, 216, 0.2);
+        }
+        .brand-titles h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .brand-titles p {
+            font-size: 0.8rem;
+            color: var(--law-text-muted);
+            font-weight: 500;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icon-btn {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            color: var(--law-text);
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+        .icon-btn:hover {
+            border-color: var(--law-primary);
+            color: var(--law-primary);
+        }
+        .btn-link {
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 7px 12px;
+            border-radius: var(--radius-sm);
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-link:hover {
+            background: var(--law-primary-light);
+            border-color: var(--law-primary);
+            color: var(--law-primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Banner & KPIs */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(29, 78, 216, 0.08) 0%, rgba(15, 23, 42, 0.05) 100%);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .dark-mode .hero-banner {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(15, 23, 42, 0.4) 100%);
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 10px;
+            border: 1px solid rgba(29, 78, 216, 0.2);
+        }
+        .hero-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .hero-desc {
+            font-size: 0.95rem;
+            color: var(--law-text-muted);
+            max-width: 920px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* KPI Grid */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .kpi-card {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        .kpi-val {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--law-primary);
+            font-family: var(--font-mono);
+            line-height: 1.2;
+        }
+        .kpi-desc {
+            font-size: 0.75rem;
+            color: var(--law-text-muted);
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        /* Pathway Switcher Toolbar */
+        .pathway-toolbar {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .pathway-btns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .path-btn {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            color: var(--law-text);
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .path-btn:hover {
+            border-color: var(--law-primary);
+        }
+        .path-btn.active {
+            background: var(--law-primary);
+            color: #ffffff;
+            border-color: var(--law-primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .path-btn.active-teal {
+            background: var(--law-teal);
+            color: #ffffff;
+            border-color: var(--law-teal);
+        }
+        .quick-nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .step-ctrl-btn {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            color: var(--law-text);
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .step-ctrl-btn:hover:not(:disabled) {
+            border-color: var(--law-primary);
+            color: var(--law-primary);
+        }
+        .step-ctrl-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* Visual Flowchart Stepper */
+        .flowchart-stepper {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+            overflow-x: auto;
+        }
+        .stepper-track {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 960px;
+            position: relative;
+        }
+        .step-node {
+            flex: 1;
+            background: var(--law-surface);
+            border: 2px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            text-align: center;
+        }
+        .step-node:hover {
+            border-color: var(--law-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        .step-node.active {
+            background: var(--law-primary-light);
+            border-color: var(--law-primary);
+            box-shadow: 0 0 0 2px var(--law-primary);
+        }
+        .step-num-badge {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--law-primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .step-node-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--law-text);
+        }
+        .stepper-arrow {
+            color: var(--law-border);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        /* 2-Column Master-Detail Layout */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* Left Column: Stage Selector List */
+        .stages-sidebar {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 80px;
+        }
+        .sidebar-header {
+            padding: 14px 18px;
+            background: var(--law-surface);
+            border-bottom: 1px solid var(--law-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sidebar-list {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+        .stage-nav-card {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .stage-nav-card:hover {
+            border-color: var(--law-primary);
+            transform: translateY(-1px);
+        }
+        .stage-nav-card.active {
+            background: var(--law-primary-light);
+            border-color: var(--law-primary);
+            box-shadow: 0 0 0 1px var(--law-primary);
+        }
+        .stage-nav-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        .stage-badge {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--law-primary);
+            background: var(--law-surface);
+            padding: 2px 7px;
+            border-radius: 4px;
+            border: 1px solid var(--law-border);
+        }
+        .stage-nav-card.active .stage-badge {
+            background: var(--law-primary);
+            color: #ffffff;
+            border-color: var(--law-primary);
+        }
+        .stage-nav-title {
+            font-size: 0.86rem;
+            font-weight: 700;
+            line-height: 1.35;
+            color: var(--law-text);
+        }
+        .stage-nav-sections {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--law-text-muted);
+            margin-top: 4px;
+        }
+
+        /* Right Column: Stage Dossier Card */
+        .stage-dossier-card {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+        .dossier-header {
+            border-bottom: 1px solid var(--law-border);
+            padding-bottom: 20px;
+            margin-bottom: 22px;
+        }
+        .dossier-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .stage-step-tag {
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--law-primary);
+            background: var(--law-primary-light);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            border: 1px solid rgba(29, 78, 216, 0.2);
+        }
+        .dossier-controls {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .control-pill-btn {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            color: var(--law-text);
+            padding: 5px 10px;
+            border-radius: var(--radius-sm);
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .control-pill-btn:hover {
+            border-color: var(--law-primary);
+            color: var(--law-primary);
+        }
+        .dossier-title {
+            font-family: var(--font-legal);
+            font-size: 1.65rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        .dossier-subtitle {
+            font-size: 0.92rem;
+            color: var(--law-text-muted);
+            margin-bottom: 14px;
+        }
+
+        /* Section Tags Chips */
+        .section-chips-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .sec-chip {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: var(--law-surface);
+            color: var(--law-text);
+            border: 1px solid var(--law-border);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        /* Dossier Navigation Tabs */
+        .dossier-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--law-border);
+            gap: 6px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .dossier-tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 16px;
+            font-family: var(--font-ui);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--law-text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .dossier-tab-btn:hover {
+            color: var(--law-text);
+        }
+        .dossier-tab-btn.active {
+            color: var(--law-primary);
+            border-bottom-color: var(--law-primary);
+            font-weight: 700;
+        }
+
+        /* Tab Panes */
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.25s ease;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content List Styles */
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .bullet-item {
+            background: var(--law-surface);
+            border-left: 4px solid var(--law-primary);
+            padding: 12px 16px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .bullet-item.gold {
+            border-left-color: var(--law-gold);
+        }
+        .bullet-item.teal {
+            border-left-color: var(--law-teal);
+        }
+        .bullet-item.crimson {
+            border-left-color: var(--law-crimson);
+        }
+
+        /* Callout Box */
+        .callout-box {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-top: 18px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .callout-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--law-primary);
+        }
+
+        /* Document Badges Grid */
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+        }
+        .doc-badge-card {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+        .doc-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Case Law Precedent Box */
+        .precedent-card {
+            background: var(--law-surface);
+            border-left: 4px solid var(--law-gold);
+            padding: 18px 20px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+        .precedent-citation {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--law-gold);
+            margin-bottom: 6px;
+        }
+
+        /* MCQs Section */
+        .mcq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .mcq-card {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+        }
+        .mcq-q-text {
+            font-weight: 700;
+            font-size: 0.96rem;
+            margin-bottom: 14px;
+            line-height: 1.45;
+        }
+        .mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .mcq-opt-btn {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            font-family: var(--font-ui);
+            font-size: 0.88rem;
+            color: var(--law-text);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .mcq-opt-btn:hover:not(:disabled) {
+            border-color: var(--law-primary);
+            background: var(--law-primary-light);
+        }
+        .mcq-opt-btn.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: #10b981 !important;
+            color: #047857 !important;
+            font-weight: 700;
+        }
+        .mcq-opt-btn.wrong {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: #ef4444 !important;
+            color: #b91c1c !important;
+        }
+        .mcq-exp-box {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: var(--radius-sm);
+            background: var(--law-card-bg);
+            border-left: 3px solid #10b981;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            display: none;
+        }
+
+        /* Simulator Section */
+        .simulator-section {
+            margin-top: 40px;
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+        .section-header-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-header-desc {
+            font-size: 0.88rem;
+            color: var(--law-text-muted);
+            margin-bottom: 20px;
+        }
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .sim-card {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+        .sim-situation {
+            background: var(--law-card-bg);
+            border-left: 4px solid var(--law-primary);
+            padding: 12px 16px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.92rem;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            margin-top: 40px;
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .matrix-table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+        }
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            text-align: left;
+        }
+        .matrix-table th {
+            background: var(--law-surface);
+            padding: 12px 14px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--law-border);
+            color: var(--law-primary);
+        }
+        .matrix-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--law-border);
+            line-height: 1.5;
+        }
+        .matrix-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Master Quiz Section */
+        .quiz-section {
+            margin-top: 40px;
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+        .quiz-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .quiz-score-pill {
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            font-family: var(--font-mono);
+            font-size: 0.92rem;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(29, 78, 216, 0.2);
+        }
+
+        /* Footer */
+        .site-footer {
+            margin-top: 60px;
+            background: var(--law-card-bg);
+            border-top: 1px solid var(--law-border);
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--law-text-muted);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-links a:hover {
+            color: var(--law-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 960px) {
+            .workspace-grid {
+                grid-template-columns: 1fr;
+            }
+            .stages-sidebar {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/crpc-procedure-flowchart.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/crpc-procedure-flowchart.html">
+    <meta property="og:title" content="CrPC Procedure Flowchart | Criminal Case Stages in Pakistan (Act V of 1898)">
+    <meta property="og:description" content="Interactive criminal case procedure flowchart under Pakistan">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CrPC Procedure Flowchart | Criminal Case Stages in Pakistan (Act V of 1898)">
+    <meta name="twitter:description" content="Interactive criminal case procedure flowchart under Pakistan">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+<body>
+    <!-- Site Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+            <a href="international-organizations-explorer.html" class="switcher-btn"><i class="fas fa-sitemap"></i> Organizations</a>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> World Timeline</a>
+            <a href="global-power-comparison.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Global Power</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-atom"></i> Periodic Table</a>
+            <a href="climate-change-explorer.html" class="switcher-btn"><i class="fas fa-temperature-high"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn"><i class="fas fa-microchip"></i> Technology</a>
+            <a href="constitution-explorer.html" class="switcher-btn"><i class="fas fa-scale-balanced"></i> Constitution</a>
+            <a href="ppc-section-finder.html" class="switcher-btn"><i class="fas fa-gavel"></i> PPC Finder</a>
+            <a href="crpc-procedure-flowchart.html" class="switcher-btn active"><i class="fas fa-diagram-project"></i> CrPC Flowchart</a>
+            <a href="identify-legal-provision.html" class="switcher-btn"><i class="fas fa-scale-unbalanced-flip"></i> Legal Provision</a>
+            <a href="court-structure-explorer.html" class="switcher-btn"><i class="fas fa-landmark"></i> Court Structure</a>
+            <a href="fia-laws-explorer.html" class="switcher-btn"><i class="fas fa-building-shield"></i> FIA Laws</a>
+            <a href="world-economy-dashboard.html" class="switcher-btn"><i class="fas fa-chart-line"></i> World Economy</a>
+            <a href="currency-exchange-explorer.html" class="switcher-btn"><i class="fas fa-coins"></i> Currency &amp; Exchange</a>
+            <a href="who-trades-what.html" class="switcher-btn"><i class="fas fa-ship"></i> Who Trades What?</a>
+            <a href="daily-challenges.html" class="switcher-btn"><i class="fas fa-bolt"></i> Daily Challenges</a>
+            <a href="daily-fact.html" class="switcher-btn"><i class="fas fa-calendar-check"></i> Daily Fact</a>
+        </div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-group">
+                <div class="brand-icon">
+                    <i class="fas fa-diagram-project"></i>
+                </div>
+                <div class="brand-titles">
+                    <h1>CrPC Procedure Flowchart</h1>
+                    <p>Code of Criminal Procedure, 1898 &bull; Stages of a Criminal Case in Pakistan</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="index.html" class="btn-link"><i class="fas fa-home"></i> Home</a>
+                <a href="ppc-section-finder.html" class="btn-link"><i class="fas fa-gavel"></i> PPC Finder</a>
+                <a href="constitution-explorer.html" class="btn-link"><i class="fas fa-scale-balanced"></i> Constitution</a>
+                <a href="#simulatorSection" class="btn-link"><i class="fas fa-laptop-code"></i> Simulator</a>
+                <a href="#masterQuizSection" class="btn-link"><i class="fas fa-check-double"></i> Master Quiz</a>
+                <button class="icon-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fas fa-code-branch"></i> Act V of 1898 &bull; Criminal Procedural Machinery</span>
+                <h2 class="hero-title">Stages of a Criminal Case in Pakistan (CrPC 1898)</h2>
+                <p class="hero-desc">
+                    Follow the chronological path of a criminal case from initial <strong>FIR (Sec 154)</strong> or <strong>Private Complaint (Sec 200)</strong> through <strong>police investigation (Sec 156)</strong>, <strong>remand in custody (Sec 167)</strong>, <strong>Challan submission (Sec 173)</strong>, <strong>framing of charge (Sec 221/265D)</strong>, <strong>trial &amp; evidence recording (Sec 244/265F)</strong>, <strong>judgment</strong>, and <strong>appellate remedies</strong>.
+                </p>
+                <!-- KPI Grid -->
+                <div class="kpi-row" id="crpcKpiRow">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Pathway Switcher & Controls Toolbar -->
+        <section class="pathway-toolbar">
+            <div class="pathway-btns">
+                <span style="font-weight:700; font-size:0.85rem; color:var(--law-text-muted); text-transform:uppercase; letter-spacing:0.05em;">
+                    <i class="fas fa-route"></i> Mode:
+                </span>
+                <button class="path-btn active" id="btnPathPolice">
+                    <i class="fas fa-shield-halved"></i> Path A: State / Police Case (FIR Sec 154)
+                </button>
+                <button class="path-btn" id="btnPathPrivate">
+                    <i class="fas fa-scale-balanced"></i> Path B: Private Complaint (Istaghasa Sec 200)
+                </button>
+            </div>
+            <div class="quick-nav-controls">
+                <button class="step-ctrl-btn" id="btnPrevStep"><i class="fas fa-arrow-left"></i> Previous Stage</button>
+                <button class="step-ctrl-btn" id="btnNextStep">Next Stage <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Visual Flowchart Stepper Track -->
+        <section class="flowchart-stepper">
+            <div class="stepper-track" id="stepperTrack">
+                <!-- Rendered dynamically by JS -->
+            </div>
+        </section>
+
+        <!-- 2-Column Master-Detail Layout -->
+        <section class="workspace-grid">
+            <!-- Left Column: Stages Nav List -->
+            <aside class="stages-sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-title">
+                        <i class="fas fa-list-ol" style="color:var(--law-primary);"></i> Criminal Stages
+                    </div>
+                    <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700; color:var(--law-primary);">8 Stages</span>
+                </div>
+                <div class="sidebar-list" id="stagesNavList">
+                    <!-- Rendered by JS -->
+                </div>
+            </aside>
+
+            <!-- Right Column: Stage Dossier Card -->
+            <article class="stage-dossier-card" id="stageDossierCard">
+                <div class="dossier-header">
+                    <div class="dossier-meta-row">
+                        <div class="stage-step-tag" id="dossierStepTag">STAGE 1 OF 8</div>
+                        <div class="dossier-controls">
+                            <button class="control-pill-btn" id="btnCopyDossier" title="Copy Stage Dossier"><i class="fas fa-copy"></i> Copy Stage</button>
+                            <button class="control-pill-btn" id="btnFontDec" title="Decrease Font">A-</button>
+                            <button class="control-pill-btn" id="btnFontInc" title="Increase Font">A+</button>
+                        </div>
+                    </div>
+                    <h2 class="dossier-title" id="dossierTitle">Stage 1: Initiation of Criminal Proceedings</h2>
+                    <div class="dossier-subtitle" id="dossierSubtitle">FIR under Section 154 vs Private Complaint under Section 200</div>
+                    <div class="section-chips-row" id="dossierSectionChips">
+                        <!-- Chips rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Dossier Tabs -->
+                <div class="dossier-tabs" id="dossierTabs">
+                    <button class="dossier-tab-btn active" data-tab="tabProcess">
+                        <i class="fas fa-list-check"></i> Statutory Procedure
+                    </button>
+                    <button class="dossier-tab-btn" data-tab="tabTimelines">
+                        <i class="fas fa-clock"></i> Mandatory Deadlines
+                    </button>
+                    <button class="dossier-tab-btn" data-tab="tabActors">
+                        <i class="fas fa-users-gear"></i> Key Authorities
+                    </button>
+                    <button class="dossier-tab-btn" data-tab="tabDocuments">
+                        <i class="fas fa-file-contract"></i> Legal Documents
+                    </button>
+                    <button class="dossier-tab-btn" data-tab="tabPrecedents">
+                        <i class="fas fa-landmark"></i> Landmark Case Law
+                    </button>
+                    <button class="dossier-tab-btn" data-tab="tabStageMcq">
+                        <i class="fas fa-circle-question"></i> Practice MCQ
+                    </button>
+                </div>
+
+                <!-- Tab 1: Statutory Procedure -->
+                <div class="tab-pane active" id="tabProcess">
+                    <div style="font-weight:700; margin-bottom:12px; color:var(--law-text);">
+                        <i class="fas fa-scale-unbalanced" style="color:var(--law-primary);"></i> Essential Legal Prerequisites &amp; Framework:
+                    </div>
+                    <ul class="bullet-list" id="dossierProcessList">
+                        <!-- Rendered by JS -->
+                    </ul>
+                    <div class="callout-box" id="dossierRemediesBox">
+                        <div class="callout-title"><i class="fas fa-shield-halved"></i> Statutory Remedies If Refused or Defective:</div>
+                        <ul class="bullet-list" id="dossierRemediesList" style="margin-top:8px;">
+                            <!-- Rendered by JS -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Mandatory Deadlines -->
+                <div class="tab-pane" id="tabTimelines">
+                    <div style="font-weight:700; margin-bottom:12px; color:var(--law-text);">
+                        <i class="fas fa-stopwatch" style="color:var(--law-gold);"></i> Strict Statutory Timelines &amp; Limitation Periods:
+                    </div>
+                    <ul class="bullet-list" id="dossierTimelinesList">
+                        <!-- Rendered by JS -->
+                    </ul>
+                </div>
+
+                <!-- Tab 3: Key Authorities -->
+                <div class="tab-pane" id="tabActors">
+                    <div style="font-weight:700; margin-bottom:12px; color:var(--law-text);">
+                        <i class="fas fa-user-tie" style="color:var(--law-teal);"></i> Authorities &amp; Stakeholders Involved:
+                    </div>
+                    <ul class="bullet-list" id="dossierActorsList">
+                        <!-- Rendered by JS -->
+                    </ul>
+                </div>
+
+                <!-- Tab 4: Legal Documents -->
+                <div class="tab-pane" id="tabDocuments">
+                    <div style="font-weight:700; margin-bottom:14px; color:var(--law-text);">
+                        <i class="fas fa-folder-open" style="color:var(--law-primary);"></i> Prescribed Police &amp; Judicial Forms:
+                    </div>
+                    <div class="docs-grid" id="dossierDocsGrid">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Tab 5: Landmark Case Law -->
+                <div class="tab-pane" id="tabPrecedents">
+                    <div class="precedent-card" id="dossierPrecedentsCard">
+                        <div class="precedent-citation"><i class="fas fa-gavel"></i> Supreme Court of Pakistan</div>
+                        <div id="dossierPrecedentText">Precedent text.</div>
+                    </div>
+                </div>
+
+                <!-- Tab 6: Practice MCQ -->
+                <div class="tab-pane" id="tabStageMcq">
+                    <div class="mcq-container" id="dossierStageMcqContainer">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Criminal Case Decision Simulator Section -->
+        <section class="simulator-section" id="simulatorSection">
+            <h3 class="section-header-title"><i class="fas fa-gamepad" style="color:var(--law-primary);"></i> Interactive Criminal Case Simulator</h3>
+            <p class="section-header-desc">Test your strategic legal instincts by resolving realistic procedural dilemmas faced during investigation and trial in Pakistan.</p>
+            <div class="sim-grid" id="simulatorContainer">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+
+        <!-- Comparison Matrices Section -->
+        <section class="comparison-section" id="comparisonSection">
+            <h3 class="section-header-title"><i class="fas fa-table-columns" style="color:var(--law-primary);"></i> CrPC Procedural Distinction Matrices</h3>
+            <p class="section-header-desc">High-yield procedural differences frequently tested in Judicial Magistrate, Civil Judge, and CSS examinations.</p>
+            <div id="comparisonsContainer">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+
+        <!-- Comprehensive Master Quiz Section -->
+        <section class="quiz-section" id="masterQuizSection">
+            <div class="quiz-top-bar">
+                <div>
+                    <h3 class="section-header-title"><i class="fas fa-graduation-cap" style="color:var(--law-primary);"></i> Comprehensive CrPC Master Quiz (15 Questions)</h3>
+                    <p class="section-header-desc" style="margin-bottom:0;">Full procedural coverage spanning FIRs, remands, confessions, challan columns, charge, evidence, and appeals.</p>
+                </div>
+                <div class="quiz-score-pill" id="quizScoreDisplay">Score: 0 / 15</div>
+            </div>
+            <div class="mcq-container" id="quizContainer">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a> &bull;
+            <a href="ppc-section-finder.html">PPC Finder</a> &bull;
+            <a href="constitution-explorer.html">Constitution Explorer</a> &bull;
+            <a href="identify-legal-provision.html">Legal Provision</a> &bull;
+            <a href="court-structure-explorer.html">Court Structure</a> &bull;
+            <a href="fia-laws-explorer.html">FIA Laws</a> &bull;
+            <a href="fia-sample-papers.html">FIA Papers</a> &bull;
+            <a href="periodic-table.html">Periodic Table</a> &bull;
+            <a href="climate-change-explorer.html">Climate Change</a> &bull;
+            <a href="technology-explorer.html">Tech Explorer</a>
+        </div>
+        <p>&copy; 2026 Pakistan Code of Criminal Procedure (CrPC 1898) Flowchart &bull; Academic Law Examination &amp; Practice Suite. Not formal legal counsel.</p>
+    
+        <div class="footer-legal-bar" style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; color:#94a3b8;">
+            <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+            <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+            <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+            <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Database Script -->
+    <script src="js/data_crpc.js"></script>
+
+    <!-- Interactive Flowchart Logic -->
+    <script>
+        // State
+        let currentStageIndex = 0; // 0 to 7
+        let currentPathway = 'police'; // 'police' or 'private'
+        let currentFontSize = 15;
+        let masterQuizScore = 0;
+        const answeredMasterQuestions = new Set();
+        let audioCtx = null;
+
+        // Sound Feedback via Web Audio API
+        function playChime(isCorrect) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (isCorrect) {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.15); // G5
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now); // A3
+                    osc.frequency.exponentialRampToValueAtTime(146.83, now + 0.18); // D3
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                }
+            } catch (e) {
+                // Audio unavailable
+            }
+        }
+
+        // App Init
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.CRPC_DATA) {
+                console.error('CRPC_DATA not loaded!');
+                return;
+            }
+
+            renderKpis();
+            renderStepperTrack();
+            renderStagesSidebar();
+            renderStageDossier(currentStageIndex);
+            renderSimulator();
+            renderComparisons();
+            initMasterQuiz();
+            setupEventListeners();
+        });
+
+        // Render KPI row
+        function renderKpis() {
+            const container = document.getElementById('crpcKpiRow');
+            if (!container || !window.CRPC_DATA.kpis) return;
+            const kpis = window.CRPC_DATA.kpis;
+
+            container.innerHTML = `
+                <div class="kpi-card">
+                    <div class="kpi-val">${kpis.stages}</div>
+                    <div class="kpi-desc">${kpis.stagesDesc}</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-val">${kpis.dualPath}</div>
+                    <div class="kpi-desc">${kpis.dualPathDesc}</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-val">${kpis.criticalSections}</div>
+                    <div class="kpi-desc">${kpis.criticalSectionsDesc}</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-val">${kpis.timelines}</div>
+                    <div class="kpi-desc">${kpis.timelinesDesc}</div>
+                </div>
+            `;
+        }
+
+        // Render Visual Flowchart Stepper Track
+        function renderStepperTrack() {
+            const track = document.getElementById('stepperTrack');
+            if (!track || !window.CRPC_DATA.stages) return;
+
+            let html = '';
+            window.CRPC_DATA.stages.forEach((st, idx) => {
+                const isActive = (idx === currentStageIndex);
+                html += `
+                    <div class="step-node ${isActive ? 'active' : ''}" id="stepper-node-${idx}" data-idx="${idx}">
+                        <span class="step-num-badge">STAGE ${st.step}</span>
+                        <div class="step-node-title">${st.category}</div>
+                    </div>
+                `;
+                if (idx < window.CRPC_DATA.stages.length - 1) {
+                    html += '<i class="fas fa-chevron-right stepper-arrow"></i>';
+                }
+            });
+
+            track.innerHTML = html;
+
+            track.querySelectorAll('.step-node').forEach(node => {
+                node.addEventListener('click', () => {
+                    const idx = parseInt(node.getAttribute('data-idx'), 10);
+                    selectStage(idx);
+                });
+            });
+        }
+
+        // Render Left Sidebar Stages List
+        function renderStagesSidebar() {
+            const container = document.getElementById('stagesNavList');
+            if (!container || !window.CRPC_DATA.stages) return;
+
+            container.innerHTML = window.CRPC_DATA.stages.map((st, idx) => `
+                <div class="stage-nav-card ${idx === currentStageIndex ? 'active' : ''}" id="nav-stage-${idx}" data-idx="${idx}">
+                    <div class="stage-nav-top">
+                        <span class="stage-badge">STAGE ${st.step}</span>
+                        <span style="font-size:0.75rem; color:var(--law-text-muted); font-weight:600;">${st.category}</span>
+                    </div>
+                    <div class="stage-nav-title">${st.title}</div>
+                    <div class="stage-nav-sections">CrPC Sec: ${st.sections.slice(0, 4).join(', ')}${st.sections.length > 4 ? '...' : ''}</div>
+                </div>
+            `).join('');
+
+            container.querySelectorAll('.stage-nav-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const idx = parseInt(card.getAttribute('data-idx'), 10);
+                    selectStage(idx);
+                });
+            });
+        }
+
+        // Select a stage
+        function selectStage(idx) {
+            currentStageIndex = idx;
+
+            // Update Stepper
+            document.querySelectorAll('.step-node').forEach((node, i) => {
+                node.classList.toggle('active', i === idx);
+            });
+            // Update Sidebar
+            document.querySelectorAll('.stage-nav-card').forEach((card, i) => {
+                card.classList.toggle('active', i === idx);
+            });
+
+            // Update Prev/Next Buttons
+            const prevBtn = document.getElementById('btnPrevStep');
+            const nextBtn = document.getElementById('btnNextStep');
+            if (prevBtn) prevBtn.disabled = (idx === 0);
+            if (nextBtn) nextBtn.disabled = (idx === window.CRPC_DATA.stages.length - 1);
+
+            renderStageDossier(idx);
+        }
+
+        // Render Stage Dossier Details
+        function renderStageDossier(idx) {
+            const st = window.CRPC_DATA.stages[idx];
+            if (!st) return;
+
+            document.getElementById('dossierStepTag').textContent = `STAGE ${st.step} OF 8 &bull; ${st.category.toUpperCase()}`;
+            document.getElementById('dossierTitle').textContent = st.title;
+            document.getElementById('dossierSubtitle').textContent = st.subtitle;
+
+            // Section Chips
+            const chipsContainer = document.getElementById('dossierSectionChips');
+            chipsContainer.innerHTML = st.sections.map(s => `<span class="sec-chip">Sec ${s} CrPC</span>`).join('');
+
+            // Tab 1: Prerequisites & Process
+            const processList = document.getElementById('dossierProcessList');
+            processList.innerHTML = st.legalPrerequisites.map(item => `<li class="bullet-item">${item}</li>`).join('');
+
+            const remediesList = document.getElementById('dossierRemediesList');
+            remediesList.innerHTML = st.remediesIfRefused.map(item => `<li class="bullet-item crimson">${item}</li>`).join('');
+
+            // Tab 2: Timelines
+            const timelinesList = document.getElementById('dossierTimelinesList');
+            timelinesList.innerHTML = st.statutoryTimelines.map(item => `<li class="bullet-item gold"><i class="fas fa-hourglass-half" style="color:var(--law-gold); margin-right:6px;"></i> ${item}</li>`).join('');
+
+            // Tab 3: Actors
+            const actorsList = document.getElementById('dossierActorsList');
+            actorsList.innerHTML = st.keyActors.map(item => `<li class="bullet-item teal"><i class="fas fa-user-check" style="color:var(--law-teal); margin-right:6px;"></i> ${item}</li>`).join('');
+
+            // Tab 4: Documents
+            const docsGrid = document.getElementById('dossierDocsGrid');
+            docsGrid.innerHTML = st.essentialDocuments.map(doc => `
+                <div class="doc-badge-card">
+                    <div class="doc-icon"><i class="fas fa-file-invoice"></i></div>
+                    <div>${doc}</div>
+                </div>
+            `).join('');
+
+            // Tab 5: Precedents
+            document.getElementById('dossierPrecedentsCard').innerHTML = `
+                <div class="precedent-citation"><i class="fas fa-gavel"></i> Landmark Supreme Court Precedent</div>
+                <div id="dossierPrecedentText">${st.landmarkPrecedents}</div>
+            `;
+
+            // Tab 6: Stage MCQ
+            const mcqContainer = document.getElementById('dossierStageMcqContainer');
+            if (st.mcq) {
+                const m = st.mcq;
+                let optsHtml = m.opts.map((opt, optIdx) => `
+                    <button class="mcq-opt-btn" data-stage="${idx}" data-opt="${optIdx}">
+                        <span style="font-weight:700; color:var(--law-primary);">${String.fromCharCode(65 + optIdx)}.</span> ${opt}
+                    </button>
+                `).join('');
+
+                mcqContainer.innerHTML = `
+                    <div class="mcq-card" id="stage-mcq-${idx}">
+                        <div class="mcq-q-text"><i class="fas fa-question-circle" style="color:var(--law-primary);"></i> ${m.q}</div>
+                        <div class="mcq-options">${optsHtml}</div>
+                        <div class="mcq-exp-box" id="stage-exp-${idx}">
+                            <strong><i class="fas fa-check-circle" style="color:#10b981;"></i> Statutory Rationale:</strong> ${m.exp}
+                        </div>
+                    </div>
+                `;
+
+                mcqContainer.querySelectorAll('.mcq-opt-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const selOpt = parseInt(btn.getAttribute('data-opt'), 10);
+                        const card = document.getElementById(`stage-mcq-${idx}`);
+                        const allBtns = card.querySelectorAll('.mcq-opt-btn');
+                        const expBox = document.getElementById(`stage-exp-${idx}`);
+                        const correctOpt = m.ans;
+
+                        allBtns.forEach((b, optI) => {
+                            b.disabled = true;
+                            if (optI === correctOpt) b.classList.add('correct');
+                            if (optI === selOpt && optI !== correctOpt) b.classList.add('wrong');
+                        });
+
+                        const isCorrect = (selOpt === correctOpt);
+                        playChime(isCorrect);
+                        if (expBox) expBox.style.display = 'block';
+                    });
+                });
+            } else {
+                mcqContainer.innerHTML = '<div>No specific MCQ for this stage.</div>';
+            }
+        }
+
+        // Render Simulator Scenarios
+        function renderSimulator() {
+            const container = document.getElementById('simulatorContainer');
+            if (!container || !window.CRPC_DATA.simulatorScenarios) return;
+
+            container.innerHTML = window.CRPC_DATA.simulatorScenarios.map((sim, sIdx) => {
+                let choicesHtml = sim.choices.map((c, cIdx) => `
+                    <button class="mcq-opt-btn" data-sidx="${sIdx}" data-cidx="${cIdx}">
+                        <span style="font-weight:700; color:var(--law-primary);">Option ${String.fromCharCode(65 + cIdx)}:</span> ${c.text}
+                    </button>
+                `).join('');
+
+                return `
+                    <div class="sim-card" id="sim-card-${sIdx}">
+                        <h4 style="font-size:1.05rem; font-weight:700; color:var(--law-primary); margin-bottom:8px;">
+                            <i class="fas fa-scale-balanced"></i> ${sim.scenarioTitle}
+                        </h4>
+                        <div class="sim-situation">${sim.situation}</div>
+                        <div style="font-weight:700; font-size:0.95rem; margin-bottom:12px;">${sim.question}</div>
+                        <div class="mcq-options">${choicesHtml}</div>
+                        <div class="mcq-exp-box" id="sim-exp-${sIdx}"></div>
+                    </div>
+                `;
+            }).join('');
+
+            container.querySelectorAll('.mcq-opt-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const sIdx = parseInt(btn.getAttribute('data-sidx'), 10);
+                    const cIdx = parseInt(btn.getAttribute('data-cidx'), 10);
+                    const sim = window.CRPC_DATA.simulatorScenarios[sIdx];
+                    const card = document.getElementById(`sim-card-${sIdx}`);
+                    const allBtns = card.querySelectorAll('.mcq-opt-btn');
+                    const expBox = document.getElementById(`sim-exp-${sIdx}`);
+                    const selectedChoice = sim.choices[cIdx];
+
+                    allBtns.forEach((b, idx) => {
+                        b.disabled = true;
+                        if (sim.choices[idx].correct) b.classList.add('correct');
+                        if (idx === cIdx && !sim.choices[idx].correct) b.classList.add('wrong');
+                    });
+
+                    playChime(selectedChoice.correct);
+                    expBox.innerHTML = `<strong>${selectedChoice.correct ? '<i class="fas fa-check-circle" style="color:#10b981;"></i> Correct Procedural Step:' : '<i class="fas fa-times-circle" style="color:#ef4444;"></i> Procedural Error:'}</strong> ${selectedChoice.exp}`;
+                    expBox.style.display = 'block';
+                });
+            });
+        }
+
+        // Render Comparison Matrices
+        function renderComparisons() {
+            const container = document.getElementById('comparisonsContainer');
+            if (!container || !window.CRPC_DATA.comparisons) return;
+
+            container.innerHTML = window.CRPC_DATA.comparisons.map(comp => {
+                const keys = Object.keys(comp.points[0]).filter(k => k !== 'feature');
+                let headerCols = keys.map(k => `<th>${k.toUpperCase()}</th>`).join('');
+
+                let rowsHtml = comp.points.map(pt => {
+                    let cells = keys.map(k => `<td>${pt[k] || '-'}</td>`).join('');
+                    return `<tr><td style="font-weight:700; color:var(--law-text);">${pt.feature}</td>${cells}</tr>`;
+                }).join('');
+
+                return `
+                    <div style="margin-bottom:28px;">
+                        <h4 style="font-size:1.05rem; font-weight:700; color:var(--law-primary); margin-bottom:4px;">
+                            <i class="fas fa-table-columns"></i> ${comp.title}
+                        </h4>
+                        <p style="font-size:0.85rem; color:var(--law-text-muted); margin-bottom:12px;">${comp.summary}</p>
+                        <div class="matrix-table-wrap">
+                            <table class="matrix-table">
+                                <thead>
+                                    <tr>
+                                        <th>FEATURE</th>
+                                        ${headerCols}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rowsHtml}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Master Quiz (15 Questions)
+        function initMasterQuiz() {
+            const container = document.getElementById('quizContainer');
+            if (!container || !window.CRPC_DATA.fullQuiz) return;
+
+            const quizSubset = window.CRPC_DATA.fullQuiz.slice(0, 15);
+            container.innerHTML = '';
+            masterQuizScore = 0;
+            answeredMasterQuestions.clear();
+            document.getElementById('quizScoreDisplay').textContent = `Score: 0 / ${quizSubset.length}`;
+
+            quizSubset.forEach((item, qIdx) => {
+                const card = document.createElement('div');
+                card.className = 'mcq-card';
+                card.id = 'full-quiz-card-' + qIdx;
+
+                let optsHtml = item.opts.map((opt, optIdx) => `
+                    <button class="mcq-opt-btn" data-qid="${qIdx}" data-opt="${optIdx}">
+                        <span style="font-weight:700; color:var(--law-primary);">${String.fromCharCode(65 + optIdx)}.</span> ${opt}
+                    </button>
+                `).join('');
+
+                card.innerHTML = `
+                    <div style="font-size:0.75rem; font-weight:800; color:var(--law-primary); margin-bottom:6px; font-family:var(--font-mono);">
+                        QUESTION ${qIdx + 1} OF ${quizSubset.length} &bull; CrPC Procedure
+                    </div>
+                    <div class="mcq-q-text">${item.q}</div>
+                    <div class="mcq-options">${optsHtml}</div>
+                    <div class="mcq-exp-box" id="full-exp-${qIdx}">
+                        <strong><i class="fas fa-check-circle" style="color:#10b981;"></i> Statutory Rationale:</strong> ${item.exp}
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            container.querySelectorAll('.mcq-opt-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const qId = parseInt(btn.getAttribute('data-qid'), 10);
+                    const selOpt = parseInt(btn.getAttribute('data-opt'), 10);
+
+                    if (answeredMasterQuestions.has(qId)) return;
+                    answeredMasterQuestions.add(qId);
+
+                    const qItem = quizSubset[qId];
+                    const card = document.getElementById('full-quiz-card-' + qId);
+                    const allBtns = card.querySelectorAll('.mcq-opt-btn');
+                    const expBox = document.getElementById('full-exp-' + qId);
+
+                    allBtns.forEach((b, idx) => {
+                        b.disabled = true;
+                        if (idx === qItem.ans) b.classList.add('correct');
+                        if (idx === selOpt && idx !== qItem.ans) b.classList.add('wrong');
+                    });
+
+                    const isCorrect = (selOpt === qItem.ans);
+                    if (isCorrect) masterQuizScore++;
+                    playChime(isCorrect);
+                    document.getElementById('quizScoreDisplay').textContent = `Score: ${masterQuizScore} / ${quizSubset.length}`;
+                    if (expBox) expBox.style.display = 'block';
+                });
+            });
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Pathway Switcher
+            const btnPolice = document.getElementById('btnPathPolice');
+            const btnPrivate = document.getElementById('btnPathPrivate');
+
+            if (btnPolice && btnPrivate) {
+                btnPolice.addEventListener('click', () => {
+                    currentPathway = 'police';
+                    btnPolice.classList.add('active');
+                    btnPrivate.classList.remove('active', 'active-teal');
+                    selectStage(0);
+                });
+
+                btnPrivate.addEventListener('click', () => {
+                    currentPathway = 'private';
+                    btnPrivate.classList.add('active-teal');
+                    btnPolice.classList.remove('active');
+                    selectStage(0);
+                });
+            }
+
+            // Next / Prev Stage Buttons
+            const prevBtn = document.getElementById('btnPrevStep');
+            const nextBtn = document.getElementById('btnNextStep');
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    if (currentStageIndex > 0) {
+                        selectStage(currentStageIndex - 1);
+                    }
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    if (currentStageIndex < window.CRPC_DATA.stages.length - 1) {
+                        selectStage(currentStageIndex + 1);
+                    }
+                });
+            }
+
+            // Dossier Tabs
+            document.querySelectorAll('.dossier-tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.dossier-tab-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+                    btn.classList.add('active');
+                    const tabId = btn.getAttribute('data-tab');
+                    const targetPane = document.getElementById(tabId);
+                    if (targetPane) targetPane.classList.add('active');
+                });
+            });
+
+            // Font Controls
+            const incBtn = document.getElementById('btnFontInc');
+            const decBtn = document.getElementById('btnFontDec');
+            const dossier = document.getElementById('stageDossierCard');
+
+            if (incBtn && dossier) {
+                incBtn.addEventListener('click', () => {
+                    if (currentFontSize < 20) {
+                        currentFontSize += 1;
+                        dossier.style.fontSize = currentFontSize + 'px';
+                    }
+                });
+            }
+            if (decBtn && dossier) {
+                decBtn.addEventListener('click', () => {
+                    if (currentFontSize > 13) {
+                        currentFontSize -= 1;
+                        dossier.style.fontSize = currentFontSize + 'px';
+                    }
+                });
+            }
+
+            // Copy Stage Dossier
+            const copyBtn = document.getElementById('btnCopyDossier');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', () => {
+                    const st = window.CRPC_DATA.stages[currentStageIndex];
+                    if (!st) return;
+
+                    const clipText = `=== ${st.title} ===
+Subtitle: ${st.subtitle}
+CrPC Sections: ${st.sections.join(', ')}
+
+STATUTORY TIMELINES:
+${st.statutoryTimelines.join('\n')}
+
+LEGAL PREREQUISITES:
+${st.legalPrerequisites.join('\n')}
+
+KEY AUTHORITIES:
+${st.keyActors.join(', ')}
+
+ESSENTIAL LEGAL DOCUMENTS:
+${st.essentialDocuments.join(', ')}
+
+LANDMARK PRECEDENT:
+${st.landmarkPrecedents}
+
+Code of Criminal Procedure, 1898 (CrPC)`;
+
+                    navigator.clipboard.writeText(clipText).then(() => {
+                        const originalHtml = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => { copyBtn.innerHTML = originalHtml; }, 2000);
+                    }).catch(() => {
+                        alert('Stage Dossier copied to clipboard!');
+                    });
+                });
+            }
+
+            // Theme Toggle
+            const themeBtn = document.getElementById('themeToggleBtn');
+            const themeIcon = document.getElementById('themeIcon');
+            if (themeBtn && themeIcon) {
+                const updateThemeIcon = (isDark) => {
+                    if (isDark) {
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                    } else {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    }
+                };
+
+                updateThemeIcon(document.documentElement.classList.contains('dark-mode'));
+
+                themeBtn.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark-mode');
+                    const isDark = document.documentElement.classList.contains('dark-mode');
+                    localStorage.setItem('mcqs_dark_mode', isDark);
+                    updateThemeIcon(isDark);
+                });
+            }
+        }
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+</html>

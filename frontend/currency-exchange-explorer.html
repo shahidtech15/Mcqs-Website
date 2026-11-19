@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency &amp; Exchange Explorer | World Currencies, Central Banks &amp; FX Regimes</title>
+    <meta name="description" content="Explore world currencies, central banks, exchange rate regimes, purchasing power parity, the impossible trinity, and currency history. Interactive FX calculator, policy simulators, and CSS/FPSC economics quiz.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('mcqs_dark_mode');
+            if (savedTheme === 'true' || (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <style>
+        :root {
+            --curr-bg: #f8fafc;
+            --curr-card-bg: #ffffff;
+            --curr-surface: #f1f5f9;
+            --curr-surface-hover: #e2e8f0;
+            --curr-text: #0f172a;
+            --curr-text-muted: #64748b;
+            --curr-border: #e2e8f0;
+            --curr-border-strong: #cbd5e1;
+            --curr-primary: #059669; /* Emerald Green (Money/Wealth) */
+            --curr-primary-hover: #047857;
+            --curr-primary-light: #d1fae5;
+            --curr-gold: #d97706; /* Coin Gold */
+            --curr-gold-light: #fef3c7;
+            --curr-blue: #0284c7;
+            --curr-blue-light: #e0f2fe;
+            --curr-crimson: #e11d48;
+            --curr-crimson-light: #ffe4e6;
+            --curr-purple: #7c3aed;
+            --curr-purple-light: #ede9fe;
+            --font-ui: 'Plus Jakarta Sans', sans-serif;
+            --font-serif: 'Merriweather', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+
+        .dark-mode {
+            --curr-bg: #090d16;
+            --curr-card-bg: #111827;
+            --curr-surface: #1e293b;
+            --curr-surface-hover: #2d3748;
+            --curr-text: #f8fafc;
+            --curr-text-muted: #94a3b8;
+            --curr-border: #1f293d;
+            --curr-border-strong: #334155;
+            --curr-primary: #34d399;
+            --curr-primary-hover: #6ee7b7;
+            --curr-primary-light: rgba(52, 211, 153, 0.15);
+            --curr-gold: #fbbf24;
+            --curr-gold-light: rgba(251, 191, 36, 0.15);
+            --curr-blue: #38bdf8;
+            --curr-blue-light: rgba(56, 189, 248, 0.15);
+            --curr-crimson: #fb7185;
+            --curr-crimson-light: rgba(251, 113, 133, 0.15);
+            --curr-purple: #a78bfa;
+            --curr-purple-light: rgba(167, 139, 250, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--curr-bg);
+            color: var(--curr-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.25s, color 0.25s;
+        }
+
+        /* Top Academic Switcher Bar */
+        .site-switcher-bar {
+            background: #0b1120;
+            color: #94a3b8;
+            padding: 7px 16px;
+            font-size: 0.78rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .switcher-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .switcher-label {
+            color: #cbd5e1;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-right: 4px;
+        }
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 3px 9px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .switcher-btn.active {
+            color: #34d399;
+            background: rgba(52, 211, 153, 0.18);
+            border-color: rgba(52, 211, 153, 0.35);
+            font-weight: 700;
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--curr-card-bg);
+            border-bottom: 1px solid var(--curr-border);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        .header-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #059669, #0284c7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.35rem;
+            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
+        }
+        .brand-text h1 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand-text .badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            background: var(--curr-primary-light);
+            color: var(--curr-primary);
+            padding: 2px 7px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            border: 1px solid rgba(5, 150, 105, 0.3);
+        }
+        .brand-text p {
+            font-size: 0.78rem;
+            color: var(--curr-text-muted);
+            line-height: 1.2;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--curr-border);
+            background: var(--curr-card-bg);
+            color: var(--curr-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .icon-btn:hover {
+            background: var(--curr-surface);
+            color: var(--curr-primary);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(2, 132, 199, 0.05) 100%);
+            border-bottom: 1px solid var(--curr-border);
+            padding: 30px 20px;
+        }
+        .hero-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .hero-title-area {
+            max-width: 860px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: var(--curr-primary-light);
+            color: var(--curr-primary);
+            border: 1px solid rgba(5, 150, 105, 0.25);
+            margin-bottom: 12px;
+        }
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: var(--curr-text-muted);
+            line-height: 1.55;
+            font-family: var(--font-serif);
+        }
+        .hero-cta-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-action.primary {
+            background: var(--curr-primary);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+        }
+        .btn-action.primary:hover {
+            background: var(--curr-primary-hover);
+            transform: translateY(-1px);
+        }
+        .btn-action.blue {
+            background: var(--curr-blue);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+        .btn-action.blue:hover {
+            background: #0369a1;
+            transform: translateY(-1px);
+        }
+
+        /* Hero KPI Stat Cards */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .stat-card {
+            background: var(--curr-card-bg);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--curr-primary);
+        }
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        .stat-icon.green { background: var(--curr-primary-light); color: var(--curr-primary); }
+        .stat-icon.blue { background: var(--curr-blue-light); color: var(--curr-blue); }
+        .stat-icon.gold { background: var(--curr-gold-light); color: var(--curr-gold); }
+        .stat-icon.purple { background: var(--curr-purple-light); color: var(--curr-purple); }
+        .stat-info .stat-num {
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        .stat-info .stat-desc {
+            font-size: 0.74rem;
+            color: var(--curr-text-muted);
+            margin-top: 3px;
+        }
+
+        /* Sticky Tab Navigation Bar */
+        .main-tab-bar-wrap {
+            background: var(--curr-card-bg);
+            border-bottom: 2px solid var(--curr-border);
+            position: sticky;
+            top: 69px;
+            z-index: 90;
+            box-shadow: var(--shadow-sm);
+        }
+        .main-tab-bar {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 8px 20px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+        }
+        .bar-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--curr-text-muted);
+            font-family: var(--font-ui);
+            font-size: 0.86rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .bar-tab-btn:hover {
+            color: var(--curr-text);
+            background: var(--curr-surface);
+        }
+        .bar-tab-btn.active {
+            color: var(--curr-primary);
+            background: var(--curr-primary-light);
+            font-weight: 800;
+        }
+        .bar-tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 16px;
+            right: 16px;
+            height: 3px;
+            background: var(--curr-primary);
+            border-radius: 3px 3px 0 0;
+        }
+        .bar-badge {
+            background: rgba(0,0,0,0.06);
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .bar-tab-btn.active .bar-badge {
+            background: var(--curr-primary);
+            color: #ffffff;
+        }
+
+        /* Workspace Wrapper */
+        .workspace-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* View Panels */
+        .view-panel {
+            display: none;
+        }
+        .view-panel.active {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Generic Controls & Search Card */
+        .controls-card {
+            background: var(--curr-card-bg);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-lg);
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .search-box-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+        }
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--curr-text-muted);
+            font-size: 0.9rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px 14px 10px 38px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--curr-border);
+            background: var(--curr-surface);
+            color: var(--curr-text);
+            font-family: var(--font-ui);
+            font-size: 0.88rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .search-input:focus {
+            border-color: var(--curr-primary);
+            background: var(--curr-card-bg);
+            box-shadow: 0 0 0 3px var(--curr-primary-light);
+        }
+        .filter-select {
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--curr-border);
+            background: var(--curr-surface);
+            color: var(--curr-text);
+            font-family: var(--font-ui);
+            font-size: 0.88rem;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-select:focus {
+            border-color: var(--curr-primary);
+        }
+        .category-pills-wrap {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-top: 12px;
+            margin-top: 12px;
+            border-top: 1px solid var(--curr-border);
+            scrollbar-width: thin;
+        }
+        .pill-filter-btn {
+            background: var(--curr-surface);
+            border: 1px solid var(--curr-border);
+            color: var(--curr-text-muted);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .pill-filter-btn:hover {
+            color: var(--curr-text);
+            background: var(--curr-surface-hover);
+        }
+        .pill-filter-btn.active {
+            background: var(--curr-primary);
+            color: #ffffff;
+            border-color: var(--curr-primary);
+        }
+
+        /* TAB 1: Currency Cards Grid */
+        .currencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+        .currency-card {
+            background: var(--curr-card-bg);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .currency-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--curr-primary);
+        }
+        .curr-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .curr-flag-code {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .curr-flag {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .curr-code {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--curr-text);
+        }
+        .curr-symbol-badge {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 800;
+            background: var(--curr-primary-light);
+            color: var(--curr-primary);
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+        }
+        .curr-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+        .curr-country {
+            font-size: 0.8rem;
+            color: var(--curr-text-muted);
+            font-weight: 600;
+        }
+        .curr-meta-list {
+            background: var(--curr-surface);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-md);
+            padding: 10px 12px;
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .curr-rate-strip {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            padding-top: 4px;
+        }
+        .badge-regime {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: var(--curr-blue-light);
+            color: var(--curr-blue);
+        }
+
+        /* TAB 2: Central Banks Grid */
+        .banks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .bank-card {
+            background: var(--curr-card-bg);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: all 0.2s;
+        }
+        .bank-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--curr-primary);
+        }
+        .bank-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 2px solid var(--curr-border);
+            padding-bottom: 14px;
+        }
+        .bank-flag {
+            font-size: 2.2rem;
+        }
+        .bank-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+        .bank-hq {
+            font-size: 0.78rem;
+            color: var(--curr-text-muted);
+            font-weight: 600;
+        }
+        .bank-key-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .stat-box {
+            background: var(--curr-surface);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-sm);
+            padding: 8px 10px;
+        }
+        .stat-box-lbl {
+            font-size: 0.68rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--curr-text-muted);
+        }
+        .stat-box-val {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--curr-primary);
+        }
+
+        /* TAB 3: Exchange Rate Concepts */
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 20px;
+        }
+        .concept-card {
+            background: var(--curr-card-bg);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-xl);
+            padding: 26px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .concept-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .concept-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--curr-primary-light);
+            color: var(--curr-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .concept-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+        .concept-summary {
+            font-size: 0.88rem;
+            color: var(--curr-text-muted);
+            font-family: var(--font-serif);
+            line-height: 1.5;
+        }
+        .concept-details-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--curr-surface);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-md);
+            padding: 14px;
+        }
+        .concept-item-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--curr-primary);
+            margin-bottom: 2px;
+        }
+        .concept-item-text {
+            font-size: 0.82rem;
+            line-height: 1.55;
+            white-space: pre-line;
+        }
+        .concept-exam-note {
+            background: var(--curr-gold-light);
+            color: #78350f;
+            border-left: 4px solid var(--curr-gold);
+            padding: 10px 14px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+        .dark-mode .concept-exam-note {
+            color: #fef3c7;
+        }
+
+        /* TAB 4: Currency History Timeline */
+        .timeline-container {
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            background: var(--curr-border-strong);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--curr-primary);
+            border: 3px solid var(--curr-card-bg);
+            box-shadow: 0 0 0 2px var(--curr-primary);
+        }
+        .timeline-content-card {
+            background: var(--curr-card-bg);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .timeline-epoch {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 800;
+            background: var(--curr-primary-light);
+            color: var(--curr-primary);
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+        }
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .timeline-location {
+            font-size: 0.8rem;
+            color: var(--curr-gold);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .timeline-desc {
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* TAB 5: Live FX Simulator & Calculator */
+        .calculator-card {
+            background: var(--curr-card-bg);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 24px 0;
+        }
+        @media (max-width: 700px) {
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .calc-box {
+            background: var(--curr-surface);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .calc-input-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .calc-num-input {
+            width: 100%;
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 800;
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--curr-border);
+            background: var(--curr-card-bg);
+            color: var(--curr-text);
+            outline: none;
+        }
+        .calc-swap-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--curr-primary);
+            color: #ffffff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 0 auto;
+        }
+        .calc-swap-btn:hover {
+            transform: rotate(180deg);
+        }
+        .calc-result-display {
+            background: var(--curr-primary-light);
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .calc-result-val {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--curr-primary);
+        }
+
+        /* TAB 6: Quiz Container */
+        .quiz-container {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--curr-card-bg);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+        .quiz-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--curr-border);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .quiz-counter {
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--curr-primary);
+        }
+        .quiz-score {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--curr-gold);
+        }
+        .quiz-q-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        .quiz-options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        .quiz-opt-btn {
+            background: var(--curr-surface);
+            border: 1px solid var(--curr-border);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            text-align: left;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-ui);
+            color: var(--curr-text);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .quiz-opt-btn:hover {
+            background: var(--curr-surface-hover);
+        }
+        .quiz-opt-btn.correct {
+            background: var(--curr-primary-light);
+            border-color: var(--curr-primary);
+            color: #065f46;
+            font-weight: 700;
+        }
+        .quiz-opt-btn.wrong {
+            background: var(--curr-crimson-light);
+            border-color: var(--curr-crimson);
+            color: #7f1d1d;
+        }
+        .quiz-explanation-box {
+            background: var(--curr-primary-light);
+            border-left: 4px solid var(--curr-primary);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            display: none;
+            margin-bottom: 24px;
+        }
+        .quiz-nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #0b1120;
+            color: #94a3b8;
+            padding: 32px 20px;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.84rem;
+        }
+        .footer-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/currency-exchange-explorer.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/currency-exchange-explorer.html">
+    <meta property="og:title" content="Currency &amp; Exchange Explorer | World Currencies, Central Banks &amp; FX Regimes">
+    <meta property="og:description" content="Explore world currencies, central banks, exchange rate regimes, purchasing power parity, the impossible trinity, and currency history. Interactive FX calculator, policy simulators, and CSS/FPSC eco...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Currency &amp; Exchange Explorer | World Currencies, Central Banks &amp; FX Regimes">
+    <meta name="twitter:description" content="Explore world currencies, central banks, exchange rate regimes, purchasing power parity, the impossible trinity, and currency history. Interactive FX calculator, policy simulators, and CSS/FPSC eco...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+<body>
+
+    <!-- Academic Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+            <a href="international-organizations-explorer.html" class="switcher-btn"><i class="fas fa-sitemap"></i> Organizations</a>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> World Timeline</a>
+            <a href="global-power-comparison.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Global Power</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-atom"></i> Periodic Table</a>
+            <a href="climate-change-explorer.html" class="switcher-btn"><i class="fas fa-temperature-high"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn"><i class="fas fa-microchip"></i> Technology</a>
+            <a href="constitution-explorer.html" class="switcher-btn"><i class="fas fa-scale-balanced"></i> Constitution</a>
+            <a href="ppc-section-finder.html" class="switcher-btn"><i class="fas fa-gavel"></i> PPC Finder</a>
+            <a href="crpc-procedure-flowchart.html" class="switcher-btn"><i class="fas fa-diagram-project"></i> CrPC Flowchart</a>
+            <a href="identify-legal-provision.html" class="switcher-btn"><i class="fas fa-scale-unbalanced-flip"></i> Legal Provision</a>
+            <a href="court-structure-explorer.html" class="switcher-btn"><i class="fas fa-landmark"></i> Court Structure</a>
+            <a href="fia-laws-explorer.html" class="switcher-btn"><i class="fas fa-building-shield"></i> FIA Laws</a>
+            <a href="world-economy-dashboard.html" class="switcher-btn"><i class="fas fa-chart-line"></i> World Economy</a>
+            <a href="currency-exchange-explorer.html" class="switcher-btn active"><i class="fas fa-coins"></i> Currency &amp; Exchange</a>
+            <a href="who-trades-what.html" class="switcher-btn"><i class="fas fa-ship"></i> Who Trades What?</a>
+            <a href="daily-challenges.html" class="switcher-btn"><i class="fas fa-bolt"></i> Daily Challenges</a>
+            <a href="daily-fact.html" class="switcher-btn"><i class="fas fa-calendar-check"></i> Daily Fact</a>
+        </div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="currency-exchange-explorer.html" class="brand-group">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-coins"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Currency &amp; Exchange Explorer <span class="badge">Monetary Economics</span></h1>
+                    <p>World Currencies &bull; Central Banks &bull; Exchange Regimes &bull; History &bull; Simulator</p>
+                </div>
+            </a>
+            <div class="header-actions">
+                <a href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:20px; font-size:0.82rem; font-weight:700; background:var(--card-bg, #1e293b); color:inherit; border:1px solid var(--border-color, #334155); transition:all 0.2s;" title="Return to CSS Prep Central Home"><i class="fa-solid fa-house"></i> Main Portal</a>
+                <button type="button" class="icon-btn" id="soundToggleBtn" title="Toggle Sound" onclick="toggleSound()">
+                    <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+                </button>
+                <button type="button" class="icon-btn" id="themeToggleBtn" title="Toggle Theme" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="hero-top">
+                <div class="hero-title-area">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-building-columns"></i> Global Monetary Systems &bull; IMF COFER &amp; BIS Benchmarks
+                    </div>
+                    <h2 class="hero-title">World Currencies, Central Banks &amp; Exchange-Rate Explorer</h2>
+                    <p class="hero-subtitle">Comprehensive interactive study guide and simulation platform for CSS Economics, International Relations, Banking, and Commerce aspirants. Master foreign exchange regimes, the Mundell-Fleming impossible trinity, real effective exchange rates (REER), purchasing power parity, central bank mandates, and monetary history.</p>
+                </div>
+                <div class="hero-cta-group">
+                    <button type="button" onclick="switchMainTab('calculator')" class="btn-action primary">
+                        <i class="fa-solid fa-calculator"></i> Live FX Rate Calculator
+                    </button>
+                    <button type="button" onclick="switchMainTab('concepts')" class="btn-action blue">
+                        <i class="fa-solid fa-sliders"></i> Exchange Rate Concepts
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats (Clickable Direct Tab Selectors) -->
+            <div class="hero-stats">
+                <div class="stat-card" onclick="switchMainTab('currencies')" title="Click to view all Currencies">
+                    <div class="stat-icon green"><i class="fa-solid fa-money-bill-wave"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">USD (58.4%)</div>
+                        <div class="stat-desc">Primary Global FX Reserve Currency</div>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="switchMainTab('banks')" title="Click to view Central Banks">
+                    <div class="stat-icon blue"><i class="fa-solid fa-landmark-dome"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">10 Central Banks</div>
+                        <div class="stat-desc">Fed, ECB, BoE, SBP, PBoC &amp; Mandates</div>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="filterCurrencyByCode('KWD'); switchMainTab('currencies');" title="Click to view Kuwaiti Dinar">
+                    <div class="stat-icon gold"><i class="fa-solid fa-crown"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">1 KWD = $3.25+</div>
+                        <div class="stat-desc">World's Most Valuable Currency Unit</div>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="switchMainTab('timeline')" title="Click to view Currency Timeline">
+                    <div class="stat-icon purple"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">British Pound (775 AD)</div>
+                        <div class="stat-desc">Oldest Active Currency in Continuous Use</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Sticky Tab Bar -->
+    <div class="main-tab-bar-wrap">
+        <nav class="main-tab-bar" aria-label="Main Navigation Tabs">
+            <button type="button" class="bar-tab-btn active" id="btnBarCurrencies" onclick="switchMainTab('currencies')">
+                <i class="fa-solid fa-coins"></i> Currencies Directory <span class="bar-badge">30</span>
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarBanks" onclick="switchMainTab('banks')">
+                <i class="fa-solid fa-landmark"></i> Central Banks &amp; Mandates <span class="bar-badge">10</span>
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarConcepts" onclick="switchMainTab('concepts')">
+                <i class="fa-solid fa-sliders"></i> Exchange Concepts <span class="bar-badge">8</span>
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarTimeline" onclick="switchMainTab('timeline')">
+                <i class="fa-solid fa-timeline"></i> Currency History Timeline
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarCalculator" onclick="switchMainTab('calculator')">
+                <i class="fa-solid fa-calculator"></i> Live FX Calculator
+            </button>
+            <button type="button" class="bar-tab-btn" id="btnBarQuiz" onclick="switchMainTab('quiz')">
+                <i class="fa-solid fa-graduation-cap"></i> Monetary Exam Quiz <span class="bar-badge">20</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="workspace-wrapper">
+
+        <!-- TAB 1: CURRENCIES DIRECTORY -->
+        <section class="view-panel active" id="viewCurrencies">
+            <div class="controls-card">
+                <div class="controls-row">
+                    <div class="search-box-wrap">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="currencySearchInput" class="search-input" placeholder="Search currency name, code, country, or nickname (e.g. Rupee, PKR, Cable, Greenback, Yen, Peg)..." oninput="filterCurrencies()">
+                    </div>
+                    <div>
+                        <select id="currencyRegimeFilter" class="filter-select" onchange="filterCurrencies()">
+                            <option value="all">All Monetary Regimes</option>
+                            <option value="Free Floating">Free Floating</option>
+                            <option value="Conventional Peg">Conventional Peg to USD</option>
+                            <option value="Managed">Managed Float / Dirty Float</option>
+                            <option value="Crawling Peg">Crawling Peg / Target Band</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="category-pills-wrap">
+                    <button type="button" class="pill-filter-btn active" onclick="setCurrencyFilter('all', this)">All Currencies (30)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setCurrencyFilter('SDR', this)">IMF SDR Basket Currencies (5)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setCurrencyFilter('Pegged', this)">Fixed / Pegged to USD (5)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setCurrencyFilter('Asian', this)">Asian Currencies (8)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setCurrencyFilter('MiddleEast', this)">Middle East / GCC (5)</button>
+                    <button type="button" class="pill-filter-btn" onclick="setCurrencyFilter('European', this)">European Currencies (5)</button>
+                </div>
+            </div>
+
+            <div class="currencies-grid" id="currenciesGridContainer">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- TAB 2: CENTRAL BANKS & MANDATES -->
+        <section class="view-panel" id="viewBanks">
+            <div style="margin-bottom:20px;">
+                <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:4px;">Premier Sovereign Central Banks &amp; Monetary Authorities</h3>
+                <p style="font-size:0.9rem; color:var(--curr-text-muted);">Explore the governing mandates, policy benchmarks, gold holdings, and institutional histories of leading monetary institutions.</p>
+            </div>
+            <div class="banks-grid" id="banksGridContainer">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- TAB 3: EXCHANGE CONCEPTS & THEORETICAL FRAMEWORKS -->
+        <section class="view-panel" id="viewConcepts">
+            <div style="margin-bottom:20px;">
+                <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:4px;">Essential Exchange-Rate Theories &amp; Monetary Concepts</h3>
+                <p style="font-size:0.9rem; color:var(--curr-text-muted);">Core frameworks tested in CSS Economics, International Finance, and competitive examinations.</p>
+            </div>
+            <div class="concepts-grid" id="conceptsGridContainer">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- TAB 4: CURRENCY HISTORY TIMELINE -->
+        <section class="view-panel" id="viewTimeline">
+            <div style="margin-bottom:24px; text-align:center;">
+                <h3 style="font-size:1.35rem; font-weight:800; margin-bottom:6px;">Milestones in the Evolution of Money</h3>
+                <p style="font-size:0.9rem; color:var(--curr-text-muted);">From electrum coins and Song Dynasty paper notes to the Bretton Woods conference, fiat shock, and digital currencies.</p>
+            </div>
+            <div class="timeline-container" id="timelineContainer">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- TAB 5: LIVE FX RATE CALCULATOR & SIMULATOR -->
+        <section class="view-panel" id="viewCalculator">
+            <div class="calculator-card">
+                <div style="text-align:center; margin-bottom:20px;">
+                    <h3 style="font-size:1.4rem; font-weight:800;">Global Currency Conversion &amp; Exchange Simulator</h3>
+                    <p style="font-size:0.88rem; color:var(--curr-text-muted);">Convert between major currencies based on benchmark foreign exchange cross-rates.</p>
+                </div>
+
+                <div class="calc-grid">
+                    <!-- From Box -->
+                    <div class="calc-box">
+                        <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--curr-text-muted);">Convert From:</span>
+                        <div class="calc-input-row">
+                            <input type="number" id="calcAmountInput" class="calc-num-input" value="100" min="0" step="any" oninput="calculateFx()">
+                        </div>
+                        <select id="calcFromCurrency" class="filter-select" onchange="calculateFx()">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+
+                    <!-- Swap Button -->
+                    <div>
+                        <button type="button" class="calc-swap-btn" onclick="swapCurrencies()" title="Swap Currencies">
+                            <i class="fa-solid fa-repeat"></i>
+                        </button>
+                    </div>
+
+                    <!-- To Box -->
+                    <div class="calc-box">
+                        <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--curr-text-muted);">Convert To:</span>
+                        <div class="calc-input-row">
+                            <input type="text" id="calcResultInput" class="calc-num-input" readonly>
+                        </div>
+                        <select id="calcToCurrency" class="filter-select" onchange="calculateFx()">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Display Box -->
+                <div class="calc-result-display">
+                    <div style="font-size:0.85rem; color:var(--curr-text-muted); font-weight:700;" id="calcRateFormula">
+                        1 USD = 278.00 PKR
+                    </div>
+                    <div class="calc-result-val" id="calcLargeDisplay">
+                        27,800.00 PKR
+                    </div>
+                </div>
+
+                <!-- Macro Shock Scenarios -->
+                <div style="margin-top:28px; background:var(--curr-surface); border:1px solid var(--curr-border); border-radius:var(--radius-lg); padding:20px;">
+                    <h4 style="font-size:0.95rem; font-weight:800; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-bolt" style="color:var(--curr-gold);"></i> Macroeconomic Currency Shock Simulator
+                    </h4>
+                    <p style="font-size:0.84rem; color:var(--curr-text-muted); margin-bottom:12px;">Test the real-world economic impact of major monetary shocks:</p>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                        <button type="button" class="pill-filter-btn" onclick="applyCurrencyShock('pkr_depreciation')">🇵🇰 PKR 10% Depreciation Shock</button>
+                        <button type="button" class="pill-filter-btn" onclick="applyCurrencyShock('fed_hike')">🇺🇸 US Fed 50 bps Rate Hike (Dollar Surge)</button>
+                        <button type="button" class="pill-filter-btn" onclick="applyCurrencyShock('oil_spike')">🛢️ Global Oil Price +30% Shock</button>
+                        <button type="button" class="pill-filter-btn" onclick="applyCurrencyShock('reset')">↺ Reset Baseline</button>
+                    </div>
+                    <div id="shockExplainerText" style="margin-top:14px; font-size:0.85rem; line-height:1.6; background:var(--curr-card-bg); padding:12px 14px; border-radius:var(--radius-md); border:1px solid var(--curr-border); display:none;">
+                        <!-- Shock description -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 6: MONETARY ECONOMICS QUIZ -->
+        <section class="view-panel" id="viewQuiz">
+            <div class="quiz-container">
+                <div class="quiz-top-bar">
+                    <span class="quiz-counter" id="quizCounter">Question 1 of 20</span>
+                    <span class="quiz-score" id="quizScore">Score: 0 / 0</span>
+                </div>
+                <div class="quiz-q-title" id="quizQuestionText">
+                    Loading question...
+                </div>
+                <div class="quiz-options-list" id="quizOptionsList">
+                    <!-- Options populated by JS -->
+                </div>
+                <div class="quiz-explanation-box" id="quizExplanationBox">
+                    <!-- Explanation populated by JS -->
+                </div>
+                <div class="quiz-nav-row">
+                    <button type="button" class="btn-action primary" id="btnNextQuiz" onclick="nextQuizQuestion()" style="margin-left:auto; display:none;">
+                        Next Question <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button type="button" class="btn-action gold" id="btnRestartQuiz" onclick="restartQuiz()" style="display:none;">
+                        <i class="fa-solid fa-rotate-right"></i> Restart Quiz
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <strong style="color:#ffffff;">Currency &amp; Exchange Explorer &bull; Monetary Economics Compendium</strong>
+                <p style="margin-top:4px; font-size:0.78rem;">Designed for CSS, PMS, Economics, International Relations, Banking, and Commerce Aspirants.</p>
+            </div>
+            <div style="font-size:0.78rem;">
+                Based on IMF COFER, BIS Triennial Central Bank Survey, and Central Bank Statistical Bulletins.
+            </div>
+        </div>
+    
+        <div class="footer-legal-bar" style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; color:#94a3b8;">
+            <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+            <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+            <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+            <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Comprehensive Currency & Exchange Data Script -->
+    <script src="js/data_currency_exchange.js"></script>
+
+    <!-- Application Script -->
+    <script>
+        (function() {
+            let currData = null;
+            let currencySearchQuery = '';
+            let currencyRegimeFilter = 'all';
+            let currencyCategoryFilter = 'all';
+            let currentQuizIndex = 0;
+            let quizScore = 0;
+            let answeredQuizQuestions = 0;
+            let audioCtx = null;
+            let soundEnabled = true;
+
+            function initAudio() {
+                if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            }
+
+            window.toggleSound = function() {
+                soundEnabled = !soundEnabled;
+                try { localStorage.setItem('mcqs_sound_enabled', soundEnabled); } catch(e) {}
+                updateSoundIcon();
+            };
+
+            function updateSoundIcon() {
+                const icon = document.getElementById('soundIcon');
+                if (icon) {
+                    icon.className = soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+                }
+            }
+
+            window.toggleTheme = function() {
+                const isDark = document.documentElement.classList.toggle('dark-mode');
+                try { localStorage.setItem('mcqs_dark_mode', isDark); } catch(e) {}
+                const icon = document.getElementById('themeIcon');
+                if (icon) {
+                    icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+            };
+
+            function playSound(type) {
+                if (!soundEnabled) return;
+                try {
+                    initAudio();
+                    if (!audioCtx) return;
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                    const now = audioCtx.currentTime;
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    if (type === 'correct') {
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(659.25, now);
+                        osc.frequency.setValueAtTime(880.00, now + 0.12);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                        osc.start(now);
+                        osc.stop(now + 0.4);
+                    } else if (type === 'wrong') {
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(220.00, now);
+                        osc.frequency.setValueAtTime(174.61, now + 0.12);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                        osc.start(now);
+                        osc.stop(now + 0.35);
+                    }
+                } catch(e) {}
+            }
+
+            // Init on DOM ready
+            document.addEventListener('DOMContentLoaded', () => {
+                if (window.CURRENCY_EXCHANGE_DATA) {
+                    currData = window.CURRENCY_EXCHANGE_DATA;
+                } else {
+                    console.error('CURRENCY_EXCHANGE_DATA not found!');
+                    return;
+                }
+
+                renderCurrenciesGrid();
+                renderCentralBanks();
+                renderConcepts();
+                renderTimeline();
+                populateCalculatorDropdowns();
+                calculateFx();
+                renderQuizQuestion();
+
+                try {
+                    const savedSound = localStorage.getItem('mcqs_sound_enabled');
+                    if (savedSound !== null) soundEnabled = savedSound === 'true';
+                } catch(e) {}
+                updateSoundIcon();
+            });
+
+            // TAB SWITCHING LOGIC
+            window.switchMainTab = function(tabName) {
+                const tabs = ['currencies', 'banks', 'concepts', 'timeline', 'calculator', 'quiz'];
+                if (!tabs.includes(tabName)) return;
+
+                tabs.forEach(t => {
+                    const btnBar = document.getElementById('btnBar' + capitalize(t));
+                    const panel = document.getElementById('view' + capitalize(t));
+                    const isActive = (t === tabName);
+
+                    if (btnBar) {
+                        if (isActive) btnBar.classList.add('active');
+                        else btnBar.classList.remove('active');
+                    }
+                    if (panel) {
+                        if (isActive) {
+                            panel.classList.add('active');
+                            panel.style.display = 'block';
+                        } else {
+                            panel.classList.remove('active');
+                            panel.style.display = 'none';
+                        }
+                    }
+                });
+
+                const workspace = document.querySelector('.workspace-wrapper');
+                if (workspace && window.scrollY > 400) {
+                    workspace.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            function capitalize(s) {
+                return s.charAt(0).toUpperCase() + s.slice(1);
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
+            function formatNumber(num) {
+                if (num === undefined || num === null) return 'N/A';
+                return Number(num).toLocaleString('en-US');
+            }
+
+            // TAB 1: Currencies Grid
+            function renderCurrenciesGrid() {
+                const container = document.getElementById('currenciesGridContainer');
+                if (!container) return;
+                container.innerHTML = '';
+
+                const q = currencySearchQuery.toLowerCase().trim();
+
+                const filtered = currData.currencies.filter(c => {
+                    // Regime filter
+                    if (currencyRegimeFilter !== 'all') {
+                        if (!c.regime.toLowerCase().includes(currencyRegimeFilter.toLowerCase())) return false;
+                    }
+
+                    // Category filter
+                    if (currencyCategoryFilter !== 'all') {
+                        if (currencyCategoryFilter === 'SDR' && !['USD', 'EUR', 'CNY', 'JPY', 'GBP'].includes(c.code)) return false;
+                        if (currencyCategoryFilter === 'Pegged' && !c.regime.includes('Peg')) return false;
+                        if (currencyCategoryFilter === 'Asian' && !['PKR', 'INR', 'CNY', 'JPY', 'SGD', 'MYR', 'KRW', 'THB', 'IDR', 'BDT'].includes(c.code)) return false;
+                        if (currencyCategoryFilter === 'MiddleEast' && !['SAR', 'AED', 'QAR', 'KWD', 'OMR'].includes(c.code)) return false;
+                        if (currencyCategoryFilter === 'European' && !['EUR', 'GBP', 'CHF', 'NOK', 'SEK', 'RUB', 'TRY'].includes(c.code)) return false;
+                    }
+
+                    if (!q) return true;
+                    const hay = (c.code + ' ' + c.name + ' ' + c.country + ' ' + c.nickname + ' ' + c.centralBank + ' ' + c.regime).toLowerCase();
+                    return hay.includes(q);
+                });
+
+                if (filtered.length === 0) {
+                    container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--curr-text-muted);"><i class="fa-solid fa-coins" style="font-size:2rem; margin-bottom:10px; display:block;"></i>No currencies match your search query or category filter.</div>';
+                    return;
+                }
+
+                filtered.forEach(c => {
+                    const card = document.createElement('div');
+                    card.className = 'currency-card';
+
+                    // Convert rate display
+                    let rateString = `1 USD ≈ ${(1 / c.rateToUsd).toFixed(2)} ${c.code}`;
+                    if (c.rateToUsd > 1) {
+                        rateString = `1 ${c.code} ≈ $${c.rateToUsd.toFixed(2)} USD`;
+                    }
+
+                    card.innerHTML = `
+                        <div class="curr-top-row">
+                            <div class="curr-flag-code">
+                                <span class="curr-flag">${c.flag}</span>
+                                <span class="curr-code">${c.code}</span>
+                            </div>
+                            <span class="curr-symbol-badge">${escapeHtml(c.symbol)}</span>
+                        </div>
+                        <div>
+                            <div class="curr-name">${escapeHtml(c.name)}</div>
+                            <div class="curr-country">${escapeHtml(c.country)}</div>
+                        </div>
+
+                        <div class="curr-meta-list">
+                            <div><strong>Regime:</strong> <span class="badge-regime">${escapeHtml(c.regime)}</span></div>
+                            <div><strong>Central Bank:</strong> ${escapeHtml(c.centralBank)}</div>
+                            <div><strong>Minor Unit:</strong> ${escapeHtml(c.minorUnit)}</div>
+                            <div><strong>Nickname:</strong> <em>${escapeHtml(c.nickname)}</em></div>
+                            <div><strong>Global FX Reserves:</strong> ${escapeHtml(c.shareGlobalFxReserves)}</div>
+                        </div>
+
+                        <div class="curr-rate-strip">
+                            <span style="font-family:var(--font-mono); font-weight:700; color:var(--curr-primary);">${rateString}</span>
+                            <button type="button" class="preset-btn" onclick="quickConvertCurrency('${c.code}')">
+                                <i class="fa-solid fa-calculator"></i> Convert &rarr;
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            window.filterCurrencies = function() {
+                currencySearchQuery = document.getElementById('currencySearchInput').value;
+                currencyRegimeFilter = document.getElementById('currencyRegimeFilter').value;
+                renderCurrenciesGrid();
+            };
+
+            window.setCurrencyFilter = function(cat, btn) {
+                currencyCategoryFilter = cat;
+                document.querySelectorAll('.pill-filter-btn').forEach(b => b.classList.remove('active'));
+                if (btn) btn.classList.add('active');
+                renderCurrenciesGrid();
+            };
+
+            window.filterCurrencyByCode = function(code) {
+                const input = document.getElementById('currencySearchInput');
+                if (input) {
+                    input.value = code;
+                    filterCurrencies();
+                }
+            };
+
+            window.quickConvertCurrency = function(code) {
+                switchMainTab('calculator');
+                const selTo = document.getElementById('calcToCurrency');
+                if (selTo) {
+                    selTo.value = code;
+                    calculateFx();
+                }
+            };
+
+            // TAB 2: Central Banks
+            function renderCentralBanks() {
+                const container = document.getElementById('banksGridContainer');
+                if (!container) return;
+                container.innerHTML = '';
+
+                currData.centralBanks.forEach(b => {
+                    const card = document.createElement('div');
+                    card.className = 'bank-card';
+
+                    card.innerHTML = `
+                        <div class="bank-header">
+                            <span class="bank-flag">${b.flag}</span>
+                            <div>
+                                <div class="bank-title">${escapeHtml(b.name)}</div>
+                                <div class="bank-hq"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(b.headquarters)} &bull; Est. ${b.establishedYear}</div>
+                            </div>
+                        </div>
+
+                        <div class="bank-key-stats">
+                            <div class="stat-box">
+                                <div class="stat-box-lbl">Policy Rate</div>
+                                <div class="stat-box-val">${escapeHtml(b.currentPolicyRate)}</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-box-lbl">Chair / Governor</div>
+                                <div class="stat-box-val" style="font-size:0.85rem; color:var(--curr-text);">${escapeHtml(b.chairperson)}</div>
+                            </div>
+                        </div>
+
+                        <div style="background:var(--curr-surface); border:1px solid var(--curr-border); border-radius:var(--radius-md); padding:12px; font-size:0.82rem; line-height:1.5;">
+                            <div style="font-weight:800; text-transform:uppercase; font-size:0.7rem; color:var(--curr-primary); margin-bottom:4px;">
+                                Mandate (${escapeHtml(b.mandateType)}):
+                            </div>
+                            ${escapeHtml(b.statutoryMandate)}
+                        </div>
+
+                        <div style="font-size:0.8rem; color:var(--curr-text-muted);">
+                            <strong>Gold &amp; FX Reserves:</strong> ${escapeHtml(b.fxGoldReserves)}
+                        </div>
+
+                        <div style="font-size:0.78rem; color:var(--curr-text-muted); background:var(--curr-gold-light); color:#78350f; border-left:3px solid var(--curr-gold); padding:8px 10px; border-radius:4px; margin-top:auto;">
+                            <strong>Milestone:</strong> ${escapeHtml(b.historicalMilestone)}
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            // TAB 3: Exchange Concepts
+            function renderConcepts() {
+                const container = document.getElementById('conceptsGridContainer');
+                if (!container) return;
+                container.innerHTML = '';
+
+                currData.exchangeConcepts.forEach(c => {
+                    const card = document.createElement('div');
+                    card.className = 'concept-card';
+
+                    let detailsHtml = '';
+                    c.details.forEach(d => {
+                        detailsHtml += `
+                            <div>
+                                <div class="concept-item-title">${escapeHtml(d.heading)}</div>
+                                <div class="concept-item-text">${escapeHtml(d.text)}</div>
+                            </div>
+                        `;
+                    });
+
+                    card.innerHTML = `
+                        <div class="concept-top">
+                            <div class="concept-icon"><i class="fa-solid ${c.icon}"></i></div>
+                            <div>
+                                <h4 class="concept-title">${escapeHtml(c.title)}</h4>
+                            </div>
+                        </div>
+
+                        <div class="concept-summary">${escapeHtml(c.summary)}</div>
+
+                        <div class="concept-details-wrap">
+                            ${detailsHtml}
+                        </div>
+
+                        <div class="concept-exam-note">
+                            <strong><i class="fa-solid fa-lightbulb"></i> Exam Relevance:</strong> ${escapeHtml(c.examNote)}
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            // TAB 4: Timeline
+            function renderTimeline() {
+                const container = document.getElementById('timelineContainer');
+                if (!container) return;
+                container.innerHTML = '';
+
+                currData.currencyHistoryTimeline.forEach(m => {
+                    const item = document.createElement('div');
+                    item.className = 'timeline-item';
+
+                    item.innerHTML = `
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content-card">
+                            <span class="timeline-epoch">${escapeHtml(m.epoch)}</span>
+                            <h4 class="timeline-title">${escapeHtml(m.title)}</h4>
+                            <div class="timeline-location"><i class="fa-solid fa-map-pin"></i> ${escapeHtml(m.location)}</div>
+                            <p class="timeline-desc">${escapeHtml(m.desc)}</p>
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+            }
+
+            // TAB 5: Live FX Calculator & Simulator
+            function populateCalculatorDropdowns() {
+                const selFrom = document.getElementById('calcFromCurrency');
+                const selTo = document.getElementById('calcToCurrency');
+                if (!selFrom || !selTo) return;
+
+                selFrom.innerHTML = '';
+                selTo.innerHTML = '';
+
+                currData.currencies.forEach(c => {
+                    const opt1 = document.createElement('option');
+                    opt1.value = c.code;
+                    opt1.textContent = `${c.flag} ${c.code} - ${c.name}`;
+                    if (c.code === 'USD') opt1.selected = true;
+                    selFrom.appendChild(opt1);
+
+                    const opt2 = document.createElement('option');
+                    opt2.value = c.code;
+                    opt2.textContent = `${c.flag} ${c.code} - ${c.name}`;
+                    if (c.code === 'PKR') opt2.selected = true;
+                    selTo.appendChild(opt2);
+                });
+            }
+
+            window.calculateFx = function() {
+                const amount = parseFloat(document.getElementById('calcAmountInput').value) || 0;
+                const fromCode = document.getElementById('calcFromCurrency').value;
+                const toCode = document.getElementById('calcToCurrency').value;
+
+                const currA = currData.currencies.find(c => c.code === fromCode);
+                const currB = currData.currencies.find(c => c.code === toCode);
+                if (!currA || !currB) return;
+
+                // Conversion through USD as cross currency
+                // Value in USD = amount * currA.rateToUsd
+                // Value in Target = Value in USD / currB.rateToUsd
+                const amountInUsd = amount * currA.rateToUsd;
+                const finalAmount = amountInUsd / currB.rateToUsd;
+                const crossRate = currA.rateToUsd / currB.rateToUsd;
+
+                document.getElementById('calcResultInput').value = formatNumber(finalAmount.toFixed(2));
+                document.getElementById('calcRateFormula').textContent = `1 ${currA.code} = ${formatNumber(crossRate.toFixed(4))} ${currB.code}`;
+                document.getElementById('calcLargeDisplay').textContent = `${formatNumber(finalAmount.toFixed(2))} ${currB.code}`;
+            };
+
+            window.swapCurrencies = function() {
+                const selFrom = document.getElementById('calcFromCurrency');
+                const selTo = document.getElementById('calcToCurrency');
+                if (selFrom && selTo) {
+                    const temp = selFrom.value;
+                    selFrom.value = selTo.value;
+                    selTo.value = temp;
+                    calculateFx();
+                }
+            };
+
+            window.applyCurrencyShock = function(type) {
+                const box = document.getElementById('shockExplainerText');
+                box.style.display = 'block';
+
+                if (type === 'pkr_depreciation') {
+                    document.getElementById('calcFromCurrency').value = 'USD';
+                    document.getElementById('calcToCurrency').value = 'PKR';
+                    document.getElementById('calcAmountInput').value = '1000';
+                    calculateFx();
+                    box.innerHTML = `<strong>💥 PKR 10% Depreciation Shock:</strong><br>
+                    • <strong>Direct Impact:</strong> $1,000 imports now cost Rs. 305,800 instead of Rs. 278,000.<br>
+                    • <strong>Macroeconomic Consequences:</strong> Imported petroleum, machinery, and edible oil prices rise immediately (cost-push inflation). External debt servicing jumps in rupee terms; however, textile exports receive a temporary margin boost if international buyers don't renegotiate prices down.`;
+                } else if (type === 'fed_hike') {
+                    document.getElementById('calcFromCurrency').value = 'USD';
+                    document.getElementById('calcToCurrency').value = 'EUR';
+                    document.getElementById('calcAmountInput').value = '10000';
+                    calculateFx();
+                    box.innerHTML = `<strong>🇺🇸 US Federal Reserve 50 bps Hike:</strong><br>
+                    • <strong>Capital Movement:</strong> Widens the interest rate spread in favor of US Treasuries, triggering hot-money flight out of emerging and European bond markets into USD safe assets.<br>
+                    • <strong>Exchange Rate Consequence:</strong> Emerging market currencies depreciate; central banks are forced to hike their own domestic policy rates defensively (uncovered interest rate parity).`;
+                } else if (type === 'oil_spike') {
+                    box.innerHTML = `<strong>🛢️ Global Crude Oil +30% Surge ($75 -> $97.50/bbl):</strong><br>
+                    • <strong>Petro-Currencies (Winners):</strong> Saudi Riyal (SAR), UAE Dirham (AED), Norwegian Krone (NOK), and Canadian Dollar (CAD) experience huge fiscal windfalls and current account surpluses.<br>
+                    • <strong>Net Importers (Losers):</strong> Pakistan (PKR), India (INR), and Turkey (TRY) suffer ballooning trade deficits, FX reserve drainage, and intense currency depreciation pressure.`;
+                } else {
+                    box.style.display = 'none';
+                    document.getElementById('calcAmountInput').value = '100';
+                    document.getElementById('calcFromCurrency').value = 'USD';
+                    document.getElementById('calcToCurrency').value = 'PKR';
+                    calculateFx();
+                }
+            };
+
+            // TAB 6: Quiz
+            function renderQuizQuestion() {
+                if (!currData || !currData.quiz || currData.quiz.length === 0) return;
+
+                const q = currData.quiz[currentQuizIndex];
+                document.getElementById('quizCounter').textContent = `Question ${currentQuizIndex + 1} of ${currData.quiz.length}`;
+                document.getElementById('quizScore').textContent = `Score: ${quizScore} / ${answeredQuizQuestions}`;
+                document.getElementById('quizQuestionText').textContent = q.question;
+
+                const list = document.getElementById('quizOptionsList');
+                list.innerHTML = '';
+
+                const expBox = document.getElementById('quizExplanationBox');
+                expBox.style.display = 'none';
+                expBox.innerHTML = '';
+
+                document.getElementById('btnNextQuiz').style.display = 'none';
+                document.getElementById('btnRestartQuiz').style.display = 'none';
+
+                q.options.forEach((opt, optIdx) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'quiz-opt-btn';
+                    btn.innerHTML = `<span><strong>${String.fromCharCode(65 + optIdx)}.</strong> ${escapeHtml(opt)}</span> <i class="fa-regular fa-circle"></i>`;
+                    btn.onclick = () => selectQuizAnswer(optIdx, btn);
+                    list.appendChild(btn);
+                });
+            }
+
+            function selectQuizAnswer(selectedIndex, clickedBtn) {
+                const q = currData.quiz[currentQuizIndex];
+                const list = document.getElementById('quizOptionsList');
+                const buttons = list.querySelectorAll('.quiz-opt-btn');
+
+                buttons.forEach(b => b.disabled = true);
+                answeredQuizQuestions++;
+
+                const expBox = document.getElementById('quizExplanationBox');
+                expBox.style.display = 'block';
+
+                if (selectedIndex === q.correctAnswer) {
+                    clickedBtn.classList.add('correct');
+                    clickedBtn.querySelector('i').className = 'fa-solid fa-circle-check';
+                    quizScore++;
+                    playSound('correct');
+                    expBox.innerHTML = `<strong><i class="fa-solid fa-circle-check" style="color:var(--curr-primary);"></i> Correct!</strong><br>${escapeHtml(q.explanation)}`;
+                } else {
+                    clickedBtn.classList.add('wrong');
+                    clickedBtn.querySelector('i').className = 'fa-solid fa-circle-xmark';
+                    buttons[q.correctAnswer].classList.add('correct');
+                    buttons[q.correctAnswer].querySelector('i').className = 'fa-solid fa-circle-check';
+                    playSound('wrong');
+                    expBox.innerHTML = `<strong><i class="fa-solid fa-circle-xmark" style="color:var(--curr-crimson);"></i> Incorrect.</strong> Correct answer is <strong>${String.fromCharCode(65 + q.correctAnswer)}.</strong><br>${escapeHtml(q.explanation)}`;
+                }
+
+                document.getElementById('quizScore').textContent = `Score: ${quizScore} / ${answeredQuizQuestions}`;
+
+                if (currentQuizIndex < currData.quiz.length - 1) {
+                    document.getElementById('btnNextQuiz').style.display = 'inline-flex';
+                } else {
+                    document.getElementById('btnRestartQuiz').style.display = 'inline-flex';
+                }
+            }
+
+            window.nextQuizQuestion = function() {
+                if (currentQuizIndex < currData.quiz.length - 1) {
+                    currentQuizIndex++;
+                    renderQuizQuestion();
+                }
+            };
+
+            window.restartQuiz = function() {
+                currentQuizIndex = 0;
+                quizScore = 0;
+                answeredQuizQuestions = 0;
+                renderQuizQuestion();
+            };
+
+        })();
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+</html>

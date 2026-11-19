@@ -1,0 +1,2330 @@
+const fs = require('fs');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Periodic Table of Elements | General Science &amp; Technology</title>
+    <meta name="description"
+        content="Interactive Periodic Table of Elements for CSS, PMS, FPSC, PPSC and competitive examinations. Explore all 118 elements, electron configurations, Bohr orbitals, physical trends, dynamic temperature phase shifts, and high-yield exam notes.">
+    <link rel="canonical" href="https://cssprepcentral.com/periodic-table.html" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --pt-bg: #f8fafc;
+            --pt-card-bg: #ffffff;
+            --pt-card-sub: #f1f5f9;
+            --pt-border: #e2e8f0;
+            --pt-text-main: #0f172a;
+            --pt-text-muted: #64748b;
+            --pt-primary: #0284c7;
+            --pt-primary-dark: #0369a1;
+            --pt-primary-light: rgba(2, 132, 199, 0.1);
+            --pt-accent: #6366f1;
+            --pt-gold: #f59e0b;
+            --pt-green: #10b981;
+            --pt-red: #ef4444;
+            --pt-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --pt-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            --cell-bg: #ffffff;
+            --cell-border: #cbd5e1;
+            --cell-text: #0f172a;
+        }
+
+        .dark-mode {
+            --pt-bg: #0b1120;
+            --pt-card-bg: #131c31;
+            --pt-card-sub: #1e293b;
+            --pt-border: #1e293b;
+            --pt-text-main: #f8fafc;
+            --pt-text-muted: #94a3b8;
+            --pt-primary: #38bdf8;
+            --pt-primary-dark: #0284c7;
+            --pt-primary-light: rgba(56, 189, 248, 0.15);
+            --pt-accent: #818cf8;
+            --pt-gold: #fbbf24;
+            --pt-green: #34d399;
+            --pt-red: #f87171;
+            --pt-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --pt-shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.4);
+            --cell-bg: #1a2234;
+            --cell-border: #2d3748;
+            --cell-text: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--pt-bg);
+            color: var(--pt-text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Top Academic Switcher Bar */
+        .site-switcher-bar {
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            z-index: 1001;
+        }
+
+        .switcher-inner {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .switcher-label {
+            color: #94a3b8;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .switcher-btn.active {
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+            font-weight: 700;
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background: var(--pt-card-bg);
+            border-bottom: 1px solid var(--pt-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--pt-text-main);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--pt-card-sub);
+            border: 1px solid var(--pt-border);
+            color: var(--pt-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--pt-primary);
+            color: var(--pt-primary);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--pt-text-muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--pt-primary);
+            background: var(--pt-primary-light);
+        }
+
+        /* Hero Header */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(99, 102, 241, 0.08));
+            border-bottom: 1px solid var(--pt-border);
+            padding: 28px 20px 20px;
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .badge-academic {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--pt-primary);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--pt-text-main);
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle {
+            color: var(--pt-text-muted);
+            font-size: 0.96rem;
+            max-width: 850px;
+            margin: 0 auto 16px;
+        }
+
+        .kpi-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 12px;
+        }
+
+        .kpi-pill {
+            background: var(--pt-card-bg);
+            border: 1px solid var(--pt-border);
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--pt-shadow);
+        }
+
+        .kpi-pill strong {
+            color: var(--pt-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+        }
+
+        /* Main Workspace Container */
+        .main-container {
+            max-width: 1540px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* Control Deck */
+        .control-deck {
+            background: var(--pt-card-bg);
+            border: 1px solid var(--pt-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--pt-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .control-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .search-box-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+            max-width: 400px;
+        }
+
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--pt-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 9px 14px 9px 38px;
+            border-radius: 8px;
+            border: 1px solid var(--pt-border);
+            background: var(--pt-card-sub);
+            color: var(--pt-text-main);
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--pt-primary);
+            box-shadow: 0 0 0 3px var(--pt-primary-light);
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .filter-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--pt-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-right: 4px;
+        }
+
+        .btn-filter {
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--pt-border);
+            background: var(--pt-card-sub);
+            color: var(--pt-text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-filter:hover {
+            border-color: var(--pt-primary);
+            color: var(--pt-text-main);
+        }
+
+        .btn-filter.active {
+            background: var(--pt-primary);
+            border-color: var(--pt-primary);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .btn-exam-toggle {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #ffffff;
+            border: none;
+            font-weight: 700;
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-exam-toggle.active {
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Temperature Slider Row */
+        .temp-row {
+            background: var(--pt-card-sub);
+            border: 1px solid var(--pt-border);
+            border-radius: 8px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .temp-display {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--pt-primary);
+            min-width: 190px;
+        }
+
+        .temp-slider-wrap {
+            flex: 1;
+            min-width: 220px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .temp-slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #3b82f6, #10b981, #f59e0b, #ef4444);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .temp-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid var(--pt-primary);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .temp-presets {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .temp-preset-btn {
+            background: var(--pt-card-bg);
+            border: 1px solid var(--pt-border);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            color: var(--pt-text-muted);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .temp-preset-btn:hover {
+            color: var(--pt-primary);
+            border-color: var(--pt-primary);
+        }
+
+        /* Periodic Trends Row */
+        .trends-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding-top: 4px;
+        }
+
+        .trend-select {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--pt-border);
+            background: var(--pt-card-sub);
+            color: var(--pt-text-main);
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .trend-legend {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.76rem;
+            color: var(--pt-text-muted);
+        }
+
+        .trend-gradient-bar {
+            width: 120px;
+            height: 10px;
+            border-radius: 5px;
+            background: #ccc;
+        }
+
+        /* Category Legend Pills */
+        .category-legend-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .cat-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.15s ease;
+            user-select: none;
+        }
+
+        .cat-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        /* Periodic Table Grid Layout */
+        .table-scroll-wrapper {
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+        }
+
+        .table-scroll-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-scroll-wrapper::-webkit-scrollbar-thumb {
+            background: var(--pt-border);
+            border-radius: 4px;
+        }
+
+        .periodic-grid {
+            display: grid;
+            grid-template-columns: repeat(18, minmax(68px, 1fr));
+            grid-gap: 5px;
+            min-width: 1260px;
+        }
+
+        /* Element Cell */
+        .element-cell {
+            position: relative;
+            background: var(--cell-bg);
+            border: 1px solid var(--cell-border);
+            border-radius: 6px;
+            padding: 6px 4px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            aspect-ratio: 1 / 1.15;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        .element-cell:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            border-color: var(--pt-primary) !important;
+        }
+
+        .element-cell.selected {
+            outline: 3px solid var(--pt-primary);
+            box-shadow: 0 0 12px var(--pt-primary);
+            z-index: 9;
+        }
+
+        .element-cell.dimmed {
+            opacity: 0.2;
+            filter: grayscale(80%);
+            transform: scale(0.96);
+        }
+
+        .element-cell.exam-highlight {
+            box-shadow: 0 0 0 2px #f59e0b, 0 4px 8px rgba(245, 158, 11, 0.3);
+            border-color: #f59e0b !important;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 2px #f59e0b, 0 4px 8px rgba(245, 158, 11, 0.3); }
+            50% { box-shadow: 0 0 0 3px #fbbf24, 0 6px 12px rgba(245, 158, 11, 0.5); }
+        }
+
+        .cell-top-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.65rem;
+            line-height: 1;
+            padding: 0 2px;
+            color: var(--pt-text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .cell-z {
+            font-weight: 700;
+        }
+
+        .cell-mass {
+            font-size: 0.58rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 36px;
+        }
+
+        .cell-symbol {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--cell-text);
+        }
+
+        .cell-name {
+            font-size: 0.62rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 60px;
+            color: var(--pt-text-muted);
+        }
+
+        .cell-state-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 3px;
+            font-size: 0.55rem;
+            line-height: 1;
+            opacity: 0.8;
+        }
+
+        .cell-rad-badge {
+            position: absolute;
+            bottom: 2px;
+            left: 3px;
+            font-size: 0.55rem;
+            color: #ef4444;
+            line-height: 1;
+        }
+
+        /* Periodic Table Spacer / Series Placeholders */
+        .grid-placeholder {
+            border: 1px dashed var(--pt-border);
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--pt-text-muted);
+            background: var(--pt-card-sub);
+            text-align: center;
+            padding: 4px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .grid-placeholder:hover {
+            border-color: var(--pt-primary);
+            color: var(--pt-primary);
+            background: var(--pt-primary-light);
+        }
+
+        .grid-row-gap {
+            grid-column: 1 / span 18;
+            height: 12px;
+        }
+
+        /* Element Inspector Dossier */
+        .inspector-section {
+            background: var(--pt-card-bg);
+            border: 1px solid var(--pt-border);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--pt-shadow-lg);
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 28px;
+        }
+
+        @media (max-width: 992px) {
+            .inspector-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .inspector-left {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .element-badge-card {
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .badge-z {
+            font-size: 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            opacity: 0.9;
+        }
+
+        .badge-symbol {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1;
+            margin: 4px 0;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+
+        .badge-mass {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.92rem;
+            opacity: 0.9;
+        }
+
+        .badge-cat-pill {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(4px);
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* Bohr Model Canvas Container */
+        .bohr-model-card {
+            background: var(--pt-card-sub);
+            border: 1px solid var(--pt-border);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .bohr-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--pt-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        #bohrCanvas {
+            width: 100%;
+            max-width: 280px;
+            height: 220px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .config-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.84rem;
+            background: var(--pt-card-bg);
+            border: 1px solid var(--pt-border);
+            padding: 6px 10px;
+            border-radius: 6px;
+            color: var(--pt-primary);
+            font-weight: 600;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        .shell-count-row {
+            font-size: 0.74rem;
+            color: var(--pt-text-muted);
+            margin-top: 6px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Inspector Right Tabs & Info */
+        .inspector-right {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .inspector-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid var(--pt-border);
+            padding-bottom: 12px;
+        }
+
+        .inspector-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--pt-text-main);
+        }
+
+        .inspector-btn-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            padding: 7px 14px;
+            border-radius: 6px;
+            border: 1px solid var(--pt-border);
+            background: var(--pt-card-sub);
+            color: var(--pt-text-main);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            border-color: var(--pt-primary);
+            color: var(--pt-primary);
+        }
+
+        /* Exam Hotspot Callout */
+        .exam-callout {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(217, 119, 6, 0.04));
+            border-left: 4px solid #f59e0b;
+            border-radius: 0 10px 10px 0;
+            padding: 14px 18px;
+        }
+
+        .exam-callout-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #d97706;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .exam-callout-body {
+            font-size: 0.88rem;
+            color: var(--pt-text-main);
+            line-height: 1.6;
+        }
+
+        /* Property Grid */
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .prop-item {
+            background: var(--pt-card-sub);
+            border: 1px solid var(--pt-border);
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+
+        .prop-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--pt-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 3px;
+        }
+
+        .prop-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--pt-text-main);
+        }
+
+        .prop-val.highlight {
+            color: var(--pt-primary);
+        }
+
+        /* Real-world Uses Cards */
+        .uses-section-title {
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--pt-text-main);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .uses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+        }
+
+        .use-card {
+            background: var(--pt-card-sub);
+            border: 1px solid var(--pt-border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.84rem;
+            line-height: 1.4;
+        }
+
+        .use-card i {
+            color: var(--pt-primary);
+            font-size: 1rem;
+            margin-top: 2px;
+        }
+
+        /* Discovery & Etymology Strip */
+        .discovery-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            background: var(--pt-card-sub);
+            border: 1px solid var(--pt-border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 0.84rem;
+        }
+
+        .disc-item strong {
+            color: var(--pt-text-muted);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        /* Comparator Section */
+        .comparator-section {
+            background: var(--pt-card-bg);
+            border: 1px solid var(--pt-border);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--pt-shadow);
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--pt-border);
+            padding-bottom: 12px;
+        }
+
+        .section-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: var(--pt-primary-light);
+            color: var(--pt-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--pt-text-main);
+        }
+
+        .comparator-pickers {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .compare-select {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--pt-border);
+            background: var(--pt-card-sub);
+            color: var(--pt-text-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+            min-width: 220px;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+        }
+
+        .compare-table th, .compare-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--pt-border);
+            text-align: left;
+        }
+
+        .compare-table th {
+            color: var(--pt-text-muted);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            background: var(--pt-card-sub);
+        }
+
+        .compare-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+
+        /* MCQs Section */
+        .quiz-section {
+            background: var(--pt-card-bg);
+            border: 1px solid var(--pt-border);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--pt-shadow);
+            margin-bottom: 40px;
+        }
+
+        .quiz-score-badge {
+            background: var(--pt-primary-light);
+            color: var(--pt-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--pt-primary);
+        }
+
+        .quiz-card {
+            background: var(--pt-card-sub);
+            border: 1px solid var(--pt-border);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        .quiz-q-num {
+            font-size: 0.76rem;
+            font-weight: 800;
+            color: var(--pt-primary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .quiz-q-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--pt-text-main);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .quiz-opt-btn {
+            background: var(--pt-card-bg);
+            border: 1px solid var(--pt-border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 0.88rem;
+            color: var(--pt-text-main);
+            cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .quiz-opt-btn:hover:not(:disabled) {
+            border-color: var(--pt-primary);
+            background: var(--pt-primary-light);
+        }
+
+        .quiz-opt-btn.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: #10b981 !important;
+            color: #10b981 !important;
+            font-weight: 700;
+        }
+
+        .quiz-opt-btn.wrong {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: #ef4444 !important;
+            color: #ef4444 !important;
+            font-weight: 700;
+        }
+
+        .quiz-exp-box {
+            display: none;
+            background: var(--pt-card-bg);
+            border-left: 3px solid #10b981;
+            padding: 10px 14px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.84rem;
+            line-height: 1.5;
+            color: var(--pt-text-main);
+            margin-top: 8px;
+        }
+
+        /* Site Footer */
+        .site-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 20px 24px;
+            margin-top: auto;
+            border-top: 1px solid #1e293b;
+            font-size: 0.86rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #38bdf8;
+        }
+    </style>
+
+    <!-- Anti-FOUC Dark Mode Preload -->
+    <script>
+        if (localStorage.getItem('mcqs_dark_mode') === 'true' || 
+            (!('mcqs_dark_mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Academic Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+            <a href="international-organizations-explorer.html" class="switcher-btn"><i class="fas fa-sitemap"></i> Organizations</a>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> World Timeline</a>
+            <a href="global-power-comparison.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Global Power</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="periodic-table.html" class="switcher-btn active"><i class="fas fa-atom"></i> Periodic Table</a>
+        </div>
+    </div>
+
+    <!-- Site Header Navigation -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-atom"></i></div>
+                <span>CSS Prep Central</span>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="back-link"><i class="fas fa-home"></i> Home</a>
+                <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="badge-academic"><i class="fas fa-flask"></i> General Science &amp; Technology Suite</div>
+            <h1 class="hero-title">Interactive Periodic Table of Elements</h1>
+            <p class="hero-subtitle">
+                Explore all 118 chemical elements (Z = 1 to 118), animated Bohr electron configurations, periodic trends, real-world industrial &amp; medical applications, and high-yield CSS/PMS examination hotspots.
+            </p>
+            <div class="kpi-row">
+                <div class="kpi-pill"><strong>118</strong> Total Elements</div>
+                <div class="kpi-pill"><strong>94</strong> Naturally Occurring</div>
+                <div class="kpi-pill"><strong>24</strong> Synthetic Transuranics</div>
+                <div class="kpi-pill"><strong>18</strong> IUPAC Groups</div>
+                <div class="kpi-pill"><strong>7</strong> Periods</div>
+                <div class="kpi-pill"><strong>4</strong> Blocks (s, p, d, f)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="main-container">
+
+        <!-- Control Deck -->
+        <section class="control-deck">
+            <!-- Row 1: Search, STP Phase, Block & Exam Toggle -->
+            <div class="control-row">
+                <div class="search-box-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="elementSearchInput" class="search-input" placeholder="Search element, symbol, or Z (e.g. Fe, Iron, 26)...">
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">Phase at STP:</span>
+                    <button class="btn-filter active" data-phase="all">All</button>
+                    <button class="btn-filter" data-phase="Solid">Solid</button>
+                    <button class="btn-filter" data-phase="Liquid">Liquid</button>
+                    <button class="btn-filter" data-phase="Gas">Gas</button>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">Block:</span>
+                    <button class="btn-filter active" data-block="all">All</button>
+                    <button class="btn-filter" data-block="s">s</button>
+                    <button class="btn-filter" data-block="p">p</button>
+                    <button class="btn-filter" data-block="d">d</button>
+                    <button class="btn-filter" data-block="f">f</button>
+                </div>
+
+                <button class="btn-filter btn-exam-toggle" id="examFilterBtn">
+                    <i class="fas fa-star"></i> CSS Exam High-Yield Only
+                </button>
+            </div>
+
+            <!-- Row 2: Dynamic Temperature Simulation Slider -->
+            <div class="temp-row">
+                <div class="temp-display">
+                    <i class="fas fa-temperature-high"></i>
+                    <span id="tempValueLabel">298 K (25°C / Room Temp)</span>
+                </div>
+                <div class="temp-slider-wrap">
+                    <span style="font-size:0.76rem; color:var(--pt-text-muted); font-weight:700;">0 K</span>
+                    <input type="range" id="tempRangeSlider" class="temp-slider" min="0" max="6000" value="298" step="1">
+                    <span style="font-size:0.76rem; color:var(--pt-text-muted); font-weight:700;">6000 K</span>
+                </div>
+                <div class="temp-presets">
+                    <button class="temp-preset-btn" data-temp="0">0 K (Absolute Zero)</button>
+                    <button class="temp-preset-btn" data-temp="77">77 K (Liquid N₂)</button>
+                    <button class="temp-preset-btn" data-temp="298">298 K (STP / 25°C)</button>
+                    <button class="temp-preset-btn" data-temp="373">373 K (Boiling H₂O)</button>
+                    <button class="temp-preset-btn" data-temp="1800">1800 K (Blast Furnace)</button>
+                    <button class="temp-preset-btn" data-temp="5778">5778 K (Sun's Surface)</button>
+                </div>
+            </div>
+
+            <!-- Row 3: Periodic Trends Heatmap Selector -->
+            <div class="trends-bar">
+                <span class="filter-label"><i class="fas fa-chart-line"></i> Periodic Trends Heatmap:</span>
+                <select id="trendSelect" class="trend-select">
+                    <option value="none">Standard Category Color Palette</option>
+                    <option value="eneg">Electronegativity (Pauling Scale)</option>
+                    <option value="rad">Atomic Radius (Picometers - pm)</option>
+                    <option value="ion">First Ionization Energy (kJ/mol)</option>
+                    <option value="melt">Melting Point (°C)</option>
+                    <option value="dens">Density at STP (g/cm³)</option>
+                </select>
+                <div class="trend-legend" id="trendLegend">
+                    <span id="trendLegendMin">Min</span>
+                    <div class="trend-gradient-bar" id="trendGradientBar"></div>
+                    <span id="trendLegendMax">Max</span>
+                    <span id="trendLegendDesc" style="font-style:italic; margin-left:6px;"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Filter Pills Strip -->
+        <div class="category-legend-strip" id="categoryLegendStrip">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- 18-Column IUPAC Periodic Table Grid -->
+        <div class="table-scroll-wrapper">
+            <div class="periodic-grid" id="periodicGrid">
+                <!-- Dynamically Populated 118 Elements + Spacers -->
+            </div>
+        </div>
+
+        <!-- Element Dossier / Inspector Section -->
+        <section class="inspector-section" id="inspectorSection">
+            <!-- Left: Giant Badge & Animated Bohr Orbitals -->
+            <div class="inspector-left">
+                <div class="element-badge-card" id="inspectorBadgeCard" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);">
+                    <div class="badge-z" id="dossierZ">#6</div>
+                    <div class="badge-symbol" id="dossierSymbol">C</div>
+                    <div class="badge-name" id="dossierName">Carbon</div>
+                    <div class="badge-mass" id="dossierMass">12.011 u</div>
+                    <div class="badge-cat-pill" id="dossierCatPill">Reactive Nonmetal</div>
+                </div>
+
+                <div class="bohr-model-card">
+                    <div class="bohr-title"><i class="fas fa-atom"></i> Bohr Electron Orbital Model</div>
+                    <canvas id="bohrCanvas" width="280" height="220"></canvas>
+                    <div><span class="config-code" id="dossierConfig">1s² 2s² 2p²</span></div>
+                    <div class="shell-count-row" id="dossierShells">Electrons per Shell: 2, 4</div>
+                </div>
+            </div>
+
+            <!-- Right: Tabs, Hotspots, Physical Properties & Uses -->
+            <div class="inspector-right">
+                <div class="inspector-header-row">
+                    <div>
+                        <h2 class="inspector-title" id="dossierHeaderTitle">Carbon (C) &bull; Period 2, Group 14</h2>
+                        <div style="font-size:0.82rem; color:var(--pt-text-muted);" id="dossierSubtitle">Block: p-block &bull; Standard State: Solid</div>
+                    </div>
+                    <div class="inspector-btn-row">
+                        <button class="action-btn" id="addToCompareBtn"><i class="fas fa-exchange-alt"></i> Set as Comparator Element</button>
+                    </div>
+                </div>
+
+                <!-- High-Yield CSS/PMS Hotspot -->
+                <div class="exam-callout">
+                    <div class="exam-callout-header">
+                        <i class="fas fa-graduation-cap"></i> CSS / PMS / FPSC Exam High-Yield Hotspot
+                    </div>
+                    <div class="exam-callout-body" id="dossierExam">
+                        Basis of all organic chemistry and life on Earth. Allotropes include Diamond (sp³, hardest natural mineral, electrical insulator, thermal conductor), Graphite (sp², layered hexagonal sheets, electrical conductor, lubricant), Graphene, and Fullerenes (C-60 Buckyballs). Carbon-14 (beta decay, half-life 5,730 yrs) is used in radiocarbon dating.
+                    </div>
+                </div>
+
+                <!-- Physical Properties Grid -->
+                <div>
+                    <h3 class="uses-section-title"><i class="fas fa-microscope"></i> Physical &amp; Chemical Properties</h3>
+                    <div class="props-grid" id="dossierPropsGrid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Real-World Uses Cards -->
+                <div>
+                    <h3 class="uses-section-title"><i class="fas fa-cogs"></i> Real-World &amp; Industrial Applications</h3>
+                    <div class="uses-grid" id="dossierUsesGrid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Discovery & Etymology Strip -->
+                <div>
+                    <h3 class="uses-section-title"><i class="fas fa-history"></i> Discovery &amp; Etymology</h3>
+                    <div class="discovery-strip" id="dossierDiscoveryStrip">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Side-by-Side Element Comparator -->
+        <section class="comparator-section" id="comparatorSection">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon"><i class="fas fa-balance-scale-right"></i></div>
+                    <div>
+                        <h2 class="section-title">Side-by-Side Element Comparator</h2>
+                        <p style="font-size:0.84rem; color:var(--pt-text-muted);">Compare electronic configurations, periodic trends, and thermophysical constants between any two chemical elements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparator-pickers">
+                <div>
+                    <label style="font-size:0.78rem; font-weight:700; color:var(--pt-text-muted); display:block; margin-bottom:4px;">ELEMENT A:</label>
+                    <select id="compareSelectA" class="compare-select"></select>
+                </div>
+                <div style="font-weight:800; font-size:1.2rem; color:var(--pt-text-muted); padding-top:20px;">VS</div>
+                <div>
+                    <label style="font-size:0.78rem; font-weight:700; color:var(--pt-text-muted); display:block; margin-bottom:4px;">ELEMENT B:</label>
+                    <select id="compareSelectB" class="compare-select"></select>
+                </div>
+            </div>
+
+            <table class="compare-table" id="compareTable">
+                <thead>
+                    <tr>
+                        <th style="width:28%;">Property / Metric</th>
+                        <th style="width:36%;" id="thElementA">Element A</th>
+                        <th style="width:36%;" id="thElementB">Element B</th>
+                    </tr>
+                </thead>
+                <tbody id="compareTableBody">
+                    <!-- Populated dynamically -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Practice MCQs Section -->
+        <section class="quiz-section" id="quizSection">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon"><i class="fas fa-question-circle"></i></div>
+                    <div>
+                        <h2 class="section-title">General Science &amp; Periodic Table Quiz</h2>
+                        <p style="font-size:0.84rem; color:var(--pt-text-muted);">Test your mastery of atomic structures, periodic trends, and high-yield competitive examination questions with instant audio-visual feedback.</p>
+                    </div>
+                </div>
+                <div class="quiz-score-badge" id="quizScoreDisplay">Score: 0 / 12</div>
+            </div>
+
+            <div id="quizContainer">
+                <!-- Dynamically populated 12 questions -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <strong>CSS Prep Central &bull; General Science &amp; Technology Suite</strong>
+                <p style="font-size:0.78rem; margin-top:4px;">Dedicated to high-yield competitive examination preparation (CSS, PMS, FPSC, PPSC, KPPSC, SPSC, BPSC, NTS &amp; MDCAT).</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="solar-system-explorer.html">Solar System</a>
+                <a href="human-body-explorer.html">Human Body</a>
+                <a href="global-power-comparison.html">Global Power</a>
+                <a href="world-history-timeline.html">Timeline</a>
+                <a href="pakistan-map.html">Pakistan Map</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Periodic Table Dataset -->
+    <script src="js/data_periodic_table.js"></script>
+
+    <!-- Interactive Periodic Table Engine Script -->
+    <script>
+        // Web Audio Synthesizer (Zero External Dependencies)
+        function playChime(isCorrect) {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                const ctx = new AudioCtx();
+                if (ctx.state === 'suspended') ctx.resume();
+
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                const now = ctx.currentTime;
+                if (isCorrect) {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.15); // G5
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now); // A3
+                    osc.frequency.linearRampToValueAtTime(146.83, now + 0.2); // D3
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                }
+            } catch (e) {
+                // AudioContext not allowed or unsupported
+            }
+        }
+
+        // Global State
+        let currentSelectedZ = 6; // Default to Carbon
+        let currentTempK = 298; // 25°C
+        let currentPhaseFilter = 'all';
+        let currentBlockFilter = 'all';
+        let currentCategoryFilter = 'all';
+        let isExamOnly = false;
+        let currentTrend = 'none';
+        let quizScore = 0;
+        let answeredQuestions = new Set();
+        let animationFrameId = null;
+
+        // High-Yield CSS/PMS Exam Elements (Z numbers)
+        const EXAM_HOTSPOT_Z = [1, 2, 3, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 20, 26, 29, 30, 35, 47, 50, 53, 54, 55, 56, 74, 76, 78, 79, 80, 82, 83, 86, 88, 90, 92, 94, 95, 101, 118];
+
+        // Initialize Page
+        document.addEventListener('DOMContentLoaded', () => {
+            initThemeToggle();
+            initCategoryLegend();
+            renderPeriodicTableGrid();
+            initControlDeckEvents();
+            initComparator();
+            initQuiz();
+            selectElement(6); // Default Carbon
+        });
+
+        // Theme Toggle
+        function initThemeToggle() {
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            const themeIcon = document.getElementById('themeIcon');
+
+            function updateIcon() {
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            updateIcon();
+
+            toggleBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                updateIcon();
+                renderBohrModel(currentSelectedZ); // Redraw canvas for theme contrast
+            });
+        }
+
+        // Category Legend Strip
+        function initCategoryLegend() {
+            const container = document.getElementById('categoryLegendStrip');
+            if (!container || !window.PERIODIC_TABLE_DATA) return;
+
+            const cats = window.PERIODIC_TABLE_DATA.categories;
+            let html = \`<div class="cat-chip active" data-cat="all" style="background:var(--pt-primary-light); color:var(--pt-primary); border-color:var(--pt-primary);">
+                <span class="cat-dot" style="background:var(--pt-primary);"></span> All Categories
+            </div>\`;
+
+            Object.keys(cats).forEach(key => {
+                const c = cats[key];
+                html += \`<div class="cat-chip" data-cat="\${key}" style="background:var(--pt-card-bg); color:var(--pt-text-main); border:1px solid var(--pt-border);" title="\${c.desc}">
+                    <span class="cat-dot" style="background:\${c.color};"></span> \${c.name}
+                </div>\`;
+            });
+
+            container.innerHTML = html;
+
+            container.querySelectorAll('.cat-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    container.querySelectorAll('.cat-chip').forEach(c => {
+                        c.classList.remove('active');
+                        c.style.borderColor = 'var(--pt-border)';
+                        c.style.background = 'var(--pt-card-bg)';
+                    });
+                    chip.classList.add('active');
+                    chip.style.borderColor = 'var(--pt-primary)';
+                    chip.style.background = 'var(--pt-primary-light)';
+
+                    currentCategoryFilter = chip.getAttribute('data-cat');
+                    applyFilters();
+                });
+            });
+        }
+
+        // Periodic Table Grid Coordinate Calculation
+        // Standard 18x10 IUPAC Grid
+        function getElementGridPosition(el) {
+            const z = el.z;
+            // Lanthanides (57-71) -> Row 9, Columns 4 to 18
+            if (z >= 57 && z <= 71) {
+                return { row: 9, col: z - 57 + 4 };
+            }
+            // Actinides (89-103) -> Row 10, Columns 4 to 18
+            if (z >= 89 && z <= 103) {
+                return { row: 10, col: z - 89 + 4 };
+            }
+
+            // Normal Periods 1-7
+            const period = el.per;
+            const group = el.grp;
+            return { row: period, col: group };
+        }
+
+        // Render Periodic Table Grid
+        function renderPeriodicTableGrid() {
+            const grid = document.getElementById('periodicGrid');
+            if (!grid || !window.PERIODIC_TABLE_DATA) return;
+
+            const elements = window.PERIODIC_TABLE_DATA.elements;
+            const cats = window.PERIODIC_TABLE_DATA.categories;
+
+            grid.innerHTML = '';
+
+            // Add Lanthanide and Actinide series placeholders in rows 6 & 7 col 3
+            const laPlaceholder = document.createElement('div');
+            laPlaceholder.className = 'grid-placeholder';
+            laPlaceholder.style.gridRow = '6';
+            laPlaceholder.style.gridColumn = '3';
+            laPlaceholder.innerHTML = '<strong>57-71</strong><span>La-Lu</span><span style="font-size:0.56rem;">Lanthanides</span>';
+            laPlaceholder.onclick = () => selectElement(57);
+            grid.appendChild(laPlaceholder);
+
+            const acPlaceholder = document.createElement('div');
+            acPlaceholder.className = 'grid-placeholder';
+            acPlaceholder.style.gridRow = '7';
+            acPlaceholder.style.gridColumn = '3';
+            acPlaceholder.innerHTML = '<strong>89-103</strong><span>Ac-Lr</span><span style="font-size:0.56rem;">Actinides</span>';
+            acPlaceholder.onclick = () => selectElement(89);
+            grid.appendChild(acPlaceholder);
+
+            // Add gap row between Main Table and Lanthanides
+            const gapRow = document.createElement('div');
+            gapRow.className = 'grid-row-gap';
+            gapRow.style.gridRow = '8';
+            grid.appendChild(gapRow);
+
+            // Add Lanthanide & Actinide row labels in col 2
+            const laLabel = document.createElement('div');
+            laLabel.className = 'grid-placeholder';
+            laLabel.style.gridRow = '9';
+            laLabel.style.gridColumn = '1 / span 3';
+            laLabel.style.textAlign = 'right';
+            laLabel.style.paddingRight = '8px';
+            laLabel.style.fontWeight = '700';
+            laLabel.style.fontSize = '0.74rem';
+            laLabel.style.color = '#d97706';
+            laLabel.innerHTML = '★ Lanthanides (4f)';
+            grid.appendChild(laLabel);
+
+            const acLabel = document.createElement('div');
+            acLabel.className = 'grid-placeholder';
+            acLabel.style.gridRow = '10';
+            acLabel.style.gridColumn = '1 / span 3';
+            acLabel.style.textAlign = 'right';
+            acLabel.style.paddingRight = '8px';
+            acLabel.style.fontWeight = '700';
+            acLabel.style.fontSize = '0.74rem';
+            acLabel.style.color = '#db2777';
+            acLabel.innerHTML = '☢ Actinides (5f)';
+            grid.appendChild(acLabel);
+
+            // Render all 118 Elements
+            elements.forEach(el => {
+                const pos = getElementGridPosition(el);
+                const cell = document.createElement('div');
+                cell.className = 'element-cell';
+                cell.id = 'cell-' + el.z;
+                cell.dataset.z = el.z;
+                cell.dataset.cat = el.cat;
+                cell.dataset.phase = el.phase;
+                cell.dataset.block = el.blk;
+                cell.style.gridRow = pos.row;
+                cell.style.gridColumn = pos.col;
+
+                // Color based on category
+                const catInfo = cats[el.cat] || { color: '#64748b' };
+                cell.style.borderTop = '3px solid ' + catInfo.color;
+
+                const stateIcon = getStateIconForTemp(el, currentTempK);
+
+                cell.innerHTML = \`
+                    <div class="cell-top-bar">
+                        <span class="cell-z">\${el.z}</span>
+                        <span class="cell-mass">\${typeof el.mass === 'number' ? el.mass.toFixed(el.mass < 10 ? 2 : 1) : el.mass}</span>
+                    </div>
+                    <div class="cell-symbol" style="color:\${catInfo.color}">\${el.s}</div>
+                    <div class="cell-name">\${el.n}</div>
+                    <span class="cell-state-badge" id="state-badge-\${el.z}">\${stateIcon}</span>
+                    \${el.radActive ? '<span class="cell-rad-badge" title="Radioactive Element">☢</span>' : ''}
+                \`;
+
+                cell.addEventListener('click', () => {
+                    selectElement(el.z);
+                });
+
+                grid.appendChild(cell);
+            });
+        }
+
+        // Determine live phase (Solid, Liquid, Gas) at temperature T (Kelvin)
+        function getLivePhaseAtTemp(el, tempK) {
+            const tempC = tempK - 273.15;
+            if (el.melt === null || el.boil === null) {
+                return el.phase; // Fallback to STP default
+            }
+            if (tempC < el.melt) return "Solid";
+            if (tempC >= el.melt && tempC < el.boil) return "Liquid";
+            return "Gas";
+        }
+
+        function getStateIconForTemp(el, tempK) {
+            const phase = getLivePhaseAtTemp(el, tempK);
+            if (phase === 'Solid') return '🧊';
+            if (phase === 'Liquid') return '💧';
+            if (phase === 'Gas') return '💨';
+            return '❓';
+        }
+
+        // Apply Search & Filters
+        function applyFilters() {
+            const query = document.getElementById('elementSearchInput').value.trim().toLowerCase();
+            const elements = window.PERIODIC_TABLE_DATA.elements;
+
+            elements.forEach(el => {
+                const cell = document.getElementById('cell-' + el.z);
+                if (!cell) return;
+
+                let match = true;
+
+                // Search query
+                if (query) {
+                    const matchName = el.n.toLowerCase().includes(query);
+                    const matchSymbol = el.s.toLowerCase() === query || el.s.toLowerCase().startsWith(query);
+                    const matchZ = String(el.z) === query;
+                    if (!matchName && !matchSymbol && !matchZ) {
+                        match = false;
+                    }
+                }
+
+                // Category filter
+                if (match && currentCategoryFilter !== 'all') {
+                    if (el.cat !== currentCategoryFilter) match = false;
+                }
+
+                // Phase filter (evaluated at current temperature)
+                if (match && currentPhaseFilter !== 'all') {
+                    const livePhase = getLivePhaseAtTemp(el, currentTempK);
+                    if (livePhase !== currentPhaseFilter) match = false;
+                }
+
+                // Block filter
+                if (match && currentBlockFilter !== 'all') {
+                    if (el.blk !== currentBlockFilter) match = false;
+                }
+
+                // Exam filter
+                if (match && isExamOnly) {
+                    if (!EXAM_HOTSPOT_Z.includes(el.z)) match = false;
+                }
+
+                if (match) {
+                    cell.classList.remove('dimmed');
+                    if (isExamOnly && EXAM_HOTSPOT_Z.includes(el.z)) {
+                        cell.classList.add('exam-highlight');
+                    } else {
+                        cell.classList.remove('exam-highlight');
+                    }
+                } else {
+                    cell.classList.add('dimmed');
+                    cell.classList.remove('exam-highlight');
+                }
+            });
+        }
+
+        // Select an element & populate Dossier
+        function selectElement(z) {
+            const elements = window.PERIODIC_TABLE_DATA.elements;
+            const cats = window.PERIODIC_TABLE_DATA.categories;
+            const el = elements.find(e => e.z === z);
+            if (!el) return;
+
+            currentSelectedZ = z;
+
+            // Highlight selected in grid
+            document.querySelectorAll('.element-cell').forEach(c => c.classList.remove('selected'));
+            const activeCell = document.getElementById('cell-' + z);
+            if (activeCell) activeCell.classList.add('selected');
+
+            // Category Info
+            const cat = cats[el.cat] || { name: el.catName, color: '#0284c7' };
+
+            // Left Badge
+            const badgeCard = document.getElementById('inspectorBadgeCard');
+            badgeCard.style.background = \`linear-gradient(135deg, \${cat.color}, #1e293b)\`;
+            document.getElementById('dossierZ').textContent = '#' + el.z;
+            document.getElementById('dossierSymbol').textContent = el.s;
+            document.getElementById('dossierName').textContent = el.n;
+            document.getElementById('dossierMass').textContent = typeof el.mass === 'number' ? el.mass.toFixed(el.mass < 10 ? 4 : 3) + ' u' : el.mass + ' u';
+            document.getElementById('dossierCatPill').textContent = el.catName;
+
+            // Electron Configuration
+            document.getElementById('dossierConfig').textContent = el.config;
+            document.getElementById('dossierShells').textContent = 'Electrons per Shell: ' + el.shells.join(', ');
+
+            // Header Row
+            document.getElementById('dossierHeaderTitle').innerHTML = \`\${el.n} (\${el.s}) &bull; Period \${el.per}\${el.grp ? ', Group ' + el.grp : ''}\`;
+            const currentPhase = getLivePhaseAtTemp(el, currentTempK);
+            document.getElementById('dossierSubtitle').innerHTML = \`
+                Block: <strong>\${el.blk}-block</strong> &bull; 
+                State at \${currentTempK} K: <strong>\${currentPhase}</strong> &bull; 
+                Oxidation States: <strong>\${el.ox}</strong>
+                \${el.radActive ? ' &bull; <span style="color:#ef4444; font-weight:700;">☢ Highly Radioactive</span>' : ''}
+            \`;
+
+            // Exam Hotspot
+            document.getElementById('dossierExam').textContent = el.exam;
+
+            // Physical Properties Grid
+            const propsGrid = document.getElementById('dossierPropsGrid');
+            propsGrid.innerHTML = \`
+                <div class="prop-item">
+                    <div class="prop-label">Melting Point</div>
+                    <div class="prop-val \${el.melt !== null ? 'highlight' : ''}">\${el.melt !== null ? el.melt + ' °C' : 'Unknown'}</div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-label">Boiling Point</div>
+                    <div class="prop-val \${el.boil !== null ? 'highlight' : ''}">\${el.boil !== null ? el.boil + ' °C' : 'Unknown'}</div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-label">Density (STP)</div>
+                    <div class="prop-val">\${el.dens ? el.dens + ' g/cm³' : 'Unknown'}</div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-label">Electronegativity</div>
+                    <div class="prop-val \${el.eneg ? 'highlight' : ''}">\${el.eneg !== null ? el.eneg + ' (Pauling)' : 'None'}</div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-label">1st Ionization Energy</div>
+                    <div class="prop-val">\${el.ion ? el.ion + ' kJ/mol' : 'Unknown'}</div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-label">Atomic Radius</div>
+                    <div class="prop-val">\${el.rad ? el.rad + ' pm' : 'Calculated'}</div>
+                </div>
+            \`;
+
+            // Real-World Uses Grid
+            const usesGrid = document.getElementById('dossierUsesGrid');
+            const icons = ['fa-microchip', 'fa-industry', 'fa-flask-vial', 'fa-solar-panel', 'fa-shield-halved', 'fa-heart-pulse'];
+            usesGrid.innerHTML = el.uses.map((u, i) => \`
+                <div class="use-card">
+                    <i class="fas \${icons[i % icons.length]}"></i>
+                    <div>\${u}</div>
+                </div>
+            \`).join('');
+
+            // Discovery & Etymology Strip
+            const discStrip = document.getElementById('dossierDiscoveryStrip');
+            discStrip.innerHTML = \`
+                <div class="disc-item">
+                    <strong>Discoverer</strong>
+                    <span>\${el.disc}</span>
+                </div>
+                <div class="disc-item">
+                    <strong>Year Discovered</strong>
+                    <span>\${el.year}</span>
+                </div>
+                <div class="disc-item">
+                    <strong>Country of Discovery</strong>
+                    <span>\${el.loc}</span>
+                </div>
+                <div class="disc-item">
+                    <strong>Etymology / Name Origin</strong>
+                    <span>\${el.etym}</span>
+                </div>
+            \`;
+
+            // Render Animated Bohr Canvas
+            renderBohrModel(z);
+        }
+
+        // Render Bohr Model with Orbiting Electrons
+        function renderBohrModel(z) {
+            const elements = window.PERIODIC_TABLE_DATA.elements;
+            const el = elements.find(e => e.z === z);
+            if (!el) return;
+
+            const canvas = document.getElementById('bohrCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const shells = el.shells;
+            const numShells = shells.length;
+            const maxRadius = Math.min(centerX, centerY) - 15;
+            const radiusStep = maxRadius / (numShells + 1.2);
+
+            let angleOffset = 0;
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const isDark = document.documentElement.classList.contains('dark-mode');
+
+                // Draw Nucleus
+                const nucleusRadius = Math.max(12, radiusStep * 0.7);
+                const nucGrad = ctx.createRadialGradient(centerX - 3, centerY - 3, 2, centerX, centerY, nucleusRadius);
+                nucGrad.addColorStop(0, '#f87171');
+                nucGrad.addColorStop(1, '#dc2626');
+
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, nucleusRadius, 0, Math.PI * 2);
+                ctx.fillStyle = nucGrad;
+                ctx.fill();
+
+                // Nucleus text (Symbol + Z)
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 11px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(el.s, centerX, centerY - 2);
+                ctx.font = '9px JetBrains Mono, monospace';
+                ctx.fillText('+' + el.z, centerX, centerY + 8);
+
+                // Draw Shells and Electrons
+                shells.forEach((electronCount, shellIdx) => {
+                    const r = (shellIdx + 1.4) * radiusStep;
+
+                    // Shell orbit ring
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
+                    ctx.strokeStyle = isDark ? 'rgba(148, 163, 184, 0.25)' : 'rgba(100, 116, 139, 0.2)';
+                    ctx.lineWidth = 1;
+                    ctx.setLineDash([3, 3]);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+
+                    // Draw electrons evenly spaced along shell
+                    const speedMultiplier = (shellIdx % 2 === 0 ? 1 : -1) * (0.012 / (shellIdx + 1));
+                    const currentAngle = angleOffset * speedMultiplier;
+
+                    for (let i = 0; i < electronCount; i++) {
+                        const theta = currentAngle + (i * 2 * Math.PI / electronCount);
+                        const ex = centerX + r * Math.cos(theta);
+                        const ey = centerY + r * Math.sin(theta);
+
+                        // Electron glow & circle
+                        ctx.beginPath();
+                        ctx.arc(ex, ey, 3.5, 0, Math.PI * 2);
+                        ctx.fillStyle = '#38bdf8';
+                        ctx.shadowColor = '#0284c7';
+                        ctx.shadowBlur = 6;
+                        ctx.fill();
+                        ctx.shadowBlur = 0; // reset
+                    }
+                });
+
+                angleOffset += 1;
+                animationFrameId = requestAnimationFrame(draw);
+            }
+
+            draw();
+        }
+
+        // Initialize Controls Events
+        function initControlDeckEvents() {
+            // Search Input
+            const searchInput = document.getElementById('elementSearchInput');
+            searchInput.addEventListener('input', () => {
+                applyFilters();
+                // If exact match symbol, select it
+                const q = searchInput.value.trim().toLowerCase();
+                const found = window.PERIODIC_TABLE_DATA.elements.find(e => e.s.toLowerCase() === q);
+                if (found) selectElement(found.z);
+            });
+
+            // Phase Buttons
+            document.querySelectorAll('[data-phase]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('[data-phase]').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentPhaseFilter = btn.getAttribute('data-phase');
+                    applyFilters();
+                });
+            });
+
+            // Block Buttons
+            document.querySelectorAll('[data-block]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('[data-block]').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentBlockFilter = btn.getAttribute('data-block');
+                    applyFilters();
+                });
+            });
+
+            // Exam Hotspots Toggle
+            const examBtn = document.getElementById('examFilterBtn');
+            examBtn.addEventListener('click', () => {
+                isExamOnly = !isExamOnly;
+                examBtn.classList.toggle('active', isExamOnly);
+                applyFilters();
+            });
+
+            // Temperature Slider
+            const tempSlider = document.getElementById('tempRangeSlider');
+            const tempLabel = document.getElementById('tempValueLabel');
+
+            function updateTemperature(k) {
+                currentTempK = parseInt(k, 10);
+                tempSlider.value = currentTempK;
+                const c = (currentTempK - 273.15).toFixed(0);
+                tempLabel.textContent = \`\${currentTempK} K (\${c}°C)\`;
+
+                // Update live state icon in each grid cell
+                const elements = window.PERIODIC_TABLE_DATA.elements;
+                elements.forEach(el => {
+                    const badge = document.getElementById('state-badge-' + el.z);
+                    if (badge) badge.textContent = getStateIconForTemp(el, currentTempK);
+                });
+
+                // Update inspector subtitle if element is selected
+                const currentEl = elements.find(e => e.z === currentSelectedZ);
+                if (currentEl) {
+                    const phase = getLivePhaseAtTemp(currentEl, currentTempK);
+                    const sub = document.getElementById('dossierSubtitle');
+                    if (sub) {
+                        sub.innerHTML = \`
+                            Block: <strong>\${currentEl.blk}-block</strong> &bull; 
+                            State at \${currentTempK} K: <strong>\${phase}</strong> &bull; 
+                            Oxidation States: <strong>\${currentEl.ox}</strong>
+                            \${currentEl.radActive ? ' &bull; <span style="color:#ef4444; font-weight:700;">☢ Highly Radioactive</span>' : ''}
+                        \`;
+                    }
+                }
+
+                if (currentPhaseFilter !== 'all') applyFilters();
+            }
+
+            tempSlider.addEventListener('input', (e) => updateTemperature(e.target.value));
+
+            document.querySelectorAll('.temp-preset-btn').forEach(btn => {
+                btn.addEventListener('click', () => updateTemperature(btn.getAttribute('data-temp')));
+            });
+
+            // Periodic Trends Heatmap
+            const trendSelect = document.getElementById('trendSelect');
+            trendSelect.addEventListener('change', (e) => {
+                currentTrend = e.target.value;
+                applyTrendHeatmap(currentTrend);
+            });
+
+            // Add to Comparator button
+            document.getElementById('addToCompareBtn').addEventListener('click', () => {
+                const selectA = document.getElementById('compareSelectA');
+                if (selectA) {
+                    selectA.value = currentSelectedZ;
+                    updateComparator();
+                    document.getElementById('comparatorSection').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+
+        // Apply Periodic Trends Heatmap Coloring
+        function applyTrendHeatmap(trendKey) {
+            const legend = document.getElementById('trendLegend');
+            const elements = window.PERIODIC_TABLE_DATA.elements;
+            const cats = window.PERIODIC_TABLE_DATA.categories;
+            const trendMeta = window.PERIODIC_TABLE_DATA.trends[trendKey];
+
+            if (trendKey === 'none' || !trendMeta) {
+                legend.style.display = 'none';
+                elements.forEach(el => {
+                    const cell = document.getElementById('cell-' + el.z);
+                    if (!cell) return;
+                    const cat = cats[el.cat] || { color: '#64748b' };
+                    cell.style.background = 'var(--cell-bg)';
+                    cell.style.borderTop = '3px solid ' + cat.color;
+                    const sym = cell.querySelector('.cell-symbol');
+                    if (sym) sym.style.color = cat.color;
+                });
+                return;
+            }
+
+            // Show Legend
+            legend.style.display = 'flex';
+            document.getElementById('trendLegendMin').textContent = trendMeta.min + ' ' + (trendMeta.unit.includes('(') ? '' : trendMeta.unit);
+            document.getElementById('trendLegendMax').textContent = trendMeta.max + ' ' + trendMeta.unit;
+            document.getElementById('trendGradientBar').style.background = \`linear-gradient(90deg, \${trendMeta.minColor}, \${trendMeta.maxColor})\`;
+            document.getElementById('trendLegendDesc').textContent = '— ' + trendMeta.desc;
+
+            elements.forEach(el => {
+                const cell = document.getElementById('cell-' + el.z);
+                if (!cell) return;
+
+                let val = el[trendKey];
+                if (trendKey === 'dens') val = parseFloat(el.dens);
+
+                if (val === null || val === undefined || isNaN(val)) {
+                    cell.style.background = 'var(--cell-bg)';
+                    cell.style.borderTop = '1px solid var(--cell-border)';
+                    return;
+                }
+
+                // Interpolate color ratio (0 to 1)
+                const ratio = Math.max(0, Math.min(1, (val - trendMeta.min) / (trendMeta.max - trendMeta.min)));
+                const bgRgba = hexToRgba(trendMeta.maxColor, 0.15 + ratio * 0.45);
+                cell.style.background = bgRgba;
+                cell.style.borderTop = '3px solid ' + trendMeta.maxColor;
+                const sym = cell.querySelector('.cell-symbol');
+                if (sym) sym.style.color = trendMeta.maxColor;
+            });
+        }
+
+        function hexToRgba(hex, alpha) {
+            let c = hex.replace('#', '');
+            if (c.length === 3) c = c.split('').map(x => x + x).join('');
+            const r = parseInt(c.substring(0, 2), 16);
+            const g = parseInt(c.substring(2, 4), 16);
+            const b = parseInt(c.substring(4, 6), 16);
+            return \`rgba(\${r}, \${g}, \${b}, \${alpha})\`;
+        }
+
+        // Initialize Comparator
+        function initComparator() {
+            const selectA = document.getElementById('compareSelectA');
+            const selectB = document.getElementById('compareSelectB');
+            const elements = window.PERIODIC_TABLE_DATA.elements;
+
+            let optionsHtml = '';
+            elements.forEach(el => {
+                optionsHtml += \`<option value="\${el.z}">\${el.z}. \${el.n} (\${el.s})</option>\`;
+            });
+
+            selectA.innerHTML = optionsHtml;
+            selectB.innerHTML = optionsHtml;
+
+            selectA.value = 6;  // Carbon
+            selectB.value = 14; // Silicon
+
+            selectA.addEventListener('change', updateComparator);
+            selectB.addEventListener('change', updateComparator);
+
+            updateComparator();
+        }
+
+        function updateComparator() {
+            const zA = parseInt(document.getElementById('compareSelectA').value, 10);
+            const zB = parseInt(document.getElementById('compareSelectB').value, 10);
+            const elements = window.PERIODIC_TABLE_DATA.elements;
+
+            const elA = elements.find(e => e.z === zA);
+            const elB = elements.find(e => e.z === zB);
+            if (!elA || !elB) return;
+
+            document.getElementById('thElementA').textContent = \`\${elA.n} (\${elA.s})\`;
+            document.getElementById('thElementB').textContent = \`\${elB.n} (\${elB.s})\`;
+
+            const rows = [
+                { label: 'Atomic Number (Z)', valA: elA.z, valB: elB.z, mono: true },
+                { label: 'Standard Atomic Mass', valA: elA.mass + ' u', valB: elB.mass + ' u', mono: true },
+                { label: 'Category', valA: elA.catName, valB: elB.catName },
+                { label: 'Period, Group, Block', valA: \`Period \${elA.per}, Grp \${elA.grp || 'f'}, \${elA.blk}-block\`, valB: \`Period \${elB.per}, Grp \${elB.grp || 'f'}, \${elB.blk}-block\` },
+                { label: 'Electron Configuration', valA: elA.config, valB: elB.config, mono: true },
+                { label: 'Electrons per Shell', valA: elA.shells.join(', '), valB: elB.shells.join(', '), mono: true },
+                { label: 'Standard Phase at 25°C', valA: elA.phase, valB: elB.phase },
+                { label: 'Melting Point', valA: elA.melt !== null ? elA.melt + ' °C' : 'Unknown', valB: elB.melt !== null ? elB.melt + ' °C' : 'Unknown', mono: true },
+                { label: 'Boiling Point', valA: elA.boil !== null ? elA.boil + ' °C' : 'Unknown', valB: elB.boil !== null ? elB.boil + ' °C' : 'Unknown', mono: true },
+                { label: 'Density at STP', valA: elA.dens ? elA.dens + ' g/cm³' : 'Unknown', valB: elB.dens ? elB.dens + ' g/cm³' : 'Unknown', mono: true },
+                { label: 'Electronegativity (Pauling)', valA: elA.eneg !== null ? elA.eneg : 'None', valB: elB.eneg !== null ? elB.eneg : 'None', mono: true },
+                { label: '1st Ionization Energy', valA: elA.ion ? elA.ion + ' kJ/mol' : 'Unknown', valB: elB.ion ? elB.ion + ' kJ/mol' : 'Unknown', mono: true },
+                { label: 'Atomic Radius', valA: elA.rad ? elA.rad + ' pm' : 'Unknown', valB: elB.rad ? elB.rad + ' pm' : 'Unknown', mono: true },
+                { label: 'Common Oxidation States', valA: elA.ox, valB: elB.ox },
+                { label: 'Primary Real-World Use', valA: elA.uses[0] || 'N/A', valB: elB.uses[0] || 'N/A' }
+            ];
+
+            const tbody = document.getElementById('compareTableBody');
+            tbody.innerHTML = rows.map(r => \`
+                <tr>
+                    <td><strong>\${r.label}</strong></td>
+                    <td class="\${r.mono ? 'compare-val' : ''}">\${r.valA}</td>
+                    <td class="\${r.mono ? 'compare-val' : ''}">\${r.valB}</td>
+                </tr>
+            \`).join('');
+        }
+
+        // Initialize 12 MCQs
+        function initQuiz() {
+            const container = document.getElementById('quizContainer');
+            if (!container || !window.PERIODIC_TABLE_DATA) return;
+
+            const mcqs = window.PERIODIC_TABLE_DATA.mcqs;
+            container.innerHTML = '';
+            quizScore = 0;
+            answeredQuestions.clear();
+            document.getElementById('quizScoreDisplay').textContent = \`Score: 0 / \${mcqs.length}\`;
+
+            mcqs.forEach((item, qIdx) => {
+                const card = document.createElement('div');
+                card.className = 'quiz-card';
+                card.id = 'quiz-card-' + item.id;
+
+                let optsHtml = '';
+                item.opts.forEach((opt, optIdx) => {
+                    optsHtml += \`<button class="quiz-opt-btn" data-qid="\${item.id}" data-opt="\${optIdx}">
+                        <span style="font-weight:700; color:var(--pt-primary);">\${String.fromCharCode(65 + optIdx)}.</span> \${opt}
+                    </button>\`;
+                });
+
+                card.innerHTML = \`
+                    <div class="quiz-q-num">Question \${qIdx + 1} of \${mcqs.length} &bull; General Science High-Yield</div>
+                    <div class="quiz-q-text">\${item.q}</div>
+                    <div class="quiz-options">\${optsHtml}</div>
+                    <div class="quiz-exp-box" id="exp-\${item.id}">
+                        <strong><i class="fas fa-check-circle" style="color:#10b981;"></i> Explanation:</strong> \${item.exp}
+                    </div>
+                \`;
+
+                container.appendChild(card);
+            });
+
+            // Add Click Handlers
+            container.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const qId = parseInt(btn.getAttribute('data-qid'), 10);
+                    const selectedOpt = parseInt(btn.getAttribute('data-opt'), 10);
+
+                    if (answeredQuestions.has(qId)) return;
+                    answeredQuestions.add(qId);
+
+                    const qItem = mcqs.find(m => m.id === qId);
+                    const card = document.getElementById('quiz-card-' + qId);
+                    const allBtns = card.querySelectorAll('.quiz-opt-btn');
+                    const expBox = document.getElementById('exp-' + qId);
+
+                    allBtns.forEach(b => b.disabled = true);
+
+                    if (selectedOpt === qItem.ans) {
+                        btn.classList.add('correct');
+                        quizScore++;
+                        playChime(true);
+                    } else {
+                        btn.classList.add('wrong');
+                        allBtns[qItem.ans].classList.add('correct');
+                        playChime(false);
+                    }
+
+                    expBox.style.display = 'block';
+                    document.getElementById('quizScoreDisplay').textContent = \`Score: \${quizScore} / \${mcqs.length}\`;
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
+`;
+
+fs.writeFileSync('frontend/periodic-table.html', htmlContent, 'utf8');
+console.log('Successfully written frontend/periodic-table.html! Size: ' + (htmlContent.length / 1024).toFixed(1) + ' KB');

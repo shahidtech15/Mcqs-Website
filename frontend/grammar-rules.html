@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Complete English Grammar Rules Handbook for Competitive Exams (CSS, PMS, FPSC, PPSC, NTS). Master Active and Passive Voice, Direct and Indirect Narration, Prepositions, and Parts of Speech identification with interactive examples and drills.">
+    <title>English Grammar Rules &amp; Handbook | Active Passive, Narration, Prepositions &amp; Parts of Speech</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .grammar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .grammar-block {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+            scroll-margin-top: 100px;
+            transition: var(--transition);
+        }
+
+        .grammar-block:hover {
+            box-shadow: var(--hover-shadow);
+        }
+
+        .grammar-header-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+        .grammar-header-title h2 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .grammar-icon-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .prep-search-box {
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            background: var(--white);
+            color: var(--text-dark);
+        }
+
+        body.dark-mode .grammar-block {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        body.dark-mode .prep-search-box {
+            background: #0f172a;
+            border-color: #334155;
+            color: #cbd5e1;
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/grammar-rules.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/grammar-rules.html">
+    <meta property="og:title" content="English Grammar Rules &amp; Handbook | Active Passive, Narration, Prepositions &amp; Parts of Speech">
+    <meta property="og:description" content="Complete English Grammar Rules Handbook for Competitive Exams (CSS, PMS, FPSC, PPSC, NTS). Master Active and Passive Voice, Direct and Indirect Narration, Prepositions, and Parts of Speech identifi...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="English Grammar Rules &amp; Handbook | Active Passive, Narration, Prepositions &amp; Parts of Speech">
+    <meta name="twitter:description" content="Complete English Grammar Rules Handbook for Competitive Exams (CSS, PMS, FPSC, PPSC, NTS). Master Active and Passive Voice, Direct and Indirect Narration, Prepositions, and Parts of Speech identifi...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="acts-rules.html">Acts &amp; Rules</a>
+                <a href="articles.html">Articles</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="fia-sample-papers.html">FIA Papers</a>
+                <a href="grammar-rules.html" class="active">Grammar Rules</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="exam-guide.html">Exam Guide</a>
+                <a href="science-notes.html">Science Notes</a>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Menu Bar -->
+    <nav class="secondary-navbar" aria-label="Secondary Navigation">
+        <div class="container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="articles.html" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-book-open"></i> Study Articles</a></li>
+                <li><a href="timeline.html" style="font-weight: 700; color: #4338ca;"><i class="fa-solid fa-timeline"></i> Historical Timeline</a></li>
+                <li><a href="leaderboard.html" style="font-weight: 700; color: #f59e0b;"><i class="fa-solid fa-trophy"></i> Daily Challenge &amp; Leaderboard</a></li>
+                <li><a href="dashboard.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="ai-assistant.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-robot"></i> AI Study Assistant</a></li>
+                <li><a href="editorial-explainer.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-newspaper"></i> Editorial Explainer</a></li>
+                <li><a href="world-map.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-earth-americas"></i> Interactive World Map</a></li>
+                <li><a href="digital-library.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-book-bookmark"></i> Digital Library &amp; Reports</a></li>
+                <li><a href="recommended-books.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-book"></i> Recommended Books</a></li>
+                <li><a href="fia-sample-papers.html" style="font-weight: 700; color: #0ea5e9;"><i class="fa-solid fa-file-shield"></i> FIA AD 20 Sample Papers</a></li>
+                <li><a href="grammar-rules.html" class="active" style="font-weight: 700; color: #14b8a6;"><i class="fa-solid fa-book"></i> Grammar Rules</a></li>
+                <li><a href="written-prep.html"><i class="fa-solid fa-pen-nib"></i> Essay &amp; Written Prep</a></li>
+                <li><a href="exam-guide.html"><i class="fa-solid fa-book-open-reader"></i> Exam Guide (FIA/NAB/CSS)</a></li>
+                <li><a href="quiz.html?category=English">🎯 Practice English Quiz</a></li>
+                <li><a href="science-notes.html">Science Capsule</a></li>
+                <li><a href="index.html#study-resources">Study Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="grammar-hero">
+        <div class="container">
+            <h1>📖 English Grammar Rules &amp; Master Handbook</h1>
+            <p>Master Active &amp; Passive Voice conversions, Direct &amp; Indirect Narration rules, Prepositional accuracy, and Parts of Speech identification with step-by-step formulas and practice drills for FPSC, PPSC, CSS, PMS &amp; NTS examinations.</p>
+
+            <div class="quick-nav-pills">
+                <a href="#sec-voice" class="quick-nav-pill"><i class="fa-solid fa-arrows-spin"></i> Active &amp; Passive Voice</a>
+                <a href="#sec-narration" class="quick-nav-pill"><i class="fa-solid fa-comments"></i> Direct &amp; Indirect Narration</a>
+                <a href="#sec-prepositions" class="quick-nav-pill"><i class="fa-solid fa-link"></i> Prepositions &amp; Fixed Collocations</a>
+                <a href="#sec-pos" class="quick-nav-pill"><i class="fa-solid fa-sitemap"></i> 8 Parts of Speech &amp; Suffix Clues</a>
+                <a href="#sec-tokenizer" class="quick-nav-pill"><i class="fa-solid fa-magnifying-glass-chart"></i> Sentence Dissection Tool</a>
+                <a href="#sec-drills" class="quick-nav-pill"><i class="fa-solid fa-clipboard-question"></i> Practice Drills</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="grammar-container">
+
+        <!-- 1. ACTIVE & PASSIVE VOICE -->
+        <article class="grammar-block" id="sec-voice">
+            <div class="grammar-header-title">
+                <div class="grammar-icon-badge" style="background: #2563eb;">
+                    <i class="fa-solid fa-arrows-spin"></i>
+                </div>
+                <div>
+                    <h2>Active and Passive Voice Transformation Rules</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Complete tense conversion formulas, modal verbs, imperative sentences &amp; prepositional exceptions.</p>
+                </div>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark); margin-bottom: 20px;">
+                In <strong>Active Voice</strong>, the grammatical subject acts as the agent performing the action. In <strong>Passive Voice</strong>, the grammatical subject receives the action. Passive voice is preferred in official reports, legal documentation, and academic writing when the receiver or action is more prominent than the performer.
+            </p>
+
+            <div class="rule-formula-box">
+                <strong><i class="fa-solid fa-gear"></i> Universal Passive Transformation Formula:</strong>
+                [Object of Active] + [Appropriate Form of 'To Be' (is/am/are/was/were/being/been)] + [Past Participle (V3)] + [Preposition (by/to/with/at)] + [Subject of Active in Objective Case]
+            </div>
+
+            <h3 style="font-size: 1.25rem; color: var(--text-dark); margin: 24px 0 14px;"><i class="fa-solid fa-table" style="color: #2563eb;"></i> Tense-by-Tense Active to Passive Conversion Matrix</h3>
+            <div class="grammar-table-wrapper">
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Tense</th>
+                            <th>Active Form Rule</th>
+                            <th>Passive Form Rule</th>
+                            <th>Active Example</th>
+                            <th>Passive Example</th>
+                        </tr>
+                    </thead>
+                    <tbody id="voiceTenseTableBody">
+                        <!-- Populated via data_grammar_rules.js -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="guide-sub-grid" style="margin-top: 24px;">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-ban" style="color: var(--danger);"></i> Non-Transformable Tenses &amp; Verbs</h3>
+                    <ul id="nonTransformableList">
+                        <!-- Injected via JS -->
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-bullhorn" style="color: var(--warning);"></i> Imperative Sentences (Commands &amp; Advice)</h3>
+                    <ul>
+                        <li><strong>Orders/Commands:</strong> <code>Let + Object + be + V3</code> (e.g. <em>"Post this letter."</em> → <em>"Let this letter be posted."</em>)</li>
+                        <li><strong>Moral Advice / Duty:</strong> <code>Object + should be + V3</code> (e.g. <em>"Respect your elders."</em> → <em>"Your elders should be respected."</em>)</li>
+                        <li><strong>Polite Requests:</strong> <code>You are requested to + V1</code> (e.g. <em>"Please help me."</em> → <em>"You are requested to help me."</em>)</li>
+                        <li><strong>Negative Commands:</strong> <code>Let + Object + not + be + V3</code> (e.g. <em>"Do not insult the poor."</em> → <em>"Let the poor not be insulted."</em>)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="guide-card-inner" style="margin-top: 24px;">
+                <h3><i class="fa-solid fa-triangle-exclamation" style="color: #2563eb;"></i> Verbs Taking Prepositions Other Than 'By' (High-Frequency Exam Traps)</h3>
+                <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                    <li><strong>Known to:</strong> <em>"I know him."</em> → <em>"He is known to me."</em> (Never known by me!)</li>
+                    <li><strong>Surprised at:</strong> <em>"Her behavior surprised us."</em> → <em>"We were surprised at her behavior."</em></li>
+                    <li><strong>Pleased with:</strong> <em>"His results pleased his parents."</em> → <em>"His parents were pleased with his results."</em></li>
+                    <li><strong>Contained in:</strong> <em>"This flask contains tea."</em> → <em>"Tea is contained in this flask."</em></li>
+                    <li><strong>Married to:</strong> <em>"He married her."</em> → <em>"She was married to him."</em></li>
+                    <li><strong>Satisfied with:</strong> <em>"The manager was satisfied with my performance."</em></li>
+                </ul>
+            </div>
+        </article>
+
+        <!-- 2. DIRECT & INDIRECT NARRATION -->
+        <article class="grammar-block" id="sec-narration">
+            <div class="grammar-header-title">
+                <div class="grammar-icon-badge" style="background: #14b8a6;">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+                <div>
+                    <h2>Direct and Indirect Narration (Reported Speech) Rules</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">The 5 golden rules: pronoun conversion (S.O.N.), tense backshifting, conjunctions &amp; universal truths.</p>
+                </div>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark); margin-bottom: 20px;">
+                <strong>Direct Speech</strong> quotes the actual spoken words enclosed in inverted commas (e.g. <em>She said, "I am studying."</em>). <strong>Indirect Speech</strong> reports the statement without verbatim quotation (e.g. <em>She said that she was studying.</em>).
+            </p>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-user-gear" style="color: #14b8a6;"></i> Rule of Pronouns: The S.O.N. Formula</h3>
+                    <ul>
+                        <li><strong>1st Person Pronouns (I, we, me, us, my, our)</strong> change according to the <strong>Subject</strong> of the reporting verb.</li>
+                        <li><strong>2nd Person Pronouns (you, your)</strong> change according to the <strong>Object</strong> of the reporting verb.</li>
+                        <li><strong>3rd Person Pronouns (he, she, it, they, his, her, their)</strong> undergo <strong>NO change</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-clock-rotate-left" style="color: #14b8a6;"></i> Tense Backshift Rules (If Reporting Verb is in Past)</h3>
+                    <ul>
+                        <li>Present Simple (V1) → Past Simple (V2)</li>
+                        <li>Present Continuous (is/am/are) → Past Continuous (was/were)</li>
+                        <li>Present Perfect (has/have) → Past Perfect (had)</li>
+                        <li>Past Simple (V2) → Past Perfect (had + V3)</li>
+                        <li>Past Continuous (was/were) → Past Perfect Continuous (had been)</li>
+                        <li>Will / Shall → Would / Should | Can → Could | May → Might</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rule-formula-box" style="margin-top: 24px; border-left-color: var(--warning); background: rgba(245, 158, 11, 0.06);">
+                <strong style="color: var(--warning);"><i class="fa-solid fa-shield-halved"></i> Critical Exceptions: When Tenses Do NOT Change:</strong>
+                <p style="margin: 4px 0 0; line-height: 1.6;">
+                    1. <strong>Universal Truths &amp; Scientific Laws:</strong> <em>The teacher said, "The Earth moves around the Sun."</em> → <em>The teacher said that the Earth moves around the Sun.</em><br>
+                    2. <strong>Habitual Actions &amp; Proverbs:</strong> <em>He said, "Honesty is the best policy."</em> → <em>He said that honesty is the best policy.</em><br>
+                    3. <strong>Present/Future Reporting Verb:</strong> If the reporting verb is in the present (<em>says, tells</em>) or future (<em>will say</em>), the reported tense never changes! (e.g. <em>He says, "I am fine."</em> → <em>He says that he is fine.</em>)
+                </p>
+            </div>
+
+            <h3 style="font-size: 1.25rem; color: var(--text-dark); margin: 24px 0 14px;"><i class="fa-solid fa-calendar-day" style="color: #14b8a6;"></i> Words Expressing Time and Place Changes</h3>
+            <div class="grammar-table-wrapper">
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Direct Speech</th>
+                            <th>Indirect Speech</th>
+                            <th>Direct Speech</th>
+                            <th>Indirect Speech</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timePlaceTableBody">
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="guide-sub-grid" style="margin-top: 24px;">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-circle-question" style="color: #14b8a6;"></i> Interrogative Sentences (Questions)</h3>
+                    <ul>
+                        <li>Reporting verb becomes <strong>asked</strong> or <strong>inquired</strong>.</li>
+                        <li>For Yes/No questions, introduce <strong>if</strong> or <strong>whether</strong>.</li>
+                        <li>For Wh-questions (Who, Where, Why, What), the wh-word itself acts as the connective.</li>
+                        <li>The sentence word order changes into assertive (Subject comes before Verb); question mark is dropped!</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-hands-praying" style="color: #14b8a6;"></i> Optative &amp; Exclamatory Sentences</h3>
+                    <ul>
+                        <li><strong>Optative (Wishes/Prayers):</strong> Said → <em>wished</em> or <em>prayed that</em>. 'May' changes to 'might'. (e.g. <em>He said, "May God bless you!"</em> → <em>He prayed that God might bless me.</em>)</li>
+                        <li><strong>Exclamatory:</strong> Said + Alas! → <em>exclaimed with sorrow that</em>. Said + Hurrah! → <em>exclaimed with joy that</em>. Said + Wow! → <em>exclaimed with wonder that</em>.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- 3. PREPOSITIONS -->
+        <article class="grammar-block" id="sec-prepositions">
+            <div class="grammar-header-title">
+                <div class="grammar-icon-badge" style="background: #0d9488;">
+                    <i class="fa-solid fa-link"></i>
+                </div>
+                <div>
+                    <h2>Prepositions: Spatial, Temporal &amp; Fixed Collocations</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Prepositions of Time and Place, confusing pairs (between vs. among, beside vs. besides), and 60+ high-yield fixed prepositions.</p>
+                </div>
+            </div>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-clock" style="color: #0d9488;"></i> Prepositions of Time: AT, ON, IN</h3>
+                    <ul>
+                        <li><strong>AT:</strong> Precise clock times, dawn, noon, midnight, night (e.g. <em>at 6:00 PM, at midnight, at dawn</em>).</li>
+                        <li><strong>ON:</strong> Specific days and calendar dates (e.g. <em>on Monday, on 14th August, on Friday morning</em>).</li>
+                        <li><strong>IN:</strong> Months, years, seasons, centuries, long durations (e.g. <em>in October, in 2026, in summer, in the morning</em>).</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-scale-unbalanced" style="color: #0d9488;"></i> Confusing Preposition Pairs Clarified</h3>
+                    <ul>
+                        <li><strong>Between vs. Among:</strong> <em>Between</em> is strictly for two entities (or distinct mutual ties); <em>Among</em> is for more than two entities.</li>
+                        <li><strong>Beside vs. Besides:</strong> <em>Beside</em> = by the side of; <em>Besides</em> = in addition to / apart from.</li>
+                        <li><strong>Since vs. For:</strong> <em>Since</em> denotes a specific starting point in time; <em>For</em> denotes duration / length of time.</li>
+                        <li><strong>Die of vs. Die from:</strong> Die <em>of</em> a disease (cancer, malaria); Die <em>from</em> an external cause or wound (overwork, thirst).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.25rem; color: var(--text-dark); margin: 30px 0 14px;"><i class="fa-solid fa-magnifying-glass" style="color: #0d9488;"></i> Searchable Master Directory of Fixed Prepositions (60+ Exam Essentials)</h3>
+            <input type="text" id="prepFilterInput" class="prep-search-box" placeholder="Filter prepositions (e.g. abide, congratulate, prefer, look forward)..." autocomplete="off" />
+
+            <div class="fixed-prep-grid" id="fixedPrepGridContainer">
+                <!-- Injected via JS -->
+            </div>
+        </article>
+
+        <!-- 4. PARTS OF SPEECH & IDENTIFICATION -->
+        <article class="grammar-block" id="sec-pos">
+            <div class="grammar-header-title">
+                <div class="grammar-icon-badge" style="background: #6366f1;">
+                    <i class="fa-solid fa-sitemap"></i>
+                </div>
+                <div>
+                    <h2>The 8 Parts of Speech &amp; Suffix Identification Clues</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">How to identify nouns, verbs, adjectives, and adverbs in context without confusing morphology.</p>
+                </div>
+            </div>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-font" style="color: #6366f1;"></i> Noun Identification Clues</h3>
+                    <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-dark); margin-bottom: 10px;">Nouns name persons, entities, concepts, or institutions. Look for these high-frequency derivational suffixes:</p>
+                    <ul>
+                        <li><code>-tion / -sion</code>: legislation, decision, evaluation</li>
+                        <li><code>-ment</code>: development, governance, agreement</li>
+                        <li><code>-ness</code>: kindness, awareness, darkness</li>
+                        <li><code>-ity / -ty</code>: sovereignty, integrity, diversity</li>
+                        <li><code>-ance / -ence</code>: surveillance, resilience, emergence</li>
+                        <li><code>-ship / -hood</code>: leadership, citizenship, brotherhood</li>
+                        <li><code>-ism</code>: nationalism, patriotism, capitalism</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-wand-magic-sparkles" style="color: #6366f1;"></i> Adjective Identification Clues</h3>
+                    <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-dark); margin-bottom: 10px;">Adjectives modify, qualify, or describe nouns or pronouns:</p>
+                    <ul>
+                        <li><code>-ful / -less</code>: powerful, resourceful, hopeless</li>
+                        <li><code>-able / -ible</code>: sustainable, credible, viable</li>
+                        <li><code>-ive</code>: decisive, progressive, collective</li>
+                        <li><code>-ous / -ious</code>: hazardous, ambitious, rigorous</li>
+                        <li><code>-al / -ial</code>: constitutional, judicial, financial</li>
+                        <li><code>-ic / -ical</code>: economic, diplomatic, historical</li>
+                        <li><strong>Order of Adjectives (OSASCOMP):</strong> Opinion → Size → Age → Shape → Color → Origin → Material → Purpose</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-person-running" style="color: #6366f1;"></i> Verb Classification Clues</h3>
+                    <ul>
+                        <li><code>-ize / -ise</code>: harmonize, institutionalize</li>
+                        <li><code>-ify</code>: rectify, clarify, intensify</li>
+                        <li><code>-en</code>: strengthen, broaden, weaken</li>
+                        <li><code>-ate</code>: formulate, negotiate, advocate</li>
+                        <li><strong>Transitive Verbs:</strong> Transfer action to a direct object (e.g. <em>He solved the problem.</em>)</li>
+                        <li><strong>Intransitive Verbs:</strong> Do not take a direct object (e.g. <em>The eagle soared.</em>)</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-gauge-high" style="color: #6366f1;"></i> Adverb Identification &amp; The -LY Trap</h3>
+                    <ul>
+                        <li>Adverbs modify verbs, adjectives, or other adverbs (e.g. <em>spoke eloquently, exceptionally talented</em>).</li>
+                        <li>Most adverbs end in <code>-ly</code> (swiftly, diligently, profoundly).</li>
+                        <li><strong>CRITICAL EXAM TRAP:</strong> Words ending in <code>-ly</code> formed from nouns are <strong>ADJECTIVES</strong>, not adverbs! (e.g. <em>friendly, lovely, cowardly, scholarly, brotherly, costly</em>).</li>
+                        <li>To express adverbial manner for these words, write: <em>"in a cowardly manner"</em> or <em>"in a friendly way"</em>.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- 5. INTERACTIVE SENTENCE DISSECTION / TOKENIZER -->
+        <article class="grammar-block" id="sec-tokenizer">
+            <div class="grammar-header-title">
+                <div class="grammar-icon-badge" style="background: #0f766e;">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                </div>
+                <div>
+                    <h2>Interactive Sentence Dissection: Word-by-Word Grammatical Analysis</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Linguistic breakdown showing every word labeled with its exact syntactic function and part of speech.</p>
+                </div>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark); margin-bottom: 20px;">
+                Competitive examiners frequently ask: <em>"What is the part of speech of the underlined word in this sentence?"</em> Review these sentence token dissections to see how individual words function structurally within a complex sentence:
+            </p>
+
+            <div id="sentenceTokenizerContainer">
+                <!-- Injected via JS -->
+            </div>
+        </article>
+
+        <!-- 6. GRAMMAR PRACTICE DRILLS -->
+        <article class="grammar-block" id="sec-drills">
+            <div class="grammar-header-title">
+                <div class="grammar-icon-badge" style="background: #8b5cf6;">
+                    <i class="fa-solid fa-clipboard-question"></i>
+                </div>
+                <div>
+                    <h2>Grammar Practice Drills &amp; Verified Solved Exercises</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Test yourself on voice, narration, prepositions, and parts of speech. Click to reveal detailed explanations.</p>
+                </div>
+            </div>
+
+            <div id="drillsSectionContainer">
+                <!-- Injected via JS -->
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 MCQs Portal. All rights reserved. | English Grammar Master Handbook</p>
+            </div>
+        </div>
+    
+        <div class="footer-legal-bar" style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; color:#94a3b8;">
+            <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+            <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+            <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+            <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data_grammar_rules.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = window.GRAMMAR_DATA;
+            if (!data) return;
+
+            // 1. Render Active/Passive Tense Table
+            const voiceTbody = document.getElementById('voiceTenseTableBody');
+            if (voiceTbody) {
+                voiceTbody.innerHTML = data.activePassive.tenseTable.map(row => `
+                    <tr>
+                        <td><strong>${row.tense}</strong></td>
+                        <td><code>${row.activeRule}</code></td>
+                        <td><code style="color: #2563eb; font-weight:700;">${row.passiveRule}</code></td>
+                        <td>${row.activeExample}</td>
+                        <td style="color: var(--text-dark); font-weight: 500;">${row.passiveExample}</td>
+                    </tr>
+                `).join('');
+            }
+
+            // Non-transformable list
+            const nonTransList = document.getElementById('nonTransformableList');
+            if (nonTransList) {
+                nonTransList.innerHTML = data.activePassive.nonTransformableTenses.map(t => `<li>${t}</li>`).join('');
+            }
+
+            // 2. Render Time and Place Table for Narration
+            const tpTableBody = document.getElementById('timePlaceTableBody');
+            if (tpTableBody) {
+                const list = data.directIndirect.timePlaceChangeTable;
+                const rows = [];
+                for (let i = 0; i < list.length; i += 2) {
+                    const item1 = list[i];
+                    const item2 = list[i+1];
+                    rows.push(`
+                        <tr>
+                            <td><strong>${item1.direct}</strong></td>
+                            <td style="color: #0f766e; font-weight: 600;">${item1.indirect}</td>
+                            ${item2 ? `<td><strong>${item2.direct}</strong></td><td style="color: #0f766e; font-weight: 600;">${item2.indirect}</td>` : '<td>-</td><td>-</td>'}
+                        </tr>
+                    `);
+                }
+                tpTableBody.innerHTML = rows.join('');
+            }
+
+            // 3. Render Fixed Prepositions with Filter
+            const prepGrid = document.getElementById('fixedPrepGridContainer');
+            const prepFilter = document.getElementById('prepFilterInput');
+
+            function renderPrepositions(query = '') {
+                const filtered = data.prepositions.fixedPrepositions.filter(p => 
+                    p.word.toLowerCase().includes(query) || 
+                    p.meaning.toLowerCase().includes(query) ||
+                    p.example.toLowerCase().includes(query)
+                );
+
+                prepGrid.innerHTML = filtered.map(p => `
+                    <div class="fixed-prep-item">
+                        <div>
+                            <span class="fixed-prep-bold">${p.word}</span>: 
+                            <span style="color: var(--text-dark);">${p.meaning}</span>
+                            <div style="font-size: 0.8rem; color: var(--text-light); margin-top: 4px; font-style: italic;">e.g. "${p.example}"</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            renderPrepositions();
+
+            if (prepFilter) {
+                prepFilter.addEventListener('input', (e) => {
+                    renderPrepositions(e.target.value.toLowerCase().trim());
+                });
+            }
+
+            // 4. Render Interactive Sentence Tokenizer Dissection
+            const tokenizerContainer = document.getElementById('sentenceTokenizerContainer');
+            if (tokenizerContainer) {
+                tokenizerContainer.innerHTML = data.partsOfSpeech.sentenceTokenizerExamples.map((ex, idx) => `
+                    <div class="sentence-breakdown-card">
+                        <div class="sentence-full-text">
+                            <span style="color: #0f766e; font-size: 0.88rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Sentence Example ${idx + 1}:</span>
+                            "${ex.sentence}"
+                        </div>
+                        <div class="token-stream">
+                            ${ex.tokens.map(t => `
+                                <div class="word-token-unit">
+                                    <span class="token-word">${t.word}</span>
+                                    <span class="token-badge ${t.badge}">${t.pos}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // 5. Render Practice Drills Across Categories
+            const drillsContainer = document.getElementById('drillsSectionContainer');
+            if (drillsContainer) {
+                const allDrills = [
+                    { category: "Active & Passive Voice Drills", items: data.activePassive.drills },
+                    { category: "Direct & Indirect Narration Drills", items: data.directIndirect.drills },
+                    { category: "Preposition Drills", items: data.prepositions.drills },
+                    { category: "Parts of Speech Identification Drills", items: data.partsOfSpeech.drills }
+                ];
+
+                drillsContainer.innerHTML = allDrills.map((sec, secIdx) => `
+                    <h3 style="margin: 25px 0 14px; font-size: 1.2rem; color: var(--text-dark); display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-circle-check" style="color: #8b5cf6;"></i> ${sec.category}
+                    </h3>
+                    ${sec.items.map((item, itemIdx) => `
+                        <div class="grammar-drill-item">
+                            <div class="drill-question">Q${itemIdx + 1}: ${item.question}</div>
+                            ${item.options ? `
+                                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+                                    ${item.options.map(opt => `<span style="background: var(--white); border: 1px solid var(--border-color); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; color: var(--text-dark);">${opt}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                            <button type="button" class="drill-reveal-btn" data-target="drill_${secIdx}_${itemIdx}">
+                                <i class="fa-solid fa-eye"></i> Show Answer &amp; Explanation
+                            </button>
+                            <div class="drill-solution" id="drill_${secIdx}_${itemIdx}">
+                                <strong>Answer:</strong> ${item.solution}<br>
+                                <span style="font-size: 0.88rem; color: var(--text-light); margin-top: 4px; display: block;">${item.explanation}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                `).join('');
+
+                // Hook reveal buttons
+                document.querySelectorAll('.drill-reveal-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const targetId = btn.getAttribute('data-target');
+                        const solDiv = document.getElementById(targetId);
+                        if (solDiv) {
+                            const isShown = solDiv.style.display === 'block';
+                            solDiv.style.display = isShown ? 'none' : 'block';
+                            btn.innerHTML = isShown 
+                                ? '<i class="fa-solid fa-eye"></i> Show Answer &amp; Explanation' 
+                                : '<i class="fa-solid fa-eye-slash"></i> Hide Answer';
+                        }
+                    });
+                });
+            }
+
+            // Dark Mode Toggle Support
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    document.documentElement.classList.toggle('dark-mode', isDark);
+                    localStorage.setItem('mcqs_dark_mode', isDark ? 'true' : 'false');
+                });
+            }
+
+            if (localStorage.getItem('mcqs_dark_mode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

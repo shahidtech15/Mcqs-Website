@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPC Section Finder | Pakistan Penal Code (Act XLV of 1860) | CSS, PMS, Judicial &amp; FIA Law</title>
+    <meta name="description" content="Interactive Pakistan Penal Code (PPC 1860) Section Finder. Search offences to view essential ingredients, CrPC Schedule II bailability/cognizability, statutory punishments, illustrative examples, case law, and MCQs.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('mcqs_dark_mode');
+            if (savedTheme === 'true' || (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <style>
+        :root {
+            --law-bg: #f8fafc;
+            --law-card-bg: #ffffff;
+            --law-surface: #f1f5f9;
+            --law-text: #0f172a;
+            --law-text-muted: #64748b;
+            --law-border: #e2e8f0;
+            --law-primary: #991b1b;
+            --law-primary-hover: #7f1d1d;
+            --law-primary-light: #fef2f2;
+            --law-gold: #d97706;
+            --law-gold-light: #fef3c7;
+            --law-teal: #0f766e;
+            --law-teal-light: #f0fdfa;
+            --law-blue: #1d4ed8;
+            --law-blue-light: #eff6ff;
+            --law-danger: #dc2626;
+            --law-success: #16a34a;
+            --font-ui: 'Plus Jakarta Sans', sans-serif;
+            --font-legal: 'Merriweather', serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode {
+            --law-bg: #090d16;
+            --law-card-bg: #111827;
+            --law-surface: #1e293b;
+            --law-text: #f8fafc;
+            --law-text-muted: #94a3b8;
+            --law-border: #334155;
+            --law-primary: #ef4444;
+            --law-primary-hover: #f87171;
+            --law-primary-light: rgba(239, 68, 68, 0.12);
+            --law-gold: #f59e0b;
+            --law-gold-light: rgba(245, 158, 11, 0.12);
+            --law-teal: #14b8a6;
+            --law-teal-light: rgba(20, 184, 166, 0.12);
+            --law-blue: #3b82f6;
+            --law-blue-light: rgba(59, 130, 246, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--law-bg);
+            color: var(--law-text);
+            line-height: 1.5;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Site Switcher Bar */
+        .site-switcher-bar {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 7px 16px;
+            font-size: 0.78rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .switcher-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .switcher-label {
+            color: #cbd5e1;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-right: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .switcher-btn {
+            color: #cbd5e1;
+            padding: 3px 9px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+        .switcher-btn.active {
+            background: var(--law-primary);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--law-card-bg);
+            border-bottom: 1px solid var(--law-border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: background-color 0.25s, border-color 0.25s;
+        }
+        .header-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            border: 1px solid rgba(153, 27, 27, 0.2);
+        }
+        .brand-titles h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .brand-titles p {
+            font-size: 0.8rem;
+            color: var(--law-text-muted);
+            font-weight: 500;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icon-btn {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            color: var(--law-text);
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+        .icon-btn:hover {
+            border-color: var(--law-primary);
+            color: var(--law-primary);
+        }
+        .btn-link {
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 7px 12px;
+            border-radius: var(--radius-sm);
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-link:hover {
+            background: var(--law-primary-light);
+            border-color: var(--law-primary);
+            color: var(--law-primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Banner & KPIs */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(153, 27, 27, 0.08) 0%, rgba(30, 41, 59, 0.05) 100%);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .dark-mode .hero-banner {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(15, 23, 42, 0.4) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 10px;
+            border: 1px solid rgba(153, 27, 27, 0.2);
+        }
+        .hero-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .hero-desc {
+            font-size: 0.95rem;
+            color: var(--law-text-muted);
+            max-width: 900px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* KPI Grid */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .kpi-card {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        .kpi-val {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--law-primary);
+            font-family: var(--font-mono);
+            line-height: 1.2;
+        }
+        .kpi-desc {
+            font-size: 0.75rem;
+            color: var(--law-text-muted);
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        /* Search & Filter Toolbar */
+        .filter-toolbar {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .search-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .search-box-wrap {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--law-text-muted);
+            font-size: 0.95rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: 11px 16px 11px 40px;
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            font-size: 0.92rem;
+            font-family: var(--font-ui);
+            color: var(--law-text);
+            outline: none;
+            transition: all 0.2s;
+        }
+        .search-input:focus {
+            border-color: var(--law-primary);
+            box-shadow: 0 0 0 3px var(--law-primary-light);
+            background: var(--law-card-bg);
+        }
+        .quick-toggles {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .toggle-btn {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            color: var(--law-text);
+            padding: 9px 14px;
+            border-radius: var(--radius-md);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .toggle-btn:hover {
+            border-color: var(--law-primary);
+        }
+        .toggle-btn.active {
+            background: var(--law-primary);
+            color: #ffffff;
+            border-color: var(--law-primary);
+        }
+        .toggle-btn.active-gold {
+            background: var(--law-gold);
+            color: #ffffff;
+            border-color: var(--law-gold);
+        }
+        .toggle-btn.active-teal {
+            background: var(--law-teal);
+            color: #ffffff;
+            border-color: var(--law-teal);
+        }
+        .category-pills-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow-x: auto;
+            padding-top: 4px;
+            white-space: nowrap;
+        }
+        .cat-pill {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            color: var(--law-text-muted);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cat-pill:hover {
+            color: var(--law-text);
+            border-color: var(--law-primary);
+        }
+        .cat-pill.active {
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            border-color: var(--law-primary);
+            font-weight: 700;
+        }
+
+        /* 2-Column Master-Detail Layout */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* Left Column: Offence Cards List */
+        .offences-sidebar {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            max-height: calc(100vh - 180px);
+            position: sticky;
+            top: 80px;
+        }
+        .sidebar-header {
+            padding: 14px 18px;
+            background: var(--law-surface);
+            border-bottom: 1px solid var(--law-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .badge-count {
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 12px;
+            font-family: var(--font-mono);
+        }
+        .offences-scroll {
+            overflow-y: auto;
+            flex: 1;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .offence-card {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .offence-card:hover {
+            border-color: var(--law-primary);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+        .offence-card.active {
+            border-color: var(--law-primary);
+            background: var(--law-primary-light);
+            box-shadow: 0 0 0 1px var(--law-primary);
+        }
+        .card-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+        .sec-badge {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 4px;
+            background: var(--law-surface);
+            color: var(--law-primary);
+            border: 1px solid var(--law-border);
+        }
+        .offence-card.active .sec-badge {
+            background: var(--law-primary);
+            color: #ffffff;
+            border-color: var(--law-primary);
+        }
+        .card-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            line-height: 1.35;
+            margin-bottom: 6px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-badges {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        .mini-pill {
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+        }
+        .pill-cognizable {
+            background: rgba(220, 38, 38, 0.1);
+            color: #b91c1c;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+        .pill-non-cognizable {
+            background: rgba(100, 116, 139, 0.1);
+            color: var(--law-text-muted);
+            border: 1px solid var(--law-border);
+        }
+        .pill-non-bailable {
+            background: rgba(217, 119, 6, 0.1);
+            color: #b45309;
+            border: 1px solid rgba(217, 119, 6, 0.2);
+        }
+        .pill-bailable {
+            background: rgba(16, 185, 129, 0.1);
+            color: #047857;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .gold-star {
+            color: var(--law-gold);
+            font-size: 0.75rem;
+        }
+
+        /* Right Column: Offence Dossier Card */
+        .dossier-card {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+        .dossier-header {
+            border-bottom: 1px solid var(--law-border);
+            padding-bottom: 20px;
+            margin-bottom: 22px;
+        }
+        .dossier-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .chapter-tag {
+            font-size: 0.8rem;
+            color: var(--law-text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .dossier-controls {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .control-pill-btn {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            color: var(--law-text);
+            padding: 5px 10px;
+            border-radius: var(--radius-sm);
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .control-pill-btn:hover {
+            border-color: var(--law-primary);
+            color: var(--law-primary);
+        }
+        .dossier-sec-num {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 800;
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(153, 27, 27, 0.2);
+            margin-bottom: 8px;
+        }
+        .dossier-title {
+            font-family: var(--font-legal);
+            font-size: 1.65rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+
+        /* CrPC Schedule II Grid */
+        .crpc-status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            background: var(--law-surface);
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--law-border);
+            margin-top: 14px;
+        }
+        .status-box {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .status-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--law-text-muted);
+            font-weight: 700;
+        }
+        .status-val {
+            font-size: 0.88rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+
+        /* Dossier Tabs */
+        .dossier-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--law-border);
+            gap: 6px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .dossier-tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 16px;
+            font-family: var(--font-ui);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--law-text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .dossier-tab-btn:hover {
+            color: var(--law-text);
+        }
+        .dossier-tab-btn.active {
+            color: var(--law-primary);
+            border-bottom-color: var(--law-primary);
+            font-weight: 700;
+        }
+        .tab-badge {
+            background: var(--law-surface);
+            color: var(--law-text-muted);
+            font-size: 0.72rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+        .dossier-tab-btn.active .tab-badge {
+            background: var(--law-primary);
+            color: #ffffff;
+        }
+
+        /* Tab Panes */
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.25s ease;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Styling */
+        .ingredients-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .ingredient-item {
+            background: var(--law-surface);
+            border-left: 4px solid var(--law-primary);
+            padding: 12px 16px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .ingredient-num {
+            font-family: var(--font-mono);
+            font-weight: 800;
+            color: var(--law-primary);
+            margin-right: 6px;
+        }
+        .callout-box {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .callout-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--law-primary);
+        }
+
+        /* Punishment Box */
+        .punishment-card {
+            background: linear-gradient(135deg, rgba(153, 27, 27, 0.05), rgba(30, 41, 59, 0.04));
+            border: 1px solid rgba(153, 27, 27, 0.2);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .dark-mode .punishment-card {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(15, 23, 42, 0.3));
+        }
+
+        /* Illustrations */
+        .illustrations-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .illustration-card {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            font-family: var(--font-legal);
+        }
+        .illustration-tag {
+            font-family: var(--font-ui);
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--law-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        /* Case Law / Precedents */
+        .precedent-box {
+            background: var(--law-surface);
+            border-left: 4px solid var(--law-gold);
+            padding: 16px 18px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+        .precedent-citation {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--law-gold);
+            margin-bottom: 6px;
+        }
+
+        /* MCQs Section */
+        .mcq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .mcq-card {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+        }
+        .mcq-q-text {
+            font-weight: 700;
+            font-size: 0.96rem;
+            margin-bottom: 14px;
+            line-height: 1.45;
+        }
+        .mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .mcq-opt-btn {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            font-family: var(--font-ui);
+            font-size: 0.88rem;
+            color: var(--law-text);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .mcq-opt-btn:hover:not(:disabled) {
+            border-color: var(--law-primary);
+            background: var(--law-primary-light);
+        }
+        .mcq-opt-btn.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: #10b981 !important;
+            color: #047857 !important;
+            font-weight: 700;
+        }
+        .mcq-opt-btn.wrong {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: #ef4444 !important;
+            color: #b91c1c !important;
+        }
+        .mcq-exp-box {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: var(--radius-sm);
+            background: var(--law-card-bg);
+            border-left: 3px solid #10b981;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            display: none;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            margin-top: 40px;
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .section-header-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-header-desc {
+            font-size: 0.88rem;
+            color: var(--law-text-muted);
+            margin-bottom: 20px;
+        }
+        .matrix-table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+        }
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            text-align: left;
+        }
+        .matrix-table th {
+            background: var(--law-surface);
+            padding: 12px 14px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--law-border);
+            color: var(--law-primary);
+        }
+        .matrix-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--law-border);
+            line-height: 1.5;
+        }
+        .matrix-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Master Quiz Section */
+        .quiz-section {
+            margin-top: 40px;
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+        .quiz-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .quiz-score-pill {
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            font-family: var(--font-mono);
+            font-size: 0.92rem;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(153, 27, 27, 0.2);
+        }
+
+        /* Footer */
+        .site-footer {
+            margin-top: 60px;
+            background: var(--law-card-bg);
+            border-top: 1px solid var(--law-border);
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--law-text-muted);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-links a:hover {
+            color: var(--law-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 960px) {
+            .workspace-grid {
+                grid-template-columns: 1fr;
+            }
+            .offences-sidebar {
+                max-height: 400px;
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/ppc-section-finder.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/ppc-section-finder.html">
+    <meta property="og:title" content="PPC Section Finder | Pakistan Penal Code (Act XLV of 1860) | CSS, PMS, Judicial &amp; FIA Law">
+    <meta property="og:description" content="Interactive Pakistan Penal Code (PPC 1860) Section Finder. Search offences to view essential ingredients, CrPC Schedule II bailability/cognizability, statutory punishments, illustrative examples, c...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PPC Section Finder | Pakistan Penal Code (Act XLV of 1860) | CSS, PMS, Judicial &amp; FIA Law">
+    <meta name="twitter:description" content="Interactive Pakistan Penal Code (PPC 1860) Section Finder. Search offences to view essential ingredients, CrPC Schedule II bailability/cognizability, statutory punishments, illustrative examples, c...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+<body>
+    <!-- Site Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+            <a href="international-organizations-explorer.html" class="switcher-btn"><i class="fas fa-sitemap"></i> Organizations</a>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> World Timeline</a>
+            <a href="global-power-comparison.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Global Power</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-atom"></i> Periodic Table</a>
+            <a href="climate-change-explorer.html" class="switcher-btn"><i class="fas fa-temperature-high"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn"><i class="fas fa-microchip"></i> Technology</a>
+            <a href="constitution-explorer.html" class="switcher-btn"><i class="fas fa-scale-balanced"></i> Constitution</a>
+            <a href="ppc-section-finder.html" class="switcher-btn active"><i class="fas fa-gavel"></i> PPC Finder</a>
+            <a href="crpc-procedure-flowchart.html" class="switcher-btn"><i class="fas fa-diagram-project"></i> CrPC Flowchart</a>
+            <a href="identify-legal-provision.html" class="switcher-btn"><i class="fas fa-scale-unbalanced-flip"></i> Legal Provision</a>
+            <a href="court-structure-explorer.html" class="switcher-btn"><i class="fas fa-landmark"></i> Court Structure</a>
+            <a href="fia-laws-explorer.html" class="switcher-btn"><i class="fas fa-building-shield"></i> FIA Laws</a>
+            <a href="world-economy-dashboard.html" class="switcher-btn"><i class="fas fa-chart-line"></i> World Economy</a>
+            <a href="currency-exchange-explorer.html" class="switcher-btn"><i class="fas fa-coins"></i> Currency &amp; Exchange</a>
+            <a href="who-trades-what.html" class="switcher-btn"><i class="fas fa-ship"></i> Who Trades What?</a>
+            <a href="daily-challenges.html" class="switcher-btn"><i class="fas fa-bolt"></i> Daily Challenges</a>
+            <a href="daily-fact.html" class="switcher-btn"><i class="fas fa-calendar-check"></i> Daily Fact</a>
+        </div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-group">
+                <div class="brand-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <div class="brand-titles">
+                    <h1>PPC Section Finder</h1>
+                    <p>Pakistan Penal Code, 1860 &bull; Offences, Ingredients, Punishments &amp; CrPC Forum</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="index.html" class="btn-link"><i class="fas fa-home"></i> Home</a>
+                <a href="constitution-explorer.html" class="btn-link"><i class="fas fa-scale-balanced"></i> Constitution</a>
+                <a href="#masterQuizSection" class="btn-link"><i class="fas fa-check-double"></i> Master Quiz</a>
+                <button class="icon-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fas fa-book-journal-whills"></i> Act XLV of 1860 &bull; Substantive Criminal Law</span>
+                <h2 class="hero-title">Pakistan Penal Code (1860) Section Finder</h2>
+                <p class="hero-desc">
+                    Search or select any criminal offence to instantly inspect its <strong>statutory section</strong>, <strong>essential legal ingredients</strong> (*Actus Reus* &amp; *Mens Rea*), <strong>prescribed punishments</strong> (Qisas, Diyat, Arsh, Daman &amp; Tazir), <strong>CrPC Schedule II status</strong> (Bailable, Cognizable, Compoundable), <strong>illustrative factual examples</strong>, and <strong>Supreme Court precedents</strong>.
+                </p>
+                <!-- KPI Grid -->
+                <div class="kpi-row" id="ppcKpiRow">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Filter Toolbar -->
+        <section class="filter-toolbar">
+            <div class="search-row">
+                <div class="search-box-wrap">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="offenceSearchInput" class="search-input" placeholder="Search by Section (e.g. 302, 420, 489-F), Offence Name (Theft, Murder), or Keyword (Diyat, Cheque)...">
+                </div>
+                <div class="quick-toggles">
+                    <button class="toggle-btn" id="btnHighYieldToggle"><i class="fas fa-star" style="color:var(--law-gold);"></i> CSS High-Yield Only</button>
+                    <button class="toggle-btn" id="btnCognizableToggle"><i class="fas fa-handcuffs" style="color:#ef4444;"></i> Cognizable Only</button>
+                    <button class="toggle-btn" id="btnNonBailableToggle"><i class="fas fa-shield-halved" style="color:#f59e0b;"></i> Non-Bailable Only</button>
+                    <button class="toggle-btn" id="btnResetFilters"><i class="fas fa-rotate-left"></i> Reset</button>
+                </div>
+            </div>
+            <div class="category-pills-row" id="categoryPillsRow">
+                <!-- Category Pills rendered by JS -->
+            </div>
+        </section>
+
+        <!-- 2-Column Master-Detail Layout -->
+        <section class="workspace-grid">
+            <!-- Left Column: Offence Cards List -->
+            <aside class="offences-sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-title">
+                        <i class="fas fa-list-check" style="color:var(--law-primary);"></i> Select Offence
+                    </div>
+                    <span class="badge-count" id="offencesCountBadge">0 Offences</span>
+                </div>
+                <div class="offences-scroll" id="offencesListContainer">
+                    <!-- Offence cards rendered by JS -->
+                </div>
+            </aside>
+
+            <!-- Right Column: Offence Dossier Card -->
+            <article class="dossier-card" id="offenceDossierCard">
+                <div class="dossier-header">
+                    <div class="dossier-meta-row">
+                        <div class="chapter-tag" id="dossierChapterTag">
+                            <i class="fas fa-bookmark" style="color:var(--law-primary);"></i> Chapter XVI
+                        </div>
+                        <div class="dossier-controls">
+                            <button class="control-pill-btn" id="btnCopyText" title="Copy Offence Dossier"><i class="fas fa-copy"></i> Copy Dossier</button>
+                            <button class="control-pill-btn" id="btnFontDec" title="Decrease Font Size">A-</button>
+                            <button class="control-pill-btn" id="btnFontInc" title="Increase Font Size">A+</button>
+                        </div>
+                    </div>
+                    <div class="dossier-sec-num" id="dossierSecNum">PPC SECTION 302</div>
+                    <h2 class="dossier-title" id="dossierTitle">Qatl-e-Amd (Intentional Murder) and its Punishments</h2>
+
+                    <!-- CrPC Status Grid -->
+                    <div class="crpc-status-grid">
+                        <div class="status-box">
+                            <span class="status-label">Cognizability</span>
+                            <span class="status-val" id="statusCognizable" style="color:#dc2626;">Cognizable</span>
+                        </div>
+                        <div class="status-box">
+                            <span class="status-label">Bailability</span>
+                            <span class="status-val" id="statusBailable" style="color:#d97706;">Non-Bailable</span>
+                        </div>
+                        <div class="status-box">
+                            <span class="status-label">Compoundability</span>
+                            <span class="status-val" id="statusCompoundable">Compoundable</span>
+                        </div>
+                        <div class="status-box">
+                            <span class="status-label">Trial Forum</span>
+                            <span class="status-val" id="statusCourt">Court of Session</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dossier Navigation Tabs -->
+                <div class="dossier-tabs" id="dossierTabs">
+                    <button class="dossier-tab-btn active" data-tab="viewIngredients">
+                        <i class="fas fa-list-ol"></i> Essential Ingredients
+                    </button>
+                    <button class="dossier-tab-btn" data-tab="viewPunishment">
+                        <i class="fas fa-gavel"></i> Punishment &amp; Penalty
+                    </button>
+                    <button class="dossier-tab-btn" data-tab="viewIllustrations">
+                        <i class="fas fa-lightbulb"></i> Illustrative Examples
+                    </button>
+                    <button class="dossier-tab-btn" data-tab="viewPrecedents">
+                        <i class="fas fa-landmark"></i> Case Law &amp; Precedents
+                    </button>
+                    <button class="dossier-tab-btn" data-tab="viewMcqs">
+                        <i class="fas fa-circle-question"></i> Practice MCQs <span class="tab-badge" id="dossierMcqCount">1</span>
+                    </button>
+                </div>
+
+                <!-- Tab 1: Essential Ingredients -->
+                <div class="tab-pane active" id="viewIngredients">
+                    <div style="margin-bottom:14px; font-weight:700; font-size:0.95rem; color:var(--law-text);">
+                        <i class="fas fa-balance-scale" style="color:var(--law-primary);"></i> Statutory Prerequisites (Ingredients to be proven beyond reasonable doubt):
+                    </div>
+                    <ul class="ingredients-list" id="dossierIngredientsList">
+                        <!-- Rendered by JS -->
+                    </ul>
+                    <div class="callout-box" id="dossierMensReaBox">
+                        <div class="callout-title"><i class="fas fa-brain"></i> Mens Rea vs. Actus Reus Analysis</div>
+                        <div id="dossierMensReaText">Intention to kill combined with direct fatal stroke.</div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Punishment & Penalty -->
+                <div class="tab-pane" id="viewPunishment">
+                    <div class="punishment-card" id="dossierPunishmentCard">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <div class="callout-box" style="margin-top:16px;">
+                        <div class="callout-title"><i class="fas fa-info-circle"></i> Examination &amp; Judicial Notes</div>
+                        <div id="dossierExamNotesText">Notes on mitigating circumstances and statutory exceptions.</div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Illustrative Examples -->
+                <div class="tab-pane" id="viewIllustrations">
+                    <div class="illustrations-container" id="dossierIllustrationsContainer">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Tab 4: Case Law & Precedents -->
+                <div class="tab-pane" id="viewPrecedents">
+                    <div class="precedent-box" id="dossierPrecedentsBox">
+                        <div class="precedent-citation" id="dossierCitation">Supreme Court of Pakistan</div>
+                        <div id="dossierPrecedentText">Precedent analysis.</div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: Practice MCQs -->
+                <div class="tab-pane" id="viewMcqs">
+                    <div class="mcq-container" id="dossierRelatedMcqsContainer">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Legal Comparison Matrices Section -->
+        <section class="comparison-section" id="comparisonSection">
+            <h3 class="section-header-title"><i class="fas fa-table-columns" style="color:var(--law-primary);"></i> Key Legal Distinctions &amp; Comparison Matrices</h3>
+            <p class="section-header-desc">Essential high-yield distinctions frequently tested in CSS Law, PMS, and Civil Judge / Judicial Magistrate written exams.</p>
+            <div id="comparisonMatricesContainer">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+
+        <!-- Comprehensive Master Quiz Section -->
+        <section class="quiz-section" id="masterQuizSection">
+            <div class="quiz-top-bar">
+                <div>
+                    <h3 class="section-header-title"><i class="fas fa-graduation-cap" style="color:var(--law-primary);"></i> Comprehensive PPC Master Quiz (15 Questions)</h3>
+                    <p class="section-header-desc" style="margin-bottom:0;">Test your mastery of criminal law sections, ingredients, and CrPC Schedule II bailability/cognizability.</p>
+                </div>
+                <div class="quiz-score-pill" id="quizScoreDisplay">Score: 0 / 15</div>
+            </div>
+            <div class="mcq-container" id="quizContainer">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a> &bull;
+            <a href="constitution-explorer.html">Constitution Explorer</a> &bull;
+            <a href="identify-legal-provision.html">Legal Provision</a> &bull; <a href="court-structure-explorer.html">Court Structure</a> &bull; <a href="fia-laws-explorer.html">FIA Laws</a> &bull;
+            <a href="fia-sample-papers.html">FIA Papers</a> &bull;
+            <a href="periodic-table.html">Periodic Table</a> &bull;
+            <a href="climate-change-explorer.html">Climate Change</a> &bull;
+            <a href="technology-explorer.html">Tech Explorer</a> &bull;
+            <a href="pakistan-map.html">Pakistan Map</a>
+        </div>
+        <p>&copy; 2026 Pakistan Penal Code Section Finder &bull; Academic Law Examination &amp; Practice Suite. Not a substitute for formal legal representation in a court of law.</p>
+    
+        <div class="footer-legal-bar" style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; color:#94a3b8;">
+            <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+            <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+            <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+            <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Database Script -->
+    <script src="js/data_ppc.js"></script>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        // State
+        let currentOffenceSlug = 'sec-302';
+        let currentCategoryFilter = 'All';
+        let filterHighYieldOnly = false;
+        let filterCognizableOnly = false;
+        let filterNonBailableOnly = false;
+        let currentFontSize = 15;
+        let masterQuizScore = 0;
+        const answeredMasterQuestions = new Set();
+        let audioCtx = null;
+
+        // Audio Feedback
+        function playChime(isCorrect) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (isCorrect) {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.15); // G5
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now); // A3
+                    osc.frequency.exponentialRampToValueAtTime(146.83, now + 0.18); // D3
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                }
+            } catch (e) {
+                // Audio synthesis unavailable
+            }
+        }
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.PPC_DATA) {
+                console.error('PPC_DATA not loaded!');
+                return;
+            }
+
+            renderKpis();
+            renderCategoryPills();
+            renderOffencesList();
+            renderOffenceDossier(currentOffenceSlug);
+            renderComparisonMatrices();
+            initMasterQuiz();
+            setupEventListeners();
+        });
+
+        // Render KPI row
+        function renderKpis() {
+            const container = document.getElementById('ppcKpiRow');
+            if (!container || !window.PPC_DATA.kpis) return;
+            const kpis = window.PPC_DATA.kpis;
+
+            container.innerHTML = `
+                <div class="kpi-card">
+                    <div class="kpi-val">${kpis.totalSections}</div>
+                    <div class="kpi-desc">${kpis.totalSectionsDesc}</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-val">${kpis.highYieldOffences}</div>
+                    <div class="kpi-desc">${kpis.highYieldOffencesDesc}</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-val">${kpis.qisasDiyat}</div>
+                    <div class="kpi-desc">${kpis.qisasDiyatDesc}</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-val">${kpis.crpcIntegration}</div>
+                    <div class="kpi-desc">${kpis.crpcIntegrationDesc}</div>
+                </div>
+            `;
+        }
+
+        // Category Pills
+        function renderCategoryPills() {
+            const container = document.getElementById('categoryPillsRow');
+            if (!container || !window.PPC_DATA.offences) return;
+
+            const categories = ['All'];
+            window.PPC_DATA.offences.forEach(o => {
+                if (o.category && !categories.includes(o.category)) {
+                    categories.push(o.category);
+                }
+            });
+
+            container.innerHTML = categories.map(cat => `
+                <button class="cat-pill ${cat === currentCategoryFilter ? 'active' : ''}" data-cat="${cat}">
+                    ${cat}
+                </button>
+            `).join('');
+
+            container.querySelectorAll('.cat-pill').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    container.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategoryFilter = btn.getAttribute('data-cat');
+                    filterOffences();
+                });
+            });
+        }
+
+        // Render Offence Cards in Left Sidebar
+        function renderOffencesList() {
+            const container = document.getElementById('offencesListContainer');
+            if (!container || !window.PPC_DATA.offences) return;
+
+            container.innerHTML = window.PPC_DATA.offences.map(o => `
+                <div class="offence-card ${o.slug === currentOffenceSlug ? 'active' : ''}" id="card-${o.slug}" data-slug="${o.slug}">
+                    <div class="card-top-row">
+                        <span class="sec-badge">SEC ${o.sec}</span>
+                        ${o.highYield ? '<i class="fas fa-star gold-star" title="CSS High-Yield"></i>' : ''}
+                    </div>
+                    <div class="card-title">${o.title}</div>
+                    <div class="card-badges">
+                        <span class="mini-pill ${o.cognizable === true ? 'pill-cognizable' : 'pill-non-cognizable'}">
+                            ${o.cognizable === true ? 'Cognizable' : (o.cognizable === false ? 'Non-Cog' : 'Depends')}
+                        </span>
+                        <span class="mini-pill ${o.bailable === false ? 'pill-non-bailable' : 'pill-bailable'}">
+                            ${o.bailable === false ? 'Non-Bailable' : (o.bailable === true ? 'Bailable' : 'Depends')}
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Click handling
+            container.querySelectorAll('.offence-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const slug = card.getAttribute('data-slug');
+                    selectOffence(slug);
+                });
+            });
+
+            updateOffencesCountBadge();
+        }
+
+        // Filter Offences based on search input & quick toggles
+        function filterOffences() {
+            const q = (document.getElementById('offenceSearchInput').value || '').toLowerCase().trim();
+            const cards = document.querySelectorAll('.offence-card');
+            let visibleCount = 0;
+
+            window.PPC_DATA.offences.forEach(o => {
+                const card = document.getElementById('card-' + o.slug);
+                if (!card) return;
+
+                let matchesSearch = true;
+                if (q) {
+                    const mSec = o.sec.toLowerCase().includes(q);
+                    const mTitle = o.title.toLowerCase().includes(q);
+                    const mChap = o.chapter.toLowerCase().includes(q);
+                    const mPunish = o.punishment.toLowerCase().includes(q);
+                    const mIng = o.ingredients.some(ing => ing.toLowerCase().includes(q));
+                    matchesSearch = mSec || mTitle || mChap || mPunish || mIng;
+                }
+
+                let matchesCat = (currentCategoryFilter === 'All' || o.category === currentCategoryFilter);
+                let matchesHighYield = !filterHighYieldOnly || o.highYield === true;
+                let matchesCognizable = !filterCognizableOnly || o.cognizable === true;
+                let matchesNonBailable = !filterNonBailableOnly || o.bailable === false;
+
+                if (matchesSearch && matchesCat && matchesHighYield && matchesCognizable && matchesNonBailable) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const badge = document.getElementById('offencesCountBadge');
+            if (badge) badge.textContent = `${visibleCount} Offences`;
+        }
+
+        function updateOffencesCountBadge() {
+            const count = window.PPC_DATA.offences.length;
+            const badge = document.getElementById('offencesCountBadge');
+            if (badge) badge.textContent = `${count} Offences`;
+        }
+
+        // Select an Offence and populate Dossier
+        function selectOffence(slug) {
+            currentOffenceSlug = slug;
+            document.querySelectorAll('.offence-card').forEach(c => c.classList.remove('active'));
+            const activeCard = document.getElementById('card-' + slug);
+            if (activeCard) {
+                activeCard.classList.add('active');
+                activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            renderOffenceDossier(slug);
+        }
+
+        // Render Offence Dossier Card
+        function renderOffenceDossier(slug) {
+            const o = window.PPC_DATA.offences.find(item => item.slug === slug);
+            if (!o) return;
+
+            // Header Elements
+            document.getElementById('dossierChapterTag').innerHTML = `<i class="fas fa-bookmark" style="color:var(--law-primary);"></i> ${o.chapter}`;
+            document.getElementById('dossierSecNum').textContent = `PPC SECTION ${o.sec}`;
+            document.getElementById('dossierTitle').textContent = o.title;
+
+            // CrPC Status
+            const cogEl = document.getElementById('statusCognizable');
+            cogEl.textContent = o.cognizable === true ? 'Cognizable' : (o.cognizable === false ? 'Non-Cognizable' : o.cognizable);
+            cogEl.style.color = o.cognizable === true ? '#dc2626' : '#16a34a';
+
+            const bailEl = document.getElementById('statusBailable');
+            bailEl.textContent = o.bailable === false ? 'Non-Bailable' : (o.bailable === true ? 'Bailable' : o.bailable);
+            bailEl.style.color = o.bailable === false ? '#d97706' : '#16a34a';
+
+            document.getElementById('statusCompoundable').textContent = o.compoundable || 'Non-Compoundable';
+            document.getElementById('statusCourt').textContent = o.trialCourt || 'Court of Session';
+
+            // Tab 1: Ingredients
+            const ingList = document.getElementById('dossierIngredientsList');
+            ingList.innerHTML = o.ingredients.map((ing, idx) => `
+                <li class="ingredient-item">
+                    <span class="ingredient-num">${idx + 1}.</span> ${ing}
+                </li>
+            `).join('');
+            document.getElementById('dossierMensReaText').textContent = o.mensReaVsActusReus || 'Actus reus and Mens rea must concur simultaneously.';
+
+            // Tab 2: Punishment
+            document.getElementById('dossierPunishmentCard').innerHTML = `
+                <div style="font-weight:700; color:var(--law-primary); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+                    <i class="fas fa-scale-unbalanced"></i> Prescribed Statutory Sentence:
+                </div>
+                <div>${o.punishment}</div>
+            `;
+            document.getElementById('dossierExamNotesText').textContent = o.examNotes || 'High-yield examination topic for CSS / Judicial candidates.';
+
+            // Tab 3: Illustrations
+            const illContainer = document.getElementById('dossierIllustrationsContainer');
+            if (o.illustrations && o.illustrations.length > 0) {
+                illContainer.innerHTML = o.illustrations.map((ill, idx) => `
+                    <div class="illustration-card">
+                        <div class="illustration-tag"><i class="fas fa-book-open"></i> Statutory Illustration ${String.fromCharCode(65 + idx)}</div>
+                        <div>${ill}</div>
+                    </div>
+                `).join('');
+            } else {
+                illContainer.innerHTML = '<div class="illustration-card">No formal statutory illustration attached.</div>';
+            }
+
+            // Tab 4: Precedents
+            document.getElementById('dossierPrecedentsBox').innerHTML = `
+                <div class="precedent-citation"><i class="fas fa-gavel"></i> Landmark Judicial Precedent</div>
+                <div id="dossierPrecedentText">${o.precedents || 'Judicial precedents establish mandatory adherence to statutory ingredients.'}</div>
+            `;
+
+            // Tab 5: Related MCQs
+            const mcqContainer = document.getElementById('dossierRelatedMcqsContainer');
+            const mcqCountBadge = document.getElementById('dossierMcqCount');
+            const mcqs = o.mcqs || [];
+            mcqCountBadge.textContent = mcqs.length;
+
+            if (mcqs.length > 0) {
+                mcqContainer.innerHTML = mcqs.map((m, mIdx) => {
+                    let optsHtml = m.opts.map((opt, optIdx) => `
+                        <button class="mcq-opt-btn" data-slug="${o.slug}" data-midx="${mIdx}" data-opt="${optIdx}">
+                            <span style="font-weight:700; color:var(--law-primary);">${String.fromCharCode(65 + optIdx)}.</span> ${opt}
+                        </button>
+                    `).join('');
+
+                    return `
+                        <div class="mcq-card" id="mini-mcq-${o.slug}-${mIdx}">
+                            <div class="mcq-q-text"><i class="fas fa-question-circle" style="color:var(--law-primary);"></i> ${m.q}</div>
+                            <div class="mcq-options">${optsHtml}</div>
+                            <div class="mcq-exp-box" id="mini-exp-${o.slug}-${mIdx}">
+                                <strong><i class="fas fa-check-circle" style="color:#10b981;"></i> Legal Rationale:</strong> ${m.exp}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                mcqContainer.querySelectorAll('.mcq-opt-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const mIdx = parseInt(btn.getAttribute('data-midx'), 10);
+                        const selOpt = parseInt(btn.getAttribute('data-opt'), 10);
+                        const card = document.getElementById(`mini-mcq-${o.slug}-${mIdx}`);
+                        const allBtns = card.querySelectorAll('.mcq-opt-btn');
+                        const expBox = document.getElementById(`mini-exp-${o.slug}-${mIdx}`);
+                        const correctOpt = mcqs[mIdx].ans;
+
+                        allBtns.forEach((b, idx) => {
+                            b.disabled = true;
+                            if (idx === correctOpt) b.classList.add('correct');
+                            if (idx === selOpt && idx !== correctOpt) b.classList.add('wrong');
+                        });
+
+                        const isCorrect = (selOpt === correctOpt);
+                        playChime(isCorrect);
+                        if (expBox) expBox.style.display = 'block';
+                    });
+                });
+            } else {
+                mcqContainer.innerHTML = '<div style="color:var(--law-text-muted); font-size:0.9rem;">No specific MCQs attached to this section. Check the Master Quiz below.</div>';
+            }
+        }
+
+        // Render Comparison Matrices
+        function renderComparisonMatrices() {
+            const container = document.getElementById('comparisonMatricesContainer');
+            if (!container || !window.PPC_DATA.comparisons) return;
+
+            container.innerHTML = window.PPC_DATA.comparisons.map(comp => {
+                const keys = Object.keys(comp.points[0]).filter(k => k !== 'feature');
+                let headerCols = keys.map(k => `<th>${k.toUpperCase()}</th>`).join('');
+
+                let rowsHtml = comp.points.map(pt => {
+                    let cells = keys.map(k => `<td>${pt[k] || '-'}</td>`).join('');
+                    return `<tr><td style="font-weight:700; color:var(--law-text);">${pt.feature}</td>${cells}</tr>`;
+                }).join('');
+
+                return `
+                    <div style="margin-bottom:28px;">
+                        <h4 style="font-size:1.05rem; font-weight:700; color:var(--law-primary); margin-bottom:4px;">
+                            <i class="fas fa-scale-balanced"></i> ${comp.title}
+                        </h4>
+                        <p style="font-size:0.85rem; color:var(--law-text-muted); margin-bottom:12px;">${comp.summary}</p>
+                        <div class="matrix-table-wrap">
+                            <table class="matrix-table">
+                                <thead>
+                                    <tr>
+                                        <th>FEATURE</th>
+                                        ${headerCols}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rowsHtml}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Master Quiz (15 Questions)
+        function initMasterQuiz() {
+            const container = document.getElementById('quizContainer');
+            if (!container || !window.PPC_DATA.offences) return;
+
+            const allMcqs = [];
+            window.PPC_DATA.offences.forEach(o => {
+                if (o.mcqs) {
+                    o.mcqs.forEach(m => allMcqs.push({ ...m, secTitle: `SEC ${o.sec}: ${o.title}` }));
+                }
+            });
+
+            const quizSubset = allMcqs.slice(0, 15);
+            container.innerHTML = '';
+            masterQuizScore = 0;
+            answeredMasterQuestions.clear();
+            document.getElementById('quizScoreDisplay').textContent = `Score: 0 / ${quizSubset.length}`;
+
+            quizSubset.forEach((item, qIdx) => {
+                const card = document.createElement('div');
+                card.className = 'mcq-card';
+                card.id = 'full-quiz-card-' + qIdx;
+
+                let optsHtml = item.opts.map((opt, optIdx) => `
+                    <button class="mcq-opt-btn" data-qid="${qIdx}" data-opt="${optIdx}">
+                        <span style="font-weight:700; color:var(--law-primary);">${String.fromCharCode(65 + optIdx)}.</span> ${opt}
+                    </button>
+                `).join('');
+
+                card.innerHTML = `
+                    <div style="font-size:0.75rem; font-weight:800; color:var(--law-primary); margin-bottom:6px; font-family:var(--font-mono);">
+                        QUESTION ${qIdx + 1} OF ${quizSubset.length} &bull; ${item.secTitle}
+                    </div>
+                    <div class="mcq-q-text">${item.q}</div>
+                    <div class="mcq-options">${optsHtml}</div>
+                    <div class="mcq-exp-box" id="full-exp-${qIdx}">
+                        <strong><i class="fas fa-check-circle" style="color:#10b981;"></i> Statutory Rationale:</strong> ${item.exp}
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            container.querySelectorAll('.mcq-opt-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const qId = parseInt(btn.getAttribute('data-qid'), 10);
+                    const selOpt = parseInt(btn.getAttribute('data-opt'), 10);
+
+                    if (answeredMasterQuestions.has(qId)) return;
+                    answeredMasterQuestions.add(qId);
+
+                    const qItem = quizSubset[qId];
+                    const card = document.getElementById('full-quiz-card-' + qId);
+                    const allBtns = card.querySelectorAll('.mcq-opt-btn');
+                    const expBox = document.getElementById('full-exp-' + qId);
+
+                    allBtns.forEach((b, idx) => {
+                        b.disabled = true;
+                        if (idx === qItem.ans) b.classList.add('correct');
+                        if (idx === selOpt && idx !== qItem.ans) b.classList.add('wrong');
+                    });
+
+                    const isCorrect = (selOpt === qItem.ans);
+                    if (isCorrect) masterQuizScore++;
+                    playChime(isCorrect);
+                    document.getElementById('quizScoreDisplay').textContent = `Score: ${masterQuizScore} / ${quizSubset.length}`;
+                    if (expBox) expBox.style.display = 'block';
+                });
+            });
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Search Input
+            const searchInput = document.getElementById('offenceSearchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', () => filterOffences());
+            }
+
+            // Quick Toggles
+            const hyBtn = document.getElementById('btnHighYieldToggle');
+            if (hyBtn) {
+                hyBtn.addEventListener('click', () => {
+                    filterHighYieldOnly = !filterHighYieldOnly;
+                    hyBtn.classList.toggle('active-gold', filterHighYieldOnly);
+                    filterOffences();
+                });
+            }
+
+            const cogBtn = document.getElementById('btnCognizableToggle');
+            if (cogBtn) {
+                cogBtn.addEventListener('click', () => {
+                    filterCognizableOnly = !filterCognizableOnly;
+                    cogBtn.classList.toggle('active', filterCognizableOnly);
+                    filterOffences();
+                });
+            }
+
+            const bailBtn = document.getElementById('btnNonBailableToggle');
+            if (bailBtn) {
+                bailBtn.addEventListener('click', () => {
+                    filterNonBailableOnly = !filterNonBailableOnly;
+                    bailBtn.classList.toggle('active', filterNonBailableOnly);
+                    filterOffences();
+                });
+            }
+
+            // Reset
+            const resetBtn = document.getElementById('btnResetFilters');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    if (searchInput) searchInput.value = '';
+                    filterHighYieldOnly = false;
+                    filterCognizableOnly = false;
+                    filterNonBailableOnly = false;
+                    if (hyBtn) hyBtn.classList.remove('active-gold');
+                    if (cogBtn) cogBtn.classList.remove('active');
+                    if (bailBtn) bailBtn.classList.remove('active');
+
+                    currentCategoryFilter = 'All';
+                    document.querySelectorAll('.cat-pill').forEach(p => {
+                        p.classList.toggle('active', p.getAttribute('data-cat') === 'All');
+                    });
+                    filterOffences();
+                });
+            }
+
+            // Dossier Tabs Switching
+            document.querySelectorAll('.dossier-tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.dossier-tab-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+                    btn.classList.add('active');
+                    const tabId = btn.getAttribute('data-tab');
+                    const targetPane = document.getElementById(tabId);
+                    if (targetPane) targetPane.classList.add('active');
+                });
+            });
+
+            // Font Controls
+            const incBtn = document.getElementById('btnFontInc');
+            const decBtn = document.getElementById('btnFontDec');
+            const dossier = document.getElementById('offenceDossierCard');
+
+            if (incBtn && dossier) {
+                incBtn.addEventListener('click', () => {
+                    if (currentFontSize < 20) {
+                        currentFontSize += 1;
+                        dossier.style.fontSize = currentFontSize + 'px';
+                    }
+                });
+            }
+            if (decBtn && dossier) {
+                decBtn.addEventListener('click', () => {
+                    if (currentFontSize > 13) {
+                        currentFontSize -= 1;
+                        dossier.style.fontSize = currentFontSize + 'px';
+                    }
+                });
+            }
+
+            // Copy Dossier Button
+            const copyBtn = document.getElementById('btnCopyText');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', () => {
+                    const o = window.PPC_DATA.offences.find(item => item.slug === currentOffenceSlug);
+                    if (!o) return;
+
+                    const clipText = `=== ${o.chapter} ===
+PPC SECTION ${o.sec}: ${o.title}
+CrPC Status: ${o.cognizable ? 'Cognizable' : 'Non-Cognizable'} | ${o.bailable ? 'Bailable' : 'Non-Bailable'} | ${o.compoundable} | Trial: ${o.trialCourt}
+
+ESSENTIAL INGREDIENTS:
+${o.ingredients.map((ing, i) => (i + 1) + '. ' + ing).join('\n')}
+
+PUNISHMENT:
+${o.punishment}
+
+ILLUSTRATIONS:
+${o.illustrations ? o.illustrations.join('\n') : 'N/A'}
+
+CASE LAW / PRECEDENT:
+${o.precedents}
+
+Pakistan Penal Code (Act XLV of 1860)`;
+
+                    navigator.clipboard.writeText(clipText).then(() => {
+                        const originalHtml = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => { copyBtn.innerHTML = originalHtml; }, 2000);
+                    }).catch(() => {
+                        alert('Dossier copied to clipboard!');
+                    });
+                });
+            }
+
+            // Theme Toggle
+            const themeBtn = document.getElementById('themeToggleBtn');
+            const themeIcon = document.getElementById('themeIcon');
+            if (themeBtn && themeIcon) {
+                const updateThemeIcon = (isDark) => {
+                    if (isDark) {
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                    } else {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    }
+                };
+
+                updateThemeIcon(document.documentElement.classList.contains('dark-mode'));
+
+                themeBtn.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark-mode');
+                    const isDark = document.documentElement.classList.contains('dark-mode');
+                    localStorage.setItem('mcqs_dark_mode', isDark);
+                    updateThemeIcon(isDark);
+                });
+            }
+        }
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+</html>

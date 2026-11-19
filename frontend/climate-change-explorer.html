@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change Explorer | Global Warming, Emissions, Glaciers &amp; Treaties</title>
+    <meta name="description"
+        content="Interactive Climate Change Explorer for CSS, PMS, FPSC, PPSC and competitive examinations. Explore global temperature anomalies, carbon concentrations, renewable energy, glaciers, sea-level rise, climate agreements, and Pakistan's vulnerability.">
+    <link rel="canonical" href="https://cssprepcentral.com/climate-change-explorer.html" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --cc-bg: #f8fafc;
+            --cc-card-bg: #ffffff;
+            --cc-card-sub: #f1f5f9;
+            --cc-border: #e2e8f0;
+            --cc-text-main: #0f172a;
+            --cc-text-muted: #64748b;
+            --cc-primary: #0284c7;
+            --cc-primary-dark: #0369a1;
+            --cc-primary-light: rgba(2, 132, 199, 0.1);
+            --cc-accent: #10b981;
+            --cc-warm: #ef4444;
+            --cc-gold: #f59e0b;
+            --cc-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --cc-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode {
+            --cc-bg: #0b1120;
+            --cc-card-bg: #131c31;
+            --cc-card-sub: #1e293b;
+            --cc-border: #1e293b;
+            --cc-text-main: #f8fafc;
+            --cc-text-muted: #94a3b8;
+            --cc-primary: #38bdf8;
+            --cc-primary-dark: #0284c7;
+            --cc-primary-light: rgba(56, 189, 248, 0.15);
+            --cc-accent: #34d399;
+            --cc-warm: #f87171;
+            --cc-gold: #fbbf24;
+            --cc-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --cc-shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cc-bg);
+            color: var(--cc-text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Top Academic Switcher Bar */
+        .site-switcher-bar {
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            z-index: 1001;
+        }
+
+        .switcher-inner {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .switcher-label {
+            color: #94a3b8;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .switcher-btn.active {
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+            font-weight: 700;
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background: var(--cc-card-bg);
+            border-bottom: 1px solid var(--cc-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--cc-text-main);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #0284c7, #10b981);
+            color: #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--cc-card-sub);
+            border: 1px solid var(--cc-border);
+            color: var(--cc-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--cc-primary);
+            color: var(--cc-primary);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--cc-text-muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--cc-primary);
+            background: var(--cc-primary-light);
+        }
+
+        /* Hero Header */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(16, 185, 129, 0.08));
+            border-bottom: 1px solid var(--cc-border);
+            padding: 28px 20px 22px;
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .badge-academic {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--cc-primary);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--cc-text-main);
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle {
+            color: var(--cc-text-muted);
+            font-size: 0.96rem;
+            max-width: 860px;
+            margin: 0 auto 16px;
+        }
+
+        .kpi-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .kpi-pill {
+            background: var(--cc-card-bg);
+            border: 1px solid var(--cc-border);
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--cc-shadow);
+        }
+
+        .kpi-pill strong {
+            color: var(--cc-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+        }
+
+        /* Main Workspace Container */
+        .main-container {
+            max-width: 1540px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* Navigation Tab Strip */
+        .tab-nav-wrapper {
+            overflow-x: auto;
+            margin-bottom: 22px;
+            border-bottom: 2px solid var(--cc-border);
+            padding-bottom: 2px;
+        }
+
+        .tab-nav-wrapper::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .tab-nav-wrapper::-webkit-scrollbar-thumb {
+            background: var(--cc-border);
+            border-radius: 3px;
+        }
+
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            min-width: 900px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--cc-text-muted);
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: var(--cc-primary);
+            background: var(--cc-card-sub);
+        }
+
+        .tab-btn.active {
+            color: var(--cc-primary);
+            font-weight: 800;
+            background: var(--cc-card-bg);
+            border: 1px solid var(--cc-border);
+            border-bottom: 2px solid var(--cc-card-bg);
+            margin-bottom: -2px;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Tab Content Panes */
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Shared Card Layouts */
+        .content-card {
+            background: var(--cc-card-bg);
+            border: 1px solid var(--cc-border);
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: var(--cc-shadow);
+        }
+
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--cc-border);
+            padding-bottom: 12px;
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--cc-text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-badge {
+            background: var(--cc-primary-light);
+            color: var(--cc-primary);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Warming Stripes Visualizer */
+        .stripes-container {
+            margin: 16px 0;
+            background: var(--cc-card-sub);
+            border: 1px solid var(--cc-border);
+            border-radius: 8px;
+            padding: 14px;
+        }
+
+        .stripes-bar {
+            display: flex;
+            height: 70px;
+            width: 100%;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .stripe-segment {
+            flex: 1;
+            cursor: pointer;
+            transition: transform 0.15s, opacity 0.15s;
+            position: relative;
+        }
+
+        .stripe-segment:hover {
+            transform: scaleY(1.15);
+            z-index: 10;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .stripe-info-box {
+            background: var(--cc-card-bg);
+            border: 1px solid var(--cc-border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.88rem;
+        }
+
+        /* SVG Bar Chart for Anomaly */
+        .chart-svg-wrap {
+            width: 100%;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        /* SSP Scenarios Grid */
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .scenario-card {
+            background: var(--cc-card-sub);
+            border: 1px solid var(--cc-border);
+            border-radius: 10px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 4px solid var(--cc-primary);
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--cc-shadow);
+        }
+
+        .scenario-card.active {
+            background: var(--cc-card-bg);
+            box-shadow: 0 0 0 2px var(--cc-primary);
+        }
+
+        /* Country Emitters Table */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            margin-top: 12px;
+        }
+
+        .custom-table th, .custom-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--cc-border);
+            text-align: left;
+        }
+
+        .custom-table th {
+            background: var(--cc-card-sub);
+            font-size: 0.76rem;
+            color: var(--cc-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 700;
+        }
+
+        .custom-table tr:hover td {
+            background: var(--cc-primary-light);
+        }
+
+        .val-mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+
+        /* Clean Energy Mix & Cost Plunge */
+        .energy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .energy-source-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.84rem;
+        }
+
+        .energy-bar-wrap {
+            flex: 1;
+            height: 10px;
+            background: var(--cc-card-sub);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .energy-bar-fill {
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        /* Timeline for Climate Agreements */
+        .treaty-timeline {
+            position: relative;
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+
+        .treaty-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--cc-border);
+        }
+
+        .treaty-node {
+            position: relative;
+            margin-bottom: 22px;
+        }
+
+        .treaty-node::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--cc-primary);
+            border: 3px solid var(--cc-card-bg);
+            box-shadow: 0 0 0 2px var(--cc-primary);
+        }
+
+        .treaty-card {
+            background: var(--cc-card-sub);
+            border: 1px solid var(--cc-border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .treaty-year-badge {
+            display: inline-block;
+            background: var(--cc-primary);
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 0.74rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+
+        /* Pakistan Flood & Crisis Callout */
+        .pakistan-hotspot-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(2, 132, 199, 0.05));
+            border-left: 4px solid #10b981;
+            border-radius: 0 10px 10px 0;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+
+        .flood-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 14px 0;
+        }
+
+        .flood-stat-card {
+            background: var(--cc-card-bg);
+            border: 1px solid var(--cc-border);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .flood-stat-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--cc-warm);
+        }
+
+        .flood-stat-label {
+            font-size: 0.76rem;
+            color: var(--cc-text-muted);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* 2100 Climate Simulator Controls */
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .sim-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sim-control-item {
+            background: var(--cc-card-sub);
+            border: 1px solid var(--cc-border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .sim-control-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.86rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .sim-slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            background: var(--cc-border);
+        }
+
+        .sim-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--cc-primary);
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .sim-result-card {
+            background: var(--cc-card-bg);
+            border: 2px solid var(--cc-primary);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .sim-temp-display {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .sim-rating-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.86rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Quiz Styles */
+        .quiz-score-badge {
+            background: var(--cc-primary-light);
+            color: var(--cc-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--cc-primary);
+        }
+
+        .quiz-card {
+            background: var(--cc-card-sub);
+            border: 1px solid var(--cc-border);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        .quiz-q-num {
+            font-size: 0.76rem;
+            font-weight: 800;
+            color: var(--cc-primary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .quiz-q-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--cc-text-main);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .quiz-opt-btn {
+            background: var(--cc-card-bg);
+            border: 1px solid var(--cc-border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 0.88rem;
+            color: var(--cc-text-main);
+            cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .quiz-opt-btn:hover:not(:disabled) {
+            border-color: var(--cc-primary);
+            background: var(--cc-primary-light);
+        }
+
+        .quiz-opt-btn.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: #10b981 !important;
+            color: #10b981 !important;
+            font-weight: 700;
+        }
+
+        .quiz-opt-btn.wrong {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: #ef4444 !important;
+            color: #ef4444 !important;
+            font-weight: 700;
+        }
+
+        .quiz-exp-box {
+            display: none;
+            background: var(--cc-card-bg);
+            border-left: 3px solid #10b981;
+            padding: 10px 14px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.84rem;
+            line-height: 1.5;
+            color: var(--cc-text-main);
+            margin-top: 8px;
+        }
+
+        /* Site Footer */
+        .site-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 20px 24px;
+            margin-top: auto;
+            border-top: 1px solid #1e293b;
+            font-size: 0.86rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #38bdf8;
+        }
+    </style>
+
+    <!-- Anti-FOUC Dark Mode Preload -->
+    <script>
+        if (localStorage.getItem('mcqs_dark_mode') === 'true' || 
+            (!('mcqs_dark_mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/climate-change-explorer.html">
+    <meta property="og:title" content="Climate Change Explorer | Global Warming, Emissions, Glaciers &amp; Treaties">
+    <meta property="og:description" content="Interactive Climate Change Explorer for CSS, PMS, FPSC, PPSC and competitive examinations. Explore global temperature anomalies, carbon concentrations, renewable energy, glaciers, sea-level rise, c...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Climate Change Explorer | Global Warming, Emissions, Glaciers &amp; Treaties">
+    <meta name="twitter:description" content="Interactive Climate Change Explorer for CSS, PMS, FPSC, PPSC and competitive examinations. Explore global temperature anomalies, carbon concentrations, renewable energy, glaciers, sea-level rise, c...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+    <!-- Academic Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+            <a href="international-organizations-explorer.html" class="switcher-btn"><i class="fas fa-sitemap"></i> Organizations</a>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> World Timeline</a>
+            <a href="global-power-comparison.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Global Power</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-atom"></i> Periodic Table</a>
+            <a href="climate-change-explorer.html" class="switcher-btn active"><i class="fas fa-temperature-high"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn"><i class="fas fa-microchip"></i> Technology</a>
+            <a href="constitution-explorer.html" class="switcher-btn"><i class="fas fa-scale-balanced"></i> Constitution</a>
+            <a href="ppc-section-finder.html" class="switcher-btn"><i class="fas fa-gavel"></i> PPC Finder</a>
+            <a href="crpc-procedure-flowchart.html" class="switcher-btn"><i class="fas fa-diagram-project"></i> CrPC Flowchart</a>
+            <a href="identify-legal-provision.html" class="switcher-btn"><i class="fas fa-scale-unbalanced-flip"></i> Legal Provision</a>
+            <a href="court-structure-explorer.html" class="switcher-btn"><i class="fas fa-landmark"></i> Court Structure</a>
+            <a href="fia-laws-explorer.html" class="switcher-btn"><i class="fas fa-building-shield"></i> FIA Laws</a>
+            <a href="world-economy-dashboard.html" class="switcher-btn"><i class="fas fa-chart-line"></i> World Economy</a>
+            <a href="currency-exchange-explorer.html" class="switcher-btn"><i class="fas fa-coins"></i> Currency &amp; Exchange</a>
+            <a href="who-trades-what.html" class="switcher-btn"><i class="fas fa-ship"></i> Who Trades What?</a>
+            <a href="daily-challenges.html" class="switcher-btn"><i class="fas fa-bolt"></i> Daily Challenges</a>
+            <a href="daily-fact.html" class="switcher-btn"><i class="fas fa-calendar-check"></i> Daily Fact</a>
+        </div>
+    </div>
+
+    <!-- Site Header Navigation -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-earth-americas"></i></div>
+                <span>CSS Prep Central</span>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="back-link"><i class="fas fa-home"></i> Home</a>
+                <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="badge-academic"><i class="fas fa-leaf"></i> Environmental Studies &amp; General Science Suite</div>
+            <h1 class="hero-title">Climate Change &amp; Global Governance Explorer</h1>
+            <p class="hero-subtitle">
+                Explore global surface temperatures, atmospheric CO₂ concentrations, renewable energy transitions, cryosphere retreat, sea-level rise, international climate diplomacy (COP27/COP28), and Pakistan's climate emergency.
+            </p>
+            <div class="kpi-row" id="kpiRowContainer">
+                <!-- Dynamically populated from CLIMATE_CHANGE_DATA.kpis -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="main-container">
+
+        <!-- Navigation Tabs Strip -->
+        <div class="tab-nav-wrapper">
+            <div class="tab-nav" id="tabNavContainer">
+                <button class="tab-btn active" data-tab="tab-temperatures"><i class="fas fa-temperature-high"></i> Global Temperatures</button>
+                <button class="tab-btn" data-tab="tab-emissions"><i class="fas fa-smog"></i> Carbon Emissions &amp; GHG</button>
+                <button class="tab-btn" data-tab="tab-renewables"><i class="fas fa-solar-panel"></i> Renewable Energy</button>
+                <button class="tab-btn" data-tab="tab-cryosphere"><i class="fas fa-icicles"></i> Glaciers &amp; Third Pole</button>
+                <button class="tab-btn" data-tab="tab-sealevel"><i class="fas fa-water"></i> Sea-Level Rise</button>
+                <button class="tab-btn" data-tab="tab-treaties"><i class="fas fa-file-contract"></i> Climate Agreements</button>
+                <button class="tab-btn" data-tab="tab-pakistan" style="color:#10b981;"><i class="fas fa-shield-halved"></i> Pakistan Climate Crisis</button>
+                <button class="tab-btn" data-tab="tab-simulator" style="color:#f59e0b;"><i class="fas fa-sliders-h"></i> 2100 Climate Simulator</button>
+                <button class="tab-btn" data-tab="tab-quiz"><i class="fas fa-question-circle"></i> Practice Quiz (12 MCQs)</button>
+            </div>
+        </div>
+
+        <!-- TAB 1: Global Temperatures & Warming Stripes -->
+        <div class="tab-pane active" id="tab-temperatures">
+            <div class="content-card">
+                <div class="card-header-row">
+                    <h2 class="card-title"><i class="fas fa-temperature-high" style="color:#ef4444;"></i> Global Surface Temperature Anomalies (1880–2024)</h2>
+                    <span class="card-badge">NASA GISS / HadCRUT / NOAA</span>
+                </div>
+                <p style="font-size:0.9rem; color:var(--cc-text-muted); margin-bottom:12px;">
+                    Observed global mean surface temperature relative to the 1850–1900 pre-industrial baseline. The warming rate has accelerated to <strong>+0.18°C per decade</strong> since 1981—more than double the pre-1981 pace.
+                </p>
+
+                <!-- Interactive Warming Stripes Visualizer -->
+                <div class="stripes-container">
+                    <div style="display:flex; justify-content:space-between; font-size:0.78rem; font-weight:700; color:var(--cc-text-muted); margin-bottom:6px;">
+                        <span>1880 (Cooler Baseline)</span>
+                        <span>CLIMATE WARMING STRIPES (Ed Hawkins Representation)</span>
+                        <span>2024 (Record Warmth)</span>
+                    </div>
+                    <div class="stripes-bar" id="stripesBar">
+                        <!-- Populated dynamically -->
+                    </div>
+                    <div class="stripe-info-box" id="stripeInfoBox">
+                        <div>
+                            <strong>Selected Year: <span id="stripeYearDisplay">2024</span></strong>
+                            <span style="margin: 0 10px;">&bull;</span>
+                            <span>Anomaly: <strong id="stripeAnomalyDisplay" style="color:#ef4444; font-family:'JetBrains Mono';">+1.28°C</strong></span>
+                        </div>
+                        <div id="stripeNoteDisplay" style="color:var(--cc-text-muted); font-size:0.84rem;">
+                            Current estimated 12-month trailing mean (~1.3°C above pre-industrial baseline)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SVG Anomaly Chart -->
+                <div class="chart-svg-wrap">
+                    <svg id="tempAnomalySvg" viewBox="0 0 1000 240" style="width:100%; height:240px; background:var(--cc-card-sub); border-radius:8px; border:1px solid var(--cc-border);">
+                        <!-- Rendered by JS -->
+                    </svg>
+                </div>
+
+                <!-- IPCC AR6 SSP Scenarios -->
+                <div style="margin-top:24px;">
+                    <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:6px;"><i class="fas fa-project-diagram"></i> IPCC AR6 Shared Socioeconomic Pathways (SSP Scenarios to 2100)</h3>
+                    <p style="font-size:0.84rem; color:var(--cc-text-muted);">Click any pathway to view emissions requirements and projected impacts by the end of the 21st century.</p>
+                    <div class="scenarios-grid" id="scenariosGrid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: Carbon Emissions & Keeling Curve -->
+        <div class="tab-pane" id="tab-emissions">
+            <div class="content-card">
+                <div class="card-header-row">
+                    <h2 class="card-title"><i class="fas fa-smog" style="color:#f59e0b;"></i> Atmospheric CO₂ Concentrations &amp; Global Emitters</h2>
+                    <span class="card-badge">Scripps Keeling Curve &bull; Global Carbon Project</span>
+                </div>
+
+                <!-- Keeling Curve Progression -->
+                <div style="margin-bottom:24px;">
+                    <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:8px;"><i class="fas fa-chart-line"></i> The Keeling Curve: Atmospheric CO₂ at Mauna Loa (1800–2024)</h3>
+                    <p style="font-size:0.86rem; color:var(--cc-text-muted); margin-bottom:14px;">
+                        Continuous direct atmospheric measurements initiated by Dr. Charles David Keeling in 1958 prove that atmospheric CO₂ has surged from a stable pre-industrial baseline of <strong>280 ppm</strong> to over <strong>424.5 ppm</strong> in 2024 (+51% increase).
+                    </p>
+                    <div style="overflow-x:auto;">
+                        <svg id="keelingCurveSvg" viewBox="0 0 900 220" style="width:100%; height:220px; background:var(--cc-card-sub); border-radius:8px; border:1px solid var(--cc-border);">
+                            <!-- Populated dynamically -->
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Top Emitters Table -->
+                <div style="margin-bottom:24px;">
+                    <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:8px;"><i class="fas fa-globe-americas"></i> Top Greenhouse Gas Emitting Nations</h3>
+                    <div style="overflow-x:auto;">
+                        <table class="custom-table" id="topEmittersTable">
+                            <thead>
+                                <tr>
+                                    <th>Country / Bloc</th>
+                                    <th>Annual Emissions (Gt CO₂)</th>
+                                    <th>Global Share (%)</th>
+                                    <th>Per Capita (Tons/person)</th>
+                                    <th>Historical Cumulative (%)</th>
+                                    <th>Primary Fossil Energy</th>
+                                    <th>Net-Zero Target</th>
+                                </tr>
+                            </thead>
+                            <tbody id="topEmittersTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sectoral Breakdown & Greenhouse Gas Comparison -->
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
+                    <div>
+                        <h3 style="font-size:1.05rem; font-weight:800; margin-bottom:10px;"><i class="fas fa-pie-chart"></i> Global Emissions by Economic Sector</h3>
+                        <div id="sectorsListContainer">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="font-size:1.05rem; font-weight:800; margin-bottom:10px;"><i class="fas fa-flask"></i> Major Greenhouse Gases Comparison</h3>
+                        <div style="overflow-x:auto;">
+                            <table class="custom-table" id="ghgCompareTable">
+                                <thead>
+                                    <tr>
+                                        <th>Gas</th>
+                                        <th>100-Yr GWP</th>
+                                        <th>Lifetime</th>
+                                        <th>Share</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ghgCompareTableBody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: Renewable Energy Transition -->
+        <div class="tab-pane" id="tab-renewables">
+            <div class="content-card">
+                <div class="card-header-row">
+                    <h2 class="card-title"><i class="fas fa-solar-panel" style="color:#10b981;"></i> Renewable Energy &amp; Global Power Transition</h2>
+                    <span class="card-badge">IRENA &bull; Ember Global Electricity Review</span>
+                </div>
+
+                <div class="energy-grid" style="margin-bottom:24px;">
+                    <div>
+                        <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:12px;"><i class="fas fa-bolt"></i> Global Electricity Generation Mix (2023–2024)</h3>
+                        <div id="electricityMixContainer">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <div style="margin-top:14px; font-size:0.84rem; color:var(--cc-text-muted); background:var(--cc-card-sub); padding:10px 14px; border-radius:8px; border:1px solid var(--cc-border);">
+                            <i class="fas fa-info-circle" style="color:var(--cc-primary);"></i> Clean electricity (renewables + nuclear) reached a record <strong>39.3%</strong> of global generation in 2023, while fossil fuels generated 60.7%.
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:12px;"><i class="fas fa-arrow-trend-down"></i> The Clean Energy Cost Plunge (2010 vs 2024)</h3>
+                        <div id="lcoeContainer">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pakistan Clean Energy Roadmap -->
+                <div class="pakistan-hotspot-box">
+                    <h3 style="font-size:1.15rem; font-weight:800; color:#065f46; margin-bottom:6px;"><i class="fas fa-flag"></i> Pakistan's Renewable Energy Trajectory (ARE Policy 2019)</h3>
+                    <p style="font-size:0.88rem; color:var(--cc-text-main); margin-bottom:12px;">
+                        Pakistan has set an official target of generating <strong>60% of all national electricity from clean energy sources (renewables + hydro) by 2030</strong>.
+                    </p>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:10px;" id="pakEnergyProjectsGrid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: Glaciers & The Third Pole -->
+        <div class="tab-pane" id="tab-cryosphere">
+            <div class="content-card">
+                <div class="card-header-row">
+                    <h2 class="card-title"><i class="fas fa-icicles" style="color:#0284c7;"></i> Glaciers, Polar Ice Sheets &amp; The Third Pole</h2>
+                    <span class="card-badge">ICIMOD &bull; NASA Cryosphere</span>
+                </div>
+
+                <!-- Polar Ice Sheets Summary -->
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; margin-bottom:24px;">
+                    <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:10px; padding:18px;">
+                        <div style="font-size:0.8rem; font-weight:800; color:var(--cc-primary); text-transform:uppercase;">Arctic Amplification</div>
+                        <h3 style="font-size:1.2rem; font-weight:800; margin:4px 0 8px;">Arctic Sea Ice Retreat</h3>
+                        <p style="font-size:0.86rem; color:var(--cc-text-muted); line-height:1.5;">
+                            September minimum sea ice extent is declining at <strong>-12.6% per decade</strong>. The <em>ice-albedo feedback</em> causes dark open ocean water to absorb 94% of solar energy, warming the Arctic 3 to 4 times faster than the global average.
+                        </p>
+                    </div>
+
+                    <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:10px; padding:18px;">
+                        <div style="font-size:0.8rem; font-weight:800; color:#ef4444; text-transform:uppercase;">Ice Sheet Mass Loss</div>
+                        <h3 style="font-size:1.2rem; font-weight:800; margin:4px 0 8px;">Greenland &amp; Antarctica</h3>
+                        <p style="font-size:0.86rem; color:var(--cc-text-muted); line-height:1.5;">
+                            Greenland loses <strong>~270 Gt of ice per year</strong>; Antarctica loses <strong>~150 Gt/year</strong>. West Antarctica's Thwaites "Doomsday Glacier" alone holds enough ice to raise sea level by 65 cm and destabilize the ice sheet.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Pakistan & The Third Pole Deep-Dive -->
+                <div style="margin-top:20px;">
+                    <h3 style="font-size:1.25rem; font-weight:800; margin-bottom:8px;"><i class="fas fa-mountain"></i> The Third Pole: Pakistan's Glacial Water Towers</h3>
+                    <p style="font-size:0.88rem; color:var(--cc-text-muted); margin-bottom:14px;">
+                        Pakistan holds over <strong>7,253 glaciers</strong>—the largest concentration of glacial ice anywhere on Earth outside the polar ice caps. Between <strong>70% and 85%</strong> of the Indus River's flow is sustained by snowpack and glacial melt.
+                    </p>
+
+                    <div style="overflow-x:auto; margin-bottom:16px;">
+                        <table class="custom-table" id="glaciersTable">
+                            <thead>
+                                <tr>
+                                    <th>Glacier Name</th>
+                                    <th>Length</th>
+                                    <th>Rank / Significance</th>
+                                    <th>Geographical Location</th>
+                                </tr>
+                            </thead>
+                            <tbody id="glaciersTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- GLOF Callout -->
+                    <div style="background:rgba(239, 68, 68, 0.08); border-left:4px solid #ef4444; padding:14px 18px; border-radius:0 8px 8px 0; font-size:0.88rem;">
+                        <strong style="color:#ef4444;"><i class="fas fa-triangle-exclamation"></i> Glacial Lake Outburst Flood (GLOF) Vulnerability:</strong>
+                        Over 3,044 glacial lakes have formed in Gilgit-Baltistan and Khyber Pakhtunkhwa. 33 of these are high-risk flashpoints (such as Shisper and Passu lakes) threatening mountain communities, roads, and bridges with catastrophic surge floods.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: Sea-Level Rise & Coastal Threats -->
+        <div class="tab-pane" id="tab-sealevel">
+            <div class="content-card">
+                <div class="card-header-row">
+                    <h2 class="card-title"><i class="fas fa-water" style="color:#0284c7;"></i> Global Sea-Level Rise &amp; Coastal Vulnerability</h2>
+                    <span class="card-badge">NASA Satellite Altimetry &bull; IPCC AR6</span>
+                </div>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-bottom:24px;">
+                    <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:10px; padding:16px;">
+                        <div style="font-size:0.78rem; font-weight:800; color:var(--cc-text-muted); text-transform:uppercase;">Observed Rise Since 1880</div>
+                        <div style="font-size:2.2rem; font-weight:800; color:var(--cc-primary); font-family:'JetBrains Mono';">+23.5 cm</div>
+                        <p style="font-size:0.82rem; color:var(--cc-text-muted); margin-top:4px;">Global mean sea level (GMSL) has risen 21–24 cm since modern tide gauge records began in 1880.</p>
+                    </div>
+
+                    <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:10px; padding:16px;">
+                        <div style="font-size:0.78rem; font-weight:800; color:var(--cc-text-muted); text-transform:uppercase;">Current Satellite Altimetry Rate</div>
+                        <div style="font-size:2.2rem; font-weight:800; color:#ef4444; font-family:'JetBrains Mono';">3.7 mm / year</div>
+                        <p style="font-size:0.82rem; color:var(--cc-text-muted); margin-top:4px;">The rate of sea-level rise has more than doubled from 1.4 mm/year in the 20th century.</p>
+                    </div>
+
+                    <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:10px; padding:16px;">
+                        <div style="font-size:0.78rem; font-weight:800; color:var(--cc-text-muted); text-transform:uppercase;">Projected 2100 Rise (IPCC)</div>
+                        <div style="font-size:2.2rem; font-weight:800; color:#f59e0b; font-family:'JetBrains Mono';">0.4m – 1.0m+</div>
+                        <p style="font-size:0.82rem; color:var(--cc-text-muted); margin-top:4px;">Could exceed 2 meters if unstable West Antarctic ice cliffs collapse (low-likelihood, high-impact).</p>
+                    </div>
+                </div>
+
+                <!-- Physical Drivers Breakdown -->
+                <div style="margin-bottom:24px;">
+                    <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:12px;"><i class="fas fa-pie-chart"></i> Physical Drivers of Sea-Level Rise (IPCC Budget)</h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;" id="seaLevelDriversContainer">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Threatened Locations Dossier -->
+                <div>
+                    <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:12px;"><i class="fas fa-city"></i> Threatened Megacities &amp; Low-Lying Deltas</h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:16px;" id="vulnerableCoastGrid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 6: Climate Agreements & Diplomacy -->
+        <div class="tab-pane" id="tab-treaties">
+            <div class="content-card">
+                <div class="card-header-row">
+                    <h2 class="card-title"><i class="fas fa-file-contract" style="color:#0284c7;"></i> International Climate Treaties &amp; COP Summits</h2>
+                    <span class="card-badge">UNFCCC Diplomacy Timeline</span>
+                </div>
+                <p style="font-size:0.88rem; color:var(--cc-text-muted); margin-bottom:16px;">
+                    From the 1979 First World Climate Conference to the landmark 2015 Paris Agreement, COP27 Loss &amp; Damage breakthrough, and COP28 UAE Consensus on fossil fuel transition.
+                </p>
+
+                <div class="treaty-timeline" id="treatyTimelineContainer">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 7: Pakistan Climate Crisis Deep-Dive -->
+        <div class="tab-pane" id="tab-pakistan">
+            <div class="content-card">
+                <div class="card-header-row">
+                    <h2 class="card-title"><i class="fas fa-shield-halved" style="color:#10b981;"></i> Pakistan's Climate Vulnerability &amp; High-Yield CSS Notes</h2>
+                    <span class="card-badge">Germanwatch CRI &bull; PDNA 2022</span>
+                </div>
+
+                <!-- Crisis Summary -->
+                <div class="pakistan-hotspot-box">
+                    <h3 style="font-size:1.2rem; font-weight:800; color:#065f46; margin-bottom:6px;">The Climate Injustice Paradox</h3>
+                    <p style="font-size:0.9rem; line-height:1.6; color:var(--cc-text-main);">
+                        Pakistan emits less than <strong>0.9% of global greenhouse gases</strong>, yet consistently ranks among the <strong>top 10 most climate-vulnerable countries in the world</strong> on the Germanwatch Global Climate Risk Index (CRI). It faces simultaneous risks: melting glaciers in the north, extreme desert heatwaves (&gt;50°C in Jacobabad/Nawabshah), catastrophic monsoon floods, and sea intrusion along the Sindh coast.
+                    </p>
+                </div>
+
+                <!-- 2022 Mega-Floods PDNA Facts -->
+                <div style="margin-bottom:24px;">
+                    <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:10px;"><i class="fas fa-cloud-showers-heavy"></i> The 2022 Floods: Scale of Devastation</h3>
+                    <div class="flood-stats-grid" id="floodStatsGrid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Policy Frameworks -->
+                <div style="margin-bottom:24px;">
+                    <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:12px;"><i class="fas fa-landmark"></i> National Climate Policies &amp; UN Initiatives</h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px;" id="policiesGrid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Essay Pointers Callout -->
+                <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:10px; padding:18px;">
+                    <h3 style="font-size:1.05rem; font-weight:800; color:var(--cc-primary); margin-bottom:8px;"><i class="fas fa-graduation-cap"></i> CSS &amp; PMS Essay &amp; Current Affairs Thesis Points</h3>
+                    <ul style="padding-left:20px; font-size:0.88rem; line-height:1.7; color:var(--cc-text-main);" id="essayPointersList">
+                        <!-- Populated dynamically -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 8: Interactive 2100 Climate Simulator -->
+        <div class="tab-pane" id="tab-simulator">
+            <div class="content-card">
+                <div class="card-header-row">
+                    <h2 class="card-title"><i class="fas fa-sliders-h" style="color:#f59e0b;"></i> Interactive 2100 Climate Scenario Simulator</h2>
+                    <span class="card-badge">IPCC Climate Sensitivity Model</span>
+                </div>
+                <p style="font-size:0.88rem; color:var(--cc-text-muted); margin-bottom:20px;">
+                    Adjust global policy levers to simulate projected warming, sea-level rise, cryosphere loss, and ecological risks by the year 2100.
+                </p>
+
+                <div class="sim-grid">
+                    <!-- Sliders Side -->
+                    <div>
+                        <div class="sim-control-item">
+                            <div class="sim-control-header">
+                                <span>Global Fossil Fuel Phase-Out Year</span>
+                                <span id="simPhaseoutLabel" style="color:var(--cc-primary); font-family:'JetBrains Mono';">2050</span>
+                            </div>
+                            <input type="range" class="sim-slider" id="simPhaseoutSlider" min="2030" max="2080" value="2050" step="5">
+                            <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--cc-text-muted); margin-top:4px;">
+                                <span>2030 (Aggressive)</span>
+                                <span>2050 (Paris Net-Zero)</span>
+                                <span>2080 (Delayed)</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-control-item">
+                            <div class="sim-control-header">
+                                <span>Annual Renewable Capacity Growth Rate</span>
+                                <span id="simRenewableLabel" style="color:#10b981; font-family:'JetBrains Mono';">15% / year</span>
+                            </div>
+                            <input type="range" class="sim-slider" id="simRenewableSlider" min="5" max="30" value="15" step="1">
+                            <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--cc-text-muted); margin-top:4px;">
+                                <span>5% (Sluggish)</span>
+                                <span>15% (Current Pace)</span>
+                                <span>30% (Exponential Boom)</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-control-item">
+                            <div class="sim-control-header">
+                                <span>Year Deforestation Is Fully Halted</span>
+                                <span id="simForestLabel" style="color:#f59e0b; font-family:'JetBrains Mono';">2035</span>
+                            </div>
+                            <input type="range" class="sim-slider" id="simForestSlider" min="2025" max="2060" value="2035" step="5">
+                            <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--cc-text-muted); margin-top:4px;">
+                                <span>2025 (Immediate)</span>
+                                <span>2035 (Glasgow Pledge)</span>
+                                <span>2060 (Protracted)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projected Results Side -->
+                    <div class="sim-result-card" id="simResultCard">
+                        <div>
+                            <span class="sim-rating-badge" id="simRatingBadge" style="background:rgba(16, 185, 129, 0.15); color:#10b981;">PARIS ALIGNED (1.5°C PATHWAY)</span>
+                        </div>
+                        <div>
+                            <div style="font-size:0.8rem; font-weight:700; color:var(--cc-text-muted); text-transform:uppercase;">Projected 2100 Warming</div>
+                            <div class="sim-temp-display" id="simTempDisplay" style="color:#10b981;">+1.65°C</div>
+                            <div style="font-size:0.84rem; color:var(--cc-text-muted);">above pre-industrial baseline</div>
+                        </div>
+
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; text-align:left; background:var(--cc-card-sub); padding:12px; border-radius:8px; border:1px solid var(--cc-border);">
+                            <div>
+                                <strong style="font-size:0.74rem; color:var(--cc-text-muted); text-transform:uppercase; display:block;">Sea-Level Rise</strong>
+                                <span id="simSeaLevelVal" style="font-family:'JetBrains Mono'; font-weight:700;">+0.42 m</span>
+                            </div>
+                            <div>
+                                <strong style="font-size:0.74rem; color:var(--cc-text-muted); text-transform:uppercase; display:block;">Pakistan Glaciers</strong>
+                                <span id="simGlacierVal" style="font-family:'JetBrains Mono'; font-weight:700;">~36% Loss</span>
+                            </div>
+                            <div style="grid-column:1 / span 2;">
+                                <strong style="font-size:0.74rem; color:var(--cc-text-muted); text-transform:uppercase; display:block;">Arctic Summer Sea Ice</strong>
+                                <span id="simArcticVal" style="font-size:0.82rem;">Largely preserved; rare ice-free years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 9: Practice Quiz (12 MCQs) -->
+        <div class="tab-pane" id="tab-quiz">
+            <div class="content-card">
+                <div class="card-header-row">
+                    <h2 class="card-title"><i class="fas fa-question-circle" style="color:var(--cc-primary);"></i> General Science &amp; Climate Change Quiz</h2>
+                    <div class="quiz-score-badge" id="quizScoreDisplay">Score: 0 / 12</div>
+                </div>
+                <p style="font-size:0.88rem; color:var(--cc-text-muted); margin-bottom:18px;">
+                    Test your mastery of IPCC reports, treaties, greenhouse gases, Pakistan's climate vulnerability, and renewable energy with instant audio-visual feedback.
+                </p>
+
+                <div id="quizContainer">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <strong>CSS Prep Central &bull; Climate Change &amp; Environmental Studies Suite</strong>
+                <p style="font-size:0.78rem; margin-top:4px;">High-Yield preparation for CSS, PMS, FPSC, PPSC, Environmental Sciences, and Essay examinations.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="periodic-table.html">Periodic Table</a>
+                <a href="solar-system-explorer.html">Solar System</a>
+                <a href="human-body-explorer.html">Human Body</a>
+                <a href="global-power-comparison.html">Global Power</a>
+                <a href="world-history-timeline.html">Timeline</a>
+                <a href="pakistan-map.html">Pakistan Map</a>
+            </div>
+        </div>
+    
+        <div class="footer-legal-bar" style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; color:#94a3b8;">
+            <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+            <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+            <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+            <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Load Climate Change Dataset -->
+    <script src="js/data_climate_change.js"></script>
+
+    <!-- Interactive Engine Script -->
+    <script>
+        // Web Audio Synthesizer
+        function playChime(isCorrect) {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                const ctx = new AudioCtx();
+                if (ctx.state === 'suspended') ctx.resume();
+
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                const now = ctx.currentTime;
+                if (isCorrect) {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.15); // G5
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now); // A3
+                    osc.frequency.linearRampToValueAtTime(146.83, now + 0.2); // D3
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                }
+            } catch (e) {
+                // AudioContext blocked or unsupported
+            }
+        }
+
+        // Global State
+        let quizScore = 0;
+        let answeredQuestions = new Set();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initThemeToggle();
+            initTabs();
+            renderKPIs();
+            renderWarmingStripes();
+            renderTemperatureChart();
+            renderScenarios();
+            renderKeelingCurve();
+            renderTopEmitters();
+            renderSectors();
+            renderGHGTable();
+            renderElectricityMix();
+            renderLCOE();
+            renderPakistanEnergy();
+            renderGlaciersTable();
+            renderSeaLevelDrivers();
+            renderVulnerableLocations();
+            renderTreaties();
+            renderPakistanCrisis();
+            initSimulator();
+            initQuiz();
+        });
+
+        // Theme Toggle
+        function initThemeToggle() {
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            const themeIcon = document.getElementById('themeIcon');
+
+            function updateIcon() {
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            updateIcon();
+
+            toggleBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                updateIcon();
+                renderTemperatureChart();
+                renderKeelingCurve();
+            });
+        }
+
+        // Tabs Handler
+        function initTabs() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const panes = document.querySelectorAll('.tab-pane');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const target = btn.getAttribute('data-tab');
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    panes.forEach(p => p.classList.remove('active'));
+
+                    btn.classList.add('active');
+                    const targetPane = document.getElementById(target);
+                    if (targetPane) targetPane.classList.add('active');
+                });
+            });
+        }
+
+        // KPIs
+        function renderKPIs() {
+            const container = document.getElementById('kpiRowContainer');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const k = window.CLIMATE_CHANGE_DATA.kpis;
+
+            container.innerHTML = `
+                <div class="kpi-pill" title="${k.tempAnomalyDesc}"><i class="fas fa-temperature-high" style="color:#ef4444;"></i> Warming: <strong>${k.tempAnomaly}</strong></div>
+                <div class="kpi-pill" title="${k.co2Desc}"><i class="fas fa-smog" style="color:#f59e0b;"></i> CO₂: <strong>${k.co2Concentration}</strong></div>
+                <div class="kpi-pill" title="${k.seaLevelDesc}"><i class="fas fa-water" style="color:#0284c7;"></i> Sea Level: <strong>${k.seaLevelRise}</strong></div>
+                <div class="kpi-pill" title="${k.arcticIceDesc}"><i class="fas fa-icicles" style="color:#06b6d4;"></i> Arctic Ice: <strong>${k.arcticIceLoss}</strong></div>
+                <div class="kpi-pill" title="${k.renewableDesc}"><i class="fas fa-bolt" style="color:#10b981;"></i> Clean Power: <strong>${k.renewableShare}</strong></div>
+                <div class="kpi-pill" title="${k.parisDesc}"><i class="fas fa-bullseye" style="color:#8b5cf6;"></i> Paris Goal: <strong>${k.parisGoal}</strong></div>
+            `;
+        }
+
+        // Warming Stripes
+        function renderWarmingStripes() {
+            const container = document.getElementById('stripesBar');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const history = window.CLIMATE_CHANGE_DATA.temperatures.history;
+
+            container.innerHTML = history.map((item, idx) => `
+                <div class="stripe-segment" style="background:${item.stripe};" data-idx="${idx}" title="${item.year}: ${item.anomaly > 0 ? '+' : ''}${item.anomaly}°C"></div>
+            `).join('');
+
+            container.querySelectorAll('.stripe-segment').forEach(seg => {
+                seg.addEventListener('mouseenter', () => {
+                    const idx = parseInt(seg.getAttribute('data-idx'), 10);
+                    const item = history[idx];
+                    document.getElementById('stripeYearDisplay').textContent = item.year;
+                    const aDisp = document.getElementById('stripeAnomalyDisplay');
+                    aDisp.textContent = (item.anomaly > 0 ? '+' : '') + item.anomaly + '°C';
+                    aDisp.style.color = item.anomaly > 0 ? '#ef4444' : '#3b82f6';
+                    document.getElementById('stripeNoteDisplay').textContent = item.note;
+                });
+            });
+        }
+
+        // SVG Anomaly Chart
+        function renderTemperatureChart() {
+            const svg = document.getElementById('tempAnomalySvg');
+            if (!svg || !window.CLIMATE_CHANGE_DATA) return;
+            const history = window.CLIMATE_CHANGE_DATA.temperatures.history;
+            const isDark = document.documentElement.classList.contains('dark-mode');
+
+            const width = 1000;
+            const height = 240;
+            const padding = { top: 30, right: 40, bottom: 40, left: 60 };
+
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+
+            const minAnomaly = -0.5;
+            const maxAnomaly = 1.5;
+
+            function getY(val) {
+                return padding.top + chartHeight - ((val - minAnomaly) / (maxAnomaly - minAnomaly)) * chartHeight;
+            }
+
+            const zeroY = getY(0);
+            const paris15Y = getY(1.5);
+            const paris20Y = getY(2.0);
+
+            let svgHtml = '';
+
+            // Grid lines & Zero Baseline
+            svgHtml += `<line x1="${padding.left}" y1="${zeroY}" x2="${width - padding.right}" y2="${zeroY}" stroke="${isDark ? '#475569' : '#cbd5e1'}" stroke-width="1.5" />`;
+            svgHtml += `<text x="${padding.left - 10}" y="${zeroY + 4}" fill="${isDark ? '#94a3b8' : '#64748b'}" font-size="11" text-anchor="end" font-family="JetBrains Mono">0.0°C</text>`;
+
+            // 1.5C Paris Threshold Line
+            svgHtml += `<line x1="${padding.left}" y1="${paris15Y}" x2="${width - padding.right}" y2="${paris15Y}" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,4" />`;
+            svgHtml += `<text x="${width - padding.right + 5}" y="${paris15Y + 4}" fill="#ef4444" font-size="10" font-weight="bold" font-family="JetBrains Mono">1.5°C Paris</text>`;
+
+            // +1.0C Line
+            const oneY = getY(1.0);
+            svgHtml += `<line x1="${padding.left}" y1="${oneY}" x2="${width - padding.right}" y2="${oneY}" stroke="${isDark ? '#334155' : '#e2e8f0'}" stroke-width="1" stroke-dasharray="2,2" />`;
+            svgHtml += `<text x="${padding.left - 10}" y="${oneY + 4}" fill="${isDark ? '#94a3b8' : '#64748b'}" font-size="11" text-anchor="end" font-family="JetBrains Mono">+1.0°C</text>`;
+
+            // Bars
+            const barWidth = (chartWidth / history.length) * 0.75;
+            const barSpacing = chartWidth / history.length;
+
+            history.forEach((d, idx) => {
+                const x = padding.left + idx * barSpacing + (barSpacing - barWidth) / 2;
+                const barY = d.anomaly >= 0 ? getY(d.anomaly) : zeroY;
+                const barH = Math.abs(getY(d.anomaly) - zeroY);
+                const color = d.stripe;
+
+                svgHtml += `
+                    <rect x="${x}" y="${barY}" width="${barWidth}" height="${Math.max(2, barH)}" fill="${color}" rx="2">
+                        <title>${d.year}: ${d.anomaly > 0 ? '+' : ''}${d.anomaly}°C (${d.note})</title>
+                    </rect>
+                `;
+
+                // Year Label for major decades
+                if (idx % 3 === 0 || idx === history.length - 1) {
+                    svgHtml += `<text x="${x + barWidth / 2}" y="${height - 15}" fill="${isDark ? '#94a3b8' : '#64748b'}" font-size="10" text-anchor="middle" font-family="JetBrains Mono">${d.year}</text>`;
+                }
+            });
+
+            svg.innerHTML = svgHtml;
+        }
+
+        // Scenarios
+        function renderScenarios() {
+            const container = document.getElementById('scenariosGrid');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const scenarios = window.CLIMATE_CHANGE_DATA.temperatures.scenarios;
+
+            container.innerHTML = scenarios.map((s, idx) => `
+                <div class="scenario-card ${idx === 0 ? 'active' : ''}" style="border-left-color:${s.color};">
+                    <div style="font-size:0.75rem; font-weight:800; color:${s.color}; text-transform:uppercase;">${s.name.split('(')[0]}</div>
+                    <h4 style="font-size:1.05rem; font-weight:800; margin:4px 0 6px;">${s.name.split('(')[1].replace(')', '')}</h4>
+                    <div style="font-size:0.86rem; margin-bottom:6px;"><strong>2100 Warming:</strong> <span style="color:${s.color}; font-weight:700; font-family:'JetBrains Mono';">${s.temp2100}</span></div>
+                    <div style="font-size:0.82rem; color:var(--cc-text-muted); margin-bottom:6px;"><strong>Emissions:</strong> ${s.emissionsGoal}</div>
+                    <div style="font-size:0.8rem; color:var(--cc-text-muted); line-height:1.4;">${s.desc}</div>
+                </div>
+            `).join('');
+        }
+
+        // Keeling Curve SVG
+        function renderKeelingCurve() {
+            const svg = document.getElementById('keelingCurveSvg');
+            if (!svg || !window.CLIMATE_CHANGE_DATA) return;
+            const points = window.CLIMATE_CHANGE_DATA.emissions.keelingCurve;
+            const isDark = document.documentElement.classList.contains('dark-mode');
+
+            const width = 900;
+            const height = 220;
+            const pad = { top: 20, right: 30, bottom: 35, left: 50 };
+
+            const chartW = width - pad.left - pad.right;
+            const chartH = height - pad.top - pad.bottom;
+
+            const minYear = 1800;
+            const maxYear = 2025;
+            const minCo2 = 260;
+            const maxCo2 = 440;
+
+            function getX(yr) { return pad.left + ((yr - minYear) / (maxYear - minYear)) * chartW; }
+            function getY(co2) { return pad.top + chartH - ((co2 - minCo2) / (maxCo2 - minCo2)) * chartH; }
+
+            let pathD = '';
+            let svgHtml = '';
+
+            // Grid lines
+            [280, 320, 360, 400, 420].forEach(level => {
+                const y = getY(level);
+                svgHtml += `<line x1="${pad.left}" y1="${y}" x2="${width - pad.right}" y2="${y}" stroke="${isDark ? '#334155' : '#e2e8f0'}" stroke-width="1" />`;
+                svgHtml += `<text x="${pad.left - 8}" y="${y + 4}" fill="${isDark ? '#94a3b8' : '#64748b'}" font-size="10" text-anchor="end" font-family="JetBrains Mono">${level}</text>`;
+            });
+
+            points.forEach((p, i) => {
+                const x = getX(p.year);
+                const y = getY(p.co2);
+                if (i === 0) pathD += `M ${x} ${y}`;
+                else pathD += ` L ${x} ${y}`;
+
+                svgHtml += `
+                    <circle cx="${x}" cy="${y}" r="4" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5">
+                        <title>${p.year}: ${p.co2} ppm (${p.note})</title>
+                    </circle>
+                    <text x="${x}" y="${height - 12}" fill="${isDark ? '#94a3b8' : '#64748b'}" font-size="10" text-anchor="middle" font-family="JetBrains Mono">${p.year}</text>
+                `;
+            });
+
+            svgHtml = `<path d="${pathD}" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />` + svgHtml;
+            svg.innerHTML = svgHtml;
+        }
+
+        // Top Emitters Table
+        function renderTopEmitters() {
+            const tbody = document.getElementById('topEmittersTableBody');
+            if (!tbody || !window.CLIMATE_CHANGE_DATA) return;
+            const emitters = window.CLIMATE_CHANGE_DATA.emissions.topEmitters;
+
+            tbody.innerHTML = emitters.map(e => `
+                <tr>
+                    <td><strong>${e.country}</strong></td>
+                    <td class="val-mono">${e.annualGt} Gt</td>
+                    <td class="val-mono" style="color:var(--cc-primary);">${e.sharePct}%</td>
+                    <td class="val-mono">${e.perCapitaTons} t</td>
+                    <td class="val-mono">${e.cumulSharePct}%</td>
+                    <td>${e.mainFuel}</td>
+                    <td style="font-size:0.78rem;">${e.target}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Sectoral Breakdown
+        function renderSectors() {
+            const container = document.getElementById('sectorsListContainer');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const sectors = window.CLIMATE_CHANGE_DATA.emissions.sectors;
+
+            container.innerHTML = sectors.map(s => `
+                <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:8px; padding:10px 14px; margin-bottom:8px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                        <span style="font-weight:700; font-size:0.86rem;"><i class="fas ${s.icon}" style="color:var(--cc-primary); margin-right:6px;"></i> ${s.name}</span>
+                        <strong class="val-mono" style="color:var(--cc-primary);">${s.share}%</strong>
+                    </div>
+                    <div style="font-size:0.78rem; color:var(--cc-text-muted);">${s.desc}</div>
+                </div>
+            `).join('');
+        }
+
+        // GHG Comparison Table
+        function renderGHGTable() {
+            const tbody = document.getElementById('ghgCompareTableBody');
+            if (!tbody || !window.CLIMATE_CHANGE_DATA) return;
+            const gases = window.CLIMATE_CHANGE_DATA.emissions.ghgTable;
+
+            tbody.innerHTML = gases.map(g => `
+                <tr>
+                    <td><strong>${g.gas}</strong></td>
+                    <td class="val-mono" style="color:#ef4444;">${g.gwp100}</td>
+                    <td>${g.lifetime}</td>
+                    <td class="val-mono">${g.share}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Electricity Mix
+        function renderElectricityMix() {
+            const container = document.getElementById('electricityMixContainer');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const mix = window.CLIMATE_CHANGE_DATA.renewables.globalElectricityMix;
+
+            container.innerHTML = mix.map(item => `
+                <div class="energy-source-row">
+                    <span style="width:130px; font-weight:600;">${item.source} ${item.clean ? '🌱' : ''}</span>
+                    <div class="energy-bar-wrap">
+                        <div class="energy-bar-fill" style="width:${item.share * 2.5}%; background:${item.color};"></div>
+                    </div>
+                    <span class="val-mono" style="width:45px; text-align:right;">${item.share}%</span>
+                </div>
+            `).join('');
+        }
+
+        // LCOE Drop
+        function renderLCOE() {
+            const container = document.getElementById('lcoeContainer');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const drops = window.CLIMATE_CHANGE_DATA.renewables.lcoeDrop;
+
+            container.innerHTML = drops.map(d => `
+                <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:8px; padding:10px 14px; margin-bottom:8px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <strong>${d.tech}</strong>
+                        <span class="val-mono" style="color:#10b981; font-weight:800; font-size:1rem;">${d.dropPct}</span>
+                    </div>
+                    <div style="display:flex; gap:14px; font-size:0.8rem; margin:4px 0; color:var(--cc-text-muted);">
+                        <span>2010: <del>${d.cost2010}</del></span>
+                        <span>2024: <strong style="color:var(--cc-text-main);">${d.cost2024}</strong></span>
+                    </div>
+                    <div style="font-size:0.76rem; color:var(--cc-text-muted);">${d.desc}</div>
+                </div>
+            `).join('');
+        }
+
+        // Pakistan Energy Projects
+        function renderPakistanEnergy() {
+            const container = document.getElementById('pakEnergyProjectsGrid');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const projects = window.CLIMATE_CHANGE_DATA.renewables.pakistanEnergy.flagshipProjects;
+
+            container.innerHTML = projects.map(p => `
+                <div style="background:var(--cc-card-bg); border:1px solid var(--cc-border); border-radius:6px; padding:8px 12px; font-size:0.82rem; font-weight:600; display:flex; align-items:center; gap:8px;">
+                    <i class="fas fa-check-circle" style="color:#10b981;"></i> ${p}
+                </div>
+            `).join('');
+        }
+
+        // Glaciers Table
+        function renderGlaciersTable() {
+            const tbody = document.getElementById('glaciersTableBody');
+            if (!tbody || !window.CLIMATE_CHANGE_DATA) return;
+            const glaciers = window.CLIMATE_CHANGE_DATA.cryosphere.thirdPole.notableGlaciers;
+
+            tbody.innerHTML = glaciers.map(g => `
+                <tr>
+                    <td><strong>${g.name}</strong></td>
+                    <td class="val-mono" style="color:var(--cc-primary);">${g.length}</td>
+                    <td>${g.rank}</td>
+                    <td style="font-size:0.8rem;">${g.note}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Sea Level Drivers
+        function renderSeaLevelDrivers() {
+            const container = document.getElementById('seaLevelDriversContainer');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const drivers = window.CLIMATE_CHANGE_DATA.seaLevel.drivers;
+
+            container.innerHTML = drivers.map(d => `
+                <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:8px; padding:12px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                        <span style="font-weight:700; font-size:0.85rem;">${d.name}</span>
+                        <span class="val-mono" style="color:var(--cc-primary); font-size:1.05rem;">${d.pct}%</span>
+                    </div>
+                    <p style="font-size:0.78rem; color:var(--cc-text-muted);">${d.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        // Vulnerable Locations
+        function renderVulnerableLocations() {
+            const container = document.getElementById('vulnerableCoastGrid');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const locs = window.CLIMATE_CHANGE_DATA.seaLevel.vulnerableLocations;
+
+            container.innerHTML = locs.map(l => `
+                <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:10px; padding:16px;">
+                    <h4 style="font-size:1.05rem; font-weight:800; color:var(--cc-primary); margin-bottom:4px;">${l.name}</h4>
+                    <div style="font-size:0.78rem; color:var(--cc-text-muted); font-weight:600; margin-bottom:8px;">Population At Risk: ${l.populationAtRisk}</div>
+                    <p style="font-size:0.82rem; line-height:1.5; margin-bottom:8px;">${l.threat}</p>
+                    <div style="font-size:0.76rem; color:var(--cc-text-muted); background:var(--cc-card-bg); padding:4px 8px; border-radius:4px; border:1px solid var(--cc-border);">
+                        <strong>Elevation:</strong> ${l.elevation}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Treaties Timeline
+        function renderTreaties() {
+            const container = document.getElementById('treatyTimelineContainer');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const treaties = window.CLIMATE_CHANGE_DATA.agreements;
+
+            container.innerHTML = treaties.map(t => `
+                <div class="treaty-node">
+                    <div class="treaty-card">
+                        <span class="treaty-year-badge">${t.year} &bull; ${t.venue}</span>
+                        <h4 style="font-size:1.1rem; font-weight:800; margin-bottom:4px;">${t.title}</h4>
+                        <div style="font-size:0.78rem; font-weight:700; color:var(--cc-primary); margin-bottom:6px;">${t.body}</div>
+                        <p style="font-size:0.84rem; line-height:1.5; color:var(--cc-text-main);">${t.significance}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Pakistan Crisis
+        function renderPakistanCrisis() {
+            const floodContainer = document.getElementById('floodStatsGrid');
+            const policiesContainer = document.getElementById('policiesGrid');
+            const essayList = document.getElementById('essayPointersList');
+            if (!window.CLIMATE_CHANGE_DATA) return;
+
+            const c = window.CLIMATE_CHANGE_DATA.pakistanCrisis;
+
+            if (floodContainer) {
+                floodContainer.innerHTML = c.flood2022Facts.map(f => `
+                    <div class="flood-stat-card">
+                        <div class="flood-stat-val">${f.val}</div>
+                        <div class="flood-stat-label">${f.label}</div>
+                    </div>
+                `).join('');
+            }
+
+            if (policiesContainer) {
+                policiesContainer.innerHTML = c.policies.map(p => `
+                    <div style="background:var(--cc-card-sub); border:1px solid var(--cc-border); border-radius:8px; padding:14px;">
+                        <h4 style="font-size:0.95rem; font-weight:800; color:#065f46; margin-bottom:4px;">${p.name}</h4>
+                        <p style="font-size:0.82rem; color:var(--cc-text-muted); line-height:1.4;">${p.desc}</p>
+                    </div>
+                `).join('');
+            }
+
+            if (essayList) {
+                essayList.innerHTML = c.essayPointers.map(pt => `<li>${pt}</li>`).join('');
+            }
+        }
+
+        // 2100 Climate Simulator
+        function initSimulator() {
+            const phaseoutSlider = document.getElementById('simPhaseoutSlider');
+            const renewableSlider = document.getElementById('simRenewableSlider');
+            const forestSlider = document.getElementById('simForestSlider');
+
+            function updateSim() {
+                const phaseout = parseInt(phaseoutSlider.value, 10);
+                const renewable = parseInt(renewableSlider.value, 10);
+                const forest = parseInt(forestSlider.value, 10);
+
+                document.getElementById('simPhaseoutLabel').textContent = phaseout;
+                document.getElementById('simRenewableLabel').textContent = renewable + '% / year';
+                document.getElementById('simForestLabel').textContent = forest;
+
+                // Formula approximation for 2100 warming based on IPCC sensitivity
+                // Baseline around 1.3°C today
+                const phaseoutImpact = (phaseout - 2030) * 0.045; // Delay adds +0.045C per year
+                const renewableImpact = (renewable - 15) * -0.05;  // Faster growth reduces temp
+                const forestImpact = (forest - 2025) * 0.015;
+
+                let projectedTemp = 1.3 + phaseoutImpact + renewableImpact + forestImpact;
+                projectedTemp = Math.max(1.35, Math.min(4.8, projectedTemp));
+
+                // Sea level approximation (0.35m base + 0.18m per degree above 1.5)
+                const seaLevelRise = Math.max(0.35, 0.35 + (projectedTemp - 1.3) * 0.22).toFixed(2);
+
+                // Glacier loss approx
+                const glacierLoss = Math.min(85, Math.max(25, Math.round(projectedTemp * 18))).toFixed(0);
+
+                // Update UI
+                const tempDisp = document.getElementById('simTempDisplay');
+                tempDisp.textContent = '+' + projectedTemp.toFixed(2) + '°C';
+
+                document.getElementById('simSeaLevelVal').textContent = '+' + seaLevelRise + ' m';
+                document.getElementById('simGlacierVal').textContent = '~' + glacierLoss + '% Loss';
+
+                const badge = document.getElementById('simRatingBadge');
+                const arcticVal = document.getElementById('simArcticVal');
+
+                if (projectedTemp <= 1.8) {
+                    badge.textContent = 'PARIS ALIGNED (1.5°C – 1.8°C PATHWAY)';
+                    badge.style.background = 'rgba(16, 185, 129, 0.15)';
+                    badge.style.color = '#10b981';
+                    tempDisp.style.color = '#10b981';
+                    arcticVal.textContent = 'Largely preserved; rare ice-free summers';
+                } else if (projectedTemp <= 2.5) {
+                    badge.textContent = 'MODERATE PROGRESS (2.0°C – 2.5°C)';
+                    badge.style.background = 'rgba(245, 158, 11, 0.15)';
+                    badge.style.color = '#f59e0b';
+                    tempDisp.style.color = '#f59e0b';
+                    arcticVal.textContent = 'Frequent ice-free summers; severe coral bleaching';
+                } else if (projectedTemp <= 3.2) {
+                    badge.textContent = 'HIGH EMISSIONS / DANGEROUS WARMING';
+                    badge.style.background = 'rgba(234, 88, 12, 0.15)';
+                    badge.style.color = '#ea580c';
+                    tempDisp.style.color = '#ea580c';
+                    arcticVal.textContent = 'Nearly perennially ice-free summers; Amazon dieback risk';
+                } else {
+                    badge.textContent = 'CATASTROPHIC BREAKDOWN (>3.5°C)';
+                    badge.style.background = 'rgba(220, 38, 38, 0.15)';
+                    badge.style.color = '#dc2626';
+                    tempDisp.style.color = '#dc2626';
+                    arcticVal.textContent = 'Year-round sea ice collapse; multi-meter sea level commitment';
+                }
+            }
+
+            if (phaseoutSlider && renewableSlider && forestSlider) {
+                phaseoutSlider.addEventListener('input', updateSim);
+                renewableSlider.addEventListener('input', updateSim);
+                forestSlider.addEventListener('input', updateSim);
+                updateSim();
+            }
+        }
+
+        // Quiz
+        function initQuiz() {
+            const container = document.getElementById('quizContainer');
+            if (!container || !window.CLIMATE_CHANGE_DATA) return;
+            const mcqs = window.CLIMATE_CHANGE_DATA.mcqs;
+
+            container.innerHTML = '';
+            quizScore = 0;
+            answeredQuestions.clear();
+            document.getElementById('quizScoreDisplay').textContent = `Score: 0 / ${mcqs.length}`;
+
+            mcqs.forEach((item, qIdx) => {
+                const card = document.createElement('div');
+                card.className = 'quiz-card';
+                card.id = 'quiz-card-' + item.id;
+
+                let optsHtml = '';
+                item.opts.forEach((opt, optIdx) => {
+                    optsHtml += `<button class="quiz-opt-btn" data-qid="${item.id}" data-opt="${optIdx}">
+                        <span style="font-weight:700; color:var(--cc-primary);">${String.fromCharCode(65 + optIdx)}.</span> ${opt}
+                    </button>`;
+                });
+
+                card.innerHTML = `
+                    <div class="quiz-q-num">Question ${qIdx + 1} of ${mcqs.length} &bull; Environmental Science High-Yield</div>
+                    <div class="quiz-q-text">${item.q}</div>
+                    <div class="quiz-options">${optsHtml}</div>
+                    <div class="quiz-exp-box" id="exp-${item.id}">
+                        <strong><i class="fas fa-check-circle" style="color:#10b981;"></i> Explanation:</strong> ${item.exp}
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            container.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const qId = parseInt(btn.getAttribute('data-qid'), 10);
+                    const selectedOpt = parseInt(btn.getAttribute('data-opt'), 10);
+
+                    if (answeredQuestions.has(qId)) return;
+                    answeredQuestions.add(qId);
+
+                    const qItem = mcqs.find(m => m.id === qId);
+                    const card = document.getElementById('quiz-card-' + qId);
+                    const allBtns = card.querySelectorAll('.quiz-opt-btn');
+                    const expBox = document.getElementById('exp-' + qId);
+
+                    allBtns.forEach(b => b.disabled = true);
+
+                    if (selectedOpt === qItem.ans) {
+                        btn.classList.add('correct');
+                        quizScore++;
+                        playChime(true);
+                    } else {
+                        btn.classList.add('wrong');
+                        allBtns[qItem.ans].classList.add('correct');
+                        playChime(false);
+                    }
+
+                    expBox.style.display = 'block';
+                    document.getElementById('quizScoreDisplay').textContent = `Score: ${quizScore} / ${mcqs.length}`;
+                });
+            });
+        }
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

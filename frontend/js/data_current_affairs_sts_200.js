@@ -1,0 +1,4207 @@
+/**
+ * 200 High-Yield MCQs on Latest Developments in Science, Tech & Space (2024–2026)
+ * SubCategory: "Science, Tech & Space"
+ * Category: "Current Affairs"
+ */
+window.CURRENT_AFFAIRS_STS_200_MCQS = [
+  {
+    "_id": "ca_sts_1",
+    "questionId": 1,
+    "questionText": "In October 2024, NASA launched its flagship planetary spacecraft to explore Jupiter's ocean-bearing icy moon. What is the mission named?",
+    "options": {
+      "A": "Europa Clipper",
+      "B": "Juice",
+      "C": "Psyche",
+      "D": "Lucy"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Europa Clipper",
+    "explanation": "NASA's Europa Clipper launched on October 14, 2024, aboard a SpaceX Falcon Heavy to determine whether Jupiter's moon Europa possesses conditions suitable for life.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_2",
+    "questionId": 2,
+    "questionText": "What is the primary scientific objective of NASA's Europa Clipper mission?",
+    "options": {
+      "A": "Assessing the habitability of Europa's subsurface liquid water ocean beneath its icy crust",
+      "B": "Mining helium-3 from Europa's surface",
+      "C": "Testing nuclear rocket engines in Jupiter's orbit",
+      "D": "Terraforming the Jovian satellites"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Assessing the habitability of Europa's subsurface liquid water ocean beneath its icy crust",
+    "explanation": "Europa Clipper carries 9 scientific instruments, including ice-penetrating radar (REASON), to measure the thickness of Europa's ice shell and investigate its subsurface ocean.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_3",
+    "questionId": 3,
+    "questionText": "NASA's Artemis program aims to land the first woman and first person of color on the Moon. Which heavy-lift rocket is the backbone of the Artemis missions?",
+    "options": {
+      "A": "Space Launch System (SLS)",
+      "B": "Saturn V",
+      "C": "Falcon 9",
+      "D": "Vulcan Centaur"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Space Launch System (SLS)",
+    "explanation": "The Space Launch System (SLS) is NASA's super heavy-lift expendable launch vehicle designed to propel the Orion spacecraft to the Moon.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_4",
+    "questionId": 4,
+    "questionText": "What is the name of the crew capsule used in NASA's Artemis lunar missions?",
+    "options": {
+      "A": "Orion Spacecraft",
+      "B": "Crew Dragon",
+      "C": "Starliner",
+      "D": "Apollo Command Module"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Orion Spacecraft",
+    "explanation": "The Orion spacecraft, built by Lockheed Martin with the European Service Module (ESM) provided by ESA, carries astronauts to lunar orbit.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_5",
+    "questionId": 5,
+    "questionText": "NASA's Artemis II mission, scheduled as the first crewed flight of the Artemis program, has a four-member crew including the first woman and first African-American lunar astronaut. Who are they?",
+    "options": {
+      "A": "Christina Koch (first woman) and Victor Glover (first African-American)",
+      "B": "Peggy Whitson and Leland Melvin",
+      "C": "Jessica Meir and Robert Curbeam",
+      "D": "Sunita Williams and Michael Anderson"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Christina Koch (first woman) and Victor Glover (first African-American)",
+    "explanation": "Artemis II crew consists of Reid Wiseman (commander), Victor Glover (pilot), Christina Koch (mission specialist), and Jeremy Hansen (CSA astronaut).",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_6",
+    "questionId": 6,
+    "questionText": "What is the name of the planned international human-tended space station to be placed in lunar orbit under the Artemis program?",
+    "options": {
+      "A": "Lunar Gateway",
+      "B": "Tiangong-Lunar",
+      "C": "Mir-2",
+      "D": "Deep Space Habitat"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Lunar Gateway",
+    "explanation": "The Gateway is a multi-nation orbital space station planned by NASA, ESA, JAXA, and CSA to support sustained lunar surface exploration.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_7",
+    "questionId": 7,
+    "questionText": "In February 2024, which private US space company's Odysseus lander achieved the first commercial lunar touchdown in history under NASA's CLPS program?",
+    "options": {
+      "A": "Intuitive Machines",
+      "B": "Astrobotic Technology",
+      "C": "Firefly Aerospace",
+      "D": "ispace"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Intuitive Machines",
+    "explanation": "Intuitive Machines' Nova-C lander 'Odysseus' landed near Malapert A crater near the Moon's south pole on February 22, 2024, ending a 52-year US lunar landing hiatus.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_8",
+    "questionId": 8,
+    "questionText": "What is NASA's CLPS initiative that contracts private aerospace companies to deliver payloads to the lunar surface?",
+    "options": {
+      "A": "Commercial Lunar Payload Services",
+      "B": "Crewed Lunar Protection System",
+      "C": "Combined Lunar Power Station",
+      "D": "Celestial Landing Propulsion Standard"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Commercial Lunar Payload Services",
+    "explanation": "CLPS is NASA's program acquiring transportation services from commercial providers to send science experiments and rovers to the Moon.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_9",
+    "questionId": 9,
+    "questionText": "NASA's VIPER rover was designed to search for and map lunar volatiles and water ice. Where on the Moon was it targeted to explore?",
+    "options": {
+      "A": "The permanently shadowed regions of the lunar South Pole",
+      "B": "Sea of Tranquility",
+      "C": "Ocean of Storms",
+      "D": "Copernicus Crater"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The permanently shadowed regions of the lunar South Pole",
+    "explanation": "VIPER (Volatiles Investigating Polar Exploration Rover) was developed to drill into cold traps at the lunar South Pole to measure subsurface water ice concentration.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_10",
+    "questionId": 10,
+    "questionText": "In 2024, NASA awarded contracts to which companies to develop the Lunar Terrain Vehicle (LTV) for Artemis astronauts?",
+    "options": {
+      "A": "Intuitive Machines, Lunar Outpost, and Venturi Astrolab",
+      "B": "Tesla and SpaceX only",
+      "C": "Boeing and Lockheed Martin only",
+      "D": "General Motors alone"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Intuitive Machines, Lunar Outpost, and Venturi Astrolab",
+    "explanation": "NASA selected Intuitive Machines, Lunar Outpost, and Venturi Astrolab to advance unpressurized Lunar Terrain Vehicle (LTV) rover concepts.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_11",
+    "questionId": 11,
+    "questionText": "In October 2023, NASA launched the Psyche spacecraft. What unique celestial body is it traveling to explore?",
+    "options": {
+      "A": "A metal-rich M-type asteroid orbiting between Mars and Jupiter",
+      "B": "A comet from the Oort Cloud",
+      "C": "Pluto's moon Charon",
+      "D": "A dormant volcano on Venus"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A metal-rich M-type asteroid orbiting between Mars and Jupiter",
+    "explanation": "Asteroid 16 Psyche is believed to be the exposed nickel-iron core of an early protoplanet, offering unique insights into planetary core formation.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_12",
+    "questionId": 12,
+    "questionText": "NASA's OSIRIS-REx mission returned pristine asteroid samples to Earth in September 2023 from which near-Earth carbonaceous asteroid?",
+    "options": {
+      "A": "101955 Bennu",
+      "B": "Ryugu",
+      "C": "Itokawa",
+      "D": "Didymos"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "101955 Bennu",
+    "explanation": "OSIRIS-REx delivered 121.6 grams of carbon- and water-rich sample material from asteroid Bennu to the Utah desert on September 24, 2023.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_13",
+    "questionId": 13,
+    "questionText": "Following the delivery of asteroid Bennu samples, the OSIRIS-REx spacecraft was redirected to explore which asteroid and renamed:",
+    "options": {
+      "A": "OSIRIS-APEX (traveling to near-Earth asteroid 99942 Apophis)",
+      "B": "OSIRIS-CERES",
+      "C": "OSIRIS-HALLEY",
+      "D": "OSIRIS-EROS"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "OSIRIS-APEX (traveling to near-Earth asteroid 99942 Apophis)",
+    "explanation": "Renamed OSIRIS-APEX (Apophis Explorer), the spacecraft will study asteroid Apophis during its historically close flyby of Earth in April 2029.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_14",
+    "questionId": 14,
+    "questionText": "NASA's DART mission (Double Asteroid Redirection Test) in 2022 successfully demonstrated kinetic impact planetary defense by altering the orbit of which asteroid moonlet?",
+    "options": {
+      "A": "Dimorphos (orbiting Didymos)",
+      "B": "Phobos",
+      "C": "Deimos",
+      "D": "Dactyl"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Dimorphos (orbiting Didymos)",
+    "explanation": "DART intentionally crashed into Dimorphos at 14,000 mph, shortening its orbital period around Didymos by 32 minutes—proving kinetic deflection feasibility.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_15",
+    "questionId": 15,
+    "questionText": "In October 2024, the European Space Agency (ESA) launched which planetary defense mission to inspect the crater and outcome of NASA's DART impact on Dimorphos?",
+    "options": {
+      "A": "Hera Mission",
+      "B": "Rosetta II",
+      "C": "Giotto",
+      "D": "BepiColombo"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Hera Mission",
+    "explanation": "ESA's Hera spacecraft launched aboard a Falcon 9 to conduct detailed post-impact surveys of the Didymos-Dimorphos asteroid system.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_16",
+    "questionId": 16,
+    "questionText": "Which deep-space laser communications experiment aboard NASA's Psyche spacecraft successfully transmitted ultra-high-definition streaming video from 19 million miles away in late 2023?",
+    "options": {
+      "A": "DSOC (Deep Space Optical Communications)",
+      "B": "Starlink Laser Net",
+      "C": "Lunar Laser Comm",
+      "D": "Quantum Space Link"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "DSOC (Deep Space Optical Communications)",
+    "explanation": "DSOC uses near-infrared laser signals to transmit data at rates 10 to 100 times faster than conventional radio frequency systems from deep space.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_17",
+    "questionId": 17,
+    "questionText": "In 2024, NASA's Parker Solar Probe flew closer to the Sun than any human-made object in history, traveling through the solar corona at speeds exceeding:",
+    "options": {
+      "A": "635,000 km/h (approx. 394,000 mph)",
+      "B": "50,000 km/h",
+      "C": "100,000 km/h",
+      "D": "1,000,000 km/h"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "635,000 km/h (approx. 394,000 mph)",
+    "explanation": "Parker Solar Probe reaches orbital speeds of ~635,266 km/h at perihelion, repeatedly 'touching the Sun' protected by its 4.5-inch carbon-composite heat shield.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_18",
+    "questionId": 18,
+    "questionText": "Which NASA Mars rover celebrated over 1,000 Martian days (sols) in 2024 while caching rock core samples in Jezero Crater?",
+    "options": {
+      "A": "Perseverance",
+      "B": "Curiosity",
+      "C": "Opportunity",
+      "D": "Spirit"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Perseverance",
+    "explanation": "Perseverance landed in Jezero Crater in February 2021, collecting sealed geological cores for the future Mars Sample Return (MSR) campaign.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_19",
+    "questionId": 19,
+    "questionText": "What was the name of the historic robotic helicopter on Mars that officially concluded its mission in January 2024 after completing 72 powered flights?",
+    "options": {
+      "A": "Ingenuity",
+      "B": "Pathfinder",
+      "C": "Sojourner",
+      "D": "Skyhopper"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Ingenuity",
+    "explanation": "Originally designed as a 5-flight technology demonstration, the Ingenuity Mars Helicopter flew 72 times across 3 years, traveling over 17 km before blade damage grounded it.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_20",
+    "questionId": 20,
+    "questionText": "Which instrument aboard NASA's Perseverance rover successfully generated breathable oxygen from the carbon dioxide atmosphere of Mars between 2021 and 2023?",
+    "options": {
+      "A": "MOXIE (Mars Oxygen ISRU Experiment)",
+      "B": "SHERLOC",
+      "C": "PIXL",
+      "D": "MEDA"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "MOXIE (Mars Oxygen ISRU Experiment)",
+    "explanation": "MOXIE produced 122 grams of oxygen via solid oxide electrolysis, proving In-Situ Resource Utilization (ISRU) feasibility for future human Mars crews.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_21",
+    "questionId": 21,
+    "questionText": "In 2024, NASA initiated a comprehensive review to overhaul which multibillion-dollar mission facing budget and timeline challenges to bring Mars rock samples back to Earth?",
+    "options": {
+      "A": "Mars Sample Return (MSR) Architecture",
+      "B": "Artemis Lunar Base",
+      "C": "Viper Lunar Rover",
+      "D": "New Horizons 2"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Mars Sample Return (MSR) Architecture",
+    "explanation": "NASA Administrator Bill Nelson solicited commercial alternatives to reduce MSR's $11 billion projected cost and expedite the sample return timeline from 2040 to the early 2030s.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_22",
+    "questionId": 22,
+    "questionText": "NASA's Dragonfly rotorcraft lander mission, confirmed in 2024 for a 2028 launch, is designed to explore the prebiotic chemistry of which world?",
+    "options": {
+      "A": "Saturn's giant organic-rich moon Titan",
+      "B": "Jupiter's volcanic moon Io",
+      "C": "Neptune's moon Triton",
+      "D": "Asteroid Ceres"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Saturn's giant organic-rich moon Titan",
+    "explanation": "Dragonfly is an 8-rotor nuclear-powered drone designed to fly dozens of kilometers across Titan's dense nitrogen atmosphere and liquid hydrocarbon landscape.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_23",
+    "questionId": 23,
+    "questionText": "What is the name of the joint ESA-JAXA mission currently en route to Mercury, performing multiple gravitational flybys before orbital insertion in 2026?",
+    "options": {
+      "A": "BepiColombo",
+      "B": "MESSENGER 2",
+      "C": "Hermes Probe",
+      "D": "Solar Orbiter"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "BepiColombo",
+    "explanation": "BepiColombo consists of two orbiters (ESA's MPO and JAXA's MMO/Mio) studying Mercury's magnetic field, interior, and surface composition.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_24",
+    "questionId": 24,
+    "questionText": "NASA's Roman Space Telescope (Nancy Grace Roman Space Telescope), planned for launch by May 2027, will feature a field of view how many times larger than Hubble?",
+    "options": {
+      "A": "100 times larger than the Hubble Space Telescope",
+      "B": "2 times larger",
+      "C": "10 times larger",
+      "D": "500 times larger"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "100 times larger than the Hubble Space Telescope",
+    "explanation": "The Roman Space Telescope possesses a 2.4-meter primary mirror with a panoramic field of view 100 times greater than Hubble to map dark energy and exoplanets.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_25",
+    "questionId": 25,
+    "questionText": "Which instrument on the Roman Space Telescope will perform direct imaging and starlight-blocking spectroscopy of exoplanets in nearby star systems?",
+    "options": {
+      "A": "The Coronagraph Instrument (CGI)",
+      "B": "Wide-Field Instrument",
+      "C": "Spectro-Photometer",
+      "D": "Infrared Array Camera"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The Coronagraph Instrument (CGI)",
+    "explanation": "The Roman Coronagraph will block central host starlight by a factor of up to one billion, allowing detection of faint gas giant exoplanets.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_26",
+    "questionId": 26,
+    "questionText": "At which gravitational equilibrium point in space is the James Webb Space Telescope (JWST) permanently stationed, roughly 1.5 million kilometers from Earth?",
+    "options": {
+      "A": "Sun-Earth Lagrange Point 2 (L2)",
+      "B": "Sun-Earth Lagrange Point 1 (L1)",
+      "C": "Earth-Moon L4",
+      "D": "Low Earth Orbit (LEO)"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Sun-Earth Lagrange Point 2 (L2)",
+    "explanation": "JWST orbits the second Sun-Earth Lagrange point (L2), where gravitational forces allow it to maintain a stable position synchronized with Earth's orbit.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_27",
+    "questionId": 27,
+    "questionText": "In mid-2024, astronomers using JWST confirmed the discovery of the most distant and earliest galaxy ever observed, designated:",
+    "options": {
+      "A": "JADES-GS-z14-0 (redshift z = 14.32)",
+      "B": "GN-z11",
+      "C": "HD1",
+      "D": "MACS0647-JD"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "JADES-GS-z14-0 (redshift z = 14.32)",
+    "explanation": "JADES-GS-z14-0 existed only 290 million years after the Big Bang, exhibiting an unexpectedly large size and luminous star-forming mass.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_28",
+    "questionId": 28,
+    "questionText": "JWST conducts astronomical observations primarily across which spectrum of light to pierce cosmic dust and observe redshifted ancient light?",
+    "options": {
+      "A": "Infrared (Near-Infrared and Mid-Infrared)",
+      "B": "Ultraviolet and Gamma-rays",
+      "C": "Visible light only",
+      "D": "X-rays and Radio waves"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Infrared (Near-Infrared and Mid-Infrared)",
+    "explanation": "JWST's four primary science instruments (NIRCam, NIRSpec, MIRI, NIRISS) detect infrared light from 0.6 to 28 microns.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_29",
+    "questionId": 29,
+    "questionText": "What material coats the 18 hexagonal beryllium segments of JWST's 6.5-meter primary mirror to maximize infrared reflectivity?",
+    "options": {
+      "A": "Gold (microscopic coating protected by silicon dioxide)",
+      "B": "Pure silver",
+      "C": "Titanium alloy",
+      "D": "Diamond crystal"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Gold (microscopic coating protected by silicon dioxide)",
+    "explanation": "The primary mirror segments are vapor-coated with a 100-nanometer layer of pure gold (totaling about 48 grams of gold across all mirrors).",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_30",
+    "questionId": 30,
+    "questionText": "In 2023–2024, JWST detected carbon-bearing molecules including methane (CH4) and carbon dioxide (CO2) in the atmosphere of which sub-Neptune exoplanet?",
+    "options": {
+      "A": "K2-18b",
+      "B": "WASP-39b",
+      "C": "Proxima Centauri b",
+      "D": "TRAPPIST-1e"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "K2-18b",
+    "explanation": "JWST's transmission spectroscopy of K2-18b, located 120 light-years away in the habitable zone of a red dwarf, detected carbon dioxide and methane, suggesting a possible Hycean world.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_31",
+    "questionId": 31,
+    "questionText": "Which molecule, primarily produced by phytoplankton and living organisms on Earth, did JWST detect tentative possible traces of on exoplanet K2-18b?",
+    "options": {
+      "A": "Dimethyl Sulfide (DMS)",
+      "B": "Ozone",
+      "C": "Chlorophyll",
+      "D": "Nitrous Oxide"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Dimethyl Sulfide (DMS)",
+    "explanation": "Observations tentatively suggested possible traces of dimethyl sulfide (DMS) in K2-18b's atmosphere, sparking intense ongoing confirmation studies.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_32",
+    "questionId": 32,
+    "questionText": "JWST observations of early galaxies in 2023–2024 challenged classical cosmological models because early galaxies appeared:",
+    "options": {
+      "A": "Far more massive, mature, and luminous than predicted by standard Lambda-CDM models",
+      "B": "Completely devoid of stars",
+      "C": "Traveling faster than light",
+      "D": "Composed entirely of dark matter"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Far more massive, mature, and luminous than predicted by standard Lambda-CDM models",
+    "explanation": "JWST revealed surprisingly mature, luminous galaxies with stellar masses billions of times that of the Sun forming earlier than cosmological simulations predicted.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_33",
+    "questionId": 33,
+    "questionText": "In 2024, the Event Horizon Telescope (EHT) collaboration released new polarized light images of Sagittarius A*, the supermassive black hole at the center of:",
+    "options": {
+      "A": "The Milky Way Galaxy",
+      "B": "Messier 87",
+      "C": "Andromeda Galaxy",
+      "D": "Triangulum Galaxy"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The Milky Way Galaxy",
+    "explanation": "The EHT revealed strong, organized spiral magnetic fields radiating around Sagittarius A*, mirroring the magnetic structure of M87*.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_34",
+    "questionId": 34,
+    "questionText": "In July 2023, ESA launched which wide-field space telescope designed to map the geometry of the dark universe and dark energy across 10 billion light-years?",
+    "options": {
+      "A": "Euclid Space Telescope",
+      "B": "Gaia",
+      "C": "Planck",
+      "D": "Herschel"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Euclid Space Telescope",
+    "explanation": "ESA's Euclid telescope at L2 is measuring the expansion rate of the universe and gravitational lensing to understand dark matter and dark energy.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_35",
+    "questionId": 35,
+    "questionText": "In 2024, international gravitational wave observatories (LIGO, Virgo, and KAGRA) initiated their fourth observing run (O4). What generates detectable gravitational waves?",
+    "options": {
+      "A": "Violent cataclysms such as colliding black holes, merging neutron stars, or core-collapse supernovae",
+      "B": "Solar flares from the Sun",
+      "C": "Radio broadcasts from satellites",
+      "D": "Planetary tides"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Violent cataclysms such as colliding black holes, merging neutron stars, or core-collapse supernovae",
+    "explanation": "Gravitational waves are ripples in the fabric of spacetime predicted by Einstein's General Relativity, generated by rapid acceleration of massive compact astrophysical bodies.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_36",
+    "questionId": 36,
+    "questionText": "What is the name of the planned space-based gravitational wave observatory selected by ESA and NASA for launch in the mid-2030s?",
+    "options": {
+      "A": "LISA (Laser Interferometer Space Antenna)",
+      "B": "Cosmic Explorer",
+      "C": "Einstein Telescope",
+      "D": "DECIGO"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "LISA (Laser Interferometer Space Antenna)",
+    "explanation": "LISA will consist of three spacecraft flying in a triangular constellation separated by 2.5 million kilometers, detecting low-frequency gravitational waves from supermassive black holes.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_37",
+    "questionId": 37,
+    "questionText": "The Vera C. Rubin Observatory in Chile, scheduled for full operational commissioning in 2025, will conduct a 10-year cosmic survey known as:",
+    "options": {
+      "A": "Legacy Survey of Space and Time (LSST)",
+      "B": "Sloan Digital Sky Survey",
+      "C": "Dark Energy Survey",
+      "D": "Panoramic Survey Telescope"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Legacy Survey of Space and Time (LSST)",
+    "explanation": "Equipped with the world's largest digital camera (3,200 megapixels), Rubin's LSST will scan the entire visible southern sky every few nights, cataloging billions of galaxies.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_38",
+    "questionId": 38,
+    "questionText": "What is the physical resolution of the record-breaking digital camera installed on the Simonyi Survey Telescope at the Vera C. Rubin Observatory?",
+    "options": {
+      "A": "3.2 Gigapixels (3,200 Megapixels)",
+      "B": "100 Megapixels",
+      "C": "500 Megapixels",
+      "D": "10 Gigapixels"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "3.2 Gigapixels (3,200 Megapixels)",
+    "explanation": "The LSST Camera weighs three metric tons and captures 3.2-gigapixel focal-plane images, capable of resolving a golf ball from 24 kilometers away.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_39",
+    "questionId": 39,
+    "questionText": "In 2024, the Square Kilometre Array (SKA) project continued construction of the world's largest radio telescope observatory located across which two host continents?",
+    "options": {
+      "A": "Australia (SKA-Low) and South Africa (SKA-Mid)",
+      "B": "USA and Canada",
+      "C": "Chile and Argentina",
+      "D": "China and India"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Australia (SKA-Low) and South Africa (SKA-Mid)",
+    "explanation": "SKA is an intergovernmental radio astronomy mega-project combining thousands of low-frequency antennas in Western Australia and hundreds of dishes in South Africa's Karoo region.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_40",
+    "questionId": 40,
+    "questionText": "In astrophysics, what is the 'Hubble Tension' currently confirmed and refined by JWST measurements?",
+    "options": {
+      "A": "The persistent discrepancy between the expansion rate of the universe measured from the Cosmic Microwave Background vs. nearby standard candles (Cepheids & supernovae)",
+      "B": "The competition between Hubble and Webb teams",
+      "C": "The decay of Hubble's orbit",
+      "D": "The speed limit of light in space"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The persistent discrepancy between the expansion rate of the universe measured from the Cosmic Microwave Background vs. nearby standard candles (Cepheids & supernovae)",
+    "explanation": "The Hubble Tension refers to the 5-sigma statistical divide between the local expansion rate (H0 ~ 73 km/s/Mpc) and early universe Planck CMB measurements (H0 ~ 67.4 km/s/Mpc).",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_41",
+    "questionId": 41,
+    "questionText": "In 2024, astronomers confirmed the existence of 'Dark Stars' in early JWST deep field data. What hypothetical power source would fuel a Dark Star?",
+    "options": {
+      "A": "Self-annihilating dark matter particles (WIMPs)",
+      "B": "Standard hydrogen nuclear fusion",
+      "C": "Antimatter matter reactions",
+      "D": "Gravitational wave compression"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Self-annihilating dark matter particles (WIMPs)",
+    "explanation": "Theoretical models propose that primordial supermassive stars could have been heated by dark matter particle annihilation rather than core nuclear fusion.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_42",
+    "questionId": 42,
+    "questionText": "What cosmic phenomenon is observed when the intense gravitational field of a massive foreground galaxy bends and magnifies the light of a distant background galaxy?",
+    "options": {
+      "A": "Gravitational Lensing",
+      "B": "Doppler Redshift",
+      "C": "Hawking Radiation",
+      "D": "Cosmic Microwave Background"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Gravitational Lensing",
+    "explanation": "Gravitational lensing acts as a natural cosmic telescope, magnifying ancient background galaxies into Einstein rings, arcs, or multiple images.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_43",
+    "questionId": 43,
+    "questionText": "In 2023, the NANOGrav collaboration and global pulsar timing arrays announced the first evidence of a low-frequency stochastic background of:",
+    "options": {
+      "A": "Gravitational waves rippling through the universe from supermassive black hole binaries",
+      "B": "Dark energy radiation",
+      "C": "Tachyon particles",
+      "D": "Cosmic neutrino bursts"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Gravitational waves rippling through the universe from supermassive black hole binaries",
+    "explanation": "By measuring millisecond deviations in radio pulses across dozens of galactic pulsars, astronomers detected the hum of continuous gravitational waves from merging supermassive black holes.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_44",
+    "questionId": 44,
+    "questionText": "What is the term for a theoretical region of spacetime where matter is compressed into an infinitely dense point with infinite gravitational curvature?",
+    "options": {
+      "A": "Gravitational Singularity",
+      "B": "Event Horizon",
+      "C": "Ergosphere",
+      "D": "Accretion Disk"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Gravitational Singularity",
+    "explanation": "According to general relativity, a gravitational singularity is a one-dimensional point in the center of a black hole where density and spacetime curvature become infinite.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_45",
+    "questionId": 45,
+    "questionText": "The boundary around a black hole beyond which nothing—not even light—can escape its gravitational pull is called the:",
+    "options": {
+      "A": "Event Horizon",
+      "B": "Schwarzschild Radius",
+      "C": "Photon Sphere",
+      "D": "Roche Limit"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Event Horizon",
+    "explanation": "The event horizon marks the mathematical threshold of a black hole where escape velocity exceeds the speed of light.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_46",
+    "questionId": 46,
+    "questionText": "What theoretical radiation predicted by Stephen Hawking is emitted by black holes due to quantum fluctuations near their event horizons?",
+    "options": {
+      "A": "Hawking Radiation",
+      "B": "Synchrotron Radiation",
+      "C": "Bremsstrahlung",
+      "D": "Cherenkov Radiation"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Hawking Radiation",
+    "explanation": "Hawking radiation proposes that quantum particle-antiparticle pairs at the event horizon can result in black hole mass loss through radiative evaporation over cosmological timescales.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_47",
+    "questionId": 47,
+    "questionText": "What is an Exoplanet?",
+    "options": {
+      "A": "A planet that orbits a star outside our solar system",
+      "B": "A planet that has been expelled from an orbit",
+      "C": "A moon orbiting Mars",
+      "D": "An asteroid larger than 1,000 km"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A planet that orbits a star outside our solar system",
+    "explanation": "An exoplanet (extrasolar planet) is any planet located beyond our solar system, with over 5,700 confirmed to date.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_48",
+    "questionId": 48,
+    "questionText": "Which astronomical detection technique has discovered the vast majority of known exoplanets by measuring periodic dips in a host star's brightness?",
+    "options": {
+      "A": "Transit Photometry (Transit Method)",
+      "B": "Radial Velocity (Doppler Method)",
+      "C": "Astrometry",
+      "D": "Direct Imaging"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Transit Photometry (Transit Method)",
+    "explanation": "Transit photometry, popularized by NASA's Kepler and TESS missions, detects exoplanets as they pass directly between Earth and their host star, dimming starlight.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_49",
+    "questionId": 49,
+    "questionText": "What is the 'Habitable Zone' (or Goldilocks Zone) around a star?",
+    "options": {
+      "A": "The orbital region where surface temperatures allow liquid water to exist on a rocky planet",
+      "B": "The region closest to the star's core",
+      "C": "The outer fringe of a galaxy",
+      "D": "The Kuiper belt"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The orbital region where surface temperatures allow liquid water to exist on a rocky planet",
+    "explanation": "The habitable zone is the distance range from a star where temperatures allow water to remain liquid under sufficient atmospheric pressure.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_50",
+    "questionId": 50,
+    "questionText": "What is the name of the planetary system located 40 light-years away in Aquarius containing seven Earth-sized terrestrial planets, three of which orbit in the habitable zone?",
+    "options": {
+      "A": "TRAPPIST-1 System",
+      "B": "Proxima Centauri",
+      "C": "Kepler-186",
+      "D": "Gliese 581"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "TRAPPIST-1 System",
+    "explanation": "TRAPPIST-1 is an ultra-cool red dwarf star orbited by seven rocky planets (b through h), heavily investigated by JWST for atmospheric signatures.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_51",
+    "questionId": 51,
+    "questionText": "On October 13, 2024, SpaceX achieved a major milestone in rocketry during Starship Integrated Flight Test 5 (IFT-5) by:",
+    "options": {
+      "A": "Catching the Super Heavy first-stage booster back at the launch tower using mechanical 'chopstick' arms",
+      "B": "Landing the spacecraft on the Moon",
+      "C": "Launching 200 humans into orbit",
+      "D": "Achieving orbital flight with zero propellant"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Catching the Super Heavy first-stage booster back at the launch tower using mechanical 'chopstick' arms",
+    "explanation": "SpaceX's 'Mechazilla' launch tower in Starbase, Texas caught the returning 71-meter Super Heavy booster (Booster 12) out of mid-air seven minutes after liftoff.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_52",
+    "questionId": 52,
+    "questionText": "What is the combined height of the fully integrated SpaceX Starship spacecraft and its Super Heavy booster?",
+    "options": {
+      "A": "121 meters (approx. 397 feet)",
+      "B": "80 meters",
+      "C": "150 meters",
+      "D": "95 meters"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "121 meters (approx. 397 feet)",
+    "explanation": "Standing at approximately 121 meters tall, Starship is the tallest and most powerful launch vehicle ever built in human history.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_53",
+    "questionId": 53,
+    "questionText": "What cryogenic propellant combination fuels SpaceX's Raptor rocket engines on Starship and Super Heavy?",
+    "options": {
+      "A": "Liquid Methane (CH4) and Liquid Oxygen (LOX) — 'Methalox'",
+      "B": "Liquid Hydrogen and Liquid Oxygen — 'Hydrolox'",
+      "C": "RP-1 Kerosene and Liquid Oxygen",
+      "D": "Hydrazine and Nitrogen Tetroxide"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Liquid Methane (CH4) and Liquid Oxygen (LOX) — 'Methalox'",
+    "explanation": "Raptor utilizes sub-cooled liquid methane and liquid oxygen in a full-flow staged combustion cycle, chosen partly because methane can be synthesized on Mars via the Sabatier reaction.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_54",
+    "questionId": 54,
+    "questionText": "How many Raptor engines power the SpaceX Super Heavy booster at liftoff, producing over 16 million pounds of thrust?",
+    "options": {
+      "A": "33 Raptor engines",
+      "B": "9 Raptor engines",
+      "C": "24 Raptor engines",
+      "D": "42 Raptor engines"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "33 Raptor engines",
+    "explanation": "The Super Heavy booster employs 33 Raptor 2/3 engines arranged in concentric rings, generating over double the thrust of the historic Saturn V.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_55",
+    "questionId": 55,
+    "questionText": "What is the primary design philosophy of SpaceX's Starship system that distinguishes it from previous rockets?",
+    "options": {
+      "A": "Full and rapid reusability of both stages (booster and ship) to drastically lower the cost of orbital payload delivery",
+      "B": "Expendable single-use stages made of carbon fiber",
+      "C": "Exclusively carrying military nuclear payloads",
+      "D": "Solid rocket propellant propulsion"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Full and rapid reusability of both stages (booster and ship) to drastically lower the cost of orbital payload delivery",
+    "explanation": "Full and rapid reusability aims to reduce cost-per-kilogram to orbit by an order of magnitude, enabling planetary colonization and mass satellite deployment.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_56",
+    "questionId": 56,
+    "questionText": "In September 2024, the civilian Polaris Dawn mission reached an orbital apogee of 1,400.7 km aboard a SpaceX Crew Dragon. Why was this altitude historic?",
+    "options": {
+      "A": "It was the highest Earth orbit flown by humans since the Apollo 17 lunar mission in 1972",
+      "B": "It flew beyond Mars orbit",
+      "C": "It orbited closer to Earth than any satellite",
+      "D": "It landed at the International Space Station in 10 minutes"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "It was the highest Earth orbit flown by humans since the Apollo 17 lunar mission in 1972",
+    "explanation": "Polaris Dawn reached 1,400.7 km, taking civilian astronauts Jared Isaacman, Scott Poteet, Sarah Gillis, and Anna Menon through the inner Van Allen radiation belt.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_57",
+    "questionId": 57,
+    "questionText": "During the Polaris Dawn mission in September 2024, what extravehicular milestone was completed using new SpaceX EVA spacesuits?",
+    "options": {
+      "A": "The first-ever commercial spacewalk conducted by private citizens",
+      "B": "The repair of the Hubble Space Telescope",
+      "C": "Construction of an orbital solar farm",
+      "D": "A lunar surface walk"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The first-ever commercial spacewalk conducted by private citizens",
+    "explanation": "Mission Commander Jared Isaacman and mission specialist Sarah Gillis exited the depressurized Crew Dragon capsule, executing the first commercial EVA.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_58",
+    "questionId": 58,
+    "questionText": "What new capability did SpaceX's Starlink satellite constellation introduce in 2024 to provide direct cellular coverage to ordinary unmodified smartphones?",
+    "options": {
+      "A": "Direct to Cell (Direct-to-Device satellite connectivity)",
+      "B": "5G terrestrial fiber link",
+      "C": "Subsea laser cables",
+      "D": "Bluetooth space tethering"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Direct to Cell (Direct-to-Device satellite connectivity)",
+    "explanation": "Starlink Direct to Cell satellites feature an advanced eNodeB modem that acts like a cellphone tower in space, enabling text, voice, and data without hardware modifications.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_59",
+    "questionId": 59,
+    "questionText": "In June 2024, which aerospace company's Starliner spacecraft conducted its first crewed flight test (CFT) to the ISS carrying NASA astronauts Sunita Williams and Butch Wilmore?",
+    "options": {
+      "A": "Boeing",
+      "B": "SpaceX",
+      "C": "Lockheed Martin",
+      "D": "Northrop Grumman"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Boeing",
+    "explanation": "Boeing's CST-100 Starliner launched on an Atlas V rocket; following thruster anomalies, NASA decided to return Starliner uncrewed, reassigning the astronauts to a SpaceX Crew-9 return.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_60",
+    "questionId": 60,
+    "questionText": "In January 2024, United Launch Alliance (ULA) successfully conducted the maiden flight of its new heavy-lift rocket replacing the Atlas V and Delta IV. What is it named?",
+    "options": {
+      "A": "Vulcan Centaur",
+      "B": "New Glenn",
+      "C": "Falcon Heavy",
+      "D": "OmegA"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Vulcan Centaur",
+    "explanation": "ULA's Vulcan Centaur launched on January 8, 2024, powered by two Blue Origin BE-4 methane engines on the booster.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_61",
+    "questionId": 61,
+    "questionText": "Which aerospace company founded by Jeff Bezos is developing the heavy-lift orbital rocket New Glenn, scheduled for its inaugural launch?",
+    "options": {
+      "A": "Blue Origin",
+      "B": "Virgin Galactic",
+      "C": "Relativity Space",
+      "D": "Astra"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Blue Origin",
+    "explanation": "Blue Origin developed the two-stage heavy-lift rocket New Glenn, utilizing reusable BE-4 rocket engines and an 7-meter diameter payload fairing.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_62",
+    "questionId": 62,
+    "questionText": "In July 2024, Europe regained independent sovereign access to space with the successful maiden flight of which heavy rocket from Kourou, French Guiana?",
+    "options": {
+      "A": "Ariane 6",
+      "B": "Vega-C",
+      "C": "Ariane 5",
+      "D": "Diamant"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Ariane 6",
+    "explanation": "Developed by ArianeGroup for the European Space Agency (ESA), Ariane 6 successfully completed its inaugural flight on July 9, 2024.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_63",
+    "questionId": 63,
+    "questionText": "Which rocket engine powers the upper stage of the European Ariane 6 rocket, capable of re-igniting multiple times to deploy multi-satellite orbits?",
+    "options": {
+      "A": "Vinci Engine",
+      "B": "Vulcain 2.1",
+      "C": "Merlin 1D",
+      "D": "Raptor"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Vinci Engine",
+    "explanation": "The Vinci re-ignitable cryogenic engine allows Ariane 6 to place payloads into diverse orbits and deorbit the upper stage responsibly.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_64",
+    "questionId": 64,
+    "questionText": "Which aerospace startup achieved the world's first launch of a 3D-printed rocket, Terran 1, in 2023, and is now developing the fully reusable Terran R?",
+    "options": {
+      "A": "Relativity Space",
+      "B": "Rocket Lab",
+      "C": "Firefly",
+      "D": "Orbital Sciences"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Relativity Space",
+    "explanation": "Relativity Space uses large-scale metal 3D printers (Stargate) to manufacture rocket structures with 95% fewer parts.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_65",
+    "questionId": 65,
+    "questionText": "What is the name of Rocket Lab's workhorse orbital rocket that regularly launches smallsats and pioneered carbon-composite electric-pump-fed engines?",
+    "options": {
+      "A": "Electron",
+      "B": "Neutron",
+      "C": "Falcon 1",
+      "D": "Pegasus"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Electron",
+    "explanation": "Rocket Lab's Electron uses Rutherford engines powered by battery-driven electric pumps to deliver payloads up to 300 kg to Low Earth Orbit.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_66",
+    "questionId": 66,
+    "questionText": "What medium-lift reusable rocket is Rocket Lab actively developing to compete directly with Falcon 9 for constellation launches?",
+    "options": {
+      "A": "Neutron",
+      "B": "Proton",
+      "C": "Positron",
+      "D": "Quark"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Neutron",
+    "explanation": "Neutron is designed to lift up to 13,000 kg to LEO, featuring an Archimedes methane-fueled engine and a captive 'Hungry Hippo' fairing design.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_67",
+    "questionId": 67,
+    "questionText": "In 2024, the International Space Station (ISS) marked over how many continuous years of uninterrupted human presence in space?",
+    "options": {
+      "A": "24 continuous years (since November 2000)",
+      "B": "10 years",
+      "C": "50 years",
+      "D": "35 years"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "24 continuous years (since November 2000)",
+    "explanation": "Since Expedition 1 arrived on November 2, 2000, the ISS has maintained uninterrupted human habitability in low Earth orbit.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_68",
+    "questionId": 68,
+    "questionText": "NASA awarded a contract to SpaceX in 2024 to build the US Deorbit Vehicle (USDV) to safely deorbit and retire the International Space Station in which year?",
+    "options": {
+      "A": "Around 2030–2031",
+      "B": "In 2025",
+      "C": "In 2045",
+      "D": "In 2035"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Around 2030–2031",
+    "explanation": "SpaceX is modifying a Dragon-derived spacecraft to perform the final controlled atmospheric re-entry burn of the 400-ton ISS into Point Nemo in the South Pacific Ocean.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_69",
+    "questionId": 69,
+    "questionText": "What is 'Point Nemo' in astronautical geography?",
+    "options": {
+      "A": "The oceanic pole of inaccessibility in the South Pacific, used as a spacecraft cemetery for defunct satellites and space stations",
+      "B": "The highest point on the Moon",
+      "C": "The northernmost point in the Arctic",
+      "D": "An underwater coral reef in the Caribbean"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The oceanic pole of inaccessibility in the South Pacific, used as a spacecraft cemetery for defunct satellites and space stations",
+    "explanation": "Point Nemo is the point on Earth farthest from any land (over 2,688 km away), making it the safest target for controlled spacecraft deorbiting.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_70",
+    "questionId": 70,
+    "questionText": "What is the 'Kessler Syndrome' in orbital astronautics?",
+    "options": {
+      "A": "A catastrophic chain-reaction scenario where space debris collisions generate cascading clouds of fragments, rendering low Earth orbit unusable",
+      "B": "A medical condition affecting astronauts in microgravity",
+      "C": "The failure of a rocket engine during staging",
+      "D": "The degradation of solar panels in space"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A catastrophic chain-reaction scenario where space debris collisions generate cascading clouds of fragments, rendering low Earth orbit unusable",
+    "explanation": "Proposed by NASA scientist Donald Kessler in 1978, the Kessler Syndrome describes a collision cascade that could encase Earth in dangerous space debris.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_71",
+    "questionId": 71,
+    "questionText": "Which international treaty adopted by the UN in 1967 forms the foundational legal basis of international space law, prohibiting weapons of mass destruction in orbit?",
+    "options": {
+      "A": "The Outer Space Treaty (1967)",
+      "B": "The Moon Agreement (1979)",
+      "C": "The Artemis Accords",
+      "D": "The Geneva Space Convention"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The Outer Space Treaty (1967)",
+    "explanation": "The Outer Space Treaty declares outer space the province of all humankind, barring claims of national sovereignty and nuclear weapons in space.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_72",
+    "questionId": 72,
+    "questionText": "Over 45 nations have signed the US-led Artemis Accords. What is the core purpose of the Artemis Accords?",
+    "options": {
+      "A": "Establishing non-binding principles for peaceful, safe, and transparent civil exploration and resource utilization of the Moon and Mars",
+      "B": "Creating a military space alliance",
+      "C": "Imposing taxes on private space flights",
+      "D": "Restricting space launches to the US only"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Establishing non-binding principles for peaceful, safe, and transparent civil exploration and resource utilization of the Moon and Mars",
+    "explanation": "The Artemis Accords reinforce the Outer Space Treaty, establishing safety zones, interoperability, open science data sharing, and space heritage preservation.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_73",
+    "questionId": 73,
+    "questionText": "Which nation launched the world's first wooden satellite, LignoSat, developed by Kyoto University to reduce space debris and toxic re-entry pollution in late 2024?",
+    "options": {
+      "A": "Japan",
+      "B": "Germany",
+      "C": "Sweden",
+      "D": "Canada"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Japan",
+    "explanation": "LignoSat is made of magnolia wood (honoki), which burns up completely in the upper atmosphere upon deorbiting without releasing harmful metallic aluminum particles.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_74",
+    "questionId": 74,
+    "questionText": "In 2024, which private US space station developer began construction of Haven-1, planned to be the world's first commercial private space station launched in 2025–2026?",
+    "options": {
+      "A": "Vast Space",
+      "B": "Axiom Space",
+      "C": "Bigelow Aerospace",
+      "D": "Voyager Space"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Vast Space",
+    "explanation": "Vast Space is building Haven-1, a single-module private commercial station launched via Falcon 9, designed to dock with SpaceX Crew Dragon.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_75",
+    "questionId": 75,
+    "questionText": "Axiom Space is building commercial modules that will initially attach to the ISS and later detach to form an independent free-flying station. What else did NASA contract Axiom for?",
+    "options": {
+      "A": "Developing the next-generation AxEMU spacesuits for Artemis III lunar surface moonwalks",
+      "B": "Building the SLS rocket core",
+      "C": "Managing the Deep Space Network",
+      "D": "Building the Orion capsule heat shield"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Developing the next-generation AxEMU spacesuits for Artemis III lunar surface moonwalks",
+    "explanation": "Axiom Space designed the Axiom Extravehicular Mobility Unit (AxEMU) spacesuits in collaboration with fashion brand Prada for Artemis lunar surface operations.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_76",
+    "questionId": 76,
+    "questionText": "In June 2024, China's National Space Administration (CNSA) accomplished a historic first in lunar exploration with Chang'e 6 by:",
+    "options": {
+      "A": "Collecting and returning the first-ever soil and rock samples from the Moon's far side",
+      "B": "Landing the first human on the Moon",
+      "C": "Discovering active volcanoes on the Moon",
+      "D": "Building a permanent nuclear city on the Moon"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Collecting and returning the first-ever soil and rock samples from the Moon's far side",
+    "explanation": "Chang'e 6 touched down in the Apollo Basin within the South Pole-Aitken (SPA) basin on the lunar far side, returning 1,935.3 grams of pristine samples to Earth on June 25, 2024.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_77",
+    "questionId": 77,
+    "questionText": "Which dedicated relay satellite did China launch to the Earth-Moon L2 halo orbit in March 2024 to facilitate communications with far-side lunar landers?",
+    "options": {
+      "A": "Queqiao-2 (Magpie Bridge 2)",
+      "B": "Tiangong-1",
+      "C": "Beidou-4",
+      "D": "Mozi"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Queqiao-2 (Magpie Bridge 2)",
+    "explanation": "Queqiao-2 provides reliable lunar-Earth data relay for the Chang'e 6 far-side mission and future polar Chang'e 7 and 8 missions.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_78",
+    "questionId": 78,
+    "questionText": "Onboard China's Chang'e 6 mission, which Pakistani satellite orbiter was carried and successfully deployed into lunar orbit on May 8, 2024?",
+    "options": {
+      "A": "ICube-Qamar (ICUBE-Q)",
+      "B": "PakSat-1",
+      "C": "Badr-B",
+      "D": "PRSS-1"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "ICube-Qamar (ICUBE-Q)",
+    "explanation": "Developed by the Institute of Space Technology (IST) Islamabad with SUPARCO, Pakistan's ICube-Qamar captured historic images of the Moon and Sun from lunar orbit.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_79",
+    "questionId": 79,
+    "questionText": "On May 30, 2024, Pakistan launched its high-capacity communication satellite PakSat-MM1. What is its orbital slot in geostationary orbit?",
+    "options": {
+      "A": "38.2° East longitude",
+      "B": "105° East longitude",
+      "C": "65° West longitude",
+      "D": "0° Prime Meridian"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "38.2° East longitude",
+    "explanation": "PakSat-MM1 operates from Pakistan's orbital slot at 38.2° East, delivering multi-gigabit Ka-band broadband and telecom services across the country.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_80",
+    "questionId": 80,
+    "questionText": "What is the name of China's permanently crewed three-module space station in low Earth orbit, completed in late 2022 and continuously occupied?",
+    "options": {
+      "A": "Tiangong Space Station",
+      "B": "Mir Space Station",
+      "C": "Shenzhou Lab",
+      "D": "Salyut"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Tiangong Space Station",
+    "explanation": "Tiangong ('Heavenly Palace') comprises the Tianhe core module and the Wentian and Mengtian science experiment modules.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_81",
+    "questionId": 81,
+    "questionText": "What is the name of the uncrewed Chinese space telescope, comparable in aperture to Hubble, scheduled to co-orbit near the Tiangong space station?",
+    "options": {
+      "A": "Xuntian (Chinese Survey Space Telescope - CSST)",
+      "B": "Mozi",
+      "C": "Wukong",
+      "D": "FAST"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Xuntian (Chinese Survey Space Telescope - CSST)",
+    "explanation": "Xuntian features a 2-meter optical aperture with a field of view 300 times that of Hubble, docking periodically with Tiangong for maintenance.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_82",
+    "questionId": 82,
+    "questionText": "In January 2024, Japan became the 5th nation in history to soft-land on the Moon when JAXA's mission touched down. What was the lander named?",
+    "options": {
+      "A": "SLIM (Smart Lander for Investigating Moon)",
+      "B": "Hakuto-R",
+      "C": "Kaguya",
+      "D": "Hayabusa 3"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "SLIM (Smart Lander for Investigating Moon)",
+    "explanation": "JAXA's SLIM achieved an unprecedented pinpoint landing within 55 meters of its target on the slope of Shioli crater, earning the nickname 'Moon Sniper'.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_83",
+    "questionId": 83,
+    "questionText": "In August 2023, India made history by becoming the first country to soft-land a spacecraft near the lunar south pole with which mission?",
+    "options": {
+      "A": "Chandrayaan-3",
+      "B": "Chandrayaan-2",
+      "C": "Mangalyaan 2",
+      "D": "Aditya-L1"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Chandrayaan-3",
+    "explanation": "ISRO's Chandrayaan-3 lander (Vikram) and rover (Pragyan) landed near 69.37° S latitude, making India the 4th nation to achieve a soft lunar landing.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_84",
+    "questionId": 84,
+    "questionText": "What official name was designated for the Chandrayaan-3 lunar landing site by the International Astronomical Union (IAU)?",
+    "options": {
+      "A": "Statio Shiv Shakti",
+      "B": "Tiranga Point",
+      "C": "Jawahar Point",
+      "D": "Amrit Point"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Statio Shiv Shakti",
+    "explanation": "The touchdown location of the Vikram lander between Manzinus C and Simpelius N craters was officially named 'Statio Shiv Shakti'.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_85",
+    "questionId": 85,
+    "questionText": "In September 2023, India's space agency ISRO launched its first dedicated solar observatory mission to the Sun-Earth L1 point. What is it named?",
+    "options": {
+      "A": "Aditya-L1",
+      "B": "Surya-1",
+      "C": "AstroSat-2",
+      "D": "Bhaskara-3"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Aditya-L1",
+    "explanation": "Aditya-L1 monitors coronal mass ejections (CMEs), solar wind dynamics, and chromospheric heating from a halo orbit around the Sun-Earth L1 point.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_86",
+    "questionId": 86,
+    "questionText": "What is the name of India's planned crewed human spaceflight program, aiming to send a three-member crew into a 400 km low Earth orbit?",
+    "options": {
+      "A": "Gaganyaan",
+      "B": "Vyomanaut",
+      "C": "Antariksh",
+      "D": "Shukrayaan"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Gaganyaan",
+    "explanation": "Gaganyaan is ISRO's human spaceflight demonstration mission, with uncrewed test flights utilizing the LVM3 rocket and the humanoid robot 'Vyommitra'.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_87",
+    "questionId": 87,
+    "questionText": "In April 2023, the European Space Agency (ESA) launched its flagship Juice mission. What does the acronym Juice stand for?",
+    "options": {
+      "A": "Jupiter Icy Moons Explorer",
+      "B": "Jovian Universal Ice Core Explorer",
+      "C": "Joint Universe Infrared Celestial Explorer",
+      "D": "Jupiter Upper Ionosphere Corona Experiment"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Jupiter Icy Moons Explorer",
+    "explanation": "Juice launched aboard an Ariane 5 to perform detailed studies of Jupiter and its three ocean-bearing Galilean moons: Ganymede, Callisto, and Europa.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_88",
+    "questionId": 88,
+    "questionText": "Which moon in our solar system—the largest moon overall and the only one with an intrinsic magnetic field—is the ultimate orbital destination of ESA's Juice mission?",
+    "options": {
+      "A": "Ganymede",
+      "B": "Titan",
+      "C": "Callisto",
+      "D": "Io"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Ganymede",
+    "explanation": "In 2034, Juice will enter orbit around Ganymede, making it the first spacecraft ever to orbit a moon other than Earth's Moon.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_89",
+    "questionId": 89,
+    "questionText": "What celestial world in our solar system is volcanically active with over 400 active silicate volcanoes driven by tidal heating from Jupiter?",
+    "options": {
+      "A": "Io",
+      "B": "Europa",
+      "C": "Enceladus",
+      "D": "Triton"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Io",
+    "explanation": "Jupiter's innermost Galilean moon Io experiences intense tidal flexure from Jupiter, Europa, and Ganymede, making it the most geologically active body in the solar system.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_90",
+    "questionId": 90,
+    "questionText": "Which spacecraft, orbiting Jupiter since July 2016, performed historic close flybys of volcanic Io and icy Europa in 2023–2024?",
+    "options": {
+      "A": "NASA's Juno Spacecraft",
+      "B": "Galileo",
+      "C": "Cassini",
+      "D": "Voyager 1"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "NASA's Juno Spacecraft",
+    "explanation": "NASA's solar-powered Juno spacecraft executed close flybys within 1,500 km of Io's surface, capturing high-resolution imagery of active magma lakes and lava plumes.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_91",
+    "questionId": 91,
+    "questionText": "What is the name of Saturn's small icy moon that ejects geysers of water vapor, salts, and organic molecules from 'tiger stripe' fractures at its south pole?",
+    "options": {
+      "A": "Enceladus",
+      "B": "Mimas",
+      "C": "Iapetus",
+      "D": "Rhea"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Enceladus",
+    "explanation": "Enceladus harbors a global subsurface liquid ocean under its ice shell, making its hydrothermal ocean plumes a top astrobiology target for life detection.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_92",
+    "questionId": 92,
+    "questionText": "Which twin NASA spacecraft, launched in 1977, are the most distant human-made objects from Earth, currently traveling through interstellar space beyond the heliopause?",
+    "options": {
+      "A": "Voyager 1 and Voyager 2",
+      "B": "Pioneer 10 and 11",
+      "C": "New Horizons",
+      "D": "Mariner 9 and 10"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Voyager 1 and Voyager 2",
+    "explanation": "Voyager 1 (over 24 billion km away) and Voyager 2 crossed the heliopause in 2012 and 2018 respectively, continuing to transmit interstellar plasma measurements.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_93",
+    "questionId": 93,
+    "questionText": "In mid-2024, NASA engineers successfully resolved a telemetry memory glitch on Voyager 1 from billions of miles away by communicating with its vintage:",
+    "options": {
+      "A": "Flight Data System (FDS) using 1970s code transmitted across a 45-hour round-trip radio delay",
+      "B": "Optical laser link",
+      "C": "Bluetooth receiver",
+      "D": "Starlink terminal"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Flight Data System (FDS) using 1970s code transmitted across a 45-hour round-trip radio delay",
+    "explanation": "Engineers identified a damaged memory chip in the FDS, relocated the corrupted code into separate memory partitions, and restored normal science telemetry over a 22.5-hour one-way light time.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_94",
+    "questionId": 94,
+    "questionText": "What is the speed of light in a vacuum, which serves as the cosmic speed limit in physics?",
+    "options": {
+      "A": "Approximately 299,792 kilometers per second (approx. 3 x 10^8 m/s)",
+      "B": "150,000 km/s",
+      "C": "1,000,000 km/s",
+      "D": "30,000 km/s"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Approximately 299,792 kilometers per second (approx. 3 x 10^8 m/s)",
+    "explanation": "The speed of light in vacuum (c) is precisely 299,792,458 meters per second, fundamental to Einstein's special and general relativity.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_95",
+    "questionId": 95,
+    "questionText": "What is an Astronomical Unit (AU)?",
+    "options": {
+      "A": "The average distance from the center of the Earth to the center of the Sun (approx. 149.6 million km)",
+      "B": "The distance light travels in one year",
+      "C": "The radius of the Milky Way galaxy",
+      "D": "The distance from Earth to the Moon"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The average distance from the center of the Earth to the center of the Sun (approx. 149.6 million km)",
+    "explanation": "1 AU is defined as exactly 149,597,870,700 meters, representing the mean Earth-Sun baseline for solar system distances.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_96",
+    "questionId": 96,
+    "questionText": "What is a Light-Year?",
+    "options": {
+      "A": "The total distance that a beam of light travels in vacuum during one Julian year (approx. 9.46 trillion km)",
+      "B": "The time it takes for sunlight to reach Earth",
+      "C": "The brightness of a star per year",
+      "D": "The age of the universe"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The total distance that a beam of light travels in vacuum during one Julian year (approx. 9.46 trillion km)",
+    "explanation": "A light-year is a unit of astronomical distance equal to c multiplied by 365.25 days (approx. 9.46 x 10^12 km or 63,241 AU).",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_97",
+    "questionId": 97,
+    "questionText": "What is a Parsec in observational astronomy?",
+    "options": {
+      "A": "An astronomical distance equal to approximately 3.26 light-years (the distance at which 1 AU subtends a parallax angle of one arcsecond)",
+      "B": "A unit of planetary mass",
+      "C": "A unit of stellar luminosity",
+      "D": "The velocity of a pulsar"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "An astronomical distance equal to approximately 3.26 light-years (the distance at which 1 AU subtends a parallax angle of one arcsecond)",
+    "explanation": "1 Parsec (parallax second) equals ~3.086 x 10^13 km or ~3.26 light-years, widely used in professional stellar cartography.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_98",
+    "questionId": 98,
+    "questionText": "What is the current scientifically estimated age of the universe according to cosmic microwave background measurements by the Planck satellite?",
+    "options": {
+      "A": "Approximately 13.78 billion years (± 0.02 billion years)",
+      "B": "4.5 billion years",
+      "C": "20.5 billion years",
+      "D": "100 billion years"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Approximately 13.78 billion years (± 0.02 billion years)",
+    "explanation": "The standard Lambda-CDM cosmological model calculates the universe's age at 13.787 ± 0.020 billion years since the Big Bang.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_99",
+    "questionId": 99,
+    "questionText": "What is the scientifically estimated age of the Earth and the Solar System derived from radiometric dating of meteorite material?",
+    "options": {
+      "A": "Approximately 4.54 billion years (± 1%)",
+      "B": "13.8 billion years",
+      "C": "1.2 billion years",
+      "D": "6,000 years"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Approximately 4.54 billion years (± 1%)",
+    "explanation": "Radiometric isotope analysis of primitive chondritic meteorites establishes Earth and solar system formation at 4.54 ± 0.05 billion years ago.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_100",
+    "questionId": 100,
+    "questionText": "What is the ultimate fate predicted for our Milky Way Galaxy in approximately 4 to 5 billion years?",
+    "options": {
+      "A": "A gravitational collision and merger with the neighboring Andromeda Galaxy (M31) to form a giant elliptical galaxy ('Milkomeda')",
+      "B": "Being swallowed whole by a single black hole",
+      "C": "Freezing into absolute zero stillness within 100 years",
+      "D": "Dissolving completely into dark energy"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A gravitational collision and merger with the neighboring Andromeda Galaxy (M31) to form a giant elliptical galaxy ('Milkomeda')",
+    "explanation": "The Milky Way and Andromeda (M31) galaxies are moving toward each other at ~110 km/s and will collide and coalesce into a combined elliptical galaxy in ~4.5 billion years.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_101",
+    "questionId": 101,
+    "questionText": "The 2024 Nobel Prize in Physics was awarded to John J. Hopfield and Geoffrey E. Hinton for which foundational scientific breakthrough?",
+    "options": {
+      "A": "Foundational discoveries and inventions that enable machine learning with artificial neural networks",
+      "B": "The discovery of the Higgs boson particle",
+      "C": "The development of quantum cryptography",
+      "D": "Discoveries in gravitational wave interferometry"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Foundational discoveries and inventions that enable machine learning with artificial neural networks",
+    "explanation": "John Hopfield created the associative Hopfield network in 1982, and Geoffrey Hinton developed the Boltzmann machine and backpropagation methods that paved the way for modern deep learning.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_102",
+    "questionId": 102,
+    "questionText": "The 2024 Nobel Prize in Chemistry was awarded jointly to Demis Hassabis and John M. Jumper of Google DeepMind for which revolutionary computational achievement?",
+    "options": {
+      "A": "Protein structure prediction using the AI system AlphaFold",
+      "B": "Creating synthetic living bacterial cells",
+      "C": "Inventing lithium-ion batteries",
+      "D": "Synthesizing quantum dots"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Protein structure prediction using the AI system AlphaFold",
+    "explanation": "DeepMind's AlphaFold predicted the 3D structures of virtually all 200 million known proteins from their amino acid sequences, solving a 50-year-old grand challenge in biology.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_103",
+    "questionId": 103,
+    "questionText": "Along with Demis Hassabis and John Jumper, who shared the 2024 Nobel Prize in Chemistry for 'computational protein design'?",
+    "options": {
+      "A": "David Baker (University of Washington)",
+      "B": "Jennifer Doudna",
+      "C": "K. Barry Sharpless",
+      "D": "George Smith"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "David Baker (University of Washington)",
+    "explanation": "Biochemist David Baker developed the computational software Rosetta, mastering the ability to design entirely novel synthetic proteins with custom functions.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_104",
+    "questionId": 104,
+    "questionText": "In 2024, OpenAI introduced a new class of frontier AI models designed to spend more time thinking and reasoning before responding, code-named:",
+    "options": {
+      "A": "OpenAI o1 (and o1-mini)",
+      "B": "GPT-5",
+      "C": "Sora 2",
+      "D": "DALL-E 4"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "OpenAI o1 (and o1-mini)",
+    "explanation": "OpenAI o1 uses reinforcement learning to generate internal chains of thought, achieving human PhD-level benchmark performance in competitive math, coding, and science.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_105",
+    "questionId": 105,
+    "questionText": "What flagship multimodal AI model family was released by Google in 2023–2024, featuring a breakthrough context window of up to 2 million tokens?",
+    "options": {
+      "A": "Gemini (including Gemini 1.5 Pro and Flash)",
+      "B": "PaLM 2",
+      "C": "LaMDA",
+      "D": "BERT"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Gemini (including Gemini 1.5 Pro and Flash)",
+    "explanation": "Google's Gemini 1.5 Pro revolutionized long-context understanding by natively processing up to 2 million tokens of video, audio, code, and text in a single prompt.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_106",
+    "questionId": 106,
+    "questionText": "Which open-weights foundation large language model family was released by Meta AI in 2024, culminating in a massive 405-billion parameter flagship model?",
+    "options": {
+      "A": "Llama 3 (Llama 3.1 & 3.3)",
+      "B": "Chinchilla",
+      "C": "Mistral Large",
+      "D": "Falcon"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Llama 3 (Llama 3.1 & 3.3)",
+    "explanation": "Meta released Llama 3.1 405B, the largest openly available dense foundation model, trained on over 15 trillion tokens across 16,000 H100 GPUs.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_107",
+    "questionId": 107,
+    "questionText": "In February 2024, OpenAI unveiled a generative AI model capable of generating photorealistic high-definition videos up to one minute long from text prompts, named:",
+    "options": {
+      "A": "Sora",
+      "B": "Runway Gen-3",
+      "C": "Pika",
+      "D": "Midjourney V6"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Sora",
+    "explanation": "Sora is a diffusion transformer model that generates video by predicting visual patches across spacetime, maintaining 3D physical consistency.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_108",
+    "questionId": 108,
+    "questionText": "What is the primary architectural concept introduced in the landmark 2017 Google Research paper 'Attention Is All You Need' that underpins modern LLMs?",
+    "options": {
+      "A": "The Transformer architecture with Self-Attention mechanisms",
+      "B": "Recurrent Neural Networks (RNN)",
+      "C": "Convolutional Neural Networks (CNN)",
+      "D": "Markov Decision Processes"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The Transformer architecture with Self-Attention mechanisms",
+    "explanation": "The Transformer architecture relies entirely on self-attention mechanisms to compute representations of its input without sequence-aligned recurrence, enabling massive parallelization.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_109",
+    "questionId": 109,
+    "questionText": "What term describes the undesirable tendency of large language models to generate plausible-sounding but factually incorrect or fabricated statements?",
+    "options": {
+      "A": "Hallucination",
+      "B": "Overfitting",
+      "C": "Gradient descent",
+      "D": "Quantization"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Hallucination",
+    "explanation": "AI hallucination occurs when generative models produce confident assertions that lack factual basis or contradict the source training data.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_110",
+    "questionId": 110,
+    "questionText": "What technique improves LLM factual accuracy by retrieving relevant external documents or knowledge bases before generating a response?",
+    "options": {
+      "A": "Retrieval-Augmented Generation (RAG)",
+      "B": "Reinforcement Learning from Human Feedback (RLHF)",
+      "C": "Zero-Shot Prompting",
+      "D": "Model Distillation"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Retrieval-Augmented Generation (RAG)",
+    "explanation": "RAG combines parametric model weights with external non-parametric retrieval databases to ground answers in verified real-time sources.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_111",
+    "questionId": 111,
+    "questionText": "What is RLHF in modern AI alignment?",
+    "options": {
+      "A": "Reinforcement Learning from Human Feedback",
+      "B": "Recursive Logic for Hardware Formatting",
+      "C": "Robotic Learning for Human Function",
+      "D": "Real-time Latency for High Frequency"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Reinforcement Learning from Human Feedback",
+    "explanation": "RLHF trains reward models from human preference rankings to align model responses with human values of helpfulness, honesty, and safety.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_112",
+    "questionId": 112,
+    "questionText": "What landmark international legislation, entering into force in August 2024, established the world's first comprehensive horizontal legal rules for Artificial Intelligence?",
+    "options": {
+      "A": "The European Union Artificial Intelligence Act (EU AI Act)",
+      "B": "The US Federal AI Treaty",
+      "C": "The Geneva Digital Protocol",
+      "D": "The UN Global Digital Code"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The European Union Artificial Intelligence Act (EU AI Act)",
+    "explanation": "The EU AI Act classifies AI systems according to risk (Unacceptable, High, Limited, and Minimal risk), banning manipulative cognitive AI and social scoring.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_113",
+    "questionId": 113,
+    "questionText": "In November 2023, world leaders and AI researchers convened at the UK's historic Bletchley Park to sign which declaration on frontier AI safety?",
+    "options": {
+      "A": "The Bletchley Declaration",
+      "B": "The London AI Charter",
+      "C": "The Alan Turing Pact",
+      "D": "The Oxford AI Accord"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The Bletchley Declaration",
+    "explanation": "The Bletchley Declaration was signed by 28 nations including the US, China, and EU to coordinate testing and governance of catastrophic frontier AI risks.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_114",
+    "questionId": 114,
+    "questionText": "Where was the follow-up AI Safety Summit co-hosted by the Republic of Korea and the United Kingdom in May 2024?",
+    "options": {
+      "A": "Seoul, South Korea",
+      "B": "Tokyo, Japan",
+      "C": "Singapore",
+      "D": "Paris, France"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Seoul, South Korea",
+    "explanation": "The Seoul AI Safety Summit produced commitments from leading AI frontier labs to establish safety thresholds and publish red-teaming safety frameworks.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_115",
+    "questionId": 115,
+    "questionText": "Which nation is scheduled to host the AI Action Summit in February 2025 in Paris, focusing on public interest AI and international governance?",
+    "options": {
+      "A": "France",
+      "B": "Germany",
+      "C": "Canada",
+      "D": "Switzerland"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "France",
+    "explanation": "French President Emmanuel Macron announced Paris as the host for the 2025 AI Action Summit bringing together heads of state and tech pioneers.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_116",
+    "questionId": 116,
+    "questionText": "In March 2024, the United Nations General Assembly adopted its first-ever global resolution on Artificial Intelligence, sponsored by the US and co-sponsored by 120+ nations, titled:",
+    "options": {
+      "A": "'Seizing the opportunities of safe, secure and trustworthy artificial intelligence systems for sustainable development'",
+      "B": "'Universal Banning of Autonomous Algorithms'",
+      "C": "'Mandatory Taxation of AI Technologies'",
+      "D": "'The AI Sovereign Framework'"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "'Seizing the opportunities of safe, secure and trustworthy artificial intelligence systems for sustainable development'",
+    "explanation": "The landmark UNGA resolution urges member states to govern AI responsibly, protect human rights, and bridge the digital divide between developed and developing countries.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_117",
+    "questionId": 117,
+    "questionText": "What does the term AGI stand for in artificial intelligence research?",
+    "options": {
+      "A": "Artificial General Intelligence (AI matching or exceeding human capability across any intellectual task)",
+      "B": "Automated Geometric Interface",
+      "C": "Advanced Generative Informatics",
+      "D": "Algorithmic Global Infrastructure"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Artificial General Intelligence (AI matching or exceeding human capability across any intellectual task)",
+    "explanation": "AGI refers to a theoretical autonomous machine that possesses cognitive flexibility, reasoning, and generalization equivalent or superior to human intelligence.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_118",
+    "questionId": 118,
+    "questionText": "What is an 'AI Agent' in modern computing?",
+    "options": {
+      "A": "An autonomous AI system capable of perceiving its environment, reasoning, making decisions, and using tools/APIs to accomplish multi-step goals",
+      "B": "A computer hardware sales representative",
+      "C": "A virus scanner script",
+      "D": "A simple static database index"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "An autonomous AI system capable of perceiving its environment, reasoning, making decisions, and using tools/APIs to accomplish multi-step goals",
+    "explanation": "AI agents leverage LLMs as central reasoning engines to plan actions, execute terminal commands, browse the web, and call software tools autonomously.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_119",
+    "questionId": 119,
+    "questionText": "What benchmark test was historically proposed by British mathematician Alan Turing in 1950 to evaluate whether a machine can exhibit intelligent behavior indistinguishable from a human?",
+    "options": {
+      "A": "The Turing Test (The Imitation Game)",
+      "B": "The Lovelace Test",
+      "C": "The Voight-Kampff Test",
+      "D": "The Von Neumann Metric"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The Turing Test (The Imitation Game)",
+    "explanation": "The Turing Test evaluates if an evaluator can reliably tell whether a text-based conversational partner is a human or an artificial intelligence.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_120",
+    "questionId": 120,
+    "questionText": "What is 'Model Quantization' in efficient machine learning deployment?",
+    "options": {
+      "A": "Reducing the precision of neural network weights (e.g., from 16-bit floating-point to 8-bit or 4-bit integers) to reduce memory and accelerate inference",
+      "B": "Counting the number of neurons in a brain",
+      "C": "Increasing the size of an AI model tenfold",
+      "D": "Splitting an AI model across multiple datacenters"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Reducing the precision of neural network weights (e.g., from 16-bit floating-point to 8-bit or 4-bit integers) to reduce memory and accelerate inference",
+    "explanation": "Quantization (like 4-bit/8-bit techniques AWQ or GGUF) compresses neural network parameters, enabling large LLMs to run on edge laptops and consumer GPUs.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_121",
+    "questionId": 121,
+    "questionText": "What is 'Mixture of Experts' (MoE) in modern deep learning architectures (utilized by Mixtral and GPT-4)?",
+    "options": {
+      "A": "An architecture where only a subset of specialized neural network subnetworks (experts) are dynamically activated for each token, improving efficiency",
+      "B": "Hiring human experts to write training data",
+      "C": "Blending multiple commercial search engines",
+      "D": "Running five different AI models simultaneously at full power"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "An architecture where only a subset of specialized neural network subnetworks (experts) are dynamically activated for each token, improving efficiency",
+    "explanation": "MoE uses a routing gate to activate only 2 of, say, 8 or 16 expert networks per token, providing the parameter capacity of a massive model with the inference speed of a much smaller one.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_122",
+    "questionId": 122,
+    "questionText": "Which AI research company developed the Claude family of foundation models (including Claude 3.5 Sonnet) pioneered by former OpenAI researchers?",
+    "options": {
+      "A": "Anthropic",
+      "B": "Cohere",
+      "C": "Inflection AI",
+      "D": "Mistral AI"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Anthropic",
+    "explanation": "Anthropic, founded by Dario and Daniela Amodei, developed Claude and pioneered Constitutional AI to build safe, steerable systems.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_123",
+    "questionId": 123,
+    "questionText": "What is 'Constitutional AI' developed by Anthropic?",
+    "options": {
+      "A": "A method of training AI systems using a set of written principles/rules (a constitution) to evaluate and revise their own outputs without human labeling",
+      "B": "An AI model trained exclusively on supreme court cases",
+      "C": "Government control over AI computers",
+      "D": "A legal contract signed by software engineers"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A method of training AI systems using a set of written principles/rules (a constitution) to evaluate and revise their own outputs without human labeling",
+    "explanation": "Constitutional AI guides model self-critique using principles drawn from human rights declarations, producing helpful and harmless models without manual data filtering.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_124",
+    "questionId": 124,
+    "questionText": "What is 'Synthetic Data' in AI training?",
+    "options": {
+      "A": "Information generated artificially by computer simulations or AI models rather than collected from direct real-world human observation",
+      "B": "Fictitious data used to hack computer networks",
+      "C": "Data created by plastic hardware",
+      "D": "Corrupted hard drive sectors"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Information generated artificially by computer simulations or AI models rather than collected from direct real-world human observation",
+    "explanation": "As the internet's supply of human-written text nears depletion, researchers increasingly use synthetic data generated and verified by reasoning models to train next-generation LLMs.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_125",
+    "questionId": 125,
+    "questionText": "What is 'Chain-of-Thought' (CoT) prompting in LLM reasoning?",
+    "options": {
+      "A": "Prompting the model to break down complex multi-step reasoning into intermediate explicit steps before giving a final answer",
+      "B": "Connecting multiple computers with metal chains",
+      "C": "Repeating the same question 100 times",
+      "D": "Translating words into different languages sequentially"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Prompting the model to break down complex multi-step reasoning into intermediate explicit steps before giving a final answer",
+    "explanation": "CoT prompting encourages the model to generate intermediate reasoning tokens, dramatically boosting accuracy in arithmetic, logic, and multi-step deduction.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_126",
+    "questionId": 126,
+    "questionText": "In March 2024, NVIDIA unveiled its next-generation AI computing architecture, succeeding the Hopper H100 GPU. What is this new architecture named?",
+    "options": {
+      "A": "Blackwell (B200 and GB200 NVL72)",
+      "B": "Ada Lovelace",
+      "C": "Ampere",
+      "D": "Turing"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Blackwell (B200 and GB200 NVL72)",
+    "explanation": "Named after mathematician David Blackwell, the Blackwell B200 GPU packs 208 billion transistors on a dual-die chip, delivering up to 30x faster LLM inference.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_127",
+    "questionId": 127,
+    "questionText": "Which Dutch semiconductor manufacturing giant is the world's sole producer of Extreme Ultraviolet (EUV) lithography systems used to fabricate leading-edge chips?",
+    "options": {
+      "A": "ASML",
+      "B": "Nikon",
+      "C": "Canon",
+      "D": "Applied Materials"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "ASML",
+    "explanation": "ASML, based in Veldhoven, Netherlands, holds a global monopoly on advanced EUV lithography machines essential for manufacturing sub-7nm microchips.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_128",
+    "questionId": 128,
+    "questionText": "In late 2023, ASML shipped its first next-generation lithography system featuring an increased numerical aperture to Intel. What is this machine called?",
+    "options": {
+      "A": "High-NA EUV (High Numerical Aperture EUV - 0.55 NA)",
+      "B": "Deep UV 193nm",
+      "C": "X-ray Stepper",
+      "D": "Laser Etcher Pro"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "High-NA EUV (High Numerical Aperture EUV - 0.55 NA)",
+    "explanation": "High-NA EUV increases the projection lens numerical aperture from 0.33 to 0.55, enabling printing of 8-nanometer features for 2nm and sub-2nm semiconductor nodes.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_129",
+    "questionId": 129,
+    "questionText": "Which Taiwanese company is the world's largest contract semiconductor foundry, manufacturing advanced processors for Apple, NVIDIA, AMD, and Qualcomm?",
+    "options": {
+      "A": "TSMC (Taiwan Semiconductor Manufacturing Company)",
+      "B": "Samsung Foundry",
+      "C": "GlobalFoundries",
+      "D": "SMIC"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "TSMC (Taiwan Semiconductor Manufacturing Company)",
+    "explanation": "TSMC produces over 90% of the world's most advanced leading-edge microchips at its gigafabs in Taiwan, with new fabs under construction in the US, Japan, and Germany.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_130",
+    "questionId": 130,
+    "questionText": "What architectural transistor innovation is replacing FinFET (Fin Field-Effect Transistors) at the 2-nanometer and 3-nanometer semiconductor nodes?",
+    "options": {
+      "A": "GAAFET (Gate-All-Around FET / Nanosheets)",
+      "B": "Planar MOSFET",
+      "C": "Bipolar Junction Transistor",
+      "D": "Vacuum Tube"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "GAAFET (Gate-All-Around FET / Nanosheets)",
+    "explanation": "Gate-All-Around (GAA) nanosheet technology wraps the gate material entirely around horizontal silicon channels on all four sides, minimizing current leakage.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_131",
+    "questionId": 131,
+    "questionText": "What high-bandwidth memory technology stacked vertically using through-silicon vias (TSVs) is essential for modern AI accelerators like H100 and B200?",
+    "options": {
+      "A": "HBM (High Bandwidth Memory - HBM3e / HBM4)",
+      "B": "DDR5 RAM",
+      "C": "GDDR6",
+      "D": "LPDDR4"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "HBM (High Bandwidth Memory - HBM3e / HBM4)",
+    "explanation": "HBM stacks DRAM dies vertically, providing multiple terabytes-per-second of memory bandwidth needed to feed hungry AI tensor cores.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_132",
+    "questionId": 132,
+    "questionText": "What is Moore's Law in the history of computer hardware?",
+    "options": {
+      "A": "The empirical observation that the number of transistors on a microchip doubles roughly every two years",
+      "B": "The rule that software gets slower faster than hardware gets faster",
+      "C": "The speed limit of internet fiber cables",
+      "D": "The law governing satellite orbital decay"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The empirical observation that the number of transistors on a microchip doubles roughly every two years",
+    "explanation": "Formulated by Intel co-founder Gordon Moore in 1965, Moore's Law drove five decades of exponential computing power growth.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_133",
+    "questionId": 133,
+    "questionText": "What is a 'Quantum Bit' or 'Qubit' in quantum computing?",
+    "options": {
+      "A": "The fundamental unit of quantum information, capable of existing in a superposition of state 0 and state 1 simultaneously",
+      "B": "A binary 1 or 0 in conventional computers",
+      "C": "A unit of computer clock speed in gigahertz",
+      "D": "A physical quantum particle stored in a vacuum tube"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The fundamental unit of quantum information, capable of existing in a superposition of state 0 and state 1 simultaneously",
+    "explanation": "Unlike classical bits that must be 0 or 1, qubits exploit quantum superposition and entanglement to explore vast combinatorial state spaces simultaneously.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_134",
+    "questionId": 134,
+    "questionText": "What is 'Quantum Superposition'?",
+    "options": {
+      "A": "The physical principle allowing a quantum system to exist in a linear combination of multiple states at the same time until measured",
+      "B": "Cooling a computer to room temperature",
+      "C": "Connecting two computers via fiber optic cable",
+      "D": "Accelerating clock frequency to infinity"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The physical principle allowing a quantum system to exist in a linear combination of multiple states at the same time until measured",
+    "explanation": "Superposition allows a qubit to represent a probability distribution over both 0 and 1 until wave function collapse occurs upon measurement.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_135",
+    "questionId": 135,
+    "questionText": "What quantum phenomenon described by Einstein as 'spooky action at a distance' occurs when the quantum states of two particles remain fundamentally linked regardless of distance?",
+    "options": {
+      "A": "Quantum Entanglement",
+      "B": "Quantum Tunneling",
+      "C": "Wave-Particle Duality",
+      "D": "Zero-Point Energy"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Quantum Entanglement",
+    "explanation": "Entangled particles have shared quantum wavefunctions such that measuring the state of one instantaneously determines the state of the other.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_136",
+    "questionId": 136,
+    "questionText": "What is 'Quantum Supremacy' (or Quantum Advantage)?",
+    "options": {
+      "A": "The milestone where a programmable quantum computer performs a specific calculation that is practically impossible for any classical supercomputer to perform in a reasonable timeframe",
+      "B": "The military domination of space using lasers",
+      "C": "Replacing all classical computers with quantum chips by law",
+      "D": "Building a quantum computer with zero cost"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The milestone where a programmable quantum computer performs a specific calculation that is practically impossible for any classical supercomputer to perform in a reasonable timeframe",
+    "explanation": "Quantum advantage demonstrates that quantum algorithms can solve problems (like random circuit sampling) exponentially faster than the world's most powerful supercomputers.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_137",
+    "questionId": 137,
+    "questionText": "In late 2023, IBM unveiled which 133-qubit quantum processor featuring its lowest error rates to date, serving as the building block for modular quantum computing?",
+    "options": {
+      "A": "Heron Processor",
+      "B": "Eagle",
+      "C": "Condor",
+      "D": "Osprey"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Heron Processor",
+    "explanation": "IBM's Heron processor delivered a five-fold error reduction over previous generations, forming the foundation of the IBM Quantum System Two.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_138",
+    "questionId": 138,
+    "questionText": "What is the primary physical challenge currently preventing the scaling of fault-tolerant universal quantum computers?",
+    "options": {
+      "A": "Quantum Decoherence and environmental noise caused by heat, electromagnetic interference, and cosmic rays",
+      "B": "Lack of electricity",
+      "C": "Inability to write software in English",
+      "D": "Lack of silicon on Earth"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Quantum Decoherence and environmental noise caused by heat, electromagnetic interference, and cosmic rays",
+    "explanation": "Decoherence destroys fragile quantum superpositions in microseconds, requiring complex Quantum Error Correction (QEC) where hundreds of physical qubits encode one stable logical qubit.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_139",
+    "questionId": 139,
+    "questionText": "Which hardware modality for quantum computing traps individual neutral atoms in optical laser tweezers, championed by QuEra and Harvard?",
+    "options": {
+      "A": "Neutral Atom Quantum Computing",
+      "B": "Superconducting Transmon Qubits",
+      "C": "Trapped Ion Computing",
+      "D": "Photonic Linear Optics"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Neutral Atom Quantum Computing",
+    "explanation": "Neutral atom systems use laser arrays to hold rubidium or ytterbium atoms in reconfigurable 2D/3D grids, achieving high coherence and entanglement fidelity.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_140",
+    "questionId": 140,
+    "questionText": "What is the name of Tesla's general-purpose, bipedal humanoid robot being developed to perform unsafe, repetitive, or boring manufacturing tasks?",
+    "options": {
+      "A": "Optimus (Tesla Bot Gen 2)",
+      "B": "Atlas",
+      "C": "Asimo",
+      "D": "Spot"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Optimus (Tesla Bot Gen 2)",
+    "explanation": "Tesla's Optimus Gen 2 features custom actuators, 11 degrees of freedom hands with tactile sensing, and end-to-end vision neural networks running on Tesla's FSD computer.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_141",
+    "questionId": 141,
+    "questionText": "In April 2024, Boston Dynamics retired its hydraulic Atlas humanoid robot and unveiled a completely new, commercial-ready humanoid robot powered entirely by:",
+    "options": {
+      "A": "Fully electric actuators with 360-degree joint rotation",
+      "B": "Pneumatic air cylinders",
+      "C": "Internal combustion engines",
+      "D": "Steam pistons"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Fully electric actuators with 360-degree joint rotation",
+    "explanation": "The new all-electric Atlas is stronger, more agile, and capable of complex industrial manipulation with joint ranges exceeding human biomechanical limits.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_142",
+    "questionId": 142,
+    "questionText": "Which AI robotics startup partnered with BMW in 2024 to deploy autonomous humanoid robots into automotive assembly lines, unveiling its Figure 02 robot?",
+    "options": {
+      "A": "Figure AI",
+      "B": "Sanctuary AI",
+      "C": "Agility Robotics",
+      "D": "1X Technologies"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Figure AI",
+    "explanation": "Figure AI's Figure 02 humanoid integrates speech-to-speech AI models and onboard visual perception to perform sheet metal and chassis placement at BMW's Spartanburg plant.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_143",
+    "questionId": 143,
+    "questionText": "Which company's bipedal humanoid robot, Digit, became the first to be deployed in live commercial logistics warehouses carrying bins for Amazon and GXO Logistics?",
+    "options": {
+      "A": "Agility Robotics",
+      "B": "Boston Dynamics",
+      "C": "Honda",
+      "D": "SoftBank Robotics"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Agility Robotics",
+    "explanation": "Agility Robotics opened 'RoboFab' in Oregon to mass-produce Digit, an autonomous humanoid designed for bulk tote moving in warehouses.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_144",
+    "questionId": 144,
+    "questionText": "Which autonomous ride-hailing company, a subsidiary of Alphabet Inc., achieved over 100,000 paid driverless robotaxi trips per week across Phoenix, San Francisco, and Los Angeles in 2024?",
+    "options": {
+      "A": "Waymo",
+      "B": "Cruise",
+      "C": "Zoox",
+      "D": "Baidu Apollo"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Waymo",
+    "explanation": "Waymo operates commercial driverless Jaguar I-PACE robotaxis without safety drivers, maintaining a safety record superior to human drivers over tens of millions of commercial miles.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_145",
+    "questionId": 145,
+    "questionText": "What sensor combination does Waymo utilize on its autonomous vehicles to perceive the world in 360 degrees in fog, rain, and darkness?",
+    "options": {
+      "A": "LiDAR, Radar, and High-Resolution Cameras",
+      "B": "Cameras only without radar",
+      "C": "Satellite GPS only",
+      "D": "Microphones and ultrasound only"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "LiDAR, Radar, and High-Resolution Cameras",
+    "explanation": "Waymo's 5th- and 6th-generation Driver suites use complementary sensor modalities: LiDAR for 3D geometric depth, Radar for velocity in adverse weather, and Cameras for color and signs.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_146",
+    "questionId": 146,
+    "questionText": "What does the acronym LiDAR stand for?",
+    "options": {
+      "A": "Light Detection and Ranging",
+      "B": "Laser Induced Direct Action Radio",
+      "C": "Linear Digital Aperture Radar",
+      "D": "Low Infrared Distance Array"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Light Detection and Ranging",
+    "explanation": "LiDAR pulses millions of eye-safe laser beams per second and measures their reflection time-of-flight to generate millimeter-precise 3D point cloud maps of the surroundings.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_147",
+    "questionId": 147,
+    "questionText": "What is 'Digital Twin' technology in modern industry and aerospace?",
+    "options": {
+      "A": "A real-time, high-fidelity virtual digital replica of a physical asset, system, or process updated via sensors to simulate, predict, and optimize performance",
+      "B": "Having two identical computer monitors",
+      "C": "Cloning a human being digitally",
+      "D": "Making a backup copy of a text file"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A real-time, high-fidelity virtual digital replica of a physical asset, system, or process updated via sensors to simulate, predict, and optimize performance",
+    "explanation": "Digital twins integrate IoT sensor data, physics simulations, and AI to monitor jet engines, smart cities, and factory lines in real time.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_148",
+    "questionId": 148,
+    "questionText": "What is 'Zero Trust' architecture in modern enterprise cybersecurity?",
+    "options": {
+      "A": "A security model requiring continuous verification of all users, devices, and network packets, operating on the principle of 'never trust, always verify'",
+      "B": "Refusing to use computers at work",
+      "C": "Banning all third-party software",
+      "D": "Assuming every employee is a criminal"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A security model requiring continuous verification of all users, devices, and network packets, operating on the principle of 'never trust, always verify'",
+    "explanation": "Zero Trust eliminates implicit trust based on physical network perimeter location, enforcing strict identity verification, least privilege, and micro-segmentation.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_149",
+    "questionId": 149,
+    "questionText": "What is 'Post-Quantum Cryptography' (PQC) standardized by NIST in August 2024?",
+    "options": {
+      "A": "New cryptographic algorithms engineered to secure digital communications against future decryption attacks by cryptanalytically relevant quantum computers",
+      "B": "Encryption that uses quantum lasers",
+      "C": "Banning all internet encryption",
+      "D": "Passwords that contain emojis"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "New cryptographic algorithms engineered to secure digital communications against future decryption attacks by cryptanalytically relevant quantum computers",
+    "explanation": "NIST released its first finalized PQC standards (ML-KEM, ML-DSA, and SLH-DSA) based on lattice mathematics to replace RSA and Elliptic Curve cryptography before quantum computers break them.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_150",
+    "questionId": 150,
+    "questionText": "Which mathematical algorithm developed by Peter Shor in 1994 proves that a sufficiently large quantum computer could crack standard RSA and ECC public-key encryption in polynomial time?",
+    "options": {
+      "A": "Shor's Algorithm",
+      "B": "Grover's Algorithm",
+      "C": "Deutsch-Jozsa Algorithm",
+      "D": "Euclidean Algorithm"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Shor's Algorithm",
+    "explanation": "Shor's algorithm efficiently finds the prime factors of large integers, rendering classical asymmetric encryption vulnerable once quantum hardware scales.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_151",
+    "questionId": 151,
+    "questionText": "In late 2023 and early 2024, regulators in the UK, US, and EU approved the world's first medicine based on CRISPR-Cas9 gene editing technology. What is this drug named?",
+    "options": {
+      "A": "Casgevy (Exagamglogene autotemcel / exa-cel)",
+      "B": "Spinraza",
+      "C": "Zolgensma",
+      "D": "Keytruda"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Casgevy (Exagamglogene autotemcel / exa-cel)",
+    "explanation": "Developed by Vertex Pharmaceuticals and CRISPR Therapeutics, Casgevy cures Sickle Cell Disease and Transfusion-Dependent Beta Thalassemia by editing the BCL11A gene to reactivate fetal hemoglobin.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_152",
+    "questionId": 152,
+    "questionText": "The CRISPR-Cas9 molecular tool acts as a pair of 'molecular scissors'. What molecule guides the Cas9 enzyme to the precise target sequence on the DNA strand?",
+    "options": {
+      "A": "Guide RNA (gRNA / sgRNA)",
+      "B": "Transfer RNA (tRNA)",
+      "C": "Ribosomal RNA",
+      "D": "Messenger RNA"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Guide RNA (gRNA / sgRNA)",
+    "explanation": "A synthetic guide RNA (gRNA) matching a 20-base-pair target sequence binds to the complementary DNA, directing the Cas9 endonuclease to cut both DNA strands.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_153",
+    "questionId": 153,
+    "questionText": "Who shared the 2020 Nobel Prize in Chemistry for the discovery and development of the CRISPR-Cas9 genome editing method?",
+    "options": {
+      "A": "Emmanuelle Charpentier and Jennifer A. Doudna",
+      "B": "Feng Zhang and George Church",
+      "C": "Francis Collins and Craig Venter",
+      "D": "James Watson and Francis Crick"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Emmanuelle Charpentier and Jennifer A. Doudna",
+    "explanation": "French microbiologist Emmanuelle Charpentier and American biochemist Jennifer Doudna adapted the bacterial CRISPR immune system into a universal gene-editing tool.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_154",
+    "questionId": 154,
+    "questionText": "What advanced variation of CRISPR developed by David Liu's lab allows precise single-base transitions (e.g., C to T or A to G) without cutting both DNA strands or introducing double-strand breaks?",
+    "options": {
+      "A": "Base Editing",
+      "B": "Prime Editing",
+      "C": "Zinc Finger Nuclease",
+      "D": "TALENs"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Base Editing",
+    "explanation": "Base editors use a catalytically disabled Cas enzyme fused to a deaminase enzyme to convert one target nucleotide into another without double-strand DNA breaks.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_155",
+    "questionId": 155,
+    "questionText": "What 'search-and-replace' gene-editing technology allows insertions, deletions, and all 12 possible base-to-base conversions without requiring double-strand breaks or donor DNA templates?",
+    "options": {
+      "A": "Prime Editing",
+      "B": "Base Editing",
+      "C": "Homologous Recombination",
+      "D": "RNA Interference"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Prime Editing",
+    "explanation": "Prime editing combines a nickase Cas9 with an engineered reverse transcriptase and prime editing guide RNA (pegRNA) to write new genetic sequences directly into DNA.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_156",
+    "questionId": 156,
+    "questionText": "The 2024 Nobel Prize in Physiology or Medicine was awarded to Victor Ambros and Gary Ruvkun for the discovery of which regulatory molecules?",
+    "options": {
+      "A": "MicroRNA (miRNA) and its role in post-transcriptional gene regulation",
+      "B": "Insulin hormones",
+      "C": "Mitochondrial DNA",
+      "D": "Interferons"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "MicroRNA (miRNA) and its role in post-transcriptional gene regulation",
+    "explanation": "Ambros and Ruvkun discovered microRNAs (beginning with lin-4 in C. elegans), revealing that tiny non-coding RNAs silence complementary mRNAs to control gene expression.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_157",
+    "questionId": 157,
+    "questionText": "In January 2024, Elon Musk's neurotechnology company Neuralink achieved a major milestone by:",
+    "options": {
+      "A": "Implanting its first wireless brain-computer interface (BCI) 'Telepathy' chip into a human quadriplegic patient (Noland Arbaugh)",
+      "B": "Translating dog thoughts into English",
+      "C": "Curing blindness instantly in 1 million people",
+      "D": "Uploading a human mind into a computer"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Implanting its first wireless brain-computer interface (BCI) 'Telepathy' chip into a human quadriplegic patient (Noland Arbaugh)",
+    "explanation": "Patient Noland Arbaugh, paralyzed below the shoulders, successfully controlled a computer mouse cursor, played chess, and operated video games using thoughts alone via Neuralink's N1 implant.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_158",
+    "questionId": 158,
+    "questionText": "How many micro-threads and recording electrodes does the Neuralink N1 brain implant utilize to detect motor cortex neural spikes?",
+    "options": {
+      "A": "64 ultra-fine threads with 1,024 electrodes",
+      "B": "2 metal wires with 10 electrodes",
+      "C": "1,000,000 wires",
+      "D": "Zero wires (pure laser beam)"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "64 ultra-fine threads with 1,024 electrodes",
+    "explanation": "The coin-sized N1 implant embeds 64 flexible threads thinner than a human hair, sewn into the motor cortex by a precision surgical robot to record action potentials.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_159",
+    "questionId": 159,
+    "questionText": "In March 2024, surgeons at Massachusetts General Hospital performed the world's first transplant of a genetically modified pig kidney into a living human patient. What is this procedure termed?",
+    "options": {
+      "A": "Xenotransplantation",
+      "B": "Allotransplantation",
+      "C": "Autotransplantation",
+      "D": "Orthotopic Grafting"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Xenotransplantation",
+    "explanation": "Xenotransplantation is the transplantation of living cells, tissues, or organs from non-human animal species (typically genetically modified miniature swine) into human recipients.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_160",
+    "questionId": 160,
+    "questionText": "Why must pigs used for human organ xenotransplantation undergo extensive genetic modifications (such as 69 genomic edits by eGenesis)?",
+    "options": {
+      "A": "To knock out pig carbohydrate antigens (like alpha-gal) that cause hyperacute rejection and inactivate Porcine Endogenous Retroviruses (PERVs)",
+      "B": "To make the pig organs glow green in the dark",
+      "C": "To double the size of the heart",
+      "D": "To reduce the cost of animal feed"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "To knock out pig carbohydrate antigens (like alpha-gal) that cause hyperacute rejection and inactivate Porcine Endogenous Retroviruses (PERVs)",
+    "explanation": "Genetic edits remove pig xenoantigens that trigger catastrophic human immune rejection, add human protective genes, and neutralize dormant porcine retroviruses.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_161",
+    "questionId": 161,
+    "questionText": "What class of anti-obesity and diabetes pharmaceutical drugs (including Semaglutide and Tirzepatide) surged in worldwide clinical use and was named Science's 2023 Breakthrough of the Year?",
+    "options": {
+      "A": "GLP-1 Receptor Agonists (Glucagon-Like Peptide-1 receptor agonists)",
+      "B": "Beta Blockers",
+      "C": "ACE Inhibitors",
+      "D": "Statins"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "GLP-1 Receptor Agonists (Glucagon-Like Peptide-1 receptor agonists)",
+    "explanation": "GLP-1 agonists mimic natural incretin gut hormones, slowing stomach emptying, promoting insulin secretion, curbing appetite in the brain, and reducing cardiovascular mortality by 20%.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_162",
+    "questionId": 162,
+    "questionText": "What is the difference between Semaglutide (Ozempic/Wegovy) and Tirzepatide (Mounjaro/Zepbound)?",
+    "options": {
+      "A": "Semaglutide is a single GLP-1 agonist; Tirzepatide is a dual GLP-1 and GIP (Glucose-dependent Insulinotropic Polypeptide) receptor agonist",
+      "B": "Semaglutide is an antibiotic; Tirzepatide is an antibody",
+      "C": "Tirzepatide is an inhaled gas",
+      "D": "Semaglutide is only for animals"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Semaglutide is a single GLP-1 agonist; Tirzepatide is a dual GLP-1 and GIP (Glucose-dependent Insulinotropic Polypeptide) receptor agonist",
+    "explanation": "Tirzepatide's dual agonism of both GIP and GLP-1 receptors produces even greater weight loss (up to 22.5% of body weight in clinical trials) compared to GLP-1 agonism alone.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_163",
+    "questionId": 163,
+    "questionText": "In 2023 and 2024, the US FDA approved two disease-modifying monoclonal antibody therapies (Lecanemab / Leqembi and Donanemab / Kisunla) for which neurodegenerative disorder?",
+    "options": {
+      "A": "Early Alzheimer's Disease",
+      "B": "Parkinson's Disease",
+      "C": "Amyotrophic Lateral Sclerosis (ALS)",
+      "D": "Multiple Sclerosis"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Early Alzheimer's Disease",
+    "explanation": "Lecanemab and Donanemab target and clear toxic amyloid-beta protein plaques in the brain, modestly slowing clinical cognitive decline by 27% to 35% in early-stage patients.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_164",
+    "questionId": 164,
+    "questionText": "What is CAR-T cell therapy, which achieved landmark long-term remissions in leukemia and is now expanding to severe autoimmune diseases like lupus and scleroderma?",
+    "options": {
+      "A": "Chimeric Antigen Receptor T-cell therapy (genetically re-engineering a patient's own T cells to target specific disease markers)",
+      "B": "Chemotherapy delivered in miniature robotic cars",
+      "C": "Antibiotic infusion therapy",
+      "D": "Radiation therapy using radioactive carbon"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Chimeric Antigen Receptor T-cell therapy (genetically re-engineering a patient's own T cells to target specific disease markers)",
+    "explanation": "CAR-T extracts patient T lymphocytes, inserts a synthetic chimeric antigen receptor gene (targeting e.g. CD19 on B cells), and re-infuses them to hunt and destroy malignant or autoreactive cells.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_165",
+    "questionId": 165,
+    "questionText": "Personalized mRNA cancer vaccines (such as Moderna and Merck's mRNA-4157 / V940) in Phase 3 trials are designed to stimulate patient immunity against:",
+    "options": {
+      "A": "Patient-specific tumor neoantigens identified by genomic sequencing of their individual cancer biopsy",
+      "B": "General bacterial toxins",
+      "C": "Common cold viruses",
+      "D": "Chemical carcinogens in food"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Patient-specific tumor neoantigens identified by genomic sequencing of their individual cancer biopsy",
+    "explanation": "Individualized neoantigen therapy sequences each patient's tumor genome, identifying up to 34 unique cancer mutations, and formulates a bespoke mRNA vaccine to train cytotoxic T cells to eliminate recurrences.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_166",
+    "questionId": 166,
+    "questionText": "In 2023 and 2024, the World Health Organization (WHO) recommended which second malaria vaccine, developed by the University of Oxford and Serum Institute of India, for mass immunization?",
+    "options": {
+      "A": "R21/Matrix-M",
+      "B": "RTS,S / Mosquirix",
+      "C": "PfSPZ",
+      "D": "Dengvaxia"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "R21/Matrix-M",
+    "explanation": "R21/Matrix-M demonstrated up to 75% efficacy in children against Plasmodium falciparum malaria, manufactured at low cost to protect millions across sub-Saharan Africa.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_167",
+    "questionId": 167,
+    "questionText": "In August 2024, the World Health Organization declared the rapid cross-border spread of which deadlier strain of Mpox (monkeypox) a Public Health Emergency of International Concern (PHEIC)?",
+    "options": {
+      "A": "Mpox Clade Ib",
+      "B": "Clade IIb",
+      "C": "Variola major",
+      "D": "Cowpox"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Mpox Clade Ib",
+    "explanation": "Clade Ib emerged in the Democratic Republic of the Congo with higher transmission rates and severity among children and adults compared to the milder 2022 Clade IIb outbreak.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_168",
+    "questionId": 168,
+    "questionText": "What is the biological mechanism of mRNA vaccines (like Comirnaty and Spikevax) that won Katalin Karikó and Drew Weissman the 2023 Nobel Prize in Medicine?",
+    "options": {
+      "A": "Delivering synthetic modified mRNA encoding a viral antigen inside lipid nanoparticles, instructing host ribosomes to produce the protein and trigger an immune response",
+      "B": "Injecting live weakened whole viruses",
+      "C": "Integrating synthetic genes permanently into host DNA",
+      "D": "Injecting donor animal antibodies"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Delivering synthetic modified mRNA encoding a viral antigen inside lipid nanoparticles, instructing host ribosomes to produce the protein and trigger an immune response",
+    "explanation": "Karikó and Weissman discovered that replacing uridine with pseudouridine prevents dangerous inflammatory reactions, enabling synthetic mRNA to express antigen proteins safely.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_169",
+    "questionId": 169,
+    "questionText": "What is the Human Pangenome Reference, whose first draft was published in Nature in 2023 by an international consortium?",
+    "options": {
+      "A": "A diverse genomic reference graph incorporating complete genomes from 47 genetically diverse individuals, replacing the single linear human reference genome",
+      "B": "A collection of ancient Neanderthal fossils",
+      "C": "The complete genome of all animals on Earth",
+      "D": "A database of human dental records"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A diverse genomic reference graph incorporating complete genomes from 47 genetically diverse individuals, replacing the single linear human reference genome",
+    "explanation": "The Human Pangenome captures structural variations, complex duplications, and millions of base pairs missing from the traditional linear reference genome (GRCh38).",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_170",
+    "questionId": 170,
+    "questionText": "What is 'Epigenetics' in modern molecular biology?",
+    "options": {
+      "A": "The study of heritable changes in gene expression (such as DNA methylation and histone modifications) that occur without altering the underlying DNA sequence",
+      "B": "Mutations caused by nuclear radiation",
+      "C": "The synthesis of artificial chromosomes",
+      "D": "The study of infectious bacteria in plants"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The study of heritable changes in gene expression (such as DNA methylation and histone modifications) that occur without altering the underlying DNA sequence",
+    "explanation": "Epigenetics investigates biochemical switches that turn genes on or off in response to aging, lifestyle, and environmental factors without mutating the genetic alphabet.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_171",
+    "questionId": 171,
+    "questionText": "What is 'Cellular Reprogramming' (Yamanaka Factors) being researched to reverse biological aging in tissues?",
+    "options": {
+      "A": "Expressing four transcription factors (Oct4, Sox2, Klf4, c-Myc) to reset differentiated mature cells back to an embryonic pluripotent stem cell state",
+      "B": "Programming computer chips inside cells",
+      "C": "Injecting electrical shocks into dying cells",
+      "D": "Freezing living human bodies in liquid nitrogen"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Expressing four transcription factors (Oct4, Sox2, Klf4, c-Myc) to reset differentiated mature cells back to an embryonic pluripotent stem cell state",
+    "explanation": "Shinya Yamanaka won the 2012 Nobel Prize for identifying OSKM factors; modern longevity researchers use transient partial reprogramming to restore youthful epigenetic marks without causing teratomas.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_172",
+    "questionId": 172,
+    "questionText": "What is 'Liquid Biopsy' in modern oncology?",
+    "options": {
+      "A": "A non-invasive blood test that detects circulating tumor DNA (ctDNA) or circulating tumor cells to diagnose, monitor, and guide targeted cancer therapies",
+      "B": "Injecting liquid nitrogen directly into a tumor",
+      "C": "Draining fluid from a patient's lungs",
+      "D": "Drinking barium liquid before an X-ray"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A non-invasive blood test that detects circulating tumor DNA (ctDNA) or circulating tumor cells to diagnose, monitor, and guide targeted cancer therapies",
+    "explanation": "Liquid biopsies analyze cell-free DNA fragments shed into the bloodstream by tumors, enabling early multi-cancer detection and tracking drug resistance mutations.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_173",
+    "questionId": 173,
+    "questionText": "What is 'Phage Therapy' gaining prominence as an alternative to failing conventional antibiotics against antimicrobial-resistant (AMR) superbugs?",
+    "options": {
+      "A": "The therapeutic use of bacteriophages (viruses that specifically infect and kill bacteria) to treat antibiotic-resistant bacterial infections",
+      "B": "Treating viral infections with fungal extracts",
+      "C": "Purifying drinking water with chlorine gas",
+      "D": "Using high-frequency sound waves to kill bacteria"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The therapeutic use of bacteriophages (viruses that specifically infect and kill bacteria) to treat antibiotic-resistant bacterial infections",
+    "explanation": "Bacteriophages are highly specific natural viral predators of bacteria that replicate at infection sites to lyse multidrug-resistant pathogens without harming human cells.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_174",
+    "questionId": 174,
+    "questionText": "What is the Microbiome in human physiology?",
+    "options": {
+      "A": "The diverse community of trillions of microorganisms (bacteria, fungi, viruses) living in symbiotic harmony in the human gastrointestinal tract and body",
+      "B": "A microscopic computer chip implanted under the skin",
+      "C": "The microscopic structure of human bone cells",
+      "D": "The microscopic droplets formed during breathing"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The diverse community of trillions of microorganisms (bacteria, fungi, viruses) living in symbiotic harmony in the human gastrointestinal tract and body",
+    "explanation": "The gut microbiome plays a crucial role in immune system calibration, metabolic homeostasis, neurotransmitter production (gut-brain axis), and drug efficacy.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_175",
+    "questionId": 175,
+    "questionText": "What is the Telomere, and what role does it play in cellular senescence and aging?",
+    "options": {
+      "A": "Repetitive DNA sequences capping the ends of eukaryotic chromosomes that shorten with each cell division, eventually triggering cellular senescence or apoptosis",
+      "B": "The energy-producing organelle of the cell",
+      "C": "The protein envelope of a virus",
+      "D": "The chemical bond connecting amino acids"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Repetitive DNA sequences capping the ends of eukaryotic chromosomes that shorten with each cell division, eventually triggering cellular senescence or apoptosis",
+    "explanation": "Discovered by Elizabeth Blackburn, Carol Greider, and Jack Szostak (2009 Nobel), telomeres protect chromosome integrity; when depleted to a critical length, cells stop dividing.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_176",
+    "questionId": 176,
+    "questionText": "In December 2022 and repeatedly confirmed in 2023–2024, scientists at Lawrence Livermore National Laboratory's National Ignition Facility (NIF) achieved 'Fusion Ignition', which means:",
+    "options": {
+      "A": "A controlled nuclear fusion reaction produced more energy output than the laser energy directed onto the target (net energy gain Q > 1)",
+      "B": "A nuclear reactor melted down safely",
+      "C": "Hydrogen gas was created from coal",
+      "D": "Solar panels worked during a total solar eclipse"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A controlled nuclear fusion reaction produced more energy output than the laser energy directed onto the target (net energy gain Q > 1)",
+    "explanation": "Using 192 ultraviolet laser beams delivering 2.05 megajoules to a tiny deuterium-tritium capsule, NIF produced over 3.15 megajoules of fusion yield, achieving scientific breakeven.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_177",
+    "questionId": 177,
+    "questionText": "What isotope fuel mixture is utilized in magnetic confinement tokamaks and laser inertial fusion experiments to achieve fusion at over 100 million degrees Celsius?",
+    "options": {
+      "A": "Deuterium and Tritium (heavy isotopes of hydrogen)",
+      "B": "Uranium-235 and Plutonium-239",
+      "C": "Helium-4 and Carbon-12",
+      "D": "Thorium-232 and Lead-208"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Deuterium and Tritium (heavy isotopes of hydrogen)",
+    "explanation": "Deuterium (one proton, one neutron) and Tritium (one proton, two neutrons) fuse at lower temperatures and higher cross-sections than any other light elements, yielding Helium-4 and a high-energy 14.1 MeV neutron.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_178",
+    "questionId": 178,
+    "questionText": "What is ITER (International Thermonuclear Experimental Reactor) currently under construction in Saint-Paul-lès-Durance, France?",
+    "options": {
+      "A": "The world's largest magnetic confinement plasma tokamak, designed to demonstrate 500 MW of net fusion power from 50 MW input (Q = 10)",
+      "B": "The world's largest coal-fired power station",
+      "C": "A commercial fission breeder reactor",
+      "D": "A space-based solar power satellite"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The world's largest magnetic confinement plasma tokamak, designed to demonstrate 500 MW of net fusion power from 50 MW input (Q = 10)",
+    "explanation": "ITER is a 35-nation scientific collaboration (EU, US, China, India, Japan, Russia, South Korea) building a 23,000-ton tokamak utilizing superconducting magnetic coils.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_179",
+    "questionId": 179,
+    "questionText": "What is a 'Stellarator' in nuclear fusion energy research (such as Germany's Wendelstein 7-X)?",
+    "options": {
+      "A": "A fusion reactor that confines hot plasma using complex, computer-designed 3D non-axisymmetric magnetic coils without driving a large internal plasma current",
+      "B": "A device that harnesses energy from falling meteors",
+      "C": "A spacecraft engine powered by starlight",
+      "D": "A laser weapon designed to shoot down satellites"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A fusion reactor that confines hot plasma using complex, computer-designed 3D non-axisymmetric magnetic coils without driving a large internal plasma current",
+    "explanation": "Unlike tokamaks which require a pulsed transformer current to stabilize plasma, stellarators use twisted 3D magnetic fields to run continuously in steady state without plasma disruptions.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_180",
+    "questionId": 180,
+    "questionText": "What are Small Modular Reactors (SMRs) in modern nuclear fission energy?",
+    "options": {
+      "A": "Factory-manufactured advanced nuclear fission reactors with power outputs up to 300 MW(e), featuring passive safety systems and lower capital costs",
+      "B": "Miniature nuclear batteries inside wristwatches",
+      "C": "Household microwave ovens",
+      "D": "Nuclear weapons built into artillery shells"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Factory-manufactured advanced nuclear fission reactors with power outputs up to 300 MW(e), featuring passive safety systems and lower capital costs",
+    "explanation": "SMRs offer modular, scalable clean base-load electricity, with major tech firms (Google, Amazon, Microsoft) signing procurement deals in 2024 to power AI datacenters with SMR nuclear power.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_181",
+    "questionId": 181,
+    "questionText": "In late 2024, Microsoft signed a 20-year power purchase agreement to restart which iconic Pennsylvania nuclear power plant to supply carbon-free electricity for its AI datacenters?",
+    "options": {
+      "A": "Three Mile Island (Unit 1, rebranded as Crane Clean Energy Center)",
+      "B": "Diablo Canyon",
+      "C": "Vogtle",
+      "D": "Palisades"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Three Mile Island (Unit 1, rebranded as Crane Clean Energy Center)",
+    "explanation": "Constellation Energy is restoring the intact 835 MW Unit 1 reactor at Three Mile Island to provide dedicated 24/7 clean baseload power to Microsoft.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_182",
+    "questionId": 182,
+    "questionText": "What next-generation solar photovoltaic technology combines perovskite crystal thin films with traditional silicon cells to shatter the theoretical efficiency limits of silicon?",
+    "options": {
+      "A": "Perovskite-Silicon Tandem Solar Cells",
+      "B": "Organic Dye-Sensitized Cells",
+      "C": "Copper Indium Gallium Selenide (CIGS)",
+      "D": "Cadmium Telluride (CdTe) Cells"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Perovskite-Silicon Tandem Solar Cells",
+    "explanation": "Perovskite-silicon tandem cells absorb different parts of the solar spectrum (perovskite catches high-energy blue/green light, silicon catches red/infrared), achieving lab efficiencies over 33.9%.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_183",
+    "questionId": 183,
+    "questionText": "What is the theoretical thermodynamic efficiency limit for a single-junction silicon solar cell, known as the Shockley-Queisser limit?",
+    "options": {
+      "A": "Approximately 29.4% (roughly 33% under unconcentrated sunlight)",
+      "B": "100%",
+      "C": "50.0%",
+      "D": "10.5%"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Approximately 29.4% (roughly 33% under unconcentrated sunlight)",
+    "explanation": "The Shockley-Queisser limit caps single p-n junction silicon solar cells around 29.4% due to bandgap mismatch and thermalization losses, necessitating multi-junction tandem designs.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_184",
+    "questionId": 184,
+    "questionText": "What is a 'Solid-State Battery' being developed for next-generation electric vehicles?",
+    "options": {
+      "A": "A battery that replaces the flammable liquid electrolyte with a solid ceramic, polymer, or sulfide electrolyte, improving safety and energy density",
+      "B": "A battery carved out of solid granite stone",
+      "C": "A conventional lead-acid car battery",
+      "D": "A battery that cannot be recharged"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A battery that replaces the flammable liquid electrolyte with a solid ceramic, polymer, or sulfide electrolyte, improving safety and energy density",
+    "explanation": "Solid-state batteries eliminate fire risks, enable faster charging, operate across wider temperatures, and allow pure lithium metal anodes to push driving ranges beyond 1,000 km.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_185",
+    "questionId": 185,
+    "questionText": "Which alternative battery chemistry that uses abundant rock salt rather than scarce lithium entered commercial production for budget electric vehicles and grid storage in 2023–2024?",
+    "options": {
+      "A": "Sodium-ion (Na-ion) Batteries",
+      "B": "Nickel-Cadmium Batteries",
+      "C": "Zinc-Air Batteries",
+      "D": "Vanadium Flow Batteries"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Sodium-ion (Na-ion) Batteries",
+    "explanation": "Sodium-ion batteries (developed by CATL and BYD) offer cold-weather performance and lower raw material costs without requiring expensive lithium, cobalt, or nickel.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_186",
+    "questionId": 186,
+    "questionText": "What is 'Green Hydrogen'?",
+    "options": {
+      "A": "Hydrogen gas produced by splitting water (H2O) into hydrogen and oxygen via electrolysis powered by 100% renewable energy (wind, solar, hydro)",
+      "B": "Hydrogen gas extracted from coal with zero filtering",
+      "C": "Hydrogen that has been dyed green for identification",
+      "D": "Natural hydrogen gas trapped in volcanic rocks"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Hydrogen gas produced by splitting water (H2O) into hydrogen and oxygen via electrolysis powered by 100% renewable energy (wind, solar, hydro)",
+    "explanation": "Green hydrogen produces zero greenhouse gas emissions during production, serving as a zero-carbon fuel for heavy industries (steel, shipping, and aviation).",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_187",
+    "questionId": 187,
+    "questionText": "What is 'Direct Air Capture' (DAC) in climate carbon removal engineering?",
+    "options": {
+      "A": "Industrial chemical facilities that capture carbon dioxide directly from ambient outdoor air and inject it into deep basalt formations for permanent mineralization",
+      "B": "Planting grass in city parks",
+      "C": "Filtering dust from factory smokestacks",
+      "D": "Pumping oxygen into the atmosphere"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Industrial chemical facilities that capture carbon dioxide directly from ambient outdoor air and inject it into deep basalt formations for permanent mineralization",
+    "explanation": "DAC plants (like Climeworks' 'Mammoth' plant in Iceland) use solid sorbent filters and geothermal energy to scrub CO2 directly from ambient air and mineralize it into solid stone underground.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_188",
+    "questionId": 188,
+    "questionText": "What is Graphene in nanotechnology and materials science?",
+    "options": {
+      "A": "A single two-dimensional layer of carbon atoms bonded tightly in a hexagonal honeycomb lattice, 200 times stronger than steel and an exceptional electrical conductor",
+      "B": "A liquid fuel made from graphite",
+      "C": "A synthetic radioactive polymer",
+      "D": "A heavy metal alloy of lead and tin"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A single two-dimensional layer of carbon atoms bonded tightly in a hexagonal honeycomb lattice, 200 times stronger than steel and an exceptional electrical conductor",
+    "explanation": "Isolated by Andre Geim and Konstantin Novoselov (2010 Nobel), graphene has extraordinary electron mobility, thermal conductivity, and tensile strength.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_189",
+    "questionId": 189,
+    "questionText": "In mid-2023, an online preprint claiming the discovery of a room-temperature, ambient-pressure superconductor named 'LK-99' sparked intense global scientific scrutiny. What was the scientific consensus reached after replication attempts?",
+    "options": {
+      "A": "LK-99 was NOT a superconductor; its apparent levitation and resistance drops were caused by copper sulfide impurities and ferromagnetism",
+      "B": "LK-99 was confirmed as a genuine room-temperature superconductor",
+      "C": "LK-99 was an alien artifact",
+      "D": "LK-99 immediately replaced all electrical power grids"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "LK-99 was NOT a superconductor; its apparent levitation and resistance drops were caused by copper sulfide impurities and ferromagnetism",
+    "explanation": "Rigorous replication studies by teams worldwide (including Max Planck Institute and Peking University) definitively debunked LK-99, showing that phase transitions in Cu2S impurities mimicked superconductivity.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_190",
+    "questionId": 190,
+    "questionText": "What is a Superconductor in physics?",
+    "options": {
+      "A": "A material that conducts electrical current with exactly zero electrical resistance and expels magnetic fields (the Meissner Effect) when cooled below a critical temperature",
+      "B": "A very fast train driver",
+      "C": "A battery that holds infinite charge",
+      "D": "A metal that attracts all plastic objects"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A material that conducts electrical current with exactly zero electrical resistance and expels magnetic fields (the Meissner Effect) when cooled below a critical temperature",
+    "explanation": "Superconductors carry electrical current indefinitely without dissipative energy loss and completely expel internal magnetic flux (Meissner effect), enabling MRI magnets and maglev trains.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_191",
+    "questionId": 191,
+    "questionText": "What is the 'Meissner Effect' in superconductivity?",
+    "options": {
+      "A": "The complete ejection of magnetic field lines from the interior of a superconductor as it transitions into the superconducting state",
+      "B": "The heating of a wire when current passes through it",
+      "C": "The bending of light by a gravitational field",
+      "D": "The decay of radioactive nuclei"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The complete ejection of magnetic field lines from the interior of a superconductor as it transitions into the superconducting state",
+    "explanation": "The Meissner effect demonstrates that superconductors are perfect diamagnets, causing permanent magnets to float or levitate stably above a cooled superconductor.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_192",
+    "questionId": 192,
+    "questionText": "What is Carbon Fiber Reinforced Polymer (CFRP) widely used in modern aerospace and Formula 1?",
+    "options": {
+      "A": "A lightweight composite material composed of high-strength carbon fibers embedded within an epoxy resin matrix, offering superior strength-to-weight ratio",
+      "B": "A type of black paper used in solar panels",
+      "C": "A radioactive chemical coating for submarines",
+      "D": "An electrical wire made of compressed coal"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A lightweight composite material composed of high-strength carbon fibers embedded within an epoxy resin matrix, offering superior strength-to-weight ratio",
+    "explanation": "CFRP makes up over 50% of the structural weight of modern airliners like the Boeing 787 Dreamliner and Airbus A350, providing high corrosion resistance and fuel efficiency.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_193",
+    "questionId": 193,
+    "questionText": "What is 'Aerogel', often referred to as 'frozen smoke'?",
+    "options": {
+      "A": "A synthetic ultralight porous material derived from a gel in which the liquid component has been replaced with gas, serving as the world's lightest solid insulator",
+      "B": "A pressurized aerosol spray can",
+      "C": "A hair styling gel that turns into glass",
+      "D": "A cloud of smoke in space"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "A synthetic ultralight porous material derived from a gel in which the liquid component has been replaced with gas, serving as the world's lightest solid insulator",
+    "explanation": "Silica aerogels are composed of over 99% air, possessing extremely low thermal conductivity and density, used by NASA on Mars rovers to insulate electronics from freezing temperatures.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_194",
+    "questionId": 194,
+    "questionText": "What is 'Quantum Dot' technology, for which Moungi Bawendi, Louis Brus, and Alexei Ekimov were awarded the 2023 Nobel Prize in Chemistry?",
+    "options": {
+      "A": "Semiconductor nanocrystals so tiny that their optical and electronic properties are governed by quantum size confinement, emitting pure vibrant colors",
+      "B": "A punctuation mark used in computer programming",
+      "C": "A black hole the size of an atom",
+      "D": "A laser pointer for presentations"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Semiconductor nanocrystals so tiny that their optical and electronic properties are governed by quantum size confinement, emitting pure vibrant colors",
+    "explanation": "Quantum dots (measuring just a few nanometers) emit specific wavelengths of light depending on their physical size, widely used in QLED television displays, solar cells, and biomedical tissue imaging.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_195",
+    "questionId": 195,
+    "questionText": "What is the primary greenhouse gas responsible for over 65% of the human-induced enhanced greenhouse effect driving modern climate change?",
+    "options": {
+      "A": "Carbon Dioxide (CO2)",
+      "B": "Methane (CH4)",
+      "C": "Nitrous Oxide (N2O)",
+      "D": "Sulfur Hexafluoride (SF6)"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Carbon Dioxide (CO2)",
+    "explanation": "Carbon dioxide emitted primarily from fossil fuel combustion and deforestation remains in the atmosphere for centuries, driving anthropogenic global warming.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_196",
+    "questionId": 196,
+    "questionText": "Although present in smaller atmospheric concentrations than CO2, which short-lived climate pollutant has a Global Warming Potential (GWP) over 80 times greater than CO2 over a 20-year timescale?",
+    "options": {
+      "A": "Methane (CH4)",
+      "B": "Water vapor",
+      "C": "Argon",
+      "D": "Helium"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "Methane (CH4)",
+    "explanation": "Methane is a potent greenhouse gas responsible for roughly 30% of global temperature rise since pre-industrial times, making leak reduction a top COP target.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_197",
+    "questionId": 197,
+    "questionText": "What natural oceanic process absorbs approximately 25% to 30% of all human-generated CO2 emissions, causing ocean acidification that threatens coral reefs and shellfish?",
+    "options": {
+      "A": "The chemical formation of Carbonic Acid (H2CO3) in seawater as CO2 dissolves",
+      "B": "Ocean boiling caused by volcanoes",
+      "C": "Tsunami waves evaporating carbon",
+      "D": "Deep-sea salt mining"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The chemical formation of Carbonic Acid (H2CO3) in seawater as CO2 dissolves",
+    "explanation": "Dissolved CO2 reacts with seawater to form carbonic acid, reducing ocean pH and depleting carbonate ions needed by marine organisms to build calcium carbonate shells.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_198",
+    "questionId": 198,
+    "questionText": "What is 'Albedo' in planetary science and Earth climate systems?",
+    "options": {
+      "A": "The fraction of incident solar radiation reflected back into space by a planet's surface (such as ice sheets and clouds)",
+      "B": "The temperature of the core of the Earth",
+      "C": "The depth of the ocean floor",
+      "D": "The speed of winds in the stratosphere"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The fraction of incident solar radiation reflected back into space by a planet's surface (such as ice sheets and clouds)",
+    "explanation": "Albedo ranges from 0 (absorbing all light) to 1 (reflecting all light). White polar ice sheets have high albedo (~0.85); when they melt, exposed dark ocean water (~0.06 albedo) absorbs heat, creating an ice-albedo feedback loop.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_199",
+    "questionId": 199,
+    "questionText": "What international treaty signed in 1987 is universally celebrated as the most successful environmental agreement in history for phasing out chlorofluorocarbons (CFCs) to heal the ozone layer?",
+    "options": {
+      "A": "The Montreal Protocol on Substances that Deplete the Ozone Layer",
+      "B": "The Kyoto Protocol",
+      "C": "The Paris Agreement",
+      "D": "The Basel Convention"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "The Montreal Protocol on Substances that Deplete the Ozone Layer",
+    "explanation": "The Montreal Protocol successfully phased out 99% of ozone-depleting chemicals, putting Earth's protective stratospheric ozone layer on track to fully recover by the 2060s.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  },
+  {
+    "_id": "ca_sts_200",
+    "questionId": 200,
+    "questionText": "In materials science, what is a 'Metamaterial'?",
+    "options": {
+      "A": "An engineered artificial material with periodic microscopic structures designed to exhibit properties not found in nature (such as a negative refractive index or acoustic cloaking)",
+      "B": "A metal that changes its weight on other planets",
+      "C": "A liquid that never boils",
+      "D": "A plastic that decomposes in 2 seconds"
+    },
+    "correctAnswer": "A",
+    "correctAnswerText": "An engineered artificial material with periodic microscopic structures designed to exhibit properties not found in nature (such as a negative refractive index or acoustic cloaking)",
+    "explanation": "Metamaterials manipulate electromagnetic, optical, or acoustic waves in unnatural ways, enabling flat super-lenses, advanced radar cloaking, and next-generation antennas.",
+    "category": {
+      "_id": "cat_ca",
+      "name": "Current Affairs"
+    },
+    "subCategory": "Science, Tech & Space",
+    "difficulty": "Medium",
+    "source": "Latest Developments in Science, Tech & Space (2024-2026)"
+  }
+];

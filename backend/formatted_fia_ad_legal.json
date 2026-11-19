@@ -1,0 +1,3782 @@
+[
+  {
+    "_id": "fia_ad_1",
+    "questionText": "Select the word that is most nearly OPPOSITE in meaning to 'EQUIVOCAL':",
+    "options": {
+      "A": "Ambiguous",
+      "B": "Unambiguous",
+      "C": "Pretentious",
+      "D": "Deceptive"
+    },
+    "correctAnswer": "B",
+    "explanation": "'Equivocal' means open to more than one interpretation or ambiguous. Its opposite is 'unambiguous' or clear.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_2",
+    "questionText": "Choose the word most SIMILAR in meaning to 'PERNICIOUS':",
+    "options": {
+      "A": "Harmful",
+      "B": "Innocuous",
+      "C": "Salubrious",
+      "D": "Beneficial"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Pernicious' means having a harmful effect, especially in a gradual or subtle way.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_3",
+    "questionText": "Choose the correct sentence structure:",
+    "options": {
+      "A": "Neither the prosecutor nor the defense attorneys was present in court.",
+      "B": "Neither the prosecutor nor the defense attorneys were present in court.",
+      "C": "Neither the prosecutor or the defense attorneys were present in court.",
+      "D": "Neither the prosecutor nor the defense attorneys has been present in court."
+    },
+    "correctAnswer": "B",
+    "explanation": "With correlative conjunctions 'neither... nor', the verb agrees with the closer subject ('defense attorneys' is plural, so 'were' is correct).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_4",
+    "questionText": "Identify the correct option to fill in the blank: 'The accused was found guilty _____ embezzling state funds.'",
+    "options": {
+      "A": "for",
+      "B": "of",
+      "C": "with",
+      "D": "in"
+    },
+    "correctAnswer": "B",
+    "explanation": "The adjective 'guilty' takes the preposition 'of' ('guilty of a crime').",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_5",
+    "questionText": "Select the sentence with correct conditional usage:",
+    "options": {
+      "A": "If the investigator had gathered the forensic evidence, the suspect would not be acquitted.",
+      "B": "If the investigator had gathered the forensic evidence, the suspect would not have been acquitted.",
+      "C": "If the investigator gathered the forensic evidence, the suspect would not have been acquitted.",
+      "D": "If the investigator would have gathered the forensic evidence, the suspect will not be acquitted."
+    },
+    "correctAnswer": "B",
+    "explanation": "Third conditional (past unreal condition): 'If + past perfect (had gathered)... would + have + past participle (would not have been acquitted)'.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_6",
+    "questionText": "Choose the word closest in meaning to 'OBSEQUIOUS':",
+    "options": {
+      "A": "Servile",
+      "B": "Arrogant",
+      "C": "Belligerent",
+      "D": "Omniscient"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Obsequious' means obedient or attentive to an excessive or servile degree.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_7",
+    "questionText": "Select the correct preposition: 'The suspect refused to comply _____ the summons issued by the investigating officer.'",
+    "options": {
+      "A": "with",
+      "B": "to",
+      "C": "by",
+      "D": "at"
+    },
+    "correctAnswer": "A",
+    "explanation": "The verb 'comply' takes the preposition 'with' ('comply with orders/summons').",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_8",
+    "questionText": "Choose the correct indirect speech form of: He said, 'I have completed the investigation.'",
+    "options": {
+      "A": "He said that he completed the investigation.",
+      "B": "He said that he has completed the investigation.",
+      "C": "He said that he had completed the investigation.",
+      "D": "He told that he had completed the investigation."
+    },
+    "correctAnswer": "C",
+    "explanation": "Present perfect 'have completed' shifts into past perfect 'had completed' in indirect speech with past reporting verb 'said'.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_9",
+    "questionText": "What does the Latin phrase 'PRIMA FACIE' mean?",
+    "options": {
+      "A": "Based on the first impression / at first sight",
+      "B": "Beyond all reasonable doubt",
+      "C": "Guilty mind",
+      "D": "In the course of proceedings"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Prima facie' literally translates to 'at first face' or based on the first impression; accepted as correct until proved otherwise.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_10",
+    "questionText": "Identify the sentence that contains a dangling modifier:",
+    "options": {
+      "A": "Walking into the courtroom, the documents fell from the lawyer's briefcase.",
+      "B": "Walking into the courtroom, the lawyer dropped the documents.",
+      "C": "As the lawyer walked into the courtroom, the documents fell.",
+      "D": "The lawyer, walking into the courtroom, accidentally dropped the documents."
+    },
+    "correctAnswer": "A",
+    "explanation": "In option A, 'Walking into the courtroom' illogically modifies 'the documents' instead of the person walking.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_11",
+    "questionText": "Choose the antonym of 'SAGACIOUS':",
+    "options": {
+      "A": "Foolish",
+      "B": "Wise",
+      "C": "Insightful",
+      "D": "Judicious"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Sagacious' means having or showing keen mental discernment and good judgment; its antonym is 'foolish' or ignorant.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_12",
+    "questionText": "Identify the correctly punctuated and structured sentence:",
+    "options": {
+      "A": "The judge arrived early, however the stenographer was late.",
+      "B": "The judge arrived early; however, the stenographer was late.",
+      "C": "The judge arrived early however; the stenographer was late.",
+      "D": "The judge arrived early, however, the stenographer was late."
+    },
+    "correctAnswer": "B",
+    "explanation": "When joining two independent clauses with a conjunctive adverb like 'however', use a semicolon before it and a comma after it.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_13",
+    "questionText": "Select the option that best completes the sentence: 'The director, accompanied by his deputies, _____ attending the briefing.'",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have been"
+    },
+    "correctAnswer": "B",
+    "explanation": "Parenthetical phrases like 'accompanied by...', 'as well as...', and 'together with...' do not change the number of the subject. 'The director' is singular, so 'is' is correct.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_14",
+    "questionText": "Choose the synonym of 'ESOTERIC':",
+    "options": {
+      "A": "Obscure",
+      "B": "Commonplace",
+      "C": "Transparent",
+      "D": "Accessible"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Esoteric' refers to knowledge intended for or likely to be understood by only a small number of people with specialized knowledge.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_15",
+    "questionText": "What is the meaning of the idiom 'A MOOT POINT'?",
+    "options": {
+      "A": "An undisputed fact",
+      "B": "A subject that is open to debate or unresolved",
+      "C": "A decisive victory",
+      "D": "A severe reprimand"
+    },
+    "correctAnswer": "B",
+    "explanation": "A 'moot point' is an issue that is subject to debate, dispute, or uncertainty, often with little practical significance.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_16",
+    "questionText": "Identify the correct preposition: 'The suspect was charged _____ forgery and criminal breach of trust.'",
+    "options": {
+      "A": "with",
+      "B": "for",
+      "C": "on",
+      "D": "by"
+    },
+    "correctAnswer": "A",
+    "explanation": "One is 'charged with' an offence (whereas one is 'accused of' an offence).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_17",
+    "questionText": "Choose the correct passive voice: 'The federal agent interrogated the suspect for three hours.'",
+    "options": {
+      "A": "The suspect was interrogated by the federal agent for three hours.",
+      "B": "The suspect had been interrogated by the federal agent for three hours.",
+      "C": "The suspect is interrogated for three hours by the federal agent.",
+      "D": "The suspect has been interrogated by the federal agent for three hours."
+    },
+    "correctAnswer": "A",
+    "explanation": "Simple past active 'interrogated' becomes 'was/were + past participle' (was interrogated).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_18",
+    "questionText": "Select the antonym of 'EPHEMERAL':",
+    "options": {
+      "A": "Transitory",
+      "B": "Fleeting",
+      "C": "Perpetual",
+      "D": "Transient"
+    },
+    "correctAnswer": "C",
+    "explanation": "'Ephemeral' means lasting for a very short time. Its opposite is 'perpetual' or everlasting.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_19",
+    "questionText": "Complete the sentence correctly: 'Scarcely had the officer begun the inquiry _____ new allegations surfaced.'",
+    "options": {
+      "A": "when",
+      "B": "than",
+      "C": "then",
+      "D": "after"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Scarcely... when' and 'Hardly... when' are standard correlative pairs in English grammar.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_20",
+    "questionText": "What does the Latin maxim 'ACTUS NON FACIT REUM NISI MENS SIT REA' mean?",
+    "options": {
+      "A": "Ignorance of the law is no excuse",
+      "B": "An act does not make a person guilty unless the mind is also guilty",
+      "C": "No one can be tried twice for the same offence",
+      "D": "He who acts through another acts himself"
+    },
+    "correctAnswer": "B",
+    "explanation": "This is the cardinal principle of criminal law: both physical criminal act (actus reus) and mental intent (mens rea) are necessary for guilt.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_21",
+    "questionText": "Identify the correct word: 'The court ordered the immediate _____ of the illicit property.'",
+    "options": {
+      "A": "confiscate",
+      "B": "confiscation",
+      "C": "confiscatory",
+      "D": "confiscating"
+    },
+    "correctAnswer": "B",
+    "explanation": "The blank requires a noun after the adjective 'immediate'; 'confiscation' is the noun form.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_22",
+    "questionText": "Choose the correct word: 'Neither the evidence nor the witness testimonies _____ sufficient for conviction.'",
+    "options": {
+      "A": "was",
+      "B": "were",
+      "C": "is",
+      "D": "has been"
+    },
+    "correctAnswer": "B",
+    "explanation": "In 'neither... nor', the verb agrees with the closer subject 'witness testimonies' (plural noun), thus 'were' is correct.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_23",
+    "questionText": "Choose the word most OPPOSITE in meaning to 'VINDICATE':",
+    "options": {
+      "A": "Exonerate",
+      "B": "Acquit",
+      "C": "Inculpate",
+      "D": "Absolve"
+    },
+    "correctAnswer": "C",
+    "explanation": "'Vindicate' means to clear someone of blame or suspicion. 'Inculpate' means to accuse or blame.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_24",
+    "questionText": "Identify the sentence that demonstrates correct parallel structure:",
+    "options": {
+      "A": "The duties of the legal officer include reviewing files, drafting petitions, and to appear in court.",
+      "B": "The duties of the legal officer include reviewing files, drafting petitions, and appearing in court.",
+      "C": "The duties of the legal officer include to review files, drafting petitions, and appearing in court.",
+      "D": "The duties of the legal officer include file reviews, drafting petitions, and appearing in court."
+    },
+    "correctAnswer": "B",
+    "explanation": "Parallel structure requires consistent grammatical forms: 'reviewing files, drafting petitions, and appearing in court' (all gerund phrases).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_25",
+    "questionText": "Fill in the blank: 'He was completely absorbed _____ reading the investigative report.'",
+    "options": {
+      "A": "with",
+      "B": "at",
+      "C": "in",
+      "D": "by"
+    },
+    "correctAnswer": "C",
+    "explanation": "The correct preposition following 'absorbed' when expressing mental immersion is 'in'.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_26",
+    "questionText": "Choose the synonym of 'UBIQUITOUS':",
+    "options": {
+      "A": "Omnipresent",
+      "B": "Rare",
+      "C": "Scarce",
+      "D": "Localized"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Ubiquitous' means present, appearing, or found everywhere.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_27",
+    "questionText": "Choose the sentence with correct subjunctive mood:",
+    "options": {
+      "A": "The magistrate recommended that the prosecutor files an amended complaint.",
+      "B": "The magistrate recommended that the prosecutor file an amended complaint.",
+      "C": "The magistrate recommended that the prosecutor filed an amended complaint.",
+      "D": "The magistrate recommended that the prosecutor should have filed an amended complaint."
+    },
+    "correctAnswer": "B",
+    "explanation": "In English mandative subjunctive clauses following verbs like 'recommend', 'demand', or 'insist', the base form of the verb ('file') is used.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_28",
+    "questionText": "Choose the antonym of 'BELLICOSE':",
+    "options": {
+      "A": "Pugnacious",
+      "B": "Aggressive",
+      "C": "Peaceable",
+      "D": "Hostile"
+    },
+    "correctAnswer": "C",
+    "explanation": "'Bellicose' means demonstrating aggression and willingness to fight. Its opposite is 'peaceable'.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_29",
+    "questionText": "Select the sentence with no grammatical errors:",
+    "options": {
+      "A": "Each of the investigating officers have submitted their reports.",
+      "B": "Each of the investigating officers has submitted his report.",
+      "C": "Each of the investigating officer have submitted his reports.",
+      "D": "Each of the investigating officers are submitting their reports."
+    },
+    "correctAnswer": "B",
+    "explanation": "'Each' is an indefinite singular pronoun requiring a singular verb ('has submitted') and singular pronoun ('his report').",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_30",
+    "questionText": "What is the meaning of the legal idiom 'ULTRA VIRES'?",
+    "options": {
+      "A": "Within legal authority",
+      "B": "Beyond legal power or authority",
+      "C": "In good faith",
+      "D": "By reason of insanity"
+    },
+    "correctAnswer": "B",
+    "explanation": "'Ultra vires' is a Latin phrase meaning 'beyond the powers'; an act done without legal authority.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_31",
+    "questionText": "When did the Code of Criminal Procedure (CrPC), 1898 come into force?",
+    "options": {
+      "A": "1st January 1898",
+      "B": "1st July 1898",
+      "C": "14th August 1898",
+      "D": "1st October 1898"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Code of Criminal Procedure, 1898 (Act V of 1898) received the assent of the Governor-General on 22 March 1898 and came into force on the first day of July, 1898 (Section 1).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_32",
+    "questionText": "Under Section 4(1)(f) of the CrPC, a 'cognizable offence' is defined as one in which a police officer may:",
+    "options": {
+      "A": "Arrest only after obtaining a warrant from a Magistrate",
+      "B": "Arrest without a warrant in accordance with the second schedule or any other law",
+      "C": "Investigate only after permission of the Sessions Judge",
+      "D": "Impose a fine directly on the accused"
+    },
+    "correctAnswer": "B",
+    "explanation": "Under Section 4(1)(f) CrPC, 'Cognizable offence' means an offence for which a police officer may, in accordance with the second schedule or under any other law for the time being in force, arrest without warrant.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_33",
+    "questionText": "Which section of the CrPC empowers police officers to arrest any person without an order from a Magistrate and without a warrant?",
+    "options": {
+      "A": "Section 42",
+      "B": "Section 51",
+      "C": "Section 54",
+      "D": "Section 61"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 54 of the CrPC enumerates nine categories of circumstances under which any police officer may arrest any person without an order from a Magistrate and without a warrant.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_34",
+    "questionText": "Under Section 61 of the CrPC, no police officer shall detain in custody a person arrested without warrant for a period exceeding:",
+    "options": {
+      "A": "12 hours",
+      "B": "24 hours",
+      "C": "48 hours",
+      "D": "72 hours"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 61 CrPC states that no police officer shall detain in custody a person arrested without warrant for a longer period than under all circumstances is reasonable, and such period shall not, in the absence of a special order under Section 167, exceed twenty-four hours exclusive of the time necessary for the journey.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_35",
+    "questionText": "Under Section 103 of CrPC, before making a search under Chapter VII, the officer about to make it shall call upon:",
+    "options": {
+      "A": "At least four government servants to attend",
+      "B": "Two or more respectable inhabitants of the locality to attend and witness the search",
+      "C": "A Magistrate of the First Class only",
+      "D": "The legal representative of the accused person"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 103(1) CrPC requires the officer to call upon two or more respectable inhabitants of the locality in which the place to be searched is situate to attend and witness the search.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_36",
+    "questionText": "Under Section 87 of CrPC, the proclamation requiring an absconding person to appear must provide a time of not less than:",
+    "options": {
+      "A": "15 days",
+      "B": "30 days",
+      "C": "60 days",
+      "D": "90 days"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 87(1) CrPC states that the court may publish a written proclamation requiring him to appear at a specified place and at a specified time not less than thirty days from the date of publishing such proclamation.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_37",
+    "questionText": "Information relating to the commission of a cognizable offence is recorded under which section of CrPC?",
+    "options": {
+      "A": "Section 154",
+      "B": "Section 155",
+      "C": "Section 156",
+      "D": "Section 161"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 154 CrPC governs the recording of information in cognizable cases, popularly known as the First Information Report (FIR).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_38",
+    "questionText": "Under Section 155 of CrPC, what is required before a police officer can investigate a non-cognizable offence?",
+    "options": {
+      "A": "Approval of the Superintendent of Police",
+      "B": "An order from a Magistrate having power to try such case or commit the same for trial",
+      "C": "Notice served to the accused person",
+      "D": "Consent of the complainant in writing"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 155(2) CrPC provides that no police officer shall investigate a non-cognizable case without the order of a Magistrate of the first or second class having power to try such case or commit the same for trial.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_39",
+    "questionText": "Examination of witnesses by the police during an investigation is conducted under which section of CrPC?",
+    "options": {
+      "A": "Section 160",
+      "B": "Section 161",
+      "C": "Section 162",
+      "D": "Section 164"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 161 CrPC empowers any police officer making an investigation to examine orally any person supposed to be acquainted with the facts and circumstances of the case.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_40",
+    "questionText": "According to Section 162 of CrPC, a statement made by any person to a police officer in the course of an investigation shall:",
+    "options": {
+      "A": "Always be attested on oath",
+      "B": "Not be signed by the person making it",
+      "C": "Be signed in the presence of two witnesses",
+      "D": "Be forwarded directly to the Supreme Court"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 162 CrPC explicitly provides that no statement made by any person to a police officer in the course of an investigation shall be signed by the person making it.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_41",
+    "questionText": "Which section of CrPC provides for the recording of confessions and statements by a Magistrate?",
+    "options": {
+      "A": "Section 161",
+      "B": "Section 164",
+      "C": "Section 173",
+      "D": "Section 342"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 164 CrPC empowers any Magistrate of the First Class, or any Magistrate of the Second Class specially empowered, to record any statement or confession made to him in the course of an investigation.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_42",
+    "questionText": "Under Section 167 of CrPC, what is the maximum aggregate period of police physical remand that a Magistrate may authorize?",
+    "options": {
+      "A": "7 days",
+      "B": "14 days",
+      "C": "15 days",
+      "D": "30 days"
+    },
+    "correctAnswer": "C",
+    "explanation": "Under Section 167(2) CrPC, the Magistrate may authorize the detention of the accused in such custody as such Magistrate thinks fit, for a term not exceeding fifteen days on the whole.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_43",
+    "questionText": "Every investigation under Chapter XIV of the CrPC must be completed without unnecessary delay, and the report under Section 173 (Challan) submitted within:",
+    "options": {
+      "A": "7 days",
+      "B": "14 days",
+      "C": "30 days",
+      "D": "60 days"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 173(1) CrPC requires the report of police to be forwarded to the Magistrate within fourteen days from the date on which the information relating to the commission of the offence was received.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_44",
+    "questionText": "Under Section 172 of the CrPC, what is the official daily record kept by an investigating officer called?",
+    "options": {
+      "A": "First Information Report",
+      "B": "Inquest Report",
+      "C": "Case Diary (Special Diary)",
+      "D": "Charge Sheet"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 172 CrPC mandates that every police officer making an investigation shall day by day enter his proceedings in a diary, commonly referred to as the Case Diary or Zimni.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_45",
+    "questionText": "Under Section 190 of CrPC, a Magistrate of the First Class may take cognizance of any offence upon:",
+    "options": {
+      "A": "A complaint of facts which constitute such offence",
+      "B": "A police-report of such facts",
+      "C": "Information received from any person other than a police officer, or upon his own knowledge or suspicion",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Under Section 190(1) CrPC, cognizance may be taken upon (a) a complaint, (b) a police report, or (c) information received from any other person or own knowledge/suspicion.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_46",
+    "questionText": "According to Section 221 of CrPC, what must every charge state?",
+    "options": {
+      "A": "The offence with which the accused is charged",
+      "B": "The exact date of judgment",
+      "C": "The recommendation for punishment",
+      "D": "The personal assets of the accused"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 221(1) CrPC states: 'Every charge under this Code shall state the offence with which the accused is charged.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_47",
+    "questionText": "Under Section 234 of CrPC, a person may be charged with and tried at one trial for offences of the same kind committed within the space of:",
+    "options": {
+      "A": "6 months, not exceeding two offences",
+      "B": "12 months, not exceeding three offences",
+      "C": "12 months, not exceeding five offences",
+      "D": "24 months, not exceeding three offences"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 234 CrPC provides that when a person is accused of more offences than one of the same kind committed within the space of twelve months, he may be charged with and tried at one trial for any number of them not exceeding three.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_48",
+    "questionText": "In a trial before a Magistrate under Chapter XX of CrPC, which section provides for supply of copies of statements and documents to the accused?",
+    "options": {
+      "A": "Section 241-A",
+      "B": "Section 242",
+      "C": "Section 245",
+      "D": "Section 249-A"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 241-A CrPC provides that in all cases instituted upon police report, copies of statements of all witnesses recorded under sections 161 and 164 and of the inspection note shall be supplied free of cost to the accused not less than seven days before the commencement of trial.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_49",
+    "questionText": "Under Section 249-A of CrPC, a Magistrate has the power to:",
+    "options": {
+      "A": "Remand an accused indefinitely",
+      "B": "Acquit the accused at any stage of the case after hearing both sides if allegations are groundless",
+      "C": "Transfer the case outside the province",
+      "D": "Enhance the maximum punishment prescribed by law"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 249-A CrPC empowers a Magistrate to acquit the accused at any stage of the case if, after giving notice to the prosecutor and accused, he considers that the charge is groundless or there is no probability of conviction.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_50",
+    "questionText": "What is the equivalent power of Section 249-A for the Court of Session under Chapter XXII-A?",
+    "options": {
+      "A": "Section 265-D",
+      "B": "Section 265-H",
+      "C": "Section 265-K",
+      "D": "Section 265-N"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 265-K CrPC gives the Court of Session the power to acquit the accused at any stage of the case if there is no probability of the accused being convicted.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_51",
+    "questionText": "Under Section 260 of CrPC, what is the maximum sentence of imprisonment that can be passed in a Summary Trial?",
+    "options": {
+      "A": "1 month",
+      "B": "3 months",
+      "C": "6 months",
+      "D": "1 year"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 262(2) CrPC states that no sentence of imprisonment for a term exceeding three months shall be passed in the case of any conviction under Chapter XXII (Summary Trials).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_52",
+    "questionText": "Tender of pardon to an accomplice (turning approver) is dealt with under which section of CrPC?",
+    "options": {
+      "A": "Section 337",
+      "B": "Section 340",
+      "C": "Section 344",
+      "D": "Section 345"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 337 CrPC deals with the tender of pardon to an accomplice on condition of his making a full and true disclosure of the whole circumstances.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_53",
+    "questionText": "Which section of CrPC governs the examination of the accused person by the court to explain circumstances appearing in the evidence against him?",
+    "options": {
+      "A": "Section 242",
+      "B": "Section 340(2)",
+      "C": "Section 342",
+      "D": "Section 364"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 342 CrPC provides that for the purpose of enabling the accused to explain any circumstances appearing in the evidence against him, the Court shall question him generally on the case after witnesses for prosecution have been examined.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_54",
+    "questionText": "Which section of CrPC deals with bail in bailable offences?",
+    "options": {
+      "A": "Section 496",
+      "B": "Section 497",
+      "C": "Section 498",
+      "D": "Section 498-A"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 496 CrPC governs the granting of bail as a matter of right in bailable offences.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_55",
+    "questionText": "Under Section 497(1) of CrPC, bail in non-bailable offences shall not be granted if there appear reasonable grounds for believing that the accused is guilty of an offence punishable with:",
+    "options": {
+      "A": "Fine only",
+      "B": "Imprisonment for 3 years",
+      "C": "Death, imprisonment for life, or imprisonment for 10 years",
+      "D": "Simple imprisonment of any term"
+    },
+    "correctAnswer": "C",
+    "explanation": "The prohibitory clause of Section 497(1) CrPC bars grant of bail if there appear reasonable grounds for believing that the accused has been guilty of an offence punishable with death or imprisonment for life or imprisonment for ten years (unless covered by statutory exceptions).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_56",
+    "questionText": "Which section of CrPC confers power upon the High Court or Court of Session to grant pre-arrest bail or direct admission to bail?",
+    "options": {
+      "A": "Section 491",
+      "B": "Section 497",
+      "C": "Section 498",
+      "D": "Section 500"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 498 CrPC confers concurrent power upon the High Court and Court of Session to direct that any person be admitted to bail (including pre-arrest bail based on proven mala fides/ulterior motives).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_57",
+    "questionText": "Under Section 491 of CrPC, the High Court has the power to issue directions in the nature of:",
+    "options": {
+      "A": "Habeas Corpus",
+      "B": "Quo Warranto",
+      "C": "Mandamus",
+      "D": "Certiorari"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 491 CrPC provides statutory power to the High Court to issue directions in the nature of a Habeas Corpus for setting at liberty persons illegally or improperly detained.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_58",
+    "questionText": "Inherent powers of the High Court to make such orders as may be necessary to give effect to any order under CrPC or prevent abuse of process are preserved under:",
+    "options": {
+      "A": "Section 439",
+      "B": "Section 498",
+      "C": "Section 561-A",
+      "D": "Section 526"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 561-A CrPC saves the inherent power of the High Court to make such orders as may be necessary to prevent abuse of the process of any Court or otherwise to secure the ends of justice.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_59",
+    "questionText": "Under Section 417 of CrPC, who can direct the Public Prosecutor to present an appeal to the High Court against an order of acquittal passed by any court other than a High Court?",
+    "options": {
+      "A": "The Inspector General of Police",
+      "B": "The Provincial Government (or Federal Government in certain cases)",
+      "C": "The Supreme Judicial Council",
+      "D": "The Bar Council"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 417(1) CrPC empowers the Provincial Government (or Federal Government under subsection (2)) to direct the Public Prosecutor to present an appeal to the High Court from an original or appellate order of acquittal.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_60",
+    "questionText": "Under Section 100 of CrPC, a search warrant for a person wrongfully confined may be issued by:",
+    "options": {
+      "A": "Any police constable on duty",
+      "B": "A Magistrate of the First Class or Sub-Divisional Magistrate",
+      "C": "A Civil Judge Class III",
+      "D": "The headman of the village only"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 100 CrPC provides that if any Magistrate of the First Class has reason to believe that any person is confined under circumstances that amount to an offence, he may issue a search warrant.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Criminal Procedure Code (CrPC), 1898",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_61",
+    "questionText": "The Qanun-e-Shahadat Order, 1984 was promulgated on:",
+    "options": {
+      "A": "14th August 1984",
+      "B": "28th October 1984",
+      "C": "25th December 1984",
+      "D": "1st January 1985"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Qanun-e-Shahadat Order, 1984 (President's Order No. X of 1984) was promulgated on 28th October 1984, repealing the Evidence Act, 1872.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_62",
+    "questionText": "Under Article 3 of the Qanun-e-Shahadat Order, 1984, who is competent to testify?",
+    "options": {
+      "A": "Only individuals holding Pakistani citizenship",
+      "B": "All persons, unless the Court considers they are prevented from understanding questions by tender years, extreme old age, disease, or unsoundness of mind",
+      "C": "Only male Muslims above the age of 21",
+      "D": "Any person who is an advocate of the High Court"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 3 QSO states that all persons shall be competent to testify unless the Court considers they are prevented from understanding the questions put to them, or from giving rational answers by reason of tender years, extreme old age, disease, or unsound mind.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_63",
+    "questionText": "According to Article 17 of QSO 1984, what is the required competence of witnesses in matters pertaining to financial or future obligations?",
+    "options": {
+      "A": "One male witness only",
+      "B": "Two male witnesses, or one male and two female witnesses",
+      "C": "Four female witnesses only",
+      "D": "Three independent witnesses regardless of gender"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 17(2)(a) QSO mandates that in matters pertaining to financial or future obligations, the instrument shall be attested by two men, or one man and two women.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_64",
+    "questionText": "Under Article 16 of the Qanun-e-Shahadat Order, 1984, an accomplice shall be:",
+    "options": {
+      "A": "Incompetent to testify in all criminal cases",
+      "B": "A competent witness against an accused person, except in cases punishable with Hadd",
+      "C": "Treated as the primary complainant",
+      "D": "Exempt from cross-examination"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 16 QSO provides that an accomplice shall be a competent witness against an accused person, except in the case of an offence punishable with Hadd.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_65",
+    "questionText": "Facts which, though not in issue, are so connected with a fact in issue as to form part of the same transaction (Res Gestae) are relevant under which Article?",
+    "options": {
+      "A": "Article 18",
+      "B": "Article 19",
+      "C": "Article 24",
+      "D": "Article 29"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 19 QSO (corresponding to Section 6 of the repealed Evidence Act) deals with facts forming part of the same transaction (the doctrine of Res Gestae).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_66",
+    "questionText": "Under Article 22 of QSO 1984, facts necessary to explain or introduce relevant facts, including the identification of accused persons (Identification Parade), are:",
+    "options": {
+      "A": "Inadmissible",
+      "B": "Relevant",
+      "C": "Conclusive proof of guilt",
+      "D": "Admissible only in civil suits"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 22 QSO makes facts necessary to explain or introduce a fact in issue or relevant fact, or which establish the identity of any thing or person, relevant.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_67",
+    "questionText": "Under Article 37 of QSO 1984, a confession made by an accused person is irrelevant in a criminal proceeding if caused by:",
+    "options": {
+      "A": "Inducement, threat or promise proceeding from a person in authority",
+      "B": "Voluntary desire to state the truth",
+      "C": "Religious repentance",
+      "D": "Advice of his legal counsel"
+    },
+    "correctAnswer": "A",
+    "explanation": "Article 37 QSO renders a confession irrelevant if the making of it appears to have been caused by any inducement, threat or promise proceeding from a person in authority.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_68",
+    "questionText": "Article 38 of the Qanun-e-Shahadat Order, 1984 explicitly provides that no confession made to a _____ shall be proved as against a person accused of any offence.",
+    "options": {
+      "A": "Magistrate",
+      "B": "Police officer",
+      "C": "Medical officer",
+      "D": "Sessions Judge"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 38 QSO states: 'No confession made to a police officer shall be proved as against a person accused of any offence.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_69",
+    "questionText": "Under Article 39 of QSO 1984, a confession made by an accused while in custody of police cannot be proved against him unless:",
+    "options": {
+      "A": "Attested by two non-governmental observers",
+      "B": "Made in the immediate presence of a Magistrate",
+      "C": "Signed by the Station House Officer",
+      "D": "Recorded by a journalist"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 39 QSO states: 'Subject to Article 40, no confession made by any person whilst he is in the custody of a police officer, unless it be made in the immediate presence of a Magistrate, shall be proved as against such person.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_70",
+    "questionText": "Article 40 of QSO 1984 (information leading to discovery of fact) stipulates that how much of information received from an accused in police custody may be proved?",
+    "options": {
+      "A": "The entire narrative confession of the crime",
+      "B": "So much of the information as relates distinctly to the fact thereby discovered",
+      "C": "None of the information under any circumstance",
+      "D": "Only the motives of the crime"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 40 QSO provides that when any fact is deposed to as discovered in consequence of information received from an accused in police custody, so much of such information, whether it amounts to a confession or not, as relates distinctly to the fact thereby discovered, may be proved.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_71",
+    "questionText": "Dying declaration is admissible and relevant under which provision of the Qanun-e-Shahadat Order, 1984?",
+    "options": {
+      "A": "Article 46(1)",
+      "B": "Article 48",
+      "C": "Article 59",
+      "D": "Article 64"
+    },
+    "correctAnswer": "A",
+    "explanation": "Article 46(1) QSO renders statements made by a person as to the cause of his death, or as to any of the circumstances of the transaction which resulted in his death, relevant in cases where the cause of that person's death comes into question.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_72",
+    "questionText": "Under Article 59 of QSO 1984, opinions of experts are relevant upon a point of:",
+    "options": {
+      "A": "Foreign law, science, art, or identity of handwriting or finger impressions",
+      "B": "Interpretation of the Constitution of Pakistan only",
+      "C": "Sentencing policy",
+      "D": "Determining the credibility of eyewitnesses"
+    },
+    "correctAnswer": "A",
+    "explanation": "Article 59 QSO states that when the Court has to form an opinion upon a point of foreign law, or of science, or art, or as to identity of handwriting or finger impressions, the opinions upon that point of persons specially skilled are relevant facts.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_73",
+    "questionText": "Under Article 71 of the Qanun-e-Shahadat Order, 1984, oral evidence must in all cases whatever be:",
+    "options": {
+      "A": "Documented on stamp paper",
+      "B": "Direct",
+      "C": "Corroborated by digital recording",
+      "D": "Hearsay"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 71 QSO lays down the fundamental evidentiary rule: 'Oral evidence must, in all cases whatever, be direct.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_74",
+    "questionText": "According to Article 73 of QSO 1984, 'Primary evidence' means:",
+    "options": {
+      "A": "Certified copies of the document",
+      "B": "The document itself produced for the inspection of the Court",
+      "C": "Photocopies countersigned by an advocate",
+      "D": "Oral account of the contents of a document"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 73 QSO defines Primary evidence as 'the document itself produced for the inspection of the Court.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_75",
+    "questionText": "Under Article 74 of QSO 1984, which of the following is considered 'Secondary evidence'?",
+    "options": {
+      "A": "Certified copies given under provisions hereinafter contained",
+      "B": "Copies made from the original by mechanical processes ensuring accuracy",
+      "C": "Oral accounts of the contents of a document given by some person who has himself seen it",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Article 74 QSO enumerates categories of secondary evidence including certified copies, mechanical copies, counterparts, and oral accounts by someone who saw the original.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_76",
+    "questionText": "Under Article 85 of QSO 1984, which of the following is a 'Public document'?",
+    "options": {
+      "A": "A personal diary of a private citizen",
+      "B": "Documents forming the acts or records of the acts of the sovereign authority, official bodies and tribunals",
+      "C": "An unnotarized private rental contract",
+      "D": "A handwritten letter between friends"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 85 QSO classifies documents forming the acts or records of acts of the sovereign authority, official bodies, legislatures, judiciary, and public records kept of private documents as public documents.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_77",
+    "questionText": "Article 102 of QSO 1984 lays down that when terms of a contract or grant have been reduced to the form of a document, no evidence shall be given in proof thereof except:",
+    "options": {
+      "A": "The document itself, or secondary evidence of its contents where admissible",
+      "B": "Oral testimony of third-party observers",
+      "C": "The general reputation of the parties",
+      "D": "Any hearsay assertion"
+    },
+    "correctAnswer": "A",
+    "explanation": "Article 102 QSO mandates that when terms have been reduced to writing, no evidence shall be given in proof of terms except the document itself or secondary evidence where admissible.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_78",
+    "questionText": "Under Article 114 of QSO 1984, the doctrine of 'Estoppel' applies when:",
+    "options": {
+      "A": "A person has by declaration, act or omission intentionally caused another to believe a thing to be true and act upon such belief",
+      "B": "A person confesses his guilt to the police",
+      "C": "A witness dies before cross-examination",
+      "D": "An accused turns approver"
+    },
+    "correctAnswer": "A",
+    "explanation": "Article 114 QSO defines Estoppel: when one person has, by declaration, act or omission, intentionally caused another to believe a thing to be true and act upon such belief, neither he nor his representative shall be allowed to deny the truth of that thing.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_79",
+    "questionText": "Under Article 117 of QSO 1984, upon whom does the burden of proof lie in a legal proceeding?",
+    "options": {
+      "A": "Upon the presiding judge",
+      "B": "Upon the person who desires any Court to give judgment as to any legal right or liability dependent on facts he asserts",
+      "C": "Always upon the defendant regardless of who asserts the fact",
+      "D": "Upon the clerk of the court"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 117 QSO states that whoever desires any Court to give judgment as to any legal right or liability dependent on the existence of facts which he asserts, must prove that those facts exist.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_80",
+    "questionText": "Under Article 122 of QSO 1984, the burden of proving that the case of an accused comes within any of the General Exceptions of PPC lies upon:",
+    "options": {
+      "A": "The prosecution",
+      "B": "The accused",
+      "C": "The investigating officer",
+      "D": "The complainant"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 122 QSO establishes that when a person is accused of any offence, the burden of proving the existence of circumstances bringing the case within any of the General Exceptions in the PPC lies upon him.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_81",
+    "questionText": "Under Article 129, Illustration (b) of QSO 1984, the Court may presume that an accomplice is:",
+    "options": {
+      "A": "Always truthful without corroboration",
+      "B": "Unworthy of credit, unless he is corroborated in material particulars",
+      "C": "Entitled to half of the recovered property",
+      "D": "Immune from any criminal inquiry"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 129(b) QSO states that the Court may presume that an accomplice is unworthy of credit, unless he is corroborated in material particulars.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_82",
+    "questionText": "Under Article 132 of QSO 1984, the examination of a witness by the party who calls him is termed:",
+    "options": {
+      "A": "Cross-examination",
+      "B": "Examination-in-chief",
+      "C": "Re-examination",
+      "D": "Inquest examination"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 132(1) QSO defines Examination-in-chief as the examination of a witness by the party who calls him.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_83",
+    "questionText": "The examination of a witness by the adverse party is called:",
+    "options": {
+      "A": "Examination-in-chief",
+      "B": "Cross-examination",
+      "C": "Re-examination",
+      "D": "Interrogation"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 132(2) QSO defines Cross-examination as the examination of a witness by the adverse party.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_84",
+    "questionText": "Under Article 136 of QSO 1984, any question suggesting the answer which the person putting it wishes or expects to receive is called a:",
+    "options": {
+      "A": "Leading question",
+      "B": "Direct question",
+      "C": "Hypothetical question",
+      "D": "Perjury question"
+    },
+    "correctAnswer": "A",
+    "explanation": "Article 136 QSO defines a leading question as any question suggesting the answer which the person putting it wishes or expects to receive.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_85",
+    "questionText": "Under Article 138 of QSO 1984, leading questions may freely be asked in:",
+    "options": {
+      "A": "Examination-in-chief",
+      "B": "Cross-examination",
+      "C": "Re-examination without permission",
+      "D": "The complaint"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 138 QSO provides that leading questions may be asked in cross-examination.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_86",
+    "questionText": "Under Article 150 of QSO 1984, the Court may permit the person who calls a witness to put any questions to him which might be put in cross-examination when the witness is:",
+    "options": {
+      "A": "An expert",
+      "B": "Hostile",
+      "C": "A minor",
+      "D": "A government official"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 150 QSO permits a party calling a witness to cross-examine him (put leading questions) if the witness turns hostile and suppresses the truth.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_87",
+    "questionText": "Under Article 155 of QSO 1984, a witness may refresh his memory by referring to:",
+    "options": {
+      "A": "Any writing made by himself at the time of the transaction or soon after",
+      "B": "Newspaper rumors published years later",
+      "C": "Anonymous letters",
+      "D": "Speculative social media posts"
+    },
+    "correctAnswer": "A",
+    "explanation": "Article 155 QSO allows a witness to refresh his memory by referring to any writing made by himself at the time of the transaction concerning which he is questioned, or so soon afterwards that the transaction was fresh in his memory.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_88",
+    "questionText": "Under Article 5 of QSO 1984, communications made during marriage between husband and wife are:",
+    "options": {
+      "A": "Open to public disclosure by police",
+      "B": "Privileged and protected from disclosure without consent",
+      "C": "Admissible in all civil suits without exception",
+      "D": "Inadmissible even if both spouses consent"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 5 QSO protects spousal communications during marriage as privileged, so that no person who is or has been married shall be compelled to disclose any communication made to him during marriage by his spouse.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_89",
+    "questionText": "Under Article 9 of QSO 1984, professional communications between an advocate and his client are protected unless made in furtherance of:",
+    "options": {
+      "A": "Defending a past civil suit",
+      "B": "Any illegal purpose or observation of any crime or fraud committed since employment",
+      "C": "Filing a petition for bail",
+      "D": "Drafting an honest affidavit"
+    },
+    "correctAnswer": "B",
+    "explanation": "Article 9 QSO grants privilege to professional communications between advocates and clients, but the proviso states that nothing protects any communication made in furtherance of any illegal purpose or fact showing crime or fraud.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_90",
+    "questionText": "Under modern amendments and Article 164 of QSO 1984, the Court may allow the production of evidence that may have become available because of:",
+    "options": {
+      "A": "Modern devices and techniques (audio, video, digital forensics)",
+      "B": "Astrological predictions",
+      "C": "Hypnotic regressions",
+      "D": "Trial by ordeal"
+    },
+    "correctAnswer": "A",
+    "explanation": "Article 164 QSO provides that the Court may allow any evidence to be produced which may have become available because of modern devices and electronic techniques.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Qanun-e-Shahadat Order, 1984",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_91",
+    "questionText": "The Pakistan Penal Code (Act XLV of 1860) was enacted on 6th October 1860 and came into operation on:",
+    "options": {
+      "A": "1st January 1861",
+      "B": "1st January 1862",
+      "C": "14th August 1947",
+      "D": "23rd March 1956"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Pakistan Penal Code, 1860 was passed on 6th October 1860 and came into operation on 1st January 1862.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_92",
+    "questionText": "Under Section 4 of the PPC, the provisions of the Code apply to any offence committed by any citizen of Pakistan or any person in the service of Pakistan in:",
+    "options": {
+      "A": "Pakistan only",
+      "B": "Any place without and beyond Pakistan",
+      "C": "Commonwealth countries only",
+      "D": "Federal capital territory only"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 4 PPC provides for extraterritorial application of the Code to any citizen of Pakistan or any person in the service of Pakistan in any place without and beyond Pakistan.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_93",
+    "questionText": "Under Section 21 of the PPC, which of the following is included in the definition of a 'Public Servant'?",
+    "options": {
+      "A": "Every Commissioned Officer in the Military, Naval or Air Forces of Pakistan",
+      "B": "Every Judge including any person empowered by law to discharge judicial functions",
+      "C": "Every officer of a Court of Justice whose duty it is to investigate or report",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Section 21 PPC enumerates various categories of persons who are public servants, including judges, officers of courts, military officers, and government employees.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_94",
+    "questionText": "Under Section 24 of the PPC, doing anything with the intention of causing wrongful gain to one person or wrongful loss to another person is defined as doing it:",
+    "options": {
+      "A": "Fraudulently",
+      "B": "Dishonestly",
+      "C": "Malignantly",
+      "D": "Voluntarily"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 24 PPC defines 'Dishonestly': Whoever does anything with the intention of causing wrongful gain to one person or wrongful loss to another person, is said to do that thing 'dishonestly'.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_95",
+    "questionText": "Under Section 25 of the PPC, a person is said to do a thing 'fraudulently' if he does that thing with:",
+    "options": {
+      "A": "Intent to defraud, but not otherwise",
+      "B": "Intent to cause bodily hurt",
+      "C": "Negligence",
+      "D": "Recklessness"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 25 PPC provides: 'A person is said to do a thing fraudulently if he does that thing with intent to defraud, but not otherwise.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_96",
+    "questionText": "Which section of the PPC enumerates the kinds of punishments to which offenders are liable?",
+    "options": {
+      "A": "Section 40",
+      "B": "Section 53",
+      "C": "Section 75",
+      "D": "Section 109"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 53 PPC enumerates ten kinds of punishments: Qisas, Diyat, Arsh, Daman, Ta'zir, Death, Imprisonment for life, Imprisonment (rigorous or simple), Forfeiture of property, and Fine.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_97",
+    "questionText": "Under Section 76 of the PPC, nothing is an offence which is done by a person who is, or who by reason of a mistake of fact in good faith believes himself to be:",
+    "options": {
+      "A": "Bound by law to do it",
+      "B": "Above the law",
+      "C": "Acting under mistake of law",
+      "D": "Immune from prosecution"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 76 PPC protects acts done by a person bound, or by mistake of fact believing himself bound, by law (Ignorantia facti excusat, ignorantia juris non excusat).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_98",
+    "questionText": "Under Section 82 of the PPC, nothing is an offence which is done by a child under the age of:",
+    "options": {
+      "A": "7 years",
+      "B": "10 years",
+      "C": "14 years",
+      "D": "18 years"
+    },
+    "correctAnswer": "B",
+    "explanation": "Under Section 82 PPC (as amended by Criminal Law Amendment Act 2016), nothing is an offence which is done by a child under ten years of age (doli incapax).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_99",
+    "questionText": "Under Section 84 of the PPC (defence of insanity / McNaughten rule), an act is not an offence if by reason of unsoundness of mind the person was incapable of knowing:",
+    "options": {
+      "A": "The nature of the act, or that he was doing what is either wrong or contrary to law",
+      "B": "His own legal name and address",
+      "C": "The penalty prescribed for the offence",
+      "D": "The identity of the police officer"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 84 PPC provides that nothing is an offence which is done by a person who, at the time of doing it, by reason of unsoundness of mind, is incapable of knowing the nature of the act, or that what he is doing is either wrong or contrary to law.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_100",
+    "questionText": "Under Section 96 of the PPC, nothing is an offence which is done in the exercise of the right of:",
+    "options": {
+      "A": "Public interest litigation",
+      "B": "Private defence",
+      "C": "Official immunity",
+      "D": "Retaliation"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 96 PPC declares: 'Nothing is an offence which is done in the exercise of the right of private defence.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_101",
+    "questionText": "Under Section 100 of the PPC, the right of private defence of the body extends to causing death in which of the following assaults?",
+    "options": {
+      "A": "An assault causing reasonable apprehension of death or grievous hurt",
+      "B": "An assault with the intention of committing rape or gratifying unnatural lust",
+      "C": "An assault with the intention of kidnapping or abducting",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Section 100 PPC specifies six descriptions of assault where private defence of the body extends to the voluntary causing of death, including apprehension of death, grievous hurt, rape, unnatural lust, kidnapping/abducting, and wrongful confinement.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_102",
+    "questionText": "Under Section 107 of the PPC, a person abets the doing of a thing who:",
+    "options": {
+      "A": "Instigates any person to do that thing",
+      "B": "Engages with one or more persons in a conspiracy for the doing of that thing",
+      "C": "Intentionally aids, by any act or illegal omission, the doing of that thing",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Section 107 PPC defines abetment under three modes: instigation, conspiracy, and intentional aiding.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_103",
+    "questionText": "Criminal Conspiracy is defined under which section of the PPC?",
+    "options": {
+      "A": "Section 108",
+      "B": "Section 120-A",
+      "C": "Section 121",
+      "D": "Section 124-A"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 120-A PPC defines Criminal Conspiracy: When two or more persons agree to do, or cause to be done, an illegal act, or an act which is not illegal by illegal means, such an agreement is designated a criminal conspiracy.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_104",
+    "questionText": "Waging or attempting to wage war against Pakistan is punishable under which section of the PPC?",
+    "options": {
+      "A": "Section 121",
+      "B": "Section 124-A",
+      "C": "Section 131",
+      "D": "Section 153-A"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 121 PPC punishes waging or attempting to wage war or abetting waging of war against Pakistan with death, or imprisonment for life, and fine.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_105",
+    "questionText": "Under Section 141 of the PPC, an assembly of how many persons is designated an 'unlawful assembly' if their common object meets statutory criteria?",
+    "options": {
+      "A": "Two or more",
+      "B": "Three or more",
+      "C": "Five or more",
+      "D": "Ten or more"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 141 PPC defines an Unlawful Assembly as an assembly of five or more persons having one of the specified common objects.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_106",
+    "questionText": "Giving false evidence in a judicial proceeding is punishable under Section 193 of the PPC with imprisonment which may extend to:",
+    "options": {
+      "A": "3 years",
+      "B": "5 years",
+      "C": "7 years and fine",
+      "D": "Life imprisonment"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 193 PPC provides that whoever intentionally gives false evidence in any stage of a judicial proceeding shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_107",
+    "questionText": "Under Section 300 of the PPC, intentional causing of death of a human being is designated as:",
+    "options": {
+      "A": "Qatl-i-Khata",
+      "B": "Qatl-i-Shibh-i-Amd",
+      "C": "Qatl-i-Amd",
+      "D": "Qatl-bis-Sabab"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 300 PPC defines Qatl-i-Amd: Whoever, with the intention of causing death or with the intention of causing bodily injury to a person, causes death, commits Qatl-i-Amd.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_108",
+    "questionText": "What is the primary punishment for Qatl-i-Amd under Section 302(a) of the PPC?",
+    "options": {
+      "A": "Death as Qisas",
+      "B": "Imprisonment for life as Ta'zir",
+      "C": "Diyat only",
+      "D": "Rigorous imprisonment for 14 years"
+    },
+    "correctAnswer": "A",
+    "explanation": "Under Section 302(a) PPC, Qatl-i-Amd is punishable with death as Qisas.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_109",
+    "questionText": "Under Section 318 of the PPC, whoever, without any intention to cause death or cause harm, causes the death of another person by mistake of act or mistake of fact, commits:",
+    "options": {
+      "A": "Qatl-i-Amd",
+      "B": "Qatl-i-Shibh-i-Amd",
+      "C": "Qatl-i-Khata",
+      "D": "Qatl-bis-Sabab"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 318 PPC defines Qatl-i-Khata as causing death without intention to cause death or cause harm, either by mistake of act or mistake of fact.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_110",
+    "questionText": "Under Section 378 of the PPC, which of the following is an essential ingredient of 'Theft'?",
+    "options": {
+      "A": "Dishonest intention to take movable property",
+      "B": "The property must be taken out of the possession of any person",
+      "C": "The taking must be without that person's consent",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Section 378 PPC requires: (1) dishonest intention, (2) movable property, (3) taken out of possession of another, (4) without consent, and (5) moving in order to such taking.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_111",
+    "questionText": "Under Section 383 of the PPC, intentionally putting any person in fear of any injury and dishonestly inducing that person to deliver property is:",
+    "options": {
+      "A": "Theft",
+      "B": "Extortion",
+      "C": "Cheating",
+      "D": "Robbery"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 383 PPC defines Extortion: Whoever intentionally puts any person in fear of any injury to that person or to any other, and thereby dishonestly induces the person so put in fear to deliver to any person any property or valuable security, commits extortion.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_112",
+    "questionText": "Under Section 390 of the PPC, when does Theft become 'Robbery'?",
+    "options": {
+      "A": "When more than 10 people are present",
+      "B": "If, in order to committing theft, the offender voluntarily causes or attempts to cause death, hurt, or wrongful restraint",
+      "C": "If the value of stolen goods exceeds 1 million rupees",
+      "D": "When committed during nighttime only"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 390 PPC provides that theft is robbery if, in order to the committing of the theft, or in carrying away property obtained by theft, the offender voluntarily causes or attempts to cause to any person death or hurt or wrongful restraint.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_113",
+    "questionText": "Under Section 391 of the PPC, when five or more persons conjointly commit or attempt to commit a robbery, the offence is designated as:",
+    "options": {
+      "A": "Extortion",
+      "B": "Dacoity",
+      "C": "Hijacking",
+      "D": "Banditry"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 391 PPC defines Dacoity: When five or more persons conjointly commit or attempt to commit a robbery, every person so committing or attempting is said to commit 'dacoity'.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_114",
+    "questionText": "Dishonest misappropriation of property is defined under which section of the PPC?",
+    "options": {
+      "A": "Section 403",
+      "B": "Section 405",
+      "C": "Section 415",
+      "D": "Section 420"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 403 PPC defines Dishonest Misappropriation of Property: Whoever dishonestly misappropriates or converts to his own use any movable property, shall be punished with imprisonment up to two years, or with fine, or both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_115",
+    "questionText": "Criminal Breach of Trust by a Public Servant, or by a banker, merchant or agent, is punishable under which section of the PPC?",
+    "options": {
+      "A": "Section 406",
+      "B": "Section 408",
+      "C": "Section 409",
+      "D": "Section 420"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 409 PPC deals with Criminal Breach of Trust by public servant, banker, merchant, or agent, punishable with imprisonment for life or imprisonment up to ten years, and fine (a key schedule offence investigated by FIA).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_116",
+    "questionText": "Cheating and dishonestly inducing delivery of property is punishable under which section of the PPC?",
+    "options": {
+      "A": "Section 417",
+      "B": "Section 419",
+      "C": "Section 420",
+      "D": "Section 425"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 420 PPC deals with Cheating and dishonestly inducing delivery of property, punishable with imprisonment up to seven years and fine.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_117",
+    "questionText": "Under Section 463 of the PPC, making any false document with intent to cause damage or injury to the public or any person constitutes:",
+    "options": {
+      "A": "Perjury",
+      "B": "Forgery",
+      "C": "Cheating",
+      "D": "Mischief"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 463 PPC defines Forgery: Whoever makes any false document or electronic record with intent to cause damage or injury to the public or to any person, or to support any claim or title, commits forgery.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_118",
+    "questionText": "Which section of the PPC prescribes the general punishment for Forgery?",
+    "options": {
+      "A": "Section 465",
+      "B": "Section 468",
+      "C": "Section 471",
+      "D": "Section 477-A"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 465 PPC provides punishment for forgery: imprisonment of either description for a term which may extend to two years, or with fine, or with both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_119",
+    "questionText": "Falsification of Accounts by a clerk, officer, or servant is punishable under which section of the PPC?",
+    "options": {
+      "A": "Section 420",
+      "B": "Section 468",
+      "C": "Section 471",
+      "D": "Section 477-A"
+    },
+    "correctAnswer": "D",
+    "explanation": "Section 477-A PPC punishes Falsification of Accounts by a clerk, officer, or servant with imprisonment up to seven years, or with fine, or with both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_120",
+    "questionText": "Under Section 499 of the PPC, whoever by words spoken or intended to be read, makes or publishes any imputation concerning any person intending to harm reputation, commits:",
+    "options": {
+      "A": "Criminal Intimidation",
+      "B": "Defamation",
+      "C": "Nuisance",
+      "D": "Affray"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 499 PPC defines Defamation, punishable under Section 500 PPC with simple imprisonment for a term which may extend to two years, or with fine, or with both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Pakistan Penal Code (PPC), 1860",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_121",
+    "questionText": "The Anti Money Laundering Act (AMLA), 2010 was enacted as Act No. _____ of 2010.",
+    "options": {
+      "A": "Act IV of 2010",
+      "B": "Act VII of 2010",
+      "C": "Act X of 2010",
+      "D": "Act XV of 2010"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Anti Money Laundering Act, 2010 is officially designated as Act No. VII of 2010, receiving Presidential assent in March 2010.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_122",
+    "questionText": "Under Section 3 of AMLA 2010, a person is guilty of the offence of money laundering if he:",
+    "options": {
+      "A": "Acquires, converts, possesses, uses or transfers property, knowing or having reason to believe that such property is proceeds of crime",
+      "B": "Conceals or disguises the true nature, origin, location, disposition, movement or ownership of property knowing it to be proceeds of crime",
+      "C": "Participates in, associates, conspires to commit, attempts to commit, aids, abets, facilitates, or counsels commission of any acts above",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Section 3 of AMLA 2010 comprehensively defines the offence of money laundering covering acquisition, conversion, concealment, transfer, and abetment/conspiracy.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_123",
+    "questionText": "What is the punishment prescribed for the offence of money laundering under Section 4 of AMLA 2010?",
+    "options": {
+      "A": "Imprisonment for 6 months and fine up to 500,000 rupees",
+      "B": "Rigorous imprisonment for not less than 1 year up to 10 years, and fine up to 25 million rupees, and forfeiture of property",
+      "C": "Life imprisonment without fine",
+      "D": "Imprisonment up to 3 years or fine of 1 million rupees"
+    },
+    "correctAnswer": "B",
+    "explanation": "Under Section 4 AMLA 2010, whoever commits the offence of money laundering shall be punished with rigorous imprisonment for a term which shall not be less than one year but may extend to ten years and shall also be liable to fine which may extend to twenty-five million rupees and forfeiture of property.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_124",
+    "questionText": "Under AMLA 2010, what is a 'Predicate Offence' defined as under Section 2(xxv)?",
+    "options": {
+      "A": "Any traffic violation punishable with fine",
+      "B": "An offence specified in the Schedule to AMLA 2010, proceeds of which may become the subject of an offence of money laundering",
+      "C": "A civil contempt of court",
+      "D": "Any breach of contract"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 2(xxv) AMLA 2010 defines 'predicate offence' as an offence specified in the Schedule to this Act, the proceeds of which may generate assets involved in money laundering.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_125",
+    "questionText": "Under Section 6 of AMLA 2010, the Financial Monitoring Unit (FMU) is established by:",
+    "options": {
+      "A": "The Supreme Court of Pakistan",
+      "B": "The Federal Government, housed in the State Bank of Pakistan",
+      "C": "The provincial police departments",
+      "D": "The United Nations Security Council directly"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 6(1) AMLA 2010 provides that the Federal Government shall establish a Financial Monitoring Unit (FMU) which shall be housed in the State Bank of Pakistan or any other place.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_126",
+    "questionText": "What is the primary statutory function of the Financial Monitoring Unit (FMU) under Section 6(4) of AMLA 2010?",
+    "options": {
+      "A": "Conduct physical raids and make arrests directly",
+      "B": "Receive, analyze and disseminate Suspicious Transaction Reports (STRs) and Currency Transaction Reports (CTRs)",
+      "C": "Preside over criminal trials as a Court of Session",
+      "D": "Draft the federal annual budget"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 6(4) AMLA 2010 mandates that the FMU shall receive Suspicious Transaction Reports (STRs) and Currency Transaction Reports (CTRs), analyze them, and disseminate financial intelligence to investigating agencies.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_127",
+    "questionText": "Under Section 5 of AMLA 2010, the National Executive Committee (NEC) is chaired by the:",
+    "options": {
+      "A": "Director General of FIA",
+      "B": "Federal Minister for Finance or Advisor to Prime Minister on Finance",
+      "C": "Governor of State Bank of Pakistan",
+      "D": "Chairman of NAB"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 5(1) AMLA 2010 provides that the National Executive Committee shall consist of the Minister for Finance or Advisor to the Prime Minister on Finance as its Chairman.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_128",
+    "questionText": "Who serves as the Chairman of the General Committee (GC) under Section 5(4) of AMLA 2010?",
+    "options": {
+      "A": "Finance Secretary",
+      "B": "Secretary Interior",
+      "C": "Governor State Bank of Pakistan",
+      "D": "Director General FMU"
+    },
+    "correctAnswer": "A",
+    "explanation": "Under Section 5(4) AMLA 2010, the General Committee is chaired by the Finance Secretary of the Federal Government.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_129",
+    "questionText": "Under Section 7 of AMLA 2010, reporting entities must file a Suspicious Transaction Report (STR) to the FMU within:",
+    "options": {
+      "A": "Immediately, but not later than seven working days after forming suspicion",
+      "B": "30 days from the end of the fiscal quarter",
+      "C": "6 months after transaction completion",
+      "D": "Only upon receiving a written notice from the court"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 7(1) AMLA 2010 specifies that reporting entities must file an STR promptly and within seven working days of forming the suspicion or having reasonable grounds of suspicion.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_130",
+    "questionText": "Under Section 7 of AMLA 2010 and related regulations, a Currency Transaction Report (CTR) must be submitted for cash transactions exceeding:",
+    "options": {
+      "A": "500,000 PKR",
+      "B": "1,000,000 PKR",
+      "C": "2,000,000 PKR (or equivalent in foreign currency)",
+      "D": "5,000,000 PKR"
+    },
+    "correctAnswer": "C",
+    "explanation": "The statutory threshold for submitting Currency Transaction Reports (CTRs) to the FMU is cash transactions of two million rupees (PKR 2,000,000) or equivalent foreign currency.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_131",
+    "questionText": "Under Section 7C of AMLA 2010, reporting entities are required to maintain records of transactions and Customer Due Diligence (CDD) for a minimum period of:",
+    "options": {
+      "A": "1 year",
+      "B": "3 years",
+      "C": "5 years from the date of transaction or termination of business relationship",
+      "D": "10 years"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 7C AMLA 2010 mandates that reporting entities maintain records of transactions, account files, and CDD data for at least five years after completion of transaction or business relationship.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_132",
+    "questionText": "Under AMLA 2010, which of the following is considered a 'Designated Non-Financial Business and Profession' (DNFBP)?",
+    "options": {
+      "A": "Real estate agents and developers",
+      "B": "Dealers in precious metals and precious stones",
+      "C": "Lawyers, notaries, and accountants when conducting certain specified financial transactions for clients",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Section 2(xii-a) AMLA 2010 includes real estate agents, precious metal dealers, lawyers, and accountants under the definition of DNFBPs in line with FATF standards.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_133",
+    "questionText": "Under Section 8 of AMLA 2010, an investigating officer, with prior permission of the Court, may provisionally attach property involved in money laundering for a period not exceeding:",
+    "options": {
+      "A": "30 days",
+      "B": "60 days",
+      "C": "90 days",
+      "D": "180 days"
+    },
+    "correctAnswer": "D",
+    "explanation": "Section 8 AMLA 2010 provides that an investigating officer with prior court permission may provisionally attach property for a period not exceeding 180 days.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_134",
+    "questionText": "Under Section 9 of AMLA 2010, after hearing the aggrieved person, the Court may confirm the attachment of property if it is satisfied that the property is:",
+    "options": {
+      "A": "Proceeds of crime or involved in money laundering",
+      "B": "Inherited agricultural land",
+      "C": "Subject to normal commercial dispute",
+      "D": "Exclusively situated outside Pakistan"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 9 AMLA 2010 provides for confirmation of attachment by the Court if it is satisfied that the property is proceeds of crime or involved in money laundering.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_135",
+    "questionText": "Which Court has jurisdiction to try offences punishable under AMLA 2010 pursuant to Section 20?",
+    "options": {
+      "A": "Magistrate of Second Class",
+      "B": "Court of Session (or designated Special Court)",
+      "C": "Federal Shariat Court directly",
+      "D": "Family Court"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 20 AMLA 2010 provides that the Court of Session shall be the Court having jurisdiction to try offences punishable under this Act.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_136",
+    "questionText": "Under Section 21 of AMLA 2010, all offences punishable under the Act are:",
+    "options": {
+      "A": "Non-cognizable and bailable",
+      "B": "Cognizable and non-bailable",
+      "C": "Compoundable at the discretion of the police",
+      "D": "Triable only by arbitration"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 21(1) AMLA 2010 provides that notwithstanding anything contained in the CrPC, offences under this Act shall be cognizable and non-bailable.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_137",
+    "questionText": "Under Section 21(2) of AMLA 2010, which procedural code governs investigations, arrests, searches, and trials except as otherwise provided?",
+    "options": {
+      "A": "Code of Civil Procedure, 1908",
+      "B": "Code of Criminal Procedure, 1898",
+      "C": "Representation of the People Act, 1976",
+      "D": "Federal Investigation Agency Rules, 1975"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 21(2) AMLA 2010 states that save as otherwise provided in this Act, the provisions of the Code of Criminal Procedure, 1898 shall apply to proceedings relating to offences under this Act.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_138",
+    "questionText": "What does Section 34 of AMLA 2010 prohibit under the doctrine of 'Tipping-off'?",
+    "options": {
+      "A": "Tipping waiters at restaurants",
+      "B": "Disclosing that an STR or related information is being or has been submitted to FMU or that a money laundering investigation is underway",
+      "C": "Paying lawful fees to an attorney",
+      "D": "Voluntary tax filings with FBR"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 34 AMLA 2010 prohibits tipping-off: reporting entities and their officers shall not disclose to any person that an STR or CTR or information is being provided or that an inquiry is being carried out.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_139",
+    "questionText": "Under Section 34(2) of AMLA 2010, any person who knowingly and willfully violates the prohibition of tipping-off shall be liable to:",
+    "options": {
+      "A": "A verbal warning only",
+      "B": "Imprisonment for a term which may extend to five years, or fine up to five million rupees, or both",
+      "C": "Permanent disqualification from voting",
+      "D": "Community service for 10 days"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 34(2) AMLA 2010 punishes tipping-off with imprisonment extending up to five years, or fine which may extend to five million rupees, or both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_140",
+    "questionText": "Under Section 26 of AMLA 2010, the Federal Government may enter into agreements with foreign governments for:",
+    "options": {
+      "A": "Exchange of intelligence, mutual legal assistance, and recovery of proceeds of crime",
+      "B": "Joint military maneuvers only",
+      "C": "Visa waivers for tourists",
+      "D": "Currency unification"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 26 AMLA 2010 authorizes the Federal Government to enter into bilateral or multilateral agreements with foreign governments for mutual legal assistance and sharing of information.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_141",
+    "questionText": "Which agency is an authorized investigating agency under Section 2(j) and Section 24 of AMLA 2010?",
+    "options": {
+      "A": "Federal Investigation Agency (FIA)",
+      "B": "National Accountability Bureau (NAB)",
+      "C": "Anti Narcotics Force (ANF) and Federal Board of Revenue (FBR)",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Under AMLA 2010, investigating agencies include FIA, NAB, ANF, Directorate General of Intelligence and Investigation (Customs & Inland Revenue - FBR), and provincial police departments.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_142",
+    "questionText": "Under Section 10 of AMLA 2010, when an accused is convicted of an offence of money laundering, the Court shall order that the property involved in money laundering shall:",
+    "options": {
+      "A": "Be returned to the convict upon payment of tax",
+      "B": "Stand forfeited to the Federal Government",
+      "C": "Be auctioned and proceeds divided among police officers",
+      "D": "Be placed in private trust"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 10 AMLA 2010 provides that where the Court finds an offence of money laundering proved, it shall order that the property involved shall stand forfeited to the Federal Government.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_143",
+    "questionText": "Under Section 14 of AMLA 2010, an investigating officer has the power to:",
+    "options": {
+      "A": "Enter and search any building, place, vessel, or vehicle where he has reason to suspect property involved in money laundering is kept",
+      "B": "Break open any lock of any door or box",
+      "C": "Seize any records, books of accounts, or property found as a result of such search",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Section 14 AMLA 2010 vests extensive powers of search and seizure in investigating officers during money laundering investigations.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_144",
+    "questionText": "Under Section 15 of AMLA 2010, an investigating officer may inspect and take copies of records or books of accounts from:",
+    "options": {
+      "A": "Any reporting entity or financial institution",
+      "B": "Foreign embassies without permission",
+      "C": "Supreme Court private chambers",
+      "D": "President's personal residence"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 15 AMLA 2010 empowers authorized officers to survey, inspect, and take copies of records maintained by reporting entities.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_145",
+    "questionText": "Under Section 41 of AMLA 2010, the provisions of AMLA shall have effect:",
+    "options": {
+      "A": "Subject to provincial police rules",
+      "B": "Notwithstanding anything inconsistent therewith contained in any other law for the time being in force (overriding effect)",
+      "C": "Only if approved by provincial assemblies",
+      "D": "Only during national financial emergencies"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 41 AMLA 2010 provides an overriding clause: the provisions of this Act shall have effect notwithstanding anything inconsistent contained in any other law for the time being in force.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_146",
+    "questionText": "Under Section 33 of AMLA 2010, what is the penalty for reporting entities failing to comply with CDD, record-keeping, or reporting obligations?",
+    "options": {
+      "A": "Administrative fine and revocation or suspension of operating license",
+      "B": "Imprisonment of all customers of the bank",
+      "C": "Immediate closure of all branches in Pakistan",
+      "D": "None; compliance is purely voluntary"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 33 AMLA 2010 empowers regulatory authorities and the court to impose administrative monetary sanctions, penalties, and direct suspension/revocation of licenses.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_147",
+    "questionText": "Under Section 12 of AMLA 2010, what happens to the attached property if the trial results in an acquittal of the accused?",
+    "options": {
+      "A": "The property is permanently retained by the police",
+      "B": "The Court shall order the release of the attached property to the person entitled to receive it",
+      "C": "The property is transferred to the State Bank reserves",
+      "D": "The property is destroyed"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 12 AMLA 2010 provides that on termination of trial resulting in acquittal, the attachment of property ceases and the court orders its release to the entitled party.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_148",
+    "questionText": "Under Section 43 of AMLA 2010, who is empowered to make rules for carrying out the purposes of this Act?",
+    "options": {
+      "A": "The Federal Government, in consultation with the National Executive Committee",
+      "B": "The High Court Chief Justice",
+      "C": "The Attorney General independently",
+      "D": "The local District Bar Associations"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 43 AMLA 2010 vests the rule-making power in the Federal Government, in consultation with the National Executive Committee.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_149",
+    "questionText": "Under Section 16 of AMLA 2010, where an investigating officer has arrested any person, he shall immediately inform the person of:",
+    "options": {
+      "A": "The grounds of such arrest",
+      "B": "The full names of all secret informants",
+      "C": "The political party affiliation of the officer",
+      "D": "The private bank balance of the prosecutor"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 16 AMLA 2010 mandates that an arrested person shall be informed of the grounds of his arrest as soon as may be, in accordance with constitutional guarantees (Article 10).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_150",
+    "questionText": "Under Section 37 of AMLA 2010, no suit, prosecution or other legal proceeding shall lie against the Federal Government, FMU, or any officer for:",
+    "options": {
+      "A": "Anything which is in good faith done or intended to be done under AMLA (Indemnity clause)",
+      "B": "Gross corruption and bribery",
+      "C": "Willful destruction of evidence",
+      "D": "Fabrication of false STRs"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 37 AMLA 2010 provides statutory indemnity protecting the Federal Government, FMU, and investigating officers for acts done in good faith under the Act.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Anti Money Laundering Act 2010",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_151",
+    "questionText": "The Prevention of Electronic Crimes Act (PECA) was enacted by the Parliament of Pakistan in which year?",
+    "options": {
+      "A": "2014",
+      "B": "2015",
+      "C": "2016",
+      "D": "2018"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Prevention of Electronic Crimes Act, 2016 (Act XL of 2016) was passed by Parliament and received Presidential assent in August 2016.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_152",
+    "questionText": "What are the three pillars of the foundational 'CIA Triad' in Cyber Security?",
+    "options": {
+      "A": "Confidentiality, Integrity, and Availability",
+      "B": "Control, Inspection, and Authorization",
+      "C": "Centralization, Identification, and Access",
+      "D": "Cybersecurity, Intelligence, and Antivirus"
+    },
+    "correctAnswer": "A",
+    "explanation": "The CIA Triad stands for Confidentiality (privacy of data), Integrity (trustworthiness/accuracy of data), and Availability (accessibility by authorized users).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_153",
+    "questionText": "Under Section 3 of PECA 2016, unauthorized access to an information system or data is punishable with imprisonment up to:",
+    "options": {
+      "A": "3 months, or fine up to 50,000 rupees",
+      "B": "6 months, or fine up to 50,000 rupees",
+      "C": "3 months, or fine up to 50,000 rupees, or both",
+      "D": "2 years, or fine up to 1 million rupees"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 3 of PECA 2016 punishes unauthorized access to an information system or data with imprisonment for a term which may extend to three months or with fine which may extend to fifty thousand rupees or with both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_154",
+    "questionText": "Under Section 4 of PECA 2016, unauthorized copying or transmission of data with dishonest intention is punishable with imprisonment up to:",
+    "options": {
+      "A": "6 months or fine up to 100,000 rupees, or both",
+      "B": "1 year or fine up to 500,000 rupees",
+      "C": "3 years or fine up to 1 million rupees",
+      "D": "5 years"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 4 PECA 2016 provides punishment of imprisonment for a term which may extend to six months, or with fine up to one hundred thousand rupees, or both, for unauthorized copying or transmission of data.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_155",
+    "questionText": "Under Section 5 of PECA 2016, interference with an information system or data (such as altering, deleting or impairing functioning) is punishable with imprisonment extending up to:",
+    "options": {
+      "A": "1 year",
+      "B": "2 years, or fine up to 500,000 rupees, or both",
+      "C": "5 years",
+      "D": "10 years"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 5 PECA 2016 prescribes imprisonment for a term which may extend to two years, or fine which may extend to five hundred thousand rupees, or both for interference with information systems or data.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_156",
+    "questionText": "Under Section 6 of PECA 2016, unauthorized access to 'Critical Infrastructure Information Systems or Data' is punishable with imprisonment up to:",
+    "options": {
+      "A": "1 year",
+      "B": "3 years, or fine up to 1 million rupees, or both",
+      "C": "5 years",
+      "D": "14 years"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 6 PECA 2016 punishes unauthorized access to critical infrastructure information systems with imprisonment for a term which may extend to three years, or with fine which may extend to one million rupees, or both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_157",
+    "questionText": "Under Section 8 of PECA 2016, interference with Critical Infrastructure Information Systems or Data is punishable with imprisonment up to:",
+    "options": {
+      "A": "3 years",
+      "B": "5 years, or fine up to 5 million rupees, or both",
+      "C": "7 years, or fine up to 10 million rupees, or both",
+      "D": "14 years"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 8 PECA 2016 provides that whoever with dishonest intention interferes with critical infrastructure information system shall be punished with imprisonment up to seven years, or with fine up to ten million rupees, or both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_158",
+    "questionText": "Under Section 10 of PECA 2016, what is the maximum punishment for 'Cyber Terrorism'?",
+    "options": {
+      "A": "7 years imprisonment",
+      "B": "10 years imprisonment and fine of 10 million rupees",
+      "C": "14 years imprisonment, or fine up to 50 million rupees, or both",
+      "D": "Death penalty in all cases"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 10 PECA 2016 provides that cyber terrorism is punishable with imprisonment for a term which may extend to fourteen years, or with fine which may extend to fifty million rupees, or with both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_159",
+    "questionText": "Electronic Forgery is defined and penalized under which section of PECA 2016?",
+    "options": {
+      "A": "Section 11",
+      "B": "Section 13",
+      "C": "Section 16",
+      "D": "Section 19"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 13 PECA 2016 deals with Electronic Forgery, punishable with imprisonment up to three years, or fine up to two hundred and fifty thousand rupees, or both (or seven years and five million rupees if concerning critical infrastructure).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_160",
+    "questionText": "Electronic Fraud (causing wrongful gain or wrongful loss by deceptive electronic means) is penalized under which section of PECA 2016?",
+    "options": {
+      "A": "Section 12",
+      "B": "Section 14",
+      "C": "Section 17",
+      "D": "Section 21"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 14 PECA 2016 prescribes punishment for Electronic Fraud with imprisonment up to two years, or fine up to ten million rupees, or both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_161",
+    "questionText": "Under Section 16 of PECA 2016, unauthorized use of identity information (Identity Theft) is punishable with imprisonment up to:",
+    "options": {
+      "A": "1 year",
+      "B": "3 years, or fine up to 5 million rupees, or both",
+      "C": "7 years",
+      "D": "10 years"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 16 PECA 2016 punishes unauthorized obtaining, selling, possessing, or transmitting another person's identity information with imprisonment up to three years, or fine up to five million rupees, or both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_162",
+    "questionText": "Under Section 17 of PECA 2016, unauthorized issuance of SIM cards by a service provider or agent is punishable with imprisonment up to:",
+    "options": {
+      "A": "1 year",
+      "B": "3 years, or fine up to 500,000 rupees, or both",
+      "C": "5 years",
+      "D": "10 years"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 17 PECA 2016 provides that unauthorized issuance of SIM cards or electronic identity modules is punishable with imprisonment up to three years, or fine up to five hundred thousand rupees, or both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_163",
+    "questionText": "Under Section 21 of PECA 2016, offences against the modesty of a natural person and minor (such as non-consensual sharing of intimate images) are punishable with imprisonment up to:",
+    "options": {
+      "A": "2 years",
+      "B": "5 years, or fine up to 5 million rupees, or both",
+      "C": "7 years (or 10 years for minors)",
+      "D": "14 years"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 21 PECA 2016 punishes offences against the modesty of a natural person with imprisonment up to five years, or fine up to five million rupees, or both.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_164",
+    "questionText": "Under Section 24 of PECA 2016, 'Cyber Stalking' includes which of the following acts committed through an information system?",
+    "options": {
+      "A": "Following a person or contacting him despite disinterest",
+      "B": "Spying upon or monitoring someone's internet usage",
+      "C": "Distributing photos or information to harass or intimidate a person",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "Section 24 PECA 2016 comprehensively defines Cyber Stalking to include repeated unwanted contact, electronic surveillance/monitoring, and distributing material to intimidate.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_165",
+    "questionText": "Under Section 29 of PECA 2016, service providers are required to retain specified traffic data for a period of at least:",
+    "options": {
+      "A": "30 days",
+      "B": "90 days",
+      "C": "1 year (or as directed by the regulatory authority)",
+      "D": "5 years"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 32 (and Section 29) of PECA 2016 mandates that service providers shall retain traffic data for a minimum period of one year or such period as the Pakistan Telecommunication Authority (PTA) may notify.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_166",
+    "questionText": "Under Section 30 of PECA 2016, which designated law enforcement agency is empowered to investigate electronic crimes?",
+    "options": {
+      "A": "Federal Investigation Agency (FIA) / Cyber Crime Wing (or National Cyber Crime Investigation Agency NCCIA)",
+      "B": "Traffic Police",
+      "C": "Customs Preventive only",
+      "D": "Municipal Corporation"
+    },
+    "correctAnswer": "A",
+    "explanation": "Under Section 30 PECA 2016, the Federal Government designated the Federal Investigation Agency (Cyber Crime Wing) as the primary investigation agency.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_167",
+    "questionText": "Under Section 33 of PECA 2016, an authorized officer may search and seize an information system or computer data only with a warrant issued by the:",
+    "options": {
+      "A": "Station House Officer",
+      "B": "Court",
+      "C": "Secretary of Information Technology",
+      "D": "PTA Chairman"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 33 PECA 2016 mandates that an authorized officer shall obtain a warrant from the Court before searching premises or seizing computer equipment and data.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_168",
+    "questionText": "What exception does Section 34 of PECA 2016 provide regarding search and seizure without warrant?",
+    "options": {
+      "A": "Allowed only where there is imminent threat of destruction of evidence or commission of cyber terrorism or offence against modesty of a minor",
+      "B": "Allowed at the personal whim of any constable",
+      "C": "Allowed in all cases without restriction",
+      "D": "Allowed only on weekends"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 34 PECA 2016 restricts warrantless search and seizure to emergency/exigent situations involving reasonable apprehension of destruction of critical data, cyber terrorism, or offences against minors.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_ad_169",
+    "questionText": "Which type of cyber attack involves overwhelming a server or network with flood traffic to make it unavailable to legitimate users?",
+    "options": {
+      "A": "Phishing",
+      "B": "Distributed Denial of Service (DDoS)",
+      "C": "Man-in-the-Middle (MitM)",
+      "D": "SQL Injection"
+    },
+    "correctAnswer": "B",
+    "explanation": "A Distributed Denial of Service (DDoS) attack overwhelms targeted systems with malicious flood traffic originating from multiple compromised devices (botnet).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_170",
+    "questionText": "What is 'Ransomware' in cyber security?",
+    "options": {
+      "A": "Hardware used to increase internet bandwidth",
+      "B": "Malicious software that encrypts a victim's files and demands payment for the decryption key",
+      "C": "A firewall protocol for verifying SSL certificates",
+      "D": "An open-source database management tool"
+    },
+    "correctAnswer": "B",
+    "explanation": "Ransomware is malware designed to deny access to computer files by encrypting them until a ransom sum is paid to the cyber criminals.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_171",
+    "questionText": "What does the term 'Phishing' refer to?",
+    "options": {
+      "A": "Fraudulent attempts to obtain sensitive information like usernames and passwords by impersonating a trustworthy entity",
+      "B": "Securing passwords through hashing and salting",
+      "C": "Upgrading routers to prevent data leaks",
+      "D": "Running legal network diagnostics"
+    },
+    "correctAnswer": "A",
+    "explanation": "Phishing is a social engineering attack where attackers deceive users into revealing confidential credentials through fraudulent emails, websites, or messages.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_172",
+    "questionText": "In cryptography and cyber security, what does 'Non-Repudiation' mean?",
+    "options": {
+      "A": "The ability to refute any online payment",
+      "B": "Assurance that the sender of data cannot successfully deny having sent the data or originated the signature",
+      "C": "Automatic deletion of server logs",
+      "D": "Encrypting hardware with symmetric keys"
+    },
+    "correctAnswer": "B",
+    "explanation": "Non-repudiation ensures that a party to a communication or digital transaction cannot deny the authenticity of their signature or having sent the communication.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_173",
+    "questionText": "Under PECA 2016, which body is responsible for Computer Emergency Response (CERT) to coordinate cyber incidents nationally?",
+    "options": {
+      "A": "National Computer Emergency Response Team (National CERT) under Section 46-A",
+      "B": "Provincial Sports Board",
+      "C": "Pakistan Railways",
+      "D": "Securities and Exchange Commission of Pakistan"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 46-A of PECA 2016 empowers the Federal Government to establish National and Sectoral Computer Emergency Response Teams (CERTs) to coordinate cyber threat mitigation.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_174",
+    "questionText": "What is a 'Zero-Day Vulnerability'?",
+    "options": {
+      "A": "A security flaw known to the software vendor for zero days (undisclosed flaw for which no patch currently exists)",
+      "B": "A bug that only occurs on the first day of the calendar year",
+      "C": "A completely patched and tested operating system",
+      "D": "A trial software that expires in 24 hours"
+    },
+    "correctAnswer": "A",
+    "explanation": "A Zero-Day vulnerability is an undisclosed computer-software vulnerability that hackers can exploit before the vendor is aware or has developed a security patch.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_175",
+    "questionText": "Under Section 44 of PECA 2016, trials of offences under the Act are conducted before:",
+    "options": {
+      "A": "The Sessions Court or designated Court established under this Act",
+      "B": "A Village Punchayat",
+      "C": "The Patent Office",
+      "D": "Arbitration tribunals exclusively"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 44 PECA 2016 provides that offences under this Act shall be tried by the Court of Session, or designated Cyber Courts.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_176",
+    "questionText": "What is 'Two-Factor Authentication' (2FA)?",
+    "options": {
+      "A": "A security mechanism requiring two distinct authentication factors to verify identity before granting access",
+      "B": "Using two different web browsers simultaneously",
+      "C": "Typing a password twice in the same prompt",
+      "D": "Logging in from two separate computers"
+    },
+    "correctAnswer": "A",
+    "explanation": "2FA enhances security by requiring two different verification elements (e.g., something you know like a password, and something you have like a mobile OTP code).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_177",
+    "questionText": "Under Section 37 of PECA 2016, who has the power to remove, block or issue directions for blocking access to unlawful online content?",
+    "options": {
+      "A": "Pakistan Telecommunication Authority (PTA)",
+      "B": "Federal Investigation Agency directly without notification",
+      "C": "Local municipal authorities",
+      "D": "Private internet service providers on their own initiative"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 37 PECA 2016 vests statutory authority in the Pakistan Telecommunication Authority (PTA) to block or remove unlawful online content.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_178",
+    "questionText": "What is 'SQL Injection' (SQLi)?",
+    "options": {
+      "A": "A cyber attack where malicious SQL statements are inserted into data-entry fields to manipulate backend databases",
+      "B": "A method of hardware cooling in server racks",
+      "C": "An automated backup utility for databases",
+      "D": "A network physical cabling technique"
+    },
+    "correctAnswer": "A",
+    "explanation": "SQL injection is a code injection technique used to attack data-driven applications by inserting malicious SQL statements into entry fields for execution.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_179",
+    "questionText": "Under Section 54 of PECA 2016, the provisions of PECA shall have effect:",
+    "options": {
+      "A": "Subject to provincial criminal codes",
+      "B": "Notwithstanding anything to the contrary contained in any other law for the time being in force (overriding clause)",
+      "C": "Only if endorsed by international treaties",
+      "D": "Only during declared states of emergency"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 54 PECA 2016 specifies that the provisions of this Act shall take effect notwithstanding anything contained in any other law for the time being in force.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_180",
+    "questionText": "What is 'Digital Forensics'?",
+    "options": {
+      "A": "The branch of forensic science encompassing the recovery, investigation, and analysis of material found in digital devices",
+      "B": "Creating digital animations for cinema",
+      "C": "Testing the battery life of electronic tablets",
+      "D": "Manufacturing microprocessors"
+    },
+    "correctAnswer": "A",
+    "explanation": "Digital forensics is the legal and scientific recovery, preservation, and analysis of digital evidence from electronic storage media for use in courts of law.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "Cyber Security",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_181",
+    "questionText": "The Federal Investigation Agency Act, 1974 was enacted as Act No. _____ of 1975.",
+    "options": {
+      "A": "Act I of 1975",
+      "B": "Act VIII of 1975",
+      "C": "Act XII of 1975",
+      "D": "Act XX of 1975"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Federal Investigation Agency Act, 1974 was passed by Parliament in 1974 and received Presidential assent on 13th January 1975 as Act No. VIII of 1975.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_182",
+    "questionText": "Under Section 1(2) of the FIA Act, 1974, to whom and where does the Act extend?",
+    "options": {
+      "A": "Islamabad Capital Territory only",
+      "B": "The whole of Pakistan, and it applies also to all citizens of Pakistan and public servants wherever they may be",
+      "C": "Only to federal ministries in Islamabad and provincial capitals",
+      "D": "Exclusively to airport check-posts"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 1(2) FIA Act, 1974 explicitly states: 'It extends to the whole of Pakistan and also applies to all citizens of Pakistan and Public Servants, wherever they may be.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_183",
+    "questionText": "Under Section 3 of the FIA Act, 1974, the Federal Investigation Agency is constituted by:",
+    "options": {
+      "A": "The Supreme Court of Pakistan",
+      "B": "The Federal Government",
+      "C": "The Inspector General of Police Punjab",
+      "D": "The Chief of Army Staff"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 3(1) of the FIA Act, 1974 provides that the Federal Government may constitute an agency to be called the Federal Investigation Agency.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_184",
+    "questionText": "What is the primary statutory mandate of the Federal Investigation Agency under Section 3(1) of the Act?",
+    "options": {
+      "A": "Collecting provincial agricultural taxes",
+      "B": "Inquiry into and investigation of offences specified in the Schedule (Scheduled Offences)",
+      "C": "Regulating civil air traffic",
+      "D": "Conducting national census operations"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 3(1) mandates the Agency to conduct inquiry into and investigation of the offences specified in the Schedule, including offences connected with matters of the Federal Government.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_185",
+    "questionText": "Under Section 3(2) of the FIA Act, 1974, who heads the Federal Investigation Agency?",
+    "options": {
+      "A": "The Inspector General of Police",
+      "B": "The Director General appointed by the Federal Government",
+      "C": "The Attorney General of Pakistan",
+      "D": "The Federal Ombudsman"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 3(2) FIA Act, 1974 provides: 'The Agency shall consist of a Director General to be appointed by the Federal Government and such number of other officers as the Federal Government may, from time to time, appoint.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_186",
+    "questionText": "Under Section 4(1) of the FIA Act, 1974, the 'Superintendence' of the Agency vests in the:",
+    "options": {
+      "A": "Director General",
+      "B": "Federal Government",
+      "C": "Chief Justice of Pakistan",
+      "D": "Parliamentary Committee on Interior"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 4(1) of the FIA Act, 1974 states: 'The superintendence of the Agency shall vest in the Federal Government.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_187",
+    "questionText": "Under Section 4(2) of the FIA Act, 1974, the 'Administration' of the Agency vests in the:",
+    "options": {
+      "A": "Interior Secretary",
+      "B": "Director General",
+      "C": "Federal Cabinet",
+      "D": "High Court Registrar"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 4(2) of the FIA Act, 1974 provides: 'The administration of the Agency shall vest in the Director General who shall exercise in respect of the Agency such of the powers of an Inspector-General of Police under the Police Act, 1861.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_188",
+    "questionText": "Under Section 5(1) of the FIA Act, 1974, members of the Agency have what powers in relation to the investigation of scheduled offences throughout Pakistan?",
+    "options": {
+      "A": "Powers of revenue officers only",
+      "B": "All the powers including powers relating to search, arrest of persons and seizure of property which officers of a Provincial Police have under CrPC",
+      "C": "Powers to impose martial law",
+      "D": "Powers to issue legislative ordinances"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 5(1) FIA Act, 1974 vests in members of the Agency all the powers relating to search, arrest of persons, and seizure of property which officers of a Provincial Police have under the Code of Criminal Procedure, 1898.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_189",
+    "questionText": "Under Section 5(2) of the FIA Act, 1974, any member of the Agency not below the rank of _____ may exercise any of the powers of the officer-in-charge of a Police Station.",
+    "options": {
+      "A": "Constable",
+      "B": "Head Constable",
+      "C": "Sub-Inspector",
+      "D": "Assistant Director"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 5(2) FIA Act, 1974 provides: 'any member of the Agency not below the rank of a Sub-Inspector may exercise any of the powers of an officer-in-charge of a police station in that area.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_190",
+    "questionText": "Under Section 5(3) of the FIA Act, 1974, for the purpose of the Code of Criminal Procedure, 1898, every office or post used as an Agency station shall be deemed to be a:",
+    "options": {
+      "A": "Judicial Academy",
+      "B": "Police Station",
+      "C": "District Court",
+      "D": "Detention Camp"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 5(3) provides that any post or office used as an Agency office shall be deemed to be a Police Station within the meaning of the CrPC.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_191",
+    "questionText": "Under Section 5(5) of the FIA Act, 1974, an authorized officer of the Agency may direct the manager of any bank or financial institution not to pay out or permit transfer of money if:",
+    "options": {
+      "A": "He has reason to believe that the property was acquired by or involved in commission of any scheduled offence",
+      "B": "The account holder owes personal money to the officer",
+      "C": "The bank belongs to a foreign franchise",
+      "D": "The account is newly opened"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 5(5) FIA Act, 1974 empowers an officer not below the rank of Sub-Inspector (with approval of DG/Director) to order freezing/stop-payment of bank accounts involved in scheduled offences.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_192",
+    "questionText": "Under Section 6 of the FIA Act, 1974, who is empowered to amend the Schedule by notification in the official Gazette?",
+    "options": {
+      "A": "The Federal Government",
+      "B": "The Director General FIA",
+      "C": "The Supreme Judicial Council",
+      "D": "The Provincial Governors"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 6 FIA Act, 1974 provides: 'The Federal Government may, by notification in the official Gazette, amend the Schedule so as to add any entry thereto or modify or omit any entry therein.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_193",
+    "questionText": "Under Section 7 of the FIA Act, 1974, the Director General may by general or special order direct that any of his powers under the Act shall:",
+    "options": {
+      "A": "Be exercised by any officer of the Agency specified in the order (Delegation of powers)",
+      "B": "Be permanently transferred to provincial ministers",
+      "C": "Be extinguished after one year",
+      "D": "Be exercised only with Cabinet consensus"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 7 FIA Act, 1974 authorizes the Director General to delegate any of his powers under this Act or rules to any officer of the Agency subordinate to him.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_194",
+    "questionText": "Section 8 of the FIA Act, 1974 provides an 'Indemnity' clause which protects:",
+    "options": {
+      "A": "Any member of the Agency or other person against any suit, prosecution, or legal proceeding for anything done in good faith under the Act or rules",
+      "B": "Criminals who confess to the Director General",
+      "C": "Corrupt officials who retire voluntarily",
+      "D": "Foreign spies who claim diplomatic immunity"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 8 FIA Act, 1974 states: 'No suit, prosecution or other legal proceeding shall lie against the Federal Government, any member of the Agency or any other person in respect of anything which is in good faith done or intended to be done under this Act.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_195",
+    "questionText": "Under Section 9 of the FIA Act, 1974, who is empowered to make rules for carrying out the purposes of this Act?",
+    "options": {
+      "A": "The Federal Government",
+      "B": "The Director General FIA alone",
+      "C": "The High Court Bar Association",
+      "D": "The Federal Public Service Commission"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 9(1) of the FIA Act, 1974 provides: 'The Federal Government may, by notification in the official Gazette, make rules for carrying out the purposes of this Act.'",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_196",
+    "questionText": "Under Section 10 of the FIA Act, 1974, which previous legislation was repealed upon the commencement of this Act?",
+    "options": {
+      "A": "The Pakistan Special Police Establishment Ordinance, 1948",
+      "B": "The Police Act, 1861",
+      "C": "The Federal Security Force Act, 1973",
+      "D": "The Criminal Law Amendment Act, 1958"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 10(1) FIA Act, 1974 explicitly repealed the Pakistan Special Police Establishment Ordinance, 1948 (Ordinance VII of 1948).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_197",
+    "questionText": "What happened to the personnel, property, and investigations of the Special Police Establishment upon repeal under Section 10(2)?",
+    "options": {
+      "A": "They were disbanded and pensions forfeited",
+      "B": "They stood transferred to and became members, assets, and pending cases of the Federal Investigation Agency",
+      "C": "They were transferred to Provincial Police forces",
+      "D": "They were handed over to the Armed Forces"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 10(2) FIA Act, 1974 provided for the seamless transfer and absorption of all personnel, assets, liabilities, and ongoing inquiries of the PSPE into the newly constituted FIA.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_198",
+    "questionText": "Which of the following federal statutes is included in the Schedule to the FIA Act, 1974?",
+    "options": {
+      "A": "Foreign Exchange Regulation Act, 1947",
+      "B": "Emigration Ordinance, 1979 / Passport Act, 1974",
+      "C": "Prevention of Corruption Act, 1947 (Act II of 1947)",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "The Schedule to the FIA Act includes major federal statutes including Foreign Exchange Regulation Act 1947, Emigration Ordinance 1979, Passport Act 1974, Prevention of Corruption Act 1947, and AMLA 2010.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_199",
+    "questionText": "Which wing of the FIA is directly responsible for handling legal proceedings, prosecuting cases before Special Courts, and rendering legal opinions?",
+    "options": {
+      "A": "Immigration Wing",
+      "B": "Legal and Prosecution Wing",
+      "C": "Interpol Wing",
+      "D": "Anti-Human Trafficking Wing"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Legal & Prosecution Wing of the FIA (comprising Assistant Directors Legal, Deputy Directors Legal, etc.) conducts prosecutions before trial courts, appeals before High Courts, and provides statutory legal opinions.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_200",
+    "questionText": "What is the primary role of an Assistant Director (Legal) (BS-17) in the Federal Investigation Agency?",
+    "options": {
+      "A": "Issuing driving licenses",
+      "B": "Prosecuting scheduled offences in Special Courts, conducting bail arguments, and guiding investigating officers on legal requirements of evidence",
+      "C": "Auditing state-owned petroleum refineries",
+      "D": "Managing municipal sanitation"
+    },
+    "correctAnswer": "B",
+    "explanation": "An Assistant Director (Legal) acts as a specialized federal public prosecutor for FIA cases, scrutinizes police reports (Challans), argues bail and trials, and advises investigators on statutory compliance.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_201",
+    "questionText": "Under the FIA (Inquiries and Investigations) Rules, 1974, before registering a formal FIR under Section 154 CrPC, the Agency typically conducts:",
+    "options": {
+      "A": "A preliminary inquiry (Verification / Enquiry) to establish prima facie scheduled offence",
+      "B": "A trial before the High Court",
+      "C": "An arbitration session",
+      "D": "A public referendum"
+    },
+    "correctAnswer": "A",
+    "explanation": "Under the FIA Rules, complaints of scheduled offences undergo preliminary verification/enquiry, and an FIR is registered once a prima facie cognizable scheduled offence is established.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_202",
+    "questionText": "In FIA prosecution, Special Courts are established under which statute for trial of federal offences like corruption and scheduled crimes?",
+    "options": {
+      "A": "Criminal Law Amendment Act, 1958 (Act XL of 1958)",
+      "B": "Arbitration Act, 1940",
+      "C": "Juvenile Justice System Act, 2018 only",
+      "D": "Provincial Local Government Act"
+    },
+    "correctAnswer": "B",
+    "explanation": "Special Judges (Central) are appointed under Section 3 of the Criminal Law Amendment Act, 1958 to try scheduled offences investigated by the FIA.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_203",
+    "questionText": "Which of the following offences under the Pakistan Penal Code (PPC) falls within the Schedule to the FIA Act, 1974?",
+    "options": {
+      "A": "Offences relating to coin and government stamps (Sections 230-263-A PPC)",
+      "B": "Criminal breach of trust by public servant (Section 409 PPC)",
+      "C": "Forgery of valuable security (Section 467 PPC)",
+      "D": "All of the above"
+    },
+    "correctAnswer": "D",
+    "explanation": "The Schedule to the FIA Act contains offences against the State, public servants, currency/stamps, criminal breach of trust (Sec 409), cheating (Sec 420), and forgery (Sec 467).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_204",
+    "questionText": "Can an officer of the FIA investigate an offence that is purely a provincial subject and NOT listed in the Schedule to the FIA Act, 1974?",
+    "options": {
+      "A": "Yes, the FIA has unlimited jurisdiction over any crime anywhere in Pakistan",
+      "B": "No, the FIA has statutory jurisdiction strictly confined to Scheduled Offences and federal matters",
+      "C": "Yes, if requested verbally by any citizen",
+      "D": "Yes, but only after sunset"
+    },
+    "correctAnswer": "B",
+    "explanation": "The jurisdiction of the FIA is strictly creature of statute (FIA Act, 1974) and limited to the scheduled offences; purely provincial offences remain within the exclusive domain of Provincial Police.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_205",
+    "questionText": "Under the FIA Act, 1974, where does an appeal against the final judgment of a Special Judge (Central) lie?",
+    "options": {
+      "A": "To the Director General FIA",
+      "B": "To the High Court",
+      "C": "To the Federal Ombudsman",
+      "D": "To the Ministry of Interior"
+    },
+    "correctAnswer": "B",
+    "explanation": "Under Section 10 of the Criminal Law Amendment Act, 1958 and the CrPC, appeals against judgments of the Special Judge (Central) lie to the respective High Court.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_206",
+    "questionText": "Which wing of the FIA is designated as the National Central Bureau (NCB) for INTERPOL in Pakistan?",
+    "options": {
+      "A": "NCB-Interpol Pakistan, located within the FIA Headquarters",
+      "B": "Capital Development Authority",
+      "C": "Provincial Counter Terrorism Department",
+      "D": "Ministry of Foreign Affairs Protocol Division"
+    },
+    "correctAnswer": "A",
+    "explanation": "The National Central Bureau (NCB) for INTERPOL in Pakistan is established within the FIA Headquarters in Islamabad, coordinating international Red Notices and extraditions.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_207",
+    "questionText": "Under Section 5(1) of the FIA Act, 1974, what is the geographical limit within Pakistan for an FIA officer to execute an arrest of an accused in a scheduled offence?",
+    "options": {
+      "A": "Only within the province where the FIR was registered",
+      "B": "Throughout the whole of Pakistan without requiring fresh permission from provincial police",
+      "C": "Only within 50 km of an international airport",
+      "D": "Within Islamabad Capital Territory only"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 5(1) confers nationwide jurisdiction: members of the Agency shall have throughout Pakistan in relation to scheduled offences all the powers of a police officer.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_208",
+    "questionText": "Which Ministry of the Government of Pakistan exercises administrative control and oversight over the FIA?",
+    "options": {
+      "A": "Ministry of Defence",
+      "B": "Ministry of Interior",
+      "C": "Ministry of Law and Justice",
+      "D": "Ministry of Finance"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Federal Investigation Agency operates under the administrative authority and oversight of the Ministry of Interior, Government of Pakistan.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_ad_209",
+    "questionText": "Under Section 5(4) of the FIA Act, 1974, if an officer makes an arrest or seizure, he shall immediately report the same to:",
+    "options": {
+      "A": "The officer-in-charge of the nearest police station or Agency post",
+      "B": "The Prime Minister's Secretariat",
+      "C": "The local newspaper editor",
+      "D": "The Provincial Revenue Board"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 5(4) FIA Act, 1974 requires that any member of the Agency who arrests a person or seizes any property shall immediately report the fact to the officer-in-charge of the police station having jurisdiction.",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_ad_210",
+    "questionText": "Under the FIA (Appointment, Promotion and Transfer) Rules, appointments to the posts in BS-17 (such as Assistant Director Legal) are made by:",
+    "options": {
+      "A": "Direct recruitment through the Federal Public Service Commission (FPSC)",
+      "B": "Lottery draw among law graduates",
+      "C": "Nomination by local bar associations",
+      "D": "Selection by municipal council"
+    },
+    "correctAnswer": "A",
+    "explanation": "Initial appointment to BS-17 posts in the Federal Government, including Assistant Director (Legal) FIA, is made through open competitive examination conducted by the Federal Public Service Commission (FPSC).",
+    "category": {
+      "_id": "cat_fia_ad_legal",
+      "name": "FIA Assistant Director Legal"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  }
+]

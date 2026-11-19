@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrange Events Chronologically | Interactive Historical Timeline Sequencing Quiz</title>
+    <meta name="description"
+        content="Interactive 'Arrange Events Chronologically' history timeline quiz for CSS, PMS, FPSC, and PPSC students. Order historical milestones, constitutional amendments, wars, treaties, and international developments.">
+    <meta name="keywords"
+        content="Arrange Events Chronologically, History Timeline Quiz, Constitutional Amendments Pakistan, Wars and Treaties Timeline, CSS History Chronology, Chronological Sequencing Game">
+
+    <!-- Anti-FOUC: Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --chr-primary: #0284c7;
+            --chr-primary-dark: #0369a1;
+            --chr-primary-light: #e0f2fe;
+            --chr-accent: #d97706;
+            --chr-success: #10b981;
+            --chr-warning: #f59e0b;
+            --chr-danger: #ef4444;
+            --chr-bg: #f8fafc;
+            --chr-card-bg: #ffffff;
+            --chr-border: #e2e8f0;
+            --chr-text-main: #0f172a;
+            --chr-text-muted: #64748b;
+            --chr-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+
+        .dark-mode {
+            --chr-primary: #38bdf8;
+            --chr-primary-dark: #0284c7;
+            --chr-primary-light: rgba(56, 189, 248, 0.15);
+            --chr-accent: #fbbf24;
+            --chr-bg: #090d16;
+            --chr-card-bg: #111827;
+            --chr-border: #1f2937;
+            --chr-text-main: #f3f4f6;
+            --chr-text-muted: #9ca3af;
+            --chr-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            background-color: var(--chr-bg);
+            color: var(--chr-text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Top Map Switcher Bar */
+        .map-switcher-bar {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 9px 20px;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .switcher-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .switcher-btn {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.14);
+            border-color: #38bdf8;
+        }
+
+        .switcher-btn.active {
+            background: #d97706;
+            color: #ffffff;
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(217, 119, 6, 0.4);
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background: var(--chr-card-bg);
+            border-bottom: 1px solid var(--chr-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .nav-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--chr-text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #d97706;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--chr-text-muted);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d97706;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--chr-bg);
+            border: 1px solid var(--chr-border);
+            color: var(--chr-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--chr-primary);
+            color: var(--chr-primary);
+        }
+
+        /* Hero Banner */
+        .chrono-hero {
+            background: linear-gradient(135deg, #451a03 0%, #78350f 40%, #92400e 100%);
+            color: #ffffff;
+            padding: 36px 20px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .chrono-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .chrono-hero p {
+            font-size: 1rem;
+            max-width: 860px;
+            margin: 0 auto 16px;
+            opacity: 0.94;
+            line-height: 1.55;
+        }
+
+        .chrono-hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Main Workspace Container */
+        .chrono-main-container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        /* Category Selector Bar */
+        .category-nav-bar {
+            background: var(--chr-card-bg);
+            border: 1px solid var(--chr-border);
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .cat-buttons-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .cat-tab-btn {
+            background: var(--chr-bg);
+            border: 1px solid var(--chr-border);
+            color: var(--chr-text-muted);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .cat-tab-btn:hover {
+            border-color: #d97706;
+            color: #d97706;
+        }
+
+        .cat-tab-btn.active {
+            background: #d97706;
+            border-color: #d97706;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+        }
+
+        .cat-counter-pill {
+            background: rgba(0, 0, 0, 0.12);
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-size: 0.74rem;
+            font-weight: 800;
+        }
+
+        .cat-tab-btn.active .cat-counter-pill {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* HUD Stats Card */
+        .chrono-hud-card {
+            background: var(--chr-card-bg);
+            border: 1px solid var(--chr-border);
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: var(--chr-shadow);
+        }
+
+        .hud-left-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .hud-badge-round {
+            background: rgba(217, 119, 6, 0.12);
+            color: #d97706;
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 8px;
+            text-transform: uppercase;
+        }
+
+        .hud-prompt-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--chr-text-main);
+        }
+
+        .hud-prompt-text small {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--chr-text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .hud-right-stats {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: right;
+        }
+
+        .stat-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--chr-text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .stat-number {
+            font-size: 1.25rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            color: var(--chr-text-main);
+        }
+
+        .hud-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .hud-icon-btn {
+            background: var(--chr-bg);
+            border: 1px solid var(--chr-border);
+            color: var(--chr-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .hud-icon-btn:hover {
+            border-color: var(--chr-primary);
+            color: var(--chr-primary);
+        }
+
+        /* Sequencing Board Area */
+        .chrono-board-stage {
+            background: var(--chr-card-bg);
+            border: 1px solid var(--chr-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--chr-shadow);
+        }
+
+        .cards-sequence-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        /* Single Event Card */
+        .chrono-card {
+            background: var(--chr-bg);
+            border: 2px solid var(--chr-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+            position: relative;
+        }
+
+        .chrono-card:hover {
+            border-color: #0284c7;
+            background: rgba(2, 132, 199, 0.03);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        }
+
+        .chrono-card.correct {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.08);
+        }
+
+        .chrono-card.wrong {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        .card-left-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .slot-position-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--chr-card-bg);
+            border: 2px solid var(--chr-border);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--chr-text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .chrono-card.correct .slot-position-badge {
+            background: #10b981;
+            border-color: #10b981;
+            color: #ffffff;
+        }
+
+        .chrono-card.wrong .slot-position-badge {
+            background: #ef4444;
+            border-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .card-details {
+            flex: 1;
+        }
+
+        .card-title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .card-event-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--chr-text-main);
+            margin: 0;
+            line-height: 1.35;
+        }
+
+        .card-category-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background: var(--chr-card-bg);
+            border: 1px solid var(--chr-border);
+            color: var(--chr-text-muted);
+        }
+
+        .card-summary-desc {
+            font-size: 0.86rem;
+            color: var(--chr-text-muted);
+            margin: 4px 0 0;
+            line-height: 1.45;
+        }
+
+        /* Year Reveal Banner on Card */
+        .card-year-reveal {
+            display: none;
+            margin-top: 6px;
+            font-size: 0.84rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-reorder-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .reorder-btn {
+            background: var(--chr-card-bg);
+            border: 1px solid var(--chr-border);
+            color: var(--chr-text-main);
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-size: 0.85rem;
+        }
+
+        .reorder-btn:hover:not(:disabled) {
+            border-color: #0284c7;
+            background: #0284c7;
+            color: #ffffff;
+        }
+
+        .reorder-btn:disabled {
+            opacity: 0.25;
+            cursor: not-allowed;
+        }
+
+        /* Action Buttons Row */
+        .board-actions-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            padding-top: 8px;
+            border-top: 1px solid var(--chr-border);
+        }
+
+        .btn-verify-sequence {
+            background: #d97706;
+            color: #ffffff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn-verify-sequence:hover {
+            background: #b45309;
+            transform: translateY(-1px);
+        }
+
+        .btn-next-challenge {
+            display: none;
+            background: #10b981;
+            color: #ffffff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-next-challenge:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        /* Timeline Reveal Dossier */
+        .timeline-dossier-container {
+            display: none;
+            margin-top: 28px;
+            padding: 24px;
+            background: var(--chr-card-bg);
+            border: 2px solid #10b981;
+            border-radius: 14px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .timeline-dossier-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .timeline-dossier-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #065f46;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode .timeline-dossier-title {
+            color: #6ee7b7;
+        }
+
+        /* Timeline List */
+        .vertical-timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .vertical-timeline::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background: #cbd5e1;
+            border-radius: 2px;
+        }
+
+        .dark-mode .vertical-timeline::before {
+            background: #334155;
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-node:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -28px;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #d97706;
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 2px #d97706;
+        }
+
+        .timeline-content-card {
+            background: var(--chr-bg);
+            border: 1px solid var(--chr-border);
+            border-radius: 10px;
+            padding: 14px 18px;
+        }
+
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-year-pill {
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: 800;
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .dark-mode .timeline-year-pill {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .timeline-exam-note {
+            margin-top: 8px;
+            font-size: 0.86rem;
+            line-height: 1.5;
+            color: var(--chr-text-main);
+        }
+
+        /* Footer & Shortcuts */
+        .chrono-footer {
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: var(--chr-text-muted);
+        }
+
+        .kbd-key {
+            background: var(--chr-card-bg);
+            border: 1px solid var(--chr-border);
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--chr-text-main);
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/arrange-chronologically.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/arrange-chronologically.html">
+    <meta property="og:title" content="Arrange Events Chronologically | Interactive Historical Timeline Sequencing Quiz">
+    <meta property="og:description" content="Interactive">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Arrange Events Chronologically | Interactive Historical Timeline Sequencing Quiz">
+    <meta name="twitter:description" content="Interactive">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+    <!-- Top Map Switcher Bar -->
+    <div class="map-switcher-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-layer-group" style="color: #fbbf24;"></i>
+            <span>Interactive Cartographic &amp; Knowledge Suite:</span>
+        </div>
+        <div class="switcher-links">
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+            <a href="guess-the-country.html" class="switcher-btn">
+                <i class="fas fa-gamepad"></i> Guess Country
+            </a>
+            <a href="locate-on-map.html" class="switcher-btn">
+                <i class="fas fa-crosshairs"></i> Locate on Map
+            </a>
+            <a href="match-the-following.html" class="switcher-btn">
+                <i class="fas fa-puzzle-piece"></i> Match Items
+            </a>
+            <a href="arrange-chronologically.html" class="switcher-btn active">
+                <i class="fas fa-clock-rotate-left"></i> Arrange Timeline
+            </a>
+            <a href="crossword.html" class="switcher-btn" style="color:#0284c7;">
+                <i class="fas fa-chess-board"></i> Crossword
+            </a>
+            <a href="word-search.html" class="switcher-btn" style="color:#8b5cf6;">
+                <i class="fas fa-magnifying-glass"></i> Word Search
+            </a>
+            <a href="unsc-simulator.html" class="switcher-btn" style="color:#3b82f6;">
+                <i class="fas fa-scale-balanced"></i> UNSC Simulator
+            </a>
+            <a href="international-organizations-explorer.html" class="switcher-btn" style="color:#0284c7;">
+                <i class="fas fa-sitemap"></i> Org Explorer
+            </a>
+            <a href="world-history-timeline.html" class="switcher-btn" style="color:#818cf8;">
+                <i class="fas fa-timeline"></i> World Timeline
+            </a>
+            <a href="global-power-comparison.html" class="switcher-btn" style="color:#38bdf8;">
+                <i class="fas fa-shield-halved"></i> Global Power
+            </a>
+            <a href="solar-system-explorer.html" class="switcher-btn" style="color:#fbbf24;">
+                <i class="fas fa-sun"></i> Solar System
+            </a>
+            <a href="human-body-explorer.html" class="switcher-btn" style="color:#fb7185;">
+                <i class="fas fa-heart-pulse"></i> Human Body
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="timeline.html"><i class="fas fa-timeline"></i> Timeline</a>
+                <a href="arrange-chronologically.html" class="active" style="font-weight:700; color:#d97706;"><i class="fas fa-clock-rotate-left"></i> Chrono Game</a>
+                <a href="crossword.html" style="color:#0284c7; font-weight:700;"><i class="fas fa-chess-board"></i> Crossword</a>
+                <a href="word-search.html" style="color:#8b5cf6; font-weight:700;"><i class="fas fa-magnifying-glass"></i> Word Search</a>
+                <a href="unsc-simulator.html" style="color:#1d4ed8; font-weight:700;"><i class="fas fa-scale-balanced"></i> UNSC Simulator</a>
+                <a href="international-organizations-explorer.html" style="color:#0284c7; font-weight:700;"><i class="fas fa-sitemap"></i> Org Explorer</a>
+                <a href="world-history-timeline.html" style="color:#4f46e5; font-weight:700;"><i class="fas fa-timeline"></i> World Timeline</a>
+                <a href="match-the-following.html"><i class="fas fa-puzzle-piece"></i> Match Items</a>
+                <a href="locate-on-map.html"><i class="fas fa-crosshairs"></i> Locate on Map</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="written-prep.html">Written Prep</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="chrono-hero">
+        <div class="container">
+            <h1>⏳ Arrange Events Chronologically</h1>
+            <p>Master temporal sequences across Pakistan &amp; World History. Drag, move, and arrange historical milestones, constitutional amendments, wars, treaties, and international developments in the exact order they occurred.</p>
+            <div class="chrono-hero-badges">
+                <span class="hero-badge"><i class="fas fa-landmark"></i> Historical Milestones</span>
+                <span class="hero-badge"><i class="fas fa-scale-balanced"></i> 1973 Constitutional Amendments</span>
+                <span class="hero-badge"><i class="fas fa-shield-halved"></i> Wars &amp; Strategic Conflicts</span>
+                <span class="hero-badge"><i class="fas fa-handshake"></i> Peace Treaties &amp; Pacts</span>
+                <span class="hero-badge"><i class="fas fa-globe"></i> International Developments</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace Container -->
+    <main class="chrono-main-container">
+        <!-- Category Selector Bar -->
+        <div class="category-nav-bar">
+            <div class="cat-buttons-row" id="chronoTabsRow">
+                <button type="button" class="cat-tab-btn active" data-category="all">
+                    <i class="fas fa-layer-group"></i> Grand Chrono <span class="cat-counter-pill" id="badgeAll">67</span>
+                </button>
+                <button type="button" class="cat-tab-btn" data-category="history">
+                    <i class="fas fa-landmark"></i> Historical Events <span class="cat-counter-pill" id="badgeHistory">17</span>
+                </button>
+                <button type="button" class="cat-tab-btn" data-category="constitution">
+                    <i class="fas fa-scale-balanced"></i> Amendments <span class="cat-counter-pill" id="badgeConstitution">11</span>
+                </button>
+                <button type="button" class="cat-tab-btn" data-category="wars">
+                    <i class="fas fa-shield-halved"></i> Wars &amp; Conflicts <span class="cat-counter-pill" id="badgeWars">14</span>
+                </button>
+                <button type="button" class="cat-tab-btn" data-category="treaties">
+                    <i class="fas fa-handshake"></i> Treaties &amp; Pacts <span class="cat-counter-pill" id="badgeTreaties">11</span>
+                </button>
+                <button type="button" class="cat-tab-btn" data-category="international">
+                    <i class="fas fa-globe"></i> Global Developments <span class="cat-counter-pill" id="badgeInternational">14</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Target HUD Card -->
+        <div class="chrono-hud-card">
+            <div class="hud-left-info">
+                <span class="hud-badge-round" id="hudCategoryLabel">Grand Chrono</span>
+                <div class="hud-prompt-text">
+                    <span id="hudInstruction">Arrange from EARLIEST (Top) to LATEST (Bottom).</span>
+                    <small id="hudSubInstruction">Use the ▲ and ▼ buttons or drag cards to place events in chronological order.</small>
+                </div>
+            </div>
+
+            <div class="hud-right-stats">
+                <div class="stat-item">
+                    <div class="stat-title">Round</div>
+                    <div class="stat-number" id="hudRoundNumber" style="color:#d97706;">1</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-title">Score</div>
+                    <div class="stat-number" id="hudScoreVal" style="color:#0284c7;">0 pts</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-title">Streak</div>
+                    <div class="stat-number" id="hudStreakVal" style="color:#f59e0b;">🔥 0</div>
+                </div>
+            </div>
+
+            <div class="hud-actions">
+                <button type="button" class="hud-icon-btn" id="btnRestartRound" title="Reshuffle Current Events">
+                    <i class="fas fa-rotate-left"></i>
+                </button>
+                <button type="button" class="hud-icon-btn" id="btnSoundToggle" title="Toggle Sound Feedback">
+                    <i class="fas fa-volume-high"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sequencing Board Area -->
+        <div class="chrono-board-stage">
+            <div class="cards-sequence-stack" id="cardsStackContainer"></div>
+
+            <div class="board-actions-row">
+                <div style="font-size:0.86rem; color:var(--chr-text-muted);">
+                    <i class="fas fa-circle-info"></i> Top card must be the earliest event in history.
+                </div>
+                <div style="display:flex; gap:12px;">
+                    <button type="button" class="btn-verify-sequence" id="btnVerifySequence">
+                        <i class="fas fa-check-double"></i> Verify Order
+                    </button>
+                    <button type="button" class="btn-next-challenge" id="btnNextChallenge">
+                        Next Challenge <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Complete Timeline Dossier Reveal -->
+            <div class="timeline-dossier-container" id="timelineDossierBox">
+                <div class="timeline-dossier-title">
+                    <i class="fas fa-timeline"></i>
+                    <span>Official Chronological Timeline &amp; Examination Dossier</span>
+                </div>
+                <div class="vertical-timeline" id="verticalTimelineNodes"></div>
+            </div>
+        </div>
+
+        <!-- Footer Shortcuts -->
+        <div class="chrono-footer">
+            <div>
+                <i class="fas fa-keyboard"></i> Shortcuts: 
+                <span class="kbd-key">Space</span> / <span class="kbd-key">Enter</span> Verify &amp; Next Challenge &bull;
+                <span class="kbd-key">R</span> Reshuffle Set
+            </div>
+            <div>
+                <a href="crossword.html" style="color:#0284c7; text-decoration:none; font-weight:700; margin-right:16px;">
+                    <i class="fas fa-chess-board"></i> Crossword Puzzle &rarr;
+                </a>
+                <a href="word-search.html" style="color:#8b5cf6; text-decoration:none; font-weight:700; margin-right:16px;">
+                    <i class="fas fa-magnifying-glass"></i> Word Search &rarr;
+                </a>
+                <a href="match-the-following.html" style="color:#8b5cf6; text-decoration:none; font-weight:700; margin-right:16px;">
+                    <i class="fas fa-puzzle-piece"></i> Play Match the Following &rarr;
+                </a>
+                <a href="timeline.html" style="color:#d97706; text-decoration:none; font-weight:700;">
+                    <i class="fas fa-timeline"></i> Explore Full Interactive Timeline &rarr;
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Dataset Script -->
+    <script src="js/data_chronology.js"></script>
+
+    <script>
+        // Game State
+        let allCategoryData = {};
+        let currentCategory = 'all';
+        let currentPool = [];
+        let currentChallengeEvents = []; // 5 events
+        let userOrderedEvents = [];
+        let isVerified = false;
+        let score = 0;
+        let streak = 0;
+        let bestStreak = parseInt(localStorage.getItem('chrono_best_streak') || '0', 10);
+        let roundNumber = 1;
+        let soundEnabled = true;
+
+        // Web Audio Synthesizer
+        let audioCtx = null;
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) audioCtx = new AudioContext();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'victory') {
+                    // Ascending triumphant fanfare
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(440, now); // A4
+                    osc.frequency.setValueAtTime(554.37, now + 0.1); // C#5
+                    osc.frequency.setValueAtTime(659.25, now + 0.2); // E5
+                    osc.frequency.setValueAtTime(880, now + 0.3); // A5
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.65);
+                    osc.start(now);
+                    osc.stop(now + 0.65);
+                } else if (type === 'partial') {
+                    // Mellow chime
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.15);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+                    osc.start(now);
+                    osc.stop(now + 0.45);
+                } else if (type === 'error') {
+                    // Descending buzz
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(200, now);
+                    osc.frequency.linearRampToValueAtTime(130, now + 0.25);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                }
+            } catch (e) {
+                // Ignore audio errors
+            }
+        }
+
+        // Shuffle Utility
+        function shuffle(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Initialize Game Data
+        function initGameData() {
+            allCategoryData = window.CHRONOLOGY_DATA || {};
+            setCategory('all');
+        }
+
+        // Switch Category
+        function setCategory(catKey) {
+            currentCategory = catKey;
+            roundNumber = 1;
+
+            // Update Tab UI
+            document.querySelectorAll('.cat-tab-btn').forEach(btn => {
+                if (btn.getAttribute('data-category') === catKey) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Build Active Pool
+            if (catKey === 'all') {
+                currentPool = [];
+                Object.keys(allCategoryData).forEach(k => {
+                    currentPool = currentPool.concat(allCategoryData[k] || []);
+                });
+                document.getElementById('hudCategoryLabel').textContent = 'Grand Chrono Challenge';
+            } else {
+                currentPool = allCategoryData[catKey] || [];
+                const catLabels = {
+                    history: 'Historical Events',
+                    constitution: 'Constitutional Amendments',
+                    wars: 'Wars & Conflicts',
+                    treaties: 'Treaties & Pacts',
+                    international: 'Global Developments'
+                };
+                document.getElementById('hudCategoryLabel').textContent = catLabels[catKey] || 'Chrono Challenge';
+            }
+
+            currentPool = shuffle(currentPool);
+            loadNewChallenge();
+        }
+
+        // Load New 5-Event Challenge
+        function loadNewChallenge() {
+            isVerified = false;
+
+            if (currentPool.length < 5) {
+                // Replenish from master
+                setCategory(currentCategory);
+                return;
+            }
+
+            // Pick 5 unique events
+            currentChallengeEvents = currentPool.splice(0, 5);
+
+            // Shuffled initial user arrangement
+            userOrderedEvents = shuffle([...currentChallengeEvents]);
+
+            // Ensure not already in 100% correct order by accident
+            const isAlreadySorted = userOrderedEvents.every((ev, idx, arr) => idx === 0 || ev.year >= arr[idx - 1].year);
+            if (isAlreadySorted && userOrderedEvents.length > 2) {
+                // Swap first two
+                const tmp = userOrderedEvents[0];
+                userOrderedEvents[0] = userOrderedEvents[1];
+                userOrderedEvents[1] = tmp;
+            }
+
+            // Reset UI
+            document.getElementById('timelineDossierBox').classList.remove('active');
+            document.getElementById('btnVerifySequence').style.display = 'inline-flex';
+            document.getElementById('btnNextChallenge').style.display = 'none';
+
+            updateHud();
+            renderCards();
+        }
+
+        // Render Stack Cards
+        function renderCards() {
+            const container = document.getElementById('cardsStackContainer');
+            container.innerHTML = '';
+
+            const positionLabels = ['1st (Earliest)', '2nd', '3rd', '4th', '5th (Latest)'];
+
+            userOrderedEvents.forEach((event, idx) => {
+                const card = document.createElement('div');
+                card.className = 'chrono-card';
+                card.id = 'chrono-card-' + idx;
+
+                const categoryTagMap = {
+                    history: 'History',
+                    constitution: 'Constitution',
+                    wars: 'War / Conflict',
+                    treaties: 'Treaty / Pact',
+                    international: 'Global'
+                };
+                const tagLabel = categoryTagMap[event.category] || event.category || 'Event';
+
+                card.innerHTML = 
+                    '<div class="card-left-wrapper">' +
+                        '<div class="slot-position-badge" id="slot-badge-' + idx + '">' + (idx + 1) + '</div>' +
+                        '<div class="card-details">' +
+                            '<div class="card-title-row">' +
+                                '<h3 class="card-event-title">' + event.title + '</h3>' +
+                                '<span class="card-category-tag">' + tagLabel + '</span>' +
+                            '</div>' +
+                            '<p class="card-summary-desc">' + event.summary + '</p>' +
+                            '<div class="card-year-reveal" id="year-reveal-' + idx + '" style="' + (isVerified ? 'display:inline-flex;' : 'display:none;') + '">' +
+                                '<i class="fas fa-calendar-day"></i> ' + event.dateDisplay + ' (' + event.year + ')' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="card-reorder-controls">' +
+                        '<button type="button" class="reorder-btn btn-up" ' + (idx === 0 || isVerified ? 'disabled' : '') + ' title="Move Up (Earlier)">' +
+                            '<i class="fas fa-chevron-up"></i>' +
+                        '</button>' +
+                        '<button type="button" class="reorder-btn btn-down" ' + (idx === userOrderedEvents.length - 1 || isVerified ? 'disabled' : '') + ' title="Move Down (Later)">' +
+                            '<i class="fas fa-chevron-down"></i>' +
+                        '</button>' +
+                    '</div>';
+
+                // Hook Up / Down Buttons
+                const btnUp = card.querySelector('.btn-up');
+                const btnDown = card.querySelector('.btn-down');
+
+                btnUp.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    moveCard(idx, -1);
+                });
+
+                btnDown.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    moveCard(idx, 1);
+                });
+
+                container.appendChild(card);
+            });
+        }
+
+        // Move Card Up (-1) or Down (+1)
+        function moveCard(index, direction) {
+            if (isVerified) return;
+            const targetIdx = index + direction;
+            if (targetIdx < 0 || targetIdx >= userOrderedEvents.length) return;
+
+            const temp = userOrderedEvents[index];
+            userOrderedEvents[index] = userOrderedEvents[targetIdx];
+            userOrderedEvents[targetIdx] = temp;
+
+            renderCards();
+        }
+
+        // Verify Order Action
+        function verifySequence() {
+            if (isVerified) return;
+            isVerified = true;
+
+            // Generate Correctly Sorted True Timeline
+            const correctlySorted = [...currentChallengeEvents].sort((a, b) => a.year - b.year);
+
+            let correctCount = 0;
+
+            userOrderedEvents.forEach((event, idx) => {
+                const card = document.getElementById('chrono-card-' + idx);
+                const yearReveal = document.getElementById('year-reveal-' + idx);
+                yearReveal.style.display = 'inline-flex';
+
+                if (event.id === correctlySorted[idx].id) {
+                    // Correct position!
+                    card.classList.add('correct');
+                    correctCount++;
+                    yearReveal.innerHTML = '<span style="color:#10b981;"><i class="fas fa-circle-check"></i> ' + event.dateDisplay + ' (' + event.year + ') - Correct Slot!</span>';
+                } else {
+                    // Wrong position!
+                    card.classList.add('wrong');
+                    const trueSlot = correctlySorted.findIndex(e => e.id === event.id) + 1;
+                    yearReveal.innerHTML = '<span style="color:#ef4444;"><i class="fas fa-circle-xmark"></i> ' + event.dateDisplay + ' (' + event.year + ') - Should be #' + trueSlot + '</span>';
+                }
+            });
+
+            // Scoring
+            if (correctCount === 5) {
+                score += 150;
+                streak++;
+                if (streak >= 3) score += 50; // Streak bonus
+                playSound('victory');
+            } else if (correctCount >= 3) {
+                score += 60;
+                streak = 0;
+                playSound('partial');
+            } else {
+                streak = 0;
+                score = Math.max(0, score - 20);
+                playSound('error');
+            }
+
+            if (streak > bestStreak) {
+                bestStreak = streak;
+                localStorage.setItem('chrono_best_streak', bestStreak);
+            }
+
+            updateHud();
+
+            // Toggle Buttons
+            document.getElementById('btnVerifySequence').style.display = 'none';
+            document.getElementById('btnNextChallenge').style.display = 'inline-flex';
+
+            // Show Timeline Dossier
+            renderTimelineDossier(correctlySorted);
+        }
+
+        // Render Comprehensive Timeline Dossier
+        function renderTimelineDossier(sortedEvents) {
+            const container = document.getElementById('timelineDossierBox');
+            const nodesWrapper = document.getElementById('verticalTimelineNodes');
+            nodesWrapper.innerHTML = '';
+
+            sortedEvents.forEach((ev, idx) => {
+                const node = document.createElement('div');
+                node.className = 'timeline-node';
+                node.innerHTML = 
+                    '<div class="timeline-marker"></div>' +
+                    '<div class="timeline-content-card">' +
+                        '<div class="timeline-header">' +
+                            '<span class="timeline-year-pill"><i class="fas fa-calendar-check"></i> ' + ev.dateDisplay + '</span>' +
+                            '<span style="font-size:0.75rem; color:var(--chr-text-muted); font-weight:700;">' + (ev.era || 'Historical Era') + '</span>' +
+                        '</div>' +
+                        '<strong style="font-size:1rem; color:var(--chr-text-main);">' + ev.title + '</strong>' +
+                        '<div class="timeline-exam-note">' +
+                            '<strong><i class="fas fa-graduation-cap" style="color:#d97706;"></i> CSS/PPSC Exam Point:</strong> ' + ev.examSignificance +
+                        '</div>' +
+                    '</div>';
+                nodesWrapper.appendChild(node);
+            });
+
+            container.classList.add('active');
+            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Advance to Next Challenge
+        function nextChallenge() {
+            roundNumber++;
+            loadNewChallenge();
+        }
+
+        // Update HUD Values
+        function updateHud() {
+            document.getElementById('hudRoundNumber').textContent = roundNumber;
+            document.getElementById('hudScoreVal').textContent = score + ' pts';
+            document.getElementById('hudStreakVal').textContent = '🔥 ' + streak;
+        }
+
+        // Button Event Listeners
+        document.getElementById('btnVerifySequence').addEventListener('click', verifySequence);
+        document.getElementById('btnNextChallenge').addEventListener('click', nextChallenge);
+
+        document.getElementById('btnRestartRound').addEventListener('click', () => {
+            currentPool = currentChallengeEvents.concat(currentPool);
+            loadNewChallenge();
+        });
+
+        document.getElementById('btnSoundToggle').addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('btnSoundToggle');
+            btn.innerHTML = soundEnabled ? '<i class="fas fa-volume-high"></i>' : '<i class="fas fa-volume-xmark"></i>';
+            btn.style.opacity = soundEnabled ? '1' : '0.6';
+        });
+
+        // Category Tabs
+        document.querySelectorAll('.cat-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cat = btn.getAttribute('data-category');
+                setCategory(cat);
+            });
+        });
+
+        // Keyboard Shortcuts
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'Enter' || e.code === 'Space') {
+                if (isVerified) {
+                    e.preventDefault();
+                    nextChallenge();
+                } else {
+                    e.preventDefault();
+                    verifySequence();
+                }
+            } else if (e.key === 'r' || e.key === 'R') {
+                userOrderedEvents = shuffle([...userOrderedEvents]);
+                renderCards();
+            }
+        });
+
+        // Boot
+        window.addEventListener('DOMContentLoaded', initGameData);
+    </script>
+
+    <!-- Standard Academic & Legal Footer -->
+    <footer class="site-footer" style="background:#0f172a; color:#94a3b8; padding:36px 20px 24px; margin-top:50px; border-top:1px solid #1e293b; font-family:'Plus Jakarta Sans', sans-serif;">
+        <div style="max-width:1200px; margin:0 auto; text-align:center;">
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px; font-size:0.88rem; margin-bottom:14px;">
+                <a href="index.html" style="color:#ffffff; font-weight:700; text-decoration:none;"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="quiz.html" style="color:#cbd5e1; text-decoration:none;"><i class="fa-solid fa-graduation-cap"></i> Practice Quiz</a>
+                <a href="daily-challenges.html" style="color:#a78bfa; font-weight:700; text-decoration:none;"><i class="fa-solid fa-bolt"></i> Daily Challenges</a>
+                <a href="daily-fact.html" style="color:#2dd4bf; font-weight:700; text-decoration:none;"><i class="fa-solid fa-calendar-day"></i> Daily Fact</a>
+                <a href="digital-library.html" style="color:#cbd5e1; text-decoration:none;"><i class="fa-solid fa-book-bookmark"></i> Digital Library</a>
+                <a href="pakistan-map.html" style="color:#cbd5e1; text-decoration:none;"><i class="fa-solid fa-map"></i> Pakistan Map</a>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:18px; font-size:0.8rem; padding-top:12px; border-top:1px solid #1e293b; color:#94a3b8;">
+                <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+                <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+                <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+                <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+                <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+                <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+            </div>
+            <p style="font-size:0.78rem; margin-top:14px; color:#64748b;">
+                &copy; 2026 CSS Prep Central &bull; Pakistan's Premier Open-Access Civil Services Preparation Repository.
+            </p>
+        </div>
+    </footer>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

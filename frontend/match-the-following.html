@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match the Following | Interactive Civil Service Knowledge Game</title>
+    <meta name="description"
+        content="Interactive 'Match the Following' competitive exam quiz for CSS, PMS, FPSC, and PPSC students. Match countries with capitals, organizations with headquarters, rivers with countries, leaders with positions, and books with authors.">
+    <meta name="keywords"
+        content="Match the Following, Match Countries and Capitals, Organizations and Headquarters Quiz, Rivers and Countries, Books and Authors CSS, Leaders and Positions, General Knowledge Quiz">
+
+    <!-- Anti-FOUC: Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --mat-primary: #0284c7;
+            --mat-primary-dark: #0369a1;
+            --mat-primary-light: #e0f2fe;
+            --mat-accent: #8b5cf6;
+            --mat-success: #10b981;
+            --mat-warning: #f59e0b;
+            --mat-danger: #ef4444;
+            --mat-bg: #f8fafc;
+            --mat-card-bg: #ffffff;
+            --mat-border: #e2e8f0;
+            --mat-text-main: #0f172a;
+            --mat-text-muted: #64748b;
+            --mat-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+
+        .dark-mode {
+            --mat-primary: #38bdf8;
+            --mat-primary-dark: #0284c7;
+            --mat-primary-light: rgba(56, 189, 248, 0.15);
+            --mat-accent: #a78bfa;
+            --mat-bg: #090d16;
+            --mat-card-bg: #111827;
+            --mat-border: #1f2937;
+            --mat-text-main: #f3f4f6;
+            --mat-text-muted: #9ca3af;
+            --mat-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            background-color: var(--mat-bg);
+            color: var(--mat-text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Top Map Switcher Bar */
+        .map-switcher-bar {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 9px 20px;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .switcher-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .switcher-btn {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.14);
+            border-color: #38bdf8;
+        }
+
+        .switcher-btn.active {
+            background: #8b5cf6;
+            color: #ffffff;
+            border-color: #a78bfa;
+            box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background: var(--mat-card-bg);
+            border-bottom: 1px solid var(--mat-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .nav-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--mat-text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #0284c7;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--mat-text-muted);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0284c7;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--mat-bg);
+            border: 1px solid var(--mat-border);
+            color: var(--mat-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--mat-primary);
+            color: var(--mat-primary);
+        }
+
+        /* Hero Banner */
+        .match-hero {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 100%);
+            color: #ffffff;
+            padding: 36px 20px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .match-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .match-hero p {
+            font-size: 1rem;
+            max-width: 860px;
+            margin: 0 auto 16px;
+            opacity: 0.94;
+            line-height: 1.55;
+        }
+
+        .match-hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Main Workspace Container */
+        .match-main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        /* Category Selector Bar */
+        .category-nav-bar {
+            background: var(--mat-card-bg);
+            border: 1px solid var(--mat-border);
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .cat-buttons-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .cat-tab-btn {
+            background: var(--mat-bg);
+            border: 1px solid var(--mat-border);
+            color: var(--mat-text-muted);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .cat-tab-btn:hover {
+            border-color: #8b5cf6;
+            color: #8b5cf6;
+        }
+
+        .cat-tab-btn.active {
+            background: #8b5cf6;
+            border-color: #8b5cf6;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+        }
+
+        .cat-counter-pill {
+            background: rgba(0, 0, 0, 0.12);
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-size: 0.74rem;
+            font-weight: 800;
+        }
+
+        .cat-tab-btn.active .cat-counter-pill {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* Target HUD Card */
+        .match-hud-card {
+            background: var(--mat-card-bg);
+            border: 1px solid var(--mat-border);
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: var(--mat-shadow);
+        }
+
+        .hud-left-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .hud-badge-round {
+            background: var(--mat-primary-light);
+            color: var(--mat-primary);
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 8px;
+            text-transform: uppercase;
+        }
+
+        .hud-prompt-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--mat-text-main);
+        }
+
+        .hud-prompt-text small {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--mat-text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .hud-right-stats {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: right;
+        }
+
+        .stat-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--mat-text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .stat-number {
+            font-size: 1.25rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            color: var(--mat-text-main);
+        }
+
+        .hud-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .hud-icon-btn {
+            background: var(--mat-bg);
+            border: 1px solid var(--mat-border);
+            color: var(--mat-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .hud-icon-btn:hover {
+            border-color: var(--mat-primary);
+            color: var(--mat-primary);
+        }
+
+        /* Matching Board Area */
+        .matching-board-stage {
+            position: relative;
+            background: var(--mat-card-bg);
+            border: 1px solid var(--mat-border);
+            border-radius: 16px;
+            padding: 28px 24px;
+            box-shadow: var(--mat-shadow);
+        }
+
+        .matching-columns-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .matching-columns-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .match-col {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .col-header-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--mat-text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4px 6px;
+            border-bottom: 2px solid var(--mat-border);
+        }
+
+        /* Match Card Element */
+        .match-card {
+            background: var(--mat-bg);
+            border: 2px solid var(--mat-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .match-card:hover:not(.matched) {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+        }
+
+        .match-card.selected {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.08);
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+            transform: scale(1.02);
+        }
+
+        .match-card.matched {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.08);
+            cursor: default;
+            color: #065f46;
+        }
+
+        .dark-mode .match-card.matched {
+            background: rgba(16, 185, 129, 0.15);
+            color: #6ee7b7;
+        }
+
+        .match-card.mismatch {
+            animation: shake 0.4s ease-in-out;
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        .card-left-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-index-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: var(--mat-card-bg);
+            border: 1px solid var(--mat-border);
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--mat-text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .match-card.selected .card-index-badge {
+            background: #8b5cf6;
+            color: #ffffff;
+            border-color: #8b5cf6;
+        }
+
+        .match-card.matched .card-index-badge {
+            background: #10b981;
+            color: #ffffff;
+            border-color: #10b981;
+        }
+
+        .card-main-label {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--mat-text-main);
+            line-height: 1.4;
+        }
+
+        .card-status-icon {
+            font-size: 1rem;
+            color: var(--mat-border);
+            transition: color 0.2s;
+        }
+
+        .match-card.matched .card-status-icon {
+            color: #10b981;
+        }
+
+        /* Round Completion Celebration & Learning Dossier */
+        .round-complete-container {
+            display: none;
+            margin-top: 26px;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(2, 132, 199, 0.08));
+            border: 2px solid #10b981;
+            border-radius: 14px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .round-complete-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .complete-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .complete-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #065f46;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .dark-mode .complete-title {
+            color: #6ee7b7;
+        }
+
+        .btn-next-round {
+            background: #10b981;
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-next-round:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        /* Dossier Table */
+        .dossier-pairs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            background: var(--mat-card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .dossier-pairs-table th {
+            background: var(--mat-bg);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 800;
+            color: var(--mat-text-muted);
+            border-bottom: 1px solid var(--mat-border);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+        }
+
+        .dossier-pairs-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--mat-border);
+            vertical-align: top;
+        }
+
+        .dossier-pairs-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .fact-text {
+            color: var(--mat-text-muted);
+            font-size: 0.84rem;
+            line-height: 1.45;
+        }
+
+        /* Footer Navigation & Shortcuts */
+        .shortcuts-footer {
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: var(--mat-text-muted);
+        }
+
+        .kbd-key {
+            background: var(--mat-card-bg);
+            border: 1px solid var(--mat-border);
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--mat-text-main);
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/match-the-following.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/match-the-following.html">
+    <meta property="og:title" content="Match the Following | Interactive Civil Service Knowledge Game">
+    <meta property="og:description" content="Interactive">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Match the Following | Interactive Civil Service Knowledge Game">
+    <meta name="twitter:description" content="Interactive">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+    <!-- Top Map Switcher Bar -->
+    <div class="map-switcher-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-layer-group" style="color: #a78bfa;"></i>
+            <span>Interactive Cartographic &amp; Geography Suite:</span>
+        </div>
+        <div class="switcher-links">
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+            <a href="guess-the-country.html" class="switcher-btn">
+                <i class="fas fa-gamepad"></i> Guess Country
+            </a>
+            <a href="locate-on-map.html" class="switcher-btn">
+                <i class="fas fa-crosshairs"></i> Locate on Map
+            </a>
+            <a href="match-the-following.html" class="switcher-btn active">
+                <i class="fas fa-puzzle-piece"></i> Match the Following
+            </a>
+            <a href="arrange-chronologically.html" class="switcher-btn" style="color: #fbbf24;">
+                <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz
+            </a>
+            <a href="crossword.html" class="switcher-btn" style="color: #0284c7;">
+                <i class="fas fa-chess-board"></i> Crossword
+            </a>
+            <a href="word-search.html" class="switcher-btn" style="color: #8b5cf6;">
+                <i class="fas fa-magnifying-glass"></i> Word Search
+            </a>
+            <a href="unsc-simulator.html" class="switcher-btn" style="color:#3b82f6;">
+                <i class="fas fa-scale-balanced"></i> UNSC Simulator
+            </a>
+            <a href="international-organizations-explorer.html" class="switcher-btn" style="color:#0284c7;">
+                <i class="fas fa-sitemap"></i> Org Explorer
+            </a>
+            <a href="world-history-timeline.html" class="switcher-btn" style="color:#818cf8;">
+                <i class="fas fa-timeline"></i> World Timeline
+            </a>
+            <a href="global-power-comparison.html" class="switcher-btn" style="color:#38bdf8;">
+                <i class="fas fa-shield-halved"></i> Global Power
+            </a>
+            <a href="solar-system-explorer.html" class="switcher-btn" style="color:#fbbf24;">
+                <i class="fas fa-sun"></i> Solar System
+            </a>
+            <a href="human-body-explorer.html" class="switcher-btn" style="color:#fb7185;">
+                <i class="fas fa-heart-pulse"></i> Human Body
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="world-map.html">World Map</a>
+                <a href="locate-on-map.html"><i class="fa-solid fa-crosshairs"></i> Locate on Map</a>
+                <a href="guess-the-country.html"><i class="fa-solid fa-gamepad"></i> Guess Country</a>
+                <a href="match-the-following.html" class="active" style="font-weight:700; color:#8b5cf6;"><i class="fa-solid fa-puzzle-piece"></i> Match Items</a>
+                <a href="arrange-chronologically.html" style="font-weight:700; color:#d97706;"><i class="fa-solid fa-arrow-down-1-9"></i> Chronology</a>
+                <a href="crossword.html" style="font-weight:700; color:#0284c7;"><i class="fa-solid fa-chess-board"></i> Crossword</a>
+                <a href="word-search.html" style="font-weight:700; color:#8b5cf6;"><i class="fa-solid fa-magnifying-glass"></i> Word Search</a>
+                <a href="unsc-simulator.html" style="color:#1d4ed8; font-weight:700;"><i class="fas fa-scale-balanced"></i> UNSC Simulator</a>
+                <a href="international-organizations-explorer.html" style="color:#0284c7; font-weight:700;"><i class="fas fa-sitemap"></i> Org Explorer</a>
+                <a href="world-history-timeline.html" style="color:#4f46e5; font-weight:700;"><i class="fas fa-timeline"></i> World Timeline</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="written-prep.html">Written Prep</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="match-hero">
+        <div class="container">
+            <h1>🧩 Match the Following</h1>
+            <p>Connect countries with capitals, organizations with headquarters, rivers with countries, historical leaders with positions, and foundational books with authors. Designed for CSS, PMS, FPSC, and PPSC aspirants.</p>
+            <div class="match-hero-badges">
+                <span class="hero-badge"><i class="fas fa-flag"></i> Countries &amp; Capitals (30)</span>
+                <span class="hero-badge"><i class="fas fa-building-columns"></i> Organizations &amp; HQ (30)</span>
+                <span class="hero-badge"><i class="fas fa-water"></i> Rivers &amp; Countries (20)</span>
+                <span class="hero-badge"><i class="fas fa-crown"></i> Leaders &amp; Positions (20)</span>
+                <span class="hero-badge"><i class="fas fa-book"></i> Books &amp; Authors (20)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Game Portal -->
+    <main class="match-main-container">
+        <!-- Category Tab Buttons -->
+        <div class="category-nav-bar">
+            <div class="cat-buttons-row" id="categoryTabsRow">
+                <button type="button" class="cat-tab-btn active" data-category="all">
+                    <i class="fas fa-layer-group"></i> Grand Mixed <span class="cat-counter-pill" id="badgeAll">120</span>
+                </button>
+                <button type="button" class="cat-tab-btn" data-category="countries_capitals">
+                    <i class="fas fa-flag"></i> Countries &amp; Capitals <span class="cat-counter-pill" id="badgeCountries">30</span>
+                </button>
+                <button type="button" class="cat-tab-btn" data-category="orgs_headquarters">
+                    <i class="fas fa-building-columns"></i> Orgs &amp; HQ <span class="cat-counter-pill" id="badgeOrgs">30</span>
+                </button>
+                <button type="button" class="cat-tab-btn" data-category="rivers_countries">
+                    <i class="fas fa-water"></i> Rivers &amp; Countries <span class="cat-counter-pill" id="badgeRivers">20</span>
+                </button>
+                <button type="button" class="cat-tab-btn" data-category="leaders_positions">
+                    <i class="fas fa-crown"></i> Leaders &amp; Positions <span class="cat-counter-pill" id="badgeLeaders">20</span>
+                </button>
+                <button type="button" class="cat-tab-btn" data-category="books_authors">
+                    <i class="fas fa-book"></i> Books &amp; Authors <span class="cat-counter-pill" id="badgeBooks">20</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Target HUD Card -->
+        <div class="match-hud-card">
+            <div class="hud-left-info">
+                <span class="hud-badge-round" id="hudCategoryLabel">Grand Mixed</span>
+                <div class="hud-prompt-text">
+                    <span id="hudInstruction">Tap an item on the left, then tap its match on the right.</span>
+                    <small id="hudSubInstruction">Match all 5 pairs to complete the round and reveal high-yield exam dossiers.</small>
+                </div>
+            </div>
+
+            <div class="hud-right-stats">
+                <div class="stat-item">
+                    <div class="stat-title">Matched</div>
+                    <div class="stat-number" id="hudMatchedCount" style="color:#10b981;">0 / 5</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-title">Score</div>
+                    <div class="stat-number" id="hudScoreVal" style="color:#0284c7;">0 pts</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-title">Streak</div>
+                    <div class="stat-number" id="hudStreakVal" style="color:#f59e0b;">🔥 0</div>
+                </div>
+            </div>
+
+            <div class="hud-actions">
+                <button type="button" class="hud-icon-btn" id="btnRestartRound" title="Reshuffle Current Round">
+                    <i class="fas fa-rotate-left"></i>
+                </button>
+                <button type="button" class="hud-icon-btn" id="btnSoundToggle" title="Toggle Sound Feedback">
+                    <i class="fas fa-volume-high"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Matching Stage -->
+        <div class="matching-board-stage">
+            <div class="matching-columns-grid">
+                <!-- Column A (Left Prompts) -->
+                <div class="match-col" id="colLeftContainer">
+                    <div class="col-header-title">
+                        <span id="colLeftTitle">Column A (Entities)</span>
+                        <span style="font-size:0.75rem;">(Keys: 1 - 5)</span>
+                    </div>
+                    <div id="colLeftCards" style="display:flex; flex-direction:column; gap:12px;"></div>
+                </div>
+
+                <!-- Column B (Right Matches) -->
+                <div class="match-col" id="colRightContainer">
+                    <div class="col-header-title">
+                        <span id="colRightTitle">Column B (Corresponding Matches)</span>
+                        <span style="font-size:0.75rem;">(Keys: A - E)</span>
+                    </div>
+                    <div id="colRightCards" style="display:flex; flex-direction:column; gap:12px;"></div>
+                </div>
+            </div>
+
+            <!-- Round Complete Celebration & Examination Dossier -->
+            <div class="round-complete-container" id="roundCompleteBox">
+                <div class="complete-header-row">
+                    <div class="complete-title">
+                        <i class="fas fa-circle-check" style="font-size:1.6rem; color:#10b981;"></i>
+                        <div>
+                            <div>Round Complete! All 5 Pairs Successfully Matched</div>
+                            <small style="font-size:0.82rem; font-weight:600; color:var(--mat-text-muted);">
+                                Review the high-yield CSS/PPSC exam points below.
+                            </small>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-next-round" id="btnNextRound">
+                        Next Round <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Dossier Table -->
+                <table class="dossier-pairs-table">
+                    <thead>
+                        <tr>
+                            <th style="width:25%;">Entity</th>
+                            <th style="width:25%;">Correct Match</th>
+                            <th style="width:50%;">High-Yield Examination Significance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dossierTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Keyboard Shortcuts & Cross-Links Footer -->
+        <div class="shortcuts-footer">
+            <div>
+                <i class="fas fa-keyboard"></i> Shortcuts: 
+                <span class="kbd-key">1</span> - <span class="kbd-key">5</span> Left Column &bull;
+                <span class="kbd-key">A</span> - <span class="kbd-key">E</span> Right Column &bull;
+                <span class="kbd-key">Space</span> / <span class="kbd-key">Enter</span> Next Round
+            </div>
+            <div>
+                <a href="locate-on-map.html" style="color:#0284c7; text-decoration:none; font-weight:700; margin-right:16px;">
+                    <i class="fas fa-crosshairs"></i> Play Locate on Map &rarr;
+                </a>
+                <a href="guess-the-country.html" style="color:#8b5cf6; text-decoration:none; font-weight:700; margin-right:16px;">
+                    <i class="fas fa-gamepad"></i> Play Guess the Country &rarr;
+                </a>
+                <a href="arrange-chronologically.html" style="color:#fbbf24; text-decoration:none; font-weight:700;">
+                    <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz &rarr;
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Game Dataset Script -->
+    <script src="js/data_match_following.js"></script>
+
+    <script>
+        // Game State
+        let allCategoryData = {};
+        let currentCategoryKey = 'all';
+        let currentPool = [];
+        let currentRoundPairs = []; // 5 items
+        let leftSelectedCard = null; // DOM element or pair object
+        let rightSelectedCard = null;
+        let matchedCount = 0;
+        let score = 0;
+        let streak = 0;
+        let bestStreak = parseInt(localStorage.getItem('match_best_streak') || '0', 10);
+        let roundNumber = 1;
+        let soundEnabled = true;
+
+        // Web Audio Synthesizer
+        let audioCtx = null;
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) audioCtx = new AudioContext();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'match') {
+                    // Ascending harmonious triad
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+                    osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+                    osc.start(now);
+                    osc.stop(now + 0.45);
+                } else if (type === 'mismatch') {
+                    // Quick low discordant buzz
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.linearRampToValueAtTime(140, now + 0.25);
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'victory') {
+                    // Triumph fanfare chord
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.1);
+                    osc.frequency.setValueAtTime(783.99, now + 0.2);
+                    osc.frequency.setValueAtTime(1046.50, now + 0.3);
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+                    osc.start(now);
+                    osc.stop(now + 0.7);
+                }
+            } catch (e) {
+                // Fail safely
+            }
+        }
+
+        // Shuffle Utility
+        function shuffle(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Initialize Game Pool
+        function initGameData() {
+            allCategoryData = window.MATCH_FOLLOWING_DATA || {};
+            setCategory('all');
+        }
+
+        // Switch Category
+        function setCategory(catKey) {
+            currentCategoryKey = catKey;
+            roundNumber = 1;
+
+            // Update Tab UI
+            document.querySelectorAll('.cat-tab-btn').forEach(btn => {
+                if (btn.getAttribute('data-category') === catKey) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Build Pool
+            if (catKey === 'all') {
+                currentPool = [];
+                Object.keys(allCategoryData).forEach(k => {
+                    currentPool = currentPool.concat(allCategoryData[k] || []);
+                });
+                document.getElementById('hudCategoryLabel').textContent = 'Grand Mixed Challenge';
+                document.getElementById('colLeftTitle').textContent = 'Column A (Entities)';
+                document.getElementById('colRightTitle').textContent = 'Column B (Corresponding Matches)';
+            } else {
+                currentPool = allCategoryData[catKey] || [];
+                const catTitles = {
+                    countries_capitals: { label: 'Countries & Capitals', left: 'Country', right: 'Capital City' },
+                    orgs_headquarters: { label: 'Organizations & HQ', left: 'International Organization', right: 'Headquarters Location' },
+                    rivers_countries: { label: 'Rivers & Countries', left: 'River / Waterway', right: 'Country / Drainage Basin' },
+                    leaders_positions: { label: 'Leaders & Positions', left: 'Historical Leader / Statesman', right: 'Office / Role' },
+                    books_authors: { label: 'Books & Authors', left: 'Foundational Book / Treatise', right: 'Author / Scholar' }
+                };
+                const titles = catTitles[catKey] || { label: 'Match Items', left: 'Column A', right: 'Column B' };
+                document.getElementById('hudCategoryLabel').textContent = titles.label;
+                document.getElementById('colLeftTitle').textContent = 'Column A (' + titles.left + ')';
+                document.getElementById('colRightTitle').textContent = 'Column B (' + titles.right + ')';
+            }
+
+            currentPool = shuffle(currentPool);
+            loadNewRound();
+        }
+
+        // Load a Fresh Round of 5 Pairs
+        function loadNewRound() {
+            matchedCount = 0;
+            leftSelectedCard = null;
+            rightSelectedCard = null;
+
+            if (currentPool.length < 5) {
+                // Reshuffle from master
+                setCategory(currentCategoryKey);
+                return;
+            }
+
+            // Pick next 5 pairs and remove from current active pool
+            currentRoundPairs = currentPool.splice(0, 5);
+
+            // Hide Round Complete Box
+            document.getElementById('roundCompleteBox').classList.remove('active');
+            updateHud();
+
+            // Render Cards
+            renderBoardCards();
+        }
+
+        // Render Cards in Columns
+        function renderBoardCards() {
+            const leftCol = document.getElementById('colLeftCards');
+            const rightCol = document.getElementById('colRightCards');
+            leftCol.innerHTML = '';
+            rightCol.innerHTML = '';
+
+            // Left items in fixed order for the round
+            const leftItems = currentRoundPairs.map((pair, index) => ({
+                id: 'left-' + index,
+                pairIndex: index,
+                text: pair.left
+            }));
+
+            // Right items shuffled randomly
+            const rightItems = shuffle(currentRoundPairs.map((pair, index) => ({
+                id: 'right-' + index,
+                pairIndex: index,
+                text: pair.right
+            })));
+
+            // Keys labels
+            const leftKeys = ['1', '2', '3', '4', '5'];
+            const rightKeys = ['A', 'B', 'C', 'D', 'E'];
+
+            // Render Left Cards
+            leftItems.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'match-card';
+                card.id = item.id;
+                card.setAttribute('data-side', 'left');
+                card.setAttribute('data-pair-index', item.pairIndex);
+                card.innerHTML = 
+                    '<div class="card-left-content">' +
+                        '<div class="card-index-badge">' + leftKeys[idx] + '</div>' +
+                        '<div class="card-main-label">' + item.text + '</div>' +
+                    '</div>' +
+                    '<div class="card-status-icon"><i class="fas fa-circle-dot"></i></div>';
+
+                card.addEventListener('click', () => handleCardClick(card, 'left', item.pairIndex));
+                leftCol.appendChild(card);
+            });
+
+            // Render Right Cards
+            rightItems.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'match-card';
+                card.id = item.id;
+                card.setAttribute('data-side', 'right');
+                card.setAttribute('data-pair-index', item.pairIndex);
+                card.innerHTML = 
+                    '<div class="card-left-content">' +
+                        '<div class="card-index-badge">' + rightKeys[idx] + '</div>' +
+                        '<div class="card-main-label">' + item.text + '</div>' +
+                    '</div>' +
+                    '<div class="card-status-icon"><i class="fas fa-circle-dot"></i></div>';
+
+                card.addEventListener('click', () => handleCardClick(card, 'right', item.pairIndex));
+                rightCol.appendChild(card);
+            });
+        }
+
+        // Handle Card Click Interaction
+        function handleCardClick(cardEl, side, pairIndex) {
+            if (cardEl.classList.contains('matched')) return;
+
+            if (side === 'left') {
+                if (leftSelectedCard === cardEl) {
+                    // Deselect
+                    cardEl.classList.remove('selected');
+                    leftSelectedCard = null;
+                    return;
+                }
+                // Deselect other left cards
+                document.querySelectorAll('#colLeftCards .match-card').forEach(c => c.classList.remove('selected'));
+                cardEl.classList.add('selected');
+                leftSelectedCard = cardEl;
+            } else {
+                if (rightSelectedCard === cardEl) {
+                    // Deselect
+                    cardEl.classList.remove('selected');
+                    rightSelectedCard = null;
+                    return;
+                }
+                // Deselect other right cards
+                document.querySelectorAll('#colRightCards .match-card').forEach(c => c.classList.remove('selected'));
+                cardEl.classList.add('selected');
+                rightSelectedCard = cardEl;
+            }
+
+            // If both sides are now selected, evaluate match!
+            if (leftSelectedCard && rightSelectedCard) {
+                evaluateMatch(leftSelectedCard, rightSelectedCard);
+            }
+        }
+
+        // Evaluate whether the selected pair matches
+        function evaluateMatch(cardA, cardB) {
+            const idxA = parseInt(cardA.getAttribute('data-pair-index'), 10);
+            const idxB = parseInt(cardB.getAttribute('data-pair-index'), 10);
+
+            if (idxA === idxB) {
+                // MATCH!
+                cardA.classList.remove('selected');
+                cardB.classList.remove('selected');
+                cardA.classList.add('matched');
+                cardB.classList.add('matched');
+
+                cardA.querySelector('.card-status-icon').innerHTML = '<i class="fas fa-circle-check"></i>';
+                cardB.querySelector('.card-status-icon').innerHTML = '<i class="fas fa-circle-check"></i>';
+
+                playSound('match');
+
+                matchedCount++;
+                score += 100;
+                streak++;
+
+                if (streak >= 3) {
+                    score += 25; // Bonus for combo
+                }
+                if (streak > bestStreak) {
+                    bestStreak = streak;
+                    localStorage.setItem('match_best_streak', bestStreak);
+                }
+
+                leftSelectedCard = null;
+                rightSelectedCard = null;
+                updateHud();
+
+                // Check Round Victory
+                if (matchedCount === currentRoundPairs.length) {
+                    onRoundVictory();
+                }
+            } else {
+                // MISMATCH
+                cardA.classList.add('mismatch');
+                cardB.classList.add('mismatch');
+                playSound('mismatch');
+
+                streak = 0;
+                score = Math.max(0, score - 15);
+                updateHud();
+
+                setTimeout(() => {
+                    cardA.classList.remove('mismatch', 'selected');
+                    cardB.classList.remove('mismatch', 'selected');
+                    leftSelectedCard = null;
+                    rightSelectedCard = null;
+                }, 400);
+            }
+        }
+
+        // Round Victory Handler
+        function onRoundVictory() {
+            playSound('victory');
+
+            const container = document.getElementById('roundCompleteBox');
+            const tbody = document.getElementById('dossierTableBody');
+            tbody.innerHTML = '';
+
+            // Populate Learning Dossier Table
+            currentRoundPairs.forEach(pair => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = 
+                    '<td><strong>' + pair.left + '</strong></td>' +
+                    '<td style="color:#10b981; font-weight:700;"><i class="fas fa-check" style="font-size:0.75rem; margin-right:4px;"></i> ' + pair.right + '</td>' +
+                    '<td class="fact-text">' +
+                        '<div>' + (pair.examFact || pair.hint || 'High-yield competitive exam question.') + '</div>' +
+                        '<small style="color:var(--mat-primary); font-weight:600; display:block; margin-top:2px;">' + (pair.hint || '') + '</small>' +
+                    '</td>';
+                tbody.appendChild(tr);
+            });
+
+            container.classList.add('active');
+            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Update HUD Values
+        function updateHud() {
+            document.getElementById('hudMatchedCount').textContent = matchedCount + ' / ' + currentRoundPairs.length;
+            document.getElementById('hudScoreVal').textContent = score + ' pts';
+            document.getElementById('hudStreakVal').textContent = '🔥 ' + streak;
+        }
+
+        // Action Handlers
+        document.getElementById('btnRestartRound').addEventListener('click', () => {
+            currentPool = currentRoundPairs.concat(currentPool);
+            loadNewRound();
+        });
+
+        document.getElementById('btnNextRound').addEventListener('click', () => {
+            roundNumber++;
+            loadNewRound();
+        });
+
+        document.getElementById('btnSoundToggle').addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('btnSoundToggle');
+            btn.innerHTML = soundEnabled ? '<i class="fas fa-volume-high"></i>' : '<i class="fas fa-volume-xmark"></i>';
+            btn.style.opacity = soundEnabled ? '1' : '0.6';
+        });
+
+        // Category Tab Handlers
+        document.querySelectorAll('.cat-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cat = btn.getAttribute('data-category');
+                setCategory(cat);
+            });
+        });
+
+        // Keyboard Shortcuts
+        window.addEventListener('keydown', (e) => {
+            // Space or Enter on victory
+            if ((e.code === 'Enter' || e.code === 'Space') && matchedCount === currentRoundPairs.length) {
+                e.preventDefault();
+                roundNumber++;
+                loadNewRound();
+                return;
+            }
+
+            // Keys 1 to 5 for left column
+            if (['1', '2', '3', '4', '5'].includes(e.key)) {
+                const idx = parseInt(e.key, 10) - 1;
+                const leftCards = document.querySelectorAll('#colLeftCards .match-card');
+                if (leftCards[idx]) leftCards[idx].click();
+            }
+
+            // Keys A to E for right column
+            const keyUpper = e.key.toUpperCase();
+            const rightKeys = ['A', 'B', 'C', 'D', 'E'];
+            const rIdx = rightKeys.indexOf(keyUpper);
+            if (rIdx !== -1) {
+                const rightCards = document.querySelectorAll('#colRightCards .match-card');
+                if (rightCards[rIdx]) rightCards[rIdx].click();
+            }
+        });
+
+        // Auto Boot
+        window.addEventListener('DOMContentLoaded', initGameData);
+    </script>
+
+    <!-- Standard Academic & Legal Footer -->
+    <footer class="site-footer" style="background:#0f172a; color:#94a3b8; padding:36px 20px 24px; margin-top:50px; border-top:1px solid #1e293b; font-family:'Plus Jakarta Sans', sans-serif;">
+        <div style="max-width:1200px; margin:0 auto; text-align:center;">
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px; font-size:0.88rem; margin-bottom:14px;">
+                <a href="index.html" style="color:#ffffff; font-weight:700; text-decoration:none;"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="quiz.html" style="color:#cbd5e1; text-decoration:none;"><i class="fa-solid fa-graduation-cap"></i> Practice Quiz</a>
+                <a href="daily-challenges.html" style="color:#a78bfa; font-weight:700; text-decoration:none;"><i class="fa-solid fa-bolt"></i> Daily Challenges</a>
+                <a href="daily-fact.html" style="color:#2dd4bf; font-weight:700; text-decoration:none;"><i class="fa-solid fa-calendar-day"></i> Daily Fact</a>
+                <a href="digital-library.html" style="color:#cbd5e1; text-decoration:none;"><i class="fa-solid fa-book-bookmark"></i> Digital Library</a>
+                <a href="pakistan-map.html" style="color:#cbd5e1; text-decoration:none;"><i class="fa-solid fa-map"></i> Pakistan Map</a>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:18px; font-size:0.8rem; padding-top:12px; border-top:1px solid #1e293b; color:#94a3b8;">
+                <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+                <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+                <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+                <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+                <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+                <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+            </div>
+            <p style="font-size:0.78rem; margin-top:14px; color:#64748b;">
+                &copy; 2026 CSS Prep Central &bull; Pakistan's Premier Open-Access Civil Services Preparation Repository.
+            </p>
+        </div>
+    </footer>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

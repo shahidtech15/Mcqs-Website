@@ -1,0 +1,927 @@
+const fs = require('fs');
+const path = require('path');
+
+const scholarshipsHtml = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Master's &amp; PhD Scholarships Portal | Fully-Funded International &amp; HEC Fellowships</title>
+    <meta name="description"
+        content="Comprehensive directory of fully-funded Master's (MS/MPhil) and PhD scholarships for Pakistani and international graduates: Fulbright USA, Chevening UK, Erasmus Mundus EU, Commonwealth, DAAD Germany, MEXT Japan, CSC China, Turkiye Burslari, and HEC Fellowships.">
+    <meta name="keywords"
+        content="Scholarships for Pakistani students, Master's scholarships, PhD scholarships, Fulbright Pakistan, Chevening UK, Erasmus Mundus, DAAD Germany, MEXT Japan, CSC China scholarship, Turkiye Burslari, HEC Overseas PhD, US-Pakistan Knowledge Corridor, fully funded postgraduate scholarships">
+    
+    <!-- Anti-FOUC: Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Core Site Styling -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --sch-primary: #4338ca;
+            --sch-primary-dark: #312e81;
+            --sch-primary-light: #e0e7ff;
+            --sch-accent: #6366f1;
+            --sch-bg: #f8fafc;
+            --sch-card-bg: #ffffff;
+            --sch-border: #e2e8f0;
+            --sch-text-main: #0f172a;
+            --sch-text-muted: #64748b;
+        }
+
+        .dark-mode {
+            --sch-bg: #0b0f19;
+            --sch-card-bg: #111827;
+            --sch-border: #1f2937;
+            --sch-text-main: #f8fafc;
+            --sch-text-muted: #94a3b8;
+            --sch-primary-light: rgba(99, 102, 241, 0.15);
+        }
+
+        body {
+            background-color: var(--sch-bg);
+            color: var(--sch-text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .sch-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        .sch-hero {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+            color: #ffffff;
+            border-radius: 18px;
+            padding: 36px 32px;
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 30px -5px rgba(49, 46, 129, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .sch-hero::after {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .sch-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #4f46e5;
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 14px;
+        }
+
+        .sch-hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 900;
+            line-height: 1.25;
+            margin-bottom: 14px;
+            color: #ffffff;
+        }
+
+        .sch-hero-title span {
+            color: #a5b4fc;
+        }
+
+        .sch-hero-subtitle {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            max-width: 820px;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        .sch-stats-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .sch-stat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.84rem;
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        /* Filter Controls */
+        .sch-controls-wrap {
+            background: var(--sch-card-bg);
+            border: 1px solid var(--sch-border);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+        }
+
+        .filter-section-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .filter-btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group-label {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--sch-text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sch-btn-pill {
+            background: var(--sch-card-bg);
+            border: 1px solid var(--sch-border);
+            color: var(--sch-text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 7px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sch-btn-pill:hover {
+            border-color: var(--sch-primary);
+            color: var(--sch-primary);
+        }
+
+        .sch-btn-pill.active {
+            background: var(--sch-primary);
+            border-color: var(--sch-primary);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(67, 56, 202, 0.3);
+        }
+
+        .sch-search-bar {
+            position: relative;
+            width: 100%;
+        }
+
+        .sch-search-bar input {
+            width: 100%;
+            padding: 14px 20px 14px 46px;
+            border-radius: 12px;
+            border: 1px solid var(--sch-border);
+            background: var(--sch-bg);
+            color: var(--sch-text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .sch-search-bar input:focus {
+            border-color: var(--sch-primary);
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.15);
+        }
+
+        .sch-search-bar i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--sch-text-muted);
+            font-size: 1rem;
+        }
+
+        /* Cards Grid */
+        .sch-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+
+        .scholarship-card {
+            background: var(--sch-card-bg);
+            border: 1px solid var(--sch-border);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .scholarship-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+            border-color: rgba(67, 56, 202, 0.4);
+        }
+
+        .card-top-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .card-country {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--sch-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag-level {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: #ede9fe;
+            color: #5b21b6;
+            text-transform: uppercase;
+        }
+
+        .tag-funded {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: #dcfce7;
+            color: #166534;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--sch-text-main);
+            margin: 0 0 10px 0;
+            line-height: 1.35;
+        }
+
+        .card-stipend {
+            background: rgba(67, 56, 202, 0.06);
+            border: 1px solid rgba(67, 56, 202, 0.16);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--sch-primary);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .card-benefit-item {
+            font-size: 0.86rem;
+            color: var(--sch-text-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.45;
+        }
+
+        .card-benefit-item i {
+            color: #10b981;
+            margin-top: 3px;
+            font-size: 0.8rem;
+        }
+
+        .card-meta-box {
+            background: var(--sch-primary-light);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            font-size: 0.82rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .card-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-meta-label {
+            font-weight: 700;
+            color: var(--sch-text-muted);
+        }
+
+        .card-meta-val {
+            font-weight: 700;
+            color: var(--sch-text-main);
+            text-align: right;
+        }
+
+        .card-details-drawer {
+            display: none;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--sch-border);
+            font-size: 0.86rem;
+            color: var(--sch-text-main);
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .btn-toggle-details {
+            flex: 1;
+            background: var(--sch-bg);
+            border: 1px solid var(--sch-border);
+            color: var(--sch-text-main);
+            font-weight: 700;
+            font-size: 0.84rem;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .btn-toggle-details:hover {
+            border-color: var(--sch-primary);
+            color: var(--sch-primary);
+        }
+
+        .btn-apply-direct {
+            background: var(--sch-primary);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.84rem;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .btn-apply-direct:hover {
+            background: var(--sch-primary-dark);
+            color: #ffffff;
+        }
+
+        /* Section Headings */
+        .section-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--sch-border);
+            padding-bottom: 10px;
+        }
+
+        .section-header-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--sch-text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+        }
+
+        /* Table Responsive */
+        .table-responsive-box {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--sch-border);
+            margin-bottom: 32px;
+            background: var(--sch-card-bg);
+        }
+
+        .scholarships-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .scholarships-table th {
+            background: var(--sch-primary-light);
+            color: var(--sch-primary);
+            font-weight: 800;
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 2px solid rgba(67, 56, 202, 0.2);
+            white-space: nowrap;
+        }
+
+        .scholarships-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--sch-border);
+            color: var(--sch-text-main);
+            vertical-align: middle;
+        }
+
+        .scholarships-table tr:hover {
+            background: rgba(67, 56, 202, 0.03);
+        }
+
+        /* Guide Card */
+        .guide-box {
+            background: var(--sch-card-bg);
+            border: 1px solid var(--sch-border);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+        }
+
+        .roadmap-step {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 22px;
+            align-items: flex-start;
+        }
+
+        .roadmap-num {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--sch-primary);
+            color: #ffffff;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.95rem;
+        }
+
+        .roadmap-body h4 {
+            margin: 0 0 6px 0;
+            font-size: 1.05rem;
+            color: var(--sch-text-main);
+            font-weight: 800;
+        }
+
+        .roadmap-body p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--sch-text-muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Site Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="recruitment-prep.html">Recruitment Prep</a>
+                <a href="recruitment-prep.html#latest-jobs" style="color: #e11d48; font-weight: 700;"><i class="fas fa-bullhorn"></i> Latest Jobs</a>
+                <a href="scholarships.html" class="active" style="color: #4338ca; font-weight: 800;"><i class="fas fa-graduation-cap"></i> Scholarships</a>
+                <a href="cce-essays-2025.html">CCE Essays</a>
+                <a href="css-essays-2026.html">CSS Essays</a>
+                <a href="digital-library.html">Digital Library</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="sch-container">
+        <!-- Hero Section -->
+        <section class="sch-hero">
+            <div class="sch-hero-badge">
+                <i class="fas fa-award"></i> Premier International &amp; HEC Postgraduate Grants
+            </div>
+            <h1 class="sch-hero-title">
+                Global <span>Master's (MS/MPhil)</span> &amp; <span>PhD</span> Scholarships Portal
+            </h1>
+            <p class="sch-hero-subtitle">
+                Comprehensive directory of fully-funded government scholarships, bilateral student exchange programs, and HEC postgraduate fellowships. Covers 100% tuition waivers, monthly living stipends, health insurance, international flights, and complete application roadmaps.
+            </p>
+            <div class="sch-stats-row">
+                <div class="sch-stat-pill"><i class="fas fa-certificate"></i> 15+ World-Class Fellowships</div>
+                <div class="sch-stat-pill"><i class="fas fa-coins"></i> 100% Tuition Waiver &amp; Monthly Stipends</div>
+                <div class="sch-stat-pill"><i class="fas fa-plane-departure"></i> USA, UK, Europe, Japan, China, Korea &amp; Australia</div>
+                <div class="sch-stat-pill"><i class="fas fa-building-columns"></i> HEC Indigenous &amp; Overseas PhD Tracks</div>
+            </div>
+        </section>
+
+        <!-- Interactive Filters & Search Controls -->
+        <section class="sch-controls-wrap">
+            <div class="filter-section-row">
+                <div class="filter-btn-group">
+                    <span class="filter-group-label"><i class="fas fa-sliders"></i> Degree Level:</span>
+                    <button type="button" class="sch-btn-pill active" data-level="all" onclick="filterByLevel('all')">All Levels</button>
+                    <button type="button" class="sch-btn-pill" data-level="Master's" onclick="filterByLevel('Master\\'s')"><i class="fas fa-user-graduate"></i> Master's (MS/MPhil)</button>
+                    <button type="button" class="sch-btn-pill" data-level="PhD" onclick="filterByLevel('PhD')"><i class="fas fa-microscope"></i> PhD / Doctoral</button>
+                </div>
+
+                <div class="filter-btn-group">
+                    <span class="filter-group-label"><i class="fas fa-globe"></i> Region:</span>
+                    <button type="button" class="sch-btn-pill active" data-region="all" onclick="filterByRegion('all')">All Regions</button>
+                    <button type="button" class="sch-btn-pill" data-region="North America" onclick="filterByRegion('North America')">USA</button>
+                    <button type="button" class="sch-btn-pill" data-region="United Kingdom" onclick="filterByRegion('United Kingdom')">UK</button>
+                    <button type="button" class="sch-btn-pill" data-region="Europe" onclick="filterByRegion('Europe')">Europe</button>
+                    <button type="button" class="sch-btn-pill" data-region="Asia &amp; Far East" onclick="filterByRegion('Asia &amp; Far East')">Asia (Japan/China/Korea)</button>
+                    <button type="button" class="sch-btn-pill" data-region="HEC Pakistan" onclick="filterByRegion('HEC Pakistan')">HEC Pakistan</button>
+                </div>
+            </div>
+
+            <div class="sch-search-bar">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" id="schSearchField" placeholder="Search by scholarship title, host country, university, or keyword (e.g. Fulbright, Chevening, DAAD, MEXT, HEC, China, Erasmus)..." oninput="handleSearch(this.value)">
+            </div>
+        </section>
+
+        <!-- Dynamic Scholarships Cards Grid -->
+        <div class="section-header-row">
+            <h2 class="section-header-title">
+                <i class="fas fa-folder-open" style="color: var(--sch-primary);"></i> Available Postgraduate Scholarships
+            </h2>
+            <span id="scholarshipsCountBadge" style="font-weight: 700; color: var(--sch-text-muted); font-size: 0.9rem;">Showing 15 Fellowships</span>
+        </div>
+        <div id="cardsGridContainer" class="sch-cards-grid">
+            <!-- Rendered by JS -->
+        </div>
+
+        <!-- Master Comparison Table -->
+        <div class="section-header-row">
+            <h2 class="section-header-title">
+                <i class="fas fa-table-list" style="color: var(--sch-primary);"></i> Master Postgraduate Comparison Matrix
+            </h2>
+        </div>
+        <div class="table-responsive-box">
+            <table class="scholarships-table">
+                <thead>
+                    <tr>
+                        <th>Scholarship Program</th>
+                        <th>Host Country</th>
+                        <th>Degree Levels</th>
+                        <th>Monthly Stipend</th>
+                        <th>Language Test</th>
+                        <th>Standardized Test</th>
+                        <th>Annual Deadline</th>
+                        <th>Official Portal</th>
+                    </tr>
+                </thead>
+                <tbody id="comparisonTableBody">
+                    <!-- Rendered by JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Strategic Application Guide -->
+        <div class="guide-box">
+            <div class="section-header-row" style="border: none; padding: 0; margin-bottom: 22px;">
+                <h2 class="section-header-title">
+                    <i class="fas fa-route" style="color: var(--sch-primary);"></i> 7-Step Strategic Roadmap: How to Win Master's &amp; PhD Scholarships
+                </h2>
+            </div>
+
+            <div class="roadmap-step">
+                <div class="roadmap-num">1</div>
+                <div class="roadmap-body">
+                    <h4>Profile Optimization &amp; Research Foundations</h4>
+                    <p>Maintain a strong cumulative GPA (ideally 3.2+ on a 4.0 scale). Complete a high-caliber final year thesis, and publish peer-reviewed research papers if applying for doctoral scholarships. Leadership initiatives, volunteer work, and professional accomplishments carry heavy weight for Chevening and Gates Cambridge.</p>
+                </div>
+            </div>
+
+            <div class="roadmap-step">
+                <div class="roadmap-num">2</div>
+                <div class="roadmap-body">
+                    <h4>Standardized Exams Strategy (IELTS / TOEFL / GRE / HAT)</h4>
+                    <p>For US scholarships (Fulbright), take the GRE General early (aim for 310+). For UK, Europe, Australia, and East Asia, take IELTS Academic (target 6.5–7.5 with no band below 6.0). For HEC Overseas and Hungarian scholarships, register for the HEC Higher Education Aptitude Test (HAT).</p>
+                </div>
+            </div>
+
+            <div class="roadmap-step">
+                <div class="roadmap-num">3</div>
+                <div class="roadmap-body">
+                    <h4>Drafting a Compelling Statement of Purpose (SOP)</h4>
+                    <p>Clearly connect your past academic milestones, professional experience, reasons for selecting this specific curriculum and host nation, and long-term career goals addressing key socio-economic challenges in Pakistan. Use specific quantifiable examples rather than generic prose.</p>
+                </div>
+            </div>
+
+            <div class="roadmap-step">
+                <div class="roadmap-num">4</div>
+                <div class="roadmap-body">
+                    <h4>Formulating a Rigorous PhD Research Proposal</h4>
+                    <p>A competitive doctoral proposal (3–5 pages) must feature: Title, Abstract, Background &amp; Problem Statement, Research Questions &amp; Objectives, Literature Review &amp; Gap Identification, Methodology &amp; Data Analysis, and Expected Developmental Significance. Align it with the active lab grants of prospective foreign supervisors.</p>
+                </div>
+            </div>
+
+            <div class="roadmap-step">
+                <div class="roadmap-num">5</div>
+                <div class="roadmap-body">
+                    <h4>Cold Emailing &amp; Securing Doctoral Supervisors</h4>
+                    <p>Review 2–3 recent publications of target professors. Write a concise, professional 3-paragraph email: introduce your credentials, discuss how your research interest bridges with their recent work, and attach your 2-page Academic CV and 1-page Research Summary. Securing a pre-acceptance letter dramatically increases Chinese (CSC) and German (DAAD) scholarship odds.</p>
+                </div>
+            </div>
+
+            <div class="roadmap-step">
+                <div class="roadmap-num">6</div>
+                <div class="roadmap-body">
+                    <h4>Securing High-Impact Letters of Recommendation (LORs)</h4>
+                    <p>Choose referees who directly supervised your thesis, laboratory research, or professional projects. Supply them with your CV, draft SOP, and bulleted highlights of your work with them so they can draft detailed, credible recommendation letters.</p>
+                </div>
+            </div>
+
+            <div class="roadmap-step">
+                <div class="roadmap-num">7</div>
+                <div class="roadmap-body">
+                    <h4>Degree Attestation &amp; Legal Documentation</h4>
+                    <p>Attest transcripts and degrees from the Higher Education Commission (HEC) and matric/F.Sc certificates from IBCC. Maintain passport validity with at least 2 years remaining and secure police character certificates where mandated.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>CSS Prep Central</h3>
+                <p>Pakistan's premier competitive examination and academic excellence portal.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recruitment-prep.html">Recruitment Test Hub</a></li>
+                    <li><a href="recruitment-prep.html#latest-jobs">Latest Jobs (Sindh Police)</a></li>
+                    <li><a href="scholarships.html">Master's &amp; PhD Scholarships</a></li>
+                    <li><a href="cce-essays-2025.html">SPSC CCE Solved Essays</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Academic Resources</h4>
+                <ul>
+                    <li><a href="digital-library.html">Digital Library</a></li>
+                    <li><a href="recommended-books.html">Recommended Books</a></li>
+                    <li><a href="quiz.html">Timed Practice Quizzes</a></li>
+                    <li><a href="grammar-rules.html">Grammar Rules</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CSS Prep Central. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data_scholarships.js"></script>
+    <script>
+        // State
+        let selectedLevel = 'all';
+        let selectedRegion = 'all';
+        let searchQuery = '';
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            if (localStorage.getItem('mcqs_dark_mode') === 'true') {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        function renderScholarshipsList() {
+            const container = document.getElementById('cardsGridContainer');
+            const tableBody = document.getElementById('comparisonTableBody');
+            const countBadge = document.getElementById('scholarshipsCountBadge');
+            if (!container) return;
+
+            const list = window.GLOBAL_SCHOLARSHIPS_DATA || [];
+            const filtered = list.filter(item => {
+                const matchLevel = (selectedLevel === 'all') || item.levels.includes(selectedLevel);
+                const matchRegion = (selectedRegion === 'all') || (item.region.toLowerCase() === selectedRegion.toLowerCase());
+                const q = searchQuery.toLowerCase();
+                const matchSearch = !q || item.name.toLowerCase().includes(q) || item.country.toLowerCase().includes(q) || item.managingBody.toLowerCase().includes(q) || item.hostInstitutions.toLowerCase().includes(q);
+                return matchLevel && matchRegion && matchSearch;
+            });
+
+            if (countBadge) {
+                countBadge.innerText = \`Showing \${filtered.length} of \${list.length} Fellowships\`;
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--sch-text-muted);"><i class="fas fa-folder-open" style="font-size: 2.5rem; margin-bottom: 12px; display: block;"></i>No scholarships found matching your filters. Try selecting "All Levels" or "All Regions".</div>';
+                if (tableBody) tableBody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:20px; color:var(--sch-text-muted);">No scholarships match current filter criteria.</td></tr>';
+                return;
+            }
+
+            container.innerHTML = filtered.map(sch => {
+                const levelBadges = sch.levels.map(lvl => \`<span class="tag-level">\${lvl}</span>\`).join(' ');
+                return \`
+                    <article class="scholarship-card" id="sch_\${sch.id}">
+                        <div>
+                            <div class="card-top-meta">
+                                <span class="card-country">\${sch.flag} \${sch.country} &bull; \${sch.region}</span>
+                                <div class="card-tags">
+                                    \${levelBadges}
+                                    <span class="tag-funded">\${sch.funding}</span>
+                                </div>
+                            </div>
+                            <h3 class="card-title">\${sch.name}</h3>
+                            <div class="card-stipend">
+                                <i class="fas fa-hand-holding-dollar"></i> \${sch.stipendAmount}
+                            </div>
+                            <ul class="card-benefits-list">
+                                \${sch.benefits.slice(0, 4).map(b => \`<li class="card-benefit-item"><i class="fas fa-check-circle"></i> <span>\${b}</span></li>\`).join('')}
+                            </ul>
+                            <div class="card-meta-box">
+                                <div class="card-meta-row">
+                                    <span class="card-meta-label">Institutions:</span>
+                                    <span class="card-meta-val" title="\${sch.hostInstitutions}">\${sch.hostInstitutions.substring(0, 32)}...</span>
+                                </div>
+                                <div class="card-meta-row">
+                                    <span class="card-meta-label">English Test:</span>
+                                    <span class="card-meta-val">\${sch.languageRequirements.substring(0, 26)}...</span>
+                                </div>
+                                <div class="card-meta-row">
+                                    <span class="card-meta-label">Standardized:</span>
+                                    <span class="card-meta-val">\${sch.standardizedTests.substring(0, 26)}</span>
+                                </div>
+                                <div class="card-meta-row">
+                                    <span class="card-meta-label">Deadline Window:</span>
+                                    <span class="card-meta-val" style="color: #b91c1c;">\${sch.applicationWindow}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Collapsible Detailed Drawer -->
+                        <div id="drawer_\${sch.id}" class="card-details-drawer">
+                            <h4 style="margin: 0 0 6px 0; font-size: 0.95rem; color: #4338ca;"><i class="fas fa-user-check"></i> Eligibility Criteria</h4>
+                            <p style="margin: 0 0 10px 0; font-size: 0.85rem; color: var(--sch-text-muted); line-height: 1.45;">\${sch.targetAudience}</p>
+
+                            <h4 style="margin: 0 0 6px 0; font-size: 0.95rem; color: #4338ca;"><i class="fas fa-list-ol"></i> Application Steps</h4>
+                            <ol style="margin: 0 0 12px 18px; padding: 0; font-size: 0.84rem; color: var(--sch-text-muted); line-height: 1.45;">
+                                \${sch.applicationProcess.map(st => \`<li>\${st}</li>\`).join('')}
+                            </ol>
+
+                            <h4 style="margin: 0 0 6px 0; font-size: 0.95rem; color: #4338ca;"><i class="fas fa-lightbulb"></i> Strategic Evaluator Tip</h4>
+                            <p style="margin: 0 0 12px 0; font-size: 0.84rem; color: var(--sch-text-main); background: rgba(67, 56, 202, 0.06); padding: 8px 12px; border-radius: 6px; line-height: 1.45;">\${sch.expertTips}</p>
+                        </div>
+
+                        <div class="card-actions">
+                            <button type="button" class="btn-toggle-details" onclick="toggleDetails('\${sch.id}', this)">
+                                <i class="fas fa-chevron-down"></i> View Full Details
+                            </button>
+                            <a href="\${sch.officialUrl}" target="_blank" rel="noopener noreferrer" class="btn-apply-direct">
+                                Apply <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </article>
+                \`;
+            }).join('');
+
+            // Render Table
+            if (tableBody) {
+                tableBody.innerHTML = filtered.map(sch => {
+                    return \`
+                        <tr>
+                            <td><strong>\${sch.name}</strong></td>
+                            <td>\${sch.flag} \${sch.country}</td>
+                            <td>\${sch.levels.join(', ')}</td>
+                            <td><strong style="color: #4338ca;">\${sch.stipendAmount.split('(')[0]}</strong></td>
+                            <td>\${sch.languageRequirements.substring(0, 30)}...</td>
+                            <td>\${sch.standardizedTests}</td>
+                            <td><span style="color:#b91c1c; font-weight:700;">\${sch.applicationWindow.split('&bull;')[1] || sch.applicationWindow}</span></td>
+                            <td><a href="\${sch.officialUrl}" target="_blank" rel="noopener noreferrer" style="color:#4338ca; font-weight:700; text-decoration:none;">Official Portal <i class="fas fa-external-link-alt"></i></a></td>
+                        </tr>
+                    \`;
+                }).join('');
+            }
+        }
+
+        function filterByLevel(lvl) {
+            selectedLevel = lvl;
+            document.querySelectorAll('[data-level]').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-level') === lvl);
+            });
+            renderScholarshipsList();
+        }
+
+        function filterByRegion(reg) {
+            selectedRegion = reg;
+            document.querySelectorAll('[data-region]').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-region') === reg);
+            });
+            renderScholarshipsList();
+        }
+
+        function handleSearch(val) {
+            searchQuery = val || '';
+            renderScholarshipsList();
+        }
+
+        function toggleDetails(id, btn) {
+            const drawer = document.getElementById('drawer_' + id);
+            if (!drawer) return;
+            const isOpen = drawer.style.display === 'block';
+            drawer.style.display = isOpen ? 'none' : 'block';
+            btn.innerHTML = isOpen 
+                ? '<i class="fas fa-chevron-down"></i> View Full Details'
+                : '<i class="fas fa-chevron-up"></i> Hide Details';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderScholarshipsList();
+        });
+    </script>
+</body>
+
+</html>
+`;
+
+const pagePath = path.join(__dirname, '..', 'frontend', 'scholarships.html');
+fs.writeFileSync(pagePath, scholarshipsHtml, 'utf-8');
+console.log(`Successfully created standalone scholarships page at ${pagePath}`);

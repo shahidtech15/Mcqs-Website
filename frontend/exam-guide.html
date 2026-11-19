@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Comprehensive guide on how to prepare for competitive exams in Pakistan: FIA, NAB, CSS, PMS, Customs & FBR, Assistant Audit Officer (BS-17), and One-Paper MCQs. Syllabi, bare acts, tactics, and mock tests.">
+    <title>Competitive Exam Preparation Guide | FIA, NAB, CSS, PMS, Customs & FBR</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .guide-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .guide-section-block {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+            scroll-margin-top: 100px;
+            transition: var(--transition);
+        }
+
+        .guide-section-block:hover {
+            box-shadow: var(--hover-shadow);
+        }
+
+        .guide-header-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+        .guide-header-title h2 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .guide-icon-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .guide-sub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .guide-card-inner {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .guide-card-inner h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .guide-card-inner ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .guide-card-inner ul li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 10px;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: var(--text-dark);
+        }
+
+        .guide-card-inner ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .guide-card-inner.tactics ul li::before {
+            content: "★";
+            color: var(--warning);
+        }
+
+        .guide-card-inner.books ul li::before {
+            content: "📚";
+        }
+
+        .quick-nav-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0 35px;
+        }
+
+        .quick-nav-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: var(--card-shadow);
+        }
+
+        .quick-nav-pill:hover {
+            background: var(--secondary-color);
+            color: #fff;
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .roadmap-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .roadmap-week {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--secondary-color);
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .roadmap-week h4 {
+            font-size: 1.05rem;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .roadmap-week p {
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        body.dark-mode .guide-section-block {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        body.dark-mode .guide-card-inner,
+        body.dark-mode .roadmap-week {
+            background: #0f172a;
+            border-color: #334155;
+        }
+
+        body.dark-mode .quick-nav-pill {
+            background: #1e293b;
+            border-color: #334155;
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .quick-nav-pill:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/exam-guide.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/exam-guide.html">
+    <meta property="og:title" content="Competitive Exam Preparation Guide | FIA, NAB, CSS, PMS, Customs & FBR">
+    <meta property="og:description" content="Comprehensive guide on how to prepare for competitive exams in Pakistan: FIA, NAB, CSS, PMS, Customs & FBR, Assistant Audit Officer (BS-17), and One-Paper MCQs. Syllabi, bare acts, tactics, and moc...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Competitive Exam Preparation Guide | FIA, NAB, CSS, PMS, Customs & FBR">
+    <meta name="twitter:description" content="Comprehensive guide on how to prepare for competitive exams in Pakistan: FIA, NAB, CSS, PMS, Customs & FBR, Assistant Audit Officer (BS-17), and One-Paper MCQs. Syllabi, bare acts, tactics, and moc...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="acts-rules.html">Acts &amp; Rules</a>
+                <a href="articles.html">Articles</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="fia-sample-papers.html">FIA Papers</a>
+                <a href="grammar-rules.html">Grammar Rules</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="exam-guide.html" class="active">Exam Guide</a>
+                <a href="science-notes.html">Science Notes</a>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Menu Bar -->
+    <nav class="secondary-navbar" aria-label="Secondary Navigation">
+        <div class="container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="articles.html" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-book-open"></i> Study Articles</a></li>
+                <li><a href="timeline.html" style="font-weight: 700; color: #4338ca;"><i class="fa-solid fa-timeline"></i> Historical Timeline</a></li>
+                <li><a href="leaderboard.html" style="font-weight: 700; color: #f59e0b;"><i class="fa-solid fa-trophy"></i> Daily Challenge &amp; Leaderboard</a></li>
+                <li><a href="dashboard.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="ai-assistant.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-robot"></i> AI Study Assistant</a></li>
+                <li><a href="editorial-explainer.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-newspaper"></i> Editorial Explainer</a></li>
+                <li><a href="world-map.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-earth-americas"></i> Interactive World Map</a></li>
+                <li><a href="digital-library.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-book-bookmark"></i> Digital Library &amp; Reports</a></li>
+                <li><a href="recommended-books.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-book"></i> Recommended Books</a></li>
+                <li><a href="index.html#categories">Categories</a></li>
+                <li><a href="quiz.html">Take a Quiz</a></li>
+                <li><a href="written-prep.html" style="font-weight: 700; color: #38bdf8;"><i class="fa-solid fa-pen-nib"></i> Written Prep</a></li>
+                <li><a href="exam-guide.html" class="active" style="font-weight: 700; color: #f59e0b;"><i class="fa-solid fa-book-open-reader"></i> Exam Guide</a></li>
+                <li><a href="science-notes.html">Science Capsule Notes</a></li>
+                <li><a href="index.html#interesting-facts">Interesting Facts</a></li>
+                <li><a href="index.html#study-resources">Study Resources</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Guide Hero Header -->
+    <section class="guide-hero">
+        <div class="container">
+            <h1>🎯 Competitive Exam Preparation Master Guide</h1>
+            <p>Comprehensive syllabi blueprints, official bare acts, test patterns, scoring tactics &amp; recommended sources for FIA, NAB, CSS, PMS, Customs &amp; FBR, and One-Paper MCQs.</p>
+
+            <div class="guide-search-container">
+                <i class="fa-solid fa-magnifying-glass guide-search-icon"></i>
+                <input type="text" id="guideSearchInput" class="guide-search-input" placeholder="Search topics, laws, acts or exams (e.g. FIA Act, Section 25, Negative Marking)..." autocomplete="off" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation Pills -->
+    <div class="container">
+        <div class="quick-nav-pills">
+            <a href="#guide-fia" class="quick-nav-pill"><i class="fa-solid fa-shield-halved" style="color:#dc2626;"></i> FIA Guide</a>
+            <a href="#guide-nab" class="quick-nav-pill"><i class="fa-solid fa-scale-unbalanced-flip" style="color:#7c3aed;"></i> NAB Guide</a>
+            <a href="#guide-css" class="quick-nav-pill"><i class="fa-solid fa-graduation-cap" style="color:#1e3a8a;"></i> CSS Roadmap</a>
+            <a href="#guide-pms" class="quick-nav-pill"><i class="fa-solid fa-building-columns" style="color:#0d9488;"></i> PMS Guide</a>
+            <a href="#guide-customs" class="quick-nav-pill"><i class="fa-solid fa-boxes-packing" style="color:#059669;"></i> Customs &amp; FBR</a>
+            <a href="#guide-audit" class="quick-nav-pill"><i class="fa-solid fa-file-invoice-dollar" style="color:#f59e0b;"></i> Audit Officer (BS-17)</a>
+            <a href="#guide-one-paper" class="quick-nav-pill"><i class="fa-solid fa-bullseye" style="color:#4f46e5;"></i> One-Paper Blueprint</a>
+            <a href="#guide-comparison" class="quick-nav-pill"><i class="fa-solid fa-table-list"></i> Comparison Matrix</a>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="guide-container" id="guideContent">
+
+        <!-- 1. FIA SECTION -->
+        <article class="guide-section-block" id="guide-fia" data-searchable="fia federal investigation agency assistant director inspector investigation legal peca 2016 amla 2010 fia act 1974 fpsc">
+            <div class="guide-header-title">
+                <div class="guide-icon-badge" style="background: #dc2626;">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h2>Federal Investigation Agency (FIA) Preparation Blueprint</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;"><strong>Target Posts:</strong> Assistant Director (Investigation) BS-17, Assistant Director (Legal) BS-17, Inspector Investigation BS-16</p>
+                </div>
+            </div>
+
+            <div class="exam-badges-row" style="margin-bottom: 20px;">
+                <span class="exam-badge badge-fpsc"><i class="fa-solid fa-building"></i> FPSC General Recruitment</span>
+                <span class="exam-badge badge-bs17"><i class="fa-solid fa-award"></i> BS-16 &amp; BS-17</span>
+                <span class="exam-badge badge-bs16"><i class="fa-solid fa-clock"></i> 100 MCQs in 100 Mins</span>
+                <span class="exam-badge badge-negative"><i class="fa-solid fa-circle-check"></i> No Negative Marking</span>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark); margin-bottom: 20px;">
+                The <strong>Federal Investigation Agency (FIA)</strong> is Pakistan's premier border control, criminal investigation, and counter-espionage intelligence agency operating under the Ministry of Interior. Recruitment for officer cadres (AD Investigation, AD Legal, and Inspector) is conducted by the Federal Public Service Commission (FPSC). The test evaluates general intelligence, arithmetic speed, high-frequency English, and legal familiarity with the FIA Act, cybercrime legislation, and anti-money laundering frameworks.
+            </p>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-list-check" style="color:#dc2626;"></i> Detailed Syllabus Structure</h3>
+                    <ul>
+                        <li><strong>Part-I: English (20 Marks):</strong> Vocabulary (synonyms/antonyms), sentence structuring, grammar usage, prepositional phrases &amp; error detection.</li>
+                        <li><strong>FIA Act 1974 &amp; Cyber Laws (20 Marks):</strong> FIA Act, 1974 (all 10 sections &amp; schedule of offences), Prevention of Electronic Crimes Act 2016 (PECA), Anti-Money Laundering Act 2010 (AMLA).</li>
+                        <li><strong>Basic Arithmetic (20 Marks - AD Investigation):</strong> Ratios, proportions, percentages, averages, linear algebra, train &amp; work-time problems.</li>
+                        <li><strong>Current &amp; Pakistan Affairs (20 Marks):</strong> Contemporary developments 2024–2026, constitutional history, foreign relations, economy.</li>
+                        <li><strong>Everyday Science &amp; Islamiat (20 Marks):</strong> Scientific concepts, human biology, computer basics, Islamic history &amp; ethics.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-gavel" style="color:#dc2626;"></i> Crucial Bare Acts to Memorize</h3>
+                    <ul>
+                        <li><strong>FIA Act, 1974 (Act VIII of 1975):</strong> Section 3 (Constitution), Section 4 (Superintendence in Federal Govt; administration in DG), Section 5 (Police station powers of officers), Section 5A (Seized property), Schedule (PPC offences under FIA).</li>
+                        <li><strong>PECA, 2016:</strong> Section 3 (Unauthorized access), Section 10 (Cyber terrorism), Section 13 (Electronic forgery), Section 14 (Electronic fraud), Section 16 (Identity theft).</li>
+                        <li><strong>AMLA, 2010:</strong> Section 3 (Offence of money laundering), Section 4 (Punishments), Section 6 (Financial Monitoring Unit - FMU), Section 7 (STR &amp; CTR reporting).</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner tactics">
+                    <h3><i class="fa-solid fa-lightbulb" style="color:var(--warning);"></i> High-Yield Scoring Tactics</h3>
+                    <ul>
+                        <li><strong>Bare Act Precision:</strong> Memorize section titles and powers in FIA Act 1974. At least 6–8 questions in every paper quote direct section numbers.</li>
+                        <li><strong>Speed Math Drill:</strong> In AD Investigation, the 20 math questions determine the final merit. Practice short-cut formulas for percentages, ratios, and work-time.</li>
+                        <li><strong>Three-Round Strategy:</strong> Complete English, Law, and GK in the first 45 minutes; dedicate 40 minutes to math calculations; use final 15 minutes for review.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner books">
+                    <h3><i class="fa-solid fa-book-bookmark" style="color:var(--success);"></i> Recommended Resources</h3>
+                    <ul>
+                        <li>Official bare acts: FIA Act 1974, PECA 2016, AMLA 2010.</li>
+                        <li>FPSC Past 10 Years Solved Papers by Advanced Publishers / Imtiaz Shahid.</li>
+                        <li>High School Arithmetic (Class 9–10 PTB textbooks for basic math concepts).</li>
+                        <li>MCQs Portal: FIA AD Investigation &amp; Legal interactive test modules.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-action-bar" style="margin-top: 24px;">
+                <div class="exam-links-group">
+                    <a href="quiz.html?category=FIA%20Assistant%20Director%20Investigation" class="btn-exam-practice" style="background:#dc2626;">
+                        <i class="fa-solid fa-play"></i> Practice FIA AD Investigation MCQs
+                    </a>
+                    <a href="quiz.html?category=FIA%20Assistant%20Director%20Legal" class="btn-exam-outline" style="border-color:#dc2626; color:#dc2626;">
+                        <i class="fa-solid fa-scale-balanced"></i> Practice FIA AD Legal MCQs
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 2. NAB SECTION -->
+        <article class="guide-section-block" id="guide-nab" data-searchable="nab national accountability bureau assistant director investigation officer nao 1999 corruption white collar crime anti money laundering plea bargain voluntary return">
+            <div class="guide-header-title">
+                <div class="guide-icon-badge" style="background: #7c3aed;">
+                    <i class="fa-solid fa-scale-unbalanced-flip"></i>
+                </div>
+                <div>
+                    <h2>National Accountability Bureau (NAB) Preparation Blueprint</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;"><strong>Target Posts:</strong> Assistant Director (Executive/Investigation BS-17), Investigation Officer (IO BS-16), Assistant Director (Law BS-17)</p>
+                </div>
+            </div>
+
+            <div class="exam-badges-row" style="margin-bottom: 20px;">
+                <span class="exam-badge badge-fpsc"><i class="fa-solid fa-building"></i> FPSC / Special Recruitment</span>
+                <span class="exam-badge badge-bs17"><i class="fa-solid fa-award"></i> BS-16 &amp; BS-17</span>
+                <span class="exam-badge badge-bs16"><i class="fa-solid fa-clock"></i> 100 MCQs in 100 Mins</span>
+                <span class="exam-badge badge-negative"><i class="fa-solid fa-circle-check"></i> Standard Scoring</span>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark); margin-bottom: 20px;">
+                The <strong>National Accountability Bureau (NAB)</strong> is Pakistan's apex anti-corruption watchdog mandated to eliminate corruption, financial embezzlement, misuse of public office, and recovery of state assets. Screening tests demand forensic acumen, mastery of anti-graft jurisprudence under the National Accountability Ordinance (NAO) 1999, and white-collar crime detection methodologies.
+            </p>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-list-check" style="color:#7c3aed;"></i> Detailed Syllabus Structure</h3>
+                    <ul>
+                        <li><strong>Part-I: English (20 Marks):</strong> Grammar, advanced comprehension, sentence structure, idioms &amp; legal/commercial vocabulary.</li>
+                        <li><strong>NAO 1999 &amp; Anti-Corruption Laws (30 Marks):</strong> National Accountability Ordinance 1999, definition of corruption, judicial powers, remand provisions, voluntary return &amp; plea bargain.</li>
+                        <li><strong>Forensic Accounting &amp; AMLA (20 Marks):</strong> Money trail tracing, benami transactions, shell firms, offshore accounts, FATF compliance standards.</li>
+                        <li><strong>General Knowledge &amp; Pakistan Affairs (30 Marks):</strong> National economy, public financial governance, constitution &amp; current events.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-gavel" style="color:#7c3aed;"></i> Crucial Sections in NAO, 1999</h3>
+                    <ul>
+                        <li><strong>Section 5:</strong> Crucial definitions (assets beyond known sources of income, holder of public office).</li>
+                        <li><strong>Section 9:</strong> Corrupt practices &amp; corruption (bribery, embezzlement, misuse of authority, assets beyond means).</li>
+                        <li><strong>Section 14 &amp; 15:</strong> Presumption against accused and 10-year disqualification to hold public office or contest elections.</li>
+                        <li><strong>Section 25:</strong> Voluntary Return (VR approved by NAB Chairman before court inquiry) vs Plea Bargain (PB approved by Accountability Court during trial).</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner tactics">
+                    <h3><i class="fa-solid fa-lightbulb" style="color:var(--warning);"></i> High-Yield Scoring Tactics</h3>
+                    <ul>
+                        <li><strong>Voluntary Return vs Plea Bargain Distinction:</strong> Questions frequently test who approves VR (NAB Chairman) versus who approves PB (Accountability Court) and their distinct legal consequences.</li>
+                        <li><strong>Recent Legislative Amendments:</strong> Understand recent parliamentary amendments regarding monetary threshold limits and procedural protections for bureaucrats.</li>
+                        <li><strong>Benami Transactions Act 2017:</strong> Familiarize with definitions of beneficial owner and benamidar.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner books">
+                    <h3><i class="fa-solid fa-book-bookmark" style="color:var(--success);"></i> Recommended Resources</h3>
+                    <ul>
+                        <li>National Accountability Ordinance, 1999 (Official Bare Act with latest amendments).</li>
+                        <li>Benami Transactions (Prohibition) Act, 2017 &amp; AMLA 2010.</li>
+                        <li>Executive Summary of Pakistan Economic Survey (for economic governance figures).</li>
+                        <li>MCQs Portal: Civil Servants Act &amp; Assistant Audit Officer questions.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-action-bar" style="margin-top: 24px;">
+                <div class="exam-links-group">
+                    <a href="quiz.html?category=Civil%20Servants%20Act,%201973" class="btn-exam-practice" style="background:#7c3aed;">
+                        <i class="fa-solid fa-play"></i> Practice Civil Servants &amp; Governance MCQs
+                    </a>
+                    <a href="quiz.html?category=Assistant%20Audit%20Officer%20(BS-17)" class="btn-exam-outline" style="border-color:#7c3aed; color:#7c3aed;">
+                        <i class="fa-solid fa-scale-balanced"></i> Practice Public Accountability MCQs
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 3. CSS SECTION -->
+        <article class="guide-section-block" id="guide-css" data-searchable="css central superior services mpt preliminary test written exam fpsc essay precis general science ability pak affairs current affairs optional">
+            <div class="guide-header-title">
+                <div class="guide-icon-badge" style="background: #1e3a8a;">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h2>Central Superior Services (CSS) Examination Roadmap</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;"><strong>Target Posts:</strong> 12 Federal Occupational Groups (PAS, PSP, FSP, IRS, Customs, OMG, Postal, Audit &amp; Accounts, etc.)</p>
+                </div>
+            </div>
+
+            <div class="exam-badges-row" style="margin-bottom: 20px;">
+                <span class="exam-badge badge-fpsc"><i class="fa-solid fa-building"></i> FPSC Federal</span>
+                <span class="exam-badge badge-bs17"><i class="fa-solid fa-award"></i> BS-17 Induction</span>
+                <span class="exam-badge badge-bs16"><i class="fa-solid fa-clock"></i> MPT: 200 MCQs (200 Mins)</span>
+                <span class="exam-badge badge-negative"><i class="fa-solid fa-pen-nib"></i> Written: 1200 Marks (12 Papers)</span>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark); margin-bottom: 20px;">
+                The <strong>CSS Examination</strong> is the ultimate gateway to Pakistan's elite civil service. The recruitment consists of: (1) <strong>MPT (MCQ-Based Preliminary Test)</strong> of 200 marks (qualifying threshold: 33% / 66 marks), (2) <strong>Written Analytical Examination</strong> of 1200 marks (6 Compulsory + 6 Optional subjects), and (3) <strong>Psychological Assessment &amp; Viva Voce</strong> (300 marks).
+            </p>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-list-check" style="color:#1e3a8a;"></i> MPT Screening Breakdown (200 Marks)</h3>
+                    <ul>
+                        <li><strong>English (50 Marks):</strong> Vocabulary, grammar, sentence correction, reading comprehension.</li>
+                        <li><strong>General Abilities (60 Marks):</strong> Arithmetic, percentages, algebra, geometry, logical &amp; analytical reasoning.</li>
+                        <li><strong>General Knowledge (50 Marks):</strong> Everyday Science (physical, biological, environmental) + Pakistan Affairs + Current Affairs.</li>
+                        <li><strong>Islamic Studies (20 Marks) &amp; Urdu (20 Marks):</strong> Basic pillars, Quranic teachings, Urdu grammar &amp; comprehension.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-feather-pointed" style="color:#1e3a8a;"></i> Written Papers Blueprint (1200 Marks)</h3>
+                    <ul>
+                        <li><strong>English Essay (100 Marks):</strong> 2500–3000 word coherent, thesis-driven argumentative essay. Passing cutoff: 40%.</li>
+                        <li><strong>English Précis &amp; Composition (100 Marks):</strong> 1/3rd précis, reading comprehension, vocabulary, correction, idioms.</li>
+                        <li><strong>General Science &amp; Ability (100 Marks):</strong> 60 marks physical &amp; biological science + 40 marks quantitative math.</li>
+                        <li><strong>Current Affairs, Pakistan Affairs &amp; Islamiat (100 Marks each).</strong></li>
+                        <li><strong>600 Marks of Optional Subjects:</strong> Strategic selection according to scoring trends and academic background.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner tactics">
+                    <h3><i class="fa-solid fa-lightbulb" style="color:var(--warning);"></i> High-Yield Scoring Tactics</h3>
+                    <ul>
+                        <li><strong>English Essay Strategy:</strong> Over 80% of candidates fail in English Essay. Spend 45 minutes developing a comprehensive, structured outline with a definitive thesis statement before writing.</li>
+                        <li><strong>GSA Math (Quantitative Ability):</strong> The 40 marks of math in General Science &amp; Ability are objective; achieving 38–40/40 is the single biggest booster for your aggregate score!</li>
+                        <li><strong>Read Dawn &amp; Foreign Affairs Daily:</strong> Extract quotes, statistical data, and policy frameworks for Current and Pakistan Affairs.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner books">
+                    <h3><i class="fa-solid fa-book-bookmark" style="color:var(--success);"></i> Recommended Resources</h3>
+                    <ul>
+                        <li>Constitution of the Islamic Republic of Pakistan, 1973 (Official text).</li>
+                        <li>Exploring the World of English by Saadat Ali Shah / High School English Grammar by Wren &amp; Martin.</li>
+                        <li>FPSC CSS Compulsory &amp; Optional Past Papers (2016–2026).</li>
+                        <li>MCQs Portal: CSS Past Papers &amp; MPT screening test banks.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-action-bar" style="margin-top: 24px;">
+                <div class="exam-links-group">
+                    <a href="quiz.html?category=CSS%20Past%20Papers" class="btn-exam-practice" style="background:#1e3a8a;">
+                        <i class="fa-solid fa-play"></i> Practice CSS Past Papers (250 MCQs)
+                    </a>
+                    <a href="quiz.html?category=Pakistan%20Affairs" class="btn-exam-outline" style="border-color:#1e3a8a; color:#1e3a8a;">
+                        <i class="fa-solid fa-landmark"></i> Practice Pakistan Affairs MCQs
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 4. PMS SECTION -->
+        <article class="guide-section-block" id="guide-pms" data-searchable="pms provincial management services ppsc punjab spsc sindh kppsc bpsc general knowledge negative marking urdu essay precis">
+            <div class="guide-header-title">
+                <div class="guide-icon-badge" style="background: #0d9488;">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div>
+                    <h2>Provincial Management Services (PMS) Preparation Blueprint</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;"><strong>Target Posts:</strong> Provincial Civil Service (Assistant Commissioner, Section Officer, Sub-Divisional Magistrate BS-17)</p>
+                </div>
+            </div>
+
+            <div class="exam-badges-row" style="margin-bottom: 20px;">
+                <span class="exam-badge badge-ppsc"><i class="fa-solid fa-building"></i> PPSC / SPSC / KPPSC / BPSC</span>
+                <span class="exam-badge badge-bs17"><i class="fa-solid fa-award"></i> BS-17 Provincial Executive</span>
+                <span class="exam-badge badge-bs16"><i class="fa-solid fa-clock"></i> Written (1200) + Viva (200/300)</span>
+                <span class="exam-badge badge-negative"><i class="fa-solid fa-triangle-exclamation"></i> PPSC GK: -0.25 Negative Marking!</span>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark); margin-bottom: 20px;">
+                The <strong>Provincial Management Services (PMS)</strong> provides administrative leadership across Pakistan's four provinces. While similar to CSS in written rigour, it features two critical differentiators: (1) A compulsory 100-mark <strong>Urdu Paper</strong> (Essay, Précis &amp; Translation), and (2) A high-stakes 100-mark <strong>General Knowledge Objective Paper</strong> where <strong>negative marking (-0.25 in PPSC)</strong> eliminates over 75% of candidates.
+            </p>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-list-check" style="color:#0d9488;"></i> Compulsory Papers Structure (600 Marks)</h3>
+                    <ul>
+                        <li><strong>English Essay (100 Marks) &amp; English Précis (100 Marks).</strong></li>
+                        <li><strong>Urdu Compulsory (100 Marks):</strong> Urdu Essay, Précis writing, idioms, poetic explanations &amp; English-to-Urdu translation.</li>
+                        <li><strong>Islamic Studies (100 Marks) &amp; Pakistan Studies (100 Marks).</strong></li>
+                        <li><strong>General Knowledge (100 Marks Objective):</strong> World geography, capitals, currencies, international organizations, physical features, everyday science, modern discoveries, computer literacy &amp; current events.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-scale-balanced" style="color:#0d9488;"></i> PPSC GK Negative Marking Calculus</h3>
+                    <ul>
+                        <li><strong>Correct Answer:</strong> +1.0 Mark.</li>
+                        <li><strong>Incorrect Answer:</strong> -0.25 Mark penalty (1/4th deduction).</li>
+                        <li><strong>Rule of Elimination:</strong> If you can eliminate 2 out of 4 options, the probability of selecting the right answer is 50%. Expected value = (0.5 × 1.0) - (0.5 × 0.25) = <strong>+0.375 Marks!</strong></li>
+                        <li><strong>Golden Rule:</strong> Never guess blindly when 4 options are unknown; always attempt if 2 options are eliminated.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner tactics">
+                    <h3><i class="fa-solid fa-lightbulb" style="color:var(--warning);"></i> High-Yield Scoring Tactics</h3>
+                    <ul>
+                        <li><strong>The Urdu Paper Game-Changer:</strong> Candidates with good English often fail Urdu. Practice writing Urdu essays and translating English editorials into fluent literary Urdu.</li>
+                        <li><strong>World Atlas Mastery:</strong> PMS GK questions consistently focus on straits (Malacca, Hormuz, Bosporus), canals, mountain passes, rivers, and landlocked nations.</li>
+                        <li><strong>Choose Scoring Optional Subjects:</strong> Select high-scoring subjects with objective syllabi like Geography, Sociology, and Mass Communication.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner books">
+                    <h3><i class="fa-solid fa-book-bookmark" style="color:var(--success);"></i> Recommended Resources</h3>
+                    <ul>
+                        <li>Caravan General Knowledge (Choudhry Ahmed Najib) / Imtiaz Shahid PPSC Past Papers.</li>
+                        <li>Standard World Atlas (Oxford / Collins) for physical and political geography.</li>
+                        <li>Kashif-ul-Haqaiq / High school Urdu grammar and essay manuals.</li>
+                        <li>MCQs Portal: General Knowledge, Geography &amp; World Organizations modules.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-action-bar" style="margin-top: 24px;">
+                <div class="exam-links-group">
+                    <a href="quiz.html?category=General%20Knowledge" class="btn-exam-practice" style="background:#0d9488;">
+                        <i class="fa-solid fa-play"></i> Practice PMS General Knowledge MCQs
+                    </a>
+                    <a href="quiz.html?category=Geography" class="btn-exam-outline" style="border-color:#0d9488; color:#0d9488;">
+                        <i class="fa-solid fa-earth-americas"></i> Practice Geography MCQs
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 5. CUSTOMS & FBR SECTION -->
+        <article class="guide-section-block" id="guide-customs" data-searchable="customs inspector customs intelligence officer appraising valuation officer preventive officer fbr customs act 1969 sales tax act 1990 incoterms valuation section 25">
+            <div class="guide-header-title">
+                <div class="guide-icon-badge" style="background: #059669;">
+                    <i class="fa-solid fa-boxes-packing"></i>
+                </div>
+                <div>
+                    <h2>Customs &amp; FBR Revenue Officers Preparation Blueprint</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;"><strong>Target Posts:</strong> Inspector Customs / Intelligence Officer BS-16, Appraising &amp; Valuation Officer BS-16, Preventive Officer BS-16</p>
+                </div>
+            </div>
+
+            <div class="exam-badges-row" style="margin-bottom: 20px;">
+                <span class="exam-badge badge-fpsc"><i class="fa-solid fa-building"></i> FPSC General Recruitment</span>
+                <span class="exam-badge badge-bs16"><i class="fa-solid fa-award"></i> BS-16 Revenue Officer</span>
+                <span class="exam-badge badge-bs16"><i class="fa-solid fa-clock"></i> 100 MCQs in 100 Mins</span>
+                <span class="exam-badge badge-negative"><i class="fa-solid fa-circle-check"></i> Standard FPSC Format</span>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark); margin-bottom: 20px;">
+                Customs Inspectors and Appraising Officers under the <strong>Federal Board of Revenue (FBR)</strong> safeguard Pakistan's economic frontiers, enforce tariff classifications, assess import/export customs duties, and intercept contraband and currency smuggling. The FPSC screening test concentrates on the <strong>Customs Act, 1969</strong>, valuation rules, international commercial terms (Incoterms), basic arithmetic, and tax laws.
+            </p>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-list-check" style="color:#059669;"></i> Detailed Syllabus Structure</h3>
+                    <ul>
+                        <li><strong>Part-I: English (20 Marks):</strong> Vocabulary, grammar, sentence completion &amp; commercial/legal terms.</li>
+                        <li><strong>Customs Act 1969 &amp; Tax Laws (30 Marks):</strong> Goods declaration (GD), Section 25 valuation methods, powers of search, arrest, seizure &amp; penalty provisions under Section 156. Sales Tax Act 1990 basics.</li>
+                        <li><strong>Basic Arithmetic (20 Marks):</strong> Profit &amp; loss, percentages, fractions, ratio &amp; proportion, algebraic expressions.</li>
+                        <li><strong>Current Economic Affairs &amp; IT (30 Marks):</strong> National budget, FBR reforms, CPEC routes, Pakistan Single Window (PSW), MS Office basics.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-gavel" style="color:#059669;"></i> Critical Sections in Customs Act, 1969</h3>
+                    <ul>
+                        <li><strong>Section 2:</strong> Definitions: Smuggling, conveyance, goods, bill of entry, warehouse, customs airport/station.</li>
+                        <li><strong>Section 25 (Customs Valuation):</strong> The 6 sequential valuation methods: (1) Transaction Value, (2) Identical Goods, (3) Similar Goods, (4) Deductive Value, (5) Computed Value, (6) Fall-back Method.</li>
+                        <li><strong>Section 25A:</strong> Powers of Director General Valuation to determine customs values.</li>
+                        <li><strong>Section 156:</strong> Comprehensive table of offences, violations, and mandatory statutory penalties.</li>
+                        <li><strong>Incoterms 2020:</strong> FOB (Free on Board), CIF (Cost, Insurance &amp; Freight), CFR (Cost and Freight), EXW (Ex Works), DDP (Delivered Duty Paid).</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner tactics">
+                    <h3><i class="fa-solid fa-lightbulb" style="color:var(--warning);"></i> High-Yield Scoring Tactics</h3>
+                    <ul>
+                        <li><strong>Sequential Valuation Rules:</strong> Memorize the exact order of methods under Section 25. Questions test which method is applied when transaction value is rejected.</li>
+                        <li><strong>Incoterms Risk &amp; Cost Transfer:</strong> Understand the point where risk transfers from seller to buyer in FOB (at ship's rail) versus CIF.</li>
+                        <li><strong>Arithmetic Edge:</strong> Securing 18–20 marks in basic math elevates your score into the top percentile needed for merit selection.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner books">
+                    <h3><i class="fa-solid fa-book-bookmark" style="color:var(--success);"></i> Recommended Resources</h3>
+                    <ul>
+                        <li>Official Customs Act, 1969 (Latest FBR bare act publication).</li>
+                        <li>Incoterms 2020 Quick Reference Guide (ICC standards).</li>
+                        <li>FPSC Past Papers for Inspector Customs &amp; Valuation Officers.</li>
+                        <li>MCQs Portal: Mathematics, Current Affairs &amp; World Organizations modules.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-action-bar" style="margin-top: 24px;">
+                <div class="exam-links-group">
+                    <a href="quiz.html?category=Mathematics" class="btn-exam-practice" style="background:#059669;">
+                        <i class="fa-solid fa-play"></i> Practice Arithmetic &amp; Math MCQs
+                    </a>
+                    <a href="quiz.html?category=World%20Organizations" class="btn-exam-outline" style="border-color:#059669; color:#059669;">
+                        <i class="fa-solid fa-earth-americas"></i> Practice World Organizations &amp; Trade MCQs
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 6. AUDIT OFFICER (BS-17) SECTION -->
+        <article class="guide-section-block" id="guide-audit" data-searchable="audit assistant audit officer senior auditor agp auditor general fpsc issai pfma 2019 ppra 2004 ipsas constitution articles 168 171">
+            <div class="guide-header-title">
+                <div class="guide-icon-badge" style="background: #f59e0b;">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                </div>
+                <div>
+                    <h2>Assistant Audit Officer (BS-17) &amp; Senior Auditor Blueprint</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;"><strong>Target Posts:</strong> Assistant Audit Officer BS-17 (FPSC Case No. F.4-195/2026), Senior Auditor BS-16 (Office of the Auditor General of Pakistan)</p>
+                </div>
+            </div>
+
+            <div class="exam-badges-row" style="margin-bottom: 20px;">
+                <span class="exam-badge badge-fpsc"><i class="fa-solid fa-building"></i> FPSC Case No. F.4-195/2026</span>
+                <span class="exam-badge badge-bs17"><i class="fa-solid fa-award"></i> BS-17 Financial Governance</span>
+                <span class="exam-badge badge-bs16"><i class="fa-solid fa-clock"></i> 100 MCQs in 100 Mins</span>
+                <span class="exam-badge badge-negative"><i class="fa-solid fa-circle-check"></i> Standard FPSC Scoring</span>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark); margin-bottom: 20px;">
+                The <strong>Department of the Auditor General of Pakistan (DAGP)</strong> is Pakistan's Supreme Audit Institution (SAI) established under Articles 168–171 of the 1973 Constitution. The official FPSC syllabus for Assistant Audit Officer (BS-17) encompasses 15 extensive topics across financial accounting, cost accounting, international auditing standards (ISSAIs), public finance management, and constitutional accountability.
+            </p>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-list-check" style="color:#f59e0b;"></i> Complete 15-Topic Syllabus Overview</h3>
+                    <ul>
+                        <li><strong>Part-I: English (20 Marks):</strong> Vocabulary, grammar usage &amp; sentence structuring.</li>
+                        <li><strong>Accounting &amp; Analysis (30 Marks):</strong> Accounting cycle, journal, ledger, adjustments, partnership &amp; company accounts, goodwill valuation, ratio analysis &amp; cost variance.</li>
+                        <li><strong>Auditing &amp; ISSAIs (25 Marks):</strong> Audit scope, evidence, working papers, verification of assets/liabilities, financial attest audit, compliance audit, performance audit (3Es) &amp; ISSAI standards.</li>
+                        <li><strong>Public Finance &amp; Constitution (25 Marks):</strong> Constitution Articles 168–171 (AGP), PFM Act 2019, PPRA Rules 2004, PAC role, IPSAS standards &amp; fraud investigation.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-gavel" style="color:#f59e0b;"></i> Key Legal Provisions &amp; Rules</h3>
+                    <ul>
+                        <li><strong>Constitution Articles 168–171:</strong> Art. 168 (Appointment, oath, tenure of 4 yrs / age 65), Art. 169 (Powers &amp; functions), Art. 170 (Form of accounts), Art. 171 (Reports laid before Parliament / Provincial Assemblies).</li>
+                        <li><strong>PFM Act, 2019:</strong> Roles of Principal Accounting Officer (PAO), Single Treasury Account, fiscal limits &amp; internal audit.</li>
+                        <li><strong>PPRA Rules, 2004:</strong> Rule 12 (Tender notice), Rule 23 (Bidding docs), Rule 36 (Bidding methods: Single Stage One/Two Envelopes), Rule 38 (Lowest responsive bid).</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner tactics">
+                    <h3><i class="fa-solid fa-lightbulb" style="color:var(--warning);"></i> High-Yield Scoring Tactics</h3>
+                    <ul>
+                        <li><strong>ISSAI Framework (3Es):</strong> Performance audit evaluates Economy (minimizing resource cost), Efficiency (maximizing output per input), and Effectiveness (achieving intended policy outcomes).</li>
+                        <li><strong>PPRA Bidding Methods:</strong> Master Rule 36(a) vs 36(b) differences (single stage two envelope for technical and financial bids).</li>
+                        <li><strong>Accounting Cycle Mechanics:</strong> Ensure instant mastery of adjustment entries (prepaid expenses, accrued revenues, and bad debts).</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner books">
+                    <h3><i class="fa-solid fa-book-bookmark" style="color:var(--success);"></i> Recommended Resources</h3>
+                    <ul>
+                        <li>Auditor-General's Ordinance, 2001 &amp; PFM Act, 2019 bare acts.</li>
+                        <li>Public Procurement Rules, 2004 (PPRA official portal).</li>
+                        <li>Financial Accounting by Meigs &amp; Meigs / Cost Accounting by Matz &amp; Usry.</li>
+                        <li>MCQs Portal: Dedicated Assistant Audit Officer 750 MCQs Bank (50 MCQs for each of all 15 topics).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-action-bar" style="margin-top: 24px;">
+                <div class="exam-links-group">
+                    <a href="quiz.html?category=Assistant%20Audit%20Officer%20(BS-17)" class="btn-exam-practice" style="background:#f59e0b; color:#0f172a;">
+                        <i class="fa-solid fa-play"></i> Practice Complete AAO 750 MCQs Bank
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 7. ONE-PAPER MCQS BLUEPRINT SECTION -->
+        <article class="guide-section-block" id="guide-one-paper" data-searchable="one paper mcqs strategy fpsc ppsc spsc kppsc bpsc nts timetable 3 pass strategy bubble sheet negative marking">
+            <div class="guide-header-title">
+                <div class="guide-icon-badge" style="background: #4f46e5;">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <div>
+                    <h2>Universal One-Paper MCQs Master Strategy</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;"><strong>Applicable To:</strong> Over 90% of Federal &amp; Provincial Recruitment Tests (FPSC, PPSC, SPSC, KPPSC, BPSC, NTS, OTS, PTS)</p>
+                </div>
+            </div>
+
+            <div class="exam-badges-row" style="margin-bottom: 20px;">
+                <span class="exam-badge badge-bs17"><i class="fa-solid fa-layer-group"></i> BS-11 to BS-17 Universal</span>
+                <span class="exam-badge badge-bs16"><i class="fa-solid fa-clock"></i> 100 MCQs in 90/100 Mins</span>
+                <span class="exam-badge badge-negative"><i class="fa-solid fa-calculator"></i> Exam Room Tactics</span>
+            </div>
+
+            <p style="line-height: 1.6; color: var(--text-dark); margin-bottom: 20px;">
+                In Pakistan, almost all general recruitment tests follow a standardized 100-mark objective MCQ pattern. Excelling in these tests is not merely about accumulating encyclopedic facts; it requires an organized <strong>test-taking system</strong>, <strong>time management discipline</strong>, and calculated risk optimization under negative marking conditions.
+            </p>
+
+            <div class="guide-sub-grid">
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-rotate" style="color:#4f46e5;"></i> The 3-Pass Exam Room Strategy</h3>
+                    <ul>
+                        <li><strong>Pass 1 (0 to 35 Mins):</strong> Attempt only 100% sure-shot questions (typically 45–55 questions). Skip math calculations and doubtful questions instantly without hesitation. Fill your bubble sheet for this first batch carefully.</li>
+                        <li><strong>Pass 2 (35 to 75 Mins):</strong> Tackle arithmetic and logical reasoning calculations. Solve questions where you can eliminate 2 incorrect choices.</li>
+                        <li><strong>Pass 3 (75 to 90 Mins):</strong> Review remaining unanswered questions, verify answer sheet bubble alignment, and perform calculated attempts.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card-inner">
+                    <h3><i class="fa-solid fa-shield-virus" style="color:#4f46e5;"></i> The Bubble Sheet Disaster Avoidance</h3>
+                    <ul>
+                        <li><strong>Never wait until the final 5 minutes:</strong> Panicking in the last minutes is the leading cause of filling answers in shifted rows (ruining 20+ questions).</li>
+                        <li><strong>Fill in Batches of 10 or 20:</strong> After solving 10 questions on the question paper, immediately transfer them onto the OMR bubble sheet.</li>
+                        <li><strong>Double Check Question Numbers:</strong> Always match the question paper number with the OMR sheet row before shading.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 60-Day Unified Roadmap -->
+            <h3 style="margin-top: 30px; font-size: 1.3rem; color: var(--text-dark);"><i class="fa-solid fa-calendar-days" style="color:var(--secondary-color);"></i> Proven 60-Day Preparation Timetable</h3>
+            <div class="roadmap-timeline">
+                <div class="roadmap-week">
+                    <h4>Weeks 1–2: Foundations</h4>
+                    <p>English grammar rules, subject-verb agreement, prepositions, high-frequency vocabulary &amp; basic math shortcuts (percentages, ratios, algebra).</p>
+                </div>
+                <div class="roadmap-week">
+                    <h4>Weeks 3–4: General Sciences &amp; Geography</h4>
+                    <p>Everyday Science (human anatomy, vitamins, instruments), World Atlas (straits, rivers, canals, landlocked nations) &amp; Pakistan geography.</p>
+                </div>
+                <div class="roadmap-week">
+                    <h4>Weeks 5–6: Specialized Acts &amp; Current Affairs</h4>
+                    <p>Specific bare acts (FIA Act, Customs Act, NAO, Constitution Articles) + Current Affairs from the past 12–18 months.</p>
+                </div>
+                <div class="roadmap-week">
+                    <h4>Weeks 7–8: Timed Mock Simulations</h4>
+                    <p>Solve 2 full-length 100-MCQ timed mock tests daily on the MCQs Portal. Analyze every incorrect answer and revise weak subcategories.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- 8. COMPARISON MATRIX TABLE -->
+        <article class="guide-section-block" id="guide-comparison" data-searchable="comparison matrix table css pms fia nab customs audit difference eligibility pattern negative marking">
+            <div class="guide-header-title">
+                <div class="guide-icon-badge" style="background: #2563eb;">
+                    <i class="fa-solid fa-table-list"></i>
+                </div>
+                <div>
+                    <h2>Competitive Examination Comparison Matrix</h2>
+                    <p style="color: var(--text-light); margin: 4px 0 0;">Side-by-side comparison of testing pattern, negative marking, eligibility, and key decider subjects.</p>
+                </div>
+            </div>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Examination</th>
+                            <th>Conducting Body</th>
+                            <th>Pay Scale</th>
+                            <th>Test Format</th>
+                            <th>Negative Marking?</th>
+                            <th>Key Decider Subject</th>
+                            <th>Average Prep Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>FIA (AD / Inspector)</strong></td>
+                            <td>FPSC</td>
+                            <td>BS-16 &amp; BS-17</td>
+                            <td>100 MCQs Screening + Interview</td>
+                            <td><span style="color:var(--success); font-weight:600;">No</span></td>
+                            <td>FIA Act 1974 &amp; Arithmetic</td>
+                            <td>3–4 Months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NAB (AD / IO)</strong></td>
+                            <td>FPSC / NAB</td>
+                            <td>BS-16 &amp; BS-17</td>
+                            <td>100 MCQs Screening + Psych/Viva</td>
+                            <td><span style="color:var(--success); font-weight:600;">No (FPSC)</span></td>
+                            <td>NAO 1999 &amp; Forensic Audit</td>
+                            <td>3–4 Months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CSS Examination</strong></td>
+                            <td>FPSC</td>
+                            <td>BS-17</td>
+                            <td>MPT (200) + Written (1200) + Viva (300)</td>
+                            <td><span style="color:var(--success); font-weight:600;">No (MPT)</span></td>
+                            <td>English Essay &amp; Précis</td>
+                            <td>10–12 Months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PMS Examination</strong></td>
+                            <td>Provincial PSCs</td>
+                            <td>BS-17</td>
+                            <td>Written (1200) + Viva (200/300)</td>
+                            <td><span style="color:var(--danger); font-weight:600;">Yes (-0.25 in PPSC GK)</span></td>
+                            <td>General Knowledge &amp; Urdu</td>
+                            <td>8–10 Months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Customs (Inspector/Valuation)</strong></td>
+                            <td>FPSC</td>
+                            <td>BS-16</td>
+                            <td>100 MCQs Screening + Viva</td>
+                            <td><span style="color:var(--success); font-weight:600;">No</span></td>
+                            <td>Customs Act Section 25 &amp; Math</td>
+                            <td>2–3 Months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Assistant Audit Officer</strong></td>
+                            <td>FPSC</td>
+                            <td>BS-17</td>
+                            <td>100 MCQs Screening + Viva</td>
+                            <td><span style="color:var(--success); font-weight:600;">No</span></td>
+                            <td>ISSAIs, Accounting &amp; PFMA 2019</td>
+                            <td>3–4 Months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>One-Paper General Recruitment</strong></td>
+                            <td>FPSC / PPSC / SPSC</td>
+                            <td>BS-11 to BS-16</td>
+                            <td>Single 100 MCQs Paper (90–100 Mins)</td>
+                            <td><span style="color:var(--warning); font-weight:600;">PPSC: Yes (-0.25) | FPSC: No</span></td>
+                            <td>GK &amp; Everyday Science</td>
+                            <td>2–3 Months</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 MCQs Portal. All rights reserved. | Master Preparation Guide</p>
+            </div>
+        </div>
+    
+        <div class="footer-legal-bar" style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; color:#94a3b8;">
+            <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+            <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+            <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+            <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Search & Filter Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('guideSearchInput');
+            const sections = document.querySelectorAll('.guide-section-block');
+
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase().trim();
+                    sections.forEach(sec => {
+                        const searchData = (sec.getAttribute('data-searchable') || '').toLowerCase();
+                        const textContent = sec.innerText.toLowerCase();
+                        if (!query || searchData.includes(query) || textContent.includes(query)) {
+                            sec.style.display = 'block';
+                        } else {
+                            sec.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            // Dark Mode Toggle Support
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    document.documentElement.classList.toggle('dark-mode', isDark);
+                    localStorage.setItem('mcqs_dark_mode', isDark ? 'true' : 'false');
+                });
+            }
+
+            if (localStorage.getItem('mcqs_dark_mode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

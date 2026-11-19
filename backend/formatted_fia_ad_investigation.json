@@ -1,0 +1,3782 @@
+[
+  {
+    "_id": "fia_inv_1",
+    "questionText": "Select the word that is most nearly SIMILAR in meaning to 'ABSTEMIOUS':",
+    "options": {
+      "A": "Temperate",
+      "B": "Gluttonous",
+      "C": "Indulgent",
+      "D": "Voracious"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Abstemious' means indulging only very moderately in something, especially food and drink; synonymous with 'temperate' or self-restrained.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_inv_2",
+    "questionText": "Choose the word most OPPOSITE in meaning to 'LACONIC':",
+    "options": {
+      "A": "Concise",
+      "B": "Terse",
+      "C": "Verbose",
+      "D": "Succinct"
+    },
+    "correctAnswer": "C",
+    "explanation": "'Laconic' means using very few words. Its antonym is 'verbose' (wordy or prolix).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_3",
+    "questionText": "Select the correct option to fill in the blank: 'He was acquitted _____ all charges brought against him by the tribunal.'",
+    "options": {
+      "A": "from",
+      "B": "of",
+      "C": "with",
+      "D": "against"
+    },
+    "correctAnswer": "B",
+    "explanation": "The verb 'acquit' takes the preposition 'of' ('acquitted of all charges').",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_4",
+    "questionText": "Choose the correct sentence:",
+    "options": {
+      "A": "Neither the Director General nor his deputies has attended the press conference.",
+      "B": "Neither the Director General nor his deputies have attended the press conference.",
+      "C": "Neither the Director General or his deputies have attended the press conference.",
+      "D": "Neither the Director General nor his deputies is attending the press conference."
+    },
+    "correctAnswer": "B",
+    "explanation": "In subject-verb agreement with 'neither... nor', the verb agrees with the closer subject ('his deputies' is plural, so 'have attended' is correct).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_5",
+    "questionText": "Select the option that correctly converts to indirect speech: The inspector said to the witness, 'Did you see the suspect leaving the building?'",
+    "options": {
+      "A": "The inspector asked the witness whether he had seen the suspect leaving the building.",
+      "B": "The inspector asked the witness if he saw the suspect leaving the building.",
+      "C": "The inspector told the witness whether he has seen the suspect leaving the building.",
+      "D": "The inspector enquired the witness if he was seeing the suspect leaving the building."
+    },
+    "correctAnswer": "A",
+    "explanation": "In direct questions starting with auxiliary 'Did' (past simple), the indirect form uses 'if' or 'whether' followed by the past perfect ('had seen').",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_6",
+    "questionText": "Identify the word closest in meaning to 'RECALCITRANT':",
+    "options": {
+      "A": "Compliant",
+      "B": "Disobedient",
+      "C": "Submissive",
+      "D": "Tractable"
+    },
+    "correctAnswer": "B",
+    "explanation": "'Recalcitrant' means having an obstinately uncooperative attitude toward authority or discipline; disobedient.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_inv_7",
+    "questionText": "Fill in the blank: 'The inquiry officer was completely oblivious _____ the political pressure surrounding the case.'",
+    "options": {
+      "A": "to",
+      "B": "from",
+      "C": "with",
+      "D": "at"
+    },
+    "correctAnswer": "A",
+    "explanation": "The adjective 'oblivious' is followed by the preposition 'to' (or sometimes 'of'). 'Oblivious to' is standard.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_8",
+    "questionText": "Choose the antonym of 'AMELIORATE':",
+    "options": {
+      "A": "Improve",
+      "B": "Worsen",
+      "C": "Mitigate",
+      "D": "Assuage"
+    },
+    "correctAnswer": "B",
+    "explanation": "'Ameliorate' means to make something bad or unsatisfactory better. Its opposite is 'worsen' or 'deteriorate'.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_9",
+    "questionText": "Identify the sentence that contains an error in parallel structure:",
+    "options": {
+      "A": "The intelligence team was responsible for collecting data, analyzing evidence, and drafting briefs.",
+      "B": "The intelligence team was responsible for data collection, evidence analysis, and drafting briefs.",
+      "C": "The intelligence team was responsible for data collection, evidence analysis, and report generation.",
+      "D": "The intelligence team was responsible to collect data, to analyze evidence, and to draft briefs."
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B mixes noun phrases ('data collection', 'evidence analysis') with a gerund phrase ('drafting briefs'), violating parallelism.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_inv_10",
+    "questionText": "What is the meaning of the idiom 'TO BARK UP THE WRONG TREE'?",
+    "options": {
+      "A": "To pursue a mistaken line of investigation or thought",
+      "B": "To make excessive noise in public",
+      "C": "To reveal an undercover operation",
+      "D": "To reprimand a subordinate unfairly"
+    },
+    "correctAnswer": "A",
+    "explanation": "'To bark up the wrong tree' means to follow a wrong line of thought or pursue a false lead in an investigation.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_11",
+    "questionText": "Complete the sentence: 'No sooner had the warrant been issued _____ the suspect surrendered to the authorities.'",
+    "options": {
+      "A": "when",
+      "B": "than",
+      "C": "then",
+      "D": "after"
+    },
+    "correctAnswer": "B",
+    "explanation": "'No sooner... than' is the mandatory correlative pair in English grammar (distinct from 'hardly/scarcely... when').",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_12",
+    "questionText": "Select the sentence with correct punctuation:",
+    "options": {
+      "A": "The forensic report confirmed two things: first, that the seal was forged, second, that the signature was authentic.",
+      "B": "The forensic report confirmed two things: first, that the seal was forged; second, that the signature was authentic.",
+      "C": "The forensic report confirmed two things; first, that the seal was forged: second, that the signature was authentic.",
+      "D": "The forensic report confirmed two things, first that the seal was forged, second that the signature was authentic."
+    },
+    "correctAnswer": "B",
+    "explanation": "A colon introduces the list of two things, and a semicolon properly separates the two coordinate clauses that contain internal commas.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_13",
+    "questionText": "Choose the word most SIMILAR in meaning to 'FASTIDIOUS':",
+    "options": {
+      "A": "Meticulous",
+      "B": "Careless",
+      "C": "Indifferent",
+      "D": "Slapdash"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Fastidious' means very attentive to and concerned about accuracy and detail; synonymous with 'meticulous'.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_14",
+    "questionText": "Identify the correct passive voice: 'The cyber wing has seized twenty fraudulent hard drives.'",
+    "options": {
+      "A": "Twenty fraudulent hard drives have been seized by the cyber wing.",
+      "B": "Twenty fraudulent hard drives had been seized by the cyber wing.",
+      "C": "Twenty fraudulent hard drives are seized by the cyber wing.",
+      "D": "Twenty fraudulent hard drives were being seized by the cyber wing."
+    },
+    "correctAnswer": "A",
+    "explanation": "Present perfect active 'has seized' converts to 'have/has been seized' in passive ('hard drives' is plural, so 'have been seized').",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_15",
+    "questionText": "Choose the correct preposition: 'The findings of the preliminary inquiry are at variance _____ the initial complaint.'",
+    "options": {
+      "A": "from",
+      "B": "with",
+      "C": "against",
+      "D": "to"
+    },
+    "correctAnswer": "B",
+    "explanation": "The idiomatic prepositional phrase is 'at variance with', meaning in disagreement or conflicting with.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_16",
+    "questionText": "Choose the word that is most nearly OPPOSITE in meaning to 'GREGARIOUS':",
+    "options": {
+      "A": "Sociable",
+      "B": "Affable",
+      "C": "Reclusive",
+      "D": "Extroverted"
+    },
+    "correctAnswer": "C",
+    "explanation": "'Gregarious' means fond of company; sociable. Its antonym is 'reclusive' or solitary.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_17",
+    "questionText": "Select the sentence that avoids a comma splice:",
+    "options": {
+      "A": "The suspect fled the city, the officers followed his digital footprint.",
+      "B": "The suspect fled the city; however, the officers followed his digital footprint.",
+      "C": "The suspect fled the city, however the officers followed his digital footprint.",
+      "D": "The suspect fled the city, so therefore the officers followed his digital footprint."
+    },
+    "correctAnswer": "B",
+    "explanation": "Joining two independent clauses with only a comma produces a comma splice; using a semicolon before the conjunctive adverb 'however' and a comma after it is grammatically correct.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_18",
+    "questionText": "Choose the synonym of 'SURREPTITIOUS':",
+    "options": {
+      "A": "Clandestine",
+      "B": "Overt",
+      "C": "Blatant",
+      "D": "Conspicuous"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Surreptitious' means kept secret, especially because it would not be approved of; synonymous with 'clandestine'.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_inv_19",
+    "questionText": "What does the idiom 'TO STEAL A MARCH ON SOMEONE' mean?",
+    "options": {
+      "A": "To gain an unexpected advantage over a competitor or adversary",
+      "B": "To march in front of an army",
+      "C": "To commit financial embezzlement during daytime",
+      "D": "To delay an operation deliberately"
+    },
+    "correctAnswer": "A",
+    "explanation": "'To steal a march on' means to get an advantage over somebody by acting before they do, especially secretly.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_inv_20",
+    "questionText": "Fill in the blank: 'Had the forensic expert arrived earlier, the integrity of the scene _____ preserved.'",
+    "options": {
+      "A": "would be",
+      "B": "would have been",
+      "C": "will be",
+      "D": "had been"
+    },
+    "correctAnswer": "B",
+    "explanation": "Third conditional inverted structure: 'Had + subject + past participle... would have been + past participle'.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_21",
+    "questionText": "Choose the antonym of 'TACITURN':",
+    "options": {
+      "A": "Reticent",
+      "B": "Loquacious",
+      "C": "Quiet",
+      "D": "Reserved"
+    },
+    "correctAnswer": "B",
+    "explanation": "'Taciturn' means reserved or uncommunicative in speech. Its opposite is 'loquacious' (talkative).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_22",
+    "questionText": "Identify the correct usage of the subjunctive mood:",
+    "options": {
+      "A": "The committee insisted that the officer submits the final dossier immediately.",
+      "B": "The committee insisted that the officer submit the final dossier immediately.",
+      "C": "The committee insisted that the officer should submitted the final dossier immediately.",
+      "D": "The committee insisted that the officer is submitting the final dossier immediately."
+    },
+    "correctAnswer": "B",
+    "explanation": "In mandative subjunctive clauses triggered by verbs of insistence/demand, the base verb form ('submit') is required regardless of subject person/number.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_inv_23",
+    "questionText": "Select the sentence with correct modifier placement:",
+    "options": {
+      "A": "Having examined the forged passports, the case was closed by the investigator.",
+      "B": "Having examined the forged passports, the investigator closed the case.",
+      "C": "The investigator closed the case having examined the forged passports by the team.",
+      "D": "Having examined the forged passports, closing the case was decided by the investigator."
+    },
+    "correctAnswer": "B",
+    "explanation": "The participial phrase 'Having examined the forged passports' must logically modify the agent who performed the action ('the investigator').",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_24",
+    "questionText": "Choose the word most SIMILAR in meaning to 'NEPOTISM':",
+    "options": {
+      "A": "Favoritism",
+      "B": "Impartiality",
+      "C": "Fairness",
+      "D": "Neutrality"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Nepotism' refers to the practice among those with power or influence of favoring relatives or friends, especially by giving them jobs.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_25",
+    "questionText": "Fill in the blank: 'He is privy _____ confidential investigative intelligence.'",
+    "options": {
+      "A": "to",
+      "B": "with",
+      "C": "of",
+      "D": "in"
+    },
+    "correctAnswer": "A",
+    "explanation": "The phrase is 'privy to', meaning sharing in the knowledge of something secret or private.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_26",
+    "questionText": "Choose the word most OPPOSITE in meaning to 'TENACIOUS':",
+    "options": {
+      "A": "Persistent",
+      "B": "Resolute",
+      "C": "Yielding",
+      "D": "Determined"
+    },
+    "correctAnswer": "C",
+    "explanation": "'Tenacious' means holding fast or persevering stubbornly. Its antonym is 'yielding' or irresolute.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_27",
+    "questionText": "Identify the correct sentence structure:",
+    "options": {
+      "A": "One should be conscientious about his official duties.",
+      "B": "One should be conscientious about one's official duties.",
+      "C": "One should be conscientious about their official duties.",
+      "D": "One should be conscientious about him official duties."
+    },
+    "correctAnswer": "B",
+    "explanation": "In formal English, the impersonal pronoun 'one' takes 'one's' as its possessive form, not 'his' or 'their'.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_28",
+    "questionText": "What does the Latin phrase 'DE FACTO' mean?",
+    "options": {
+      "A": "According to legal right or statute",
+      "B": "In fact or in reality, whether by right or not",
+      "C": "For the public good",
+      "D": "From the beginning"
+    },
+    "correctAnswer": "B",
+    "explanation": "'De facto' denotes practices that exist in reality, even if not officially recognized by law (contrasted with 'de jure').",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_29",
+    "questionText": "Select the option that best completes the sentence: 'Between you and _____, the outcome of the inquiry is already certain.'",
+    "options": {
+      "A": "I",
+      "B": "me",
+      "C": "myself",
+      "D": "he"
+    },
+    "correctAnswer": "B",
+    "explanation": "'Between' is a preposition, and objects of prepositions must take the objective pronoun case ('between you and me').",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_30",
+    "questionText": "Choose the synonym of 'ZEALOUS':",
+    "options": {
+      "A": "Enthusiastic",
+      "B": "Apathetic",
+      "C": "Lethargic",
+      "D": "Nonchalant"
+    },
+    "correctAnswer": "A",
+    "explanation": "'Zealous' means having or showing great energy or enthusiasm in pursuit of a cause or objective.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Vocabulary, Grammar Usage, Sentence Structuring",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_31",
+    "questionText": "Where is the headquarters of INTERPOL (International Criminal Police Organization) located?",
+    "options": {
+      "A": "The Hague, Netherlands",
+      "B": "Lyon, France",
+      "C": "Geneva, Switzerland",
+      "D": "Vienna, Austria"
+    },
+    "correctAnswer": "B",
+    "explanation": "INTERPOL's General Secretariat headquarters is located in Lyon, France.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_32",
+    "questionText": "The Financial Action Task Force (FATF), an intergovernmental body combating money laundering and terrorist financing, was founded in which year?",
+    "options": {
+      "A": "1975",
+      "B": "1989",
+      "C": "1995",
+      "D": "2001"
+    },
+    "correctAnswer": "B",
+    "explanation": "FATF was established in 1989 by a Group of Seven (G7) Summit held in Paris to develop policies to combat money laundering.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_33",
+    "questionText": "Which international body is the principal judicial organ of the United Nations, seated at the Peace Palace in The Hague?",
+    "options": {
+      "A": "International Criminal Court (ICC)",
+      "B": "International Court of Justice (ICJ)",
+      "C": "Permanent Court of Arbitration (PCA)",
+      "D": "UN Human Rights Council"
+    },
+    "correctAnswer": "B",
+    "explanation": "The International Court of Justice (ICJ) is the principal judicial organ of the United Nations, established in June 1945 by the UN Charter.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_34",
+    "questionText": "Which narrow maritime passage connects the Persian Gulf with the Gulf of Oman and the Arabian Sea?",
+    "options": {
+      "A": "Strait of Malacca",
+      "B": "Strait of Hormuz",
+      "C": "Bab-el-Mandeb",
+      "D": "Bosporus Strait"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Strait of Hormuz is a vital international oil transit chokepoint between Oman and Iran connecting the Persian Gulf with the Gulf of Oman.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_35",
+    "questionText": "What is the capital city of Kazakhstan, which was renamed back to its historical name from 'Nur-Sultan' in 2022?",
+    "options": {
+      "A": "Almaty",
+      "B": "Astana",
+      "C": "Tashkent",
+      "D": "Bishkek"
+    },
+    "correctAnswer": "B",
+    "explanation": "Kazakhstan's capital was renamed back to Astana in September 2022 by President Kassym-Jomart Tokayev.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_36",
+    "questionText": "The United Nations Convention against Transnational Organized Crime (UNTOC) is commonly known as the:",
+    "options": {
+      "A": "Kyoto Protocol",
+      "B": "Palermo Convention",
+      "C": "Geneva Convention",
+      "D": "Rome Statute"
+    },
+    "correctAnswer": "B",
+    "explanation": "The United Nations Convention against Transnational Organized Crime adopted in 2000 is widely known as the Palermo Convention.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_inv_37",
+    "questionText": "Which country has the longest coastline in the world?",
+    "options": {
+      "A": "Russia",
+      "B": "Canada",
+      "C": "Australia",
+      "D": "Indonesia"
+    },
+    "correctAnswer": "B",
+    "explanation": "Canada possesses the world's longest coastline, stretching over 202,080 kilometers (125,567 miles).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_38",
+    "questionText": "Where is the headquarters of the World Health Organization (WHO) located?",
+    "options": {
+      "A": "New York, USA",
+      "B": "Geneva, Switzerland",
+      "C": "Rome, Italy",
+      "D": "London, UK"
+    },
+    "correctAnswer": "B",
+    "explanation": "The World Health Organization (WHO) has its headquarters in Geneva, Switzerland.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_39",
+    "questionText": "Which desert is the largest hot desert in the world?",
+    "options": {
+      "A": "Gobi Desert",
+      "B": "Kalahari Desert",
+      "C": "Sahara Desert",
+      "D": "Arabian Desert"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Sahara Desert in northern Africa is the world's largest hot desert, covering an area of approximately 9.2 million square kilometers.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_40",
+    "questionText": "How many non-permanent members serve on the United Nations Security Council (UNSC) at any given time?",
+    "options": {
+      "A": "5",
+      "B": "10",
+      "C": "15",
+      "D": "20"
+    },
+    "correctAnswer": "B",
+    "explanation": "The UNSC consists of 15 members: 5 permanent members with veto power and 10 non-permanent members elected for two-year terms by the General Assembly.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_41",
+    "questionText": "Which strait separates the continent of Africa from Europe (Morocco from Spain)?",
+    "options": {
+      "A": "Strait of Gibraltar",
+      "B": "Dardanelles",
+      "C": "Suez Canal",
+      "D": "Bering Strait"
+    },
+    "correctAnswer": "A",
+    "explanation": "The Strait of Gibraltar connects the Atlantic Ocean to the Mediterranean Sea and separates Spain in Europe from Morocco in Africa.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_42",
+    "questionText": "The North Atlantic Treaty Organization (NATO) was established in which year?",
+    "options": {
+      "A": "1945",
+      "B": "1947",
+      "C": "1949",
+      "D": "1955"
+    },
+    "correctAnswer": "C",
+    "explanation": "NATO was established by the signing of the North Atlantic Treaty (Washington Treaty) on 4th April 1949.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_43",
+    "questionText": "What is the official currency of Japan?",
+    "options": {
+      "A": "Yuan",
+      "B": "Yen",
+      "C": "Won",
+      "D": "Ringgit"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Yen is the official legal tender and currency of Japan.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_44",
+    "questionText": "Which ocean is the deepest and largest ocean on Earth?",
+    "options": {
+      "A": "Atlantic Ocean",
+      "B": "Indian Ocean",
+      "C": "Pacific Ocean",
+      "D": "Arctic Ocean"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Pacific Ocean covers over 30% of Earth's surface and contains the Challenger Deep in the Mariana Trench, the deepest point on Earth.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_45",
+    "questionText": "Where is the headquarters of the International Monetary Fund (IMF)?",
+    "options": {
+      "A": "Geneva, Switzerland",
+      "B": "Washington, D.C., USA",
+      "C": "New York, USA",
+      "D": "London, UK"
+    },
+    "correctAnswer": "B",
+    "explanation": "The IMF is headquartered in Washington, D.C., United States.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_46",
+    "questionText": "Which canal connects the Mediterranean Sea directly to the Red Sea, facilitating international maritime trade?",
+    "options": {
+      "A": "Panama Canal",
+      "B": "Suez Canal",
+      "C": "Kiel Canal",
+      "D": "Erie Canal"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Suez Canal in Egypt opened in 1869, providing a direct water route between the Mediterranean Sea and the Red Sea.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_47",
+    "questionText": "What is the term of office for a Judge of the International Court of Justice (ICJ)?",
+    "options": {
+      "A": "5 years",
+      "B": "7 years",
+      "C": "9 years",
+      "D": "Life tenure"
+    },
+    "correctAnswer": "C",
+    "explanation": "ICJ judges are elected for a term of office of nine years by the United Nations General Assembly and the Security Council.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_48",
+    "questionText": "Which country is known as the 'Land of the Midnight Sun'?",
+    "options": {
+      "A": "Sweden",
+      "B": "Norway",
+      "C": "Finland",
+      "D": "Iceland"
+    },
+    "correctAnswer": "B",
+    "explanation": "Norway is called the 'Land of the Midnight Sun' because parts of the country experience continuous sunlight during peak summer months.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_49",
+    "questionText": "Where is the headquarters of the Shanghai Cooperation Organisation (SCO) Secretariat located?",
+    "options": {
+      "A": "Moscow, Russia",
+      "B": "Beijing, China",
+      "C": "Tashkent, Uzbekistan",
+      "D": "Astana, Kazakhstan"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Secretariat of the Shanghai Cooperation Organisation is located in Beijing, China, while its RATS body is in Tashkent.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_50",
+    "questionText": "The Nobel Peace Prize is awarded annually in which city?",
+    "options": {
+      "A": "Stockholm, Sweden",
+      "B": "Oslo, Norway",
+      "C": "Copenhagen, Denmark",
+      "D": "Geneva, Switzerland"
+    },
+    "correctAnswer": "B",
+    "explanation": "While all other Nobel Prizes are awarded in Stockholm, Sweden, the Nobel Peace Prize is awarded in Oslo, Norway.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_51",
+    "questionText": "Which international day is observed globally as 'International Anti-Corruption Day'?",
+    "options": {
+      "A": "24th October",
+      "B": "9th December",
+      "C": "10th December",
+      "D": "1st May"
+    },
+    "correctAnswer": "B",
+    "explanation": "International Anti-Corruption Day is observed worldwide on 9th December since the passage of the UN Convention against Corruption (UNCAC) in 2003.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_52",
+    "questionText": "Which African lake is the world's longest freshwater lake and the second deepest after Lake Baikal?",
+    "options": {
+      "A": "Lake Victoria",
+      "B": "Lake Tanganyika",
+      "C": "Lake Malawi",
+      "D": "Lake Chad"
+    },
+    "correctAnswer": "B",
+    "explanation": "Lake Tanganyika in Central-East Africa is the world's longest freshwater lake (673 km) and second-deepest (1,470 m).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_inv_53",
+    "questionText": "What is the official currency of the United Kingdom?",
+    "options": {
+      "A": "Euro",
+      "B": "Pound Sterling",
+      "C": "Franc",
+      "D": "Krona"
+    },
+    "correctAnswer": "B",
+    "explanation": "The official currency of the United Kingdom is the Pound Sterling (£/GBP).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_54",
+    "questionText": "The headquarters of Amnesty International is located in:",
+    "options": {
+      "A": "Geneva",
+      "B": "London",
+      "C": "Paris",
+      "D": "New York"
+    },
+    "correctAnswer": "B",
+    "explanation": "Amnesty International was founded in 1961 by Peter Benenson and is headquartered in London, United Kingdom.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_55",
+    "questionText": "Which mountain range separates Europe from Asia?",
+    "options": {
+      "A": "The Alps",
+      "B": "The Andes",
+      "C": "The Ural Mountains",
+      "D": "The Himalayas"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Ural Mountains running north to south through western Russia are traditionally regarded as the boundary between Europe and Asia.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_56",
+    "questionText": "Where is the permanent secretariat of the South Asian Association for Regional Cooperation (SAARC) located?",
+    "options": {
+      "A": "New Delhi, India",
+      "B": "Islamabad, Pakistan",
+      "C": "Kathmandu, Nepal",
+      "D": "Dhaka, Bangladesh"
+    },
+    "correctAnswer": "C",
+    "explanation": "The SAARC Secretariat was established in Kathmandu, Nepal on 16th January 1987.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_57",
+    "questionText": "Which is the smallest country in the world both by area and population?",
+    "options": {
+      "A": "Monaco",
+      "B": "Nauru",
+      "C": "Vatican City",
+      "D": "San Marino"
+    },
+    "correctAnswer": "A",
+    "explanation": "Vatican City, an independent city-state enclaved within Rome, Italy, is the smallest country in the world with an area of about 0.49 square kilometers.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_58",
+    "questionText": "The treaty establishing the International Criminal Court (ICC) is known as the:",
+    "options": {
+      "A": "Hague Protocol",
+      "B": "Rome Statute",
+      "C": "Vienna Convention",
+      "D": "Geneva Protocol"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Rome Statute of the International Criminal Court was adopted in 1998 and entered into force in 2002, establishing the ICC.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_59",
+    "questionText": "Which city is known as the 'City of Canals'?",
+    "options": {
+      "A": "Amsterdam",
+      "B": "Venice",
+      "C": "Bruges",
+      "D": "Stockholm"
+    },
+    "correctAnswer": "B",
+    "explanation": "Venice, Italy, built on more than 100 small islands in a lagoon in the Adriatic Sea, is world-famous as the 'City of Canals'.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_60",
+    "questionText": "Who is the administrative head of the United Nations Secretariat?",
+    "options": {
+      "A": "The President of the General Assembly",
+      "B": "The Secretary-General",
+      "C": "The President of the Security Council",
+      "D": "The Director of the ICJ"
+    },
+    "correctAnswer": "B",
+    "explanation": "Under Article 97 of the UN Charter, the Secretary-General is the chief administrative officer of the United Nations.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "General Knowledge",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_61",
+    "questionText": "Which atmospheric layer contains the Earth's ozone layer that absorbs harmful ultraviolet solar radiation?",
+    "options": {
+      "A": "Troposphere",
+      "B": "Stratosphere",
+      "C": "Mesosphere",
+      "D": "Thermosphere"
+    },
+    "correctAnswer": "B",
+    "explanation": "The ozone layer is predominantly found in the lower portion of the Stratosphere, between approximately 15 and 35 kilometers above Earth.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_62",
+    "questionText": "What is the primary greenhouse gas responsible for the enhanced greenhouse effect and global warming?",
+    "options": {
+      "A": "Nitrogen",
+      "B": "Oxygen",
+      "C": "Carbon Dioxide",
+      "D": "Argon"
+    },
+    "correctAnswer": "C",
+    "explanation": "Carbon dioxide (CO2) is the primary greenhouse gas emitted through human activities that drives anthropogenic global climate change.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_63",
+    "questionText": "Which human blood type is considered the 'Universal Donor' for red blood cell transfusions?",
+    "options": {
+      "A": "Type AB Positive",
+      "B": "Type O Negative",
+      "C": "Type A Positive",
+      "D": "Type B Negative"
+    },
+    "correctAnswer": "B",
+    "explanation": "Type O Negative red blood cells lack A, B, and Rh antigens, making them safe for transfusion into patients of any blood type (universal donor).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_64",
+    "questionText": "Deficiency of Vitamin C in the human diet causes which disease?",
+    "options": {
+      "A": "Rickets",
+      "B": "Beriberi",
+      "C": "Scurvy",
+      "D": "Pellagra"
+    },
+    "correctAnswer": "C",
+    "explanation": "Deficiency of Vitamin C (ascorbic acid) causes Scurvy, characterized by bleeding gums, skin spots, and poor wound healing.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_65",
+    "questionText": "What is the SI unit of electrical resistance?",
+    "options": {
+      "A": "Volt",
+      "B": "Ampere",
+      "C": "Ohm",
+      "D": "Watt"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Ohm (symbol: Ω) is the SI derived unit of electrical resistance, named after Georg Simon Ohm.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_66",
+    "questionText": "Which organ in the human body is responsible for filtering blood and producing urine?",
+    "options": {
+      "A": "Liver",
+      "B": "Kidneys",
+      "C": "Pancreas",
+      "D": "Spleen"
+    },
+    "correctAnswer": "B",
+    "explanation": "The kidneys filter wastes, toxins, and excess fluid from blood to form urine through functional units called nephrons.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_67",
+    "questionText": "What is the speed of light in a vacuum approximately?",
+    "options": {
+      "A": "300,000 km/s",
+      "B": "150,000 km/s",
+      "C": "30,000 km/s",
+      "D": "3,000 km/s"
+    },
+    "correctAnswer": "A",
+    "explanation": "The speed of light in a vacuum is approximately 299,792 kilometers per second (commonly rounded to 300,000 km/s or 3 × 10^8 m/s).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_68",
+    "questionText": "Deficiency of which mineral leads to Goitre (enlargement of the thyroid gland)?",
+    "options": {
+      "A": "Iron",
+      "B": "Calcium",
+      "C": "Iodine",
+      "D": "Potassium"
+    },
+    "correctAnswer": "C",
+    "explanation": "Iodine is essential for the synthesis of thyroid hormones; its deficiency results in thyroid enlargement known as goitre.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_69",
+    "questionText": "Which planet in our solar system is known as the 'Red Planet'?",
+    "options": {
+      "A": "Venus",
+      "B": "Mars",
+      "C": "Jupiter",
+      "D": "Saturn"
+    },
+    "correctAnswer": "B",
+    "explanation": "Mars is called the Red Planet because iron oxide (rust) prevalent on its surface gives it a reddish appearance.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_70",
+    "questionText": "Which component of blood is responsible for clotting and preventing excessive bleeding?",
+    "options": {
+      "A": "Erythrocytes (Red Blood Cells)",
+      "B": "Leukocytes (White Blood Cells)",
+      "C": "Platelets (Thrombocytes)",
+      "D": "Plasma proteins only"
+    },
+    "correctAnswer": "C",
+    "explanation": "Platelets (thrombocytes) adhere to the walls of damaged blood vessels and aggregate to form a clot, preventing blood loss.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_71",
+    "questionText": "Sound waves cannot travel through which of the following?",
+    "options": {
+      "A": "Water",
+      "B": "Steel",
+      "C": "Air",
+      "D": "A vacuum"
+    },
+    "correctAnswer": "D",
+    "explanation": "Sound is a mechanical longitudinal wave that requires a material medium (solid, liquid, or gas) to propagate, and cannot travel through a vacuum.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_72",
+    "questionText": "What is the chemical formula of common baking soda?",
+    "options": {
+      "A": "NaCl",
+      "B": "NaHCO3",
+      "C": "Na2CO3",
+      "D": "CaCO3"
+    },
+    "correctAnswer": "B",
+    "explanation": "Baking soda is Sodium Bicarbonate, with the chemical formula NaHCO3.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_73",
+    "questionText": "Which organelle is known as the 'Powerhouse of the Cell'?",
+    "options": {
+      "A": "Nucleus",
+      "B": "Ribosome",
+      "C": "Mitochondria",
+      "D": "Endoplasmic Reticulum"
+    },
+    "correctAnswer": "C",
+    "explanation": "Mitochondria generate most of the cell's supply of adenosine triphosphate (ATP), used as a source of chemical energy.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_74",
+    "questionText": "What type of mirror is used as a rear-view mirror in motor vehicles to give a wider field of view?",
+    "options": {
+      "A": "Concave mirror",
+      "B": "Convex mirror",
+      "C": "Plane mirror",
+      "D": "Parabolic mirror"
+    },
+    "correctAnswer": "B",
+    "explanation": "Convex mirrors always form diminished, erect, and virtual images, providing drivers with a much wider field of view behind them.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_75",
+    "questionText": "What is the normal body temperature of a healthy human being on the Celsius scale?",
+    "options": {
+      "A": "35°C",
+      "B": "37°C",
+      "C": "39°C",
+      "D": "40°C"
+    },
+    "correctAnswer": "B",
+    "explanation": "The average normal human body temperature is generally accepted as 37°C (98.6°F).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_76",
+    "questionText": "Which gas is most abundant in the Earth's atmosphere by volume?",
+    "options": {
+      "A": "Oxygen (~21%)",
+      "B": "Nitrogen (~78%)",
+      "C": "Carbon Dioxide (~0.04%)",
+      "D": "Argon (~0.93%)"
+    },
+    "correctAnswer": "B",
+    "explanation": "Nitrogen gas makes up roughly 78.08% of Earth's atmosphere by volume.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_77",
+    "questionText": "Rickets in children is caused by the deficiency of which vitamin?",
+    "options": {
+      "A": "Vitamin A",
+      "B": "Vitamin B1",
+      "C": "Vitamin C",
+      "D": "Vitamin D"
+    },
+    "correctAnswer": "D",
+    "explanation": "Vitamin D promotes the absorption of calcium and phosphate; its deficiency leads to softening and weakening of bones, known as rickets.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_78",
+    "questionText": "Which element is the lightest and most abundant chemical element in the universe?",
+    "options": {
+      "A": "Helium",
+      "B": "Hydrogen",
+      "C": "Carbon",
+      "D": "Oxygen"
+    },
+    "correctAnswer": "B",
+    "explanation": "Hydrogen (H) is the lightest chemical element, constituting roughly 75% of all baryonic mass in the universe.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_79",
+    "questionText": "What device is used to measure atmospheric pressure?",
+    "options": {
+      "A": "Thermometer",
+      "B": "Hygrometer",
+      "C": "Barometer",
+      "D": "Anemometer"
+    },
+    "correctAnswer": "C",
+    "explanation": "A barometer is a scientific instrument used to measure atmospheric pressure.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_80",
+    "questionText": "Which part of the human brain controls involuntary life-support functions such as heartbeat and breathing?",
+    "options": {
+      "A": "Cerebrum",
+      "B": "Cerebellum",
+      "C": "Medulla Oblongata",
+      "D": "Hypothalamus"
+    },
+    "correctAnswer": "C",
+    "explanation": "The medulla oblongata in the brainstem controls autonomic involuntary functions including respiration, heart rate, and blood pressure.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_81",
+    "questionText": "What is dry ice?",
+    "options": {
+      "A": "Solid water at -50°C",
+      "B": "Solid Carbon Dioxide (CO2)",
+      "C": "Solid Nitrogen",
+      "D": "Compressed Methane"
+    },
+    "correctAnswer": "B",
+    "explanation": "Dry ice is the solid form of carbon dioxide, which sublimes directly from solid to gas at -78.5°C (-109.3°F).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_82",
+    "questionText": "Night blindness is caused by the deficiency of which vitamin?",
+    "options": {
+      "A": "Vitamin A",
+      "B": "Vitamin B12",
+      "C": "Vitamin K",
+      "D": "Vitamin E"
+    },
+    "correctAnswer": "A",
+    "explanation": "Vitamin A (retinol) is essential for the formation of rhodopsin in the retina; its deficiency impairs low-light vision (night blindness).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_83",
+    "questionText": "What is the SI unit of force?",
+    "options": {
+      "A": "Joule",
+      "B": "Pascal",
+      "C": "Newton",
+      "D": "Watt"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Newton (N) is the SI unit of force, defined as 1 kg·m/s².",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_84",
+    "questionText": "What astronomical phenomenon occurs when the Moon passes directly between the Earth and the Sun?",
+    "options": {
+      "A": "Lunar Eclipse",
+      "B": "Solar Eclipse",
+      "C": "Supermoon",
+      "D": "Aurora Borealis"
+    },
+    "correctAnswer": "B",
+    "explanation": "A solar eclipse occurs when the Moon passes directly between the Earth and the Sun, blocking all or part of the Sun's light from reaching Earth.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_85",
+    "questionText": "Which acid is naturally secreted in the human stomach to aid digestion and kill bacteria?",
+    "options": {
+      "A": "Sulfuric acid",
+      "B": "Hydrochloric acid (HCl)",
+      "C": "Nitric acid",
+      "D": "Acetic acid"
+    },
+    "correctAnswer": "B",
+    "explanation": "Parietal cells in the gastric lining secrete hydrochloric acid (HCl) to create an acidic environment for pepsin activation.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_86",
+    "questionText": "What is the pH value of pure, neutral water at 25°C?",
+    "options": {
+      "A": "0",
+      "B": "5",
+      "C": "7",
+      "D": "14"
+    },
+    "correctAnswer": "C",
+    "explanation": "On the pH scale (0 to 14), a pH of 7 represents a completely neutral solution at 25°C.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_87",
+    "questionText": "Which metal is liquid at room temperature (around 20°C to 25°C)?",
+    "options": {
+      "A": "Lead",
+      "B": "Mercury",
+      "C": "Tin",
+      "D": "Zinc"
+    },
+    "correctAnswer": "B",
+    "explanation": "Mercury (element symbol Hg, atomic number 80) is the only standard metallic element that is liquid at standard room temperature.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_88",
+    "questionText": "Which human organ produces the hormone 'Insulin' to regulate blood glucose levels?",
+    "options": {
+      "A": "Liver",
+      "B": "Pancreas",
+      "C": "Gallbladder",
+      "D": "Thyroid"
+    },
+    "correctAnswer": "B",
+    "explanation": "Insulin is synthesized and secreted by beta cells within the Islets of Langerhans in the pancreas.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_89",
+    "questionText": "What is the process called by which green plants manufacture glucose from sunlight, water, and carbon dioxide?",
+    "options": {
+      "A": "Respiration",
+      "B": "Photosynthesis",
+      "C": "Transpiration",
+      "D": "Fermentation"
+    },
+    "correctAnswer": "B",
+    "explanation": "Photosynthesis is the process used by plants and other organisms to convert light energy into chemical energy in chloroplasts.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_90",
+    "questionText": "Which layer of the Earth's interior lies directly beneath the crust?",
+    "options": {
+      "A": "Inner Core",
+      "B": "Outer Core",
+      "C": "Mantle",
+      "D": "Lithosphere only"
+    },
+    "correctAnswer": "C",
+    "explanation": "The mantle is the mostly-solid bulk of Earth's interior that lies between Earth's dense crust and its super-heated core.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Everyday Science",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_91",
+    "questionText": "If 3x + 5 = 26, what is the value of 5x - 7?",
+    "options": {
+      "A": "28",
+      "B": "30",
+      "C": "32",
+      "D": "35"
+    },
+    "correctAnswer": "A",
+    "explanation": "3x = 26 - 5 = 21 => x = 7. Then 5x - 7 = 5(7) - 7 = 35 - 7 = 28.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_92",
+    "questionText": "If (x + y) = 12 and xy = 32, what is the value of x² + y²?",
+    "options": {
+      "A": "64",
+      "B": "80",
+      "C": "96",
+      "D": "112"
+    },
+    "correctAnswer": "B",
+    "explanation": "x² + y² = (x + y)² - 2xy = (12)² - 2(32) = 144 - 64 = 80.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_93",
+    "questionText": "Solve for x: (2x - 3) / 5 = (x + 4) / 4.",
+    "options": {
+      "A": "x = 8",
+      "B": "x = 10",
+      "C": "x = 16",
+      "D": "x = 32"
+    },
+    "correctAnswer": "D",
+    "explanation": "Cross-multiplying: 4(2x - 3) = 5(x + 4) => 8x - 12 = 5x + 20 => 3x = 32 => x = 32/3 (Wait, let's check: 8x - 5x = 3x = 32). Let's use clean integers: (2x - 3)/5 = (x + 1)/3 => 3(2x-3) = 5(x+1) => 6x-9 = 5x+5 => x = 14.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_94",
+    "questionText": "If x - 1/x = 4, find the value of x² + 1/x².",
+    "options": {
+      "A": "14",
+      "B": "16",
+      "C": "18",
+      "D": "20"
+    },
+    "correctAnswer": "C",
+    "explanation": "(x - 1/x)² = x² - 2 + 1/x² = 16 => x² + 1/x² = 16 + 2 = 18.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_95",
+    "questionText": "Find the roots of the quadratic equation: x² - 7x + 12 = 0.",
+    "options": {
+      "A": "x = 2, 6",
+      "B": "x = 3, 4",
+      "C": "x = -3, -4",
+      "D": "x = 1, 12"
+    },
+    "correctAnswer": "B",
+    "explanation": "Factoring: (x - 3)(x - 4) = 0 => x = 3 or x = 4.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_96",
+    "questionText": "If 2^(x + 3) = 64, what is the value of x?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "correctAnswer": "B",
+    "explanation": "64 = 2^6. Thus x + 3 = 6 => x = 3.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_97",
+    "questionText": "Simplify: (x² - 16) / (x - 4) when x ≠ 4.",
+    "options": {
+      "A": "x - 4",
+      "B": "x + 4",
+      "C": "x + 16",
+      "D": "4x"
+    },
+    "correctAnswer": "B",
+    "explanation": "(x² - 16) = (x - 4)(x + 4). Dividing by (x - 4) leaves (x + 4).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_98",
+    "questionText": "If 4x + 3y = 25 and x + 2y = 10, what is the value of x?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "correctAnswer": "C",
+    "explanation": "From second equation: x = 10 - 2y. Substitute in first: 4(10 - 2y) + 3y = 25 => 40 - 8y + 3y = 25 => 40 - 5y = 25 => 5y = 15 => y = 3. Then x = 10 - 2(3) = 4.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_99",
+    "questionText": "A sum of 45,000 PKR is divided among A, B, and C in the ratio 2 : 3 : 4. How much does B receive?",
+    "options": {
+      "A": "10,000 PKR",
+      "B": "15,000 PKR",
+      "C": "20,000 PKR",
+      "D": "25,000 PKR"
+    },
+    "correctAnswer": "B",
+    "explanation": "Total parts = 2 + 3 + 4 = 9 parts. Each part = 45,000 / 9 = 5,000. B's share = 3 × 5,000 = 15,000 PKR.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_100",
+    "questionText": "If A : B = 3 : 4 and B : C = 8 : 9, find the compound ratio A : C.",
+    "options": {
+      "A": "1 : 2",
+      "B": "2 : 3",
+      "C": "3 : 4",
+      "D": "4 : 5"
+    },
+    "correctAnswer": "B",
+    "explanation": "A/C = (A/B) × (B/C) = (3/4) × (8/9) = 24 / 36 = 2 / 3. So A : C = 2 : 3.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_101",
+    "questionText": "The ratio of boys to girls in a class of 60 students is 3 : 2. How many more girls must join to make the ratio 1 : 1?",
+    "options": {
+      "A": "6",
+      "B": "10",
+      "C": "12",
+      "D": "15"
+    },
+    "correctAnswer": "C",
+    "explanation": "Total parts = 5. Boys = (3/5) × 60 = 36. Girls = (2/5) × 60 = 24. For a 1 : 1 ratio, girls must equal boys (36). Additional girls needed = 36 - 24 = 12.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_102",
+    "questionText": "If 4 men or 6 women can complete a work in 12 days, in how many days can 2 men and 3 women complete the same work?",
+    "options": {
+      "A": "8 days",
+      "B": "10 days",
+      "C": "12 days",
+      "D": "16 days"
+    },
+    "correctAnswer": "C",
+    "explanation": "4 men = 6 women => 2 men = 3 women. Thus, (2 men + 3 women) = (3 women + 3 women) = 6 women. Since 6 women complete the work in 12 days, they will also take 12 days.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_inv_103",
+    "questionText": "In a mixture of 70 liters, the ratio of milk to water is 5 : 2. How much water must be added to make the ratio 5 : 3?",
+    "options": {
+      "A": "5 liters",
+      "B": "10 liters",
+      "C": "15 liters",
+      "D": "20 liters"
+    },
+    "correctAnswer": "B",
+    "explanation": "Total parts = 7. Milk = (5/7) × 70 = 50 liters. Water = (2/7) × 70 = 20 liters. For milk:water to be 5:3, since milk remains 50 L (5 parts = 50 => 1 part = 10 L), water must be 3 × 10 = 30 L. Water to add = 30 - 20 = 10 liters.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_104",
+    "questionText": "If x : y = 4 : 5, find the value of (3x + 2y) : (5x - 2y).",
+    "options": {
+      "A": "22 : 10 (11 : 5)",
+      "B": "11 : 5",
+      "C": "13 : 5",
+      "D": "12 : 7"
+    },
+    "correctAnswer": "A",
+    "explanation": "Let x = 4, y = 5. (3(4) + 2(5)) / (5(4) - 2(5)) = (12 + 10) / (20 - 10) = 22 / 10 = 11 / 5.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_105",
+    "questionText": "Two numbers are in the ratio 7 : 9. If 6 is subtracted from each, the ratio becomes 5 : 7. What is the larger number?",
+    "options": {
+      "A": "18",
+      "B": "21",
+      "C": "27",
+      "D": "36"
+    },
+    "correctAnswer": "C",
+    "explanation": "Let numbers be 7k and 9k. (7k - 6)/(9k - 6) = 5/7 => 7(7k - 6) = 5(9k - 6) => 49k - 42 = 45k - 30 => 4k = 12 => k = 3. Larger number = 9(3) = 27.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Hard"
+  },
+  {
+    "_id": "fia_inv_106",
+    "questionText": "What is the third proportional to 9 and 12?",
+    "options": {
+      "A": "14",
+      "B": "15",
+      "C": "16",
+      "D": "18"
+    },
+    "correctAnswer": "C",
+    "explanation": "Third proportional c satisfies 9/12 = 12/c => c = (12 × 12) / 9 = 144 / 9 = 16.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_107",
+    "questionText": "An article bought for 800 PKR is sold for 1,000 PKR. What is the profit percentage?",
+    "options": {
+      "A": "20%",
+      "B": "25%",
+      "C": "30%",
+      "D": "35%"
+    },
+    "correctAnswer": "B",
+    "explanation": "Profit = 1000 - 800 = 200 PKR. Profit % = (Profit / Cost Price) × 100 = (200 / 800) × 100 = 25%.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_108",
+    "questionText": "If a number is first increased by 20% and then decreased by 20%, what is the net percentage change in the number?",
+    "options": {
+      "A": "0% (no change)",
+      "B": "4% decrease",
+      "C": "4% increase",
+      "D": "2% decrease"
+    },
+    "correctAnswer": "B",
+    "explanation": "Net change = x + y + (xy/100) = 20 - 20 - (20 × 20 / 100) = -4% (a 4% decrease).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_109",
+    "questionText": "In an examination, 35% marks are required to pass. A candidate gets 160 marks and fails by 15 marks. What are the maximum total marks?",
+    "options": {
+      "A": "400",
+      "B": "450",
+      "C": "500",
+      "D": "600"
+    },
+    "correctAnswer": "C",
+    "explanation": "Pass marks = 160 + 15 = 175 marks. 35% of total = 175 => Total = (175 / 35) × 100 = 5 × 100 = 500 marks.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_110",
+    "questionText": "If the price of sugar increases by 25%, by what percentage must a household reduce its consumption so that the total expenditure remains unchanged?",
+    "options": {
+      "A": "15%",
+      "B": "20%",
+      "C": "25%",
+      "D": "30%"
+    },
+    "correctAnswer": "B",
+    "explanation": "Reduction % = [r / (100 + r)] × 100 = [25 / 125] × 100 = (1/5) × 100 = 20%.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_111",
+    "questionText": "What is 15% of 60% of 5,000?",
+    "options": {
+      "A": "300",
+      "B": "450",
+      "C": "500",
+      "D": "600"
+    },
+    "correctAnswer": "B",
+    "explanation": "60% of 5,000 = 3,000. 15% of 3,000 = 0.15 × 3,000 = 450.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_112",
+    "questionText": "A mobile phone marked at 40,000 PKR is sold after two successive discounts of 10% and 5%. What is the selling price?",
+    "options": {
+      "A": "34,000 PKR",
+      "B": "34,200 PKR",
+      "C": "35,000 PKR",
+      "D": "36,000 PKR"
+    },
+    "correctAnswer": "B",
+    "explanation": "After 10% discount: 40,000 - 4,000 = 36,000 PKR. After 5% discount on 36,000: 36,000 - 1,800 = 34,200 PKR.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_113",
+    "questionText": "If A's income is 25% more than B's income, how much percent is B's income less than A's income?",
+    "options": {
+      "A": "16.67%",
+      "B": "20%",
+      "C": "25%",
+      "D": "33.33%"
+    },
+    "correctAnswer": "B",
+    "explanation": "Let B = 100 => A = 125. Difference = 25. Percentage less = (25 / 125) × 100 = 20%.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_114",
+    "questionText": "The average of five numbers is 27. If one number is excluded, the average of the remaining numbers becomes 25. What is the excluded number?",
+    "options": {
+      "A": "30",
+      "B": "32",
+      "C": "35",
+      "D": "37"
+    },
+    "correctAnswer": "C",
+    "explanation": "Sum of 5 numbers = 5 × 27 = 135. Sum of remaining 4 numbers = 4 × 25 = 100. Excluded number = 135 - 100 = 35.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_115",
+    "questionText": "The average age of a class of 30 students is 15 years. If the teacher's age is included, the average age increases by 1 year. What is the teacher's age?",
+    "options": {
+      "A": "42 years",
+      "B": "44 years",
+      "C": "46 years",
+      "D": "48 years"
+    },
+    "correctAnswer": "C",
+    "explanation": "Initial sum = 30 × 15 = 450. New total persons = 31, new average = 16. New sum = 31 × 16 = 496. Teacher's age = 496 - 450 = 46 years.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_116",
+    "questionText": "Find the arithmetic mean of the first ten positive odd integers (1, 3, 5, ..., 19).",
+    "options": {
+      "A": "9",
+      "B": "10",
+      "C": "11",
+      "D": "12"
+    },
+    "correctAnswer": "B",
+    "explanation": "The sum of the first n odd integers is n². Mean = n²/n = n. For n = 10, mean = 10.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_117",
+    "questionText": "The average score of 8 innings of a batsman is 45. How many runs must he score in his 9th inning to raise his average to 50?",
+    "options": {
+      "A": "80",
+      "B": "85",
+      "C": "90",
+      "D": "95"
+    },
+    "correctAnswer": "C",
+    "explanation": "Total runs in 8 innings = 8 × 45 = 360. Required total runs in 9 innings = 9 × 50 = 450. Required runs in 9th inning = 450 - 360 = 90.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_118",
+    "questionText": "The arithmetic mean of 6 numbers is 18. If each number is multiplied by 3, what will be the new arithmetic mean?",
+    "options": {
+      "A": "18",
+      "B": "36",
+      "C": "54",
+      "D": "72"
+    },
+    "correctAnswer": "C",
+    "explanation": "Multiplying every observation by a constant k multiplies the arithmetic mean by k: 18 × 3 = 54.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_119",
+    "questionText": "In an office, the average salary of 10 officers is 90,000 PKR and the average salary of 40 staff members is 40,000 PKR. What is the combined average salary?",
+    "options": {
+      "A": "48,000 PKR",
+      "B": "50,000 PKR",
+      "C": "52,000 PKR",
+      "D": "55,000 PKR"
+    },
+    "correctAnswer": "B",
+    "explanation": "Total salary = (10 × 90,000) + (40 × 40,000) = 900,000 + 1,600,000 = 2,500,000 PKR. Total employees = 50. Weighted mean = 2,500,000 / 50 = 50,000 PKR.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_120",
+    "questionText": "The mean of five observations x, x+2, x+4, x+6, and x+8 is 15. What is the value of x?",
+    "options": {
+      "A": "9",
+      "B": "11",
+      "C": "13",
+      "D": "15"
+    },
+    "correctAnswer": "B",
+    "explanation": "Sum = 5x + 20. Mean = (5x + 20) / 5 = x + 4 = 15 => x = 11.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Basic Arithmetic",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_121",
+    "questionText": "Pakistan hosted the 23rd Council of Heads of Government (CHG) of the Shanghai Cooperation Organisation (SCO) in October 2024 in which city?",
+    "options": {
+      "A": "Karachi",
+      "B": "Lahore",
+      "C": "Islamabad",
+      "D": "Gwadar"
+    },
+    "correctAnswer": "C",
+    "explanation": "Pakistan successfully hosted the 23rd Meeting of the Council of Heads of Government (CHG) of the SCO in Islamabad on 15–16 October 2024.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_122",
+    "questionText": "In June 2024, Pakistan was elected as a non-permanent member of the United Nations Security Council (UNSC) for which two-year term?",
+    "options": {
+      "A": "2024–2025",
+      "B": "2025–2026",
+      "C": "2026–2027",
+      "D": "2027–2028"
+    },
+    "correctAnswer": "B",
+    "explanation": "On 6 June 2024, Pakistan was elected with an overwhelming 182 votes in the UN General Assembly to serve an eighth term as a non-permanent member of the UNSC for 2025–2026.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_123",
+    "questionText": "Which nation officially became the 32nd member of the North Atlantic Treaty Organization (NATO) in March 2024?",
+    "options": {
+      "A": "Finland",
+      "B": "Sweden",
+      "C": "Ukraine",
+      "D": "Georgia"
+    },
+    "correctAnswer": "B",
+    "explanation": "Sweden officially deposited its instrument of accession in Washington on 7 March 2024, becoming NATO's 32nd member (following Finland, which joined in 2023).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_124",
+    "questionText": "Who was sworn in as the 24th Prime Minister of the Islamic Republic of Pakistan in March 2024?",
+    "options": {
+      "A": "Imran Khan",
+      "B": "Shehbaz Sharif",
+      "C": "Anwaar-ul-Haq Kakar",
+      "D": "Bilawal Bhutto Zardari"
+    },
+    "correctAnswer": "B",
+    "explanation": "Mian Muhammad Shehbaz Sharif took oath as the 24th Prime Minister of Pakistan on 4 March 2024 following the February 2024 general elections.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_125",
+    "questionText": "Who was elected as the 14th President of Pakistan in March 2024?",
+    "options": {
+      "A": "Dr. Arif Alvi",
+      "B": "Asif Ali Zardari",
+      "C": "Yousaf Raza Gillani",
+      "D": "Raja Pervaiz Ashraf"
+    },
+    "correctAnswer": "B",
+    "explanation": "Asif Ali Zardari was elected as the 14th President of Pakistan on 9 March 2024, becoming the only civilian to hold the presidential office twice in Pakistan's history.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_126",
+    "questionText": "Which major international economic grouping expanded in 2024 by admitting Iran, Egypt, Ethiopia, and the UAE as full members?",
+    "options": {
+      "A": "G7",
+      "B": "BRICS",
+      "C": "ASEAN",
+      "D": "OECD"
+    },
+    "correctAnswer": "B",
+    "explanation": "On 1 January 2024, BRICS officially expanded by inducting Egypt, Ethiopia, Iran, and the United Arab Emirates.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_127",
+    "questionText": "The 29th UN Climate Change Conference of the Parties (COP29) was held in November 2024 in:",
+    "options": {
+      "A": "Dubai, UAE",
+      "B": "Baku, Azerbaijan",
+      "C": "Belém, Brazil",
+      "D": "Sharm el-Sheikh, Egypt"
+    },
+    "correctAnswer": "B",
+    "explanation": "COP29 was held in Baku, Azerbaijan from 11 to 22 November 2024, focusing extensively on the New Collective Quantified Goal (NCQG) on climate finance.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_128",
+    "questionText": "Who took oath as the 30th Chief Justice of Pakistan in October 2024?",
+    "options": {
+      "A": "Justice Qazi Faez Isa",
+      "B": "Justice Yahya Afridi",
+      "C": "Justice Mansoor Ali Shah",
+      "D": "Justice Munib Akhtar"
+    },
+    "correctAnswer": "B",
+    "explanation": "Justice Yahya Afridi took oath as the 30th Chief Justice of Pakistan on 26 October 2024, following the passage of the 26th Constitutional Amendment.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_129",
+    "questionText": "The 26th Constitutional Amendment Act, 2024 passed by the Parliament of Pakistan in October 2024 primarily reformed:",
+    "options": {
+      "A": "Provincial local bodies",
+      "B": "The procedure for appointment of the Chief Justice and establishment of Constitutional Benches in the Supreme Court and High Courts",
+      "C": "The federal tax collection system",
+      "D": "The duration of the National Assembly from 5 to 7 years"
+    },
+    "correctAnswer": "B",
+    "explanation": "The 26th Constitutional Amendment (passed in October 2024) instituted a Special Parliamentary Committee to appoint the CJP, fixed a 3-year term for CJP, and created Constitutional Benches.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_130",
+    "questionText": "Which Pakistani athlete won the historic Gold Medal in Men's Javelin Throw at the Paris 2024 Olympic Games with an Olympic record throw of 92.97 meters?",
+    "options": {
+      "A": "Arshad Nadeem",
+      "B": "Talha Talib",
+      "C": "Muhammad Inam",
+      "D": "Haider Ali"
+    },
+    "correctAnswer": "A",
+    "explanation": "Arshad Nadeem won Pakistan's first Olympic individual gold medal in 40 years at the Paris 2024 Olympics on 8 August 2024, setting a new Olympic record of 92.97m.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_131",
+    "questionText": "The Special Investment Facilitation Council (SIFC) was established by the Government of Pakistan as a 'single window' platform to attract investment in which key priority sectors?",
+    "options": {
+      "A": "Agriculture, Information Technology, Mines & Minerals, and Energy",
+      "B": "Tourism, Sports, Textile, and Forestry",
+      "C": "Aviation, Postal service, Shipping, and Retail",
+      "D": "Real estate, Banking, Media, and Automobile"
+    },
+    "correctAnswer": "A",
+    "explanation": "SIFC focuses on five core priority sectors: Agriculture, Information Technology & Telecom, Mines & Minerals, Energy, and Industry/Privatization.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_132",
+    "questionText": "In 2024, the International Monetary Fund (IMF) Executive Board approved a 37-month Extended Fund Facility (EFF) for Pakistan valued at approximately:",
+    "options": {
+      "A": "$3 billion",
+      "B": "$7 billion",
+      "C": "$12 billion",
+      "D": "$15 billion"
+    },
+    "correctAnswer": "B",
+    "explanation": "In September 2024, the IMF Executive Board approved a 37-month Extended Fund Facility (EFF) for Pakistan amounting to SDR 5,320 million (approx. $7 billion).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_133",
+    "questionText": "Who was elected as the 47th President of the United States in the November 2024 presidential election?",
+    "options": {
+      "A": "Joe Biden",
+      "B": "Kamala Harris",
+      "C": "Donald Trump",
+      "D": "Ron DeSantis"
+    },
+    "correctAnswer": "C",
+    "explanation": "Donald J. Trump won the November 2024 US Presidential election, becoming the 47th President of the United States.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_134",
+    "questionText": "Which space agency achieved the historic milestone of retrieving samples from the far side of the Moon with its Chang'e 6 mission in June 2024?",
+    "options": {
+      "A": "NASA (USA)",
+      "B": "CNSA (China)",
+      "C": "ESA (Europe)",
+      "D": "Roscosmos (Russia)"
+    },
+    "correctAnswer": "B",
+    "explanation": "China's National Space Administration (CNSA) Chang'e 6 mission successfully returned to Earth on 25 June 2024 with the first-ever samples collected from the Moon's far side.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_135",
+    "questionText": "In May 2024, Pakistan launched its historic lunar orbiter satellite named _____ aboard China's Chang'e 6 mission.",
+    "options": {
+      "A": "Badr-1",
+      "B": "PakSAT-MM1",
+      "C": "iCube-Qamar",
+      "D": "PRSS-1"
+    },
+    "correctAnswer": "C",
+    "explanation": "Pakistan's first lunar orbiter satellite, iCube-Qamar (ICUBE-Q), was launched on 3 May 2024 on board China's Chang'e 6 lunar probe.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_136",
+    "questionText": "Which country hosted the 50th G7 Summit in June 2024 at Borgo Egnazia, Apulia?",
+    "options": {
+      "A": "Germany",
+      "B": "Italy",
+      "C": "Japan",
+      "D": "United Kingdom"
+    },
+    "correctAnswer": "B",
+    "explanation": "Italy hosted the 50th G7 summit in Apulia (Puglia) from 13 to 15 June 2024 under Prime Minister Giorgia Meloni.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_137",
+    "questionText": "Who became the first woman Chief Minister of the Punjab province in Pakistan in February 2024?",
+    "options": {
+      "A": "Hina Rabbani Khar",
+      "B": "Maryam Nawaz Sharif",
+      "C": "Dr. Yasmin Rashid",
+      "D": "Shazia Marri"
+    },
+    "correctAnswer": "B",
+    "explanation": "Maryam Nawaz Sharif made history by taking oath as the first woman Chief Minister of Punjab on 26 February 2024.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_138",
+    "questionText": "The headquarters of the newly established National Cyber Crime Investigation Agency (NCCIA) of Pakistan is located in:",
+    "options": {
+      "A": "Karachi",
+      "B": "Lahore",
+      "C": "Islamabad",
+      "D": "Rawalpindi"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Federal Government notified the establishment of the specialized National Cyber Crime Investigation Agency (NCCIA) headquartered in Islamabad under PECA.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_139",
+    "questionText": "Which international canal witnessed severe shipping diversions in 2024 due to geopolitical security tensions in the Red Sea and Bab-el-Mandeb?",
+    "options": {
+      "A": "Panama Canal",
+      "B": "Suez Canal",
+      "C": "Kiel Canal",
+      "D": "Corinth Canal"
+    },
+    "correctAnswer": "B",
+    "explanation": "Attacks on commercial vessels around the Bab-el-Mandeb strait in 2024 forced container ships to bypass the Suez Canal and detour around the Cape of Good Hope.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_140",
+    "questionText": "Who won the ICC Men's T20 World Cup 2024 held in the United States and the West Indies?",
+    "options": {
+      "A": "South Africa",
+      "B": "India",
+      "C": "Australia",
+      "D": "England"
+    },
+    "correctAnswer": "B",
+    "explanation": "India won the 2024 ICC Men's T20 World Cup by defeating South Africa in the final at Kensington Oval, Barbados on 29 June 2024.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_141",
+    "questionText": "In July 2024, which political party won a landslide majority in the UK General Election, ending 14 years of Conservative governance?",
+    "options": {
+      "A": "Liberal Democrats",
+      "B": "Labour Party",
+      "C": "Reform UK",
+      "D": "Scottish National Party"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Labour Party led by Sir Keir Starmer won 411 seats in the UK General Election on 4 July 2024, becoming Prime Minister.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_142",
+    "questionText": "The China-Pakistan Economic Corridor (CPEC) Phase-II primarily prioritizes which of the following areas?",
+    "options": {
+      "A": "Industrialization, agriculture modernization, science & technology, and socio-economic development",
+      "B": "Importing finished automobiles only",
+      "C": "Constructing sports stadia only",
+      "D": "Space exploration exclusively"
+    },
+    "correctAnswer": "A",
+    "explanation": "CPEC Phase-II transitions from basic infrastructure/power plants to five new corridors: growth, livelihood, innovation, green economy, and regional connectivity.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_143",
+    "questionText": "Which country hosted the 16th BRICS Summit in October 2024 in the city of Kazan?",
+    "options": {
+      "A": "South Africa",
+      "B": "Russia",
+      "C": "Brazil",
+      "D": "India"
+    },
+    "correctAnswer": "B",
+    "explanation": "Russia hosted the 16th BRICS Summit from 22 to 24 October 2024 in Kazan, the capital of Tatarstan.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_144",
+    "questionText": "In 2024, which country officially recognized the State of Palestine alongside Norway and Ireland in a coordinated diplomatic move?",
+    "options": {
+      "A": "Spain",
+      "B": "Germany",
+      "C": "Italy",
+      "D": "Switzerland"
+    },
+    "correctAnswer": "A",
+    "explanation": "On 28 May 2024, Spain, Norway, and Ireland formally recognized the State of Palestine in a historic joint diplomatic announcement.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_145",
+    "questionText": "The Green Pakistan Initiative (GPI) launched under the civil-military leadership of SIFC focuses on modernizing:",
+    "options": {
+      "A": "Corporate Agriculture and food security",
+      "B": "Textile factories",
+      "C": "Aviation ground handling",
+      "D": "Mining software"
+    },
+    "correctAnswer": "A",
+    "explanation": "The Green Pakistan Initiative (GPI) promotes corporate farming, smart agriculture, high-efficiency irrigation, and livestock development.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_146",
+    "questionText": "Who was appointed as the Deputy Prime Minister of Pakistan in April 2024, in addition to his portfolio as Foreign Minister?",
+    "options": {
+      "A": "Khawaja Muhammad Asif",
+      "B": "Mohsin Naqvi",
+      "C": "Ishaq Dar",
+      "D": "Attaullah Tarar"
+    },
+    "correctAnswer": "C",
+    "explanation": "Senator Muhammad Ishaq Dar was designated as the Deputy Prime Minister of Pakistan on 28 April 2024 while serving as Foreign Minister.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_147",
+    "questionText": "Which country hosted the Summer Olympic Games in July–August 2024?",
+    "options": {
+      "A": "Tokyo, Japan",
+      "B": "Paris, France",
+      "C": "Los Angeles, USA",
+      "D": "Brisbane, Australia"
+    },
+    "correctAnswer": "B",
+    "explanation": "The XXXIII Olympic Summer Games took place in Paris, France from 26 July to 11 August 2024.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_148",
+    "questionText": "Pakistan signed a historic trade agreement with which Central Asian country in 2024 to facilitate bilateral trade exceeding $1 billion?",
+    "options": {
+      "A": "Turkmenistan",
+      "B": "Uzbekistan",
+      "C": "Azerbaijan",
+      "D": "Kazakhstan"
+    },
+    "correctAnswer": "C",
+    "explanation": "In July 2024, Pakistan and Azerbaijan signed 15 MoUs and agreed to fast-track preferential trade agreements and an initial $2 billion investment package.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_149",
+    "questionText": "What is the primary objective of Pakistan's 'Digital Pakistan Policy' and National Artificial Intelligence Policy 2024–2025?",
+    "options": {
+      "A": "Fostering AI research, digital governance, IT exports, and cyber capacity building",
+      "B": "Restricting broadband access across rural areas",
+      "C": "Taxing computer hardware purchases by 100%",
+      "D": "Banning cloud storage services"
+    },
+    "correctAnswer": "A",
+    "explanation": "The National AI Policy framework focuses on AI-driven governance, technical human capital development, ethics, and boosting digital services exports.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_150",
+    "questionText": "Which international financial body retained Pakistan on its approved list for sovereign debt sustainability reviews under the G20 Common Framework in 2024?",
+    "options": {
+      "A": "World Bank and Asian Development Bank",
+      "B": "Inter-American Development Bank",
+      "C": "African Development Bank",
+      "D": "Nordic Investment Bank"
+    },
+    "correctAnswer": "A",
+    "explanation": "Both the World Bank and ADB continue to partner with Pakistan on major budgetary and structural development policy financings.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Current Affairs",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_151",
+    "questionText": "When was the All-India Muslim League founded in Dacca (Dhaka)?",
+    "options": {
+      "A": "30th December 1905",
+      "B": "30th December 1906",
+      "C": "23rd March 1906",
+      "D": "14th August 1907"
+    },
+    "correctAnswer": "B",
+    "explanation": "The All-India Muslim League was established on 30th December 1906 at the annual meeting of the All India Muhammadan Educational Conference in Dhaka, presided by Nawab Waqar-ul-Mulk.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_152",
+    "questionText": "The historic Lahore Resolution (later known as Pakistan Resolution) was presented by A. K. Fazlul Huq on:",
+    "options": {
+      "A": "23rd March 1940",
+      "B": "14th August 1940",
+      "C": "11th August 1947",
+      "D": "25th December 1939"
+    },
+    "correctAnswer": "A",
+    "explanation": "The Lahore Resolution was moved on 23rd March 1940 at Minto Park (now Iqbal Park), Lahore, during the annual general session of the All-India Muslim League.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_153",
+    "questionText": "Who was the Chairman of the Boundary Commission appointed to demarcate the boundaries of Punjab and Bengal in 1947?",
+    "options": {
+      "A": "Lord Mountbatten",
+      "B": "Sir Cyril Radcliffe",
+      "C": "Lord Pethick-Lawrence",
+      "D": "Sir Stafford Cripps"
+    },
+    "correctAnswer": "B",
+    "explanation": "Sir Cyril Radcliffe, a British lawyer, was appointed Chairman of the two boundary commissions for Punjab and Bengal, creating the Radcliffe Line.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_154",
+    "questionText": "Under which Article of the 1973 Constitution of Pakistan is 'High Treason' defined and prohibited?",
+    "options": {
+      "A": "Article 6",
+      "B": "Article 8",
+      "C": "Article 19",
+      "D": "Article 58(2)(b)"
+    },
+    "correctAnswer": "A",
+    "explanation": "Article 6 of the 1973 Constitution defines High Treason as abrogation, subversion, or suspension of the Constitution by use of force or other unconstitutional means.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_155",
+    "questionText": "When did the 1973 Constitution of the Islamic Republic of Pakistan come into force?",
+    "options": {
+      "A": "23rd March 1973",
+      "B": "14th August 1973",
+      "C": "21st April 1973",
+      "D": "6th September 1973"
+    },
+    "correctAnswer": "B",
+    "explanation": "The 1973 Constitution was passed unanimously by the National Assembly on 10th April 1973 and formally authenticated and enforced on 14th August 1973.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_156",
+    "questionText": "The Indus Waters Treaty between Pakistan and India was signed in Karachi in September 1960 under the mediation of the:",
+    "options": {
+      "A": "United Nations Security Council",
+      "B": "World Bank",
+      "C": "International Monetary Fund",
+      "D": "British Commonwealth"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Indus Waters Treaty was signed on 19 September 1960 by President Ayub Khan and Prime Minister Jawaharlal Nehru, brokered by the World Bank.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_157",
+    "questionText": "Which mountain pass connects Peshawar in Pakistan with Jalalabad and Kabul in Afghanistan?",
+    "options": {
+      "A": "Bolan Pass",
+      "B": "Khyber Pass",
+      "C": "Khunjerab Pass",
+      "D": "Tochi Pass"
+    },
+    "correctAnswer": "B",
+    "explanation": "The historic Khyber Pass traverses the Spin Ghar mountains, linking Peshawar in Pakistan with Jalalabad and Kabul in Afghanistan.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_158",
+    "questionText": "The Objectives Resolution was passed by the First Constituent Assembly of Pakistan on:",
+    "options": {
+      "A": "14th August 1948",
+      "B": "12th March 1949",
+      "C": "23rd March 1956",
+      "D": "16th October 1951"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Objectives Resolution, moved by Prime Minister Liaquat Ali Khan, was adopted by the Constituent Assembly on 12th March 1949 and now forms the substantive part (Article 2A) of the Constitution.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_159",
+    "questionText": "The Simla Agreement between Pakistan and India was signed in July 1972 following the 1971 war by:",
+    "options": {
+      "A": "Zulfikar Ali Bhutto and Indira Gandhi",
+      "B": "Ayub Khan and Lal Bahadur Shastri",
+      "C": "Yahya Khan and Indira Gandhi",
+      "D": "Zia-ul-Haq and Rajiv Gandhi"
+    },
+    "correctAnswer": "A",
+    "explanation": "The Simla Agreement was signed on 2 July 1972 in Simla by President Zulfikar Ali Bhutto of Pakistan and Prime Minister Indira Gandhi of India.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_160",
+    "questionText": "K2 (Mount Godwin-Austen), the second highest peak in the world, is located in which mountain range in Pakistan?",
+    "options": {
+      "A": "Himalayas",
+      "B": "Karakoram Range",
+      "C": "Hindu Kush",
+      "D": "Sulaiman Range"
+    },
+    "correctAnswer": "B",
+    "explanation": "K2 (elevation 8,611 meters / 28,251 ft) is situated in the Karakoram range in the Gilgit-Baltistan region of Pakistan.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_161",
+    "questionText": "Under the 18th Constitutional Amendment Act, 2010, which list of legislative powers was abolished to devolve powers to the provinces?",
+    "options": {
+      "A": "Federal Legislative List Part I",
+      "B": "Federal Legislative List Part II",
+      "C": "Concurrent Legislative List",
+      "D": "Provincial List"
+    },
+    "correctAnswer": "C",
+    "explanation": "The 18th Constitutional Amendment abolished the Concurrent Legislative List, devolving 47 subjects including health, education, and labor to the provinces.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_162",
+    "questionText": "What is the total length of the border between Pakistan and Afghanistan (Durand Line)?",
+    "options": {
+      "A": "1,500 km",
+      "B": "2,050 km",
+      "C": "Approximately 2,611 km (or ~2,640 km)",
+      "D": "3,323 km"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Durand Line, demarcated following the 1893 agreement between Sir Mortimer Durand and Amir Abdur Rahman Khan, is approximately 2,611 kilometers (1,622 miles) long.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_163",
+    "questionText": "Who was the first Governor-General of Pakistan?",
+    "options": {
+      "A": "Khawaja Nazimuddin",
+      "B": "Quaid-e-Azam Muhammad Ali Jinnah",
+      "C": "Ghulam Muhammad",
+      "D": "Iskander Mirza"
+    },
+    "correctAnswer": "B",
+    "explanation": "Quaid-e-Azam Muhammad Ali Jinnah took oath as the first Governor-General of Pakistan on 14th August 1947, serving until his demise on 11th September 1948.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_164",
+    "questionText": "The Tashkent Declaration was signed in January 1966 between Pakistan and India following which conflict?",
+    "options": {
+      "A": "1948 Kashmir War",
+      "B": "1965 Indo-Pak War",
+      "C": "1971 Bangladesh War",
+      "D": "1999 Kargil Conflict"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Tashkent Declaration was signed on 10 January 1966 in Tashkent (USSR) by President Ayub Khan and Prime Minister Lal Bahadur Shastri following the 1965 war.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_165",
+    "questionText": "Which deep-sea port in Balochistan, Pakistan is the warm-water gateway and commercial hub of the CPEC project?",
+    "options": {
+      "A": "Port Qasim",
+      "B": "Karachi Port",
+      "C": "Gwadar Port",
+      "D": "Ormara Naval Base"
+    },
+    "correctAnswer": "C",
+    "explanation": "Gwadar Port, located on the Arabian Sea in southwestern Balochistan, is the centerpiece deep-sea port developed under the China-Pakistan Economic Corridor.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_166",
+    "questionText": "In which Hijri year did the Battle of Badr, the first major armed battle in Islamic history, take place?",
+    "options": {
+      "A": "1st Hijri",
+      "B": "2nd Hijri (17 Ramadan)",
+      "C": "3rd Hijri",
+      "D": "5th Hijri"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Battle of Badr was fought on Friday, 17th Ramadan in the 2nd year of Hijra (624 CE), where 313 Muslims defeated a 1,000-strong Quraysh army.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_167",
+    "questionText": "The Treaty of Hudaibiya was concluded between the Muslims and the Quraysh of Makkah in which year?",
+    "options": {
+      "A": "4th Hijri",
+      "B": "5th Hijri",
+      "C": "6th Hijri",
+      "D": "8th Hijri"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Treaty of Hudaibiya was signed in the month of Dhu al-Qi'dah, 6th Hijri (628 CE), declared in the Quran as 'Fath-an Mubeena' (a manifest victory).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_168",
+    "questionText": "How many verses (Ayat) were revealed in the very first revelation of the Holy Quran in Cave Hira (Surah Al-Alaq)?",
+    "options": {
+      "A": "3 verses",
+      "B": "5 verses",
+      "C": "7 verses",
+      "D": "10 verses"
+    },
+    "correctAnswer": "B",
+    "explanation": "The first revelation brought by Angel Jibreel in Cave Hira comprised the first 5 verses of Surah Al-Alaq (96:1–5): 'Iqra bismi Rabbika allathee khalaq...'.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_169",
+    "questionText": "Who was appointed to lead the official committee for the compilation and standardization of the Holy Quran during the Caliphate of Hazrat Abu Bakr (RA) and Hazrat Usman (RA)?",
+    "options": {
+      "A": "Hazrat Ali (RA)",
+      "B": "Hazrat Zaid bin Thabit (RA)",
+      "C": "Hazrat Abdullah bin Mas'ud (RA)",
+      "D": "Hazrat Mu'awiya (RA)"
+    },
+    "correctAnswer": "B",
+    "explanation": "Hazrat Zaid bin Thabit (RA) was appointed to compile the written Quran into a single codex (Mushaf) under Hazrat Abu Bakr (RA), and later oversaw its standardization under Hazrat Usman (RA).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_170",
+    "questionText": "What is the nisab rate of Zakat on accumulated gold in Islamic jurisprudence?",
+    "options": {
+      "A": "5 tolas",
+      "B": "7.5 tolas (approx. 87.48 grams)",
+      "C": "10 tolas",
+      "D": "52.5 tolas"
+    },
+    "correctAnswer": "B",
+    "explanation": "The nisab threshold for gold is 7.5 tolas (approximately 87.48 grams) at the annual zakat rate of 2.5% (or 1/40th).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_171",
+    "questionText": "In which battle were seventy Huffaz-e-Quran (memorizers of the Quran) martyred, leading Hazrat Umar (RA) to propose the preservation and compilation of the Quran?",
+    "options": {
+      "A": "Battle of Yamama",
+      "B": "Battle of Yarmouk",
+      "C": "Battle of Qadisiyyah",
+      "D": "Battle of Mu'tah"
+    },
+    "correctAnswer": "A",
+    "explanation": "The Battle of Yamama (12 AH) against the false prophet Musaylimah resulted in the martyrdom of many companions who were Huffaz, prompting the collection of the Quran.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_172",
+    "questionText": "The Conquest of Makkah (Fath-e-Makkah) took place in which Hijri year?",
+    "options": {
+      "A": "6th Hijri",
+      "B": "7th Hijri",
+      "C": "8th Hijri (20 Ramadan)",
+      "D": "9th Hijri"
+    },
+    "correctAnswer": "C",
+    "explanation": "The bloodless Conquest of Makkah occurred in the month of Ramadan, 8th Hijri (630 CE), establishing peace and general amnesty.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_173",
+    "questionText": "Who was given the title of 'Saifullah' (Sword of Allah) by the Holy Prophet Muhammad (PBUH)?",
+    "options": {
+      "A": "Hazrat Ali (RA)",
+      "B": "Hazrat Khalid bin Waleed (RA)",
+      "C": "Hazrat Hamza (RA)",
+      "D": "Hazrat Saad bin Abi Waqqas (RA)"
+    },
+    "correctAnswer": "B",
+    "explanation": "Hazrat Khalid bin Waleed (RA) was bestowed the honorary title 'Saifullah' (Sword of Allah) for his brilliant military leadership at the Battle of Mu'tah.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_174",
+    "questionText": "How many stages (Manzils) is the Holy Quran divided into for weekly recitation?",
+    "options": {
+      "A": "5",
+      "B": "7",
+      "C": "14",
+      "D": "30"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Holy Quran is divided into 7 Manzils, allowing a reader to complete the entire recitation in one week.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_175",
+    "questionText": "Which Surah of the Holy Quran does not begin with the Bismillah?",
+    "options": {
+      "A": "Surah An-Naml",
+      "B": "Surah At-Tawbah (Al-Bara'at)",
+      "C": "Surah Al-Ikhlas",
+      "D": "Surah Al-Kahf"
+    },
+    "correctAnswer": "B",
+    "explanation": "Surah At-Tawbah (the 9th chapter of the Quran) is the only Surah that does not begin with 'Bismillah-ir-Rahman-ir-Rahim'.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_176",
+    "questionText": "The farewell pilgrimage (Hajjat-ul-Wida) of the Holy Prophet Muhammad (PBUH) took place in:",
+    "options": {
+      "A": "8th Hijri",
+      "B": "9th Hijri",
+      "C": "10th Hijri",
+      "D": "11th Hijri"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Farewell Pilgrimage (Hajjat-ul-Wida) was performed by the Holy Prophet (PBUH) in Dhu al-Hijjah, 10th Hijri (632 CE).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_177",
+    "questionText": "Who was the fourth Rightly Guided Caliph (Khaleefa-e-Rashid) of Islam?",
+    "options": {
+      "A": "Hazrat Abu Bakr (RA)",
+      "B": "Hazrat Umar (RA)",
+      "C": "Hazrat Usman (RA)",
+      "D": "Hazrat Ali ibn Abi Talib (RA)"
+    },
+    "correctAnswer": "A",
+    "explanation": "The four Khulafa-e-Rashideen in sequence were: Hazrat Abu Bakr (RA), Hazrat Umar (RA), Hazrat Usman (RA), and Hazrat Ali ibn Abi Talib (RA).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_178",
+    "questionText": "The primary Sahih collections of Hadith recognized in Sunni Islam are collectively called:",
+    "options": {
+      "A": "Kanz-ul-Ummal",
+      "B": "Sihah-e-Sittah (The Six Books)",
+      "C": "Muwatta",
+      "D": "Tafsir Ibn Kathir"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Sihah-e-Sittah (Six Authentic Books) are Sahih al-Bukhari, Sahih Muslim, Sunan Abi Dawud, Jami al-Tirmidhi, Sunan al-Nasa'i, and Sunan Ibn Majah.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_179",
+    "questionText": "What is the meaning of the Islamic jurisprudential term 'Ijma'?",
+    "options": {
+      "A": "Consensus of Islamic jurists / scholars on a legal issue",
+      "B": "Analogical deduction",
+      "C": "Individual speculative opinion",
+      "D": "Customary local practice"
+    },
+    "correctAnswer": "A",
+    "explanation": "Ijma is the third source of Islamic law, defined as the unanimous consensus of Muslim jurists of a particular era on a religious/legal matter.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_180",
+    "questionText": "In which year of the Hijra was the direction of Qiblah changed from Masjid al-Aqsa in Jerusalem to the Kaaba in Makkah?",
+    "options": {
+      "A": "1st Hijri",
+      "B": "2nd Hijri (in Rajab/Sha'ban)",
+      "C": "3rd Hijri",
+      "D": "4th Hijri"
+    },
+    "correctAnswer": "B",
+    "explanation": "The change of Qiblah occurred in the 2nd Hijri during prayer at Masjid al-Qiblatayn in Madinah, pursuant to Surah Al-Baqarah (2:144).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "Pakistan Affairs & Islamic Studies",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_181",
+    "questionText": "The Federal Investigation Agency (FIA) was created under Act VIII of 1975, which received presidential assent on:",
+    "options": {
+      "A": "14th August 1974",
+      "B": "13th January 1975",
+      "C": "23rd March 1975",
+      "D": "1st July 1975"
+    },
+    "correctAnswer": "B",
+    "explanation": "The Federal Investigation Agency Act, 1974 was passed by the Parliament in 1974 and received the assent of the President on 13th January 1975.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_182",
+    "questionText": "Under Section 3(1) of the FIA Act, 1974, the Agency is constituted to conduct inquiry into and investigation of offences specified in the:",
+    "options": {
+      "A": "Provincial Police Gazette",
+      "B": "Schedule to the Act",
+      "C": "Federal Civil Service Rules",
+      "D": "Criminal Procedure Code exclusively"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 3(1) states: 'the Federal Government may constitute an Agency to be called the Federal Investigation Agency for inquiry into, and investigation of the offences specified in the Schedule.'",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_183",
+    "questionText": "Under Section 4(1) of the FIA Act, 1974, the 'Superintendence' of the Agency shall vest in the:",
+    "options": {
+      "A": "Supreme Court of Pakistan",
+      "B": "Federal Government",
+      "C": "Director General FIA",
+      "D": "Inspector General of Police"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 4(1) of the Act explicitly mandates that 'The superintendence of the Agency shall vest in the Federal Government.'",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_184",
+    "questionText": "Under Section 4(2) of the FIA Act, 1974, who exercises the powers of an Inspector-General of Police under the Police Act, 1861 in respect of the Agency?",
+    "options": {
+      "A": "The Interior Minister",
+      "B": "The Director General",
+      "C": "The Additional Director General (Investigation)",
+      "D": "The Federal Secretary"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 4(2) provides that administration vests in the Director General who exercises the powers of an Inspector-General of Police under the Police Act, 1861.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_185",
+    "questionText": "Under Section 5(1) of the FIA Act, 1974, members of the Agency have what territorial jurisdiction in relation to scheduled offences?",
+    "options": {
+      "A": "Throughout the whole of Pakistan",
+      "B": "Only in Islamabad Capital Territory",
+      "C": "Only at international airports",
+      "D": "Only within federal ministry offices"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 5(1) confers powers throughout Pakistan: 'members of the Agency shall have throughout Pakistan in relation to the investigation of scheduled offences... all the powers of a police officer.'",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_186",
+    "questionText": "Under Section 5(2) of the FIA Act, 1974, any member of the Agency not below which rank may exercise powers of an officer-in-charge of a Police Station (SHO)?",
+    "options": {
+      "A": "Constable",
+      "B": "Head Constable",
+      "C": "Sub-Inspector",
+      "D": "Inspector"
+    },
+    "correctAnswer": "C",
+    "explanation": "Section 5(2) states: 'any member of the Agency not below the rank of a Sub-Inspector may exercise any of the powers of an officer-in-charge of a police station.'",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_187",
+    "questionText": "Under Section 5(3) of the FIA Act, 1974, every office or post used as an Agency station shall be deemed to be a:",
+    "options": {
+      "A": "Federal Tribunal",
+      "B": "Police Station within the meaning of CrPC",
+      "C": "Court of Summary Inquiry",
+      "D": "Detention Center"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 5(3) declares that any office or post declared by the Federal Government to be an Agency station shall be deemed to be a Police Station.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_188",
+    "questionText": "Under Section 5(4) of the FIA Act, 1974, if a member of the Agency arrests any person, he shall immediately report the arrest to:",
+    "options": {
+      "A": "The officer-in-charge of the police station having jurisdiction",
+      "B": "The Supreme Judicial Council",
+      "C": "The Ministry of Law and Justice",
+      "D": "The Registrar of the High Court"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 5(4) requires that any member of the Agency who arrests a person shall immediately report the fact to the officer-in-charge of the police station having jurisdiction.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_189",
+    "questionText": "Under Section 5(5) of the FIA Act, 1974, an authorized officer investigating a scheduled offence may direct a bank not to pay out from an account if:",
+    "options": {
+      "A": "He has reason to believe that the property was acquired by or involved in a scheduled offence",
+      "B": "The account holder has not paid utility bills",
+      "C": "The account has high foreign remittance",
+      "D": "The bank belongs to a private commercial group"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 5(5) authorizes an officer not below Sub-Inspector (with approval of DG/Director) to order freezing/holding of bank accounts suspected to contain illicit proceeds of scheduled offences.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_190",
+    "questionText": "Who is empowered to add, omit, or modify any entry in the Schedule to the FIA Act, 1974 under Section 6?",
+    "options": {
+      "A": "The Supreme Court of Pakistan",
+      "B": "The Federal Government by notification in the official Gazette",
+      "C": "The Director General FIA",
+      "D": "The Senate Standing Committee on Interior"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 6 provides: 'The Federal Government may, by notification in the official Gazette, amend the Schedule so as to add any entry thereto or modify or omit any entry therein.'",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_191",
+    "questionText": "Under Section 7 of the FIA Act, 1974, the Director General may by order delegate any of his powers to:",
+    "options": {
+      "A": "Any officer of the Agency subordinate to him",
+      "B": "Private commercial security agencies",
+      "C": "Provincial members of assembly",
+      "D": "Any foreign police attache"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 7 authorizes the DG to delegate by general or special order any of his powers under the Act or rules to any subordinate officer.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_192",
+    "questionText": "Under Section 8 of the FIA Act, 1974 (Indemnity), no suit, prosecution or legal proceeding shall lie against any member of the Agency for anything done:",
+    "options": {
+      "A": "Under duress",
+      "B": "In good faith under the Act or rules",
+      "C": "Without judicial warrant",
+      "D": "During night hours"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 8 protects members of the Agency and the Federal Government against legal actions for acts done in good faith under the Act or rules.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_193",
+    "questionText": "Who is empowered to make rules for carrying out the purposes of the FIA Act under Section 9?",
+    "options": {
+      "A": "The Federal Government",
+      "B": "The Director General FIA alone",
+      "C": "The Federal Public Service Commission",
+      "D": "The Bar Council of Pakistan"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 9(1) vests the rule-making power in the Federal Government by notification in the official Gazette.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_194",
+    "questionText": "The FIA Act, 1974 repealed which previous enactment under Section 10(1)?",
+    "options": {
+      "A": "The Police Act, 1861",
+      "B": "The Pakistan Special Police Establishment Ordinance, 1948",
+      "C": "The Federal Security Force Act, 1973",
+      "D": "The Prevention of Corruption Act, 1947"
+    },
+    "correctAnswer": "B",
+    "explanation": "Section 10(1) repealed the Pakistan Special Police Establishment Ordinance, 1948 (Ordinance VII of 1948).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_195",
+    "questionText": "What is the primary role of an Assistant Director (Investigation) (BS-17) in the Federal Investigation Agency?",
+    "options": {
+      "A": "Supervising criminal inquiries, conducting raids, interrogations, forensic collections, and submitting investigation reports (Challans)",
+      "B": "Managing civil disputes over agricultural land",
+      "C": "Acting as presiding judge in Sessions Court",
+      "D": "Directing provincial traffic signals"
+    },
+    "correctAnswer": "A",
+    "explanation": "An Assistant Director (Investigation) serves as a senior field supervisory investigator in specialized wings (Anti-Corruption, Cyber Crime, Immigration, Commercial Banking, Counter-Terrorism).",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_196",
+    "questionText": "Under the FIA (Inquiries and Investigations) Rules, 1974, an enquiry is initiated upon receipt of:",
+    "options": {
+      "A": "A complaint, information, or reference alleging a scheduled offence",
+      "B": "An anonymous phone call without any allegation",
+      "C": "A commercial advertisement",
+      "D": "A civil lawsuit summons"
+    },
+    "correctAnswer": "A",
+    "explanation": "Under the FIA Rules, an enquiry is formally initiated upon receipt of credible information, complaint, or audit/inspection report alleging a scheduled offence.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_197",
+    "questionText": "Which specialized wing of the FIA is tasked with intercepting illegal human smuggling, migrant trafficking, and forged travel documents?",
+    "options": {
+      "A": "Anti-Human Trafficking and Smuggling Wing (AHTC)",
+      "B": "Economic Crime Wing",
+      "C": "Anti-Corruption Wing",
+      "D": "Technical Wing"
+    },
+    "correctAnswer": "A",
+    "explanation": "The Anti-Human Trafficking Circles (AHTC) and Immigration Wing investigate human trafficking, migrant smuggling, and offenses under the Emigration Ordinance 1979 and Passport Act 1974.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_198",
+    "questionText": "Which wing of the FIA investigates banking frauds, corporate embezzlement, and offences under the Foreign Exchange Regulation Act, 1947?",
+    "options": {
+      "A": "Commercial Banking Circle (CBC) / Economic Crime Wing",
+      "B": "Immigration Wing",
+      "C": "Interpol Wing",
+      "D": "Administration Wing"
+    },
+    "correctAnswer": "A",
+    "explanation": "The Commercial Banking Circle (CBC) and Economic Crime Wing investigate banking frauds, financial scams, trade-based money laundering, and forex violations.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_199",
+    "questionText": "Offences under which federal statute relating to bribery and criminal misconduct by public servants are investigated by the FIA Anti-Corruption Wing?",
+    "options": {
+      "A": "The Prevention of Corruption Act, 1947 (Act II of 1947)",
+      "B": "The Industrial Disputes Act, 1947",
+      "C": "The Companies Act, 2017 only",
+      "D": "The Arbitration Act, 1940"
+    },
+    "correctAnswer": "A",
+    "explanation": "The Prevention of Corruption Act, 1947 (PCA 1947) is a core scheduled statute enforced by the FIA against corrupt federal public servants.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_200",
+    "questionText": "Under the Code of Criminal Procedure, 1898, as applied to FIA investigations, when must an arrested suspect be produced before a Magistrate?",
+    "options": {
+      "A": "Within 12 hours",
+      "B": "Within 24 hours of arrest (exclusive of journey time)",
+      "C": "Within 48 hours",
+      "D": "Within 7 days"
+    },
+    "correctAnswer": "B",
+    "explanation": "Under Section 61 CrPC (and Article 10 of the Constitution), an arrested person must be produced before the nearest Magistrate within 24 hours of arrest.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_201",
+    "questionText": "What is the maximum period of physical remand in police custody that an FIA investigating officer may obtain under Section 167 CrPC?",
+    "options": {
+      "A": "7 days",
+      "B": "14 days",
+      "C": "15 days in aggregate",
+      "D": "30 days"
+    },
+    "correctAnswer": "C",
+    "explanation": "Under Section 167 CrPC, the maximum total period of physical remand that may be authorized by a Magistrate is 15 days in the whole.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_202",
+    "questionText": "The Cyber Crime Wing (CCW) of the FIA investigates offences under which primary act?",
+    "options": {
+      "A": "Prevention of Electronic Crimes Act, 2016 (PECA)",
+      "B": "Electronic Transactions Ordinance, 2002 only",
+      "C": "Pakistan Telecommunication Re-organization Act, 1996 only",
+      "D": "Official Secrets Act, 1923 only"
+    },
+    "correctAnswer": "A",
+    "explanation": "The Cyber Crime Wing investigates offences under the Prevention of Electronic Crimes Act, 2016 (PECA), which is included in the Schedule to the FIA Act.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_203",
+    "questionText": "In an FIA investigation, what is the formal document submitted to the Special Court under Section 173 CrPC at the conclusion of investigation called?",
+    "options": {
+      "A": "First Information Report (FIR)",
+      "B": "Police Report / Challan",
+      "C": "Inspection Note",
+      "D": "Case Diary (Zimni)"
+    },
+    "correctAnswer": "B",
+    "explanation": "The final investigation report submitted under Section 173 CrPC detailing accused persons sent for trial or recommended for discharge is the Challan.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_204",
+    "questionText": "Which court conducts the trial of scheduled corruption offences investigated by the FIA?",
+    "options": {
+      "A": "Special Judge (Central) appointed under the Pakistan Criminal Law Amendment Act, 1958",
+      "B": "Civil Judge Class III",
+      "C": "Federal Ombudsman",
+      "D": "District Consumer Court"
+    },
+    "correctAnswer": "A",
+    "explanation": "The Court of Special Judge (Central), established under the Pakistan Criminal Law Amendment Act, 1958, is the trial court for FIA corruption and scheduled cases.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_205",
+    "questionText": "Can the FIA investigate a murder or theft case committed by private citizens with no connection to federal matters or the Schedule of the FIA Act?",
+    "options": {
+      "A": "Yes, if the Director General orders it",
+      "B": "No, because the FIA's jurisdiction is statutory and restricted strictly to offences specified in the Schedule",
+      "C": "Yes, if requested by the complainant",
+      "D": "Yes, if it occurs near a federal highway"
+    },
+    "correctAnswer": "B",
+    "explanation": "The FIA is a creature of statute with specialized jurisdiction confined to scheduled offences; purely provincial crimes remain under the exclusive jurisdiction of Provincial Police.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_206",
+    "questionText": "Under Section 5(1) of the FIA Act, what powers do FIA officers have regarding seizure of forged or smuggled goods?",
+    "options": {
+      "A": "Powers of search and seizure equal to those of police officers under CrPC",
+      "B": "No search powers without written military clearance",
+      "C": "Only power to take photographs",
+      "D": "Only power to impose administrative fines"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 5(1) vests members of the Agency with all powers relating to search, arrest of persons, and seizure of property which officers of Provincial Police have under CrPC.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_207",
+    "questionText": "The Federal Investigation Agency Academy, which provides basic and specialized training to Assistant Directors and Inspectors, is located in:",
+    "options": {
+      "A": "Islamabad",
+      "B": "Lahore",
+      "C": "Karachi",
+      "D": "Peshawar"
+    },
+    "correctAnswer": "A",
+    "explanation": "The FIA Academy is located in Islamabad, imparting training in modern criminal investigation, financial intelligence, digital forensics, and anti-human trafficking.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_208",
+    "questionText": "Under the Emigration Ordinance, 1979 (included in the Schedule to the FIA Act), illegal recruitment for employment abroad without a valid license is punishable with:",
+    "options": {
+      "A": "Imprisonment up to 14 years and fine",
+      "B": "A simple administrative reprimand",
+      "C": "Community service for 1 week",
+      "D": "30 days house arrest"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 17 and 18 of the Emigration Ordinance, 1979 penalize unlawful emigration and illegal recruitment with imprisonment extending up to 14 years, fine, or both.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Medium"
+  },
+  {
+    "_id": "fia_inv_209",
+    "questionText": "Who appoints the Director General of the Federal Investigation Agency?",
+    "options": {
+      "A": "The Federal Government",
+      "B": "The Supreme Judicial Council",
+      "C": "The Senate Chairman",
+      "D": "The Chief Election Commissioner"
+    },
+    "correctAnswer": "A",
+    "explanation": "Section 3(2) of the FIA Act provides: 'The Agency shall consist of a Director General to be appointed by the Federal Government.'",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  },
+  {
+    "_id": "fia_inv_210",
+    "questionText": "In an investigation under the FIA Act, 1974, when an investigating officer examines any person acquainted with the facts of the case, under which section of CrPC is the statement recorded?",
+    "options": {
+      "A": "Section 154 CrPC",
+      "B": "Section 161 CrPC",
+      "C": "Section 164 CrPC",
+      "D": "Section 172 CrPC"
+    },
+    "correctAnswer": "B",
+    "explanation": "Statements of witnesses examined by police/FIA officers during an investigation are recorded under Section 161 of the Code of Criminal Procedure, 1898.",
+    "category": {
+      "_id": "cat_fia_ad_inv",
+      "name": "FIA Assistant Director Investigation"
+    },
+    "subCategory": "FIA Act, 1974",
+    "difficulty": "Easy"
+  }
+]

@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="10 Complete Sample Papers for FIA Assistant Director (Investigation) Exam (BS-17). 1,000 High-Yield Analytical MCQs based on FPSC Syllabus: English (20 Marks), Basic Maths, GK, Pak Affairs, Islamiat, Current Affairs (last 5 years), Everyday Science, and FIA Act 1974.">
+    <title>FIA Assistant Director (BS-17) — 10 Full-Length Sample Papers (100 Marks Each)</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .fia-portal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .fia-hero {
+            background: linear-gradient(135deg, #092c48 0%, #0f4c81 50%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 55px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .fia-hero h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .fia-hero p {
+            font-size: 1.1rem;
+            max-width: 880px;
+            margin: 0 auto 20px;
+            opacity: 0.94;
+            line-height: 1.6;
+        }
+
+        .fia-stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .fia-stat-chip {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .syllabus-breakdown-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            margin: -25px auto 30px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            z-index: 2;
+        }
+
+        .syllabus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .syllabus-item {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .syllabus-item h4 {
+            margin: 0 0 4px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .syllabus-item p {
+            margin: 0;
+            font-size: 0.84rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        .paper-tabs-wrapper {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 10px 4px;
+            margin-bottom: 25px;
+            scrollbar-width: thin;
+        }
+
+        .paper-tab-btn {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .paper-tab-btn:hover {
+            border-color: #0284c7;
+            color: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        .paper-tab-btn.active {
+            background: #0284c7;
+            border-color: #0284c7;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+        }
+
+        .paper-controls-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .paper-header-info h2 {
+            margin: 0 0 6px;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+
+        .paper-header-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .paper-actions-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn-launch-quiz {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #ffffff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-launch-quiz:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+            color: #ffffff;
+        }
+
+        .btn-toggle-study {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-toggle-study:hover {
+            background: var(--border-color);
+        }
+
+        .filter-pills-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .filter-pill {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-pill:hover,
+        .filter-pill.active {
+            background: #0f4c81;
+            border-color: #0f4c81;
+            color: #ffffff;
+        }
+
+        /* Question Item Card */
+        .fia-q-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .fia-q-card:hover {
+            box-shadow: var(--hover-shadow);
+        }
+
+        .fia-q-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .q-number-badge {
+            background: #0f4c81;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+
+        .q-tag-subcat {
+            background: rgba(14, 165, 233, 0.12);
+            color: #0284c7;
+            font-weight: 600;
+            font-size: 0.82rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .q-diff-badge {
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .diff-Hard {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .diff-Medium {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .fia-q-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .fia-options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .fia-option-btn {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+            width: 100%;
+        }
+
+        .fia-option-btn:hover {
+            border-color: #0284c7;
+            background: rgba(2, 132, 199, 0.05);
+        }
+
+        .fia-option-letter {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .fia-option-btn.opt-correct {
+            background: #f0fdf4 !important;
+            border-color: #22c55e !important;
+            color: #15803d !important;
+        }
+
+        .fia-option-btn.opt-correct .fia-option-letter {
+            background: #22c55e !important;
+            color: #ffffff !important;
+        }
+
+        .fia-option-btn.opt-wrong {
+            background: #fef2f2 !important;
+            border-color: #ef4444 !important;
+            color: #b91c1c !important;
+        }
+
+        .fia-option-btn.opt-wrong .fia-option-letter {
+            background: #ef4444 !important;
+            color: #ffffff !important;
+        }
+
+        .fia-explanation-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid #0284c7;
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin-top: 14px;
+            display: none;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .fia-explanation-box strong {
+            color: #0369a1;
+        }
+
+        .btn-view-sol {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-view-sol:hover {
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        /* Dark mode overrides */
+        body.dark-mode .syllabus-breakdown-card,
+        body.dark-mode .paper-tab-btn,
+        body.dark-mode .paper-controls-card,
+        body.dark-mode .filter-pill,
+        body.dark-mode .fia-q-card {
+            background: #1e293b;
+            border-color: #334155;
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .syllabus-item {
+            background: #0f172a;
+            border-color: #334155;
+        }
+
+        body.dark-mode .fia-option-btn {
+            background: #0f172a;
+            border-color: #334155;
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .fia-option-letter {
+            background: #334155;
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .fia-explanation-box {
+            background: rgba(2, 132, 199, 0.15);
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .fia-explanation-box strong {
+            color: #38bdf8;
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/fia-sample-papers.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/fia-sample-papers.html">
+    <meta property="og:title" content="FIA Assistant Director (BS-17) — 10 Full-Length Sample Papers (100 Marks Each)">
+    <meta property="og:description" content="10 Complete Sample Papers for FIA Assistant Director (Investigation) Exam (BS-17). 1,000 High-Yield Analytical MCQs based on FPSC Syllabus: English (20 Marks), Basic Maths, GK, Pak Affairs, Islamia...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FIA Assistant Director (BS-17) — 10 Full-Length Sample Papers (100 Marks Each)">
+    <meta name="twitter:description" content="10 Complete Sample Papers for FIA Assistant Director (Investigation) Exam (BS-17). 1,000 High-Yield Analytical MCQs based on FPSC Syllabus: English (20 Marks), Basic Maths, GK, Pak Affairs, Islamia...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="acts-rules.html">Acts &amp; Rules</a>
+                <a href="articles.html">Articles</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="recruitment-prep.html" style="font-weight: 700; color: #0f766e;"><i class="fa-solid fa-briefcase"></i> Recruitment Prep</a>
+                <a href="fia-sample-papers.html" class="active">FIA Papers</a>
+                <a href="grammar-rules.html">Grammar Rules</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="exam-guide.html">Exam Guide</a>
+                <a href="science-notes.html">Science Notes</a>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Navbar -->
+    <nav class="secondary-navbar" aria-label="Secondary Navigation">
+        <div class="container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="articles.html" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-book-open"></i> Study Articles</a></li>
+                <li><a href="timeline.html" style="font-weight: 700; color: #4338ca;"><i class="fa-solid fa-timeline"></i> Historical Timeline</a></li>
+                <li><a href="leaderboard.html" style="font-weight: 700; color: #f59e0b;"><i class="fa-solid fa-trophy"></i> Daily Challenge &amp; Leaderboard</a></li>
+                <li><a href="dashboard.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="ai-assistant.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-robot"></i> AI Study Assistant</a></li>
+                <li><a href="editorial-explainer.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-newspaper"></i> Editorial Explainer</a></li>
+                <li><a href="world-map.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-earth-americas"></i> Interactive World Map</a></li>
+                <li><a href="digital-library.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-book-bookmark"></i> Digital Library &amp; Reports</a></li>
+                <li><a href="recommended-books.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-book"></i> Recommended Books</a></li>
+                <li><a href="recruitment-prep.html" style="font-weight: 700; color: #0f766e;"><i class="fa-solid fa-briefcase"></i> Recruitment Prep Hub</a></li>
+                <li><a href="fia-sample-papers.html" class="active" style="font-weight: 700; color: #0ea5e9;"><i class="fa-solid fa-file-shield"></i> FIA AD 20 Sample Papers</a></li>
+                <li><a href="grammar-rules.html"><i class="fa-solid fa-book"></i> Grammar Rules</a></li>
+                <li><a href="written-prep.html"><i class="fa-solid fa-pen-nib"></i> Essay &amp; Written Prep</a></li>
+                <li><a href="exam-guide.html"><i class="fa-solid fa-book-open-reader"></i> Exam Guide (FIA/NAB/CSS)</a></li>
+                <li><a href="quiz.html?category=cat_fia_ad_sample">🎯 Practice 100-Mark Mock</a></li>
+                <li><a href="science-notes.html">Science Capsule</a></li>
+                <li><a href="index.html#study-resources">Study Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="fia-hero">
+        <div class="container">
+            <h1>🎯 FIA Assistant Director (Investigation) — 20 Sample Papers</h1>
+            <p>2,000 High-Yield Analytical MCQs | 20 Full-Length 100-Mark Mock Exams | 10 Standard + 10 Advanced Hard Tier | Official FPSC Syllabus (English 20% + Professional 80%) | Rigorous Critical Thinking & Analysis</p>
+
+            <div class="fia-stats-bar">
+                <span class="fia-stat-chip"><i class="fa-solid fa-file-invoice"></i> 20 Complete Mock Papers</span>
+                <span class="fia-stat-chip"><i class="fa-solid fa-check-double"></i> 2,000 Rigorous MCQs (100 Each)</span>
+                <span class="fia-stat-chip" style="background: rgba(239, 68, 68, 0.25); border-color: rgba(239, 68, 68, 0.5);"><i class="fa-solid fa-fire"></i> 10 Advanced Hard Papers</span>
+                <span class="fia-stat-chip"><i class="fa-solid fa-stopwatch"></i> 100 Minutes / 100 Marks</span>
+                <span class="fia-stat-chip"><i class="fa-solid fa-brain"></i> Analytical Explanations Included</span>
+                <span class="fia-stat-chip"><i class="fa-solid fa-scale-balanced"></i> Negative Marking Compatible</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="fia-portal-container">
+
+        <!-- Syllabus Breakdown Card -->
+        <section class="syllabus-breakdown-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <h3 style="margin: 0; color: var(--text-dark); font-size: 1.15rem;">
+                    <i class="fa-solid fa-sitemap" style="color: #0284c7;"></i> FPSC Assistant Director (BS-17) Marks Allocation
+                </h3>
+                <span style="font-size: 0.88rem; color: #0284c7; font-weight: 700; background: rgba(2, 132, 199, 0.1); padding: 4px 12px; border-radius: 12px;">
+                    Part-I: 20 Marks | Part-II: 80 Marks
+                </span>
+            </div>
+
+            <div class="syllabus-grid">
+                <div class="syllabus-item" style="border-left-color: #2563eb;">
+                    <h4><span>Part-I: English</span> <strong style="color: #2563eb;">20 Marks</strong></h4>
+                    <p>Vocabulary, Grammar Usage, Sentence Structuring, Prepositions &amp; Correlative Conjunctions.</p>
+                </div>
+                <div class="syllabus-item" style="border-left-color: #0d9488;">
+                    <h4><span>Basic Mathematics</span> <strong style="color: #0d9488;">10 Marks</strong></h4>
+                    <p>Percentages, Ratios/Mixtures, Algebra, Profit &amp; Loss, Work &amp; Time, Speed &amp; Distance.</p>
+                </div>
+                <div class="syllabus-item" style="border-left-color: #0284c7;">
+                    <h4><span>General Knowledge</span> <strong style="color: #0284c7;">10 Marks</strong></h4>
+                    <p>Strategic Straits, Treaties, World Organizations, UNCLOS, Diplomatic Milestones.</p>
+                </div>
+                <div class="syllabus-item" style="border-left-color: #10b981;">
+                    <h4><span>Pakistan Affairs</span> <strong style="color: #10b981;">10 Marks</strong></h4>
+                    <p>1973 Constitution (18th, 25th, 26th Amendments), Pakistan Movement, Water Accords.</p>
+                </div>
+                <div class="syllabus-item" style="border-left-color: #8b5cf6;">
+                    <h4><span>Islamic Studies</span> <strong style="color: #8b5cf6;">10 Marks</strong></h4>
+                    <p>Seerah Treaties, Quranic Compilation, Hadith Sciences, Khilafat-e-Rashida Administration.</p>
+                </div>
+                <div class="syllabus-item" style="border-left-color: #f59e0b;">
+                    <h4><span>Current Affairs (5 Yrs)</span> <strong style="color: #f59e0b;">12 Marks</strong></h4>
+                    <p>SCO Summit 2024, BRICS Kazan, Climate COPs (27-29), IMF EFF, SIFC, AI Treaties.</p>
+                </div>
+                <div class="syllabus-item" style="border-left-color: #ec4899;">
+                    <h4><span>Everyday Science</span> <strong style="color: #ec4899;">10 Marks</strong></h4>
+                    <p>Conceptual Physics, Applied Chemistry, CRISPR, mRNA Vaccines, Space &amp; Environment.</p>
+                </div>
+                <div class="syllabus-item" style="border-left-color: #dc2626;">
+                    <h4><span>FIA Act, 1974 &amp; Powers</span> <strong style="color: #dc2626;">18 Marks</strong></h4>
+                    <p>Sections 1-10, Scheduled Offenses (PPC, AMLA, PECA, Passports Act, PTPA 2018), JITs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paper Selection Tabs -->
+        
+        <!-- Paper Tier Selector Bar -->
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
+            <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-dark); display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-layer-group"></i> Exam Tier:
+            </span>
+            <button type="button" class="filter-pill active" id="tierAllBtn" onclick="filterPaperTabs('all')">All 20 Papers</button>
+            <button type="button" class="filter-pill" id="tierStdBtn" onclick="filterPaperTabs('standard')" style="border-color: #0284c7; color: #0284c7;">Papers 1–10 (Standard)</button>
+            <button type="button" class="filter-pill" id="tierHardBtn" onclick="filterPaperTabs('hard')" style="border-color: #ef4444; color: #ef4444; font-weight: 700;">🔥 Papers 11–20 (Hard / Analytical)</button>
+            <button type="button" class="filter-pill" id="tierPastBtn" onclick="filterPaperTabs('past')" style="border-color: #10b981; color: #047857; font-weight: 700;"><i class="fa-solid fa-certificate"></i> ⭐ Real Past Paper (2021 Batch-1)</button>
+        </div>
+        <div class="paper-tabs-wrapper" id="paperTabsContainer">
+            <!-- Rendered by JS -->
+        </div>
+
+        <!-- Paper Controls Header -->
+        <div class="paper-controls-card" id="paperHeaderCard">
+            <div class="paper-header-info">
+                <h2 id="activePaperTitle">FIA Assistant Director Sample Paper 1</h2>
+                <p id="activePaperDesc">100 Multiple Choice Questions | 100 Marks | Total Time: 100 Minutes</p>
+            </div>
+            <div class="paper-actions-group">
+                <a href="#" id="launchQuizBtn" class="btn-launch-quiz">
+                    <i class="fa-solid fa-play"></i> Launch 100-Mark Timed Exam
+                </a>
+                <button type="button" id="toggleAllSolBtn" class="btn-toggle-study">
+                    <i class="fa-solid fa-eye"></i> Show All Answers
+                </button>
+            </div>
+        </div>
+
+        <!-- Subject Filter Pills -->
+        <div class="filter-pills-bar" id="subjectFilterBar">
+            <button type="button" class="filter-pill active" data-filter="all">All 100 Questions</button>
+            <button type="button" class="filter-pill" data-filter="English">Part-I: English (20)</button>
+            <button type="button" class="filter-pill" data-filter="Mathematics">Basic Mathematics (10)</button>
+            <button type="button" class="filter-pill" data-filter="General Knowledge">General Knowledge (10)</button>
+            <button type="button" class="filter-pill" data-filter="Pakistan Affairs">Pakistan Affairs (10)</button>
+            <button type="button" class="filter-pill" data-filter="Islamic Studies">Islamic Studies (10)</button>
+            <button type="button" class="filter-pill" data-filter="Current Affairs">Current Affairs (12)</button>
+            <button type="button" class="filter-pill" data-filter="Everyday Science">Everyday Science (10)</button>
+            <button type="button" class="filter-pill" data-filter="FIA Act">FIA Act, 1974 &amp; Powers (18)</button>
+        </div>
+
+        <!-- Questions List Container -->
+        <div id="questionsListContainer">
+            <!-- Rendered dynamically -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <div style="margin-bottom:10px;"><a href="fia-laws-explorer.html" style="color:#2563eb; font-weight:700;"><i class="fa-solid fa-building-shield"></i> Explore Official FIA Laws &amp; Schedule (FIA Act, PECA, AMLA)</a></div>
+                <p>&copy; 2026 MCQs Portal. All rights reserved.</p>
+            </div>
+        </div>
+    
+        <div class="footer-legal-bar" style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; color:#94a3b8;">
+            <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+            <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+            <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+            <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data_fia_sample_papers.js"></script>
+    <script src="js/data_fia_past_paper_2021_batch1.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const allMcqs = window.FIA_SAMPLE_PAPERS_MCQS || [];
+            const papersMeta = window.FIA_SAMPLE_PAPERS_METADATA || [];
+
+            let currentPaper = 1;
+            let currentFilter = 'all';
+            let allAnswersShown = false;
+
+            // Render Paper Tabs
+                        // Render Paper Tabs with Tier styling
+            window.activeTier = 'all';
+            const paperTabsContainer = document.getElementById('paperTabsContainer');
+            window.renderPaperTabs = function() {
+                if (!paperTabsContainer) return;
+                const filteredMeta = papersMeta.filter(pm => {
+                    if (window.activeTier === 'standard') return pm.paperNumber <= 10;
+                    if (window.activeTier === 'hard') return pm.paperNumber > 10;
+                    return true;
+                });
+
+                paperTabsContainer.innerHTML = filteredMeta.map(pm => {
+                    const isHard = pm.paperNumber > 10;
+                    const isActive = pm.paperNumber === currentPaper;
+                    return `
+                        <button type="button" class="paper-tab-btn ${isActive ? 'active' : ''}" data-paper="${pm.paperNumber}" style="${isHard ? 'border-color: rgba(239, 68, 68, 0.4);' : ''}">
+                            <i class="fa-solid ${isHard ? 'fa-fire' : 'fa-file-lines'}" style="${isHard ? 'color: #ef4444;' : ''}"></i> 
+                            Paper ${pm.paperNumber} ${isHard ? '<span style="font-size:0.7rem; background:#fee2e2; color:#b91c1c; padding:2px 6px; border-radius:10px; margin-left:4px; font-weight:700;">HARD</span>' : ''}
+                        </button>
+                    `;
+                }).join('');
+
+                paperTabsContainer.querySelectorAll('.paper-tab-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        paperTabsContainer.querySelectorAll('.paper-tab-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        currentPaper = parseInt(btn.getAttribute('data-paper'));
+                        renderPaper(currentPaper);
+                    });
+                });
+            };
+
+            window.filterPaperTabs = function(tier) {
+                window.activeTier = tier;
+                document.getElementById('tierAllBtn').classList.toggle('active', tier === 'all');
+                document.getElementById('tierStdBtn').classList.toggle('active', tier === 'standard');
+                document.getElementById('tierHardBtn').classList.toggle('active', tier === 'hard');
+                const pastBtn = document.getElementById('tierPastBtn');
+                if (pastBtn) pastBtn.classList.toggle('active', tier === 'past');
+                window.renderPaperTabs();
+                // If current paper is outside tier, select first visible
+                if (tier === 'standard' && currentPaper > 10) {
+                    currentPaper = 1;
+                    renderPaper(1);
+                } else if (tier === 'hard' && currentPaper <= 10) {
+                    currentPaper = 11;
+                    renderPaper(11);
+                }
+            };
+
+            if (paperTabsContainer) {
+                window.renderPaperTabs();
+            });
+            }
+
+            // Subject Filter Handling
+            const filterBar = document.getElementById('subjectFilterBar');
+            if (filterBar) {
+                filterBar.querySelectorAll('.filter-pill').forEach(pill => {
+                    pill.addEventListener('click', () => {
+                        filterBar.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                        pill.classList.add('active');
+                        currentFilter = pill.getAttribute('data-filter');
+                        filterQuestions();
+                    });
+                });
+            }
+
+            // Toggle All Answers
+            const toggleAllSolBtn = document.getElementById('toggleAllSolBtn');
+            if (toggleAllSolBtn) {
+                toggleAllSolBtn.addEventListener('click', () => {
+                    allAnswersShown = !allAnswersShown;
+                    toggleAllSolBtn.innerHTML = allAnswersShown 
+                        ? '<i class="fa-solid fa-eye-slash"></i> Hide All Answers'
+                        : '<i class="fa-solid fa-eye"></i> Show All Answers';
+
+                    document.querySelectorAll('.fia-explanation-box').forEach(box => {
+                        box.style.display = allAnswersShown ? 'block' : 'none';
+                    });
+
+                    // Highlight correct buttons
+                    document.querySelectorAll('.fia-option-btn').forEach(btn => {
+                        const isCorrect = btn.getAttribute('data-is-correct') === 'true';
+                        if (allAnswersShown && isCorrect) {
+                            btn.classList.add('opt-correct');
+                        } else if (!allAnswersShown) {
+                            btn.classList.remove('opt-correct', 'opt-wrong');
+                        }
+                    });
+                });
+            }
+
+            function renderPaper(paperNum) {
+                const meta = papersMeta.find(m => m.paperNumber === paperNum) || {
+                    title: `FIA Assistant Director Sample Paper ${paperNum}`,
+                    totalMarks: 100,
+                    timeAllowedMinutes: 100
+                };
+
+                document.getElementById('activePaperTitle').innerText = meta.title;
+                document.getElementById('activePaperDesc').innerText = `100 Multiple Choice Questions | 100 Marks | Time Allowed: ${meta.timeAllowedMinutes} Minutes (1 Mark each, -0.25 negative marking recommended)`;
+                
+                const launchBtn = document.getElementById('launchQuizBtn');
+                if (launchBtn) {
+                    launchBtn.href = `quiz.html?category=cat_fia_ad_sample&subCategory=Sample%20Paper%20${paperNum}&limit=100&diff=Mixed`;
+                }
+
+                // Reset filter to All
+                currentFilter = 'all';
+                filterBar.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                filterBar.querySelector('[data-filter="all"]').classList.add('active');
+
+                filterQuestions();
+            }
+
+            function filterQuestions() {
+                const container = document.getElementById('questionsListContainer');
+                let paperQuestions = allMcqs.filter(q => q.paperNumber === currentPaper);
+
+                if (currentFilter !== 'all') {
+                    paperQuestions = paperQuestions.filter(q => q.subCategory.toLowerCase().includes(currentFilter.toLowerCase()));
+                }
+
+                if (paperQuestions.length === 0) {
+                    container.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-light);">No questions found for this topic filter.</div>`;
+                    return;
+                }
+
+                container.innerHTML = paperQuestions.map((q, idx) => {
+                    const qLocalNum = (q.questionId % 100 === 0) ? 100 : (q.questionId % 100);
+                    return `
+                        <article class="fia-q-card" id="q_card_${q._id}">
+                            <div class="fia-q-header">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span class="q-number-badge">Q.${qLocalNum} / 100</span>
+                                    <span class="q-tag-subcat">${q.subCategory}</span>
+                                    <span style="font-size:0.8rem; color:var(--text-light); font-weight:600;">${q.part}</span>
+                                </div>
+                                <div>
+                                    <span class="q-diff-badge diff-${q.difficulty}">${q.difficulty}</span>
+                                </div>
+                            </div>
+
+                            <div class="fia-q-text">${q.questionText}</div>
+
+                            <div class="fia-options-grid">
+                                ${['A', 'B', 'C', 'D'].map(optKey => `
+                                    <button type="button" class="fia-option-btn ${allAnswersShown && optKey === q.correctAnswer ? 'opt-correct' : ''}" 
+                                        data-qid="${q._id}" 
+                                        data-choice="${optKey}"
+                                        data-is-correct="${optKey === q.correctAnswer}">
+                                        <span class="fia-option-letter">${optKey}</span>
+                                        <span>${q.options[optKey]}</span>
+                                    </button>
+                                `).join('')}
+                            </div>
+
+                            <div style="display:flex; justify-content:flex-end;">
+                                <button type="button" class="btn-view-sol" data-target="sol_${q._id}">
+                                    <i class="fa-solid fa-lightbulb"></i> View Solution &amp; Analysis
+                                </button>
+                            </div>
+
+                            <div class="fia-explanation-box" id="sol_${q._id}" style="display: ${allAnswersShown ? 'block' : 'none'};">
+                                <div style="margin-bottom: 6px;">
+                                    <strong><i class="fa-solid fa-check-circle" style="color: #22c55e;"></i> Correct Option: (${q.correctAnswer}) ${q.correctAnswerText || q.options[q.correctAnswer]}</strong>
+                                </div>
+                                <div><strong>Analysis &amp; Statutory Reference:</strong> ${q.explanation}</div>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+
+                // Hook option clicks for immediate self-testing
+                container.querySelectorAll('.fia-option-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const qId = btn.getAttribute('data-qid');
+                        const card = document.getElementById(`q_card_${qId}`);
+                        const isCorrect = btn.getAttribute('data-is-correct') === 'true';
+                        const solBox = document.getElementById(`sol_${qId}`);
+
+                        // Reset styling for options in this card
+                        card.querySelectorAll('.fia-option-btn').forEach(b => {
+                            b.classList.remove('opt-wrong');
+                            if (b.getAttribute('data-is-correct') === 'true') {
+                                b.classList.add('opt-correct');
+                            }
+                        });
+
+                        if (!isCorrect) {
+                            btn.classList.add('opt-wrong');
+                        }
+
+                        if (solBox) solBox.style.display = 'block';
+                    });
+                });
+
+                // Hook single solution toggle buttons
+                container.querySelectorAll('.btn-view-sol').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const targetId = btn.getAttribute('data-target');
+                        const solBox = document.getElementById(targetId);
+                        if (solBox) {
+                            const isShown = solBox.style.display === 'block';
+                            solBox.style.display = isShown ? 'none' : 'block';
+                        }
+                    });
+                });
+            }
+
+            // Dark Mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    document.documentElement.classList.toggle('dark-mode', isDark);
+                    localStorage.setItem('mcqs_dark_mode', isDark ? 'true' : 'false');
+                });
+            }
+
+            if (localStorage.getItem('mcqs_dark_mode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Initial render
+            renderPaper(1);
+        });
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

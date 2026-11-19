@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Geopolitical Hotspots Map | Interactive Strategic Intelligence, Conflicts & Chokepoints</title>
+    <meta name="description"
+        content="Interactive Geopolitical Hotspots Map for CSS, PMS, FPSC, PPSC, and International Relations aspirants. Explore active conflicts, disputed territories, military alliances, strategic waterways, and ongoing flashpoints with analytical examination dossiers.">
+    <meta name="keywords"
+        content="Geopolitical Hotspots Map, World Conflicts Map, Strategic Chokepoints, Disputed Territories, Military Alliances, NATO, AUKUS, Quad, Taiwan Strait, South China Sea, Strait of Hormuz, Bab-el-Mandeb, Kashmir Conflict, CSS International Relations, FPSC Current Affairs">
+
+    <!-- Anti-FOUC: Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet CSS for Tactical Map Rendering -->
+    <link rel="stylesheet" href="css/leaflet.css">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --geo-primary: #e11d48;
+            --geo-primary-dark: #be123c;
+            --geo-primary-light: #ffe4e6;
+            --geo-accent: #0284c7;
+            --geo-bg: #f8fafc;
+            --geo-card-bg: #ffffff;
+            --geo-border: #e2e8f0;
+            --geo-text-main: #0f172a;
+            --geo-text-muted: #64748b;
+            --geo-sidebar-w: 480px;
+        }
+
+        .dark-mode {
+            --geo-bg: #090d16;
+            --geo-card-bg: #111827;
+            --geo-border: #1f2937;
+            --geo-text-main: #f8fafc;
+            --geo-text-muted: #94a3b8;
+            --geo-primary-light: rgba(225, 29, 72, 0.15);
+        }
+
+        body {
+            background-color: var(--geo-bg);
+            color: var(--geo-text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        /* Top Announcement / Switcher Bar */
+        .top-switcher-bar {
+            background: linear-gradient(90deg, #090d16 0%, #1e1b4b 50%, #0f172a 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 0.86rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .switcher-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .switcher-btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        .switcher-btn.active {
+            background: #e11d48;
+            border-color: #fb7185;
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(225, 29, 72, 0.5);
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--geo-card-bg);
+            border-bottom: 1px solid var(--geo-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--geo-text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #e11d48;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--geo-text-muted);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #e11d48;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            color: var(--geo-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        /* Hero Masthead */
+        .geo-hero {
+            background: radial-gradient(circle at 50% 30%, rgba(225, 29, 72, 0.08) 0%, rgba(15, 23, 42, 0.02) 70%);
+            padding: 36px 20px 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--geo-border);
+        }
+
+        .geo-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(225, 29, 72, 0.12);
+            color: #e11d48;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(225, 29, 72, 0.28);
+            margin-bottom: 14px;
+        }
+
+        .geo-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.35rem;
+            font-weight: 900;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            color: var(--geo-text-main);
+        }
+
+        .geo-hero p {
+            max-width: 860px;
+            margin: 0 auto 20px;
+            color: var(--geo-text-muted);
+            font-size: 1.02rem;
+            line-height: 1.6;
+        }
+
+        .geo-stats-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .geo-stat-pill {
+            background: var(--geo-card-bg);
+            border: 1px solid var(--geo-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--geo-text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        .geo-stat-pill i {
+            color: #e11d48;
+        }
+
+        /* Controls Section */
+        .controls-card {
+            max-width: 1480px;
+            margin: 22px auto 16px;
+            padding: 0 20px;
+        }
+
+        .controls-inner {
+            background: var(--geo-card-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+        }
+
+        .search-and-tools {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .search-box-wrap {
+            flex: 1;
+            min-width: 290px;
+            position: relative;
+        }
+
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--geo-text-muted);
+        }
+
+        .search-box-wrap input {
+            width: 100%;
+            padding: 11px 16px 11px 40px;
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 10px;
+            color: var(--geo-text-main);
+            font-size: 0.92rem;
+            outline: none;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .search-box-wrap input:focus {
+            border-color: #e11d48;
+            box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+        }
+
+        .region-focus-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .region-btn {
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            color: var(--geo-text-muted);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .region-btn:hover {
+            border-color: #e11d48;
+            color: #e11d48;
+        }
+
+        .challenge-mode-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.86rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+            transition: transform 0.15s;
+        }
+
+        .challenge-mode-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Category Filter Pills */
+        .category-pills-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+
+        .cat-pill {
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            color: var(--geo-text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .cat-pill:hover {
+            border-color: #e11d48;
+            color: #e11d48;
+        }
+
+        .cat-pill.active {
+            background: #e11d48;
+            color: #ffffff;
+            border-color: #e11d48;
+        }
+
+        .cat-pill .pill-badge {
+            background: rgba(0, 0, 0, 0.12);
+            color: inherit;
+            font-size: 0.72rem;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-weight: 800;
+        }
+
+        .cat-pill.active .pill-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* Threat Filter Pills */
+        .threat-pills-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding-top: 4px;
+            border-top: 1px dashed var(--geo-border);
+            font-size: 0.82rem;
+        }
+
+        .threat-pill {
+            background: transparent;
+            border: 1px solid var(--geo-border);
+            color: var(--geo-text-muted);
+            padding: 4px 11px;
+            border-radius: 6px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .threat-pill:hover,
+        .threat-pill.active {
+            background: var(--geo-bg);
+            border-color: var(--geo-text-main);
+            color: var(--geo-text-main);
+            font-weight: 700;
+        }
+
+        /* Main Workspace Split Grid */
+        .workspace-container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .map-workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr var(--geo-sidebar-w);
+            gap: 22px;
+            align-items: start;
+        }
+
+        /* Map Canvas Card */
+        .map-canvas-card {
+            background: var(--geo-card-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+
+        .map-toolbar-strip {
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--geo-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: var(--geo-card-bg);
+        }
+
+        .map-info-text {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--geo-text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .map-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tool-btn {
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            color: var(--geo-text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.82rem;
+            transition: all 0.15s;
+        }
+
+        .tool-btn:hover {
+            border-color: #e11d48;
+            color: #e11d48;
+        }
+
+        /* Leaflet Map Height */
+        #hotspotsMapContainer {
+            width: 100%;
+            height: 640px;
+            background: #090d16;
+            position: relative;
+        }
+
+        /* Custom Radar Marker Styles */
+        .hotspot-marker-pin {
+            position: relative;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.88rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid #ffffff;
+        }
+
+        .hotspot-marker-pin:hover,
+        .hotspot-marker-pin.active {
+            transform: scale(1.3);
+            z-index: 1000 !important;
+            box-shadow: 0 0 20px rgba(225, 29, 72, 0.8);
+        }
+
+        /* Pulsing Radar Ring for Active War / High Tension */
+        .radar-pulse-ring {
+            position: absolute;
+            top: -7px;
+            left: -7px;
+            right: -7px;
+            bottom: -7px;
+            border-radius: 50%;
+            border: 2.5px solid #dc2626;
+            opacity: 0.8;
+            animation: radar-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+            pointer-events: none;
+        }
+
+        @keyframes radar-ping {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.9;
+            }
+            80%, 100% {
+                transform: scale(2.2);
+                opacity: 0;
+            }
+        }
+
+        .radar-pulse-ring.amber {
+            border-color: #f59e0b;
+        }
+
+        .radar-pulse-ring.purple {
+            border-color: #7c3aed;
+        }
+
+        /* Map Legend Strip */
+        .map-legend-row {
+            padding: 10px 18px;
+            border-top: 1px solid var(--geo-border);
+            background: var(--geo-card-bg);
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .legend-items {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            color: var(--geo-text-muted);
+        }
+
+        .legend-color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Strategic Intelligence Dossier Sidebar */
+        .dossier-sidebar {
+            background: var(--geo-card-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 84px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .dossier-header {
+            padding: 20px 22px 16px;
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.08) 0%, rgba(15, 23, 42, 0.03) 100%);
+            border-bottom: 1px solid var(--geo-border);
+        }
+
+        .dossier-meta-tags {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .status-badge {
+            font-size: 0.74rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 12px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .category-badge {
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            color: var(--geo-text-muted);
+        }
+
+        .dossier-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--geo-text-main);
+            margin: 0 0 6px;
+            line-height: 1.25;
+        }
+
+        .dossier-region-row {
+            font-size: 0.84rem;
+            color: var(--geo-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .dossier-region-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dossier-body {
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .dossier-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dossier-section-title {
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--geo-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .dossier-text-block {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--geo-text-main);
+        }
+
+        .parties-tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .party-tag {
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--geo-text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .bullet-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: var(--geo-text-main);
+        }
+
+        .bullet-list li {
+            margin-bottom: 6px;
+        }
+
+        .exam-analysis-box {
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.05) 0%, rgba(37, 99, 235, 0.05) 100%);
+            border: 1px solid rgba(225, 29, 72, 0.25);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .exam-analysis-title {
+            color: #e11d48;
+            font-weight: 800;
+            font-size: 0.84rem;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 8px;
+        }
+
+        .essay-cta-btn {
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+            color: #ffffff !important;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.88rem;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+
+        .essay-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(225, 29, 72, 0.45);
+        }
+
+        /* Master Directory Table */
+        .table-section {
+            max-width: 1480px;
+            margin: 20px auto 40px;
+            padding: 0 20px;
+        }
+
+        .table-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin: 0 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--geo-text-main);
+        }
+
+        .table-wrap {
+            background: var(--geo-card-bg);
+            border: 1px solid var(--geo-border);
+            border-radius: 16px;
+            overflow-x: auto;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .hotspots-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            text-align: left;
+        }
+
+        .hotspots-table th {
+            background: var(--geo-bg);
+            color: var(--geo-text-muted);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.74rem;
+            letter-spacing: 0.05em;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--geo-border);
+            white-space: nowrap;
+        }
+
+        .hotspots-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--geo-border);
+            vertical-align: top;
+            color: var(--geo-text-main);
+        }
+
+        .hotspots-table tr:hover td {
+            background: rgba(225, 29, 72, 0.03);
+        }
+
+        .table-btn {
+            background: var(--geo-bg);
+            border: 1px solid var(--geo-border);
+            color: #e11d48;
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .table-btn:hover {
+            background: #e11d48;
+            border-color: #e11d48;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--geo-card-bg);
+            border-top: 1px solid var(--geo-border);
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: var(--geo-text-muted);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: var(--geo-text-muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #e11d48;
+        }
+
+        /* Quiz Banner Overlay */
+        .quiz-banner {
+            display: none;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            color: #ffffff;
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .quiz-banner.active {
+            display: flex;
+        }
+
+        @media (max-width: 1024px) {
+            .map-workspace-grid {
+                grid-template-columns: 1fr;
+            }
+            .dossier-sidebar {
+                position: static;
+                max-height: none;
+            }
+            #hotspotsMapContainer {
+                height: 500px;
+            }
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/geopolitical-hotspots-map.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/geopolitical-hotspots-map.html">
+    <meta property="og:title" content="Global Geopolitical Hotspots Map | Interactive Strategic Intelligence, Conflicts & Chokepoints">
+    <meta property="og:description" content="Interactive Geopolitical Hotspots Map for CSS, PMS, FPSC, PPSC, and International Relations aspirants. Explore active conflicts, disputed territories, military alliances, strategic waterways, and o...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Global Geopolitical Hotspots Map | Interactive Strategic Intelligence, Conflicts & Chokepoints">
+    <meta name="twitter:description" content="Interactive Geopolitical Hotspots Map for CSS, PMS, FPSC, PPSC, and International Relations aspirants. Explore active conflicts, disputed territories, military alliances, strategic waterways, and o...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+    <!-- Top Switcher Bar: 3-Map Suite -->
+    <div class="top-switcher-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="background: #e11d48; color: #fff; font-size: 0.7rem; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">
+                Maps Suite
+            </span>
+            <span>Switch between Global Cartographic Hubs:</span>
+        </div>
+        <div class="switcher-links">
+            <a href="pakistan-map.html" class="switcher-btn">
+                <i class="fas fa-flag"></i> Pakistan Map
+            </a>
+            <a href="sindh-map.html" class="switcher-btn">
+                <i class="fas fa-map-marked-alt"></i> Sindh Map
+            </a>
+            <a href="international-trade-routes-map.html" class="switcher-btn">
+                <i class="fas fa-ship"></i> Trade Routes
+            </a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn active">
+                <i class="fas fa-satellite-dish"></i> Hotspots Map
+            </a>
+            <a href="physical-geography-map.html" class="switcher-btn">
+                <i class="fas fa-mountain-sun"></i> Physical Map
+            </a>
+            <a href="world-map.html" class="switcher-btn">
+                <i class="fas fa-globe"></i> Political World Map
+            </a>
+            <a href="guess-the-country.html" class="switcher-btn" style="color: #8b5cf6;">
+                <i class="fas fa-gamepad"></i> Guess Country
+            </a>
+                <a href="locate-on-map.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-crosshairs"></i> Locate on Map</a>
+                <a href="match-the-following.html" style="color: #8b5cf6; font-weight: 700;"><i class="fas fa-puzzle-piece"></i> Match Items</a>
+            <a href="locate-on-map.html" class="switcher-btn" style="color: #38bdf8;">
+                <i class="fas fa-crosshairs"></i> Locate on Map
+            </a>
+            <a href="match-the-following.html" class="switcher-btn" style="color: #a78bfa;">
+                <i class="fas fa-puzzle-piece"></i> Match Items
+            </a>
+            <a href="arrange-chronologically.html" class="switcher-btn" style="color: #fbbf24;">
+                <i class="fas fa-arrow-down-1-9"></i> Chronology Quiz
+            </a>
+            <a href="crossword.html" class="switcher-btn" style="color: #0284c7;">
+                <i class="fas fa-chess-board"></i> Crossword
+            </a>
+            <a href="word-search.html" class="switcher-btn" style="color: #8b5cf6;">
+                <i class="fas fa-magnifying-glass"></i> Word Search
+            </a>
+            <a href="unsc-simulator.html" class="switcher-btn" style="color:#3b82f6;">
+                <i class="fas fa-scale-balanced"></i> UNSC Simulator
+            </a>
+            <a href="international-organizations-explorer.html" class="switcher-btn" style="color:#0284c7;">
+                <i class="fas fa-sitemap"></i> Org Explorer
+            </a>
+            <a href="world-history-timeline.html" class="switcher-btn" style="color:#818cf8;">
+                <i class="fas fa-timeline"></i> World Timeline
+            </a>
+            <a href="global-power-comparison.html" class="switcher-btn" style="color:#38bdf8;">
+                <i class="fas fa-shield-halved"></i> Global Power
+            </a>
+            <a href="solar-system-explorer.html" class="switcher-btn" style="color:#fbbf24;">
+                <i class="fas fa-sun"></i> Solar System
+            </a>
+            <a href="human-body-explorer.html" class="switcher-btn" style="color:#fb7185;">
+                <i class="fas fa-heart-pulse"></i> Human Body
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="international-trade-routes-map.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-ship"></i> Trade Routes</a>
+                <a href="geopolitical-hotspots-map.html" class="active" style="color: #e11d48; font-weight: 800;"><i class="fas fa-satellite-dish"></i> Hotspots Map</a>
+                <a href="physical-geography-map.html"><i class="fas fa-mountain-sun"></i> Physical Map</a>
+                <a href="world-map.html"><i class="fas fa-globe"></i> Political Map</a>
+                <a href="guess-the-country.html" style="color: #8b5cf6; font-weight: 700;"><i class="fas fa-gamepad"></i> Guess Country</a>
+                <a href="arrange-chronologically.html" style="color: #d97706; font-weight: 700;"><i class="fas fa-arrow-down-1-9"></i> Chronology</a>
+                <a href="crossword.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-chess-board"></i> Crossword</a>
+                <a href="word-search.html" style="color: #8b5cf6; font-weight: 700;"><i class="fas fa-magnifying-glass"></i> Word Search</a>
+                <a href="unsc-simulator.html" style="color:#1d4ed8; font-weight:700;"><i class="fas fa-scale-balanced"></i> UNSC Simulator</a>
+                <a href="international-organizations-explorer.html" style="color:#0284c7; font-weight:700;"><i class="fas fa-sitemap"></i> Org Explorer</a>
+                <a href="world-history-timeline.html" style="color:#4f46e5; font-weight:700;"><i class="fas fa-timeline"></i> World Timeline</a>
+                <a href="latest-jobs.html" style="color: #e11d48; font-weight: 700;"><i class="fas fa-bullhorn"></i> Latest Jobs <span style="background:#e11d48; color:#fff; font-size:0.65rem; padding:1px 6px; border-radius:10px;">17,500+</span></a>
+                <a href="scholarships.html"><i class="fas fa-graduation-cap"></i> Scholarships</a>
+                <a href="math-mcqs.html" style="color: #0284c7; font-weight: 700;"><i class="fas fa-calculator"></i> Math MCQs</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="global-security-conflict-essays.html">Conflict Essays</a>
+                <a href="international-relations-essays.html">IR Essays</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Masthead -->
+    <section class="geo-hero">
+        <div class="geo-hero-badge">
+            <i class="fas fa-shield-halved"></i> Interactive Strategic Intelligence &bull; CSS &bull; PMS &bull; FPSC &bull; IR &bull; Current Affairs
+        </div>
+        <h1>Global Geopolitical Hotspots &amp; Conflict Map</h1>
+        <p>
+            Explore active armed conflicts, disputed territories, military alliances &amp; blocs, strategic maritime chokepoints, and ongoing geopolitical tensions across the globe with in-depth examination dossiers and direct solved essay analysis.
+        </p>
+        <div class="geo-stats-row">
+            <div class="geo-stat-pill"><i class="fas fa-person-rifle" style="color:#dc2626;"></i> 7 Active Conflicts</div>
+            <div class="geo-stat-pill"><i class="fas fa-flag" style="color:#f59e0b;"></i> 8 Disputed Territories</div>
+            <div class="geo-stat-pill"><i class="fas fa-shield-halved" style="color:#2563eb;"></i> 6 Military Alliances &amp; Blocs</div>
+            <div class="geo-stat-pill"><i class="fas fa-anchor" style="color:#059669;"></i> 7 Strategic Chokepoints</div>
+            <div class="geo-stat-pill"><i class="fas fa-bolt" style="color:#7c3aed;"></i> 6 Geopolitical Flashpoints</div>
+            <div class="geo-stat-pill" style="background:#e11d48; color:#ffffff; border-color:#e11d48;">
+                <i class="fas fa-crosshairs" style="color:#fff;"></i> 34 Strategic Dossiers
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls & Filters Card -->
+    <section class="controls-card">
+        <!-- Interactive Quiz Banner -->
+        <div class="quiz-banner" id="quizBanner">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 1.5rem;"><i class="fas fa-bullseye" style="color: #f59e0b;"></i></span>
+                <div>
+                    <strong style="font-size: 1rem;" id="quizPromptTitle">CSS Hotspot Challenge:</strong>
+                    <div style="font-size: 0.88rem; opacity: 0.9;" id="quizPromptQuestion">Click the hotspot on the map...</div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="font-weight: 700; font-size: 0.9rem;" id="quizScoreText">Score: 0 / 0</span>
+                <button type="button" onclick="nextQuizQuestion()" style="background:#f59e0b; color:#fff; border:none; padding:6px 14px; border-radius:6px; font-weight:700; cursor:pointer;">
+                    Next Question &rarr;
+                </button>
+                <button type="button" onclick="toggleQuizMode()" style="background:rgba(255,255,255,0.2); color:#fff; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;">
+                    Exit Quiz
+                </button>
+            </div>
+        </div>
+
+        <div class="controls-inner">
+            <div class="search-and-tools">
+                <div class="search-box-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="hotspotSearchInput" placeholder="Search hotspots, flashpoints, straits, treaties, or alliances (e.g., 'Taiwan', 'Hormuz', 'Kashmir', 'NATO', 'Bab-el-Mandeb', 'AUKUS', 'Donbas', 'BRICS')..." oninput="handleSearch(this.value)">
+                </div>
+
+                <div class="region-focus-group">
+                    <span style="font-size: 0.78rem; font-weight: 700; color: var(--geo-text-muted);">Quick Focus:</span>
+                    <button type="button" class="region-btn" onclick="focusRegion('world')">Global View</button>
+                    <button type="button" class="region-btn" onclick="focusRegion('indopacific')">Indo-Pacific</button>
+                    <button type="button" class="region-btn" onclick="focusRegion('middleeast')">Middle East</button>
+                    <button type="button" class="region-btn" onclick="focusRegion('europe')">Europe</button>
+                    <button type="button" class="region-btn" onclick="focusRegion('africa')">Africa</button>
+                    <button type="button" class="region-btn" onclick="focusRegion('americas')">Americas</button>
+                </div>
+
+                <button type="button" class="challenge-mode-btn" id="btnToggleQuiz" onclick="toggleQuizMode()">
+                    <i class="fas fa-bullseye"></i> <span id="quizBtnText">Start Hotspots Quiz</span>
+                </button>
+            </div>
+
+            <!-- 5 Category Filter Pills -->
+            <div class="category-pills-row" id="categoryPillsContainer">
+                <!-- Dynamically Rendered -->
+            </div>
+
+            <!-- Threat Level Status Filter Pills -->
+            <div class="threat-pills-row" id="threatPillsContainer">
+                <span style="font-weight: 700; color: var(--geo-text-muted);"><i class="fas fa-filter"></i> Threat Status:</span>
+                <button type="button" class="threat-pill active" onclick="filterByThreat('all')">All Statuses</button>
+                <button type="button" class="threat-pill" onclick="filterByThreat('Active War')">Active War</button>
+                <button type="button" class="threat-pill" onclick="filterByThreat('High Tension')">High Tension</button>
+                <button type="button" class="threat-pill" onclick="filterByThreat('Frozen')">Frozen / Simmering</button>
+                <button type="button" class="threat-pill" onclick="filterByThreat('Chokepoint')">Critical Chokepoint</button>
+                <button type="button" class="threat-pill" onclick="filterByThreat('Alliance')">Strategic Alliance</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace Split Grid -->
+    <main class="workspace-container">
+        <div class="map-workspace-grid">
+            <!-- Left: Interactive Map Canvas -->
+            <div class="map-canvas-card">
+                <div class="map-toolbar-strip">
+                    <div class="map-info-text">
+                        <i class="fas fa-satellite-dish" style="color: #e11d48;"></i>
+                        <span id="activeHotspotTitle">Active: Russia–Ukraine War</span>
+                    </div>
+                    <div class="map-actions">
+                        <button class="tool-btn" onclick="zoomInMap()" title="Zoom In"><i class="fas fa-plus"></i></button>
+                        <button class="tool-btn" onclick="zoomOutMap()" title="Zoom Out"><i class="fas fa-minus"></i></button>
+                        <button class="tool-btn" onclick="resetMapView()" title="Reset Global View"><i class="fas fa-globe"></i></button>
+                    </div>
+                </div>
+
+                <!-- Leaflet Hotspots Map Container -->
+                <div id="hotspotsMapContainer"></div>
+
+                <!-- Map Legend -->
+                <div class="map-legend-row">
+                    <span style="font-weight: 700; color: var(--geo-text-main);"><i class="fas fa-layer-group"></i> Tactical Legend:</span>
+                    <div class="legend-items">
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#dc2626;"></span> Active War</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#f59e0b;"></span> Disputed Territory</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#2563eb;"></span> Military Alliance</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#059669;"></span> Strategic Waterway</span>
+                        <span class="legend-item"><span class="legend-color-dot" style="background:#7c3aed;"></span> Geopolitical Flashpoint</span>
+                        <span class="legend-item"><i class="fas fa-circle-dot" style="color:#dc2626; animation:radar-ping 1.5s infinite;"></i> Pulsing = Kinetic Escalation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Strategic Intelligence Dossier Sidebar -->
+            <aside class="dossier-sidebar" id="dossierSidebar">
+                <div class="dossier-header">
+                    <div class="dossier-meta-tags">
+                        <span class="status-badge" id="dossierStatusBadge" style="background:#dc2626;">
+                            <i class="fas fa-radiation"></i> <span id="dossierStatusText">Active War</span>
+                        </span>
+                        <span class="category-badge" id="dossierCategoryBadge">Active Conflicts</span>
+                    </div>
+                    <h2 class="dossier-title" id="dossierTitle">Russia–Ukraine War</h2>
+                    <div class="dossier-region-row">
+                        <span><i class="fas fa-globe-europe" style="color: #e11d48;"></i> <span id="dossierRegion">Eastern Europe &bull; Europe</span></span>
+                        <span><i class="fas fa-crosshairs"></i> <span id="dossierCoords">48.5&deg; N, 37.5&deg; E</span></span>
+                    </div>
+                </div>
+
+                <div class="dossier-body">
+                    <!-- Situation Summary -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-align-left" style="color: #e11d48;"></i> Executive Intelligence Summary</div>
+                        <div class="dossier-text-block" id="dossierSummary">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Key Parties Involved -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-users-viewfinder" style="color: #2563eb;"></i> Primary Parties &amp; Coalitions</div>
+                        <div class="parties-tag-cloud" id="dossierParties">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Strategic Significance -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-chess-knight" style="color: #f59e0b;"></i> Strategic Significance &amp; Global Impact</div>
+                        <div class="dossier-text-block" id="dossierStrategicSig" style="background:var(--geo-bg); padding:12px; border-radius:10px; border-left:4px solid #f59e0b;">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Key Flashpoints & Timeline -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-timeline" style="color: #7c3aed;"></i> Key Milestones &amp; Flashpoints</div>
+                        <ul class="bullet-list" id="dossierFlashpoints">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+
+                    <!-- International Law & Treaties -->
+                    <div class="dossier-section">
+                        <div class="dossier-section-title"><i class="fas fa-scale-balanced" style="color: #059669;"></i> International Law &amp; UN Resolutions</div>
+                        <ul class="bullet-list" id="dossierTreaties">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+
+                    <!-- CSS & IR Examination Analytical Framework -->
+                    <div class="exam-analysis-box">
+                        <div class="exam-analysis-title">
+                            <i class="fas fa-brain"></i> CSS Examination Analysis &amp; Foreign Policy
+                        </div>
+                        <div class="dossier-text-block" id="dossierExamAnalysis" style="font-size:0.87rem; line-height:1.6;">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Solved Master Essay CTA Link -->
+                    <a href="global-security-conflict-essays.html#topic-1" id="dossierEssayBtn" class="essay-cta-btn" target="_blank">
+                        <i class="fas fa-book-open"></i> Read Full Solved CSS Essay &amp; Outline &rarr;
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Master Geopolitical Hotspots Reference Table -->
+    <section class="table-section">
+        <h3 class="table-section-title">
+            <i class="fas fa-table-list" style="color: #e11d48;"></i> Master Geopolitical Hotspots &amp; Flashpoints Directory (All 34 Global Nodes)
+        </h3>
+        <div class="table-wrap">
+            <table class="hotspots-table" id="masterHotspotsTable">
+                <thead>
+                    <tr>
+                        <th>Hotspot / Flashpoint</th>
+                        <th>Category</th>
+                        <th>Threat Status</th>
+                        <th>Region &bull; Primary Parties</th>
+                        <th>Strategic &amp; Examination Significance</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="masterTableBody">
+                    <!-- Populated dynamically via JS -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="pakistan-map.html">Pakistan Map</a>
+            <a href="sindh-map.html">Sindh Map</a>
+            <a href="international-trade-routes-map.html">Trade Routes Map</a>
+            <a href="geopolitical-hotspots-map.html">Hotspots Map</a>
+            <a href="physical-geography-map.html">Physical Map</a>
+            <a href="world-map.html">Political Map</a>
+            <a href="global-security-conflict-essays.html">Conflict Essays</a>
+            <a href="international-relations-essays.html">IR Essays</a>
+            <a href="geoeconomics-finance-essays.html">Geoeconomics Essays</a>
+            <a href="latest-jobs.html">Latest Jobs</a>
+            <a href="scholarships.html">Scholarships</a>
+            <a href="math-mcqs.html">Math MCQs</a>
+            <a href="math-tricks.html">Math Tricks</a>
+            <a href="written-prep.html">Written Prep</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+        </div>
+        <p>&copy; 2026 CSS Prep Central. Authoritative Geopolitical Hotspots &amp; Conflict Intelligence Map for competitive exam aspirants.</p>
+    </footer>
+
+    <!-- Leaflet JS & Hotspots Dataset -->
+    <script src="js/leaflet.js"></script>
+    <script src="js/data_geopolitical_hotspots.js"></script>
+
+    <script>
+        // State Variables
+        let map = null;
+        let markersGroup = null;
+        let tileLayer = null;
+        let currentCategory = 'all';
+        let currentThreat = 'all';
+        let currentHotspot = null;
+        let allHotspots = [];
+        let isQuizMode = false;
+        let quizTarget = null;
+        let quizScore = 0;
+        let quizTotal = 0;
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                updateMapTiles();
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        function updateMapTiles() {
+            if (!map || typeof L === 'undefined') return;
+            if (tileLayer) map.removeLayer(tileLayer);
+
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            const primaryUrl = isDark 
+                ? 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png'
+                : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+            const fallbackUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+            tileLayer = L.tileLayer(primaryUrl, {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+
+            let hasSwitched = false;
+            tileLayer.on('tileerror', function() {
+                if (!hasSwitched && map) {
+                    hasSwitched = true;
+                    try {
+                        map.removeLayer(tileLayer);
+                        tileLayer = L.tileLayer(fallbackUrl, {
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                            maxZoom: 19
+                        }).addTo(map);
+                    } catch (e) {}
+                }
+            });
+        }
+
+        // Initialize Map
+        function initMap() {
+            const data = window.GEOPOLITICAL_HOTSPOTS_DATA || (typeof GEOPOLITICAL_HOTSPOTS_DATA !== 'undefined' ? GEOPOLITICAL_HOTSPOTS_DATA : {});
+            allHotspots = data.hotspots || [];
+
+            try {
+                if (typeof L !== 'undefined') {
+                    map = L.map('hotspotsMapContainer', {
+                        center: [28, 45],
+                        zoom: 2.7,
+                        minZoom: 1.8,
+                        maxZoom: 12,
+                        scrollWheelZoom: true,
+                        zoomControl: false
+                    });
+
+                    updateMapTiles();
+                    markersGroup = L.layerGroup().addTo(map);
+
+                    setTimeout(() => { if (map) map.invalidateSize(); }, 250);
+                    window.addEventListener('resize', () => { if (map) map.invalidateSize(); });
+                } else {
+                    showHotspotsMapSafeModeBanner();
+                }
+            } catch (err) {
+                console.warn('Hotspots Map safe mode init:', err);
+                showHotspotsMapSafeModeBanner();
+            }
+
+            renderCategoryPills();
+            renderMarkers();
+            renderMasterTable();
+
+            if (allHotspots.length > 0) {
+                selectHotspot(allHotspots[0], false);
+            }
+        }
+
+        function showHotspotsMapSafeModeBanner() {
+            const container = document.getElementById('hotspotsMapContainer');
+            if (container && !container.querySelector('.map-safe-banner')) {
+                const banner = document.createElement('div');
+                banner.className = 'map-safe-banner';
+                banner.style.cssText = 'position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#0b1329; color:#f8fafc; padding:24px; text-align:center; z-index:100;';
+                banner.innerHTML = `
+                    <i class="fas fa-crosshairs" style="font-size:3rem; color:#ef4444; margin-bottom:12px;"></i>
+                    <h3 style="margin:0 0 8px 0; font-size:1.25rem;">Geopolitical Intelligence Safe Mode</h3>
+                    <p style="margin:0; color:#94a3b8; max-width:440px; font-size:0.9rem;">
+                        Interactive conflict dossiers, strategic chokepoints, threat level filters, search, and exam analysis below are fully active.
+                    </p>
+                `;
+                container.style.position = 'relative';
+                container.appendChild(banner);
+            }
+        }
+
+        // Render Category Filter Pills
+        function renderCategoryPills() {
+            const container = document.getElementById('categoryPillsContainer');
+            if (!container) return;
+
+            const data = window.GEOPOLITICAL_HOTSPOTS_DATA || (typeof GEOPOLITICAL_HOTSPOTS_DATA !== 'undefined' ? GEOPOLITICAL_HOTSPOTS_DATA : {});
+            const categories = data.categories || [];
+            container.innerHTML = categories.map(cat => {
+                const count = cat.id === 'all'
+                    ? allHotspots.length
+                    : allHotspots.filter(h => h.category === cat.id).length;
+                const isActive = cat.id === currentCategory ? 'active' : '';
+                return `
+                    <button type="button" class="cat-pill ${isActive}" onclick="filterByCategory('${cat.id}')">
+                        <i class="fas ${cat.icon}"></i> ${cat.name} <span class="pill-badge">${count}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Render Markers based on category, threat status, and search
+        function renderMarkers() {
+            if (markersGroup) markersGroup.clearLayers();
+
+            const query = (document.getElementById('hotspotSearchInput').value || '').toLowerCase().trim();
+
+            const filtered = allHotspots.filter(h => {
+                const matchCat = currentCategory === 'all' || h.category === currentCategory;
+                
+                let matchThreat = true;
+                if (currentThreat !== 'all') {
+                    if (currentThreat === 'Active War') {
+                        matchThreat = h.status.includes('Active War');
+                    } else if (currentThreat === 'High Tension') {
+                        matchThreat = h.status.includes('High Tension') || h.status.includes('Escalation');
+                    } else if (currentThreat === 'Frozen') {
+                        matchThreat = h.status.includes('Simmering') || h.status.includes('Frozen') || h.status.includes('Dispute');
+                    } else if (currentThreat === 'Chokepoint') {
+                        matchThreat = h.status.includes('Chokepoint') || h.category === 'strategic_waterways';
+                    } else if (currentThreat === 'Alliance') {
+                        matchThreat = h.category === 'alliances' || h.status.includes('Pact');
+                    }
+                }
+
+                const matchSearch = !query ||
+                    h.name.toLowerCase().includes(query) ||
+                    h.summary.toLowerCase().includes(query) ||
+                    h.region.toLowerCase().includes(query) ||
+                    (h.partiesInvolved && h.partiesInvolved.some(p => p.toLowerCase().includes(query)));
+
+                return matchCat && matchThreat && matchSearch;
+            });
+
+            if (!markersGroup || typeof L === 'undefined') return;
+
+            filtered.forEach(h => {
+                const isActive = currentHotspot && currentHotspot.id === h.id;
+                const isKinetic = h.status.includes('Active War') || h.status.includes('High Tension');
+                const pulseClass = h.status.includes('Active War') ? '' : (h.category === 'disputed_territories' ? 'amber' : 'purple');
+
+                const pulseRingHtml = isKinetic ? `<div class="radar-pulse-ring ${pulseClass}"></div>` : '';
+
+                const iconHtml = `
+                    <div class="hotspot-marker-pin ${isActive ? 'active' : ''}" style="background: ${h.color};">
+                        ${pulseRingHtml}
+                        <i class="fas ${h.icon}"></i>
+                    </div>
+                `;
+
+                const customIcon = L.divIcon({
+                    html: iconHtml,
+                    className: 'custom-hotspot-icon',
+                    iconSize: [34, 34],
+                    iconAnchor: [17, 17]
+                });
+
+                const marker = L.marker([h.lat, h.lng], { icon: customIcon });
+
+                marker.on('click', () => {
+                    if (isQuizMode) {
+                        handleQuizAnswer(h);
+                    } else {
+                        selectHotspot(h, true);
+                    }
+                });
+
+                marker.bindTooltip(`<strong>${h.name}</strong><br><span style="font-size:0.75rem; color:${h.statusColor};">${h.status}</span>`, {
+                    direction: 'top',
+                    offset: [0, -18],
+                    opacity: 0.95
+                });
+
+                markersGroup.addLayer(marker);
+            });
+        }
+
+        // Select and Highlight a Hotspot
+        function selectHotspot(h, panTo = true) {
+            currentHotspot = h;
+
+            // Update title
+            const activeTitle = document.getElementById('activeHotspotTitle');
+            if (activeTitle) activeTitle.textContent = `Active: ${h.name} (${h.status})`;
+
+            // Populate Dossier
+            document.getElementById('dossierTitle').textContent = h.name;
+            
+            const statusBadge = document.getElementById('dossierStatusBadge');
+            statusBadge.style.background = h.statusColor || '#dc2626';
+            document.getElementById('dossierStatusText').textContent = h.status;
+
+            // Category Label
+            const catObj = window.GEOPOLITICAL_HOTSPOTS_DATA.categories.find(c => c.id === h.category);
+            document.getElementById('dossierCategoryBadge').textContent = catObj ? catObj.name : h.category;
+
+            document.getElementById('dossierRegion').textContent = `${h.region} • ${h.continents}`;
+            document.getElementById('dossierCoords').textContent = `${Math.abs(h.lat).toFixed(1)}° ${h.lat >= 0 ? 'N' : 'S'}, ${Math.abs(h.lng).toFixed(1)}° ${h.lng >= 0 ? 'E' : 'W'}`;
+
+            document.getElementById('dossierSummary').textContent = h.summary;
+
+            // Parties Tags
+            const partiesContainer = document.getElementById('dossierParties');
+            partiesContainer.innerHTML = (h.partiesInvolved || []).map(p => `
+                <span class="party-tag"><i class="fas fa-shield" style="font-size:0.7rem; color:${h.color}"></i> ${p}</span>
+            `).join('');
+
+            // Strategic Significance
+            document.getElementById('dossierStrategicSig').textContent = h.strategicSignificance;
+
+            // Flashpoints Timeline
+            const flashpointsList = document.getElementById('dossierFlashpoints');
+            flashpointsList.innerHTML = (h.keyFlashpoints || []).map(f => `<li>${f}</li>`).join('');
+
+            // Treaties & International Law
+            const treatiesList = document.getElementById('dossierTreaties');
+            treatiesList.innerHTML = (h.internationalLawAndTreaties || []).map(t => `<li>${t}</li>`).join('');
+
+            // CSS Exam Analysis
+            document.getElementById('dossierExamAnalysis').textContent = h.cssExamAnalysis;
+
+            // Essay CTA Button Link
+            const essayBtn = document.getElementById('dossierEssayBtn');
+            if (essayBtn) {
+                essayBtn.href = h.relatedEssayLink || 'global-security-conflict-essays.html';
+                essayBtn.innerHTML = `<i class="fas fa-book-open"></i> Read Solved CSS Master Essay &amp; Outline &rarr;`;
+            }
+
+            // Pan and Zoom
+            if (panTo && map) {
+                map.flyTo([h.lat, h.lng], Math.max(map.getZoom(), 4.8), {
+                    animate: true,
+                    duration: 1.2
+                });
+            }
+
+            renderMarkers();
+        }
+
+        // Filter Handlers
+        function filterByCategory(catId) {
+            currentCategory = catId;
+            renderCategoryPills();
+            renderMarkers();
+            renderMasterTable();
+        }
+
+        function filterByThreat(threat) {
+            currentThreat = threat;
+            document.querySelectorAll('.threat-pill').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderMarkers();
+            renderMasterTable();
+        }
+
+        function handleSearch(val) {
+            renderMarkers();
+            renderMasterTable();
+        }
+
+        // Quick Focus Regions
+        function focusRegion(region) {
+            if (!map) return;
+            switch(region) {
+                case 'indopacific':
+                    map.flyTo([16, 110], 3.5, { duration: 1.2 });
+                    break;
+                case 'middleeast':
+                    map.flyTo([27, 45], 4.2, { duration: 1.2 });
+                    break;
+                case 'europe':
+                    map.flyTo([52, 25], 4.0, { duration: 1.2 });
+                    break;
+                case 'africa':
+                    map.flyTo([5, 20], 3.3, { duration: 1.2 });
+                    break;
+                case 'americas':
+                    map.flyTo([15, -75], 3.2, { duration: 1.2 });
+                    break;
+                case 'world':
+                default:
+                    map.flyTo([28, 45], 2.7, { duration: 1.2 });
+                    break;
+            }
+        }
+
+        // Zoom Helpers
+        function zoomInMap() { if (map) map.zoomIn(); }
+        function zoomOutMap() { if (map) map.zoomOut(); }
+        function resetMapView() { focusRegion('world'); }
+
+        // Render Master Hotspots Table
+        function renderMasterTable() {
+            const tbody = document.getElementById('masterTableBody');
+            if (!tbody) return;
+
+            const query = (document.getElementById('hotspotSearchInput').value || '').toLowerCase().trim();
+
+            const filtered = allHotspots.filter(h => {
+                const matchCat = currentCategory === 'all' || h.category === currentCategory;
+                const matchSearch = !query ||
+                    h.name.toLowerCase().includes(query) ||
+                    h.summary.toLowerCase().includes(query) ||
+                    h.region.toLowerCase().includes(query) ||
+                    (h.partiesInvolved && h.partiesInvolved.some(p => p.toLowerCase().includes(query)));
+                return matchCat && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:30px; color:var(--geo-text-muted);">No hotspots match your criteria.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(h => {
+                const catObj = window.GEOPOLITICAL_HOTSPOTS_DATA.categories.find(c => c.id === h.category);
+                const partiesStr = (h.partiesInvolved || []).slice(0, 3).join(', ') + ((h.partiesInvolved || []).length > 3 ? '...' : '');
+
+                return `
+                    <tr>
+                        <td style="font-weight:700;">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="background:${h.color}; color:#fff; width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem;">
+                                    <i class="fas ${h.icon}"></i>
+                                </span>
+                                <div>
+                                    <div>${h.name}</div>
+                                    <small style="color:var(--geo-text-muted);">${h.continents}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="category-badge" style="border-color:${h.color}; color:${h.color};">
+                                ${catObj ? catObj.name : h.category}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="status-badge" style="background:${h.statusColor}; font-size:0.68rem; padding:2px 8px;">
+                                ${h.status}
+                            </span>
+                        </td>
+                        <td>
+                            <strong>${h.region}</strong><br>
+                            <small style="color:var(--geo-text-muted);">${partiesStr}</small>
+                        </td>
+                        <td style="max-width:340px; font-size:0.83rem; line-height:1.5;">
+                            ${h.strategicSignificance.substring(0, 140)}...
+                        </td>
+                        <td>
+                            <button type="button" class="table-btn" onclick="scrollToMapAndSelect('${h.id}')">
+                                <i class="fas fa-crosshairs"></i> Inspect
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function scrollToMapAndSelect(hotspotId) {
+            const h = allHotspots.find(item => item.id === hotspotId);
+            if (!h) return;
+
+            document.getElementById('hotspotsMapContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            selectHotspot(h, true);
+        }
+
+        // Quiz Mode Implementation
+        function toggleQuizMode() {
+            isQuizMode = !isQuizMode;
+            const banner = document.getElementById('quizBanner');
+            const btnText = document.getElementById('quizBtnText');
+
+            if (isQuizMode) {
+                banner.classList.add('active');
+                btnText.textContent = 'Exit Quiz Mode';
+                quizScore = 0;
+                quizTotal = 0;
+                nextQuizQuestion();
+            } else {
+                banner.classList.remove('active');
+                btnText.textContent = 'Start Hotspots Quiz';
+                quizTarget = null;
+            }
+        }
+
+        function nextQuizQuestion() {
+            if (!allHotspots.length) return;
+            const randomIndex = Math.floor(Math.random() * allHotspots.length);
+            quizTarget = allHotspots[randomIndex];
+
+            const questionElem = document.getElementById('quizPromptQuestion');
+            questionElem.innerHTML = `Target: Find <strong>${quizTarget.name}</strong> (${quizTarget.region}) on the map!`;
+        }
+
+        function handleQuizAnswer(clickedHotspot) {
+            if (!quizTarget) return;
+            quizTotal++;
+
+            if (clickedHotspot.id === quizTarget.id) {
+                quizScore++;
+                alert(`Correct! You located ${quizTarget.name}.`);
+                selectHotspot(clickedHotspot, false);
+                nextQuizQuestion();
+            } else {
+                alert(`Incorrect! That was ${clickedHotspot.name}. Look for ${quizTarget.name} in ${quizTarget.region}.`);
+            }
+
+            document.getElementById('quizScoreText').textContent = `Score: ${quizScore} / ${quizTotal}`;
+        }
+
+        // Auto Boot
+        window.addEventListener('DOMContentLoaded', initMap);
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

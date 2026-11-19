@@ -1,0 +1,837 @@
+const fs = require('fs');
+const path = require('path');
+
+const targetPath = path.join(__dirname, '../frontend/dashboard.html');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Personalized Learning Dashboard for CSS, PMS, FIA, and Competitive Exam Candidates. Track completed tests, weak subjects, accuracy, study hours, and performance improvement over time.">
+    <title>Personalized Learning Dashboard &amp; Analytics — MCQs Portal</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dash-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 24px 20px 70px;
+        }
+
+        .dash-hero {
+            background: linear-gradient(135deg, #092c48 0%, #0f4c81 50%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 44px 0 34px;
+            text-align: center;
+            position: relative;
+        }
+
+        .dash-hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            line-height: 1.25;
+        }
+
+        .dash-hero p {
+            font-size: 1.05rem;
+            max-width: 880px;
+            margin: 0 auto 18px;
+            opacity: 0.94;
+            line-height: 1.55;
+        }
+
+        /* Top Key Metrics Row */
+        .dash-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            margin: -24px auto 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .metric-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: var(--transition);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .metric-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .metric-info h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin: 0 0 2px;
+            line-height: 1.2;
+        }
+
+        .metric-info p {
+            margin: 0;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-light);
+        }
+
+        /* Main Workspace 2-Column Grid */
+        .dash-grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .dash-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .dash-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .dash-card-title {
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+        }
+
+        /* Subject Mastery Progress Bars */
+        .subject-bar-row {
+            margin-bottom: 14px;
+        }
+
+        .subject-bar-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .subject-progress-track {
+            height: 10px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .subject-progress-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.8s ease-in-out;
+        }
+
+        /* Status Badges */
+        .status-pill {
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .status-mastered { background: #d1fae5; color: #065f46; }
+        .status-strong { background: #dbeafe; color: #1e40af; }
+        .status-moderate { background: #fef3c7; color: #92400e; }
+        .status-weak { background: #fee2e2; color: #991b1b; }
+
+        /* Weak Areas Prescription Box */
+        .rx-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid #ef4444;
+            border-radius: 0 10px 10px 0;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .rx-title {
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rx-desc {
+            font-size: 0.86rem;
+            color: var(--text-light);
+            line-height: 1.45;
+            margin-bottom: 10px;
+        }
+
+        .rx-action-btn {
+            background: #ef4444;
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .rx-action-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Study Hours Bar Chart */
+        .hours-chart-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 150px;
+            padding: 16px 10px 0;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 16px;
+        }
+
+        .hours-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            flex: 1;
+        }
+
+        .hours-bar {
+            width: 24px;
+            background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+            border-radius: 6px 6px 0 0;
+            transition: height 0.6s ease;
+        }
+
+        .hours-val {
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .hours-day {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* Live Session Timer (Pomodoro) */
+        .timer-box {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 14px;
+        }
+
+        .timer-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 8px 0 14px;
+        }
+
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .timer-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.86rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .timer-btn:hover {
+            background: #ffffff;
+            color: #1e1b4b;
+        }
+
+        /* Improvement Timeline Cards */
+        .timeline-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .timeline-step-box {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .timeline-step-box.current {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+
+        .timeline-pct {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #047857;
+            margin: 4px 0;
+        }
+
+        /* Test History Table */
+        .history-table-container {
+            overflow-x: auto;
+        }
+
+        .dash-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .dash-table th {
+            background: var(--bg-color);
+            color: var(--text-light);
+            text-align: left;
+            padding: 12px 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .dash-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-dark);
+        }
+
+        .dash-table tr:hover {
+            background: var(--bg-color);
+        }
+
+        @media (max-width: 900px) {
+            .dash-grid-2col {
+                grid-template-columns: 1fr;
+            }
+            .timeline-steps {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html" class="active">Learning Dashboard</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="fia-sample-papers.html">FIA Papers</a>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Navbar -->
+    <nav class="secondary-navbar" aria-label="Secondary Navigation">
+        <div class="container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html" class="active" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-chart-line"></i> Learning Dashboard</a></li>
+                <li><a href="ai-assistant.html"><i class="fa-solid fa-robot"></i> AI Study Assistant</a></li>
+                <li><a href="editorial-explainer.html"><i class="fa-solid fa-newspaper"></i> Editorial Explainer</a></li>
+                <li><a href="world-map.html"><i class="fa-solid fa-earth-americas"></i> Interactive World Map</a></li>
+                <li><a href="digital-library.html"><i class="fa-solid fa-book-bookmark"></i> Digital Library &amp; Reports</a></li>
+                <li><a href="recommended-books.html"><i class="fa-solid fa-book"></i> Recommended Books</a></li>
+                <li><a href="fia-sample-papers.html"><i class="fa-solid fa-file-shield"></i> FIA AD 20 Sample Papers</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="dash-hero">
+        <div class="container">
+            <h1>📊 Personalized Learning Dashboard</h1>
+            <p>Track your completed mock exams, identify weak subjects, measure net accuracy, monitor cumulative study hours, and observe your performance improvement trajectory over time.</p>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="dash-container">
+        <!-- Top Key Performance Metrics -->
+        <div class="dash-metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon-box" style="background:#d1fae5; color:#065f46;">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+                <div class="metric-info">
+                    <h3 id="statReadiness">78%</h3>
+                    <p>Exam Readiness Index</p>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon-box" style="background:#dbeafe; color:#1e40af;">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                </div>
+                <div class="metric-info">
+                    <h3 id="statCompleted">16</h3>
+                    <p>Completed Mock Tests</p>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon-box" style="background:#fef3c7; color:#92400e;">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <div class="metric-info">
+                    <h3 id="statAccuracy">74.2%</h3>
+                    <p>Overall Accuracy</p>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon-box" style="background:#ede9fe; color:#6b21a8;">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="metric-info">
+                    <h3 id="statHours">54.5h</h3>
+                    <p>Total Study Hours</p>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon-box" style="background:#fee2e2; color:#991b1b;">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+                <div class="metric-info">
+                    <h3 id="statStreak">14 Days</h3>
+                    <p>Active Study Streak</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 1: Subject Mastery vs Weak Area Diagnosis -->
+        <div class="dash-grid-2col">
+            <!-- Left: Subject Mastery & Accuracy Matrix -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h2 class="dash-card-title"><i class="fa-solid fa-layer-group" style="color:#0284c7;"></i> Subject Mastery Matrix</h2>
+                    <span style="font-size:0.8rem; font-weight:600; color:var(--text-light);">FPSC / PPSC Syllabus</span>
+                </div>
+                <div id="subjectMasteryContainer"></div>
+            </div>
+
+            <!-- Right: Weak Subjects Prescription -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h2 class="dash-card-title"><i class="fa-solid fa-triangle-exclamation" style="color:#ef4444;"></i> Weak Area Remediation Plan</h2>
+                    <span class="status-pill status-weak">Action Required</span>
+                </div>
+                <p style="font-size:0.86rem; color:var(--text-light); margin-top:-8px; margin-bottom:14px;">Topics where your accuracy is below 60%. Prioritize these to maximize merit ranking.</p>
+                <div id="weakAreasContainer"></div>
+            </div>
+        </div>
+
+        <!-- Row 2: Study Hours & Improvement Over Time -->
+        <div class="dash-grid-2col">
+            <!-- Left: Study Hours & Session Timer -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h2 class="dash-card-title"><i class="fa-solid fa-hourglass-half" style="color:#f59e0b;"></i> Study Hours &amp; Weekly Tracking</h2>
+                    <span id="weeklyProgressLabel" style="font-size:0.82rem; font-weight:700; color:#059669;">21.8 / 25.0 Hours (87%)</span>
+                </div>
+
+                <div class="hours-chart-container" id="hoursChart"></div>
+
+                <!-- Live Study Session Tracker (Pomodoro) -->
+                <div class="timer-box">
+                    <div style="font-size:0.84rem; text-transform:uppercase; letter-spacing:1px; opacity:0.9;">
+                        <i class="fa-solid fa-stopwatch"></i> Live Study Session Timer
+                    </div>
+                    <div class="timer-display" id="timerDisplay">00:00:00</div>
+                    <div class="timer-controls">
+                        <button class="timer-btn" id="btnStartTimer"><i class="fa-solid fa-play"></i> Start</button>
+                        <button class="timer-btn" id="btnPauseTimer"><i class="fa-solid fa-pause"></i> Pause</button>
+                        <button class="timer-btn" id="btnLogTimer"><i class="fa-solid fa-check"></i> Log Time (+Session)</button>
+                        <button class="timer-btn" id="btnResetTimer"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Improvement Over Time -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h2 class="dash-card-title"><i class="fa-solid fa-chart-line" style="color:#10b981;"></i> Improvement Trajectory Over Time</h2>
+                    <span style="font-size:0.82rem; font-weight:600; color:#10b981;"><i class="fa-solid fa-arrow-trend-up"></i> +15.8% Growth</span>
+                </div>
+                <p style="font-size:0.86rem; color:var(--text-light); margin-top:-8px; margin-bottom:14px;">Historical progression from baseline mock attempts to your current competitive score tier.</p>
+                
+                <div class="timeline-steps" id="timelineContainer"></div>
+
+                <div style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:10px; padding:16px; margin-top:20px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                        <strong style="font-size:0.88rem; color:var(--text-dark);"><i class="fa-solid fa-award" style="color:#f59e0b;"></i> Predicted FPSC Percentile:</strong>
+                        <span style="font-size:0.95rem; font-weight:800; color:#047857;">Top 8.5% (Merit Safe)</span>
+                    </div>
+                    <p style="font-size:0.82rem; color:var(--text-light); margin:0; line-height:1.45;">Candidates scoring above 70% with consistent weekly study hours have historically cleared the written screening phase for FIA, NAB, and CSS examinations.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 3: Completed Tests History Table -->
+        <div class="dash-card">
+            <div class="dash-card-header">
+                <h2 class="dash-card-title"><i class="fa-solid fa-clock-rotate-left" style="color:#0284c7;"></i> Completed Tests History</h2>
+                <button id="btnResetProfile" style="background:transparent; border:1px solid var(--border-color); padding:5px 12px; border-radius:6px; font-size:0.8rem; color:var(--text-light); cursor:pointer;">
+                    <i class="fa-solid fa-rotate-left"></i> Reset Benchmark Data
+                </button>
+            </div>
+
+            <div class="history-table-container">
+                <table class="dash-table">
+                    <thead>
+                        <tr>
+                            <th>Test / Exam Name</th>
+                            <th>Category</th>
+                            <th>Date Completed</th>
+                            <th>Score</th>
+                            <th>Accuracy</th>
+                            <th>Time Taken</th>
+                            <th>Outcome Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="testHistoryTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Universal Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                        <span>MCQs<span class="highlight">Portal</span></span>
+                    </div>
+                    <p>Pakistan's premier educational platform for competitive examinations: CSS, PMS, FIA, NAB, AAO, Judiciary, and General Recruitment tests.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Civil Services Prep</h4>
+                    <ul>
+                        <li><a href="dashboard.html">Learning Dashboard</a></li>
+                        <li><a href="ai-assistant.html">AI Study Assistant</a></li>
+                        <li><a href="editorial-explainer.html">Editorial Explainer</a></li>
+                        <li><a href="world-map.html">Interactive World Map</a></li>
+                        <li><a href="digital-library.html">Digital Library &amp; Reports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Practice Portals</h4>
+                    <ul>
+                        <li><a href="fia-sample-papers.html">FIA AD 20 Sample Papers</a></li>
+                        <li><a href="quiz.html">Interactive Online Mock Quizzes</a></li>
+                        <li><a href="science-notes.html">General Science Capsule</a></li>
+                        <li><a href="index.html#categories">Subject-Wise MCQs</a></li>
+                        <li><a href="about.html">About &amp; Editorial Standards</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MCQs Portal Pakistan. All rights reserved. Built for competitive exam aspirants.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data_learning_dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const db = window.LEARNING_DASHBOARD;
+            let profile = db.getProfile();
+
+            function renderDashboard() {
+                // Top Metrics
+                document.getElementById('statReadiness').textContent = profile.overallStats.examReadinessIndex + '%';
+                document.getElementById('statCompleted').textContent = profile.overallStats.testsCompleted;
+                document.getElementById('statAccuracy').textContent = profile.overallStats.overallAccuracy + '%';
+                document.getElementById('statHours').textContent = profile.totalStudyHours + 'h';
+                document.getElementById('statStreak').textContent = profile.studyStreakDays + ' Days';
+
+                // Subject Mastery
+                const subContainer = document.getElementById('subjectMasteryContainer');
+                if (subContainer) {
+                    subContainer.innerHTML = profile.subjectMastery.map(s => {
+                        let statusClass = 'status-moderate';
+                        if (s.status.includes('Mastered')) statusClass = 'status-mastered';
+                        else if (s.status.includes('Strong')) statusClass = 'status-strong';
+                        else if (s.status.includes('Weak')) statusClass = 'status-weak';
+
+                        return \`
+                            <div class="subject-bar-row">
+                                <div class="subject-bar-header">
+                                    <span><i class="fa-solid \${s.icon}" style="color:\${s.color};"></i> \${s.subject}</span>
+                                    <span>\${s.accuracy}% (\${s.correct}/\${s.attempted}) <span class="status-pill \${statusClass}">\${s.status}</span></span>
+                                </div>
+                                <div class="subject-progress-track">
+                                    <div class="subject-progress-fill" style="width:\${s.accuracy}%; background:\${s.color};"></div>
+                                </div>
+                            </div>
+                        \`;
+                    }).join('');
+                }
+
+                // Weak Areas Prescription
+                const rxContainer = document.getElementById('weakAreasContainer');
+                if (rxContainer) {
+                    rxContainer.innerHTML = profile.weakTopicsPrescription.map(rx => \`
+                        <div class="rx-card">
+                            <div class="rx-title">
+                                <span>\${rx.topic}</span>
+                                <span style="font-size:0.8rem; color:#ef4444; font-weight:700;">\${rx.accuracy}% Accuracy</span>
+                            </div>
+                            <div class="rx-desc">
+                                <strong>Diagnosis:</strong> \${rx.diagnosis}<br>
+                                <strong>Prescription:</strong> \${rx.actionPlan}
+                            </div>
+                            <a href="\${rx.practiceLink}" class="rx-action-btn">
+                                <i class="fa-solid fa-play"></i> Start Targeted Practice
+                            </a>
+                        </div>
+                    \`).join('');
+                }
+
+                // Hours Bar Chart
+                const chartContainer = document.getElementById('hoursChart');
+                if (chartContainer) {
+                    const maxH = Math.max(...profile.dailyHours.map(d => d.hours), 6);
+                    chartContainer.innerHTML = profile.dailyHours.map(d => {
+                        const hPct = (d.hours / maxH) * 100;
+                        return \`
+                            <div class="hours-col">
+                                <span class="hours-val">\${d.hours}h</span>
+                                <div class="hours-bar" style="height:\${hPct}%;"></div>
+                                <span class="hours-day">\${d.day}</span>
+                            </div>
+                        \`;
+                    }).join('');
+                }
+
+                // Improvement Timeline
+                const timelineContainer = document.getElementById('timelineContainer');
+                if (timelineContainer) {
+                    timelineContainer.innerHTML = profile.improvementTimeline.map((step, idx) => {
+                        const isCurrent = (idx === profile.improvementTimeline.length - 1);
+                        return \`
+                            <div class="timeline-step-box \${isCurrent ? 'current' : ''}">
+                                <div style="font-size:0.8rem; font-weight:700; color:var(--text-light);">\${step.period}</div>
+                                <div class="timeline-pct">\${step.accuracy}%</div>
+                                <div style="font-size:0.78rem; color:var(--text-dark);">Avg: \${step.score}/100</div>
+                            </div>
+                        \`;
+                    }).join('');
+                }
+
+                // Test History Table
+                const tableBody = document.getElementById('testHistoryTableBody');
+                if (tableBody) {
+                    tableBody.innerHTML = profile.testHistory.map(t => \`
+                        <tr>
+                            <td><strong>\${t.testName}</strong></td>
+                            <td>\${t.category}</td>
+                            <td>\${t.date}</td>
+                            <td><strong>\${t.score} / \${t.total}</strong></td>
+                            <td><span style="font-weight:700; color:\${t.accuracy >= 70 ? '#059669' : '#ef4444'};">\${t.accuracy}%</span></td>
+                            <td>\${t.timeSpent}</td>
+                            <td><span class="status-pill \${t.accuracy >= 70 ? 'status-strong' : 'status-weak'}">\${t.status}</span></td>
+                            <td>
+                                <a href="quiz.html?category=\${encodeURIComponent(t.category)}" style="font-size:0.8rem; color:#0284c7; text-decoration:none; font-weight:600;">
+                                    <i class="fa-solid fa-rotate-right"></i> Retake
+                                </a>
+                            </td>
+                        </tr>
+                    \`).join('');
+                }
+            }
+
+            renderDashboard();
+
+            // Reset Profile button
+            document.getElementById('btnResetProfile').addEventListener('click', () => {
+                if (confirm('Reset your profile back to the benchmark data?')) {
+                    profile = db.resetProfile();
+                    renderDashboard();
+                }
+            });
+
+            // Live Study Session Timer
+            let timerSeconds = 0;
+            let timerInterval = null;
+            const timerDisplay = document.getElementById('timerDisplay');
+
+            function updateTimerDisplay() {
+                const hrs = String(Math.floor(timerSeconds / 3600)).padStart(2, '0');
+                const mins = String(Math.floor((timerSeconds % 3600) / 60)).padStart(2, '0');
+                const secs = String(timerSeconds % 60).padStart(2, '0');
+                timerDisplay.textContent = \`\${hrs}:\${mins}:\${secs}\`;
+            }
+
+            document.getElementById('btnStartTimer').addEventListener('click', () => {
+                if (!timerInterval) {
+                    timerInterval = setInterval(() => {
+                        timerSeconds++;
+                        updateTimerDisplay();
+                    }, 1000);
+                }
+            });
+
+            document.getElementById('btnPauseTimer').addEventListener('click', () => {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+            });
+
+            document.getElementById('btnResetTimer').addEventListener('click', () => {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                timerSeconds = 0;
+                updateTimerDisplay();
+            });
+
+            document.getElementById('btnLogTimer').addEventListener('click', () => {
+                const minsToLog = Math.max(Math.round(timerSeconds / 60), 30); // minimum 30 min log
+                profile = db.addStudyTime(minsToLog);
+                renderDashboard();
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                timerSeconds = 0;
+                updateTimerDisplay();
+                alert(\`Logged \${minsToLog} minutes of study time into your profile!\`);
+            });
+
+            // Dark Mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    document.documentElement.classList.toggle('dark-mode', isDark);
+                    localStorage.setItem('mcqs_dark_mode', isDark ? 'true' : 'false');
+                });
+            }
+
+            if (localStorage.getItem('mcqs_dark_mode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
+`;
+
+fs.writeFileSync(targetPath, htmlContent, 'utf8');
+console.log('Successfully generated frontend/dashboard.html!');

@@ -1,0 +1,2088 @@
+const fs = require('fs');
+const path = require('path');
+
+const targetPath = path.join(__dirname, '../frontend/who-trades-what.html');
+
+console.log('Building who-trades-what.html...');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Trades What? | Global Export &amp; Import Merchandise Flow Explorer</title>
+    <meta name="description" content="Explore leading exporting and importing nations, top traded products, bilateral trading partners, international trade theories, trade blocs, and 20 CSS/PMS exam MCQs.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('mcqs_dark_mode');
+            if (savedTheme === 'true' || (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <style>
+        :root {
+            --trade-bg: #f8fafc;
+            --trade-card-bg: #ffffff;
+            --trade-surface: #f1f5f9;
+            --trade-surface-hover: #e2e8f0;
+            --trade-text: #0f172a;
+            --trade-text-muted: #64748b;
+            --trade-border: #e2e8f0;
+            --trade-border-strong: #cbd5e1;
+            --trade-primary: #0284c7; /* Marine Blue */
+            --trade-primary-hover: #0369a1;
+            --trade-primary-light: #e0f2fe;
+            --trade-gold: #d97706; /* Amber Gold */
+            --trade-gold-light: #fef3c7;
+            --trade-teal: #0d9488;
+            --trade-teal-light: #ccfbf1;
+            --trade-crimson: #e11d48;
+            --trade-crimson-light: #ffe4e6;
+            --trade-success: #16a34a;
+            --trade-success-light: #dcfce7;
+            --font-ui: 'Plus Jakarta Sans', sans-serif;
+            --font-serif: 'Merriweather', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+
+        .dark-mode {
+            --trade-bg: #090d16;
+            --trade-card-bg: #111827;
+            --trade-surface: #1e293b;
+            --trade-surface-hover: #2d3748;
+            --trade-text: #f8fafc;
+            --trade-text-muted: #94a3b8;
+            --trade-border: #1f293d;
+            --trade-border-strong: #334155;
+            --trade-primary: #38bdf8;
+            --trade-primary-hover: #7dd3fc;
+            --trade-primary-light: rgba(56, 189, 248, 0.15);
+            --trade-gold: #fbbf24;
+            --trade-gold-light: rgba(251, 191, 36, 0.15);
+            --trade-teal: #2dd4bf;
+            --trade-teal-light: rgba(45, 212, 191, 0.15);
+            --trade-crimson: #fb7185;
+            --trade-crimson-light: rgba(251, 113, 133, 0.15);
+            --trade-success: #4ade80;
+            --trade-success-light: rgba(74, 222, 128, 0.15);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--trade-bg);
+            color: var(--trade-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Site Switcher Bar */
+        .site-switcher-bar {
+            background: #0b1120;
+            color: #94a3b8;
+            padding: 7px 16px;
+            font-size: 0.78rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .switcher-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .switcher-label {
+            font-weight: 700;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-right: 4px;
+        }
+        .switcher-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+        .switcher-btn.active {
+            background: var(--trade-primary);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* Header */
+        .site-header {
+            background: var(--trade-card-bg);
+            border-bottom: 1px solid var(--trade-border);
+            padding: 14px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        .header-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--trade-text);
+        }
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }
+        .brand-title {
+            font-size: 1.22rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .brand-subtitle {
+            font-size: 0.76rem;
+            color: var(--trade-text-muted);
+            font-weight: 500;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header-btn {
+            background: var(--trade-surface);
+            color: var(--trade-text);
+            border: 1px solid var(--trade-border);
+            padding: 8px 14px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .header-btn:hover {
+            background: var(--trade-surface-hover);
+            border-color: var(--trade-border-strong);
+        }
+
+        /* Hero Section */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(13, 148, 136, 0.05) 100%);
+            border-bottom: 1px solid var(--trade-border);
+            padding: 36px 24px 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--trade-primary-light);
+            color: var(--trade-primary);
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+        .hero-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+        .hero-desc {
+            font-size: 0.98rem;
+            color: var(--trade-text-muted);
+            max-width: 900px;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+        }
+        .kpi-card {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--trade-primary);
+        }
+        .kpi-label {
+            font-size: 0.75rem;
+            color: var(--trade-text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .kpi-val {
+            font-size: 1.45rem;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            letter-spacing: -0.02em;
+            color: var(--trade-text);
+        }
+        .kpi-sub {
+            font-size: 0.75rem;
+            color: var(--trade-text-muted);
+            font-weight: 500;
+        }
+
+        /* Tab Navigation Bar */
+        .nav-tab-wrapper {
+            background: var(--trade-card-bg);
+            border-bottom: 1px solid var(--trade-border);
+            position: sticky;
+            top: 73px;
+            z-index: 40;
+            box-shadow: var(--shadow-sm);
+        }
+        .nav-tab-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            gap: 8px;
+            padding: 8px 24px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--trade-text-muted);
+            padding: 10px 18px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover {
+            background: var(--trade-surface);
+            color: var(--trade-text);
+        }
+        .tab-btn.active {
+            background: var(--trade-primary);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+
+        /* Workspace & Content Views */
+        .workspace-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px;
+            flex: 1;
+            width: 100%;
+        }
+        .tab-view {
+            display: none;
+            animation: fadeIn 0.25s ease forwards;
+        }
+        .tab-view.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Filters & Controls */
+        .control-panel {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-lg);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+        }
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+        }
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--trade-text-muted);
+            font-size: 0.9rem;
+        }
+        .search-input {
+            width: 100%;
+            background: var(--trade-surface);
+            border: 1px solid var(--trade-border);
+            padding: 10px 14px 10px 38px;
+            border-radius: var(--radius-md);
+            color: var(--trade-text);
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+        .search-input:focus {
+            border-color: var(--trade-primary);
+            background: var(--trade-card-bg);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+        .filter-select {
+            background: var(--trade-surface);
+            border: 1px solid var(--trade-border);
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            color: var(--trade-text);
+            font-family: var(--font-ui);
+            font-size: 0.88rem;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+        }
+        .filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .filter-chip {
+            background: var(--trade-surface);
+            border: 1px solid var(--trade-border);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--trade-text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .filter-chip:hover {
+            border-color: var(--trade-primary);
+            color: var(--trade-primary);
+        }
+        .filter-chip.active {
+            background: var(--trade-primary);
+            border-color: var(--trade-primary);
+            color: #ffffff;
+        }
+
+        /* Countries Grid */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 20px;
+        }
+        .country-card {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+        .country-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--trade-primary);
+            box-shadow: var(--shadow-md);
+        }
+        .country-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .country-title-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .country-flag {
+            font-size: 2.2rem;
+            line-height: 1;
+        }
+        .country-name {
+            font-size: 1.18rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .country-code-pill {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            background: var(--trade-surface);
+            color: var(--trade-text-muted);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 2px;
+        }
+        .rank-badges {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+        .rank-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            white-space: nowrap;
+        }
+        .rank-export {
+            background: var(--trade-primary-light);
+            color: var(--trade-primary);
+        }
+        .rank-import {
+            background: var(--trade-gold-light);
+            color: var(--trade-gold);
+        }
+
+        /* Trade Balance Meter */
+        .trade-stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: var(--trade-surface);
+            border-radius: var(--radius-md);
+            padding: 10px 14px;
+            gap: 8px;
+            text-align: center;
+        }
+        .stat-item-label {
+            font-size: 0.7rem;
+            color: var(--trade-text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .stat-item-val {
+            font-size: 0.96rem;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            margin-top: 2px;
+        }
+        .val-surplus {
+            color: var(--trade-success);
+        }
+        .val-deficit {
+            color: var(--trade-crimson);
+        }
+
+        /* Flow Progress Bars */
+        .flow-section-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--trade-text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .product-mini-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .product-bar-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .product-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .progress-track {
+            height: 6px;
+            background: var(--trade-surface);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.4s ease;
+        }
+        .fill-export {
+            background: var(--trade-primary);
+        }
+        .fill-import {
+            background: var(--trade-gold);
+        }
+
+        /* Partners Tag Cloud */
+        .partners-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+        .partner-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--trade-surface);
+            border: 1px solid var(--trade-border);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.73rem;
+            font-weight: 600;
+        }
+
+        /* Strategic Card Note */
+        .card-strategy-box {
+            background: rgba(2, 132, 199, 0.04);
+            border-left: 3px solid var(--trade-primary);
+            padding: 8px 12px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.77rem;
+            line-height: 1.45;
+        }
+        .card-exam-box {
+            background: rgba(217, 119, 6, 0.05);
+            border-left: 3px solid var(--trade-gold);
+            padding: 8px 12px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.77rem;
+            line-height: 1.45;
+        }
+
+        /* Bilateral Matcher View */
+        .matcher-container {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 24px;
+        }
+        .matcher-selectors {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 768px) {
+            .matcher-selectors {
+                grid-template-columns: 1fr;
+            }
+        }
+        .matcher-country-box {
+            background: var(--trade-surface);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .matcher-select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            color: var(--trade-text);
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            outline: none;
+        }
+        .swap-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--trade-primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 0 auto;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }
+        .swap-btn:hover {
+            transform: scale(1.1) rotate(180deg);
+        }
+        .bilateral-results-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            background: var(--trade-surface);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-top: 20px;
+        }
+        @media (max-width: 860px) {
+            .bilateral-results-card {
+                grid-template-columns: 1fr;
+            }
+        }
+        .bilateral-col {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .bilateral-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .product-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .product-icon-wrap {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            background: var(--trade-primary-light);
+            color: var(--trade-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+        .product-hs-pill {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: var(--trade-surface);
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: var(--trade-text-muted);
+        }
+
+        /* Theories Grid */
+        .theories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 24px;
+        }
+        .theory-card {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-xl);
+            padding: 26px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .theory-badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .theory-theorist {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--trade-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .theory-formula-box {
+            background: var(--trade-surface);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.84rem;
+            color: var(--trade-text);
+        }
+
+        /* Blocs Grid */
+        .blocs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 20px;
+        }
+        .bloc-card {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Pakistan Dossier Special */
+        .pak-dossier-wrapper {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+        .pak-stat-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            background: linear-gradient(135deg, rgba(22, 163, 74, 0.08) 0%, rgba(2, 132, 199, 0.05) 100%);
+            border: 1px solid rgba(22, 163, 74, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 28px;
+        }
+
+        /* Tariff Simulator View */
+        .sim-container {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        @media (max-width: 860px) {
+            .sim-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .sim-controls-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: var(--trade-surface);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+        }
+        .slider-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .slider-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+        .sim-slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 9999px;
+            outline: none;
+            cursor: pointer;
+            accent-color: var(--trade-primary);
+        }
+        .sim-output-box {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            justify-content: center;
+        }
+        .sim-result-card {
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Quiz View */
+        .quiz-container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: var(--trade-card-bg);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-lg);
+        }
+        .quiz-header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--trade-border);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .quiz-counter {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--trade-primary);
+        }
+        .quiz-score-badge {
+            background: var(--trade-surface);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+        }
+        .quiz-question-text {
+            font-size: 1.18rem;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+        .quiz-options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .quiz-option-btn {
+            background: var(--trade-surface);
+            border: 1px solid var(--trade-border);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            font-size: 0.95rem;
+            color: var(--trade-text);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .quiz-option-btn:hover:not(:disabled) {
+            background: var(--trade-surface-hover);
+            border-color: var(--trade-primary);
+        }
+        .quiz-option-btn.correct {
+            background: rgba(22, 163, 74, 0.15) !important;
+            border-color: var(--trade-success) !important;
+            color: var(--trade-success) !important;
+            font-weight: 700;
+        }
+        .quiz-option-btn.wrong {
+            background: rgba(225, 29, 72, 0.15) !important;
+            border-color: var(--trade-crimson) !important;
+            color: var(--trade-crimson) !important;
+            font-weight: 700;
+        }
+        .quiz-explanation-box {
+            display: none;
+            background: rgba(2, 132, 199, 0.05);
+            border: 1px solid rgba(2, 132, 199, 0.2);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .quiz-controls-row {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        .quiz-action-btn {
+            background: var(--trade-primary);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quiz-action-btn:hover {
+            background: var(--trade-primary-hover);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--trade-card-bg);
+            border-top: 1px solid var(--trade-border);
+            padding: 24px;
+            text-align: center;
+            color: var(--trade-text-muted);
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Site Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+            <a href="timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> General Timeline</a>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-flask"></i> Periodic Table</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="climate-change-explorer.html" class="switcher-btn"><i class="fas fa-smog"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn"><i class="fas fa-microchip"></i> Technology</a>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-hourglass-half"></i> World History</a>
+            <a href="constitution-explorer.html" class="switcher-btn"><i class="fas fa-book-open"></i> Constitution</a>
+            <a href="ppc-section-finder.html" class="switcher-btn"><i class="fas fa-gavel"></i> PPC Finder</a>
+            <a href="crpc-procedure-flowchart.html" class="switcher-btn"><i class="fas fa-diagram-project"></i> CrPC Flowchart</a>
+            <a href="identify-legal-provision.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Identify Provision</a>
+            <a href="court-structure-explorer.html" class="switcher-btn"><i class="fas fa-landmark"></i> Court Structure</a>
+            <a href="fia-laws-explorer.html" class="switcher-btn"><i class="fas fa-building-shield"></i> FIA Laws</a>
+            <a href="world-economy-dashboard.html" class="switcher-btn"><i class="fas fa-chart-line"></i> World Economy</a>
+            <a href="currency-exchange-explorer.html" class="switcher-btn"><i class="fas fa-coins"></i> Currency &amp; Exchange</a>
+            <a href="who-trades-what.html" class="switcher-btn active"><i class="fas fa-ship"></i> Who Trades What?</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="who-trades-what.html" class="header-brand">
+                <div class="brand-icon"><i class="fa-solid fa-ship"></i></div>
+                <div>
+                    <div class="brand-title">Who Trades What?</div>
+                    <div class="brand-subtitle">Global Merchandise Flows, Export Leaders &amp; Bilateral Trade</div>
+                </div>
+            </a>
+            <div class="header-actions">
+                <button type="button" class="header-btn" id="soundToggleBtn" onclick="toggleSound()" title="Toggle Quiz Sounds">
+                    <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+                </button>
+                <button type="button" class="header-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Theme">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                </button>
+                <a href="index.html" class="header-btn"><i class="fa-solid fa-house"></i> Main Portal</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="hero-badge"><i class="fa-solid fa-earth-americas"></i> International Trade Intelligence</div>
+            <h1 class="hero-title">Who Trades What? Global Trade &amp; Merchandise Flow Explorer</h1>
+            <p class="hero-desc">Explore over $25 Trillion in international commerce: 36 leading trading nations, top export and import goods, bilateral trade flows, core trade theories (Ricardo, Heckscher-Ohlin, Krugman), economic trade blocs, Pakistan's trade dossier, and 20 CSS/PMS exam MCQs.</p>
+            
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label"><i class="fa-solid fa-cart-flatbed"></i> Merchandise Trade</div>
+                    <div class="kpi-val">$24.9 T</div>
+                    <div class="kpi-sub">Annual Global Volume (WTO)</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label"><i class="fa-solid fa-crown" style="color:#d97706;"></i> #1 Exporter</div>
+                    <div class="kpi-val" style="color:var(--trade-primary);">China 🇨🇳</div>
+                    <div class="kpi-sub">$3,593B (~14.4% of world)</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label"><i class="fa-solid fa-boxes-packing"></i> #1 Importer</div>
+                    <div class="kpi-val">United States 🇺🇸</div>
+                    <div class="kpi-sub">$3,172B (~12.7% of world)</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label"><i class="fa-solid fa-microchip"></i> Top Product Group</div>
+                    <div class="kpi-val" style="font-size:1.15rem;">Electronics &amp; ICs</div>
+                    <div class="kpi-sub">$3.55 Trillion (HS 85)</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label"><i class="fa-solid fa-handshake"></i> Largest FTA Bloc</div>
+                    <div class="kpi-val" style="color:var(--trade-teal);">RCEP (15)</div>
+                    <div class="kpi-sub">30.5% Global GDP Share</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label"><i class="fa-solid fa-scale-unbalanced"></i> Pakistan Trade Gap</div>
+                    <div class="kpi-val val-deficit">-$24.4 B</div>
+                    <div class="kpi-sub">Exports $30.6B / Imports $55B</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab Bar -->
+    <nav class="nav-tab-wrapper">
+        <div class="nav-tab-inner">
+            <button type="button" class="tab-btn active" id="btnBarCountries" onclick="switchMainTab('countries')">
+                <i class="fa-solid fa-globe"></i> 36 Trading Nations
+            </button>
+            <button type="button" class="tab-btn" id="btnBarBilateral" onclick="switchMainTab('bilateral')">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i> Bilateral Trade Matcher
+            </button>
+            <button type="button" class="tab-btn" id="btnBarProducts" onclick="switchMainTab('products')">
+                <i class="fa-solid fa-box-open"></i> Leading Products &amp; HS Codes
+            </button>
+            <button type="button" class="tab-btn" id="btnBarTheories" onclick="switchMainTab('theories')">
+                <i class="fa-solid fa-lightbulb"></i> Trade Theories &amp; Doctrines
+            </button>
+            <button type="button" class="tab-btn" id="btnBarBlocs" onclick="switchMainTab('blocs')">
+                <i class="fa-solid fa-users-rectangle"></i> Trade Blocs (RCEP, WTO, EU)
+            </button>
+            <button type="button" class="tab-btn" id="btnBarPakistan" onclick="switchMainTab('pakistan')">
+                <i class="fa-solid fa-star-and-crescent" style="color:#16a34a;"></i> Pakistan Trade Dossier
+            </button>
+            <button type="button" class="tab-btn" id="btnBarSimulator" onclick="switchMainTab('simulator')">
+                <i class="fa-solid fa-calculator"></i> Tariff &amp; Trade War Simulator
+            </button>
+            <button type="button" class="tab-btn" id="btnBarQuiz" onclick="switchMainTab('quiz')">
+                <i class="fa-solid fa-award"></i> CSS Exam Quiz (20 MCQs)
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Workspace -->
+    <main class="workspace-wrapper">
+        <!-- VIEW 1: 36 TRADING NATIONS -->
+        <div class="tab-view active" id="viewCountries">
+            <div class="control-panel">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="search-input" id="countrySearchInput" placeholder="Search by country, code (CHN, USA, PAK), or export goods (textiles, oil, chips)..." oninput="filterCountries()">
+                </div>
+                <div class="filter-chips" id="regionFilterChips">
+                    <button type="button" class="filter-chip active" onclick="setRegionFilter('all', this)">All Regions</button>
+                    <button type="button" class="filter-chip" onclick="setRegionFilter('East Asia', this)">East Asia</button>
+                    <button type="button" class="filter-chip" onclick="setRegionFilter('Europe', this)">Europe</button>
+                    <button type="button" class="filter-chip" onclick="setRegionFilter('North America', this)">North America</button>
+                    <button type="button" class="filter-chip" onclick="setRegionFilter('Middle East', this)">Middle East</button>
+                    <button type="button" class="filter-chip" onclick="setRegionFilter('South Asia', this)">South Asia</button>
+                    <button type="button" class="filter-chip" onclick="setRegionFilter('Southeast Asia', this)">Southeast Asia</button>
+                </div>
+                <select class="filter-select" id="sortSelect" onchange="sortCountries()">
+                    <option value="export-desc">Highest Exports ($B)</option>
+                    <option value="import-desc">Highest Imports ($B)</option>
+                    <option value="surplus-desc">Trade Surplus (High to Low)</option>
+                    <option value="deficit-desc">Trade Deficit (High to Low)</option>
+                    <option value="name-asc">Alphabetical (A - Z)</option>
+                </select>
+            </div>
+            <div class="countries-grid" id="countriesGridContainer">
+                <!-- Rendered dynamically -->
+            </div>
+        </div>
+
+        <!-- VIEW 2: BILATERAL TRADE MATCHER -->
+        <div class="tab-view" id="viewBilateral">
+            <div class="matcher-container">
+                <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:8px;"><i class="fa-solid fa-arrow-right-arrow-left" style="color:var(--trade-primary);"></i> Bilateral Trade Flow Matcher</h2>
+                <p style="color:var(--trade-text-muted); font-size:0.92rem; margin-bottom:24px;">Select any two world economies to explore who sells what to whom, their bilateral trade balance, primary exchange commodities, and governing trade agreements.</p>
+                
+                <div class="matcher-selectors">
+                    <div class="matcher-country-box">
+                        <label style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--trade-text-muted);">Country A</label>
+                        <select class="matcher-select" id="bilateralSelectA" onchange="renderBilateralTrade()"></select>
+                    </div>
+                    <button type="button" class="swap-btn" id="btnSwapBilateral" onclick="swapBilateralCountries()" title="Swap Countries">
+                        <i class="fa-solid fa-right-left"></i>
+                    </button>
+                    <div class="matcher-country-box">
+                        <label style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--trade-text-muted);">Country B</label>
+                        <select class="matcher-select" id="bilateralSelectB" onchange="renderBilateralTrade()"></select>
+                    </div>
+                </div>
+
+                <div id="bilateralResultsArea">
+                    <!-- Dynamic Bilateral Cards injected here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 3: LEADING PRODUCTS -->
+        <div class="tab-view" id="viewProducts">
+            <div style="margin-bottom:24px;">
+                <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:6px;"><i class="fa-solid fa-box-open" style="color:var(--trade-primary);"></i> Leading Traded Commodities &amp; Manufactured Goods</h2>
+                <p style="color:var(--trade-text-muted); font-size:0.92rem;">Harmonized System (HS) classifications, global dollar volumes, top supplying and consuming nations, and geopolitical supply chain bottlenecks.</p>
+            </div>
+            <div class="products-grid" id="productsGridContainer">
+                <!-- Rendered dynamically -->
+            </div>
+        </div>
+
+        <!-- VIEW 4: TRADE THEORIES -->
+        <div class="tab-view" id="viewTheories">
+            <div style="margin-bottom:24px;">
+                <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:6px;"><i class="fa-solid fa-lightbulb" style="color:var(--trade-primary);"></i> International Trade Theories &amp; Core Doctrines</h2>
+                <p style="color:var(--trade-text-muted); font-size:0.92rem;">From David Ricardo's Comparative Advantage to Paul Krugman's New Trade Theory and the Prebisch-Singer Terms of Trade thesis—tailored for CSS/PMS Economics and International Relations.</p>
+            </div>
+            <div class="theories-grid" id="theoriesGridContainer">
+                <!-- Rendered dynamically -->
+            </div>
+        </div>
+
+        <!-- VIEW 5: TRADE BLOCS -->
+        <div class="tab-view" id="viewBlocs">
+            <div style="margin-bottom:24px;">
+                <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:6px;"><i class="fa-solid fa-users-rectangle" style="color:var(--trade-primary);"></i> Major International Trade Blocs &amp; Multilateral Frameworks</h2>
+                <p style="color:var(--trade-text-muted); font-size:0.92rem;">Analysis of the global rules-based trading system: WTO dispute settlement, RCEP mega-regionalism, USMCA regional content requirements, and the European Single Market.</p>
+            </div>
+            <div class="blocs-grid" id="blocsGridContainer">
+                <!-- Rendered dynamically -->
+            </div>
+        </div>
+
+        <!-- VIEW 6: PAKISTAN TRADE DOSSIER -->
+        <div class="tab-view" id="viewPakistan">
+            <div class="pak-dossier-wrapper" id="pakistanDossierContainer">
+                <!-- Rendered dynamically from WHO_TRADES_WHAT_DATA.pakistanTradeSpecial -->
+            </div>
+        </div>
+
+        <!-- VIEW 7: TARIFF & TRADE WAR SIMULATOR -->
+        <div class="tab-view" id="viewSimulator">
+            <div class="sim-container">
+                <div style="margin-bottom:24px;">
+                    <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:6px;"><i class="fa-solid fa-calculator" style="color:var(--trade-primary);"></i> Interactive Tariff &amp; Deadweight Welfare Loss Simulator</h2>
+                    <p style="color:var(--trade-text-muted); font-size:0.92rem;">Simulate the economic fallout of imposing an ad valorem customs tariff on imported goods: calculate consumer price changes, demand contraction, government tariff revenues, and Harberger Deadweight Loss (DWL).</p>
+                </div>
+                <div class="sim-grid">
+                    <div class="sim-controls-box">
+                        <div class="slider-group">
+                            <label class="slider-label-row">
+                                <span>Target Product Category</span>
+                            </label>
+                            <select class="filter-select" id="simProductSelect" onchange="runTariffSimulation()">
+                                <option value="electronics">Consumer Electronics &amp; Smartphones (HS 85)</option>
+                                <option value="automotive">Motor Vehicles &amp; Electric Cars (HS 87)</option>
+                                <option value="textiles">Apparel &amp; Ready-Made Garments (HS 61/62)</option>
+                                <option value="steel">Raw Steel &amp; Aluminum Metals (HS 72)</option>
+                                <option value="agriculture">Agricultural Commodities &amp; Grains (HS 10)</option>
+                            </select>
+                        </div>
+                        <div class="slider-group">
+                            <div class="slider-label-row">
+                                <span>Proposed Ad Valorem Tariff Rate (%)</span>
+                                <span id="valTariffRate" style="color:var(--trade-primary); font-family:var(--font-mono);">15%</span>
+                            </div>
+                            <input type="range" class="sim-slider" id="simTariffSlider" min="0" max="60" value="15" oninput="updateTariffSlider(this.value)">
+                        </div>
+                        <div class="slider-group">
+                            <div class="slider-label-row">
+                                <span>Price Elasticity of Import Demand (|ε|)</span>
+                                <span id="valElasticity" style="color:var(--trade-teal); font-family:var(--font-mono);">1.20</span>
+                            </div>
+                            <input type="range" class="sim-slider" id="simElasticitySlider" min="0.2" max="3.0" step="0.1" value="1.2" oninput="updateElasticitySlider(this.value)">
+                        </div>
+                        <div class="slider-group">
+                            <div class="slider-label-row">
+                                <span>Baseline Import Market Size ($ Billions)</span>
+                                <span id="valBaselineImports" style="color:var(--trade-gold); font-family:var(--font-mono);">$50.0B</span>
+                            </div>
+                            <input type="range" class="sim-slider" id="simMarketSlider" min="5" max="200" step="5" value="50" oninput="updateMarketSlider(this.value)">
+                        </div>
+                    </div>
+
+                    <div class="sim-output-box">
+                        <div class="sim-result-card" style="border-left:4px solid var(--trade-primary);">
+                            <div style="font-size:0.75rem; color:var(--trade-text-muted); font-weight:700; text-transform:uppercase;">Estimated Price Shift &amp; Demand Drop</div>
+                            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:6px;">
+                                <div style="font-size:1.6rem; font-weight:800; font-family:var(--font-mono);" id="simPriceImpact">+15.0%</div>
+                                <div style="font-size:1.2rem; font-weight:700; color:var(--trade-crimson); font-family:var(--font-mono);" id="simDemandDrop">-18.0% Volume</div>
+                            </div>
+                            <div style="font-size:0.8rem; color:var(--trade-text-muted); margin-top:4px;" id="simNewImportVolume">New Imports: $41.0B (Contracted from $50.0B)</div>
+                        </div>
+
+                        <div class="sim-result-card" style="border-left:4px solid var(--trade-teal);">
+                            <div style="font-size:0.75rem; color:var(--trade-text-muted); font-weight:700; text-transform:uppercase;">Government Tariff Revenue</div>
+                            <div style="font-size:1.6rem; font-weight:800; font-family:var(--font-mono); color:var(--trade-teal); margin-top:6px;" id="simTariffRevenue">$6.15 Billion</div>
+                            <div style="font-size:0.8rem; color:var(--trade-text-muted); margin-top:4px;">Collected via customs duties at ports of entry.</div>
+                        </div>
+
+                        <div class="sim-result-card" style="border-left:4px solid var(--trade-crimson);">
+                            <div style="font-size:0.75rem; color:var(--trade-text-muted); font-weight:700; text-transform:uppercase;">Net Deadweight Welfare Loss (DWL)</div>
+                            <div style="font-size:1.6rem; font-weight:800; font-family:var(--font-mono); color:var(--trade-crimson); margin-top:6px;" id="simDeadweightLoss">$0.68 Billion</div>
+                            <div style="font-size:0.8rem; color:var(--trade-text-muted); margin-top:4px;">Permanent efficiency loss to society (Harberger Triangles b + d).</div>
+                        </div>
+
+                        <div class="card-exam-box" id="simAnalysisBox">
+                            <strong>Macroeconomic Transmission:</strong> The tariff raises domestic retail prices, creating a transfer from domestic consumers to domestic producers and customs. However, the deadweight loss represents consumer surplus destroyed without generating tax revenue or producer profit.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 8: CSS EXAM QUIZ -->
+        <div class="tab-view" id="viewQuiz">
+            <div class="quiz-container">
+                <div class="quiz-header-bar">
+                    <div class="quiz-counter" id="quizCounter">Question 1 of 20</div>
+                    <div class="quiz-score-badge">Score: <span id="quizScore" style="color:var(--trade-primary);">0</span> / 20</div>
+                </div>
+                <div class="quiz-question-text" id="quizQuestionText">Loading quiz question...</div>
+                <div class="quiz-options-list" id="quizOptionsList">
+                    <!-- Option buttons rendered here -->
+                </div>
+                <div class="quiz-explanation-box" id="quizExplanationBox">
+                    <!-- Explanation injected here -->
+                </div>
+                <div class="quiz-controls-row">
+                    <button type="button" class="header-btn" id="btnRestartQuiz" onclick="restartQuiz()"><i class="fa-solid fa-rotate-right"></i> Restart</button>
+                    <button type="button" class="quiz-action-btn" id="btnNextQuiz" onclick="nextQuizQuestion()" style="display:none;">Next Question <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><strong>Who Trades What? Global Trade Explorer</strong> &bull; Developed for CSS, PMS, FPSC, and Economics Scholars &bull; Data verified from WTO, UN Comtrade &amp; SBP.</p>
+    </footer>
+
+    <!-- Database Script -->
+    <script src="js/data_who_trades_what.js"></script>
+
+    <!-- Application Script -->
+    <script>
+        (function() {
+            let tradeData = null;
+            let currentRegion = 'all';
+            let currentSort = 'export-desc';
+            let currentSearch = '';
+
+            // Audio Context for sound effects
+            let audioCtx = null;
+            let soundEnabled = true;
+
+            function initAudio() {
+                if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            }
+
+            window.toggleSound = function() {
+                soundEnabled = !soundEnabled;
+                try { localStorage.setItem('mcqs_sound_enabled', soundEnabled); } catch(e) {}
+                updateSoundIcon();
+            };
+
+            function updateSoundIcon() {
+                const icon = document.getElementById('soundIcon');
+                if (icon) {
+                    icon.className = soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+                }
+            }
+
+            window.toggleTheme = function() {
+                const isDark = document.documentElement.classList.toggle('dark-mode');
+                try { localStorage.setItem('mcqs_dark_mode', isDark); } catch(e) {}
+                const icon = document.getElementById('themeIcon');
+                if (icon) {
+                    icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+            };
+
+            function playSound(type) {
+                if (!soundEnabled) return;
+                try {
+                    initAudio();
+                    if (!audioCtx) return;
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                    const now = audioCtx.currentTime;
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    if (type === 'correct') {
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(659.25, now);
+                        osc.frequency.setValueAtTime(880.00, now + 0.12);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                        osc.start(now);
+                        osc.stop(now + 0.4);
+                    } else if (type === 'wrong') {
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(220.00, now);
+                        osc.frequency.setValueAtTime(174.61, now + 0.12);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                        osc.start(now);
+                        osc.stop(now + 0.35);
+                    }
+                } catch(e) {}
+            }
+
+            // Init on DOM ready
+            document.addEventListener('DOMContentLoaded', () => {
+                if (window.WHO_TRADES_WHAT_DATA) {
+                    tradeData = window.WHO_TRADES_WHAT_DATA;
+                } else {
+                    console.error('WHO_TRADES_WHAT_DATA not loaded!');
+                    return;
+                }
+
+                renderCountriesGrid();
+                populateBilateralDropdowns();
+                renderBilateralTrade();
+                renderProductsGrid();
+                renderTheoriesGrid();
+                renderBlocsGrid();
+                renderPakistanDossier();
+                runTariffSimulation();
+                renderQuizQuestion();
+
+                try {
+                    const savedSound = localStorage.getItem('mcqs_sound_enabled');
+                    if (savedSound !== null) soundEnabled = savedSound === 'true';
+                } catch(e) {}
+                updateSoundIcon();
+            });
+
+            // TAB SWITCHING
+            window.switchMainTab = function(tabName) {
+                const tabs = ['countries', 'bilateral', 'products', 'theories', 'blocs', 'pakistan', 'simulator', 'quiz'];
+                if (!tabs.includes(tabName)) return;
+
+                tabs.forEach(t => {
+                    const btn = document.getElementById('btnBar' + capitalize(t));
+                    const view = document.getElementById('view' + capitalize(t));
+                    const isActive = (t === tabName);
+
+                    if (btn) {
+                        if (isActive) btn.classList.add('active');
+                        else btn.classList.remove('active');
+                    }
+                    if (view) {
+                        if (isActive) {
+                            view.classList.add('active');
+                            view.style.display = 'block';
+                        } else {
+                            view.classList.remove('active');
+                            view.style.display = 'none';
+                        }
+                    }
+                });
+
+                const workspace = document.querySelector('.workspace-wrapper');
+                if (workspace && window.scrollY > 350) {
+                    workspace.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            function capitalize(s) {
+                return s.charAt(0).toUpperCase() + s.slice(1);
+            }
+
+            function formatUSD(num) {
+                if (num === undefined || num === null) return 'N/A';
+                return '$' + Number(num).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + 'B';
+            }
+
+            // VIEW 1: COUNTRIES RENDERING & FILTERING
+            window.filterCountries = function() {
+                currentSearch = document.getElementById('countrySearchInput').value.toLowerCase().trim();
+                renderCountriesGrid();
+            };
+
+            window.setRegionFilter = function(region, btn) {
+                currentRegion = region;
+                const chips = document.querySelectorAll('#regionFilterChips .filter-chip');
+                chips.forEach(c => c.classList.remove('active'));
+                if (btn) btn.classList.add('active');
+                renderCountriesGrid();
+            };
+
+            window.sortCountries = function() {
+                currentSort = document.getElementById('sortSelect').value;
+                renderCountriesGrid();
+            };
+
+            function renderCountriesGrid() {
+                const container = document.getElementById('countriesGridContainer');
+                if (!container || !tradeData) return;
+                container.innerHTML = '';
+
+                let list = tradeData.countries.filter(c => {
+                    if (currentRegion !== 'all' && c.region !== currentRegion) return false;
+                    if (currentSearch) {
+                        const inName = c.name.toLowerCase().includes(currentSearch);
+                        const inCode = c.code.toLowerCase().includes(currentSearch);
+                        const inExport = c.topExportProducts.some(p => p.name.toLowerCase().includes(currentSearch));
+                        const inImport = c.topImportProducts.some(p => p.name.toLowerCase().includes(currentSearch));
+                        if (!inName && !inCode && !inExport && !inImport) return false;
+                    }
+                    return true;
+                });
+
+                // Sort
+                list.sort((a, b) => {
+                    if (currentSort === 'export-desc') return b.totalExportsUSD - a.totalExportsUSD;
+                    if (currentSort === 'import-desc') return b.totalImportsUSD - a.totalImportsUSD;
+                    if (currentSort === 'surplus-desc') return b.tradeBalanceUSD - a.tradeBalanceUSD;
+                    if (currentSort === 'deficit-desc') return a.tradeBalanceUSD - b.tradeBalanceUSD;
+                    if (currentSort === 'name-asc') return a.name.localeCompare(b.name);
+                    return 0;
+                });
+
+                if (list.length === 0) {
+                    container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--trade-text-muted);">No countries found matching your search.</div>';
+                    return;
+                }
+
+                list.forEach(c => {
+                    const card = document.createElement('div');
+                    card.className = 'country-card';
+
+                    const isSurplus = c.tradeBalanceUSD >= 0;
+                    const balanceClass = isSurplus ? 'val-surplus' : 'val-deficit';
+                    const balanceSign = isSurplus ? '+' : '';
+
+                    let exportBars = c.topExportProducts.slice(0, 3).map(p => \`
+                        <div class="product-bar-wrap">
+                            <div class="product-label-row">
+                                <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:75%;">\${p.name}</span>
+                                <span style="color:var(--trade-primary); font-family:var(--font-mono);">\${p.sharePct}%</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill fill-export" style="width:\${Math.min(100, p.sharePct * 2.5)}%;"></div></div>
+                        </div>
+                    \`).join('');
+
+                    let importBars = c.topImportProducts.slice(0, 3).map(p => \`
+                        <div class="product-bar-wrap">
+                            <div class="product-label-row">
+                                <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:75%;">\${p.name}</span>
+                                <span style="color:var(--trade-gold); font-family:var(--font-mono);">\${p.sharePct}%</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill fill-import" style="width:\${Math.min(100, p.sharePct * 2.5)}%;"></div></div>
+                        </div>
+                    \`).join('');
+
+                    let exportPartnersHtml = c.topExportPartners.slice(0, 4).map(p => \`
+                        <span class="partner-pill">\${p.flag} \${p.code} <small style="color:var(--trade-primary); font-family:var(--font-mono);">\${p.sharePct}%</small></span>
+                    \`).join('');
+
+                    card.innerHTML = \`
+                        <div class="country-header">
+                            <div class="country-title-box">
+                                <span class="country-flag">\${c.flag}</span>
+                                <div>
+                                    <div class="country-name">\${c.name}</div>
+                                    <span class="country-code-pill">\${c.code} &bull; \${c.region}</span>
+                                </div>
+                            </div>
+                            <div class="rank-badges">
+                                <span class="rank-badge rank-export">Export Rank #\${c.globalExportRank}</span>
+                                <span class="rank-badge rank-import">Import Rank #\${c.globalImportRank}</span>
+                            </div>
+                        </div>
+
+                        <div class="trade-stat-row">
+                            <div>
+                                <div class="stat-item-label">Total Exports</div>
+                                <div class="stat-item-val" style="color:var(--trade-primary);">\${formatUSD(c.totalExportsUSD)}</div>
+                            </div>
+                            <div>
+                                <div class="stat-item-label">Total Imports</div>
+                                <div class="stat-item-val" style="color:var(--trade-gold);">\${formatUSD(c.totalImportsUSD)}</div>
+                            </div>
+                            <div>
+                                <div class="stat-item-label">Trade Balance</div>
+                                <div class="stat-item-val \${balanceClass}">\${balanceSign}\${formatUSD(c.tradeBalanceUSD)}</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flow-section-title">
+                                <span><i class="fa-solid fa-arrow-up-right-from-square" style="color:var(--trade-primary);"></i> Top Export Products</span>
+                            </div>
+                            <div class="product-mini-list">\${exportBars}</div>
+                        </div>
+
+                        <div>
+                            <div class="flow-section-title">
+                                <span><i class="fa-solid fa-arrow-down-left-and-up-right-to-center" style="color:var(--trade-gold);"></i> Top Import Products</span>
+                            </div>
+                            <div class="product-mini-list">\${importBars}</div>
+                        </div>
+
+                        <div>
+                            <div class="flow-section-title">
+                                <span><i class="fa-solid fa-handshake"></i> Top Export Destinations</span>
+                            </div>
+                            <div class="partners-row">\${exportPartnersHtml}</div>
+                        </div>
+
+                        <div class="card-strategy-box">
+                            <strong><i class="fa-solid fa-bullseye"></i> Competitive Advantage:</strong> \${c.strategicTradeStrength}
+                        </div>
+
+                        <div class="card-exam-box">
+                            <strong><i class="fa-solid fa-graduation-cap"></i> CSS Exam Angle:</strong> \${c.cssExamRelevance}
+                        </div>
+                    \`;
+
+                    container.appendChild(card);
+                });
+            }
+
+            // VIEW 2: BILATERAL TRADE MATCHER
+            function populateBilateralDropdowns() {
+                const selectA = document.getElementById('bilateralSelectA');
+                const selectB = document.getElementById('bilateralSelectB');
+                if (!selectA || !selectB || !tradeData) return;
+
+                selectA.innerHTML = '';
+                selectB.innerHTML = '';
+
+                tradeData.countries.forEach(c => {
+                    const optA = document.createElement('option');
+                    optA.value = c.id;
+                    optA.textContent = \`\${c.flag} \${c.name} (\${c.code})\`;
+                    selectA.appendChild(optA);
+
+                    const optB = document.createElement('option');
+                    optB.value = c.id;
+                    optB.textContent = \`\${c.flag} \${c.name} (\${c.code})\`;
+                    selectB.appendChild(optB);
+                });
+
+                selectA.value = 'chn'; // Default China
+                selectB.value = 'pak'; // Default Pakistan
+            }
+
+            window.swapBilateralCountries = function() {
+                const selectA = document.getElementById('bilateralSelectA');
+                const selectB = document.getElementById('bilateralSelectB');
+                if (!selectA || !selectB) return;
+                const temp = selectA.value;
+                selectA.value = selectB.value;
+                selectB.value = temp;
+                renderBilateralTrade();
+            };
+
+            window.renderBilateralTrade = function() {
+                const idA = document.getElementById('bilateralSelectA').value;
+                const idB = document.getElementById('bilateralSelectB').value;
+                const container = document.getElementById('bilateralResultsArea');
+                if (!container || !tradeData) return;
+
+                if (idA === idB) {
+                    container.innerHTML = '<div style="text-align:center; padding:30px; color:var(--trade-text-muted);">Please select two different countries to compare bilateral trade flows.</div>';
+                    return;
+                }
+
+                const countryA = tradeData.countries.find(c => c.id === idA);
+                const countryB = tradeData.countries.find(c => c.id === idB);
+                if (!countryA || !countryB) return;
+
+                // Check direct partner mentions
+                const aExportsToB = countryA.topExportPartners.find(p => p.code === countryB.code);
+                const aImportsFromB = countryA.topImportPartners.find(p => p.code === countryB.code);
+
+                const bExportsToA = countryB.topExportPartners.find(p => p.code === countryA.code);
+                const bImportsFromA = countryB.topImportPartners.find(p => p.code === countryA.code);
+
+                // Common trade agreements
+                const commonAgreements = countryA.majorTradeAgreements.filter(a => countryB.majorTradeAgreements.includes(a));
+
+                container.innerHTML = \`
+                    <div class="bilateral-results-card">
+                        <!-- Left: Country A to Country B -->
+                        <div class="bilateral-col">
+                            <div class="bilateral-header" style="color:var(--trade-primary);">
+                                <span>\${countryA.flag} \${countryA.name}</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                                <span>\${countryB.flag} \${countryB.name}</span>
+                            </div>
+                            <div style="background:var(--trade-card-bg); padding:16px; border-radius:var(--radius-md); border:1px solid var(--trade-border);">
+                                <div style="font-size:0.75rem; color:var(--trade-text-muted); font-weight:700; text-transform:uppercase;">What \${countryA.name} Sells to \${countryB.name}</div>
+                                <div style="font-size:1.1rem; font-weight:800; margin-top:4px;">
+                                    \${aExportsToB ? \`\${countryA.name}'s Export Share: \${aExportsToB.sharePct}%\` : (bImportsFromA ? \`\${countryB.name}'s Import Source: \${bImportsFromA.sharePct}%\` : 'Non-top 5 bilateral share')}
+                                </div>
+                                <div style="font-size:0.83rem; margin-top:8px; line-height:1.5;">
+                                    <strong>Leading Commodities Exchanged:</strong> \${countryA.topExportProducts.slice(0, 3).map(p => p.name.split('(')[0]).join(', ')}.
+                                </div>
+                            </div>
+                            <div class="card-strategy-box">
+                                <strong>\${countryA.name}'s Core Edge:</strong> \${countryA.strategicTradeStrength}
+                            </div>
+                        </div>
+
+                        <!-- Right: Country B to Country A -->
+                        <div class="bilateral-col">
+                            <div class="bilateral-header" style="color:var(--trade-gold);">
+                                <span>\${countryB.flag} \${countryB.name}</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                                <span>\${countryA.flag} \${countryA.name}</span>
+                            </div>
+                            <div style="background:var(--trade-card-bg); padding:16px; border-radius:var(--radius-md); border:1px solid var(--trade-border);">
+                                <div style="font-size:0.75rem; color:var(--trade-text-muted); font-weight:700; text-transform:uppercase;">What \${countryB.name} Sells to \${countryA.name}</div>
+                                <div style="font-size:1.1rem; font-weight:800; margin-top:4px;">
+                                    \${bExportsToA ? \`\${countryB.name}'s Export Share: \${bExportsToA.sharePct}%\` : (aImportsFromB ? \`\${countryA.name}'s Import Source: \${aImportsFromB.sharePct}%\` : 'Non-top 5 bilateral share')}
+                                </div>
+                                <div style="font-size:0.83rem; margin-top:8px; line-height:1.5;">
+                                    <strong>Leading Commodities Exchanged:</strong> \${countryB.topExportProducts.slice(0, 3).map(p => p.name.split('(')[0]).join(', ')}.
+                                </div>
+                            </div>
+                            <div class="card-strategy-box">
+                                <strong>\${countryB.name}'s Core Edge:</strong> \${countryB.strategicTradeStrength}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background:var(--trade-card-bg); border:1px solid var(--trade-border); border-radius:var(--radius-lg); padding:20px; margin-top:16px;">
+                        <h4 style="font-size:0.92rem; font-weight:800; margin-bottom:8px;"><i class="fa-solid fa-file-contract" style="color:var(--trade-teal);"></i> Applicable Trade Treaties &amp; Frameworks</h4>
+                        <p style="font-size:0.85rem; color:var(--trade-text-muted);">
+                            \${commonAgreements.length > 0 ? \`Both countries participate in: <strong>\${commonAgreements.join(', ')}</strong>.\` : \`Governed primarily under multilateral <strong>WTO Most-Favoured-Nation (MFN)</strong> commitments, without an overarching bilateral FTA.\`}
+                        </p>
+                    </div>
+                \`;
+            }
+
+            // VIEW 3: PRODUCT CATEGORIES
+            function renderProductsGrid() {
+                const container = document.getElementById('productsGridContainer');
+                if (!container || !tradeData) return;
+                container.innerHTML = '';
+
+                tradeData.productCategories.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+
+                    card.innerHTML = \`
+                        <div class="product-card-top">
+                            <div class="product-icon-wrap"><i class="fa-solid \${p.icon}"></i></div>
+                            <span class="product-hs-pill">\${p.hsCode}</span>
+                        </div>
+                        <div>
+                            <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:4px;">\${p.name}</h3>
+                            <div style="font-size:1.3rem; font-weight:800; color:var(--trade-primary); font-family:var(--font-mono); margin-bottom:6px;">$\${p.globalTradeValueUSD} Billion</div>
+                            <p style="font-size:0.84rem; color:var(--trade-text-muted); line-height:1.5;">\${p.description}</p>
+                        </div>
+                        <div style="background:var(--trade-surface); padding:12px; border-radius:var(--radius-md);">
+                            <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--trade-text-muted); margin-bottom:4px;">Top Global Exporters:</div>
+                            <div style="font-size:0.8rem; font-weight:600;">\${p.topExportingCountries.join(' &bull; ')}</div>
+                        </div>
+                        <div class="card-strategy-box">
+                            <strong><i class="fa-solid fa-triangle-exclamation"></i> Chokepoints:</strong> \${p.geopoliticalChokepoints}
+                        </div>
+                        <div class="card-exam-box">
+                            <strong><i class="fa-solid fa-graduation-cap"></i> Exam Takeaway:</strong> \${p.cssExamAngle}
+                        </div>
+                    \`;
+                    container.appendChild(card);
+                });
+            }
+
+            // VIEW 4: TRADE THEORIES
+            function renderTheoriesGrid() {
+                const container = document.getElementById('theoriesGridContainer');
+                if (!container || !tradeData) return;
+                container.innerHTML = '';
+
+                tradeData.tradeTheories.forEach(t => {
+                    const card = document.createElement('div');
+                    card.className = 'theory-card';
+
+                    card.innerHTML = \`
+                        <div class="theory-badge-row">
+                            <span class="theory-theorist">\${t.theorist}</span>
+                            <span class="product-hs-pill"><i class="fa-solid fa-book-bookmark"></i> Core Doctrine</span>
+                        </div>
+                        <h3 style="font-size:1.2rem; font-weight:800; line-height:1.3;">\${t.title}</h3>
+                        <div style="font-size:0.86rem; font-style:italic; color:var(--trade-primary); font-weight:600;">"\${t.tagline}"</div>
+                        <p style="font-size:0.86rem; color:var(--trade-text); line-height:1.6;">\${t.coreMechanism}</p>
+                        
+                        <div class="theory-formula-box">
+                            <strong>Formula / Mechanism:</strong><br>\${t.formulaOrDiagram}
+                        </div>
+
+                        <div class="card-strategy-box">
+                            <strong><i class="fa-solid fa-lightbulb"></i> Real-World Example:</strong> \${t.realWorldCase}
+                        </div>
+
+                        <div class="card-exam-box">
+                            <strong><i class="fa-solid fa-pen-nib"></i> CSS/PMS Question:</strong> \${t.cssExamQuestion}
+                        </div>
+                    \`;
+                    container.appendChild(card);
+                });
+            }
+
+            // VIEW 5: TRADE BLOCS
+            function renderBlocsGrid() {
+                const container = document.getElementById('blocsGridContainer');
+                if (!container || !tradeData) return;
+                container.innerHTML = '';
+
+                tradeData.tradeBlocs.forEach(b => {
+                    const card = document.createElement('div');
+                    card.className = 'bloc-card';
+
+                    card.innerHTML = \`
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:1.25rem; font-weight:800; color:var(--trade-primary);">\${b.acronym}</span>
+                            <span class="product-hs-pill">\${b.established}</span>
+                        </div>
+                        <h3 style="font-size:1.05rem; font-weight:800;">\${b.name}</h3>
+                        <div style="display:flex; gap:12px; font-size:0.8rem; color:var(--trade-text-muted); font-family:var(--font-mono);">
+                            <span><i class="fa-solid fa-users"></i> \${b.membershipCount}</span>
+                            <span><i class="fa-solid fa-pie-chart"></i> \${b.globalTradeSharePct}</span>
+                        </div>
+                        <p style="font-size:0.84rem; color:var(--trade-text); line-height:1.5;">\${b.keyObjective}</p>
+                        <div class="card-exam-box" style="margin-top:auto;">
+                            <strong><i class="fa-solid fa-triangle-exclamation"></i> Contemporary Challenge:</strong> \${b.currentCrisis}
+                        </div>
+                    \`;
+                    container.appendChild(card);
+                });
+            }
+
+            // VIEW 6: PAKISTAN TRADE DOSSIER
+            function renderPakistanDossier() {
+                const container = document.getElementById('pakistanDossierContainer');
+                if (!container || !tradeData) return;
+                const p = tradeData.pakistanTradeSpecial;
+
+                let exportRows = p.exportBasketShare.map(item => \`
+                    <div style="margin-bottom:10px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; font-weight:700; margin-bottom:3px;">
+                            <span>\${item.category}</span>
+                            <span style="color:var(--trade-primary); font-family:var(--font-mono);">\${item.sharePct}% ($\${item.valueUSD}B)</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill fill-export" style="width:\${item.sharePct}%;"></div></div>
+                    </div>
+                \`).join('');
+
+                let importRows = p.importBasketShare.map(item => \`
+                    <div style="margin-bottom:10px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; font-weight:700; margin-bottom:3px;">
+                            <span>\${item.category}</span>
+                            <span style="color:var(--trade-gold); font-family:var(--font-mono);">\${item.sharePct}% ($\${item.valueUSD}B)</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill fill-import" style="width:\${item.sharePct}%;"></div></div>
+                    </div>
+                \`).join('');
+
+                let challengesHtml = p.keyChallenges.map(c => \`
+                    <li style="margin-bottom:8px; font-size:0.86rem; line-height:1.5;">\${c}</li>
+                \`).join('');
+
+                let opportunitiesHtml = p.strategicOpportunities.map(o => \`
+                    <li style="margin-bottom:8px; font-size:0.86rem; line-height:1.5;">\${o}</li>
+                \`).join('');
+
+                container.innerHTML = \`
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                        <span style="font-size:2.4rem;">🇵🇰</span>
+                        <div>
+                            <h2 style="font-size:1.6rem; font-weight:800; line-height:1.2;">\${p.title}</h2>
+                            <p style="color:var(--trade-text-muted); font-size:0.88rem;">Annual Foreign Merchandise Balance (FY2023-24 Official State Bank of Pakistan Data)</p>
+                        </div>
+                    </div>
+
+                    <div class="pak-stat-banner">
+                        <div>
+                            <div style="font-size:0.75rem; text-transform:uppercase; color:var(--trade-text-muted); font-weight:700;">Merchandise Exports</div>
+                            <div style="font-size:1.7rem; font-weight:800; color:var(--trade-primary); font-family:var(--font-mono);">$\${p.annualExportsUSD} Billion</div>
+                            <div style="font-size:0.75rem; color:var(--trade-text-muted);">Textiles &gt;54%</div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.75rem; text-transform:uppercase; color:var(--trade-text-muted); font-weight:700;">Merchandise Imports</div>
+                            <div style="font-size:1.7rem; font-weight:800; color:var(--trade-gold); font-family:var(--font-mono);">$\${p.annualImportsUSD} Billion</div>
+                            <div style="font-size:0.75rem; color:var(--trade-text-muted);">Energy &gt;28%</div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.75rem; text-transform:uppercase; color:var(--trade-text-muted); font-weight:700;">Annual Trade Deficit</div>
+                            <div style="font-size:1.7rem; font-weight:800; color:var(--trade-crimson); font-family:var(--font-mono);">-\\$\${p.annualTradeDeficitUSD} Billion</div>
+                            <div style="font-size:0.75rem; color:var(--trade-text-muted);">Chronic balance gap</div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.75rem; text-transform:uppercase; color:var(--trade-text-muted); font-weight:700;">Worker Remittances</div>
+                            <div style="font-size:1.7rem; font-weight:800; color:var(--trade-success); font-family:var(--font-mono);">+\\$\${p.remittancesUSD} Billion</div>
+                            <div style="font-size:0.75rem; color:var(--trade-text-muted);">Critical BoP lifeline</div>
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:30px;">
+                        <div style="background:var(--trade-surface); padding:20px; border-radius:var(--radius-lg);">
+                            <h3 style="font-size:1.05rem; font-weight:800; color:var(--trade-primary); margin-bottom:14px;"><i class="fa-solid fa-shirt"></i> Export Basket Composition</h3>
+                            \${exportRows}
+                        </div>
+                        <div style="background:var(--trade-surface); padding:20px; border-radius:var(--radius-lg);">
+                            <h3 style="font-size:1.05rem; font-weight:800; color:var(--trade-gold); margin-bottom:14px;"><i class="fa-solid fa-oil-well"></i> Import Basket Composition</h3>
+                            \${importRows}
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+                        <div style="background:rgba(225, 29, 72, 0.04); border-left:4px solid var(--trade-crimson); padding:20px; border-radius:0 var(--radius-md) var(--radius-md) 0;">
+                            <h4 style="font-size:1rem; font-weight:800; color:var(--trade-crimson); margin-bottom:10px;"><i class="fa-solid fa-triangle-exclamation"></i> Structural Trade Bottlenecks</h4>
+                            <ul style="padding-left:18px;">\${challengesHtml}</ul>
+                        </div>
+                        <div style="background:rgba(22, 163, 74, 0.04); border-left:4px solid var(--trade-success); padding:20px; border-radius:0 var(--radius-md) var(--radius-md) 0;">
+                            <h4 style="font-size:1rem; font-weight:800; color:var(--trade-success); margin-bottom:10px;"><i class="fa-solid fa-seedling"></i> Strategic Expansion Opportunities</h4>
+                            <ul style="padding-left:18px;">\${opportunitiesHtml}</ul>
+                        </div>
+                    </div>
+                \`;
+            }
+
+            // VIEW 7: TARIFF SIMULATOR
+            window.updateTariffSlider = function(val) {
+                document.getElementById('valTariffRate').textContent = val + '%';
+                runTariffSimulation();
+            };
+
+            window.updateElasticitySlider = function(val) {
+                document.getElementById('valElasticity').textContent = Number(val).toFixed(2);
+                runTariffSimulation();
+            };
+
+            window.updateMarketSlider = function(val) {
+                document.getElementById('valBaselineImports').textContent = '$' + Number(val).toFixed(1) + 'B';
+                runTariffSimulation();
+            };
+
+            window.runTariffSimulation = function() {
+                const tariffRate = parseFloat(document.getElementById('simTariffSlider').value) / 100;
+                const elasticity = parseFloat(document.getElementById('simElasticitySlider').value);
+                const baselineImports = parseFloat(document.getElementById('simMarketSlider').value);
+
+                // Calculations
+                const pricePctChange = tariffRate * 100;
+                const volumePctChange = - (tariffRate * elasticity) * 100;
+                const newVolume = Math.max(0, baselineImports * (1 + (volumePctChange / 100)));
+                const tariffRevenue = newVolume * tariffRate;
+                
+                // Deadweight Loss (DWL) = 0.5 * tariff * changeInVolume
+                const volumeDropUSD = baselineImports - newVolume;
+                const deadweightLoss = 0.5 * tariffRate * volumeDropUSD;
+
+                document.getElementById('simPriceImpact').textContent = '+' + pricePctChange.toFixed(1) + '%';
+                document.getElementById('simDemandDrop').textContent = volumePctChange.toFixed(1) + '% Volume';
+                document.getElementById('simNewImportVolume').textContent = 'New Imports: $' + newVolume.toFixed(2) + 'B (Contracted from $' + baselineImports.toFixed(1) + 'B)';
+                document.getElementById('simTariffRevenue').textContent = '$' + tariffRevenue.toFixed(2) + ' Billion';
+                document.getElementById('simDeadweightLoss').textContent = '$' + deadweightLoss.toFixed(2) + ' Billion';
+            };
+
+            // VIEW 8: QUIZ ENGINE
+            let currentQuizIndex = 0;
+            let quizScoreCount = 0;
+            let questionAnswered = false;
+
+            function renderQuizQuestion() {
+                if (!tradeData || !tradeData.quiz) return;
+                const q = tradeData.quiz[currentQuizIndex];
+                if (!q) return;
+
+                questionAnswered = false;
+                document.getElementById('quizCounter').textContent = \`Question \${currentQuizIndex + 1} of \${tradeData.quiz.length}\`;
+                document.getElementById('quizScore').textContent = quizScoreCount;
+                document.getElementById('quizQuestionText').textContent = q.question;
+
+                const optionsList = document.getElementById('quizOptionsList');
+                optionsList.innerHTML = '';
+
+                const explBox = document.getElementById('quizExplanationBox');
+                explBox.style.display = 'none';
+                explBox.innerHTML = '';
+
+                document.getElementById('btnNextQuiz').style.display = 'none';
+
+                q.options.forEach((optText, idx) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'quiz-option-btn';
+                    btn.innerHTML = \`<span style="width:24px; height:24px; border-radius:50%; background:var(--trade-card-bg); border:1px solid var(--trade-border); display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700;">\${String.fromCharCode(65 + idx)}</span> <span>\${optText}</span>\`;
+                    btn.onclick = () => selectQuizAnswer(idx, q);
+                    optionsList.appendChild(btn);
+                });
+            }
+
+            function selectQuizAnswer(selectedIndex, q) {
+                if (questionAnswered) return;
+                questionAnswered = true;
+
+                const btns = document.querySelectorAll('#quizOptionsList .quiz-option-btn');
+                btns.forEach(b => b.disabled = true);
+
+                const isCorrect = (selectedIndex === q.correctAnswer);
+                if (isCorrect) {
+                    quizScoreCount++;
+                    document.getElementById('quizScore').textContent = quizScoreCount;
+                    btns[selectedIndex].classList.add('correct');
+                    playSound('correct');
+                } else {
+                    btns[selectedIndex].classList.add('wrong');
+                    btns[q.correctAnswer].classList.add('correct');
+                    playSound('wrong');
+                }
+
+                const explBox = document.getElementById('quizExplanationBox');
+                explBox.style.display = 'block';
+                explBox.innerHTML = \`<strong>\${isCorrect ? '✔ Correct!' : '✖ Incorrect.'}</strong> \${q.explanation}\`;
+
+                const nextBtn = document.getElementById('btnNextQuiz');
+                if (currentQuizIndex < tradeData.quiz.length - 1) {
+                    nextBtn.style.display = 'inline-block';
+                    nextBtn.textContent = 'Next Question →';
+                } else {
+                    nextBtn.style.display = 'inline-block';
+                    nextBtn.textContent = 'Finish Quiz 🎉';
+                }
+            }
+
+            window.nextQuizQuestion = function() {
+                if (currentQuizIndex < tradeData.quiz.length - 1) {
+                    currentQuizIndex++;
+                    renderQuizQuestion();
+                } else {
+                    // Show completion
+                    const container = document.getElementById('viewQuiz');
+                    const pct = Math.round((quizScoreCount / tradeData.quiz.length) * 100);
+                    container.innerHTML = \`
+                        <div class="quiz-container" style="text-align:center; padding:48px 24px;">
+                            <div style="font-size:3rem; margin-bottom:12px;">🏆</div>
+                            <h2 style="font-size:1.8rem; font-weight:800; margin-bottom:8px;">Quiz Completed!</h2>
+                            <p style="color:var(--trade-text-muted); font-size:1.05rem; margin-bottom:20px;">You scored <strong>\${quizScoreCount}</strong> out of <strong>\${tradeData.quiz.length}</strong> (\${pct}%)</p>
+                            <button type="button" class="quiz-action-btn" onclick="location.reload()"><i class="fa-solid fa-rotate-right"></i> Try Again</button>
+                        </div>
+                    \`;
+                }
+            };
+
+            window.restartQuiz = function() {
+                currentQuizIndex = 0;
+                quizScoreCount = 0;
+                renderQuizQuestion();
+            };
+
+        })();
+    </script>
+</body>
+</html>
+`;
+
+fs.writeFileSync(targetPath, htmlContent, 'utf-8');
+console.log('Successfully written frontend/who-trades-what.html!');

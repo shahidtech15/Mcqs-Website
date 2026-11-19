@@ -1,0 +1,2155 @@
+const fs = require('fs');
+const path = require('path');
+
+const targetHtmlPath = path.join(__dirname, '../frontend/identify-legal-provision.html');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identify the Legal Provision | Pakistani Law Scenarios &amp; Section Finder</title>
+    <meta name="description" content="Master Pakistani legal problem-solving: analyze real courtroom scenarios and identify applicable provisions under PPC 1860, CrPC 1898, Constitution 1973, QSO 1984, and PECA 2016. Essential for CSS, Civil Judge, ASJ, and Law GAT.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('mcqs_dark_mode');
+            if (savedTheme === 'true' || (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <style>
+        :root {
+            --law-bg: #f8fafc;
+            --law-card-bg: #ffffff;
+            --law-surface: #f1f5f9;
+            --law-surface-hover: #e2e8f0;
+            --law-text: #0f172a;
+            --law-text-muted: #64748b;
+            --law-border: #e2e8f0;
+            --law-border-strong: #cbd5e1;
+            --law-primary: #4338ca;
+            --law-primary-hover: #3730a3;
+            --law-primary-light: #eef2ff;
+            --law-gold: #d97706;
+            --law-gold-light: #fef3c7;
+            --law-teal: #0f766e;
+            --law-teal-light: #f0fdfa;
+            --law-crimson: #991b1b;
+            --law-crimson-light: #fef2f2;
+            --law-success: #15803d;
+            --law-success-light: #dcfce7;
+            --font-ui: 'Plus Jakarta Sans', sans-serif;
+            --font-legal: 'Merriweather', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode {
+            --law-bg: #0b0f19;
+            --law-card-bg: #151d30;
+            --law-surface: #1e293b;
+            --law-surface-hover: #293548;
+            --law-text: #f8fafc;
+            --law-text-muted: #94a3b8;
+            --law-border: #26334d;
+            --law-border-strong: #3b4d6e;
+            --law-primary: #6366f1;
+            --law-primary-hover: #818cf8;
+            --law-primary-light: rgba(99, 102, 241, 0.15);
+            --law-gold: #f59e0b;
+            --law-gold-light: rgba(245, 158, 11, 0.15);
+            --law-teal: #14b8a6;
+            --law-teal-light: rgba(20, 184, 166, 0.15);
+            --law-crimson: #ef4444;
+            --law-crimson-light: rgba(239, 68, 68, 0.15);
+            --law-success: #22c55e;
+            --law-success-light: rgba(34, 197, 94, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--law-bg);
+            color: var(--law-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.25s, color 0.25s;
+        }
+
+        /* Top Academic Switcher Bar */
+        .site-switcher-bar {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 7px 16px;
+            font-size: 0.78rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .switcher-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .switcher-label {
+            color: #cbd5e1;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-right: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .switcher-btn {
+            color: #cbd5e1;
+            padding: 3px 9px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+        }
+        .switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+        .switcher-btn.active {
+            background: var(--law-primary);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* Site Header */
+        .site-header {
+            background: var(--law-card-bg);
+            border-bottom: 1px solid var(--law-border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: background-color 0.25s, border-color 0.25s;
+        }
+        .header-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #4338ca, #312e81);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 10px rgba(67, 56, 202, 0.35);
+        }
+        .brand-text h1 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand-text h1 span.badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            background: var(--law-gold-light);
+            color: var(--law-gold);
+            padding: 2px 7px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            border: 1px solid rgba(217, 119, 6, 0.3);
+        }
+        .brand-text p {
+            font-size: 0.78rem;
+            color: var(--law-text-muted);
+            line-height: 1.2;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .mode-pill-btn {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            color: var(--law-text);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .mode-pill-btn:hover {
+            background: var(--law-surface-hover);
+        }
+        .mode-pill-btn.active {
+            background: var(--law-primary);
+            color: #ffffff;
+            border-color: var(--law-primary);
+            box-shadow: 0 2px 8px rgba(67, 56, 202, 0.25);
+        }
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--law-border);
+            background: var(--law-card-bg);
+            color: var(--law-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .icon-btn:hover {
+            background: var(--law-surface);
+            color: var(--law-primary);
+        }
+
+        /* Hero / Introduction */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(67, 56, 202, 0.08) 0%, rgba(15, 23, 42, 0.03) 100%);
+            border-bottom: 1px solid var(--law-border);
+            padding: 32px 20px;
+        }
+        .hero-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .hero-title-area {
+            max-width: 820px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            border: 1px solid rgba(67, 56, 202, 0.2);
+            margin-bottom: 12px;
+        }
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: var(--law-text-muted);
+            line-height: 1.55;
+            font-family: var(--font-legal);
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .stat-card {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .stat-icon.purple { background: var(--law-primary-light); color: var(--law-primary); }
+        .stat-icon.gold { background: var(--law-gold-light); color: var(--law-gold); }
+        .stat-icon.teal { background: var(--law-teal-light); color: var(--law-teal); }
+        .stat-icon.crimson { background: var(--law-crimson-light); color: var(--law-crimson); }
+        .stat-info .stat-num {
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        .stat-info .stat-desc {
+            font-size: 0.72rem;
+            color: var(--law-text-muted);
+            margin-top: 2px;
+        }
+
+        /* Main Workspace Container */
+        .workspace-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px 20px 48px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* Filter & Control Bar */
+        .controls-card {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .search-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .search-box-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+        }
+        .search-box-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--law-text-muted);
+            font-size: 0.9rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px 14px 10px 40px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--law-border);
+            background: var(--law-surface);
+            color: var(--law-text);
+            font-size: 0.88rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .search-input:focus {
+            border-color: var(--law-primary);
+            background: var(--law-card-bg);
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.15);
+        }
+        .select-filter {
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--law-border);
+            background: var(--law-surface);
+            color: var(--law-text);
+            font-size: 0.88rem;
+            outline: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .select-filter:focus {
+            border-color: var(--law-primary);
+        }
+        .btn-action {
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--law-border);
+            background: var(--law-card-bg);
+            color: var(--law-text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-action:hover {
+            background: var(--law-surface);
+            border-color: var(--law-border-strong);
+        }
+        .btn-action.primary {
+            background: var(--law-primary);
+            color: #ffffff;
+            border-color: var(--law-primary);
+        }
+        .btn-action.primary:hover {
+            background: var(--law-primary-hover);
+        }
+
+        .filter-tags-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: thin;
+        }
+        .filter-tag-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--law-border);
+            background: var(--law-surface);
+            color: var(--law-text);
+            font-size: 0.78rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-tag-btn:hover {
+            background: var(--law-surface-hover);
+            border-color: var(--law-border-strong);
+        }
+        .filter-tag-btn.active {
+            background: var(--law-primary);
+            color: #ffffff;
+            border-color: var(--law-primary);
+        }
+
+        /* Practice Studio Split Layout */
+        .studio-layout {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        @media (max-width: 1024px) {
+            .studio-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Left Scenario List Sidebar */
+        .scenario-sidebar {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            max-height: calc(100vh - 180px);
+            position: sticky;
+            top: 80px;
+        }
+        .sidebar-header {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--law-border);
+            background: var(--law-surface);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sidebar-header h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .scenario-count-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+        }
+        .scenario-list-scroll {
+            overflow-y: auto;
+            flex: 1;
+            padding: 8px;
+        }
+        .scenario-list-scroll::-webkit-scrollbar {
+            width: 5px;
+        }
+        .scenario-list-scroll::-webkit-scrollbar-thumb {
+            background: var(--law-border-strong);
+            border-radius: 4px;
+        }
+        .scenario-item-btn {
+            width: 100%;
+            text-align: left;
+            padding: 12px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--law-text);
+            cursor: pointer;
+            margin-bottom: 6px;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .scenario-item-btn:hover {
+            background: var(--law-surface);
+            border-color: var(--law-border);
+        }
+        .scenario-item-btn.active {
+            background: var(--law-primary-light);
+            border-color: var(--law-primary);
+            box-shadow: 0 2px 6px rgba(67, 56, 202, 0.12);
+        }
+        .item-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.72rem;
+        }
+        .item-status-icon {
+            font-size: 0.85rem;
+        }
+        .item-status-icon.unsolved { color: var(--law-text-muted); }
+        .item-status-icon.correct { color: var(--law-success); }
+        .item-status-icon.wrong { color: var(--law-crimson); }
+        .item-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .item-meta {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .badge-pill {
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--law-surface);
+            color: var(--law-text-muted);
+            border: 1px solid var(--law-border);
+        }
+        .badge-pill.diff-foundation { color: #16a34a; background: rgba(22, 163, 74, 0.1); border-color: rgba(22, 163, 74, 0.2); }
+        .badge-pill.diff-intermediate { color: #d97706; background: rgba(217, 119, 6, 0.1); border-color: rgba(217, 119, 6, 0.2); }
+        .badge-pill.diff-advanced { color: #dc2626; background: rgba(220, 38, 38, 0.1); border-color: rgba(220, 38, 38, 0.2); }
+
+        /* Right Stage: Active Scenario Card */
+        .stage-card {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+        .stage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--law-border);
+            flex-wrap: wrap;
+        }
+        .stage-title-wrap h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+        .stage-badges {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .domain-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 6px;
+            background: var(--law-primary-light);
+            color: var(--law-primary);
+            border: 1px solid rgba(67, 56, 202, 0.2);
+        }
+        .subdomain-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 3px 9px;
+            border-radius: 6px;
+            background: var(--law-surface);
+            color: var(--law-text-muted);
+            border: 1px solid var(--law-border);
+        }
+        .case-number-badge {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            background: var(--law-surface);
+            color: var(--law-text-muted);
+            border: 1px solid var(--law-border);
+        }
+
+        /* Case Narrative Vignette */
+        .case-narrative-box {
+            background: linear-gradient(135deg, rgba(67, 56, 202, 0.04) 0%, rgba(217, 119, 6, 0.04) 100%);
+            border: 1px solid var(--law-border-strong);
+            border-left: 4px solid var(--law-primary);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .narrative-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--law-primary);
+        }
+        .narrative-body {
+            font-family: var(--font-legal);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--law-text);
+        }
+
+        /* The Legal Question */
+        .question-callout {
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .question-callout i {
+            font-size: 1.25rem;
+            color: var(--law-primary);
+            margin-top: 2px;
+        }
+        .question-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
+        /* Options Grid */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .option-btn {
+            background: var(--law-card-bg);
+            border: 2px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            color: var(--law-text);
+            font-family: inherit;
+            position: relative;
+        }
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--law-primary);
+            background: var(--law-primary-light);
+            transform: translateX(4px);
+        }
+        .option-btn:disabled {
+            cursor: default;
+        }
+        .option-letter {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+        .option-btn:hover:not(:disabled) .option-letter {
+            background: var(--law-primary);
+            color: #ffffff;
+            border-color: var(--law-primary);
+        }
+        .option-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.45;
+            flex: 1;
+        }
+        .option-btn.selected-correct {
+            background: var(--law-success-light) !important;
+            border-color: var(--law-success) !important;
+            color: var(--law-text) !important;
+        }
+        .option-btn.selected-correct .option-letter {
+            background: var(--law-success) !important;
+            color: #ffffff !important;
+            border-color: var(--law-success) !important;
+        }
+        .option-btn.selected-wrong {
+            background: var(--law-crimson-light) !important;
+            border-color: var(--law-crimson) !important;
+            color: var(--law-text) !important;
+        }
+        .option-btn.selected-wrong .option-letter {
+            background: var(--law-crimson) !important;
+            color: #ffffff !important;
+            border-color: var(--law-crimson) !important;
+        }
+
+        /* Judicial Analysis Drawer */
+        .analysis-drawer {
+            display: none;
+            background: var(--law-surface);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 24px;
+            animation: fadeIn 0.3s ease;
+        }
+        .analysis-drawer.show {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .analysis-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            color: var(--law-primary);
+        }
+        .analysis-section {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin-bottom: 16px;
+        }
+        .analysis-section:last-child {
+            margin-bottom: 0;
+        }
+        .section-label {
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .section-label.statute { color: var(--law-primary); }
+        .section-label.why-correct { color: var(--law-success); }
+        .section-label.why-others { color: var(--law-crimson); }
+        .section-label.precedent { color: var(--law-gold); }
+        .section-label.exam-tip { color: var(--law-teal); }
+        
+        .section-content {
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .section-content.statute-quote {
+            font-family: var(--font-legal);
+            font-style: italic;
+            border-left: 3px solid var(--law-primary);
+            padding-left: 12px;
+            background: var(--law-primary-light);
+            padding: 8px 12px;
+            border-radius: 0 4px 4px 0;
+        }
+        .distractor-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 6px;
+        }
+        .distractor-list li {
+            padding: 8px 12px;
+            background: var(--law-surface);
+            border-left: 3px solid var(--law-crimson);
+            border-radius: 0 4px 4px 0;
+            font-size: 0.88rem;
+        }
+
+        /* Stage Navigation Footer */
+        .stage-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding-top: 18px;
+            border-top: 1px solid var(--law-border);
+            flex-wrap: wrap;
+        }
+
+        /* Challenge Mode Section */
+        .challenge-container {
+            display: none;
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+        .challenge-container.active {
+            display: block;
+        }
+        .challenge-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--law-border);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .challenge-metric {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        .streak-flame {
+            color: #ea580c;
+        }
+        .challenge-progress-track {
+            width: 100%;
+            height: 8px;
+            background: var(--law-surface);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .challenge-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--law-primary), var(--law-teal));
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        /* Certificate / Challenge Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--law-card-bg);
+            border: 1px solid var(--law-border);
+            border-radius: var(--radius-xl);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--law-text-muted);
+            cursor: pointer;
+        }
+
+        /* Cheat Sheet / Comparison Table */
+        .cheat-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 16px;
+        }
+        .cheat-table th, .cheat-table td {
+            padding: 10px 14px;
+            border: 1px solid var(--law-border);
+            text-align: left;
+        }
+        .cheat-table th {
+            background: var(--law-surface);
+            font-weight: 700;
+        }
+
+        /* Site Footer */
+        .site-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 20px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+        .footer-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+        .footer-col ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            font-size: 0.78rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Academic Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+            <a href="international-organizations-explorer.html" class="switcher-btn"><i class="fas fa-sitemap"></i> Organizations</a>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> World Timeline</a>
+            <a href="global-power-comparison.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Global Power</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-atom"></i> Periodic Table</a>
+            <a href="climate-change-explorer.html" class="switcher-btn"><i class="fas fa-temperature-high"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn"><i class="fas fa-microchip"></i> Technology</a>
+            <a href="constitution-explorer.html" class="switcher-btn"><i class="fas fa-scale-balanced"></i> Constitution</a>
+            <a href="ppc-section-finder.html" class="switcher-btn"><i class="fas fa-gavel"></i> PPC Finder</a>
+            <a href="crpc-procedure-flowchart.html" class="switcher-btn"><i class="fas fa-diagram-project"></i> CrPC Flowchart</a>
+            <a href="identify-legal-provision.html" class="switcher-btn active"><i class="fas fa-scale-unbalanced-flip"></i> Legal Provision</a>
+        </div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="identify-legal-provision.html" class="brand-group">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-scale-unbalanced-flip"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Identify the Legal Provision <span class="badge">Pakistani Law</span></h1>
+                    <p>Courtroom Scenarios &bull; Statutory Solver &bull; Distractor Analysis</p>
+                </div>
+            </a>
+            <div class="header-actions">
+                <button type="button" class="mode-pill-btn active" id="btnModePractice" onclick="switchMainMode('practice')">
+                    <i class="fa-solid fa-book-open"></i> Practice Studio
+                </button>
+                <button type="button" class="mode-pill-btn" id="btnModeChallenge" onclick="switchMainMode('challenge')">
+                    <i class="fa-solid fa-trophy"></i> Judicial Challenge
+                </button>
+                <button type="button" class="icon-btn" id="btnCheatSheet" title="Legal Distinction Cheat Sheet" onclick="openCheatSheetModal()">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </button>
+                <button type="button" class="icon-btn" id="soundToggleBtn" title="Toggle Sound" onclick="toggleSound()">
+                    <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+                </button>
+                <button type="button" class="icon-btn" id="themeToggleBtn" title="Toggle Theme" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Introduction -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="hero-top">
+                <div class="hero-title-area">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-gavel"></i> Practical Case Solver for CSS, Judicial &amp; Bar Exams
+                    </div>
+                    <h2 class="hero-title">Identify the Applicable Legal Provision</h2>
+                    <p class="hero-subtitle">Read authentic factual scenarios and determine the exact section under the Pakistan Penal Code (PPC 1860), Code of Criminal Procedure (CrPC 1898), Constitution of Pakistan 1973, Qanun-e-Shahadat Order 1984, and PECA 2016.</p>
+                </div>
+                <div>
+                    <button type="button" class="btn-action primary" onclick="startRandomScenario()">
+                        <i class="fa-solid fa-dice"></i> Random Case Dilemma
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-icon purple"><i class="fa-solid fa-file-invoice"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num" id="kpiScenariosCount">25 Scenarios</div>
+                        <div class="stat-desc">Realistic factual case dilemmas</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon gold"><i class="fa-solid fa-layer-group"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">5 Core Domains</div>
+                        <div class="stat-desc">PPC, CrPC, Constitution, QSO &amp; PECA</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon teal"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">100% Precedents</div>
+                        <div class="stat-desc">SC &amp; High Court authoritative rulings</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon crimson"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-num">3 Skill Tiers</div>
+                        <div class="stat-desc">Foundation, Intermediate &amp; Advanced</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="workspace-wrapper">
+
+        <!-- Controls: Search & Filter -->
+        <div class="controls-card" id="practiceControls">
+            <div class="search-row">
+                <div class="search-box-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search scenarios by title, facts, section number, or legal concept..." oninput="filterScenarios()">
+                </div>
+                <select id="diffSelect" class="select-filter" onchange="filterScenarios()">
+                    <option value="all">All Difficulties</option>
+                    <option value="Foundation">Foundation Tier</option>
+                    <option value="Intermediate">Intermediate Tier</option>
+                    <option value="Advanced">Advanced Benchmark</option>
+                </select>
+                <select id="statusSelect" class="select-filter" onchange="filterScenarios()">
+                    <option value="all">All Solved Status</option>
+                    <option value="unattempted">Unattempted</option>
+                    <option value="correct">Solved Correct</option>
+                    <option value="wrong">Needs Review</option>
+                </select>
+                <button type="button" class="btn-action" onclick="resetFilters()">
+                    <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+            </div>
+            <div class="filter-tags-row" id="domainFilterRow">
+                <button type="button" class="filter-tag-btn active" data-domain="all" onclick="selectDomainFilter('all')">
+                    All Domains (25)
+                </button>
+                <button type="button" class="filter-tag-btn" data-domain="Criminal Law / PPC" onclick="selectDomainFilter('Criminal Law / PPC')">
+                    Criminal Law / PPC (9)
+                </button>
+                <button type="button" class="filter-tag-btn" data-domain="Constitutional Law" onclick="selectDomainFilter('Constitutional Law')">
+                    Constitutional Law (5)
+                </button>
+                <button type="button" class="filter-tag-btn" data-domain="Criminal Procedure / CrPC" onclick="selectDomainFilter('Criminal Procedure / CrPC')">
+                    Criminal Procedure / CrPC (6)
+                </button>
+                <button type="button" class="filter-tag-btn" data-domain="Law of Evidence / QSO" onclick="selectDomainFilter('Law of Evidence / QSO')">
+                    Evidence / QSO (4)
+                </button>
+                <button type="button" class="filter-tag-btn" data-domain="Special Laws / Cybercrime" onclick="selectDomainFilter('Special Laws / Cybercrime')">
+                    Cybercrime / PECA (1)
+                </button>
+            </div>
+        </div>
+
+        <!-- PRACTICE STUDIO CONTAINER -->
+        <div class="studio-layout" id="practiceStudioContainer">
+            <!-- Sidebar: Scenario List -->
+            <aside class="scenario-sidebar">
+                <div class="sidebar-header">
+                    <h3><i class="fa-solid fa-list-check"></i> Scenarios</h3>
+                    <span class="scenario-count-badge" id="sidebarCountBadge">25 / 25</span>
+                </div>
+                <div class="scenario-list-scroll" id="scenarioListContainer">
+                    <!-- Populated dynamically -->
+                </div>
+            </aside>
+
+            <!-- Main Stage: Active Scenario -->
+            <section class="stage-card" id="stageCard">
+                <div class="stage-header">
+                    <div class="stage-title-wrap">
+                        <div class="stage-badges" style="margin-bottom: 8px;">
+                            <span class="case-number-badge" id="stageCaseNum">CASE #01 / 25</span>
+                            <span class="domain-tag" id="stageDomainTag">Criminal Law / PPC</span>
+                            <span class="subdomain-tag" id="stageSubDomainTag">Financial Crimes</span>
+                            <span class="badge-pill diff-intermediate" id="stageDiffTag">Intermediate</span>
+                        </div>
+                        <h2 id="stageTitle">The Bounced Security Cheque</h2>
+                    </div>
+                    <div>
+                        <button type="button" class="btn-action" title="Copy Case Scenario" onclick="copyActiveScenario()">
+                            <i class="fa-regular fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Case Narrative Box -->
+                <div class="case-narrative-box">
+                    <div class="narrative-header">
+                        <span><i class="fa-solid fa-briefcase"></i> Courtroom Fact Pattern</span>
+                        <span>Official Case Record</span>
+                    </div>
+                    <div class="narrative-body" id="stageScenarioText">
+                        Loading scenario narrative...
+                    </div>
+                </div>
+
+                <!-- Legal Question Callout -->
+                <div class="question-callout">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <div class="question-text" id="stageQuestionText">
+                        Under which specific section of the Pakistan Penal Code can the accused be prosecuted?
+                    </div>
+                </div>
+
+                <!-- Options List (A, B, C, D) -->
+                <div class="options-list" id="stageOptionsList">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Expandable Judicial Analysis Drawer -->
+                <div class="analysis-drawer" id="stageAnalysisDrawer">
+                    <div class="analysis-heading">
+                        <i class="fa-solid fa-landmark"></i> Judicial Reasoning &amp; Statutory Breakdown
+                    </div>
+
+                    <div class="analysis-section">
+                        <div class="section-label statute">
+                            <i class="fa-solid fa-scroll"></i> Applicable Law &amp; Statutory Text
+                        </div>
+                        <div class="section-content">
+                            <strong id="drawerApplicableLaw" style="display:block; margin-bottom:4px; font-size:1rem; color:var(--law-primary);"></strong>
+                            <div class="section-content statute-quote" id="drawerStatutorySummary"></div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <div class="section-label why-correct">
+                            <i class="fa-solid fa-circle-check"></i> Why This Provision Applies (Ratio Decidendi)
+                        </div>
+                        <div class="section-content" id="drawerWhyCorrect"></div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <div class="section-label why-others">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Distractor Breakdown (Why Other Options Fail)
+                        </div>
+                        <ul class="distractor-list" id="drawerWhyOthersFail"></ul>
+                    </div>
+
+                    <div class="analysis-section">
+                        <div class="section-label precedent">
+                            <i class="fa-solid fa-book-bookmark"></i> Authoritative Judicial Precedent
+                        </div>
+                        <div class="section-content" id="drawerPrecedent" style="font-family:var(--font-legal); font-size:0.95rem;"></div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <div class="section-label exam-tip">
+                            <i class="fa-solid fa-lightbulb"></i> Judicial Exam Tip (CSS / Civil Judge / ASJ)
+                        </div>
+                        <div class="section-content" id="drawerExamTip" style="font-weight:600; color:var(--law-text);"></div>
+                    </div>
+                </div>
+
+                <!-- Stage Footer Navigation -->
+                <div class="stage-footer">
+                    <button type="button" class="btn-action" id="btnPrevScenario" onclick="navigateScenario(-1)">
+                        <i class="fa-solid fa-arrow-left"></i> Previous Case
+                    </button>
+                    <div style="display:flex; gap:8px;">
+                        <button type="button" class="btn-action" onclick="resetActiveScenarioAnswer()">
+                            <i class="fa-solid fa-rotate-left"></i> Re-attempt
+                        </button>
+                        <button type="button" class="btn-action primary" id="btnNextScenario" onclick="navigateScenario(1)">
+                            Next Case <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- JUDICIAL CHALLENGE CONTAINER -->
+        <div class="challenge-container" id="challengeContainer">
+            <div class="challenge-header-bar">
+                <div>
+                    <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:4px;">
+                        <i class="fa-solid fa-trophy" style="color:var(--law-gold);"></i> Judicial Examination Challenge
+                    </h2>
+                    <p style="font-size:0.85rem; color:var(--law-text-muted);">Timed Bench Simulation &bull; Test your statutory issue-spotting</p>
+                </div>
+                <div style="display:flex; gap:16px; align-items:center;">
+                    <div class="challenge-metric">
+                        <i class="fa-solid fa-fire streak-flame"></i> Streak: <span id="chStreakVal">0</span>
+                    </div>
+                    <div class="challenge-metric">
+                        <i class="fa-solid fa-clock" style="color:var(--law-primary);"></i> Time: <span id="chTimerVal">00:00</span>
+                    </div>
+                    <div class="challenge-metric">
+                        <i class="fa-solid fa-award" style="color:var(--law-gold);"></i> Score: <span id="chScoreVal">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="challenge-progress-track">
+                <div class="challenge-progress-bar" id="chProgressBar"></div>
+            </div>
+
+            <!-- Active Challenge Stage -->
+            <div id="challengeStageInner">
+                <div style="margin-bottom: 12px; display:flex; justify-content:space-between; align-items:center;">
+                    <span class="case-number-badge" id="chQuestionNum">QUESTION 1 / 10</span>
+                    <span class="domain-tag" id="chDomainTag">Domain</span>
+                </div>
+                <h3 id="chTitle" style="font-size:1.25rem; font-weight:800; margin-bottom:14px;">Scenario Title</h3>
+                
+                <div class="case-narrative-box" style="margin-bottom:18px;">
+                    <div class="narrative-body" id="chScenarioText">Narrative goes here...</div>
+                </div>
+
+                <div class="question-callout" style="margin-bottom:18px;">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <div class="question-text" id="chQuestionText">Legal question text...</div>
+                </div>
+
+                <div class="options-list" id="chOptionsList"></div>
+
+                <div id="chFeedbackBox" style="display:none; margin-bottom:20px; padding:16px; border-radius:var(--radius-md); font-size:0.92rem; line-height:1.5;"></div>
+
+                <div style="display:flex; justify-content:flex-end;">
+                    <button type="button" class="btn-action primary" id="chBtnNext" onclick="nextChallengeQuestion()" style="display:none;">
+                        Continue <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- CHEAT SHEET MODAL (Legal Boundary Comparison) -->
+    <div class="modal-overlay" id="cheatSheetModal">
+        <div class="modal-box">
+            <button type="button" class="modal-close" onclick="closeCheatSheetModal()">&times;</button>
+            <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:6px; color:var(--law-primary);">
+                <i class="fa-solid fa-scale-balanced"></i> Critical Legal Boundary Distinctions
+            </h2>
+            <p style="font-size:0.85rem; color:var(--law-text-muted); margin-bottom:16px;">
+                Examiners intentionally design distractors around these classic statutory distinctions. Memorize these key thresholds:
+            </p>
+
+            <table class="cheat-table">
+                <thead>
+                    <tr>
+                        <th>Offence / Provision A</th>
+                        <th>Offence / Provision B</th>
+                        <th>Decisive Legal Distinction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Section 34 PPC</strong><br>(Common Intention)</td>
+                        <td><strong>Section 149 PPC</strong><br>(Common Object)</td>
+                        <td><strong>Number &amp; Agreement:</strong> Sec 149 requires an unlawful assembly of <strong>at least 5 persons</strong> sharing a common object. Sec 34 applies to <strong>2 or more persons</strong> acting in furtherance of a pre-arranged common intention.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Section 378 PPC</strong><br>(Theft)</td>
+                        <td><strong>Section 383 PPC</strong><br>(Extortion)</td>
+                        <td><strong>Delivery &amp; Fear:</strong> In Theft, property is taken <em>without consent</em> by moving it secretly. In Extortion, property is delivered by the victim under <em>fear of injury</em>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Section 390 PPC</strong><br>(Robbery)</td>
+                        <td><strong>Section 391 PPC</strong><br>(Dacoity)</td>
+                        <td><strong>Conjoint Threshold:</strong> Robbery becomes Dacoity ONLY when committed or attempted by <strong>5 or more persons</strong> acting conjointly.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Section 302(a)/(b) PPC</strong><br>(Qisas / Tazir Death/Life)</td>
+                        <td><strong>Section 302(c) PPC</strong><br>(Grave &amp; Sudden Provocation)</td>
+                        <td><strong>Mitigation:</strong> Sec 302(c) applies when intentional killing occurs without premeditation under the sudden loss of self-control caused by grave provocation (max 25 years imprisonment).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Section 167 CrPC</strong><br>(Police Physical Remand)</td>
+                        <td><strong>Section 344 CrPC</strong><br>(Judicial Remand)</td>
+                        <td><strong>Absolute 14-Day Cap:</strong> Police custody for interrogation under Sec 167 cannot exceed <strong>14 days in aggregate</strong>. Further detentions must be in judicial lockup under Sec 344.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Article 62(1)(f)</strong><br>(Disqualification)</td>
+                        <td><strong>Article 63A</strong><br>(Party Defection)</td>
+                        <td><strong>Current Rulings:</strong> Art 62(1)(f) disqualification is now capped at <strong>5 years</strong> (Supreme Court Jan 2024). Defecting votes under Art 63A <strong>must be counted</strong>, followed by de-seating (SC Review Oct 2024).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Article 46 QSO</strong><br>(Dying Declaration)</td>
+                        <td><strong>Hearsay Exclusion</strong><br>(General Rule)</td>
+                        <td><strong>Nemo Moriturus:</strong> A statement by a dying person as to the cause of death is admissible without cross-examination because a person on the threshold of death will not face their Maker with a lie.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- CHALLENGE RESULT MODAL -->
+    <div class="modal-overlay" id="challengeResultModal">
+        <div class="modal-box" style="text-align: center;">
+            <div style="width:80px; height:80px; border-radius:50%; background:var(--law-gold-light); color:var(--law-gold); font-size:2.2rem; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h2 style="font-size:1.8rem; font-weight:800; margin-bottom:6px;">Judicial Challenge Complete!</h2>
+            <p style="font-size:0.95rem; color:var(--law-text-muted); margin-bottom:24px;">Bench Evaluation &amp; Statutory Aptitude Report</p>
+
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:24px;">
+                <div style="background:var(--law-surface); padding:14px; border-radius:var(--radius-md);">
+                    <div style="font-size:1.6rem; font-weight:800; color:var(--law-primary);" id="resScore">0</div>
+                    <div style="font-size:0.75rem; color:var(--law-text-muted);">Points Earned</div>
+                </div>
+                <div style="background:var(--law-surface); padding:14px; border-radius:var(--radius-md);">
+                    <div style="font-size:1.6rem; font-weight:800; color:var(--law-success);" id="resAccuracy">0%</div>
+                    <div style="font-size:0.75rem; color:var(--law-text-muted);">Accuracy</div>
+                </div>
+                <div style="background:var(--law-surface); padding:14px; border-radius:var(--radius-md);">
+                    <div style="font-size:1.6rem; font-weight:800; color:var(--law-gold);" id="resTime">0s</div>
+                    <div style="font-size:0.75rem; color:var(--law-text-muted);">Time Taken</div>
+                </div>
+            </div>
+
+            <div id="resBadgeBox" style="background:var(--law-primary-light); border:1px solid rgba(67, 56, 202, 0.2); padding:16px; border-radius:var(--radius-md); margin-bottom:24px;">
+                <div style="font-weight:800; font-size:1.1rem; color:var(--law-primary);" id="resRankTitle">Appellate Advocate Level</div>
+                <p style="font-size:0.85rem; color:var(--law-text); margin-top:4px;" id="resRankDesc">Outstanding mastery of statutory provisions and judicial ratios.</p>
+            </div>
+
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+                <button type="button" class="btn-action primary" onclick="closeChallengeResultModal(); switchMainMode('practice');">
+                    <i class="fa-solid fa-book-open"></i> Review All Scenarios
+                </button>
+                <button type="button" class="btn-action" onclick="restartChallenge()">
+                    <i class="fa-solid fa-rotate-left"></i> Retake Challenge
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>⚖️ Law &amp; Governance Suite</h4>
+                    <p style="margin-bottom:12px; font-size:0.82rem; line-height:1.5;">Comprehensive statutory databases and interactive reasoning suites tailored for Pakistani competitive examinations.</p>
+                    <ul>
+                        <li><a href="constitution-explorer.html"><i class="fa-solid fa-scale-balanced"></i> Constitution Explorer (1973)</a></li>
+                        <li><a href="ppc-section-finder.html"><i class="fa-solid fa-gavel"></i> PPC Section Finder (1860)</a></li>
+                        <li><a href="crpc-procedure-flowchart.html"><i class="fa-solid fa-diagram-project"></i> CrPC Procedure Flowchart (1898)</a></li>
+                        <li><a href="identify-legal-provision.html" style="font-weight:700; color:#fff;"><i class="fa-solid fa-scale-unbalanced-flip"></i> Identify the Legal Provision</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>🏛️ Exam Resources</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-solid fa-house"></i> Central Portal Home</a></li>
+                        <li><a href="pakistan-map.html"><i class="fa-solid fa-map-location-dot"></i> Pakistan Geography Map</a></li>
+                        <li><a href="sindh-map.html"><i class="fa-solid fa-map"></i> Sindh Administrative Map</a></li>
+                        <li><a href="geopolitical-hotspots-map.html"><i class="fa-solid fa-crosshairs"></i> Geopolitical Hotspots</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>🔬 Science &amp; Technology</h4>
+                    <ul>
+                        <li><a href="solar-system-explorer.html"><i class="fa-solid fa-sun"></i> Solar System Explorer</a></li>
+                        <li><a href="human-body-explorer.html"><i class="fa-solid fa-heartbeat"></i> Human Body Explorer</a></li>
+                        <li><a href="periodic-table.html"><i class="fa-solid fa-atom"></i> Periodic Table</a></li>
+                        <li><a href="climate-change-explorer.html"><i class="fa-solid fa-temperature-high"></i> Climate Change Explorer</a></li>
+                        <li><a href="technology-explorer.html"><i class="fa-solid fa-microchip"></i> Technology Explorer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Competitive Exam Preparation Portal &bull; Pakistan Legal Studies Resource. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Scenarios Database -->
+    <script src="js/data_legal_provision.js"></script>
+
+    <!-- Main Application Script -->
+    <script>
+        (function() {
+            // State
+            let scenariosData = [];
+            let activeScenarioIndex = 0;
+            let currentFilterDomain = 'all';
+            let currentFilterDiff = 'all';
+            let currentFilterStatus = 'all';
+            let searchQuery = '';
+            let filteredIndices = [];
+            let userProgress = {}; // { 'sc-1': { answered: true, isCorrect: true, chosen: 2 } }
+            let soundEnabled = true;
+
+            // Challenge Mode State
+            let challengeActive = false;
+            let challengeQuestions = [];
+            let challengeCurrentIdx = 0;
+            let challengeScore = 0;
+            let challengeStreak = 0;
+            let challengeStartTime = null;
+            let challengeTimerInterval = null;
+
+            // Audio Context for Pure Web Audio synthesis
+            let audioCtx = null;
+            function initAudio() {
+                if (!audioCtx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContext) {
+                        audioCtx = new AudioContext();
+                    }
+                }
+            }
+
+            window.playChime = function(type) {
+                if (!soundEnabled) return;
+                try {
+                    initAudio();
+                    if (!audioCtx) return;
+                    if (audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
+
+                    const now = audioCtx.currentTime;
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    if (type === 'correct') {
+                        // Harmonious two-tone chime (E5 -> B5)
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(659.25, now);
+                        osc.frequency.setValueAtTime(987.77, now + 0.12);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+                        osc.start(now);
+                        osc.stop(now + 0.45);
+                    } else if (type === 'wrong') {
+                        // Low subtle buzz (F#3 -> D3)
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(185.00, now);
+                        osc.frequency.setValueAtTime(146.83, now + 0.12);
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                        osc.start(now);
+                        osc.stop(now + 0.35);
+                    } else if (type === 'fanfare') {
+                        // Chord flourish (C5 -> E5 -> G5 -> C6)
+                        const notes = [523.25, 659.25, 783.99, 1046.50];
+                        notes.forEach((freq, idx) => {
+                            const subOsc = audioCtx.createOscillator();
+                            const subGain = audioCtx.createGain();
+                            subOsc.connect(subGain);
+                            subGain.connect(audioCtx.destination);
+                            subOsc.type = 'sine';
+                            subOsc.frequency.setValueAtTime(freq, now + idx * 0.1);
+                            subGain.gain.setValueAtTime(0.15, now + idx * 0.1);
+                            subGain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.1 + 0.5);
+                            subOsc.start(now + idx * 0.1);
+                            subOsc.stop(now + idx * 0.1 + 0.5);
+                        });
+                    }
+                } catch (e) {
+                    console.warn('Audio error:', e);
+                }
+            };
+
+            // Init on DOM ready
+            document.addEventListener('DOMContentLoaded', () => {
+                // Load local progress
+                try {
+                    const savedProg = localStorage.getItem('mcqs_legal_provision_progress');
+                    if (savedProg) userProgress = JSON.parse(savedProg);
+                    const savedSound = localStorage.getItem('mcqs_sound_enabled');
+                    if (savedSound !== null) soundEnabled = savedSound === 'true';
+                } catch(e) {}
+                updateSoundIcon();
+
+                // Load Data
+                if (window.LEGAL_PROVISION_DATA && window.LEGAL_PROVISION_DATA.scenarios) {
+                    scenariosData = window.LEGAL_PROVISION_DATA.scenarios;
+                } else {
+                    console.error('LEGAL_PROVISION_DATA not loaded!');
+                }
+
+                // Render KPI
+                document.getElementById('kpiScenariosCount').textContent = scenariosData.length + ' Scenarios';
+
+                // Initial Filter
+                applyFilters();
+
+                // Select first scenario
+                if (filteredIndices.length > 0) {
+                    selectScenario(filteredIndices[0]);
+                }
+            });
+
+            // Filter logic
+            function applyFilters() {
+                filteredIndices = [];
+                const q = searchQuery.toLowerCase().trim();
+
+                for (let i = 0; i < scenariosData.length; i++) {
+                    const s = scenariosData[i];
+
+                    // Domain
+                    if (currentFilterDomain !== 'all' && s.domain !== currentFilterDomain) continue;
+
+                    // Difficulty
+                    if (currentFilterDiff !== 'all' && s.difficulty !== currentFilterDiff) continue;
+
+                    // Status
+                    if (currentFilterStatus !== 'all') {
+                        const prog = userProgress[s.id];
+                        if (currentFilterStatus === 'unattempted' && prog) continue;
+                        if (currentFilterStatus === 'correct' && (!prog || !prog.isCorrect)) continue;
+                        if (currentFilterStatus === 'wrong' && (!prog || prog.isCorrect)) continue;
+                    }
+
+                    // Search query
+                    if (q) {
+                        const hay = (s.title + ' ' + s.scenarioText + ' ' + s.question + ' ' + s.applicableLaw + ' ' + s.domain + ' ' + s.subDomain).toLowerCase();
+                        if (!hay.includes(q)) continue;
+                    }
+
+                    filteredIndices.push(i);
+                }
+
+                renderSidebarList();
+            }
+
+            function renderSidebarList() {
+                const container = document.getElementById('scenarioListContainer');
+                container.innerHTML = '';
+
+                document.getElementById('sidebarCountBadge').textContent = filteredIndices.length + ' / ' + scenariosData.length;
+
+                if (filteredIndices.length === 0) {
+                    container.innerHTML = '<div style="padding:24px; text-align:center; color:var(--law-text-muted); font-size:0.85rem;"><i class="fa-solid fa-filter-circle-xmark" style="font-size:1.8rem; margin-bottom:8px; display:block;"></i>No scenarios match your active filters.</div>';
+                    return;
+                }
+
+                filteredIndices.forEach(idx => {
+                    const s = scenariosData[idx];
+                    const btn = document.createElement('button');
+                    btn.className = 'scenario-item-btn' + (idx === activeScenarioIndex ? ' active' : '');
+                    btn.type = 'button';
+                    btn.onclick = () => selectScenario(idx);
+
+                    let statusIcon = '<i class="fa-regular fa-circle item-status-icon unsolved"></i>';
+                    const prog = userProgress[s.id];
+                    if (prog) {
+                        if (prog.isCorrect) {
+                            statusIcon = '<i class="fa-solid fa-circle-check item-status-icon correct"></i>';
+                        } else {
+                            statusIcon = '<i class="fa-solid fa-circle-xmark item-status-icon wrong"></i>';
+                        }
+                    }
+
+                    let diffClass = 'diff-intermediate';
+                    if (s.difficulty === 'Foundation') diffClass = 'diff-foundation';
+                    if (s.difficulty === 'Advanced') diffClass = 'diff-advanced';
+
+                    btn.innerHTML = \`
+                        <div class="item-top">
+                            <span style="font-family:var(--font-mono); font-weight:700;">CASE #\${idx + 1}</span>
+                            \${statusIcon}
+                        </div>
+                        <div class="item-title">\${escapeHtml(s.title)}</div>
+                        <div class="item-meta">
+                            <span class="badge-pill">\${escapeHtml(s.domain.replace('Criminal Procedure / ', '').replace('Criminal Law / ', ''))}</span>
+                            <span class="badge-pill \${diffClass}">\${escapeHtml(s.difficulty)}</span>
+                        </div>
+                    \`;
+                    container.appendChild(btn);
+                });
+            }
+
+            function selectScenario(index) {
+                if (index < 0 || index >= scenariosData.length) return;
+                activeScenarioIndex = index;
+
+                // Update active in sidebar
+                const items = document.querySelectorAll('.scenario-item-btn');
+                items.forEach((item, pos) => {
+                    const matchedIdx = filteredIndices[pos];
+                    if (matchedIdx === activeScenarioIndex) {
+                        item.classList.add('active');
+                        item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+
+                renderActiveStage();
+            }
+
+            function renderActiveStage() {
+                const s = scenariosData[activeScenarioIndex];
+                if (!s) return;
+
+                document.getElementById('stageCaseNum').textContent = \`CASE #\${activeScenarioIndex + 1} / \${scenariosData.length}\`;
+                document.getElementById('stageDomainTag').textContent = s.domain;
+                document.getElementById('stageSubDomainTag').textContent = s.subDomain;
+
+                const diffTag = document.getElementById('stageDiffTag');
+                diffTag.textContent = s.difficulty;
+                diffTag.className = 'badge-pill';
+                if (s.difficulty === 'Foundation') diffTag.classList.add('diff-foundation');
+                else if (s.difficulty === 'Advanced') diffTag.classList.add('diff-advanced');
+                else diffTag.classList.add('diff-intermediate');
+
+                document.getElementById('stageTitle').textContent = s.title;
+                document.getElementById('stageScenarioText').textContent = s.scenarioText;
+                document.getElementById('stageQuestionText').textContent = s.question;
+
+                // Options
+                const optsContainer = document.getElementById('stageOptionsList');
+                optsContainer.innerHTML = '';
+
+                const prog = userProgress[s.id];
+                const answered = !!prog;
+
+                const letters = ['A', 'B', 'C', 'D'];
+                s.opts.forEach((optText, optIdx) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'option-btn';
+
+                    if (answered) {
+                        btn.disabled = true;
+                        if (optIdx === s.ans) {
+                            btn.classList.add('selected-correct');
+                        } else if (prog.chosen === optIdx && !prog.isCorrect) {
+                            btn.classList.add('selected-wrong');
+                        }
+                    }
+
+                    btn.onclick = () => handleAnswerChoice(optIdx);
+
+                    btn.innerHTML = \`
+                        <div class="option-letter">\${letters[optIdx]}</div>
+                        <div class="option-text">\${escapeHtml(optText)}</div>
+                    \`;
+                    optsContainer.appendChild(btn);
+                });
+
+                // Drawer
+                const drawer = document.getElementById('stageAnalysisDrawer');
+                if (answered) {
+                    populateDrawer(s);
+                    drawer.classList.add('show');
+                } else {
+                    drawer.classList.remove('show');
+                }
+
+                // Prev/Next buttons
+                const currentFilteredPos = filteredIndices.indexOf(activeScenarioIndex);
+                document.getElementById('btnPrevScenario').disabled = currentFilteredPos <= 0;
+                document.getElementById('btnNextScenario').disabled = currentFilteredPos >= filteredIndices.length - 1;
+            }
+
+            function handleAnswerChoice(chosenIdx) {
+                const s = scenariosData[activeScenarioIndex];
+                if (!s) return;
+
+                const isCorrect = chosenIdx === s.ans;
+                userProgress[s.id] = {
+                    answered: true,
+                    isCorrect: isCorrect,
+                    chosen: chosenIdx
+                };
+
+                try {
+                    localStorage.setItem('mcqs_legal_provision_progress', JSON.stringify(userProgress));
+                } catch(e) {}
+
+                playChime(isCorrect ? 'correct' : 'wrong');
+
+                renderActiveStage();
+                renderSidebarList();
+            }
+
+            function populateDrawer(s) {
+                document.getElementById('drawerApplicableLaw').textContent = s.applicableLaw;
+                document.getElementById('drawerStatutorySummary').textContent = s.statutorySummary;
+                document.getElementById('drawerWhyCorrect').textContent = s.whyCorrect;
+
+                const distractorUl = document.getElementById('drawerWhyOthersFail');
+                distractorUl.innerHTML = '';
+                s.whyOthersFail.forEach(text => {
+                    const li = document.createElement('li');
+                    li.textContent = text;
+                    distractorUl.appendChild(li);
+                });
+
+                document.getElementById('drawerPrecedent').textContent = s.precedent;
+                document.getElementById('drawerExamTip').textContent = s.examTip;
+            }
+
+            window.resetActiveScenarioAnswer = function() {
+                const s = scenariosData[activeScenarioIndex];
+                if (!s) return;
+                delete userProgress[s.id];
+                try {
+                    localStorage.setItem('mcqs_legal_provision_progress', JSON.stringify(userProgress));
+                } catch(e) {}
+                renderActiveStage();
+                renderSidebarList();
+            };
+
+            window.navigateScenario = function(delta) {
+                const currentFilteredPos = filteredIndices.indexOf(activeScenarioIndex);
+                if (currentFilteredPos === -1) return;
+                const nextPos = currentFilteredPos + delta;
+                if (nextPos >= 0 && nextPos < filteredIndices.length) {
+                    selectScenario(filteredIndices[nextPos]);
+                }
+            };
+
+            window.startRandomScenario = function() {
+                if (scenariosData.length === 0) return;
+                const r = Math.floor(Math.random() * scenariosData.length);
+                if (!filteredIndices.includes(r)) {
+                    resetFilters();
+                }
+                selectScenario(r);
+                document.getElementById('stageCard').scrollIntoView({ behavior: 'smooth' });
+            };
+
+            window.filterScenarios = function() {
+                searchQuery = document.getElementById('searchInput').value;
+                currentFilterDiff = document.getElementById('diffSelect').value;
+                currentFilterStatus = document.getElementById('statusSelect').value;
+                applyFilters();
+                if (filteredIndices.length > 0 && !filteredIndices.includes(activeScenarioIndex)) {
+                    selectScenario(filteredIndices[0]);
+                }
+            };
+
+            window.selectDomainFilter = function(domain) {
+                currentFilterDomain = domain;
+                const btns = document.querySelectorAll('#domainFilterRow .filter-tag-btn');
+                btns.forEach(b => {
+                    b.classList.toggle('active', b.dataset.domain === domain);
+                });
+                applyFilters();
+                if (filteredIndices.length > 0 && !filteredIndices.includes(activeScenarioIndex)) {
+                    selectScenario(filteredIndices[0]);
+                }
+            };
+
+            window.resetFilters = function() {
+                document.getElementById('searchInput').value = '';
+                document.getElementById('diffSelect').value = 'all';
+                document.getElementById('statusSelect').value = 'all';
+                searchQuery = '';
+                currentFilterDomain = 'all';
+                currentFilterDiff = 'all';
+                currentFilterStatus = 'all';
+                const btns = document.querySelectorAll('#domainFilterRow .filter-tag-btn');
+                btns.forEach(b => {
+                    b.classList.toggle('active', b.dataset.domain === 'all');
+                });
+                applyFilters();
+            };
+
+            window.copyActiveScenario = function() {
+                const s = scenariosData[activeScenarioIndex];
+                if (!s) return;
+                const textToCopy = \`[Pakistani Law Scenario #\${activeScenarioIndex + 1}: \${s.title}]\n\nScenario: \${s.scenarioText}\n\nQuestion: \${s.question}\n\nApplicable Law: \${s.applicableLaw}\nPrecedent: \${s.precedent}\`;
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    alert('Scenario and precedent citation copied to clipboard!');
+                }).catch(() => {
+                    prompt('Copy scenario text below:', textToCopy);
+                });
+            };
+
+            // Mode Switching (Practice vs Challenge)
+            window.switchMainMode = function(mode) {
+                const practiceBtn = document.getElementById('btnModePractice');
+                const challengeBtn = document.getElementById('btnModeChallenge');
+                const studio = document.getElementById('practiceStudioContainer');
+                const challenge = document.getElementById('challengeContainer');
+                const controls = document.getElementById('practiceControls');
+
+                if (mode === 'practice') {
+                    practiceBtn.classList.add('active');
+                    challengeBtn.classList.remove('active');
+                    studio.style.display = 'grid';
+                    controls.style.display = 'block';
+                    challenge.classList.remove('active');
+                    clearInterval(challengeTimerInterval);
+                } else {
+                    practiceBtn.classList.remove('active');
+                    challengeBtn.classList.add('active');
+                    studio.style.display = 'none';
+                    controls.style.display = 'none';
+                    challenge.classList.add('active');
+                    startChallengeMode();
+                }
+            };
+
+            // Challenge Mode Engine
+            function startChallengeMode() {
+                challengeActive = true;
+                challengeScore = 0;
+                challengeStreak = 0;
+                challengeCurrentIdx = 0;
+                challengeStartTime = Date.now();
+
+                // Shuffle 10 scenarios
+                const shuffled = [...scenariosData].sort(() => 0.5 - Math.random());
+                challengeQuestions = shuffled.slice(0, 10);
+
+                updateChallengeMetrics();
+                renderChallengeQuestion();
+
+                clearInterval(challengeTimerInterval);
+                challengeTimerInterval = setInterval(() => {
+                    const elapsed = Math.floor((Date.now() - challengeStartTime) / 1000);
+                    const mins = String(Math.floor(elapsed / 60)).padStart(2, '0');
+                    const secs = String(elapsed % 60).padStart(2, '0');
+                    document.getElementById('chTimerVal').textContent = \`\${mins}:\${secs}\`;
+                }, 1000);
+            }
+
+            function updateChallengeMetrics() {
+                document.getElementById('chScoreVal').textContent = challengeScore;
+                document.getElementById('chStreakVal').textContent = challengeStreak;
+                const progressPct = ((challengeCurrentIdx) / challengeQuestions.length) * 100;
+                document.getElementById('chProgressBar').style.width = progressPct + '%';
+            }
+
+            function renderChallengeQuestion() {
+                const s = challengeQuestions[challengeCurrentIdx];
+                if (!s) {
+                    endChallengeMode();
+                    return;
+                }
+
+                updateChallengeMetrics();
+
+                document.getElementById('chQuestionNum').textContent = \`QUESTION \${challengeCurrentIdx + 1} / \${challengeQuestions.length}\`;
+                document.getElementById('chDomainTag').textContent = s.domain;
+                document.getElementById('chTitle').textContent = s.title;
+                document.getElementById('chScenarioText').textContent = s.scenarioText;
+                document.getElementById('chQuestionText').textContent = s.question;
+
+                const feedbackBox = document.getElementById('chFeedbackBox');
+                feedbackBox.style.display = 'none';
+                document.getElementById('chBtnNext').style.display = 'none';
+
+                const optsContainer = document.getElementById('chOptionsList');
+                optsContainer.innerHTML = '';
+
+                const letters = ['A', 'B', 'C', 'D'];
+                s.opts.forEach((optText, optIdx) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'option-btn';
+                    btn.onclick = () => handleChallengeChoice(optIdx);
+
+                    btn.innerHTML = \`
+                        <div class="option-letter">\${letters[optIdx]}</div>
+                        <div class="option-text">\${escapeHtml(optText)}</div>
+                    \`;
+                    optsContainer.appendChild(btn);
+                });
+            }
+
+            function handleChallengeChoice(chosenIdx) {
+                const s = challengeQuestions[challengeCurrentIdx];
+                if (!s) return;
+
+                const isCorrect = chosenIdx === s.ans;
+                if (isCorrect) {
+                    challengeScore += 10 + (challengeStreak * 2);
+                    challengeStreak += 1;
+                    playChime('correct');
+                } else {
+                    challengeStreak = 0;
+                    playChime('wrong');
+                }
+
+                // Highlight buttons
+                const btns = document.querySelectorAll('#chOptionsList .option-btn');
+                btns.forEach((btn, idx) => {
+                    btn.disabled = true;
+                    if (idx === s.ans) {
+                        btn.classList.add('selected-correct');
+                    } else if (idx === chosenIdx && !isCorrect) {
+                        btn.classList.add('selected-wrong');
+                    }
+                });
+
+                // Show feedback box
+                const feedbackBox = document.getElementById('chFeedbackBox');
+                feedbackBox.style.display = 'block';
+                if (isCorrect) {
+                    feedbackBox.style.background = 'var(--law-success-light)';
+                    feedbackBox.style.border = '1px solid var(--law-success)';
+                    feedbackBox.innerHTML = \`<strong style="color:var(--law-success);"><i class="fa-solid fa-circle-check"></i> Correct!</strong> \${escapeHtml(s.applicableLaw)}. \${escapeHtml(s.whyCorrect)}\`;
+                } else {
+                    feedbackBox.style.background = 'var(--law-crimson-light)';
+                    feedbackBox.style.border = '1px solid var(--law-crimson)';
+                    feedbackBox.innerHTML = \`<strong style="color:var(--law-crimson);"><i class="fa-solid fa-circle-xmark"></i> Incorrect.</strong> Correct answer is <strong>\${escapeHtml(s.opts[s.ans])}</strong>.<br><small style="margin-top:4px; display:block;">\${escapeHtml(s.whyCorrect)}</small>\`;
+                }
+
+                document.getElementById('chBtnNext').style.display = 'inline-flex';
+                updateChallengeMetrics();
+            }
+
+            window.nextChallengeQuestion = function() {
+                challengeCurrentIdx++;
+                if (challengeCurrentIdx >= challengeQuestions.length) {
+                    endChallengeMode();
+                } else {
+                    renderChallengeQuestion();
+                }
+            };
+
+            function endChallengeMode() {
+                clearInterval(challengeTimerInterval);
+                playChime('fanfare');
+
+                const totalSecs = Math.floor((Date.now() - challengeStartTime) / 1000);
+                const maxPossible = challengeQuestions.length * 10;
+                const accuracy = Math.round((challengeScore / (maxPossible + 30)) * 100);
+
+                document.getElementById('resScore').textContent = challengeScore;
+                document.getElementById('resAccuracy').textContent = Math.min(100, Math.max(10, accuracy)) + '%';
+                document.getElementById('resTime').textContent = totalSecs + 's';
+
+                const rankTitle = document.getElementById('resRankTitle');
+                const rankDesc = document.getElementById('resRankDesc');
+
+                if (challengeScore >= 90) {
+                    rankTitle.textContent = '⚖️ Supreme Court Appellate Jurist';
+                    rankDesc.textContent = 'Flawless statutory interpretation and courtroom issue-spotting!';
+                } else if (challengeScore >= 60) {
+                    rankTitle.textContent = '🏛️ Additional Sessions Judge Bench';
+                    rankDesc.textContent = 'High proficiency in distinguishing critical penal and procedural thresholds.';
+                } else {
+                    rankTitle.textContent = '📜 Judicial Magistrate & Law GAT Aspirant';
+                    rankDesc.textContent = 'Solid foundation. Review the cheat sheet and re-attempt to master tricky distractors.';
+                }
+
+                document.getElementById('challengeResultModal').classList.add('open');
+            }
+
+            window.closeChallengeResultModal = function() {
+                document.getElementById('challengeResultModal').classList.remove('open');
+            };
+
+            window.restartChallenge = function() {
+                closeChallengeResultModal();
+                startChallengeMode();
+            };
+
+            // Cheat Sheet Modal
+            window.openCheatSheetModal = function() {
+                document.getElementById('cheatSheetModal').classList.add('open');
+            };
+
+            window.closeCheatSheetModal = function() {
+                document.getElementById('cheatSheetModal').classList.remove('open');
+            };
+
+            // Audio & Theme toggles
+            window.toggleSound = function() {
+                soundEnabled = !soundEnabled;
+                try {
+                    localStorage.setItem('mcqs_sound_enabled', String(soundEnabled));
+                } catch(e) {}
+                updateSoundIcon();
+            };
+
+            function updateSoundIcon() {
+                const icon = document.getElementById('soundIcon');
+                if (soundEnabled) {
+                    icon.className = 'fa-solid fa-volume-high';
+                } else {
+                    icon.className = 'fa-solid fa-volume-xmark';
+                }
+            }
+
+            window.toggleTheme = function() {
+                const isDark = document.documentElement.classList.toggle('dark-mode');
+                try {
+                    localStorage.setItem('mcqs_dark_mode', String(isDark));
+                } catch(e) {}
+                updateThemeIcon();
+            };
+
+            function updateThemeIcon() {
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                const icon = document.getElementById('themeIcon');
+                if (isDark) {
+                    icon.className = 'fa-solid fa-sun';
+                } else {
+                    icon.className = 'fa-solid fa-moon';
+                }
+            }
+            updateThemeIcon();
+
+            function escapeHtml(text) {
+                if (!text) return '';
+                return String(text)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+        })();
+    </script>
+</body>
+</html>
+`;
+
+fs.writeFileSync(targetHtmlPath, htmlContent, 'utf-8');
+console.log('Successfully generated frontend/identify-legal-provision.html!');

@@ -1,0 +1,1476 @@
+const fs = require('fs');
+
+console.log('--- Assembling frontend/technology-explorer.html ---');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Explorer | AI, Robotics, Nanotechnology, Quantum, Satellites &amp; Biotech</title>
+    <meta name="description"
+        content="Interactive Emerging Technology Explorer for CSS, PMS, FPSC, PPSC and competitive examinations. Explore AI, robotics, nanotechnology, quantum computing, satellites, and biotechnology with interactive simulators, timelines, and exam dossiers.">
+    <link rel="canonical" href="https://cssprepcentral.com/technology-explorer.html" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --tech-bg: #f8fafc;
+            --tech-card-bg: #ffffff;
+            --tech-card-sub: #f1f5f9;
+            --tech-border: #e2e8f0;
+            --tech-text-main: #0f172a;
+            --tech-text-muted: #64748b;
+            --tech-primary: #8b5cf6;
+            --tech-primary-dark: #6d28d9;
+            --tech-primary-light: rgba(139, 92, 246, 0.1);
+            --tech-accent: #0284c7;
+            --tech-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --tech-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode {
+            --tech-bg: #0b1120;
+            --tech-card-bg: #131c31;
+            --tech-card-sub: #1e293b;
+            --tech-border: #1e293b;
+            --tech-text-main: #f8fafc;
+            --tech-text-muted: #94a3b8;
+            --tech-primary: #a78bfa;
+            --tech-primary-dark: #8b5cf6;
+            --tech-primary-light: rgba(167, 139, 250, 0.15);
+            --tech-accent: #38bdf8;
+            --tech-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --tech-shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--tech-bg);
+            color: var(--tech-text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Top Academic Switcher Bar */
+        .site-switcher-bar {
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            z-index: 1001;
+        }
+
+        .switcher-inner {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .switcher-label {
+            color: #94a3b8;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .switcher-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .switcher-btn.active {
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+            font-weight: 700;
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background: var(--tech-card-bg);
+            border-bottom: 1px solid var(--tech-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--tech-text-main);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #8b5cf6, #0284c7);
+            color: #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--tech-card-sub);
+            border: 1px solid var(--tech-border);
+            color: var(--tech-text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--tech-primary);
+            color: var(--tech-primary);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--tech-text-muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--tech-primary);
+            background: var(--tech-primary-light);
+        }
+
+        /* Hero Header */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(2, 132, 199, 0.08));
+            border-bottom: 1px solid var(--tech-border);
+            padding: 28px 20px 22px;
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .badge-academic {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: rgba(139, 92, 246, 0.12);
+            color: var(--tech-primary);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--tech-text-main);
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle {
+            color: var(--tech-text-muted);
+            font-size: 0.96rem;
+            max-width: 880px;
+            margin: 0 auto 16px;
+        }
+
+        .kpi-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .kpi-pill {
+            background: var(--tech-card-bg);
+            border: 1px solid var(--tech-border);
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--tech-shadow);
+        }
+
+        .kpi-pill strong {
+            color: var(--tech-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+        }
+
+        /* Main Workspace Container */
+        .main-container {
+            max-width: 1540px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* Domain Selector Grid */
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .domain-card-btn {
+            background: var(--tech-card-bg);
+            border: 2px solid var(--tech-border);
+            border-radius: 12px;
+            padding: 16px 14px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: var(--tech-shadow);
+        }
+
+        .domain-card-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--tech-shadow-lg);
+            border-color: var(--tech-primary);
+        }
+
+        .domain-card-btn.active {
+            border-color: var(--active-color, var(--tech-primary));
+            background: var(--active-bg, var(--tech-card-bg));
+            box-shadow: 0 0 0 2px var(--active-color, var(--tech-primary)), var(--tech-shadow-lg);
+        }
+
+        .domain-btn-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .domain-btn-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            color: #ffffff;
+        }
+
+        .domain-btn-badge {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: var(--tech-card-sub);
+            color: var(--tech-text-muted);
+        }
+
+        .domain-btn-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--tech-text-main);
+            margin-top: 4px;
+        }
+
+        /* Domain Deep-Dive Container */
+        .domain-dossier-card {
+            background: var(--tech-card-bg);
+            border: 1px solid var(--tech-border);
+            border-radius: 14px;
+            padding: 26px;
+            box-shadow: var(--tech-shadow-lg);
+            margin-bottom: 30px;
+        }
+
+        .dossier-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid var(--tech-border);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .dossier-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .dossier-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        .dossier-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--tech-text-main);
+            line-height: 1.1;
+        }
+
+        .dossier-tagline {
+            font-size: 0.88rem;
+            color: var(--tech-text-muted);
+            margin-top: 4px;
+        }
+
+        /* Interactive Simulator / Demo Box */
+        .interactive-sim-box {
+            background: var(--tech-card-sub);
+            border: 1px solid var(--tech-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .sim-title-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .sim-title {
+            font-size: 0.92rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--tech-text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Taxonomy Grid */
+        .taxonomies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .taxonomy-card {
+            background: var(--tech-card-sub);
+            border: 1px solid var(--tech-border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .taxonomy-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: var(--tech-text-main);
+        }
+
+        .taxonomy-desc {
+            font-size: 0.84rem;
+            color: var(--tech-text-muted);
+            line-height: 1.5;
+        }
+
+        /* Milestones Timeline */
+        .milestones-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .milestone-item {
+            background: var(--tech-card-sub);
+            border: 1px solid var(--tech-border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            border-top: 3px solid var(--tech-primary);
+        }
+
+        .milestone-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--tech-primary);
+            margin-bottom: 4px;
+        }
+
+        .milestone-event {
+            font-size: 0.82rem;
+            color: var(--tech-text-main);
+            line-height: 1.4;
+        }
+
+        /* Applications & Challenges */
+        .dual-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .dual-col-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-sub-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--tech-text-main);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .list-card {
+            background: var(--tech-card-sub);
+            border: 1px solid var(--tech-border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .bullet-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.84rem;
+            line-height: 1.5;
+        }
+
+        .bullet-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* High Yield CSS Hotspot */
+        .exam-hotspot-callout {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(217, 119, 6, 0.04));
+            border-left: 4px solid #f59e0b;
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin-top: 20px;
+        }
+
+        .exam-hotspot-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #d97706;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .exam-hotspot-body {
+            font-size: 0.88rem;
+            color: var(--tech-text-main);
+            line-height: 1.6;
+        }
+
+        /* Comparative Matrix Table */
+        .matrix-section {
+            background: var(--tech-card-bg);
+            border: 1px solid var(--tech-border);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--tech-shadow);
+            margin-bottom: 30px;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 14px;
+        }
+
+        .matrix-table th, .matrix-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--tech-border);
+            text-align: left;
+        }
+
+        .matrix-table th {
+            background: var(--tech-card-sub);
+            color: var(--tech-text-muted);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* Quiz Styles */
+        .quiz-section {
+            background: var(--tech-card-bg);
+            border: 1px solid var(--tech-border);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--tech-shadow);
+            margin-bottom: 40px;
+        }
+
+        .quiz-score-badge {
+            background: var(--tech-primary-light);
+            color: var(--tech-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--tech-primary);
+        }
+
+        .quiz-card {
+            background: var(--tech-card-sub);
+            border: 1px solid var(--tech-border);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        .quiz-q-num {
+            font-size: 0.76rem;
+            font-weight: 800;
+            color: var(--tech-primary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .quiz-q-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--tech-text-main);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .quiz-opt-btn {
+            background: var(--tech-card-bg);
+            border: 1px solid var(--tech-border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 0.88rem;
+            color: var(--tech-text-main);
+            cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .quiz-opt-btn:hover:not(:disabled) {
+            border-color: var(--tech-primary);
+            background: var(--tech-primary-light);
+        }
+
+        .quiz-opt-btn.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: #10b981 !important;
+            color: #10b981 !important;
+            font-weight: 700;
+        }
+
+        .quiz-opt-btn.wrong {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: #ef4444 !important;
+            color: #ef4444 !important;
+            font-weight: 700;
+        }
+
+        .quiz-exp-box {
+            display: none;
+            background: var(--tech-card-bg);
+            border-left: 3px solid #10b981;
+            padding: 10px 14px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.84rem;
+            line-height: 1.5;
+            color: var(--tech-text-main);
+            margin-top: 8px;
+        }
+
+        /* Site Footer */
+        .site-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 20px 24px;
+            margin-top: auto;
+            border-top: 1px solid #1e293b;
+            font-size: 0.86rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #38bdf8;
+        }
+    </style>
+
+    <!-- Anti-FOUC Dark Mode Preload -->
+    <script>
+        if (localStorage.getItem('mcqs_dark_mode') === 'true' || 
+            (!('mcqs_dark_mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Academic Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+            <a href="international-organizations-explorer.html" class="switcher-btn"><i class="fas fa-sitemap"></i> Organizations</a>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> World Timeline</a>
+            <a href="global-power-comparison.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Global Power</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-atom"></i> Periodic Table</a>
+            <a href="climate-change-explorer.html" class="switcher-btn"><i class="fas fa-temperature-high"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn active"><i class="fas fa-microchip"></i> Technology</a>
+        </div>
+    </div>
+
+    <!-- Site Header Navigation -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-microchip"></i></div>
+                <span>CSS Prep Central</span>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="back-link"><i class="fas fa-home"></i> Home</a>
+                <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="badge-academic"><i class="fas fa-rocket"></i> Modern Technology &amp; General Science Suite</div>
+            <h1 class="hero-title">Emerging Technologies Explorer</h1>
+            <p class="hero-subtitle">
+                Interactive explainers, scientific mechanics, historical breakthroughs, real-world applications, and high-yield CSS/PMS examination dossiers covering Artificial Intelligence, Robotics, Nanotechnology, Quantum Computing, Satellites, and Biotechnology.
+            </p>
+            <div class="kpi-row" id="techKpiRow">
+                <!-- Dynamically populated from TECHNOLOGY_EXPLORER_DATA.kpis -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="main-container">
+
+        <!-- 6 Domain Selector Grid -->
+        <section class="domains-grid" id="domainsGrid">
+            <!-- Dynamically populated 6 domain selector cards -->
+        </section>
+
+        <!-- Deep-Dive Domain Dossier Card -->
+        <section class="domain-dossier-card" id="domainDossierCard">
+            <!-- Header -->
+            <div class="dossier-header">
+                <div class="dossier-title-wrap">
+                    <div class="dossier-icon-box" id="dossierIconBox">
+                        <i class="fas fa-brain" id="dossierIcon"></i>
+                    </div>
+                    <div>
+                        <h2 class="dossier-name" id="dossierName">Artificial Intelligence (AI)</h2>
+                        <div class="dossier-tagline" id="dossierTagline">Machine Learning, Deep Neural Networks &amp; Autonomous Cognition</div>
+                    </div>
+                </div>
+                <div style="text-align:right;">
+                    <span class="domain-btn-badge" id="dossierBadge" style="font-size:0.8rem; padding:4px 12px;">Cognitive Computing</span>
+                </div>
+            </div>
+
+            <!-- Scientific Foundation Quote -->
+            <div style="background:var(--tech-card-sub); border:1px solid var(--tech-border); border-radius:10px; padding:16px 20px; margin-bottom:24px; font-size:0.92rem; line-height:1.6;" id="dossierFoundation">
+                <!-- Populated dynamically -->
+            </div>
+
+            <!-- Interactive Concept Demonstrator / Widget -->
+            <div class="interactive-sim-box" id="interactiveSimBox">
+                <!-- Injected dynamically per domain -->
+            </div>
+
+            <!-- Key Taxonomies Grid -->
+            <div>
+                <h3 class="section-sub-title"><i class="fas fa-cubes"></i> Core Scientific Taxonomy &amp; Key Sub-Fields</h3>
+                <div class="taxonomies-grid" id="dossierTaxonomiesGrid">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Breakthrough Milestones -->
+            <div>
+                <h3 class="section-sub-title"><i class="fas fa-history"></i> Landmark Breakthroughs &amp; Historical Milestones</h3>
+                <div class="milestones-strip" id="dossierMilestonesStrip">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Real-World Applications & Challenges Grid -->
+            <div class="dual-col-grid">
+                <div>
+                    <h3 class="section-sub-title"><i class="fas fa-cogs"></i> Industrial, Medical &amp; Defense Applications</h3>
+                    <div class="list-card" id="dossierApplicationsCard">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="section-sub-title"><i class="fas fa-triangle-exclamation" style="color:#ef4444;"></i> Strategic, Security &amp; Ethical Challenges</h3>
+                    <div class="list-card" id="dossierChallengesCard">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSS / PMS Exam Hotspots Callout -->
+            <div class="exam-hotspot-callout">
+                <div class="exam-hotspot-header">
+                    <i class="fas fa-graduation-cap"></i> CSS / PMS / FPSC Exam High-Yield Hotspot
+                </div>
+                <div class="exam-hotspot-body" id="dossierExamHotspot">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Side-by-Side Comparative Matrix Section -->
+        <section class="matrix-section" id="matrixSection">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px; border-bottom:1px solid var(--tech-border); padding-bottom:12px;">
+                <div>
+                    <h2 style="font-family:'Outfit', sans-serif; font-size:1.4rem; font-weight:800; color:var(--tech-text-main);">
+                        <i class="fas fa-table-columns" style="color:var(--tech-primary);"></i> Emerging Technologies Comparative Matrix
+                    </h2>
+                    <p style="font-size:0.84rem; color:var(--tech-text-muted);">Side-by-side assessment across research frontiers, critical hardware dependencies, defense applications, and ethical dilemmas.</p>
+                </div>
+            </div>
+
+            <div style="overflow-x:auto;">
+                <table class="matrix-table" id="matrixTable">
+                    <thead>
+                        <tr>
+                            <th>Technological Pillar</th>
+                            <th>Active Research Frontier</th>
+                            <th>Critical Enabling Hardware</th>
+                            <th>Global Power Leaders</th>
+                            <th>Strategic Defense Impact</th>
+                            <th>Major Ethical Dilemma</th>
+                        </tr>
+                    </thead>
+                    <tbody id="matrixTableBody">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 12 Practice MCQs Section -->
+        <section class="quiz-section" id="quizSection">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px; border-bottom:1px solid var(--tech-border); padding-bottom:12px;">
+                <div>
+                    <h2 style="font-family:'Outfit', sans-serif; font-size:1.4rem; font-weight:800; color:var(--tech-text-main);">
+                        <i class="fas fa-question-circle" style="color:var(--tech-primary);"></i> Modern Technology Examination Quiz
+                    </h2>
+                    <p style="font-size:0.84rem; color:var(--tech-text-muted);">Test your grasp of quantum mechanics, orbital altitudes, CRISPR gene editing, nanotechnology scales, and Pakistan space milestones.</p>
+                </div>
+                <div class="quiz-score-badge" id="quizScoreDisplay">Score: 0 / 12</div>
+            </div>
+
+            <div id="quizContainer">
+                <!-- Populated dynamically 12 MCQs -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <strong>CSS Prep Central &bull; Modern Technology &amp; General Science Suite</strong>
+                <p style="font-size:0.78rem; margin-top:4px;">High-Yield competitive examination portal for CSS, PMS, FPSC, PPSC, and University STEM studies.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="climate-change-explorer.html">Climate Change</a>
+                <a href="periodic-table.html">Periodic Table</a>
+                <a href="solar-system-explorer.html">Solar System</a>
+                <a href="human-body-explorer.html">Human Body</a>
+                <a href="global-power-comparison.html">Global Power</a>
+                <a href="pakistan-map.html">Pakistan Map</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Technology Dataset -->
+    <script src="js/data_technology_explorer.js"></script>
+
+    <!-- Interactive Technology Engine Script -->
+    <script>
+        // Web Audio Synthesizer
+        function playChime(isCorrect) {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                const ctx = new AudioCtx();
+                if (ctx.state === 'suspended') ctx.resume();
+
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                const now = ctx.currentTime;
+                if (isCorrect) {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.15); // G5
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now); // A3
+                    osc.frequency.linearRampToValueAtTime(146.83, now + 0.2); // D3
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                }
+            } catch (e) {
+                // AudioContext blocked
+            }
+        }
+
+        // Global State
+        let currentDomainId = 'ai';
+        let quizScore = 0;
+        let answeredQuestions = new Set();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initThemeToggle();
+            renderKPIs();
+            renderDomainSelector();
+            selectDomain('ai');
+            renderMatrix();
+            initQuiz();
+        });
+
+        // Theme Toggle
+        function initThemeToggle() {
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            const themeIcon = document.getElementById('themeIcon');
+
+            function updateIcon() {
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            updateIcon();
+
+            toggleBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                updateIcon();
+            });
+        }
+
+        // Render Hero KPIs
+        function renderKPIs() {
+            const container = document.getElementById('techKpiRow');
+            if (!container || !window.TECHNOLOGY_EXPLORER_DATA) return;
+            const k = window.TECHNOLOGY_EXPLORER_DATA.kpis;
+
+            container.innerHTML = \`
+                <div class="kpi-pill" title="\${k.domainsDesc}"><i class="fas fa-layer-group" style="color:#8b5cf6;"></i> Focus: <strong>\${k.domainsCount}</strong></div>
+                <div class="kpi-pill" title="\${k.aiComputeDesc}"><i class="fas fa-brain" style="color:#a78bfa;"></i> AI Compute: <strong>\${k.aiComputeGrowth}</strong></div>
+                <div class="kpi-pill" title="\${k.quantumDesc}"><i class="fas fa-microchip" style="color:#f59e0b;"></i> Quantum Speedup: <strong>\${k.quantumAdvantage}</strong></div>
+                <div class="kpi-pill" title="\${k.nanoscaleDesc}"><i class="fas fa-atom" style="color:#059669;"></i> Nanoscale: <strong>\${k.nanoscaleRange}</strong></div>
+                <div class="kpi-pill" title="\${k.orbitDesc}"><i class="fas fa-satellite" style="color:#3b82f6;"></i> Orbital Altitudes: <strong>\${k.orbitAltitudes}</strong></div>
+                <div class="kpi-pill" title="\${k.geneEditingDesc}"><i class="fas fa-dna" style="color:#ec4899;"></i> CRISPR Precision: <strong>\${k.geneEditingPrecision}</strong></div>
+            \`;
+        }
+
+        // Render 6 Domain Selector Buttons
+        function renderDomainSelector() {
+            const grid = document.getElementById('domainsGrid');
+            if (!grid || !window.TECHNOLOGY_EXPLORER_DATA) return;
+            const domains = window.TECHNOLOGY_EXPLORER_DATA.domains;
+
+            grid.innerHTML = Object.keys(domains).map(key => {
+                const d = domains[key];
+                return \`
+                    <button class="domain-card-btn \${key === currentDomainId ? 'active' : ''}" id="domain-btn-\${d.id}" data-id="\${d.id}" style="--active-color:\${d.color};">
+                        <div class="domain-btn-header">
+                            <div class="domain-btn-icon" style="background:\${d.color};">
+                                <i class="fas \${d.icon}"></i>
+                            </div>
+                            <span class="domain-btn-badge">\${d.badge}</span>
+                        </div>
+                        <div class="domain-btn-title">\${d.name}</div>
+                        <div style="font-size:0.75rem; color:var(--tech-text-muted); line-height:1.3;">\${d.tagline.split(',')[0]}</div>
+                    </button>
+                \`;
+            }).join('');
+
+            grid.querySelectorAll('.domain-card-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    selectDomain(id);
+                });
+            });
+        }
+
+        // Select Domain & Populate Dossier
+        function selectDomain(domainId) {
+            currentDomainId = domainId;
+            const domains = window.TECHNOLOGY_EXPLORER_DATA.domains;
+            const d = domains[domainId];
+            if (!d) return;
+
+            // Highlight Active Selector
+            document.querySelectorAll('.domain-card-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById('domain-btn-' + domainId);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            // Header Elements
+            document.getElementById('dossierIconBox').style.background = d.color;
+            document.getElementById('dossierIcon').className = 'fas ' + d.icon;
+            document.getElementById('dossierName').textContent = d.name;
+            document.getElementById('dossierTagline').textContent = d.tagline;
+            document.getElementById('dossierBadge').textContent = d.badge;
+            document.getElementById('dossierFoundation').innerHTML = \`<strong><i class="fas fa-lightbulb" style="color:\${d.color}; margin-right:6px;"></i> Scientific Foundation:</strong> \${d.foundation}\`;
+
+            // Taxonomies
+            const taxGrid = document.getElementById('dossierTaxonomiesGrid');
+            taxGrid.innerHTML = d.taxonomies.map(t => \`
+                <div class="taxonomy-card" style="border-left: 3px solid \${d.color};">
+                    <h4 class="taxonomy-title" style="color:\${d.color};">\${t.term}</h4>
+                    <p class="taxonomy-desc">\${t.desc}</p>
+                </div>
+            \`).join('');
+
+            // Milestones
+            const mStrip = document.getElementById('dossierMilestonesStrip');
+            mStrip.innerHTML = d.milestones.map(m => \`
+                <div class="milestone-item" style="border-top-color:\${d.color};">
+                    <div class="milestone-year" style="color:\${d.color};">\${m.year}</div>
+                    <div class="milestone-event">\${m.event}</div>
+                </div>
+            \`).join('');
+
+            // Applications
+            const appCard = document.getElementById('dossierApplicationsCard');
+            appCard.innerHTML = d.applications.map(a => \`
+                <div class="bullet-item">
+                    <i class="fas fa-check-circle" style="color:#10b981; margin-top:3px;"></i>
+                    <span>\${a}</span>
+                </div>
+            \`).join('');
+
+            // Challenges
+            const chalCard = document.getElementById('dossierChallengesCard');
+            chalCard.innerHTML = d.challenges.map(c => \`
+                <div class="bullet-item">
+                    <i class="fas fa-exclamation-triangle" style="color:#ef4444; margin-top:3px;"></i>
+                    <span>\${c}</span>
+                </div>
+            \`).join('');
+
+            // CSS Exam Hotspot
+            document.getElementById('dossierExamHotspot').textContent = d.examHotspot;
+
+            // Render Interactive Simulator Widget
+            renderDomainSimulator(domainId, d);
+        }
+
+        // Domain-Specific Interactive Demonstrator Widgets
+        function renderDomainSimulator(id, d) {
+            const container = document.getElementById('interactiveSimBox');
+            if (!container) return;
+
+            if (id === 'ai') {
+                container.innerHTML = \`
+                    <div class="sim-title-bar">
+                        <div class="sim-title"><i class="fas fa-network-wired" style="color:\${d.color};"></i> Interactive Concept: Artificial Neural Network Forward Propagation</div>
+                        <span style="font-size:0.75rem; color:var(--tech-text-muted);">Adjust Input Stimuli (X₁, X₂) to observe activation</span>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                        <div>
+                            <div style="margin-bottom:10px;">
+                                <label style="font-size:0.8rem; font-weight:700;">Input Signal X₁: <span id="valX1" style="color:\${d.color}; font-family:'JetBrains Mono';">0.80</span></label>
+                                <input type="range" id="sliderX1" min="0" max="1" step="0.05" value="0.8" style="width:100%;">
+                            </div>
+                            <div style="margin-bottom:10px;">
+                                <label style="font-size:0.8rem; font-weight:700;">Input Signal X₂: <span id="valX2" style="color:\${d.color}; font-family:'JetBrains Mono';">0.40</span></label>
+                                <input type="range" id="sliderX2" min="0" max="1" step="0.05" value="0.4" style="width:100%;">
+                            </div>
+                            <div style="font-size:0.78rem; color:var(--tech-text-muted); line-height:1.4;">
+                                <strong>Formula:</strong> Activation Output = $\\sigma(W_1 \\cdot X_1 + W_2 \\cdot X_2 + b)$, where $\\sigma$ is the Sigmoid non-linear function.
+                            </div>
+                        </div>
+                        <div style="background:var(--tech-card-bg); border:1px solid var(--tech-border); border-radius:8px; padding:16px; text-align:center; display:flex; flex-direction:column; justify-content:center;">
+                            <div style="font-size:0.75rem; font-weight:700; color:var(--tech-text-muted); text-transform:uppercase;">Neuron Firing Probability</div>
+                            <div id="aiNeuronOutput" style="font-family:'Outfit'; font-size:2.4rem; font-weight:800; color:\${d.color};">82.4%</div>
+                            <div id="aiClassificationLabel" style="font-size:0.82rem; font-weight:700; color:#10b981;">Classified: TARGET DETECTED</div>
+                        </div>
+                    </div>
+                \`;
+
+                const s1 = document.getElementById('sliderX1');
+                const s2 = document.getElementById('sliderX2');
+                function calcAI() {
+                    const x1 = parseFloat(s1.value);
+                    const x2 = parseFloat(s2.value);
+                    document.getElementById('valX1').textContent = x1.toFixed(2);
+                    document.getElementById('valX2').textContent = x2.toFixed(2);
+                    // z = 1.8*x1 + 1.2*x2 - 0.5
+                    const z = 1.8 * x1 + 1.2 * x2 - 0.5;
+                    const sigmoid = 1 / (1 + Math.exp(-z));
+                    const pct = (sigmoid * 100).toFixed(1);
+                    document.getElementById('aiNeuronOutput').textContent = pct + '%';
+                    const lbl = document.getElementById('aiClassificationLabel');
+                    if (sigmoid > 0.5) {
+                        lbl.textContent = 'Classified: TARGET DETECTED (High Confidence)';
+                        lbl.style.color = '#10b981';
+                    } else {
+                        lbl.textContent = 'Classified: NO TARGET (Sub-Threshold)';
+                        lbl.style.color = '#ef4444';
+                    }
+                }
+                s1.addEventListener('input', calcAI);
+                s2.addEventListener('input', calcAI);
+
+            } else if (id === 'quantum') {
+                container.innerHTML = \`
+                    <div class="sim-title-bar">
+                        <div class="sim-title"><i class="fas fa-atom" style="color:\${d.color};"></i> Interactive Concept: Qubit Superposition &amp; Bloch Sphere Representation</div>
+                        <span style="font-size:0.75rem; color:var(--tech-text-muted);">Toggle Quantum State</span>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center;">
+                        <div>
+                            <div style="display:flex; gap:8px; margin-bottom:12px;">
+                                <button class="btn-state active" data-qstate="zero" style="padding:6px 12px; border-radius:6px; border:1px solid var(--tech-border); background:var(--tech-card-bg); font-weight:700; cursor:pointer;">|0⟩ State</button>
+                                <button class="btn-state" data-qstate="one" style="padding:6px 12px; border-radius:6px; border:1px solid var(--tech-border); background:var(--tech-card-bg); font-weight:700; cursor:pointer;">|1⟩ State</button>
+                                <button class="btn-state" data-qstate="super" style="padding:6px 12px; border-radius:6px; border:1px solid var(--tech-border); background:var(--tech-card-bg); font-weight:700; cursor:pointer;">Superposition (|0⟩ + |1⟩)/√2</button>
+                            </div>
+                            <p style="font-size:0.84rem; color:var(--tech-text-muted); line-height:1.5;" id="qstateDesc">
+                                In state |0⟩, measurement yields 0 with 100% certainty. The state vector points directly to the North Pole of the Bloch Sphere.
+                            </p>
+                        </div>
+                        <div style="background:var(--tech-card-bg); border:1px solid var(--tech-border); border-radius:8px; padding:16px; text-align:center;">
+                            <div style="font-size:0.76rem; font-weight:700; color:var(--tech-text-muted); text-transform:uppercase; margin-bottom:8px;">Measurement Probabilities</div>
+                            <div style="margin-bottom:8px;">
+                                <div style="display:flex; justify-content:space-between; font-size:0.78rem; font-weight:700;"><span>P(|0⟩):</span><span id="prob0">100%</span></div>
+                                <div style="height:8px; background:var(--tech-card-sub); border-radius:4px; overflow:hidden;"><div id="bar0" style="height:100%; width:100%; background:\${d.color};"></div></div>
+                            </div>
+                            <div>
+                                <div style="display:flex; justify-content:space-between; font-size:0.78rem; font-weight:700;"><span>P(|1⟩):</span><span id="prob1">0%</span></div>
+                                <div style="height:8px; background:var(--tech-card-sub); border-radius:4px; overflow:hidden;"><div id="bar1" style="height:100%; width:0%; background:#0284c7;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                \`;
+
+                container.querySelectorAll('.btn-state').forEach(b => {
+                    b.addEventListener('click', () => {
+                        container.querySelectorAll('.btn-state').forEach(x => x.style.borderColor = 'var(--tech-border)');
+                        b.style.borderColor = d.color;
+                        const state = b.getAttribute('data-qstate');
+                        if (state === 'zero') {
+                            document.getElementById('prob0').textContent = '100%';
+                            document.getElementById('prob1').textContent = '0%';
+                            document.getElementById('bar0').style.width = '100%';
+                            document.getElementById('bar1').style.width = '0%';
+                            document.getElementById('qstateDesc').textContent = 'In state |0⟩, measurement yields 0 with 100% certainty. State vector points to the North Pole of the Bloch Sphere.';
+                        } else if (state === 'one') {
+                            document.getElementById('prob0').textContent = '0%';
+                            document.getElementById('prob1').textContent = '100%';
+                            document.getElementById('bar0').style.width = '0%';
+                            document.getElementById('bar1').style.width = '100%';
+                            document.getElementById('qstateDesc').textContent = 'In state |1⟩, measurement yields 1 with 100% certainty. State vector points to the South Pole of the Bloch Sphere.';
+                        } else {
+                            document.getElementById('prob0').textContent = '50%';
+                            document.getElementById('prob1').textContent = '50%';
+                            document.getElementById('bar0').style.width = '50%';
+                            document.getElementById('bar1').style.width = '50%';
+                            document.getElementById('qstateDesc').textContent = 'In equal superposition (|0⟩ + |1⟩)/√2, the qubit vector lies on the equator. Measurement collapses the wavefunction randomly to |0⟩ (50%) or |1⟩ (50%).';
+                        }
+                    });
+                });
+
+            } else if (id === 'nanotech') {
+                container.innerHTML = \`
+                    <div class="sim-title-bar">
+                        <div class="sim-title"><i class="fas fa-ruler" style="color:\${d.color};"></i> Interactive Concept: The Dimensional Nanoscale Continuum</div>
+                        <span style="font-size:0.75rem; color:var(--tech-text-muted);">Explore Scale Orders of Magnitude</span>
+                    </div>
+                    <div>
+                        <div style="display:flex; justify-content:space-between; font-size:0.78rem; font-weight:700; margin-bottom:6px;">
+                            <span>Macro (Human: 1.7 m)</span>
+                            <span id="scaleLabel" style="color:\${d.color}; font-size:0.95rem; font-family:'JetBrains Mono';">Carbon Nanotube (1.2 nm)</span>
+                            <span>Subatomic (Atom: 0.1 nm)</span>
+                        </div>
+                        <input type="range" id="nanoScaleSlider" min="0" max="6" value="4" step="1" style="width:100%; height:6px; accent-color:\${d.color};">
+                        <div style="background:var(--tech-card-bg); border:1px solid var(--tech-border); border-radius:8px; padding:12px 16px; margin-top:12px; font-size:0.84rem;" id="scaleDetailBox">
+                            <strong>Object: Carbon Nanotube (~1.2 nm diameter)</strong> &bull; Rolled cylindrical tube of single-layer graphene. At this scale, 100x stronger than structural steel at 1/6th the density.
+                        </div>
+                    </div>
+                \`;
+
+                const scaleLevels = [
+                    { name: "Human (1.7 meters)", desc: "Macroscopic scale governed by classical Newtonian mechanics." },
+                    { name: "Ant / Grain of Sand (1 millimeter / 10⁻³ m)", desc: "Visible to naked human eye; bulk material physics dominates." },
+                    { name: "Human Hair (80,000 nanometers)", desc: "Average human hair thickness is roughly 80 microns (80,000 nm)." },
+                    { name: "Red Blood Cell (7,000 nanometers)", desc: "Microscopic biological cell transporting oxygen in capillaries." },
+                    { name: "Carbon Nanotube (1.2 nanometers)", desc: "True Nanoscale (1-100 nm): 100x stronger than steel, high electrical conductivity due to ballistic electron transport." },
+                    { name: "DNA Double Helix (2 nanometers wide)", desc: "Genetic polymer width; manipulated by restriction enzymes and CRISPR." },
+                    { name: "Carbon Atom (0.1 nanometer / 1 Ångström)", desc: "Single carbon atom; quantum mechanical orbital interactions." }
+                ];
+
+                document.getElementById('nanoScaleSlider').addEventListener('input', (e) => {
+                    const idx = parseInt(e.target.value, 10);
+                    const item = scaleLevels[idx];
+                    document.getElementById('scaleLabel').textContent = item.name;
+                    document.getElementById('scaleDetailBox').innerHTML = \`<strong>Object: \${item.name}</strong> &bull; \${item.desc}\`;
+                });
+
+            } else if (id === 'satellites') {
+                container.innerHTML = \`
+                    <div class="sim-title-bar">
+                        <div class="sim-title"><i class="fas fa-satellite" style="color:\${d.color};"></i> Interactive Concept: Orbital Velocity &amp; Altitude Calculator</div>
+                        <span style="font-size:0.75rem; color:var(--tech-text-muted);">Kepler's Law: v = √(GM / r)</span>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                        <div>
+                            <div style="display:flex; gap:6px; margin-bottom:10px;">
+                                <button class="btn-orbit active" data-alt="500" style="padding:4px 8px; border-radius:4px; border:1px solid var(--tech-border); font-size:0.75rem; cursor:pointer;">LEO (500 km)</button>
+                                <button class="btn-orbit" data-alt="20200" style="padding:4px 8px; border-radius:4px; border:1px solid var(--tech-border); font-size:0.75rem; cursor:pointer;">GPS MEO (20,200 km)</button>
+                                <button class="btn-orbit" data-alt="35786" style="padding:4px 8px; border-radius:4px; border:1px solid var(--tech-border); font-size:0.75rem; cursor:pointer;">GEO (35,786 km)</button>
+                            </div>
+                            <label style="font-size:0.78rem; font-weight:700;">Orbital Altitude (h): <span id="orbitAltDisp" style="color:\${d.color}; font-family:'JetBrains Mono';">500 km</span></label>
+                            <input type="range" id="orbitSlider" min="200" max="36000" step="200" value="500" style="width:100%; accent-color:\${d.color};">
+                        </div>
+                        <div style="background:var(--tech-card-bg); border:1px solid var(--tech-border); border-radius:8px; padding:12px; display:grid; grid-template-columns:1fr 1fr; gap:10px; text-align:center;">
+                            <div>
+                                <span style="font-size:0.7rem; color:var(--tech-text-muted); text-transform:uppercase;">Orbital Velocity</span>
+                                <div id="orbitVelDisp" style="font-family:'JetBrains Mono'; font-size:1.3rem; font-weight:800; color:\${d.color};">7.61 km/s</div>
+                            </div>
+                            <div>
+                                <span style="font-size:0.7rem; color:var(--tech-text-muted); text-transform:uppercase;">Orbital Period</span>
+                                <div id="orbitPeriodDisp" style="font-family:'JetBrains Mono'; font-size:1.3rem; font-weight:800; color:\${d.color};">94.6 mins</div>
+                            </div>
+                        </div>
+                    </div>
+                \`;
+
+                const slider = document.getElementById('orbitSlider');
+                function calcOrbit() {
+                    const h = parseFloat(slider.value);
+                    document.getElementById('orbitAltDisp').textContent = h.toLocaleString() + ' km';
+                    const R_earth = 6371; // km
+                    const GM = 398600; // km^3 / s^2
+                    const r = R_earth + h;
+                    const v = Math.sqrt(GM / r);
+                    const periodSec = 2 * Math.PI * Math.sqrt(Math.pow(r, 3) / GM);
+                    const periodMin = periodSec / 60;
+                    const periodHrs = periodSec / 3600;
+
+                    document.getElementById('orbitVelDisp').textContent = v.toFixed(2) + ' km/s';
+                    document.getElementById('orbitPeriodDisp').textContent = periodMin < 120 ? periodMin.toFixed(1) + ' mins' : periodHrs.toFixed(1) + ' hrs';
+                }
+                slider.addEventListener('input', calcOrbit);
+
+                container.querySelectorAll('.btn-orbit').forEach(b => {
+                    b.addEventListener('click', () => {
+                        slider.value = b.getAttribute('data-alt');
+                        calcOrbit();
+                    });
+                });
+
+            } else if (id === 'biotech') {
+                container.innerHTML = \`
+                    <div class="sim-title-bar">
+                        <div class="sim-title"><i class="fas fa-dna" style="color:\${d.color};"></i> Interactive Concept: CRISPR-Cas9 Target Strand Cleavage</div>
+                        <span style="font-size:0.75rem; color:var(--tech-text-muted);">Guide RNA Complementary Binding Mechanism</span>
+                    </div>
+                    <div style="background:var(--tech-card-bg); border:1px solid var(--tech-border); border-radius:8px; padding:14px; font-family:'JetBrains Mono'; font-size:0.86rem;">
+                        <div style="color:var(--tech-text-muted); font-size:0.74rem; margin-bottom:4px;">Target DNA Sequence (Sickle Cell HBB Gene locus):</div>
+                        <div style="letter-spacing:4px; font-weight:700;">5'- A C T C C T G <span style="color:#ef4444; background:rgba(239,68,68,0.15); padding:1px 4px; border-radius:3px;">A</span> G G A G A A G T -3'</div>
+                        <div style="margin:8px 0; color:\${d.color}; font-size:0.74rem;">Single-Guide RNA (sgRNA) Binding Match:</div>
+                        <div style="letter-spacing:4px; font-weight:700; color:\${d.color};">3'- U G A G G A C <span style="color:#10b981; background:rgba(16,185,129,0.15); padding:1px 4px; border-radius:3px;">U</span> C C U C U U C A -5'</div>
+                        <div style="margin-top:10px; font-size:0.78rem; font-family:'Inter'; color:var(--tech-text-muted);">
+                            <i class="fas fa-cut" style="color:#ef4444;"></i> <strong>Cas9 Cleavage:</strong> Cas9 induces a double-strand break (DSB) 3 nucleotides upstream of the PAM sequence (NGG), enabling gene knockout or prime-edited insertion of corrected healthy codon.
+                        </div>
+                    </div>
+                \`;
+
+            } else if (id === 'robotics') {
+                container.innerHTML = \`
+                    <div class="sim-title-bar">
+                        <div class="sim-title"><i class="fas fa-sliders" style="color:\${d.color};"></i> Interactive Concept: Closed-Loop PID Sensor-Actuator Control</div>
+                        <span style="font-size:0.75rem; color:var(--tech-text-muted);">Real-Time Error Minimization</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; background:var(--tech-card-bg); border:1px solid var(--tech-border); border-radius:8px; padding:14px; text-align:center;">
+                        <div style="flex:1; min-width:110px; padding:8px; background:var(--tech-card-sub); border-radius:6px;">
+                            <div style="font-size:0.7rem; font-weight:700; color:var(--tech-text-muted);">1. TARGET</div>
+                            <div style="font-weight:800; font-size:0.9rem; color:var(--tech-text-main);">Setpoint (Position)</div>
+                        </div>
+                        <i class="fas fa-arrow-right" style="color:var(--tech-text-muted);"></i>
+                        <div style="flex:1; min-width:110px; padding:8px; background:var(--tech-card-sub); border-radius:6px;">
+                            <div style="font-size:0.7rem; font-weight:700; color:\${d.color};">2. PID CONTROLLER</div>
+                            <div style="font-weight:800; font-size:0.9rem; color:var(--tech-text-main);">Error = Target - Sensor</div>
+                        </div>
+                        <i class="fas fa-arrow-right" style="color:var(--tech-text-muted);"></i>
+                        <div style="flex:1; min-width:110px; padding:8px; background:var(--tech-card-sub); border-radius:6px;">
+                            <div style="font-size:0.7rem; font-weight:700; color:#10b981;">3. ACTUATOR</div>
+                            <div style="font-weight:800; font-size:0.9rem; color:var(--tech-text-main);">BLDC Motor Torque</div>
+                        </div>
+                        <i class="fas fa-arrow-right" style="color:var(--tech-text-muted);"></i>
+                        <div style="flex:1; min-width:110px; padding:8px; background:var(--tech-card-sub); border-radius:6px;">
+                            <div style="font-size:0.7rem; font-weight:700; color:#0284c7;">4. SENSOR</div>
+                            <div style="font-weight:800; font-size:0.9rem; color:var(--tech-text-main);">IMU / Optical Encoder</div>
+                        </div>
+                    </div>
+                \`;
+            }
+        }
+
+        // Render Comparative Matrix Table
+        function renderMatrix() {
+            const tbody = document.getElementById('matrixTableBody');
+            if (!tbody || !window.TECHNOLOGY_EXPLORER_DATA) return;
+            const matrix = window.TECHNOLOGY_EXPLORER_DATA.matrix;
+
+            tbody.innerHTML = matrix.map(m => \`
+                <tr>
+                    <td><strong style="color:\${m.color};">\${m.tech}</strong></td>
+                    <td style="font-size:0.82rem;">\${m.frontier}</td>
+                    <td style="font-size:0.82rem;">\${m.hardware}</td>
+                    <td style="font-size:0.82rem; font-weight:600;">\${m.leaders}</td>
+                    <td style="font-size:0.82rem;">\${m.defenseImpact}</td>
+                    <td style="font-size:0.82rem; color:#ef4444;">\${m.ethicalIssue}</td>
+                </tr>
+            \`).join('');
+        }
+
+        // Initialize 12 Quiz Questions
+        function initQuiz() {
+            const container = document.getElementById('quizContainer');
+            if (!container || !window.TECHNOLOGY_EXPLORER_DATA) return;
+            const mcqs = window.TECHNOLOGY_EXPLORER_DATA.mcqs;
+
+            container.innerHTML = '';
+            quizScore = 0;
+            answeredQuestions.clear();
+            document.getElementById('quizScoreDisplay').textContent = \`Score: 0 / \${mcqs.length}\`;
+
+            mcqs.forEach((item, qIdx) => {
+                const card = document.createElement('div');
+                card.className = 'quiz-card';
+                card.id = 'quiz-card-' + item.id;
+
+                let optsHtml = '';
+                item.opts.forEach((opt, optIdx) => {
+                    optsHtml += \`<button class="quiz-opt-btn" data-qid="\${item.id}" data-opt="\${optIdx}">
+                        <span style="font-weight:700; color:var(--tech-primary);">\${String.fromCharCode(65 + optIdx)}.</span> \${opt}
+                    </button>\`;
+                });
+
+                card.innerHTML = \`
+                    <div class="quiz-q-num">Question \${qIdx + 1} of \${mcqs.length} &bull; Emerging Technology High-Yield</div>
+                    <div class="quiz-q-text">\${item.q}</div>
+                    <div class="quiz-options">\${optsHtml}</div>
+                    <div class="quiz-exp-box" id="exp-\${item.id}">
+                        <strong><i class="fas fa-check-circle" style="color:#10b981;"></i> Scientific Explanation:</strong> \${item.exp}
+                    </div>
+                \`;
+
+                container.appendChild(card);
+            });
+
+            container.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const qId = parseInt(btn.getAttribute('data-qid'), 10);
+                    const selectedOpt = parseInt(btn.getAttribute('data-opt'), 10);
+
+                    if (answeredQuestions.has(qId)) return;
+                    answeredQuestions.add(qId);
+
+                    const qItem = mcqs.find(m => m.id === qId);
+                    const card = document.getElementById('quiz-card-' + qId);
+                    const allBtns = card.querySelectorAll('.quiz-opt-btn');
+                    const expBox = document.getElementById('exp-' + qId);
+
+                    allBtns.forEach(b => b.disabled = true);
+
+                    if (selectedOpt === qItem.ans) {
+                        btn.classList.add('correct');
+                        quizScore++;
+                        playChime(true);
+                    } else {
+                        btn.classList.add('wrong');
+                        allBtns[qItem.ans].classList.add('correct');
+                        playChime(false);
+                    }
+
+                    expBox.style.display = 'block';
+                    document.getElementById('quizScoreDisplay').textContent = \`Score: \${quizScore} / \${mcqs.length}\`;
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
+`;
+
+fs.writeFileSync('frontend/technology-explorer.html', htmlContent, 'utf8');
+console.log(`Successfully generated frontend/technology-explorer.html! Size: ${(htmlContent.length / 1024).toFixed(1)} KB`);

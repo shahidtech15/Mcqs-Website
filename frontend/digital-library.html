@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Digital Library & Academic Repository for CSS, PMS, FIA, NAB & Civil Services Aspirants. Access Pakistan Economic Survey, SBP State of Economy, UN Reports, Dawn Editorial Summaries, International Treaties, Strategic Maps, High-Yield Vocabulary, Solved 20-Mark Questions, and Downloadable Study PDFs.">
+    <title>Digital Library & Study Resources — CSS, PMS, FIA & Competitive Exams Portal</title>
+    <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .lib-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+        }
+
+        .lib-hero {
+            background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #0f766e 100%);
+            color: #ffffff;
+            padding: 55px 0 45px;
+            text-align: center;
+            position: relative;
+        }
+
+        .lib-hero h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .lib-hero p {
+            font-size: 1.08rem;
+            max-width: 900px;
+            margin: 0 auto 24px;
+            opacity: 0.94;
+            line-height: 1.6;
+        }
+
+        .lib-hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .lib-hero-chip {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .lib-cta-banner {
+            background: #ffffff;
+            color: #064e3b;
+            padding: 12px 24px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+
+        .lib-cta-banner:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            background: #ecfdf5;
+        }
+
+        /* Search & Filter Bar */
+        .lib-search-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: -25px auto 30px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .lib-search-box {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+
+        .lib-search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.96rem;
+            background: var(--bg-color);
+            color: var(--text-dark);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .lib-search-box input:focus {
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+        }
+
+        .lib-search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Tab Navigation */
+        .lib-tabs-wrapper {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 28px;
+            scrollbar-width: thin;
+        }
+
+        .lib-tab-btn {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lib-tab-btn:hover {
+            border-color: #059669;
+            color: #059669;
+            transform: translateY(-2px);
+        }
+
+        .lib-tab-btn.active {
+            background: #059669;
+            border-color: #059669;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+        }
+
+        /* Content Grid */
+        .lib-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 22px;
+        }
+
+        .lib-grid-full {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        /* Card Styles */
+        .lib-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .lib-card:hover {
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-3px);
+            border-color: #10b981;
+        }
+
+        .lib-card-header {
+            margin-bottom: 14px;
+        }
+
+        .lib-badge {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .badge-green { background: #d1fae5; color: #065f46; }
+        .badge-blue { background: #dbeafe; color: #1e40af; }
+        .badge-purple { background: #f3e8ff; color: #6b21a8; }
+        .badge-amber { background: #fef3c7; color: #92400e; }
+        .badge-red { background: #fee2e2; color: #991b1b; }
+
+        .lib-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .lib-card-meta {
+            font-size: 0.86rem;
+            color: var(--text-light);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .lib-card-desc {
+            font-size: 0.94rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .lib-key-points {
+            background: var(--bg-color);
+            border-left: 3px solid #059669;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 16px;
+        }
+
+        .lib-key-points h4 {
+            font-size: 0.88rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lib-key-points ul {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: var(--text-dark);
+        }
+
+        .lib-key-points li {
+            margin-bottom: 6px;
+        }
+
+        .lib-card-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .lib-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .lib-tag {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            font-size: 0.78rem;
+            color: var(--text-light);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .lib-action-btn {
+            background: #059669;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .lib-action-btn:hover {
+            background: #047857;
+            transform: translateY(-1px);
+        }
+
+        .lib-action-btn.secondary {
+            background: transparent;
+            color: #059669;
+            border: 1px solid #059669;
+        }
+
+        .lib-action-btn.secondary:hover {
+            background: #ecfdf5;
+        }
+
+        /* Vocabulary Cards */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .vocab-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-2px);
+            border-color: #059669;
+        }
+
+        .vocab-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .vocab-word {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #065f46;
+            letter-spacing: 0.5px;
+        }
+
+        .vocab-pos {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .vocab-def {
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .vocab-meta {
+            font-size: 0.84rem;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .vocab-meta strong {
+            color: var(--text-dark);
+        }
+
+        .vocab-example {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 0.86rem;
+            color: var(--text-light);
+            border-left: 2px solid #059669;
+            padding-left: 8px;
+            margin-top: 8px;
+        }
+
+        /* Solved Questions Section */
+        .solved-q-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 26px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 22px;
+        }
+
+        .solved-q-title {
+            font-size: 1.28rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.45;
+            margin-bottom: 12px;
+        }
+
+        .solved-outline-box {
+            background: var(--bg-color);
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 14px 0;
+        }
+
+        .solved-outline-box ol {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.7;
+            font-size: 0.93rem;
+            color: var(--text-dark);
+        }
+
+        .solved-opening {
+            font-family: 'Merriweather', serif;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--text-dark);
+            background: rgba(5, 150, 105, 0.05);
+            border-left: 4px solid #059669;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        /* Map and Geography Card */
+        .geo-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 24px;
+        }
+
+        .geo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .geo-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .geo-item-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px;
+            border-left: 4px solid #0f766e;
+        }
+
+        .geo-item-card h5 {
+            font-size: 0.98rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-dark);
+        }
+
+        .geo-item-card p {
+            font-size: 0.86rem;
+            color: var(--text-light);
+            line-height: 1.45;
+            margin-bottom: 6px;
+        }
+
+        /* PDF Card Grid */
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .pdf-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-2px);
+            border-color: #059669;
+            box-shadow: var(--hover-shadow);
+        }
+
+        .pdf-icon-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .pdf-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: #fee2e2;
+            color: #b91c1c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .pdf-meta-box {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .lib-hero h1 { font-size: 1.75rem; }
+            .lib-grid { grid-template-columns: 1fr; }
+            .lib-search-card { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+
+    <link rel="canonical" href="https://cssprepcentral.com/digital-library.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CSS Prep Central">
+    <meta property="og:url" content="https://cssprepcentral.com/digital-library.html">
+    <meta property="og:title" content="Digital Library & Study Resources — CSS, PMS, FIA & Competitive Exams Portal">
+    <meta property="og:description" content="Digital Library & Academic Repository for CSS, PMS, FIA, NAB & Civil Services Aspirants. Access Pakistan Economic Survey, SBP State of Economy, UN Reports, Dawn Editorial Summaries, International T...">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Digital Library & Study Resources — CSS, PMS, FIA & Competitive Exams Portal">
+    <meta name="twitter:description" content="Digital Library & Academic Repository for CSS, PMS, FIA, NAB & Civil Services Aspirants. Access Pakistan Economic Survey, SBP State of Economy, UN Reports, Dawn Editorial Summaries, International T...">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                    <span>MCQs<span class="highlight">Portal</span></span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="acts-rules.html">Acts &amp; Rules</a>
+                <a href="articles.html">Articles</a>
+                <a href="topic-united-nations.html">One-Topic: UN</a>
+                <a href="topic-european-union.html">One-Topic: EU</a>
+                <a href="topic-nato.html">One-Topic: NATO</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+                <a href="editorial-explainer.html">Editorial Explainer</a>
+                <a href="world-map.html">World Map</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="quiz.html">Take a Quiz</a>
+                <a href="digital-library.html" class="active">Digital Library</a>
+                <a href="recommended-books.html">Recommended Books</a>
+                <a href="recruitment-prep.html" style="font-weight: 700; color: #0f766e;"><i class="fa-solid fa-briefcase"></i> Recruitment Prep</a>
+                <a href="fia-sample-papers.html">FIA Papers</a>
+                <a href="grammar-rules.html">Grammar Rules</a>
+                <a href="cce-essays-2025.html">CCE Essays 2025</a>
+                <a href="css-essays-2026.html">CSS Essays 2026</a>
+                <a href="css-essays-2021.html">CSS Essays 2021</a>
+                <a href="written-prep.html">Written Prep</a>
+                <a href="exam-guide.html">Exam Guide</a>
+                <a href="science-notes.html">Science Notes</a>
+                <a href="admin.html" class="admin-link">Admin Panel</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Navbar -->
+    <nav class="secondary-navbar" aria-label="Secondary Navigation">
+        <div class="container">
+            <ul class="secondary-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="topic-united-nations.html" style="font-weight: 700; color: #1d4ed8;"><i class="fa-solid fa-flag"></i> UN Master Hub</a></li>
+                <li><a href="topic-european-union.html" style="font-weight: 700; color: #003399;"><i class="fa-solid fa-shield-halved"></i> EU Master Hub</a></li>
+                <li><a href="articles.html" style="font-weight: 700; color: #047857;"><i class="fa-solid fa-book-open"></i> Study Articles</a></li>
+                <li><a href="timeline.html" style="font-weight: 700; color: #4338ca;"><i class="fa-solid fa-timeline"></i> Historical Timeline</a></li>
+                <li><a href="leaderboard.html" style="font-weight: 700; color: #f59e0b;"><i class="fa-solid fa-trophy"></i> Daily Challenge &amp; Leaderboard</a></li>
+                <li><a href="dashboard.html" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="ai-assistant.html" style="font-weight: 700; color: #6366f1;"><i class="fa-solid fa-robot"></i> AI Study Assistant</a></li>
+                <li><a href="editorial-explainer.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-newspaper"></i> Editorial Explainer</a></li>
+                <li><a href="world-map.html" style="font-weight: 700; color: #0284c7;"><i class="fa-solid fa-earth-americas"></i> Interactive World Map</a></li>
+                <li><a href="digital-library.html" class="active" style="font-weight: 700; color: #10b981;"><i class="fa-solid fa-book-bookmark"></i> Digital Library &amp; Reports</a></li>
+                <li><a href="recommended-books.html"><i class="fa-solid fa-book"></i> Recommended Books</a></li>
+                <li><a href="recruitment-prep.html" style="font-weight: 700; color: #0f766e;"><i class="fa-solid fa-briefcase"></i> Recruitment Prep</a></li>
+                <li><a href="fia-sample-papers.html"><i class="fa-solid fa-file-shield"></i> FIA AD 20 Sample Papers</a></li>
+                <li><a href="grammar-rules.html"><i class="fa-solid fa-spell-check"></i> Grammar Rules</a></li>
+                <li><a href="written-prep.html"><i class="fa-solid fa-pen-nib"></i> Essay &amp; Written Prep</a></li>
+                <li><a href="exam-guide.html"><i class="fa-solid fa-book-open-reader"></i> Exam Guide (CSS/PMS)</a></li>
+                <li><a href="science-notes.html">Science Capsule</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="lib-hero">
+        <div class="container">
+            <h1>📚 Digital Library &amp; Civil Services Resource Center</h1>
+            <p>Authoritative Government Reports, Analytical Editorial Breakdowns, Landmark International Treaties, Cartographic Maps &amp; Chokepoints, High-Yield CSS Vocabulary, Solved 20-Mark Descriptive Questions, and Downloadable Study PDFs.</p>
+
+            <div class="lib-hero-chips">
+                <span class="lib-hero-chip"><i class="fa-solid fa-chart-line"></i> Pakistan Economic Survey &amp; SBP Reports</span>
+                <span class="lib-hero-chip"><i class="fa-solid fa-newspaper"></i> Dawn &amp; Foreign Affairs Editorials</span>
+                <span class="lib-hero-chip"><i class="fa-solid fa-scale-balanced"></i> UNCLOS, IWT &amp; International Treaties</span>
+                <span class="lib-hero-chip"><i class="fa-solid fa-map-location-dot"></i> Global Straits &amp; River Basins</span>
+                <span class="lib-hero-chip"><i class="fa-solid fa-spell-check"></i> High-Yield CSS Vocabulary Bank</span>
+                <span class="lib-hero-chip"><i class="fa-solid fa-pen-to-square"></i> Solved 20-Mark Analytical Answers</span>
+                <span class="lib-hero-chip"><i class="fa-solid fa-file-pdf"></i> Downloadable Study PDFs</span>
+            </div>
+
+            <div>
+                <a href="recommended-books.html" class="lib-cta-banner">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Explore Recommended Books by Examination (CSS, PMS, FIA, NAB, Judiciary) &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="lib-container">
+        <!-- Search and Quick Filter Card -->
+        <div class="lib-search-card">
+            <div class="lib-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="libSearchInput" placeholder="Search reports, treaties, editorials, vocabulary, or questions by keyword (e.g. IMF, CPEC, Malacca, 18th Amendment)...">
+            </div>
+            <div id="resultsCountBadge" style="font-size: 0.9rem; font-weight: 600; color: #059669;">
+                <i class="fa-solid fa-filter"></i> <span id="libItemCount">All resources active</span>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="lib-tabs-wrapper" id="libTabsWrapper">
+            <button class="lib-tab-btn active" data-tab="tab-reports"><i class="fa-solid fa-chart-pie"></i> Official Reports (6)</button>
+            <button class="lib-tab-btn" data-tab="tab-editorials"><i class="fa-solid fa-newspaper"></i> Editorial Summaries (5)</button>
+            <button class="lib-tab-btn" data-tab="tab-treaties"><i class="fa-solid fa-scale-balanced"></i> Treaties &amp; Accords (6)</button>
+            <button class="lib-tab-btn" data-tab="tab-maps"><i class="fa-solid fa-map-location-dot"></i> Maps &amp; Chokepoints (3)</button>
+            <button class="lib-tab-btn" data-tab="tab-notes"><i class="fa-solid fa-book-open"></i> Subject Notes (6)</button>
+            <button class="lib-tab-btn" data-tab="tab-solved"><i class="fa-solid fa-pen-fancy"></i> Solved 20-Mark Qs (2)</button>
+            <button class="lib-tab-btn" data-tab="tab-vocab"><i class="fa-solid fa-spell-check"></i> High-Yield Vocab (15)</button>
+            <button class="lib-tab-btn" data-tab="tab-pdfs"><i class="fa-solid fa-file-arrow-down"></i> Downloadable PDFs (12)</button>
+        </div>
+
+        <!-- Tab 1: Official Reports -->
+        <div class="tab-pane active" id="tab-reports">
+            <div class="lib-grid" id="reportsGrid"></div>
+        </div>
+
+        <!-- Tab 2: Editorial Summaries -->
+        <div class="tab-pane" id="tab-editorials" style="display: none;">
+            <!-- Editorial Explainer Banner -->
+            <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: #ffffff; border-radius: 14px; padding: 22px 26px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: var(--card-shadow);">
+                <div>
+                    <h3 style="margin: 0 0 6px; font-size: 1.35rem; font-weight: 800; color: #ffffff;"><i class="fa-solid fa-newspaper" style="color: #38bdf8;"></i> Civil Services Editorial Explainer Portal</h3>
+                    <p style="margin: 0; font-size: 0.92rem; opacity: 0.94; max-width: 800px; line-height: 1.5;">Access deep analytical breakdowns of editorials from Dawn, The News, Express Tribune, and Foreign Affairs with Background, Key Arguments, High-Yield Vocabulary, Analytical Points, and 40 Interactive MCQs.</p>
+                </div>
+                <a href="editorial-explainer.html" class="lib-action-btn" style="background: #38bdf8; color: #0f172a; font-weight: 700; padding: 10px 20px; font-size: 0.92rem;">
+                    <i class="fa-solid fa-book-open-reader"></i> Launch Editorial Explainer &rarr;
+                </a>
+            </div>
+            <div class="lib-grid-full" id="editorialsGrid"></div>
+        </div>
+
+        <!-- Tab 3: Treaties & Accords -->
+        <div class="tab-pane" id="tab-treaties" style="display: none;">
+            <div class="lib-grid" id="treatiesGrid"></div>
+        </div>
+
+        <!-- Tab 4: Maps & Geography -->
+        <div class="tab-pane" id="tab-maps" style="display: none;">
+            <!-- Interactive World Map Banner -->
+            <div style="background: linear-gradient(135deg, #092c48 0%, #0f4c81 100%); color: #ffffff; border-radius: 14px; padding: 22px 26px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: var(--card-shadow);">
+                <div>
+                    <h3 style="margin: 0 0 6px; font-size: 1.35rem; font-weight: 800; color: #ffffff;"><i class="fa-solid fa-earth-americas" style="color: #38bdf8;"></i> Interactive World Map &amp; Country Intelligence Explorer</h3>
+                    <p style="margin: 0; font-size: 0.92rem; opacity: 0.94; max-width: 800px; line-height: 1.5;">Click any country on the vector world map to inspect capitals, currencies, demographics, political systems, bordering nations, and international organizations (OIC, SCO, NATO, BRICS, SAARC).</p>
+                </div>
+                <a href="world-map.html" class="lib-action-btn" style="background: #38bdf8; color: #0f172a; font-weight: 700; padding: 10px 20px; font-size: 0.92rem;">
+                    <i class="fa-solid fa-map-location-dot"></i> Launch Interactive World Map &rarr;
+                </a>
+            </div>
+            <div class="lib-grid-full" id="mapsGrid"></div>
+        </div>
+
+        <!-- Tab 5: Subject-Wise Notes -->
+        <div class="tab-pane" id="tab-notes" style="display: none;">
+            <div class="lib-grid-full" id="notesGrid"></div>
+        </div>
+
+        <!-- Tab 6: Solved 20-Mark Questions -->
+        <div class="tab-pane" id="tab-solved" style="display: none;">
+            <div class="lib-grid-full" id="solvedGrid"></div>
+        </div>
+
+        <!-- Tab 7: High-Yield Vocabulary -->
+        <div class="tab-pane" id="tab-vocab" style="display: none;">
+            <div style="background: var(--white); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px 24px; margin-bottom: 22px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+                    <div>
+                        <h3 style="margin-bottom: 6px; color: var(--text-dark); font-size: 1.25rem;"><i class="fa-solid fa-lightbulb" style="color: #059669;"></i> 2,000 High-Yield CSS &amp; GRE Vocabulary Bank</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin: 0;">Complete master vocabulary: 2,000 authentic academic headwords with parts of speech, dictionary definitions, synonym clusters, antonyms, and contextual examples for CSS, PMS, FPSC, PPSC, and NTS examinations.</p>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="lib-badge badge-green" style="font-size: 0.85rem; padding: 6px 12px;"><i class="fa-solid fa-circle-check"></i> 2,000 Headwords</span>
+                        <span class="lib-badge badge-blue" style="font-size: 0.85rem; padding: 6px 12px;"><i class="fa-solid fa-list-check"></i> 4,000 MCQs</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 10px; border-top: 1px dashed var(--border-color);">
+                    <a href="quiz.html?category=English%20Synonyms&limit=20&diff=Mixed" class="resource-btn" style="background: #10b981; color: #ffffff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.88rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;"><i class="fa-solid fa-spell-check"></i> Practice Synonyms Quiz (2,000 MCQs)</a>
+                    <a href="quiz.html?category=English%20Antonyms&limit=20&diff=Mixed" class="resource-btn" style="background: #8b5cf6; color: #ffffff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.88rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;"><i class="fa-solid fa-arrows-split-up-and-left"></i> Practice Antonyms Quiz (2,000 MCQs)</a>
+                    <a href="quiz.html?category=English%20Synonyms&limit=100&diff=Mixed" class="resource-btn" style="background: #059669; color: #ffffff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.88rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;"><i class="fa-solid fa-stopwatch"></i> Full 100-Question Exam Mock</a>
+                </div>
+            </div>
+            <div class="vocab-grid" id="vocabGrid"></div>
+        </div>
+
+        <!-- Tab 8: Downloadable PDFs -->
+        <div class="tab-pane" id="tab-pdfs" style="display: none;">
+            <div style="background: var(--white); border: 1px solid var(--border-color); border-radius: 12px; padding: 18px 24px; margin-bottom: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+                <div>
+                    <h3 style="margin-bottom: 6px; color: var(--text-dark);"><i class="fa-solid fa-folder-open" style="color: #b91c1c;"></i> Official Downloadable Study Material</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin: 0;">Instant offline PDF files stored directly on the server for rapid revision and printing.</p>
+                </div>
+                <span class="lib-badge badge-green" style="font-size: 0.85rem; padding: 6px 12px;"><i class="fa-solid fa-circle-check"></i> 12 PDF Books &amp; Compendiums Ready</span>
+            </div>
+            <div class="pdf-grid" id="pdfGrid"></div>
+        </div>
+    </div>
+
+    <!-- Universal Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <img src="img/logo.png" alt="MCQs Portal Logo" class="site-logo">
+                        <span>MCQs<span class="highlight">Portal</span></span>
+                    </div>
+                    <p>Pakistan's most comprehensive educational platform for competitive examinations: CSS, PMS, FIA, NAB, AAO, Judiciary, and General Recruitment tests.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Civil Services Prep</h4>
+                    <ul>
+                        <li><a href="digital-library.html">Digital Library &amp; Reports</a></li>
+                        <li><a href="recommended-books.html">Recommended Books</a></li>
+                        <li><a href="written-prep.html">Essay &amp; Written Preparation</a></li>
+                        <li><a href="grammar-rules.html">Grammar &amp; Sentence Rules</a></li>
+                        <li><a href="exam-guide.html">Exam Preparation Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Test Series &amp; MCQs</h4>
+                    <ul>
+                        <li><a href="fia-sample-papers.html">FIA AD 20 Sample Papers</a></li>
+                        <li><a href="quiz.html">Interactive Online Mock Quizzes</a></li>
+                        <li><a href="science-notes.html">General Science Capsule</a></li>
+                        <li><a href="index.html#categories">Subject-Wise MCQs</a></li>
+                        <li><a href="about.html">About &amp; Editorial Standards</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MCQs Portal Pakistan. All rights reserved. Built for competitive exam aspirants.</p>
+            </div>
+        </div>
+    
+        <div class="footer-legal-bar" style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; color:#94a3b8;">
+            <a href="about.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-users"></i> About Us</a>
+            <a href="contact.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="privacy.html" style="color:#60a5fa; text-decoration:none;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+            <a href="terms.html" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
+            <a href="disclaimer.html" style="color:#f87171; text-decoration:none;"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="sitemap.xml" style="color:#94a3b8; text-decoration:none;"><i class="fa-solid fa-sitemap"></i> Sitemap</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data_digital_library.js"></script>
+    <script src="js/data_synonyms_antonyms.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = window.DIGITAL_LIBRARY_DATA || {};
+
+            // Render Functions
+            function renderReports(items) {
+                const container = document.getElementById('reportsGrid');
+                if (!container) return;
+                if (!items || items.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-light); padding:20px;">No reports match your search criteria.</p>';
+                    return;
+                }
+                container.innerHTML = items.map(r => `
+                    <article class="lib-card">
+                        <div>
+                            <div class="lib-card-header">
+                                <span class="lib-badge badge-green">${r.category}</span>
+                                <h3 class="lib-card-title">${r.title}</h3>
+                                <div class="lib-card-meta">
+                                    <span><i class="fa-solid fa-building-columns"></i> ${r.issuingBody}</span>
+                                    <span><i class="fa-regular fa-calendar"></i> ${r.year}</span>
+                                </div>
+                            </div>
+                            <p class="lib-card-desc">${r.summary}</p>
+                            <div class="lib-key-points">
+                                <h4><i class="fa-solid fa-chart-simple"></i> Key Statistical Takeaways</h4>
+                                <ul>
+                                    ${(r.keyStats || []).map(s => `<li>${s}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div style="background:rgba(2,132,199,0.06); border-radius:8px; padding:10px 14px; margin-bottom:16px;">
+                                <strong style="font-size:0.85rem; color:#0369a1;"><i class="fa-solid fa-graduation-cap"></i> Exam Application:</strong>
+                                <p style="font-size:0.85rem; color:var(--text-dark); margin:4px 0 0; line-height:1.45;">${r.examRelevance}</p>
+                            </div>
+                        </div>
+                        <div class="lib-card-footer">
+                            <div class="lib-tags">
+                                ${(r.tags || []).map(t => `<span class="lib-tag">#${t}</span>`).join('')}
+                            </div>
+                            <a href="${r.downloadLink}" target="_blank" rel="noopener noreferrer" class="lib-action-btn">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Official Portal
+                            </a>
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            function renderEditorials(items) {
+                const container = document.getElementById('editorialsGrid');
+                if (!container) return;
+                if (!items || items.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-light); padding:20px;">No editorials match your search criteria.</p>';
+                    return;
+                }
+                container.innerHTML = items.map(e => `
+                    <article class="lib-card">
+                        <div class="lib-card-header">
+                            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                                <span class="lib-badge badge-blue">${e.source || 'Editorial Analysis'} • ${e.date || ''}</span>
+                                <span style="font-size:0.85rem; color:var(--text-light);"><i class="fa-solid fa-user-pen"></i> ${e.author || 'Editorial Board'}</span>
+                            </div>
+                            <h3 class="lib-card-title" style="margin-top:8px;">${e.title || ''}</h3>
+                        </div>
+                        <p class="lib-card-desc" style="margin-bottom:14px;">${e.summary || ''}</p>
+                        ${(e.quoteForEssay || e.coreArgument) ? `
+                        <div style="background:rgba(5,150,105,0.08); border-left:4px solid #059669; padding:12px 16px; border-radius:0 8px 8px 0; margin-bottom:16px;">
+                            <strong style="color:#065f46; font-size:0.9rem;"><i class="fa-solid fa-quote-left"></i> Quotable Essay Hook / Core Thesis:</strong>
+                            <p style="font-size:0.92rem; color:var(--text-dark); margin:4px 0 0; font-family:'Merriweather',serif; line-height:1.5;">${e.quoteForEssay || e.coreArgument}</p>
+                        </div>` : ''}
+                        <div class="lib-key-points">
+                            <h4><i class="fa-solid fa-list-check"></i> Key Analytical Pillars &amp; Arguments</h4>
+                            <ul>
+                                ${(e.criticalArguments || e.keyPillars || []).map(p => `<li>${p}</li>`).join('')}
+                            </ul>
+                        </div>
+                        ${(e.theme || e.examUtility) ? `
+                        <div style="background:var(--bg-color); border-radius:8px; padding:12px 16px; margin-bottom:16px;">
+                            <strong style="font-size:0.86rem; color:#b45309;"><i class="fa-solid fa-pen-nib"></i> Civil Services Exam Relevance:</strong>
+                            <p style="font-size:0.86rem; color:var(--text-dark); margin:4px 0 0; line-height:1.45;">${e.theme || e.examUtility}</p>
+                        </div>` : ''}
+                        <div class="lib-card-footer">
+                            <div class="lib-tags">
+                                ${(e.tags || []).map(t => `<span class="lib-tag">#${t}</span>`).join('')}
+                            </div>
+                            <span style="font-size:0.85rem; color:#059669; font-weight:600;"><i class="fa-solid fa-circle-check"></i> High-Yield Synthesis</span>
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            function renderTreaties(items) {
+                const container = document.getElementById('treatiesGrid');
+                if (!container) return;
+                if (!items || items.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-light); padding:20px;">No treaties match your search criteria.</p>';
+                    return;
+                }
+                container.innerHTML = items.map(t => `
+                    <article class="lib-card">
+                        <div>
+                            <div class="lib-card-header">
+                                <span class="lib-badge badge-purple">${t.type || 'International Accord'} • ${t.dateSigned || t.year || ''}</span>
+                                <h3 class="lib-card-title">${t.name || t.title || ''}</h3>
+                                <div class="lib-card-meta">
+                                    <span><i class="fa-solid fa-users"></i> ${t.signatories || ''}</span>
+                                </div>
+                            </div>
+                            ${t.corePrinciple ? `
+                            <div style="background:rgba(126,34,206,0.08); border-left:4px solid #7e22ce; padding:10px 14px; border-radius:0 8px 8px 0; margin-bottom:14px;">
+                                <strong style="color:#6b21a8; font-size:0.85rem;"><i class="fa-solid fa-scale-balanced"></i> Core Principle:</strong>
+                                <p style="font-size:0.9rem; color:var(--text-dark); margin:2px 0 0; font-weight:600;">${t.corePrinciple}</p>
+                            </div>` : ''}
+                            <p class="lib-card-desc">${t.significance || t.summary || ''}</p>
+                            ${(t.coreProvisions || t.keyProvisions) ? `
+                            <div class="lib-key-points">
+                                <h4><i class="fa-solid fa-gavel"></i> Landmark Clauses &amp; Provisions</h4>
+                                <ul>
+                                    ${(t.coreProvisions || t.keyProvisions || []).map(p => `<li>${p}</li>`).join('')}
+                                </ul>
+                            </div>` : ''}
+                            ${(t.examRelevance || t.pakistanRelevance) ? `
+                            <div style="background:rgba(126,34,206,0.06); border-radius:8px; padding:10px 14px; margin-bottom:16px;">
+                                <strong style="font-size:0.85rem; color:#6b21a8;"><i class="fa-solid fa-scale-balanced"></i> Strategic &amp; Pakistan Context:</strong>
+                                <p style="font-size:0.85rem; color:var(--text-dark); margin:4px 0 0; line-height:1.45;">${t.examRelevance || t.pakistanRelevance}</p>
+                            </div>` : ''}
+                        </div>
+                        <div class="lib-card-footer">
+                            <div class="lib-tags">
+                                ${(t.tags || ['International Law', 'Treaty', 'Strategic Accord']).map(tag => `<span class="lib-tag">#${tag}</span>`).join('')}
+                            </div>
+                            <span style="font-size:0.85rem; font-weight:600; color:#7e22ce;"><i class="fa-solid fa-landmark"></i> International Law</span>
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            function renderMaps(items) {
+                const container = document.getElementById('mapsGrid');
+                if (!container) return;
+                if (!items || items.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-light); padding:20px;">No map entries match your search criteria.</p>';
+                    return;
+                }
+                container.innerHTML = items.map(m => `
+                    <article class="geo-card">
+                        <div class="geo-header">
+                            <div>
+                                <span class="lib-badge badge-amber">${m.category || 'Geography'}</span>
+                                <h3 style="font-size:1.35rem; font-weight:700; margin:6px 0 0; color:var(--text-dark);">${m.title || ''}</h3>
+                            </div>
+                            <span style="font-size:0.88rem; font-weight:600; color:#0f766e;"><i class="fa-solid fa-compass"></i> Cartographic Reference</span>
+                        </div>
+                        <p style="font-size:0.95rem; color:var(--text-dark); line-height:1.6; margin-bottom:14px;">${m.description || ''}</p>
+                        ${(m.examTip || m.examinerTip) ? `
+                        <div style="background:rgba(245,158,11,0.08); border-left:4px solid #f59e0b; padding:12px 16px; border-radius:0 8px 8px 0; margin-bottom:16px;">
+                            <strong style="color:#b45309; font-size:0.88rem;"><i class="fa-solid fa-circle-exclamation"></i> Examiner Note &amp; Sketching Tips:</strong>
+                            <p style="font-size:0.88rem; color:var(--text-dark); margin:4px 0 0; line-height:1.45;">${m.examTip || m.examinerTip}</p>
+                        </div>` : ''}
+                        <h4 style="font-size:0.92rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-light); margin-bottom:10px;">Strategic Geographic Nodes:</h4>
+                        <div class="geo-items-grid">
+                            ${(m.keyFeatures || m.keyItems || []).map(item => `
+                                <div class="geo-item-card">
+                                    <h5>${item.name || ''}</h5>
+                                    <p><strong>Location:</strong> ${item.location || ''}</p>
+                                    <p><strong>Significance:</strong> ${item.importance || item.significance || ''}</p>
+                                    ${item.hotspot ? `<div style="font-size:0.8rem; color:#0f766e; font-weight:600; margin-top:4px;"><i class="fa-solid fa-crosshairs"></i> Hotspot: ${item.hotspot}</div>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            function renderNotes(items) {
+                const container = document.getElementById('notesGrid');
+                if (!container) return;
+                if (!items || items.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-light); padding:20px;">No subject notes match your search criteria.</p>';
+                    return;
+                }
+                container.innerHTML = items.map(n => `
+                    <article class="lib-card">
+                        <div class="lib-card-header">
+                            <span class="lib-badge badge-green">${n.subject || 'General'}</span>
+                            <h3 class="lib-card-title">${n.title || ''}</h3>
+                        </div>
+                        <p class="lib-card-desc">${n.summary || ''}</p>
+                        <div class="lib-key-points">
+                            <h4><i class="fa-solid fa-sitemap"></i> Core Syllabus Pillars</h4>
+                            <ul>
+                                ${(n.coreThemes || []).map(t => `<li>${t}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:16px;">
+                            <div style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:8px; padding:12px;">
+                                <strong style="font-size:0.85rem; color:#059669;"><i class="fa-solid fa-pen"></i> High-Scoring Examiner Advice:</strong>
+                                <p style="font-size:0.84rem; color:var(--text-dark); margin:4px 0 0; line-height:1.45;">${n.examinerTips || ''}</p>
+                            </div>
+                            <div style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:8px; padding:12px;">
+                                <strong style="font-size:0.85rem; color:#2563eb;"><i class="fa-solid fa-diagram-project"></i> Recommended Diagrams &amp; Data:</strong>
+                                <p style="font-size:0.84rem; color:var(--text-dark); margin:4px 0 0; line-height:1.45;">${n.recommendedDiagrams || ''}</p>
+                            </div>
+                        </div>
+                        <div class="lib-card-footer">
+                            <span style="font-size:0.85rem; color:var(--text-light);"><i class="fa-solid fa-book-bookmark"></i> CSS &amp; PMS Compulsory Syllabus</span>
+                            <a href="written-prep.html" class="lib-action-btn secondary"><i class="fa-solid fa-pen-nib"></i> Practice Written Questions</a>
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            function renderSolved(items) {
+                const container = document.getElementById('solvedGrid');
+                if (!container) return;
+                if (!items || items.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-light); padding:20px;">No solved questions match your search criteria.</p>';
+                    return;
+                }
+                container.innerHTML = items.map(q => `
+                    <article class="solved-q-card">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+                            <span class="lib-badge badge-blue">${q.subject || ''}</span>
+                            <span style="font-size:0.88rem; font-weight:700; color:#b91c1c; background:#fee2e2; padding:3px 10px; border-radius:6px;">${q.marks || 20} Marks Standard</span>
+                        </div>
+                        <h3 class="solved-q-title">${q.question || ''}</h3>
+                        <div class="solved-outline-box">
+                            <h4 style="font-size:0.9rem; text-transform:uppercase; color:#0f766e; margin-bottom:8px;"><i class="fa-solid fa-list-ol"></i> Model Examination Outline:</h4>
+                            <ol>
+                                ${(q.structure || []).map(s => `<li>${s}</li>`).join('')}
+                            </ol>
+                        </div>
+                        <div class="solved-opening">
+                            <strong style="display:block; font-family:'Poppins',sans-serif; font-size:0.85rem; color:#065f46; margin-bottom:6px; text-transform:uppercase;"><i class="fa-solid fa-quote-left"></i> High-Scoring Introductory Paragraph:</strong>
+                            ${q.sampleOpening || ''}
+                        </div>
+                        <div class="lib-key-points">
+                            <h4><i class="fa-solid fa-brain"></i> Key Substantiating Arguments &amp; Stats:</h4>
+                            <ul>
+                                ${(q.keyArguments || []).map(arg => `<li>${arg}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            let vocabDisplayLimit = 60;
+            let currentVocabItems = [];
+
+            function renderVocab(items) {
+                const container = document.getElementById('vocabGrid');
+                if (!container) return;
+                currentVocabItems = items || [];
+                if (!currentVocabItems || currentVocabItems.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-light); padding:20px;">No vocabulary words match your search criteria.</p>';
+                    return;
+                }
+
+                // If user is actively searching, render all matches; otherwise render slice with load more
+                const isSearching = document.getElementById('libSearchInput') && document.getElementById('libSearchInput').value.trim().length > 0;
+                const visibleItems = isSearching ? currentVocabItems : currentVocabItems.slice(0, vocabDisplayLimit);
+
+                let cardsHtml = visibleItems.map(v => `
+                    <div class="vocab-card">
+                        <div class="vocab-header">
+                            <span class="vocab-word">${v.word}</span>
+                            <span class="vocab-pos">${v.pos}</span>
+                        </div>
+                        <p class="vocab-def">${v.def}</p>
+                        <div class="vocab-meta"><strong>Synonyms:</strong> ${v.syn}</div>
+                        <div class="vocab-meta"><strong>Antonyms:</strong> ${v.ant}</div>
+                        <div class="vocab-example">"${v.example}"</div>
+                        <div style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.75rem; color: var(--text-light);"><i class="fa-solid fa-gauge-high"></i> ${v.difficulty || 'Medium'}</span>
+                            <a href="quiz.html?category=English%20Synonyms&search=${encodeURIComponent(v.word)}" style="font-size: 0.78rem; color: var(--primary); text-decoration: none; font-weight: 600;"><i class="fa-solid fa-circle-question"></i> Practice MCQ &rarr;</a>
+                        </div>
+                    </div>
+                `).join('');
+
+                if (!isSearching && currentVocabItems.length > vocabDisplayLimit) {
+                    cardsHtml += `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 20px;">
+                        <button id="loadMoreVocabBtn" style="background: var(--primary); color: #ffffff; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-arrow-down"></i> Load More Words (Showing ${vocabDisplayLimit} of ${currentVocabItems.length})
+                        </button>
+                    </div>`;
+                }
+
+                container.innerHTML = cardsHtml;
+
+                const loadMoreBtn = document.getElementById('loadMoreVocabBtn');
+                if (loadMoreBtn) {
+                    loadMoreBtn.addEventListener('click', () => {
+                        vocabDisplayLimit += 60;
+                        renderVocab(currentVocabItems);
+                    });
+                }
+            }
+
+            function renderPdfs(items) {
+                const container = document.getElementById('pdfGrid');
+                if (!container) return;
+                if (!items || items.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-light); padding:20px;">No downloadable PDFs match your search criteria.</p>';
+                    return;
+                }
+                container.innerHTML = items.map(p => `
+                    <article class="pdf-card">
+                        <div>
+                            <div class="pdf-icon-row">
+                                <div class="pdf-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                                <div>
+                                    <span class="lib-badge badge-red">${p.category}</span>
+                                    <div class="pdf-meta-box">
+                                        <span><i class="fa-solid fa-hard-drive"></i> ${p.fileSize}</span>
+                                        <span><i class="fa-regular fa-file-lines"></i> ${p.pages}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 style="font-size:1.05rem; font-weight:700; color:var(--text-dark); margin-bottom:8px; line-height:1.4;">${p.title}</h4>
+                            <p style="font-size:0.86rem; color:var(--text-light); line-height:1.45; margin-bottom:14px;">${p.description}</p>
+                        </div>
+                        <div class="lib-card-footer">
+                            <div class="lib-tags">
+                                ${(p.tags || []).map(t => `<span class="lib-tag">#${t}</span>`).join('')}
+                            </div>
+                            <a href="${p.filePath}" download class="lib-action-btn" style="background:#b91c1c;">
+                                <i class="fa-solid fa-download"></i> Download PDF
+                            </a>
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            // Initial Renders
+            renderReports(data.reports || []);
+            renderEditorials(data.editorials || []);
+            renderTreaties(data.treaties || []);
+            renderMaps(data.mapsAndGeography || []);
+            renderNotes(data.subjectNotes || []);
+            renderSolved(data.solvedQuestions || []);
+            const fullVocab = (typeof window !== 'undefined' && Array.isArray(window.VOCABULARY_2000) && window.VOCABULARY_2000.length > 0)
+                ? window.VOCABULARY_2000.map(v => ({
+                    word: v.word,
+                    pos: v.pos,
+                    def: v.meaning,
+                    syn: Array.isArray(v.synonyms) ? v.synonyms.join(', ') : (v.synonyms || ''),
+                    ant: Array.isArray(v.antonyms) ? v.antonyms.join(', ') : (v.antonyms || ''),
+                    example: v.example,
+                    difficulty: v.difficulty
+                }))
+                : (data.vocabularyList || []);
+            renderVocab(fullVocab);
+            renderPdfs(data.downloadablePdfs || []);
+
+            // Tab Switching & Hash Navigation
+            const tabs = document.querySelectorAll('.lib-tab-btn');
+            const panes = document.querySelectorAll('.tab-pane');
+
+            function switchTab(targetId) {
+                if (!targetId) return;
+                const cleanId = targetId.replace('#', '');
+                tabs.forEach(t => {
+                    if (t.getAttribute('data-tab') === cleanId) {
+                        t.classList.add('active');
+                    } else {
+                        t.classList.remove('active');
+                    }
+                });
+                panes.forEach(p => {
+                    if (p.id === cleanId) {
+                        p.classList.add('active');
+                        p.style.display = 'block';
+                    } else {
+                        p.classList.remove('active');
+                        p.style.display = 'none';
+                    }
+                });
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = tab.getAttribute('data-tab');
+                    switchTab(targetId);
+                });
+            });
+
+            // Hash navigation on load and change
+            if (window.location.hash) {
+                switchTab(window.location.hash);
+            }
+            window.addEventListener('hashchange', () => {
+                if (window.location.hash) {
+                    switchTab(window.location.hash);
+                }
+            });
+
+            // Global Live Search Filtering
+            const searchInput = document.getElementById('libSearchInput');
+            const countBadge = document.getElementById('libItemCount');
+
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase().trim();
+
+                    if (!query) {
+                        renderReports(data.reports || []);
+                        renderEditorials(data.editorials || []);
+                        renderTreaties(data.treaties || []);
+                        renderMaps(data.mapsAndGeography || []);
+                        renderNotes(data.subjectNotes || []);
+                        renderSolved(data.solvedQuestions || []);
+                        renderVocab(data.vocabularyList || []);
+                        renderPdfs(data.downloadablePdfs || []);
+                        if (countBadge) countBadge.textContent = 'All resources active';
+                        return;
+                    }
+
+                    const filterItem = (item, fields) => {
+                        return fields.some(f => {
+                            const val = item[f];
+                            if (Array.isArray(val)) {
+                                return val.some(v => {
+                                    if (typeof v === 'object' && v !== null) {
+                                        return Object.values(v).some(sub => String(sub).toLowerCase().includes(query));
+                                    }
+                                    return String(v).toLowerCase().includes(query);
+                                });
+                            }
+                            return val && String(val).toLowerCase().includes(query);
+                        });
+                    };
+
+                    const filteredReports = (data.reports || []).filter(r => filterItem(r, ['title', 'summary', 'category', 'tags', 'issuingBody', 'examRelevance']));
+                    const filteredEditorials = (data.editorials || []).filter(ed => filterItem(ed, ['title', 'source', 'author', 'summary', 'quoteForEssay', 'coreArgument', 'criticalArguments', 'theme', 'tags']));
+                    const filteredTreaties = (data.treaties || []).filter(t => filterItem(t, ['name', 'title', 'summary', 'significance', 'corePrinciple', 'signatories', 'examRelevance', 'tags']));
+                    const filteredMaps = (data.mapsAndGeography || []).filter(m => filterItem(m, ['title', 'description', 'category', 'examTip', 'examinerTip', 'keyFeatures', 'keyItems']));
+                    const filteredNotes = (data.subjectNotes || []).filter(n => filterItem(n, ['title', 'subject', 'summary', 'coreThemes', 'examinerTips']));
+                    const filteredSolved = (data.solvedQuestions || []).filter(s => filterItem(s, ['question', 'subject', 'structure', 'sampleOpening', 'keyArguments']));
+                    const filteredVocab = fullVocab.filter(v => filterItem(v, ['word', 'def', 'syn', 'ant', 'example']));
+                    const filteredPdfs = (data.downloadablePdfs || []).filter(p => filterItem(p, ['title', 'description', 'category', 'tags']));
+
+                    renderReports(filteredReports);
+                    renderEditorials(filteredEditorials);
+                    renderTreaties(filteredTreaties);
+                    renderMaps(filteredMaps);
+                    renderNotes(filteredNotes);
+                    renderSolved(filteredSolved);
+                    renderVocab(filteredVocab);
+                    renderPdfs(filteredPdfs);
+
+                    const totalMatches = filteredReports.length + filteredEditorials.length + filteredTreaties.length +
+                        filteredMaps.length + filteredNotes.length + filteredSolved.length + filteredVocab.length + filteredPdfs.length;
+
+                    if (countBadge) {
+                        countBadge.textContent = `Found ${totalMatches} matching items`;
+                    }
+                });
+            }
+
+            // Dark Mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    document.documentElement.classList.toggle('dark-mode', isDark);
+                    localStorage.setItem('mcqs_dark_mode', isDark ? 'true' : 'false');
+                });
+            }
+
+            if (localStorage.getItem('mcqs_dark_mode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>
