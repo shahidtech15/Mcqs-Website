@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrabble Word Game | CSS, PMS &amp; GRE Vocabulary Builder | CSS Prep Central</title>
+    <meta name="description"
+        content="Play interactive Scrabble online against an AI opponent or in Solo Practice mode. Build CSS, PMS, and GRE vocabulary on an official 15x15 board with premium multipliers, smart hints, and live academic definitions.">
+    <link rel="canonical" href="https://cssprepcentral.com/scrabble.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cssprepcentral.com/scrabble.html">
+    <meta property="og:title" content="Scrabble Word Game | CSS Prep Central">
+    <meta property="og:description" content="Official 15x15 Scrabble board with AI opponent, smart hints, 50-point Bingo bonus, and academic vocabulary definitions for CSS, PMS, and GRE aspirants.">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+    <meta property="og:site_name" content="CSS Prep Central">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://cssprepcentral.com/scrabble.html">
+    <meta name="twitter:title" content="Scrabble Word Game | CSS Prep Central">
+    <meta name="twitter:description" content="Play Scrabble online with AI opponent and CSS/GRE vocabulary definitions.">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <!-- Anti-FOUC Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --sc-bg: #f1f5f9;
+            --sc-card: #ffffff;
+            --sc-surface: #f8fafc;
+            --sc-border: #e2e8f0;
+            --sc-text: #0f172a;
+            --sc-muted: #64748b;
+            --sc-primary: #1d4ed8;
+            --sc-primary-hover: #1e40af;
+            --sc-emerald: #059669;
+            --sc-amber: #d97706;
+            --sc-rose: #e11d48;
+            --sc-board-bg: #cbd5e1;
+            --sc-cell-bg: #e8e3d5;
+            --sc-cell-border: #c9c2b2;
+            --sc-tile-bg: linear-gradient(145deg, #fffbeb, #fde68a);
+            --sc-tile-border: #d97706;
+            --sc-tile-text: #1c1917;
+            --sc-tile-shadow: 0 2px 0 #b45309, 0 3px 6px rgba(0, 0, 0, 0.22);
+            --sc-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+        }
+
+        html.dark-mode {
+            --sc-bg: #0b1120;
+            --sc-card: #111827;
+            --sc-surface: #1e293b;
+            --sc-border: #263248;
+            --sc-text: #f8fafc;
+            --sc-muted: #94a3b8;
+            --sc-primary: #3b82f6;
+            --sc-primary-hover: #2563eb;
+            --sc-board-bg: #0f172a;
+            --sc-cell-bg: #1e293b;
+            --sc-cell-border: #334155;
+            --sc-tile-bg: linear-gradient(145deg, #fef3c7, #fcd34d);
+            --sc-tile-border: #b45309;
+            --sc-tile-text: #1c1917;
+            --sc-tile-shadow: 0 2px 0 #92400e, 0 3px 8px rgba(0, 0, 0, 0.45);
+            --sc-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--sc-bg);
+            color: var(--sc-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        /* ── Switcher Bar ── */
+        .site-switcher-bar {
+            background: #090d16;
+            border-bottom: 1px solid #1e293b;
+            padding: 7px 16px;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .switcher-inner {
+            max-width: 1460px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .switcher-label {
+            color: #94a3b8;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .switcher-btn:hover { color: #fff; background: rgba(255,255,255,0.06); }
+        .switcher-btn.active { color: #fbbf24; background: rgba(245,158,11,0.18); font-weight: 700; }
+
+        .switcher-cat-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 6px;
+            margin-right: 2px;
+            white-space: nowrap;
+        }
+        .cat-tag-maps { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .cat-tag-science { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+        .cat-tag-law { background: rgba(20, 184, 166, 0.2); color: #2dd4bf; border: 1px solid rgba(20, 184, 166, 0.3); }
+        .cat-tag-economy { background: rgba(14, 165, 233, 0.2); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.3); }
+        .cat-tag-history { background: rgba(99, 102, 241, 0.2); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+        .cat-tag-games { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+        /* ── Header ── */
+        .site-header {
+            background: var(--sc-card);
+            border-bottom: 1px solid var(--sc-border);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+        .header-inner {
+            max-width: 1420px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--sc-text);
+        }
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #d97706, #b45309);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            box-shadow: 0 3px 10px rgba(217, 119, 6, 0.3);
+        }
+        .brand-text h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+        .brand-text span {
+            font-size: 0.75rem;
+            color: var(--sc-muted);
+            font-weight: 500;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .hdr-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 13px;
+            border-radius: 8px;
+            border: 1px solid var(--sc-border);
+            background: var(--sc-surface);
+            color: var(--sc-text);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .hdr-btn:hover {
+            border-color: var(--sc-primary);
+            color: var(--sc-primary);
+        }
+        .hdr-btn.primary {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            border-color: transparent;
+            color: #fff;
+        }
+        .hdr-btn.primary:hover { opacity: 0.9; color: #fff; }
+
+        /* ── Main Layout ── */
+        .game-shell {
+            max-width: 1420px;
+            width: 100%;
+            margin: 18px auto 40px;
+            padding: 0 16px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 340px;
+            gap: 20px;
+            align-items: start;
+            flex: 1;
+        }
+
+        /* ── Left / Board Column ── */
+        .board-panel {
+            background: var(--sc-card);
+            border: 1px solid var(--sc-border);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: var(--sc-shadow);
+        }
+
+        .control-strip {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--sc-border);
+        }
+        .mode-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .mode-select {
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--sc-border);
+            background: var(--sc-surface);
+            color: var(--sc-text);
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+        }
+        .bag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(217, 119, 6, 0.12);
+            color: var(--sc-amber);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .turn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(5, 150, 105, 0.12);
+            color: var(--sc-emerald);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .turn-pill.ai-turn {
+            background: rgba(139, 92, 246, 0.14);
+            color: #8b5cf6;
+        }
+
+        /* ── 15x15 Scrabble Board ── */
+        .board-wrap {
+            width: 100%;
+            max-width: 660px;
+            margin: 0 auto;
+            background: #1e293b;
+            padding: 6px;
+            border-radius: 12px;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.35);
+        }
+        .scrabble-board {
+            display: grid;
+            grid-template-columns: repeat(15, 1fr);
+            gap: 2px;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            user-select: none;
+        }
+        .board-cell {
+            position: relative;
+            background: var(--sc-cell-bg);
+            border: 1px solid var(--sc-cell-border);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.48rem, 1.05vw, 0.68rem);
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            color: rgba(15, 23, 42, 0.55);
+            cursor: pointer;
+            transition: transform 0.1s, filter 0.15s;
+            overflow: hidden;
+        }
+        html.dark-mode .board-cell { color: rgba(248, 250, 252, 0.5); }
+        .board-cell:hover { filter: brightness(1.07); }
+        .board-cell.drag-over { outline: 2px solid #f59e0b; z-index: 5; }
+        .board-cell.hint-highlight {
+            box-shadow: inset 0 0 0 2px #10b981;
+            animation: hintPulse 1.2s ease-in-out infinite;
+        }
+        @keyframes hintPulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.25); }
+        }
+
+        /* Premium Squares */
+        .cell-TW { background: #dc2626 !important; border-color: #b91c1c !important; color: #fff !important; }
+        .cell-DW { background: #f472b6 !important; border-color: #db2777 !important; color: #fff !important; }
+        .cell-TL { background: #2563eb !important; border-color: #1d4ed8 !important; color: #fff !important; }
+        .cell-DL { background: #38bdf8 !important; border-color: #0284c7 !important; color: #0f172a !important; }
+        .cell-STAR { background: #ec4899 !important; border-color: #be185d !important; color: #fff !important; font-size: clamp(0.75rem, 1.5vw, 1.05rem); }
+
+        /* Placed Tile inside Board Cell */
+        .tile {
+            width: 100%;
+            height: 100%;
+            background: var(--sc-tile-bg);
+            border: 1.5px solid var(--sc-tile-border);
+            border-radius: 4px;
+            color: var(--sc-tile-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: clamp(0.72rem, 1.7vw, 1.15rem);
+            box-shadow: var(--sc-tile-shadow);
+            line-height: 1;
+        }
+        .tile .pts {
+            position: absolute;
+            right: 2px;
+            bottom: 1px;
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.42rem, 0.8vw, 0.58rem);
+            font-weight: 800;
+            color: #78350f;
+            line-height: 1;
+        }
+        .tile.pending {
+            border-color: #10b981;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.55), var(--sc-tile-shadow);
+            cursor: pointer;
+        }
+        .tile.last-ai {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.6), var(--sc-tile-shadow);
+        }
+        .tile.is-blank {
+            background: linear-gradient(145deg, #e0f2fe, #bae6fd);
+            border-color: #0284c7;
+            color: #0c4a6e;
+        }
+        .tile.is-blank .pts { color: #0369a1; }
+
+        /* ── Live Status / Preview Bar ── */
+        .preview-bar {
+            max-width: 660px;
+            margin: 12px auto 10px;
+            padding: 9px 14px;
+            border-radius: 10px;
+            background: var(--sc-surface);
+            border: 1px solid var(--sc-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 0.84rem;
+            min-height: 42px;
+        }
+        .preview-msg { color: var(--sc-muted); font-weight: 500; }
+        .preview-msg.valid { color: var(--sc-emerald); font-weight: 700; }
+        .preview-msg.invalid { color: var(--sc-rose); font-weight: 600; }
+        .preview-score-badge {
+            background: var(--sc-emerald);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        /* ── Tile Rack ── */
+        .rack-container {
+            max-width: 660px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #78350f, #451a03);
+            padding: 12px 14px;
+            border-radius: 12px;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 76px;
+        }
+        .rack-tile {
+            width: 52px;
+            height: 54px;
+            background: var(--sc-tile-bg);
+            border: 2px solid var(--sc-tile-border);
+            border-radius: 8px;
+            color: var(--sc-tile-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 0 #92400e, 0 5px 10px rgba(0, 0, 0, 0.35);
+            cursor: grab;
+            transition: transform 0.14s, box-shadow 0.14s;
+            user-select: none;
+        }
+        .rack-tile:hover { transform: translateY(-4px); }
+        .rack-tile.selected {
+            transform: translateY(-8px) scale(1.06);
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.65), 0 6px 0 #92400e;
+        }
+        .rack-tile.swap-selected {
+            transform: translateY(-6px);
+            border-color: #f43f5e;
+            box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.65), 0 5px 0 #92400e;
+        }
+        .rack-tile .pts {
+            position: absolute;
+            right: 5px;
+            bottom: 3px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #78350f;
+        }
+        .rack-tile.is-blank {
+            background: linear-gradient(145deg, #e0f2fe, #bae6fd);
+            border-color: #0284c7;
+            color: #0369a1;
+        }
+
+        /* ── Action Buttons ── */
+        .action-bar {
+            max-width: 660px;
+            margin: 12px auto 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .act-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 15px;
+            border-radius: 9px;
+            border: 1px solid var(--sc-border);
+            background: var(--sc-surface);
+            color: var(--sc-text);
+            font-size: 0.84rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.18s;
+        }
+        .act-btn:hover:not(:disabled) {
+            border-color: var(--sc-primary);
+            color: var(--sc-primary);
+            transform: translateY(-1px);
+        }
+        .act-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+        .act-btn.play {
+            background: linear-gradient(135deg, #059669, #047857);
+            border-color: transparent;
+            color: #fff;
+            padding: 9px 22px;
+        }
+        .act-btn.play:hover:not(:disabled) { opacity: 0.92; color: #fff; }
+        .act-btn.hint {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.35);
+            color: #7c3aed;
+        }
+        html.dark-mode .act-btn.hint { color: #c084fc; }
+        .act-btn.swap-active {
+            background: #e11d48;
+            border-color: #e11d48;
+            color: #fff;
+        }
+
+        /* ── Right Sidebar ── */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .side-card {
+            background: var(--sc-card);
+            border: 1px solid var(--sc-border);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: var(--sc-shadow);
+        }
+        .side-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .side-title i { color: var(--sc-amber); }
+
+        /* Scoreboard */
+        .score-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .score-box {
+            background: var(--sc-surface);
+            border: 2px solid var(--sc-border);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+        .score-box.active-player {
+            border-color: var(--sc-emerald);
+            background: rgba(5, 150, 105, 0.06);
+        }
+        .score-box.active-ai {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.08);
+        }
+        .score-name {
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--sc-muted);
+        }
+        .score-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-top: 2px;
+        }
+        .best-bar {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--sc-border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            color: var(--sc-muted);
+            font-weight: 600;
+        }
+        .best-bar strong { color: var(--sc-amber); }
+
+        /* Vocab Spotlight */
+        .vocab-box {
+            background: linear-gradient(135deg, rgba(29, 78, 216, 0.08), rgba(139, 92, 246, 0.08));
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: 10px;
+            padding: 12px;
+        }
+        .vocab-word {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--sc-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .vocab-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            background: var(--sc-primary);
+            color: #fff;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+        .vocab-def {
+            font-size: 0.82rem;
+            color: var(--sc-text);
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+
+        /* History Log */
+        .history-list {
+            max-height: 220px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .history-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 7px 10px;
+            border-radius: 8px;
+            background: var(--sc-surface);
+            border: 1px solid var(--sc-border);
+            font-size: 0.8rem;
+        }
+        .hist-who {
+            font-size: 0.68rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 5px;
+        }
+        .hist-who.you { background: rgba(5, 150, 105, 0.15); color: var(--sc-emerald); }
+        .hist-who.ai { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; }
+        .hist-word { font-weight: 700; letter-spacing: 0.03em; flex: 1; }
+        .hist-pts { font-weight: 800; color: var(--sc-amber); }
+
+        /* Legend */
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 7px;
+            font-size: 0.76rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .legend-swatch {
+            width: 24px;
+            height: 20px;
+            border-radius: 4px;
+            font-size: 0.62rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* ── Modals ── */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.68);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 16px;
+        }
+        .modal-backdrop.open { display: flex; }
+        .modal-card {
+            background: var(--sc-card);
+            border: 1px solid var(--sc-border);
+            border-radius: 16px;
+            max-width: 460px;
+            width: 100%;
+            padding: 22px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+        }
+        .modal-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        .letter-picker {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            margin-top: 12px;
+        }
+        .pick-letter-btn {
+            padding: 10px 0;
+            border-radius: 8px;
+            border: 1px solid var(--sc-border);
+            background: var(--sc-surface);
+            color: var(--sc-text);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .pick-letter-btn:hover {
+            background: var(--sc-primary);
+            color: #fff;
+            border-color: var(--sc-primary);
+        }
+
+        /* ── Footer ── */
+        .portal-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 20px 16px;
+            text-align: center;
+            font-size: 0.8rem;
+            border-top: 1px solid #1e293b;
+            margin-top: auto;
+        }
+        .portal-footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .portal-footer a:hover { color: #38bdf8; }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .game-shell { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 520px) {
+            .board-panel { padding: 10px; }
+            .rack-tile { width: 40px; height: 44px; font-size: 1.2rem; }
+            .rack-container { gap: 5px; padding: 9px 8px; min-height: 62px; }
+            .act-btn { padding: 8px 11px; font-size: 0.78rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Academic Switcher Bar (Categorized) -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-label"><i class="fas fa-layer-group"></i> Academic Suites:</span>
+
+            <span class="switcher-cat-tag cat-tag-maps"><i class="fas fa-map"></i> Maps</span>
+            <a href="pakistan-map.html" class="switcher-btn"><i class="fas fa-map-marked-alt"></i> Pakistan Map</a>
+            <a href="sindh-map.html" class="switcher-btn"><i class="fas fa-map"></i> Sindh Map</a>
+            <a href="physical-geography-map.html" class="switcher-btn"><i class="fas fa-mountain"></i> Geography</a>
+            <a href="world-map.html" class="switcher-btn"><i class="fas fa-globe-americas"></i> World Map</a>
+            <a href="international-trade-routes-map.html" class="switcher-btn"><i class="fas fa-route"></i> Trade Routes</a>
+            <a href="geopolitical-hotspots-map.html" class="switcher-btn"><i class="fas fa-crosshairs"></i> Hotspots</a>
+
+            <span class="switcher-cat-tag cat-tag-science"><i class="fas fa-atom"></i> Science</span>
+            <a href="periodic-table.html" class="switcher-btn"><i class="fas fa-atom"></i> Periodic Table</a>
+            <a href="solar-system-explorer.html" class="switcher-btn"><i class="fas fa-sun"></i> Solar System</a>
+            <a href="human-body-explorer.html" class="switcher-btn"><i class="fas fa-heartbeat"></i> Human Body</a>
+            <a href="climate-change-explorer.html" class="switcher-btn"><i class="fas fa-temperature-high"></i> Climate Change</a>
+            <a href="technology-explorer.html" class="switcher-btn"><i class="fas fa-microchip"></i> Technology</a>
+
+            <span class="switcher-cat-tag cat-tag-law"><i class="fas fa-scale-balanced"></i> Law</span>
+            <a href="constitution-explorer.html" class="switcher-btn"><i class="fas fa-scale-balanced"></i> Constitution</a>
+            <a href="ppc-section-finder.html" class="switcher-btn"><i class="fas fa-gavel"></i> PPC Finder</a>
+            <a href="crpc-procedure-flowchart.html" class="switcher-btn"><i class="fas fa-diagram-project"></i> CrPC Flowchart</a>
+            <a href="identify-legal-provision.html" class="switcher-btn"><i class="fas fa-scale-unbalanced-flip"></i> Legal Provision</a>
+            <a href="court-structure-explorer.html" class="switcher-btn"><i class="fas fa-landmark"></i> Court Structure</a>
+            <a href="fia-laws-explorer.html" class="switcher-btn"><i class="fas fa-building-shield"></i> FIA Laws</a>
+
+            <span class="switcher-cat-tag cat-tag-economy"><i class="fas fa-chart-line"></i> Economy</span>
+            <a href="world-economy-dashboard.html" class="switcher-btn"><i class="fas fa-chart-line"></i> World Economy</a>
+            <a href="currency-exchange-explorer.html" class="switcher-btn"><i class="fas fa-coins"></i> Currency &amp; Exchange</a>
+            <a href="who-trades-what.html" class="switcher-btn"><i class="fas fa-ship"></i> Who Trades What?</a>
+
+            <span class="switcher-cat-tag cat-tag-history"><i class="fas fa-scroll"></i> History &amp; Orgs</span>
+            <a href="world-history-timeline.html" class="switcher-btn"><i class="fas fa-stream"></i> World Timeline</a>
+            <a href="timeline.html" class="switcher-btn"><i class="fas fa-history"></i> Pakistan Timeline</a>
+            <a href="global-power-comparison.html" class="switcher-btn"><i class="fas fa-balance-scale"></i> Global Power</a>
+            <a href="international-organizations-explorer.html" class="switcher-btn"><i class="fas fa-sitemap"></i> Organizations</a>
+            <a href="unsc-simulator.html" class="switcher-btn"><i class="fas fa-landmark"></i> UNSC Simulator</a>
+
+            <span class="switcher-cat-tag cat-tag-games"><i class="fas fa-gamepad"></i> Interactive &amp; Games</span>
+            <a href="daily-challenges.html" class="switcher-btn"><i class="fas fa-bolt"></i> Daily Challenges</a>
+            <a href="daily-fact.html" class="switcher-btn"><i class="fas fa-calendar-check"></i> Daily Fact</a>
+            <a href="scrabble.html" class="switcher-btn active"><i class="fas fa-font"></i> Scrabble</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="match-the-following.html" class="switcher-btn"><i class="fas fa-exchange-alt"></i> Match Pairs</a>
+            <a href="arrange-chronologically.html" class="switcher-btn"><i class="fas fa-history"></i> Chronology</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-icon">S</div>
+                <div class="brand-text">
+                    <h1>Academic Scrabble</h1>
+                    <span>CSS, PMS &amp; GRE Vocabulary Board Game</span>
+                </div>
+            </a>
+            <div class="header-actions">
+                <a href="index.html" class="hdr-btn"><i class="fas fa-home"></i> Home</a>
+                <button class="hdr-btn" id="btnSoundToggle" title="Toggle Sound"><i class="fas fa-volume-up"></i> Sound</button>
+                <button class="hdr-btn" id="btnRules"><i class="fas fa-circle-question"></i> Rules</button>
+                <button class="hdr-btn" id="btnThemeToggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <button class="hdr-btn primary" id="btnNewGame"><i class="fas fa-rotate-right"></i> New Game</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Game Area -->
+    <main class="game-shell">
+        <!-- Board & Rack Column -->
+        <section class="board-panel">
+            <div class="control-strip">
+                <div class="mode-group">
+                    <select id="modeSelect" class="mode-select" aria-label="Game Mode">
+                        <option value="ai-medium" selected>vs AI (Medium)</option>
+                        <option value="ai-easy">vs AI (Easy)</option>
+                        <option value="ai-hard">vs AI (Master)</option>
+                        <option value="solo">Solo Practice</option>
+                    </select>
+                    <select id="dictSelect" class="mode-select" aria-label="Dictionary Mode">
+                        <option value="strict" selected>Standard Dictionary</option>
+                        <option value="relaxed">Relaxed (Any 2+ Word)</option>
+                    </select>
+                </div>
+                <div class="mode-group">
+                    <span class="bag-pill"><i class="fas fa-sack-dollar"></i> Bag: <strong id="bagCount">86</strong></span>
+                    <span class="turn-pill" id="turnBadge"><i class="fas fa-user"></i> Your Turn</span>
+                </div>
+            </div>
+
+            <!-- 15x15 Board -->
+            <div class="board-wrap">
+                <div class="scrabble-board" id="scrabbleBoard" role="grid" aria-label="Scrabble 15 by 15 Game Board"></div>
+            </div>
+
+            <!-- Live Word Preview -->
+            <div class="preview-bar" id="previewBar">
+                <span class="preview-msg" id="previewMsg">Click or drag a tile from your rack onto the center star ★ to start!</span>
+                <span class="preview-score-badge" id="previewScore" style="display:none;">+0 pts</span>
+            </div>
+
+            <!-- Tile Rack -->
+            <div class="rack-container" id="playerRack" aria-label="Your Tile Rack"></div>
+
+            <!-- Action Buttons -->
+            <div class="action-bar">
+                <button class="act-btn play" id="btnPlay" disabled><i class="fas fa-check"></i> Play Word</button>
+                <button class="act-btn" id="btnRecall"><i class="fas fa-undo"></i> Recall</button>
+                <button class="act-btn" id="btnShuffle"><i class="fas fa-shuffle"></i> Shuffle</button>
+                <button class="act-btn" id="btnSwap"><i class="fas fa-arrows-rotate"></i> Swap</button>
+                <button class="act-btn hint" id="btnHint"><i class="fas fa-lightbulb"></i> Hint</button>
+                <button class="act-btn" id="btnPass"><i class="fas fa-forward"></i> Pass</button>
+            </div>
+        </section>
+
+        <!-- Sidebar Column -->
+        <aside class="sidebar">
+            <!-- Scoreboard -->
+            <div class="side-card">
+                <div class="side-title">
+                    <span><i class="fas fa-trophy"></i> Scoreboard</span>
+                    <span style="font-size:0.72rem; color:var(--sc-muted);">50-pt Bingo for 7 tiles</span>
+                </div>
+                <div class="score-grid">
+                    <div class="score-box active-player" id="playerScoreBox">
+                        <div class="score-name">You</div>
+                        <div class="score-val" id="playerScore">0</div>
+                    </div>
+                    <div class="score-box" id="aiScoreBox">
+                        <div class="score-name" id="aiNameLabel">AI Bot</div>
+                        <div class="score-val" id="aiScore">0</div>
+                    </div>
+                </div>
+                <div class="best-bar">
+                    <span>Best Score: <strong id="highScoreVal">0</strong></span>
+                    <span>Best Word: <strong id="bestWordVal">—</strong></span>
+                </div>
+            </div>
+
+            <!-- Academic Vocabulary Spotlight -->
+            <div class="side-card">
+                <div class="side-title">
+                    <span><i class="fas fa-book-open"></i> Vocabulary Spotlight</span>
+                </div>
+                <div class="vocab-box" id="vocabBox">
+                    <div class="vocab-word">
+                        <span id="vocabWord">Play a Word!</span>
+                        <span class="vocab-tag" id="vocabTag">CSS / GRE</span>
+                    </div>
+                    <p class="vocab-def" id="vocabDef">
+                        Play high-yield academic words (like LAW, VETO, TREATY, FISCAL, SENATE, QUORUM, ATOM, ORBIT, POLICY) to unlock instant exam definitions here.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Move History -->
+            <div class="side-card">
+                <div class="side-title">
+                    <span><i class="fas fa-clock-rotate-left"></i> Move History</span>
+                    <span id="moveCount" style="font-size:0.75rem; color:var(--sc-muted);">0 moves</span>
+                </div>
+                <div class="history-list" id="historyList">
+                    <div style="text-align:center; color:var(--sc-muted); font-size:0.8rem; padding:12px;">
+                        No moves played yet.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multiplier Legend -->
+            <div class="side-card">
+                <div class="side-title">
+                    <span><i class="fas fa-sparkles"></i> Bonus Squares</span>
+                </div>
+                <div class="legend-grid">
+                    <div class="legend-item"><span class="legend-swatch cell-TW">TW</span> Triple Word (3×)</div>
+                    <div class="legend-item"><span class="legend-swatch cell-DW">DW</span> Double Word (2×)</div>
+                    <div class="legend-item"><span class="legend-swatch cell-TL">TL</span> Triple Letter (3×)</div>
+                    <div class="legend-item"><span class="legend-swatch cell-DL">DL</span> Double Letter (2×)</div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Blank Tile Picker Modal -->
+    <div class="modal-backdrop" id="blankModal">
+        <div class="modal-card">
+            <h2><i class="fas fa-star" style="color:#0284c7;"></i> Choose Blank Tile Letter</h2>
+            <p style="font-size:0.84rem; color:var(--sc-muted);">Pick any letter A–Z for your wildcard blank tile (0 pts):</p>
+            <div class="letter-picker" id="letterPicker"></div>
+            <div style="margin-top:14px; text-align:right;">
+                <button class="act-btn" id="btnCancelBlank">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rules Modal -->
+    <div class="modal-backdrop" id="rulesModal">
+        <div class="modal-card">
+            <h2><i class="fas fa-book" style="color:#d97706;"></i> How to Play Scrabble</h2>
+            <ul style="font-size:0.84rem; line-height:1.7; padding-left:18px; color:var(--sc-text); margin-bottom:16px;">
+                <li><strong>Place Tiles:</strong> Click a tile in your rack then click a square, or drag-and-drop tiles directly onto the 15×15 board. Click a placed (green-glow) tile to return it to your rack.</li>
+                <li><strong>First Move:</strong> Must cover the center star (★) and be at least 2 letters long.</li>
+                <li><strong>Connecting Words:</strong> Every subsequent move must lie in a single row or column and connect to at least one existing tile on the board.</li>
+                <li><strong>Premium Multipliers:</strong> <b>DL/TL</b> multiply that tile's points; <b>DW/TW</b> multiply the entire word's score. Center ★ counts as a Double Word!</li>
+                <li><strong>Bingo Bonus:</strong> Using all 7 tiles in one turn earns an automatic <b>+50 bonus points</b>!</li>
+                <li><strong>Swap / Pass:</strong> Click <b>Swap</b> to select tiles to trade with the bag (requires 7+ tiles in bag). Two consecutive passes by both players end the game.</li>
+            </ul>
+            <div style="text-align:right;">
+                <button class="act-btn play" id="btnCloseRules">Got It!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div class="modal-backdrop" id="gameOverModal">
+        <div class="modal-card" style="text-align:center;">
+            <div style="font-size:2.6rem; margin-bottom:8px;" id="goIcon">🏆</div>
+            <h2 id="goTitle">Game Over!</h2>
+            <p id="goSummary" style="font-size:0.9rem; color:var(--sc-muted); margin-bottom:16px;"></p>
+            <div class="score-grid" style="margin-bottom:18px;">
+                <div class="score-box">
+                    <div class="score-name">Your Final</div>
+                    <div class="score-val" id="goPlayerScore">0</div>
+                </div>
+                <div class="score-box">
+                    <div class="score-name" id="goAiLabel">AI Final</div>
+                    <div class="score-val" id="goAiScore">0</div>
+                </div>
+            </div>
+            <button class="act-btn play" id="btnPlayAgain" style="width:100%; justify-content:center;"><i class="fas fa-rotate-right"></i> Play Again</button>
+        </div>
+    </div>
+
+    <!-- Policy Footer -->
+    <footer class="portal-footer">
+        <div style="margin-bottom:8px;">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms</a>
+            <a href="disclaimer.html">Disclaimer</a>
+            <a href="sitemap.xml">Sitemap</a>
+        </div>
+        <div>&copy; 2026 CSS Prep Central &amp; MCQs Portal — Academic Scrabble Edition</div>
+    </footer>
+
+    <!-- Dictionary & Cookie Consent -->
+    <script src="js/data_scrabble_dict.js"></script>
+    <script src="js/cookie-consent.js"></script>
+
+    <script>
+    (function () {
+        'use strict';
+
+        // ── Official Scrabble Letter Distribution & Points ──
+        const TILE_DIST = [
+            ['A', 9, 1], ['B', 2, 3], ['C', 2, 3], ['D', 4, 2], ['E', 12, 1],
+            ['F', 2, 4], ['G', 3, 2], ['H', 2, 4], ['I', 9, 1], ['J', 1, 8],
+            ['K', 1, 5], ['L', 4, 1], ['M', 2, 3], ['N', 6, 1], ['O', 8, 1],
+            ['P', 2, 3], ['Q', 1, 10], ['R', 6, 1], ['S', 4, 1], ['T', 6, 1],
+            ['U', 4, 1], ['V', 2, 4], ['W', 2, 4], ['X', 1, 8], ['Y', 2, 4],
+            ['Z', 1, 10], ['?', 2, 0]
+        ];
+
+        const LETTER_POINTS = {};
+        TILE_DIST.forEach(([l, , p]) => { LETTER_POINTS[l] = p; });
+
+        // ── Official 15x15 Premium Square Layout ──
+        const BOARD_SIZE = 15;
+        const PREMIUM = {};
+        function setPrem(coords, type) {
+            coords.forEach(([r, c]) => { PREMIUM[`${r},${c}`] = type; });
+        }
+        setPrem([[0,0],[0,7],[0,14],[7,0],[7,14],[14,0],[14,7],[14,14]], 'TW');
+        setPrem([[1,1],[2,2],[3,3],[4,4],[1,13],[2,12],[3,11],[4,10],[10,4],[11,3],[12,2],[13,1],[10,10],[11,11],[12,12],[13,13]], 'DW');
+        setPrem([[7,7]], 'STAR');
+        setPrem([[1,5],[1,9],[5,1],[5,5],[5,9],[5,13],[9,1],[9,5],[9,9],[9,13],[13,5],[13,9]], 'TL');
+        setPrem([[0,3],[0,11],[2,6],[2,8],[3,0],[3,7],[3,14],[6,2],[6,6],[6,8],[6,12],[7,3],[7,11],[8,2],[8,6],[8,8],[8,12],[11,0],[11,7],[11,14],[12,6],[12,8],[14,3],[14,11]], 'DL');
+
+        // ── Web Audio API Sound Effects ──
+        let soundEnabled = true;
+        let audioCtx = null;
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                const now = audioCtx.currentTime;
+                if (type === 'place') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(420, now);
+                    osc.frequency.exponentialRampToValueAtTime(560, now + 0.06);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+                    osc.start(now); osc.stop(now + 0.07);
+                } else if (type === 'score') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523, now);
+                    osc.frequency.setValueAtTime(659, now + 0.08);
+                    osc.frequency.setValueAtTime(784, now + 0.16);
+                    gain.gain.setValueAtTime(0.14, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+                    osc.start(now); osc.stop(now + 0.28);
+                } else if (type === 'error') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(200, now);
+                    osc.frequency.linearRampToValueAtTime(140, now + 0.14);
+                    gain.gain.setValueAtTime(0.09, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+                    osc.start(now); osc.stop(now + 0.15);
+                } else if (type === 'ai') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(392, now);
+                    osc.frequency.setValueAtTime(494, now + 0.09);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+                    osc.start(now); osc.stop(now + 0.2);
+                }
+            } catch (e) {}
+        }
+
+        // ── Game State ──
+        let board = [];          // 15x15: null or { letter, pts, isBlank, committed, lastAi }
+        let bag = [];            // array of { letter, pts, isBlank }
+        let playerRack = [];     // array of { id, letter, pts, isBlank }
+        let aiRack = [];
+        let pendingPlacements = []; // [{ r, c, tile }]
+        let selectedRackId = null;
+        let swapMode = false;
+        let swapSelectedIds = new Set();
+        let currentTurn = 'player'; // 'player' | 'ai'
+        let playerScore = 0;
+        let aiScore = 0;
+        let consecutivePasses = 0;
+        let moveHistory = [];
+        let gameOver = false;
+        let tileUid = 1;
+        let pendingBlankTarget = null; // { r, c, tile }
+        let hintCells = [];
+
+        const DICT = window.SCRABBLE_DICT || new Set();
+        const ACAD_DEFS = window.SCRABBLE_ACADEMIC_DEFS || {};
+
+        // ── DOM Elements ──
+        const boardEl = document.getElementById('scrabbleBoard');
+        const rackEl = document.getElementById('playerRack');
+        const previewMsgEl = document.getElementById('previewMsg');
+        const previewScoreEl = document.getElementById('previewScore');
+        const bagCountEl = document.getElementById('bagCount');
+        const turnBadgeEl = document.getElementById('turnBadge');
+        const playerScoreEl = document.getElementById('playerScore');
+        const aiScoreEl = document.getElementById('aiScore');
+        const playerScoreBox = document.getElementById('playerScoreBox');
+        const aiScoreBox = document.getElementById('aiScoreBox');
+        const aiNameLabel = document.getElementById('aiNameLabel');
+        const highScoreVal = document.getElementById('highScoreVal');
+        const bestWordVal = document.getElementById('bestWordVal');
+        const historyListEl = document.getElementById('historyList');
+        const moveCountEl = document.getElementById('moveCount');
+        const vocabWordEl = document.getElementById('vocabWord');
+        const vocabTagEl = document.getElementById('vocabTag');
+        const vocabDefEl = document.getElementById('vocabDef');
+        const modeSelect = document.getElementById('modeSelect');
+        const dictSelect = document.getElementById('dictSelect');
+        const btnPlay = document.getElementById('btnPlay');
+        const btnRecall = document.getElementById('btnRecall');
+        const btnShuffle = document.getElementById('btnShuffle');
+        const btnSwap = document.getElementById('btnSwap');
+        const btnHint = document.getElementById('btnHint');
+        const btnPass = document.getElementById('btnPass');
+
+        // ── Load Persisted Best Stats ──
+        function loadBestStats() {
+            highScoreVal.textContent = localStorage.getItem('scrabble_high_score') || '0';
+            bestWordVal.textContent = localStorage.getItem('scrabble_best_word') || '—';
+        }
+        function updateBestStats(score, word, wordPts) {
+            const prevHigh = parseInt(localStorage.getItem('scrabble_high_score') || '0', 10);
+            if (score > prevHigh) {
+                localStorage.setItem('scrabble_high_score', String(score));
+                highScoreVal.textContent = String(score);
+            }
+            const prevBestPts = parseInt(localStorage.getItem('scrabble_best_word_pts') || '0', 10);
+            if (word && wordPts > prevBestPts) {
+                localStorage.setItem('scrabble_best_word_pts', String(wordPts));
+                localStorage.setItem('scrabble_best_word', `${word} (${wordPts})`);
+                bestWordVal.textContent = `${word} (${wordPts})`;
+            }
+        }
+
+        // ── Bag Helpers ──
+        function createBag() {
+            const arr = [];
+            TILE_DIST.forEach(([letter, count, pts]) => {
+                for (let i = 0; i < count; i++) {
+                    arr.push({ id: tileUid++, letter, pts, isBlank: letter === '?' });
+                }
+            });
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function drawTiles(rack, count) {
+            while (rack.length < 7 && bag.length > 0 && count > 0) {
+                rack.push(bag.pop());
+                count--;
+            }
+        }
+
+        // ── Dictionary Validation ──
+        function isWordValid(word) {
+            if (!word || word.length < 2) return false;
+            if (dictSelect.value === 'relaxed') return /^[A-Z]{2,}$/.test(word);
+            return DICT.has(word.toUpperCase());
+        }
+
+        // ── Board Evaluation Engine ──
+        function boardHasCommittedTiles() {
+            for (let r = 0; r < BOARD_SIZE; r++) {
+                for (let c = 0; c < BOARD_SIZE; c++) {
+                    if (board[r][c] && board[r][c].committed) return true;
+                }
+            }
+            return false;
+        }
+
+        function evaluatePlacements(placements, checkDict = true) {
+            if (!placements || placements.length === 0) {
+                return { valid: false, reason: 'Place tiles on the board to form a word.' };
+            }
+
+            // Build a quick lookup of placed cells
+            const placedMap = new Map();
+            for (const p of placements) {
+                placedMap.set(`${p.r},${p.c}`, p.tile);
+            }
+            const getCell = (r, c) => {
+                if (r < 0 || r >= BOARD_SIZE || c < 0 || c >= BOARD_SIZE) return null;
+                return placedMap.get(`${r},${c}`) || board[r][c];
+            };
+
+            const rows = [...new Set(placements.map(p => p.r))];
+            const cols = [...new Set(placements.map(p => p.c))];
+            if (rows.length > 1 && cols.length > 1) {
+                return { valid: false, reason: 'All placed tiles must lie in a single straight row or column.' };
+            }
+
+            const firstMove = !boardHasCommittedTiles();
+            if (firstMove) {
+                if (!placedMap.has('7,7')) {
+                    return { valid: false, reason: 'The first word must cover the center star ★.' };
+                }
+                if (placements.length < 2) {
+                    return { valid: false, reason: 'The first word must be at least 2 letters long.' };
+                }
+            }
+
+            // Check contiguity along the line
+            let isHorizontal = rows.length === 1;
+            if (placements.length === 1) {
+                // Single tile: determine orientation by neighbors
+                const { r, c } = placements[0];
+                const hasHoriz = getCell(r, c - 1) || getCell(r, c + 1);
+                const hasVert = getCell(r - 1, c) || getCell(r + 1, c);
+                if (!hasHoriz && !hasVert) {
+                    return { valid: false, reason: 'Tile must connect to an existing word on the board.' };
+                }
+                isHorizontal = !!hasHoriz;
+            } else if (isHorizontal) {
+                const r = rows[0];
+                const minC = Math.min(...placements.map(p => p.c));
+                const maxC = Math.max(...placements.map(p => p.c));
+                for (let c = minC; c <= maxC; c++) {
+                    if (!getCell(r, c)) {
+                        return { valid: false, reason: 'Tiles cannot have empty gaps between them.' };
+                    }
+                }
+            } else {
+                const c = cols[0];
+                const minR = Math.min(...placements.map(p => p.r));
+                const maxR = Math.max(...placements.map(p => p.r));
+                for (let r = minR; r <= maxR; r++) {
+                    if (!getCell(r, c)) {
+                        return { valid: false, reason: 'Tiles cannot have empty gaps between them.' };
+                    }
+                }
+            }
+
+            // Check connectivity to existing tiles on non-first turns
+            if (!firstMove) {
+                let connected = false;
+                for (const p of placements) {
+                    const adj = [[p.r - 1, p.c], [p.r + 1, p.c], [p.r, p.c - 1], [p.r, p.c + 1]];
+                    for (const [ar, ac] of adj) {
+                        if (ar >= 0 && ar < BOARD_SIZE && ac >= 0 && ac < BOARD_SIZE && board[ar][ac] && board[ar][ac].committed) {
+                            connected = true;
+                            break;
+                        }
+                    }
+                    if (connected) break;
+                }
+                if (!connected) {
+                    return { valid: false, reason: 'New tiles must connect to an existing word on the board.' };
+                }
+            }
+
+            // Helper to extract & score a word passing through (r,c) in direction (dr,dc)
+            function extractWord(startR, startC, dr, dc) {
+                let r = startR, c = startC;
+                while (getCell(r - dr, c - dc)) { r -= dr; c -= dc; }
+                let word = '';
+                let score = 0;
+                let wordMult = 1;
+                const cells = [];
+                while (getCell(r, c)) {
+                    const t = getCell(r, c);
+                    const key = `${r},${c}`;
+                    const isNew = placedMap.has(key);
+                    let lp = t.isBlank ? 0 : t.pts;
+                    if (isNew) {
+                        const prem = PREMIUM[key];
+                        if (prem === 'DL') lp *= 2;
+                        else if (prem === 'TL') lp *= 3;
+                        else if (prem === 'DW' || prem === 'STAR') wordMult *= 2;
+                        else if (prem === 'TW') wordMult *= 3;
+                    }
+                    word += t.letter;
+                    score += lp;
+                    cells.push(key);
+                    r += dr; c += dc;
+                }
+                return { word, score: score * wordMult, cells };
+            }
+
+            const words = [];
+            const seenWords = new Set();
+
+            // Main word
+            const mainDr = isHorizontal ? 0 : 1;
+            const mainDc = isHorizontal ? 1 : 0;
+            const mainW = extractWord(placements[0].r, placements[0].c, mainDr, mainDc);
+            if (mainW.word.length >= 2) {
+                const sig = `${mainDr},${mainDc}:${mainW.cells[0]}`;
+                seenWords.add(sig);
+                words.push(mainW);
+            }
+
+            // Cross words
+            const crossDr = isHorizontal ? 1 : 0;
+            const crossDc = isHorizontal ? 0 : 1;
+            for (const p of placements) {
+                const cw = extractWord(p.r, p.c, crossDr, crossDc);
+                if (cw.word.length >= 2) {
+                    const sig = `${crossDr},${crossDc}:${cw.cells[0]}`;
+                    if (!seenWords.has(sig)) {
+                        seenWords.add(sig);
+                        words.push(cw);
+                    }
+                }
+            }
+
+            if (words.length === 0) {
+                return { valid: false, reason: 'Form at least one word of 2 or more letters.' };
+            }
+
+            // Validate every formed word against dictionary
+            if (checkDict) {
+                const invalidWords = words.filter(w => !isWordValid(w.word)).map(w => w.word);
+                if (invalidWords.length > 0) {
+                    return {
+                        valid: false,
+                        reason: `Not in dictionary: ${invalidWords.join(', ')} (Switch to Relaxed mode to allow custom words)`,
+                        words
+                    };
+                }
+            }
+
+            let totalScore = words.reduce((sum, w) => sum + w.score, 0);
+            const isBingo = placements.length === 7;
+            if (isBingo) totalScore += 50;
+
+            return { valid: true, words, totalScore, isBingo };
+        }
+
+        // ── Render Board ──
+        function renderBoard() {
+            boardEl.innerHTML = '';
+            const pendingMap = new Map(pendingPlacements.map(p => [`${p.r},${p.c}`, p.tile]));
+
+            for (let r = 0; r < BOARD_SIZE; r++) {
+                for (let c = 0; c < BOARD_SIZE; c++) {
+                    const key = `${r},${c}`;
+                    const cell = document.createElement('div');
+                    cell.className = 'board-cell';
+                    cell.dataset.r = r;
+                    cell.dataset.c = c;
+
+                    const prem = PREMIUM[key];
+                    if (prem) cell.classList.add(`cell-${prem}`);
+                    if (hintCells.includes(key)) cell.classList.add('hint-highlight');
+
+                    const committedTile = board[r][c];
+                    const pendTile = pendingMap.get(key);
+
+                    if (committedTile || pendTile) {
+                        const t = pendTile || committedTile;
+                        const tileEl = document.createElement('div');
+                        tileEl.className = 'tile';
+                        if (pendTile) tileEl.classList.add('pending');
+                        if (committedTile && committedTile.lastAi) tileEl.classList.add('last-ai');
+                        if (t.isBlank) tileEl.classList.add('is-blank');
+                        tileEl.innerHTML = `${t.letter}<span class="pts">${t.isBlank ? 0 : t.pts}</span>`;
+                        cell.appendChild(tileEl);
+                    } else if (prem) {
+                        cell.textContent = prem === 'STAR' ? '★' : prem;
+                    }
+
+                    // Click handler
+                    cell.addEventListener('click', () => handleCellClick(r, c));
+
+                    // Drag-and-drop handlers
+                    cell.addEventListener('dragover', (e) => {
+                        if (!board[r][c] && !pendingMap.has(key) && currentTurn === 'player' && !gameOver) {
+                            e.preventDefault();
+                            cell.classList.add('drag-over');
+                        }
+                    });
+                    cell.addEventListener('dragleave', () => cell.classList.remove('drag-over'));
+                    cell.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        cell.classList.remove('drag-over');
+                        const tileId = parseInt(e.dataTransfer.getData('text/plain'), 10);
+                        if (tileId) placeRackTileAt(tileId, r, c);
+                    });
+
+                    boardEl.appendChild(cell);
+                }
+            }
+        }
+
+        // ── Render Rack ──
+        function renderRack() {
+            rackEl.innerHTML = '';
+            playerRack.forEach(t => {
+                const el = document.createElement('div');
+                el.className = 'rack-tile';
+                if (t.isBlank) el.classList.add('is-blank');
+                if (!swapMode && selectedRackId === t.id) el.classList.add('selected');
+                if (swapMode && swapSelectedIds.has(t.id)) el.classList.add('swap-selected');
+                el.draggable = !swapMode && currentTurn === 'player' && !gameOver;
+                el.innerHTML = `${t.isBlank ? '★' : t.letter}<span class="pts">${t.pts}</span>`;
+
+                el.addEventListener('click', () => {
+                    if (currentTurn !== 'player' || gameOver) return;
+                    if (swapMode) {
+                        if (swapSelectedIds.has(t.id)) swapSelectedIds.delete(t.id);
+                        else swapSelectedIds.add(t.id);
+                        renderRack();
+                        updatePreview();
+                    } else {
+                        selectedRackId = (selectedRackId === t.id) ? null : t.id;
+                        renderRack();
+                    }
+                });
+
+                el.addEventListener('dragstart', (e) => {
+                    selectedRackId = t.id;
+                    e.dataTransfer.setData('text/plain', String(t.id));
+                });
+
+                rackEl.appendChild(el);
+            });
+        }
+
+        // ── Tile Placement & Recall ──
+        function placeRackTileAt(tileId, r, c) {
+            if (currentTurn !== 'player' || gameOver || swapMode) return;
+            if (board[r][c] || pendingPlacements.some(p => p.r === r && p.c === c)) return;
+            const idx = playerRack.findIndex(t => t.id === tileId);
+            if (idx === -1) return;
+
+            const tile = playerRack[idx];
+            if (tile.isBlank) {
+                pendingBlankTarget = { r, c, tile };
+                openBlankModal();
+                return;
+            }
+            playerRack.splice(idx, 1);
+            pendingPlacements.push({ r, c, tile });
+            selectedRackId = null;
+            hintCells = [];
+            playTone('place');
+            renderBoard();
+            renderRack();
+            updatePreview();
+        }
+
+        function handleCellClick(r, c) {
+            if (currentTurn !== 'player' || gameOver || swapMode) return;
+
+            // If clicking an uncommitted tile, return it to rack
+            const pendIdx = pendingPlacements.findIndex(p => p.r === r && p.c === c);
+            if (pendIdx !== -1) {
+                const removed = pendingPlacements.splice(pendIdx, 1)[0].tile;
+                if (removed.isBlank) removed.letter = '?';
+                playerRack.push(removed);
+                playTone('place');
+                renderBoard();
+                renderRack();
+                updatePreview();
+                return;
+            }
+
+            // Otherwise, if a rack tile is selected, place it
+            if (selectedRackId !== null && !board[r][c]) {
+                placeRackTileAt(selectedRackId, r, c);
+            }
+        }
+
+        function recallTiles() {
+            while (pendingPlacements.length > 0) {
+                const t = pendingPlacements.pop().tile;
+                if (t.isBlank) t.letter = '?';
+                playerRack.push(t);
+            }
+            selectedRackId = null;
+            hintCells = [];
+            renderBoard();
+            renderRack();
+            updatePreview();
+        }
+
+        // ── Live Preview Update ──
+        function updatePreview() {
+            if (swapMode) {
+                previewMsgEl.className = 'preview-msg';
+                previewMsgEl.textContent = `Swap Mode: Select tiles to exchange (${swapSelectedIds.size} selected), then click Swap again to confirm.`;
+                previewScoreEl.style.display = 'none';
+                btnPlay.disabled = true;
+                return;
+            }
+
+            if (pendingPlacements.length === 0) {
+                previewMsgEl.className = 'preview-msg';
+                previewMsgEl.textContent = boardHasCommittedTiles()
+                    ? 'Select or drag tiles onto the board to form a connected word.'
+                    : 'Place your first word covering the center star ★ (2+ letters).';
+                previewScoreEl.style.display = 'none';
+                btnPlay.disabled = true;
+                return;
+            }
+
+            const res = evaluatePlacements(pendingPlacements, true);
+            if (res.valid) {
+                const wList = res.words.map(w => w.word).join(', ');
+                previewMsgEl.className = 'preview-msg valid';
+                previewMsgEl.textContent = `Valid: ${wList}${res.isBingo ? ' 🎉 BINGO (+50)!' : ''}`;
+                previewScoreEl.textContent = `+${res.totalScore} pts`;
+                previewScoreEl.style.display = 'inline-block';
+                btnPlay.disabled = false;
+            } else {
+                previewMsgEl.className = 'preview-msg invalid';
+                previewMsgEl.textContent = res.reason;
+                previewScoreEl.style.display = 'none';
+                btnPlay.disabled = true;
+            }
+        }
+
+        // ── Commit a Move ──
+        function commitMove(who, placements, evalRes) {
+            // Clear lastAi highlight
+            for (let r = 0; r < BOARD_SIZE; r++) {
+                for (let c = 0; c < BOARD_SIZE; c++) {
+                    if (board[r][c]) board[r][c].lastAi = false;
+                }
+            }
+
+            placements.forEach(p => {
+                board[p.r][p.c] = {
+                    letter: p.tile.letter,
+                    pts: p.tile.pts,
+                    isBlank: p.tile.isBlank,
+                    committed: true,
+                    lastAi: who === 'ai'
+                };
+            });
+
+            const mainWord = evalRes.words.slice().sort((a, b) => b.score - a.score)[0].word;
+            const allWords = evalRes.words.map(w => w.word).join(', ');
+
+            if (who === 'player') {
+                playerScore += evalRes.totalScore;
+                playerScoreEl.textContent = playerScore;
+                drawTiles(playerRack, 7 - playerRack.length);
+                updateBestStats(playerScore, mainWord, evalRes.totalScore);
+                playTone('score');
+            } else {
+                aiScore += evalRes.totalScore;
+                aiScoreEl.textContent = aiScore;
+                drawTiles(aiRack, 7 - aiRack.length);
+                playTone('ai');
+            }
+
+            consecutivePasses = 0;
+            addHistory(who, allWords, evalRes.totalScore, evalRes.isBingo);
+            checkVocabSpotlight(evalRes.words.map(w => w.word));
+            bagCountEl.textContent = bag.length;
+
+            // Check end condition (rack empty & bag empty)
+            if ((who === 'player' && playerRack.length === 0 && bag.length === 0) ||
+                (who === 'ai' && aiRack.length === 0 && bag.length === 0)) {
+                endGame();
+            }
+        }
+
+        function addHistory(who, label, pts, isBingo) {
+            moveHistory.unshift({ who, label, pts, isBingo });
+            moveCountEl.textContent = `${moveHistory.length} move${moveHistory.length === 1 ? '' : 's'}`;
+            historyListEl.innerHTML = moveHistory.map(m => `
+                <div class="history-item">
+                    <span class="hist-who ${m.who}">${m.who === 'you' || m.who === 'player' ? 'YOU' : 'AI'}</span>
+                    <span class="hist-word">${m.label}${m.isBingo ? ' ⭐' : ''}</span>
+                    <span class="hist-pts">${m.pts > 0 ? '+' + m.pts : '—'}</span>
+                </div>
+            `).join('');
+        }
+
+        function checkVocabSpotlight(wordList) {
+            for (const w of wordList) {
+                if (ACAD_DEFS[w]) {
+                    vocabWordEl.textContent = w;
+                    vocabTagEl.textContent = 'Academic Vocab';
+                    vocabDefEl.textContent = ACAD_DEFS[w];
+                    return;
+                }
+            }
+            if (wordList.length > 0) {
+                vocabWordEl.textContent = wordList[0];
+                vocabTagEl.textContent = DICT.has(wordList[0]) ? 'Dictionary Word' : 'Custom Word';
+                vocabDefEl.textContent = `Played "${wordList[0]}" on the board. Keep forming CSS/GRE terms like VETO, STATUTE, FISCAL, SENATE, or TREATY to unlock exam notes!`;
+            }
+        }
+
+        // ── AI / Hint Move Finder ──
+        function findBestMoves(rack, maxResults = 25) {
+            const firstMove = !boardHasCommittedTiles();
+            const candidates = [];
+
+            // Count available letters in rack
+            const rackCounts = {};
+            let blanks = 0;
+            rack.forEach(t => {
+                if (t.isBlank) blanks++;
+                else rackCounts[t.letter] = (rackCounts[t.letter] || 0) + 1;
+            });
+
+            function canSpellWithExtra(word, extraLetter) {
+                const need = {};
+                for (const ch of word) need[ch] = (need[ch] || 0) + 1;
+                if (extraLetter) {
+                    if (!need[extraLetter]) return false;
+                    need[extraLetter]--;
+                }
+                let blanksNeeded = 0;
+                for (const ch in need) {
+                    const diff = need[ch] - (rackCounts[ch] || 0);
+                    if (diff > 0) blanksNeeded += diff;
+                }
+                return blanksNeeded <= blanks;
+            }
+
+            function buildPlacementsForWord(word, startR, startC, dr, dc) {
+                if (startR < 0 || startC < 0) return null;
+                const endR = startR + dr * (word.length - 1);
+                const endC = startC + dc * (word.length - 1);
+                if (endR >= BOARD_SIZE || endC >= BOARD_SIZE) return null;
+
+                // Ensure cell immediately before & after are empty
+                const befR = startR - dr, befC = startC - dc;
+                const aftR = endR + dr, aftC = endC + dc;
+                if (befR >= 0 && befC >= 0 && board[befR][befC]) return null;
+                if (aftR < BOARD_SIZE && aftC < BOARD_SIZE && board[aftR][aftC]) return null;
+
+                const usedRackIds = new Set();
+                const placements = [];
+                for (let i = 0; i < word.length; i++) {
+                    const r = startR + dr * i;
+                    const c = startC + dc * i;
+                    const ch = word[i];
+                    if (board[r][c]) {
+                        if (board[r][c].letter !== ch) return null;
+                    } else {
+                        // Find matching tile in rack (prefer non-blank)
+                        let tile = rack.find(t => !t.isBlank && t.letter === ch && !usedRackIds.has(t.id));
+                        if (!tile) {
+                            tile = rack.find(t => t.isBlank && !usedRackIds.has(t.id));
+                            if (!tile) return null;
+                            usedRackIds.add(tile.id);
+                            placements.push({ r, c, tile: { ...tile, letter: ch } });
+                        } else {
+                            usedRackIds.add(tile.id);
+                            placements.push({ r, c, tile });
+                        }
+                    }
+                }
+                if (placements.length === 0) return null;
+                return placements;
+            }
+
+            if (firstMove) {
+                for (const word of DICT) {
+                    if (word.length < 2 || word.length > 7) continue;
+                    if (!canSpellWithExtra(word, null)) continue;
+                    const startC = Math.max(0, 7 - Math.floor(word.length / 2));
+                    const pl = buildPlacementsForWord(word, 7, startC, 0, 1);
+                    if (pl) {
+                        const ev = evaluatePlacements(pl, true);
+                        if (ev.valid) candidates.push({ placements: pl, evalRes: ev, word });
+                    }
+                    if (candidates.length >= 120) break;
+                }
+            } else {
+                // Collect anchor tiles currently on board
+                const anchors = [];
+                for (let r = 0; r < BOARD_SIZE; r++) {
+                    for (let c = 0; c < BOARD_SIZE; c++) {
+                        if (board[r][c] && board[r][c].committed) {
+                            anchors.push({ r, c, letter: board[r][c].letter });
+                        }
+                    }
+                }
+                // Shuffle anchors so AI varies board regions
+                for (let i = anchors.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [anchors[i], anchors[j]] = [anchors[j], anchors[i]];
+                }
+
+                const maxAnchors = Math.min(anchors.length, 24);
+                for (let a = 0; a < maxAnchors; a++) {
+                    const anc = anchors[a];
+                    for (const word of DICT) {
+                        if (word.length < 2 || word.length > 8) continue;
+                        if (!word.includes(anc.letter)) continue;
+                        if (!canSpellWithExtra(word, anc.letter)) continue;
+
+                        for (let idx = 0; idx < word.length; idx++) {
+                            if (word[idx] !== anc.letter) continue;
+                            // Try horizontal
+                            const plH = buildPlacementsForWord(word, anc.r, anc.c - idx, 0, 1);
+                            if (plH) {
+                                const ev = evaluatePlacements(plH, true);
+                                if (ev.valid) candidates.push({ placements: plH, evalRes: ev, word });
+                            }
+                            // Try vertical
+                            const plV = buildPlacementsForWord(word, anc.r - idx, anc.c, 1, 0);
+                            if (plV) {
+                                const ev = evaluatePlacements(plV, true);
+                                if (ev.valid) candidates.push({ placements: plV, evalRes: ev, word });
+                            }
+                        }
+                        if (candidates.length >= 160) break;
+                    }
+                    if (candidates.length >= 160) break;
+                }
+            }
+
+            candidates.sort((a, b) => b.evalRes.totalScore - a.evalRes.totalScore);
+            return candidates.slice(0, maxResults);
+        }
+
+        // ── AI Turn Execution ──
+        function runAiTurn() {
+            if (gameOver) return;
+            currentTurn = 'ai';
+            updateTurnUI();
+
+            setTimeout(() => {
+                const mode = modeSelect.value;
+                const moves = findBestMoves(aiRack, 25);
+
+                if (moves.length === 0) {
+                    consecutivePasses++;
+                    addHistory('ai', '(Passed)', 0, false);
+                    if (consecutivePasses >= 4) {
+                        endGame();
+                        return;
+                    }
+                    currentTurn = 'player';
+                    updateTurnUI();
+                    return;
+                }
+
+                let chosen;
+                if (mode === 'ai-easy') {
+                    chosen = moves[Math.min(moves.length - 1, Math.floor(moves.length * 0.7) + Math.floor(Math.random() * 4))];
+                } else if (mode === 'ai-medium') {
+                    const midIdx = Math.min(moves.length - 1, Math.floor(Math.random() * Math.min(6, moves.length)));
+                    chosen = moves[midIdx];
+                } else {
+                    chosen = moves[0]; // Master picks highest-scoring word
+                }
+
+                // Remove used tiles from AI rack
+                const usedIds = new Set(chosen.placements.map(p => p.tile.id));
+                aiRack = aiRack.filter(t => !usedIds.has(t.id));
+
+                commitMove('ai', chosen.placements, chosen.evalRes);
+                if (!gameOver) {
+                    currentTurn = 'player';
+                    renderBoard();
+                    renderRack();
+                    updateTurnUI();
+                    updatePreview();
+                }
+            }, 650);
+        }
+
+        function updateTurnUI() {
+            const isSolo = modeSelect.value === 'solo';
+            aiNameLabel.textContent = isSolo ? 'Solo Mode' : 'AI Bot';
+            if (currentTurn === 'player') {
+                turnBadgeEl.className = 'turn-pill';
+                turnBadgeEl.innerHTML = '<i class="fas fa-user"></i> Your Turn';
+                playerScoreBox.classList.add('active-player');
+                aiScoreBox.classList.remove('active-ai');
+            } else {
+                turnBadgeEl.className = 'turn-pill ai-turn';
+                turnBadgeEl.innerHTML = '<i class="fas fa-robot"></i> AI Thinking...';
+                playerScoreBox.classList.remove('active-player');
+                aiScoreBox.classList.add('active-ai');
+            }
+        }
+
+        // ── End Game ──
+        function endGame() {
+            gameOver = true;
+            const isSolo = modeSelect.value === 'solo';
+            document.getElementById('goPlayerScore').textContent = playerScore;
+            document.getElementById('goAiScore').textContent = aiScore;
+            document.getElementById('goAiLabel').textContent = isSolo ? 'Solo Mode' : 'AI Final';
+
+            if (isSolo) {
+                document.getElementById('goIcon').textContent = '🎉';
+                document.getElementById('goTitle').textContent = 'Practice Complete!';
+                document.getElementById('goSummary').textContent = `You finished with ${playerScore} points across ${moveHistory.length} moves!`;
+            } else if (playerScore > aiScore) {
+                document.getElementById('goIcon').textContent = '🏆';
+                document.getElementById('goTitle').textContent = 'You Won!';
+                document.getElementById('goSummary').textContent = `Congratulations! You defeated the AI ${playerScore} to ${aiScore}.`;
+            } else if (aiScore > playerScore) {
+                document.getElementById('goIcon').textContent = '🤖';
+                document.getElementById('goTitle').textContent = 'AI Wins This Round!';
+                document.getElementById('goSummary').textContent = `Final score: AI ${aiScore} vs You ${playerScore}. Try again to beat it!`;
+            } else {
+                document.getElementById('goIcon').textContent = '🤝';
+                document.getElementById('goTitle').textContent = "It's a Tie!";
+                document.getElementById('goSummary').textContent = `Both finished at ${playerScore} points!`;
+            }
+            document.getElementById('gameOverModal').classList.add('open');
+        }
+
+        // ── Blank Tile Modal ──
+        const blankModal = document.getElementById('blankModal');
+        const letterPicker = document.getElementById('letterPicker');
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(ch => {
+            const b = document.createElement('button');
+            b.className = 'pick-letter-btn';
+            b.textContent = ch;
+            b.addEventListener('click', () => {
+                if (!pendingBlankTarget) return;
+                const { r, c, tile } = pendingBlankTarget;
+                const idx = playerRack.findIndex(t => t.id === tile.id);
+                if (idx !== -1) {
+                    playerRack.splice(idx, 1);
+                    tile.letter = ch;
+                    pendingPlacements.push({ r, c, tile });
+                    selectedRackId = null;
+                    playTone('place');
+                }
+                pendingBlankTarget = null;
+                blankModal.classList.remove('open');
+                renderBoard();
+                renderRack();
+                updatePreview();
+            });
+            letterPicker.appendChild(b);
+        });
+        function openBlankModal() { blankModal.classList.add('open'); }
+        document.getElementById('btnCancelBlank').addEventListener('click', () => {
+            pendingBlankTarget = null;
+            blankModal.classList.remove('open');
+        });
+
+        // ── Button Event Listeners ──
+        btnPlay.addEventListener('click', () => {
+            if (currentTurn !== 'player' || gameOver || pendingPlacements.length === 0) return;
+            const res = evaluatePlacements(pendingPlacements, true);
+            if (!res.valid) {
+                playTone('error');
+                updatePreview();
+                return;
+            }
+            const placedCopy = pendingPlacements.slice();
+            pendingPlacements = [];
+            hintCells = [];
+            commitMove('player', placedCopy, res);
+            renderBoard();
+            renderRack();
+            updatePreview();
+
+            if (!gameOver && modeSelect.value !== 'solo') {
+                runAiTurn();
+            }
+        });
+
+        btnRecall.addEventListener('click', recallTiles);
+
+        btnShuffle.addEventListener('click', () => {
+            for (let i = playerRack.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [playerRack[i], playerRack[j]] = [playerRack[j], playerRack[i]];
+            }
+            renderRack();
+        });
+
+        btnSwap.addEventListener('click', () => {
+            if (currentTurn !== 'player' || gameOver) return;
+            if (!swapMode) {
+                if (bag.length < 7) {
+                    previewMsgEl.className = 'preview-msg invalid';
+                    previewMsgEl.textContent = 'Cannot swap: fewer than 7 tiles left in the bag.';
+                    playTone('error');
+                    return;
+                }
+                recallTiles();
+                swapMode = true;
+                swapSelectedIds.clear();
+                btnSwap.classList.add('swap-active');
+                btnSwap.innerHTML = '<i class="fas fa-check"></i> Confirm Swap';
+                renderRack();
+                updatePreview();
+            } else {
+                const count = swapSelectedIds.size;
+                if (count > 0) {
+                    const returned = [];
+                    playerRack = playerRack.filter(t => {
+                        if (swapSelectedIds.has(t.id)) { returned.push(t); return false; }
+                        return true;
+                    });
+                    drawTiles(playerRack, count);
+                    bag.push(...returned);
+                    for (let i = bag.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [bag[i], bag[j]] = [bag[j], bag[i]];
+                    }
+                    bagCountEl.textContent = bag.length;
+                    addHistory('player', `(Swapped ${count})`, 0, false);
+                }
+                swapMode = false;
+                swapSelectedIds.clear();
+                btnSwap.classList.remove('swap-active');
+                btnSwap.innerHTML = '<i class="fas fa-arrows-rotate"></i> Swap';
+                renderRack();
+                updatePreview();
+                if (count > 0 && modeSelect.value !== 'solo') runAiTurn();
+            }
+        });
+
+        btnHint.addEventListener('click', () => {
+            if (currentTurn !== 'player' || gameOver) return;
+            recallTiles();
+            const moves = findBestMoves(playerRack, 5);
+            if (moves.length === 0) {
+                previewMsgEl.className = 'preview-msg invalid';
+                previewMsgEl.textContent = 'No dictionary move found with current rack — try swapping tiles or passing.';
+                playTone('error');
+                return;
+            }
+            const best = moves[0];
+            hintCells = best.placements.map(p => `${p.r},${p.c}`);
+            renderBoard();
+            previewMsgEl.className = 'preview-msg valid';
+            previewMsgEl.textContent = `💡 Hint: Try playing "${best.word}" on the highlighted green squares (+${best.evalRes.totalScore} pts)!`;
+        });
+
+        btnPass.addEventListener('click', () => {
+            if (currentTurn !== 'player' || gameOver) return;
+            recallTiles();
+            consecutivePasses++;
+            addHistory('player', '(Passed)', 0, false);
+            if (consecutivePasses >= (modeSelect.value === 'solo' ? 2 : 4)) {
+                endGame();
+                return;
+            }
+            if (modeSelect.value !== 'solo') runAiTurn();
+        });
+
+        // Header controls
+        document.getElementById('btnNewGame').addEventListener('click', startNewGame);
+        document.getElementById('btnPlayAgain').addEventListener('click', () => {
+            document.getElementById('gameOverModal').classList.remove('open');
+            startNewGame();
+        });
+        modeSelect.addEventListener('change', startNewGame);
+        dictSelect.addEventListener('change', updatePreview);
+
+        document.getElementById('btnRules').addEventListener('click', () => {
+            document.getElementById('rulesModal').classList.add('open');
+        });
+        document.getElementById('btnCloseRules').addEventListener('click', () => {
+            document.getElementById('rulesModal').classList.remove('open');
+        });
+
+        document.getElementById('btnSoundToggle').addEventListener('click', function () {
+            soundEnabled = !soundEnabled;
+            this.innerHTML = soundEnabled ? '<i class="fas fa-volume-up"></i> Sound' : '<i class="fas fa-volume-mute"></i> Muted';
+        });
+
+        document.getElementById('btnThemeToggle').addEventListener('click', function () {
+            const isDark = document.documentElement.classList.toggle('dark-mode');
+            localStorage.setItem('mcqs_dark_mode', isDark ? 'true' : 'false');
+            this.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Sync initial theme icon
+        if (document.documentElement.classList.contains('dark-mode')) {
+            document.getElementById('btnThemeToggle').innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // ── Initialize New Game ──
+        function startNewGame() {
+            board = Array.from({ length: BOARD_SIZE }, () => Array(BOARD_SIZE).fill(null));
+            bag = createBag();
+            playerRack = [];
+            aiRack = [];
+            pendingPlacements = [];
+            selectedRackId = null;
+            swapMode = false;
+            swapSelectedIds.clear();
+            btnSwap.classList.remove('swap-active');
+            btnSwap.innerHTML = '<i class="fas fa-arrows-rotate"></i> Swap';
+            hintCells = [];
+            currentTurn = 'player';
+            playerScore = 0;
+            aiScore = 0;
+            consecutivePasses = 0;
+            moveHistory = [];
+            gameOver = false;
+
+            drawTiles(playerRack, 7);
+            if (modeSelect.value !== 'solo') drawTiles(aiRack, 7);
+
+            playerScoreEl.textContent = '0';
+            aiScoreEl.textContent = '0';
+            bagCountEl.textContent = bag.length;
+            moveCountEl.textContent = '0 moves';
+            historyListEl.innerHTML = '<div style="text-align:center; color:var(--sc-muted); font-size:0.8rem; padding:12px;">No moves played yet.</div>';
+
+            loadBestStats();
+            updateTurnUI();
+            renderBoard();
+            renderRack();
+            updatePreview();
+        }
+
+        startNewGame();
+    })();
+    </script>
+</body>
+
+</html>
