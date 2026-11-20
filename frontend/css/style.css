@@ -3055,6 +3055,11 @@ body.dark-mode .drill-reveal-btn:hover {
    ═══════════════════════════════════════════════════════ */
 
 /* ── Dropdown trigger button ── */
+#mainNav.nav-links {
+  align-items: center;
+  gap: 14px;
+}
+
 .nav-dropdown {
   position: relative;
   display: inline-flex;

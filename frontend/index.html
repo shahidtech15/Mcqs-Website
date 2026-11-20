@@ -489,6 +489,7 @@
                     </div>
                     <div class="hub-cat-links">
                         <a href="css-essays-2026.html"><i class="fa-solid fa-award"></i> CSS 2026 Essays (10 Solved)</a>
+                        <a href="css-essays-2021.html"><i class="fa-solid fa-pen-nib"></i> CSS 2021 Essays (10 Solved)</a>
                         <a href="cce-essays-2025.html"><i class="fa-solid fa-landmark"></i> SPSC CCE 2025 Essays</a>
                         <a href="upsc-essays-2023.html"><i class="fa-solid fa-landmark"></i> UPSC CSE 2023 Essays</a>
                         <a href="international-relations-essays.html"><i class="fa-solid fa-globe"></i> IR &amp; Geopolitics (12 Essays)</a>
@@ -496,6 +497,8 @@
                         <a href="geoeconomics-finance-essays.html"><i class="fa-solid fa-chart-line"></i> Geoeconomics Essays (12)</a>
                         <a href="essay-pakistan-education-crisis.html"><i class="fa-solid fa-graduation-cap"></i> Pakistan Education Crisis</a>
                         <a href="essay-russia-ukraine-war.html"><i class="fa-solid fa-globe"></i> Russia-Ukraine War Essay</a>
+                        <a href="articles.html"><i class="fa-solid fa-book-open"></i> In-Depth Study Articles</a>
+                        <a href="editorial-explainer.html"><i class="fa-solid fa-newspaper"></i> Editorial Explainer</a>
                         <a href="written-prep.html"><i class="fa-solid fa-pen-nib"></i> Written Exam Prep Hub</a>
                     </div>
                 </div>
@@ -510,6 +513,8 @@
                         </div>
                     </div>
                     <div class="hub-cat-links">
+                        <a href="quiz.html"><i class="fa-solid fa-brain"></i> Take Interactive Mock Quiz <span class="badge-new">START</span></a>
+                        <a href="ai-assistant.html"><i class="fa-solid fa-robot"></i> AI Study Assistant</a>
                         <a href="exam-guide.html"><i class="fa-solid fa-map-signs"></i> Competitive Exam Guide</a>
                         <a href="recruitment-prep.html"><i class="fa-solid fa-briefcase"></i> Recruitment Prep Hub</a>
                         <a href="fia-sample-papers.html"><i class="fa-solid fa-file-shield"></i> FIA AD Sample Papers (2,000+)</a>
@@ -1506,119 +1511,7 @@
     <script src="js/data_islamiat_1000.js"></script>
     <script src="js/app.js"></script>
     <script src="js/cookie-consent.js"></script>
-
-    <!-- ═══ NAVIGATION ENHANCEMENT SCRIPTS ═══ -->
-    <script>
-    (function() {
-      // ── 1. MEGA-MENU: open/close on hover & keyboard ──
-      document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
-        var btn = dd.querySelector('.nav-dropdown-btn');
-        var menu = dd.querySelector('.mega-menu');
-        if (!btn || !menu) return;
-
-        // Show on mouse enter
-        dd.addEventListener('mouseenter', function() {
-          btn.setAttribute('aria-expanded', 'true');
-          menu.style.display = 'grid';
-        });
-        dd.addEventListener('mouseleave', function() {
-          btn.setAttribute('aria-expanded', 'false');
-          menu.style.display = '';
-        });
-
-        // Toggle on click (mobile / keyboard)
-        btn.addEventListener('click', function(e) {
-          var isOpen = btn.getAttribute('aria-expanded') === 'true';
-          // Close all others
-          document.querySelectorAll('.nav-dropdown-btn').forEach(function(b) {
-            b.setAttribute('aria-expanded', 'false');
-            var m = b.parentElement.querySelector('.mega-menu');
-            if (m) m.style.display = '';
-          });
-          if (!isOpen) {
-            btn.setAttribute('aria-expanded', 'true');
-            menu.style.display = 'grid';
-            e.stopPropagation();
-          }
-        });
-      });
-
-      // Close mega-menus on outside click
-      document.addEventListener('click', function() {
-        document.querySelectorAll('.nav-dropdown-btn').forEach(function(btn) {
-          btn.setAttribute('aria-expanded', 'false');
-          var menu = btn.parentElement.querySelector('.mega-menu');
-          if (menu) menu.style.display = '';
-        });
-      });
-
-      // ── 2. MOBILE DRAWER (keep existing open/close) ──
-      var mobileBtn = document.querySelector('.mobile-menu');
-      var navLinks  = document.getElementById('mainNav');
-      if (mobileBtn && navLinks) {
-        mobileBtn.addEventListener('click', function() {
-          navLinks.classList.toggle('nav-open');
-          mobileBtn.classList.toggle('active');
-          // Show all dropdowns as flat list on mobile
-          navLinks.querySelectorAll('.nav-dropdown').forEach(function(dd) {
-            dd.style.display = navLinks.classList.contains('nav-open') ? 'block' : '';
-          });
-        });
-      }
-
-      // ── 3. HUB FILTER PILLS ──
-      var pills = document.querySelectorAll('.hub-pill');
-      var cards = document.querySelectorAll('.hub-category-card');
-      pills.forEach(function(pill) {
-        pill.addEventListener('click', function() {
-          var filter = pill.getAttribute('data-filter');
-          pills.forEach(function(p) { p.classList.remove('active'); });
-          pill.classList.add('active');
-          cards.forEach(function(card) {
-            if (filter === 'all' || card.getAttribute('data-category') === filter) {
-              card.classList.remove('hidden');
-            } else {
-              card.classList.add('hidden');
-            }
-          });
-        });
-      });
-
-      // ── 4. CATEGORY STRIP: highlight active pill on click ──
-      document.querySelectorAll('.cat-strip-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          document.querySelectorAll('.cat-strip-btn').forEach(function(b) {
-            b.classList.remove('active');
-          });
-          btn.classList.add('active');
-        });
-      });
-
-      // ── 5. filterCategorySection helper (called by strip onclick) ──
-      window.filterCategorySection = function(cat) {
-        // Map strip category names to hub pill data-filter values
-        var map = {
-          all:'all', maps:'maps', science:'science', law:'law',
-          economy:'economy', history:'history', intl:'intl',
-          games:'games', essays:'essays', exam:'exam', career:'career'
-        };
-        var filter = map[cat] || 'all';
-        // Activate the matching hub pill
-        document.querySelectorAll('.hub-pill').forEach(function(p) {
-          if (p.getAttribute('data-filter') === filter) {
-            p.click();
-          }
-        });
-        // Scroll to hub
-        var hub = document.getElementById('tools-hub');
-        if (hub) {
-          setTimeout(function() { hub.scrollIntoView({behavior:'smooth'}); }, 50);
-        }
-      };
-
-    })();
-    </script>
-    <!-- ═══ END NAVIGATION ENHANCEMENT SCRIPTS ═══ -->
+    <script src="js/nav.js"></script>
 </body>
 
 </html>
