@@ -1,11 +1,118 @@
 /**
- * Personalized Learning Dashboard Data Engine
+ * Personalized Learning Dashboard & Spaced-Repetition Mistake Notebook Engine
  * Manages completed tests, subject mastery, weak areas, accuracy, study hours,
- * and performance trends over time using localStorage with realistic civil services benchmarks.
+ * performance trends, and persistent mistake notebook using localStorage.
  */
 
 window.LEARNING_DASHBOARD = (function () {
     const STORAGE_KEY = 'mcqs_user_learning_profile';
+    const MISTAKE_KEY = 'mcqs_mistake_notebook';
+
+    // Default Seeded Mistakes for Spaced Repetition Notebook
+    const defaultMistakes = [
+        {
+            _id: "mistake_seed_1",
+            questionText: "If A can complete a piece of work in 12 days and B in 15 days, how many days will they take to complete it working together?",
+            options: {
+                A: "6.0 days",
+                B: "6.67 days (6 2/3 days)",
+                C: "7.25 days",
+                D: "8.5 days"
+            },
+            correctAnswer: "B",
+            selectedAnswer: "C",
+            explanation: "Combined 1-day work = 1/12 + 1/15 = (5 + 4)/60 = 9/60 = 3/20. Total time = 20/3 = 6.67 days (6 2/3 days).",
+            categoryName: "Mathematics",
+            subCategory: "Work & Time",
+            mistakeCount: 2,
+            lastMissedAt: "2026-11-19"
+        },
+        {
+            _id: "mistake_seed_2",
+            questionText: "Under Section 5(5) of the FIA Act, 1974, an officer of the Agency not below the rank of Sub-Inspector may freeze property for a maximum initial period of:",
+            options: {
+                A: "30 days",
+                B: "60 days",
+                C: "90 days",
+                D: "14 days"
+            },
+            correctAnswer: "C",
+            selectedAnswer: "A",
+            explanation: "Under Section 5(5) of the FIA Act, 1974, property connected with a scheduled offence can be frozen by order in writing for a period up to 90 days.",
+            categoryName: "FIA Assistant Director Investigation",
+            subCategory: "FIA Act, 1974",
+            mistakeCount: 2,
+            lastMissedAt: "2026-11-18"
+        },
+        {
+            _id: "mistake_seed_3",
+            questionText: "Choose the correct preposition: 'The accused was acquitted ____ all charges by the High Court.'",
+            options: {
+                A: "from",
+                B: "of",
+                C: "by",
+                D: "off"
+            },
+            correctAnswer: "B",
+            selectedAnswer: "A",
+            explanation: "The verb 'acquit' always takes the fixed dependent preposition 'of' (acquitted of a crime/charge).",
+            categoryName: "English",
+            subCategory: "Prepositions",
+            mistakeCount: 1,
+            lastMissedAt: "2026-11-18"
+        },
+        {
+            _id: "mistake_seed_4",
+            questionText: "Which Constitutional Amendment introduced Article 191A establishing Constitutional Benches in the Supreme Court of Pakistan?",
+            options: {
+                A: "24th Amendment",
+                B: "25th Amendment",
+                C: "26th Amendment (2024)",
+                D: "19th Amendment"
+            },
+            correctAnswer: "C",
+            selectedAnswer: "D",
+            explanation: "The 26th Constitutional Amendment Act, 2024 inserted Article 191A creating Constitutional Benches in the Supreme Court and reformed the Judicial Commission of Pakistan.",
+            categoryName: "Pakistan Affairs",
+            subCategory: "Constitutional History",
+            mistakeCount: 1,
+            lastMissedAt: "2026-11-17"
+        },
+        {
+            _id: "mistake_seed_5",
+            questionText: "Deficiency of which vitamin causes Pernicious Anemia and neurological degeneration?",
+            options: {
+                A: "Vitamin B1 (Thiamine)",
+                B: "Vitamin B6 (Pyridoxine)",
+                C: "Vitamin B12 (Cyanocobalamin)",
+                D: "Vitamin C (Ascorbic Acid)"
+            },
+            correctAnswer: "C",
+            selectedAnswer: "B",
+            explanation: "Vitamin B12 (Cyanocobalamin) is essential for red blood cell maturation and myelin synthesis; its deficiency causes pernicious anemia.",
+            categoryName: "Everyday Science",
+            subCategory: "Biology & Vitamins",
+            mistakeCount: 1,
+            lastMissedAt: "2026-11-16"
+        },
+        {
+            _id: "mistake_seed_6",
+            questionText: "Under the Civil Servants Act, 1973, what is the maximum initial probation period (including extension) prescribed under Section 6?",
+            options: {
+                A: "1 year",
+                B: "2 years",
+                C: "As prescribed by rules for the service/post",
+                D: "6 months fixed"
+            },
+            correctAnswer: "C",
+            selectedAnswer: "B",
+            explanation: "Section 6 of the Civil Servants Act, 1973 provides that an initial appointment shall be on probation for such period as may be prescribed by rules.",
+            categoryName: "Civil Servants Act, 1973",
+            subCategory: "Appointments & Probation",
+            mistakeCount: 1,
+            lastMissedAt: "2026-11-15"
+        }
+    ];
 
     // Default Seeded Civil Services Benchmark Profile
     const defaultProfile = {
@@ -32,7 +139,7 @@ window.LEARNING_DASHBOARD = (function () {
             unattempted: 60,
             overallAccuracy: 74.2,
             averageScore: 72.8,
-            examReadinessIndex: 78 // Out of 100
+            examReadinessIndex: 78
         },
         subjectMastery: [
             {
@@ -209,7 +316,6 @@ window.LEARNING_DASHBOARD = (function () {
         } catch (e) {
             console.warn('Could not read from localStorage, using default profile.');
         }
-        // Save default profile to localStorage on first load
         saveProfile(defaultProfile);
         return JSON.parse(JSON.stringify(defaultProfile));
     }
@@ -222,6 +328,65 @@ window.LEARNING_DASHBOARD = (function () {
         }
     }
 
+    // ── Mistake Notebook Storage ──
+    function getMistakes() {
+        try {
+            const raw = localStorage.getItem(MISTAKE_KEY);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) return parsed;
+            }
+        } catch (e) {}
+        saveMistakes(defaultMistakes);
+        return JSON.parse(JSON.stringify(defaultMistakes));
+    }
+
+    function saveMistakes(list) {
+        try {
+            localStorage.setItem(MISTAKE_KEY, JSON.stringify(list));
+        } catch (e) {}
+    }
+
+    function recordMistakes(wrongItems, categoryName) {
+        if (!Array.isArray(wrongItems) || wrongItems.length === 0) return getMistakes();
+        const list = getMistakes();
+        const today = new Date().toISOString().split('T')[0];
+
+        wrongItems.forEach(item => {
+            const qId = String(item.questionId || item._id || ('m_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6)));
+            const existingIdx = list.findIndex(m => String(m._id) === qId || m.questionText === item.questionText);
+            if (existingIdx !== -1) {
+                list[existingIdx].mistakeCount = (list[existingIdx].mistakeCount || 1) + 1;
+                list[existingIdx].selectedAnswer = item.selectedAnswer || list[existingIdx].selectedAnswer;
+                list[existingIdx].lastMissedAt = today;
+            } else {
+                list.unshift({
+                    _id: qId,
+                    questionText: item.questionText,
+                    options: item.options || { A: 'Option A', B: 'Option B', C: 'Option C', D: 'Option D' },
+                    correctAnswer: item.correctAnswer || 'A',
+                    selectedAnswer: item.selectedAnswer || 'None',
+                    explanation: item.explanation || 'Review core concept in the study portal.',
+                    categoryName: item.categoryName || categoryName || 'General Exam',
+                    subCategory: item.subCategory || '',
+                    mistakeCount: 1,
+                    lastMissedAt: today
+                });
+            }
+        });
+
+        // Keep top 100 recent mistakes
+        const trimmed = list.slice(0, 100);
+        saveMistakes(trimmed);
+        return trimmed;
+    }
+
+    function resolveMistake(questionId) {
+        const list = getMistakes().filter(m => String(m._id) !== String(questionId));
+        saveMistakes(list);
+        return list;
+    }
+
     function recordQuizResult(quizData) {
         const profile = loadProfile();
         const total = quizData.totalQuestions || 50;
@@ -232,7 +397,6 @@ window.LEARNING_DASHBOARD = (function () {
         const accuracy = total > 0 ? +((correct / total) * 100).toFixed(1) : 0;
         const catName = quizData.categoryName || "General Quiz";
 
-        // 1. Add to test history
         profile.testHistory.unshift({
             id: 'test_' + Date.now(),
             testName: quizData.testName || (catName + ' Mock Test'),
@@ -245,12 +409,10 @@ window.LEARNING_DASHBOARD = (function () {
             status: accuracy >= 70 ? 'Passed (FPSC Merit Tier)' : (accuracy >= 50 ? 'Average' : 'Review Required')
         });
 
-        // Keep last 25 tests
         if (profile.testHistory.length > 25) {
             profile.testHistory = profile.testHistory.slice(0, 25);
         }
 
-        // 2. Update overall stats
         profile.overallStats.testsCompleted += 1;
         profile.overallStats.questionsAttempted += total;
         profile.overallStats.correctAnswers += correct;
@@ -261,13 +423,11 @@ window.LEARNING_DASHBOARD = (function () {
         const totalCorr = profile.overallStats.correctAnswers;
         profile.overallStats.overallAccuracy = totalAtt > 0 ? +((totalCorr / totalAtt) * 100).toFixed(1) : 0;
 
-        // Recalculate Exam Readiness Index (0 - 100)
         profile.overallStats.examReadinessIndex = Math.min(
             98,
             Math.round((profile.overallStats.overallAccuracy * 0.7) + (Math.min(profile.overallStats.testsCompleted, 30) * 0.6) + 12)
         );
 
-        // 3. Update subject mastery if category matches
         const subIndex = profile.subjectMastery.findIndex(s =>
             catName.toLowerCase().includes(s.subject.toLowerCase()) ||
             s.subject.toLowerCase().includes(catName.toLowerCase())
@@ -294,7 +454,6 @@ window.LEARNING_DASHBOARD = (function () {
         profile.totalStudyHours = +(profile.totalStudyHours + hours).toFixed(1);
         profile.currentWeekHours = +(profile.currentWeekHours + hours).toFixed(1);
 
-        // Add to today's daily log
         const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         const todayName = dayNames[new Date().getDay()];
         const todayObj = profile.dailyHours.find(d => d.day === todayName);
@@ -308,6 +467,7 @@ window.LEARNING_DASHBOARD = (function () {
 
     function resetToDefault() {
         saveProfile(defaultProfile);
+        saveMistakes(defaultMistakes);
         return JSON.parse(JSON.stringify(defaultProfile));
     }
 
@@ -316,6 +476,9 @@ window.LEARNING_DASHBOARD = (function () {
         saveProfile: saveProfile,
         recordQuizResult: recordQuizResult,
         addStudyTime: addStudyTime,
-        resetProfile: resetToDefault
+        resetProfile: resetToDefault,
+        getMistakes: getMistakes,
+        recordMistakes: recordMistakes,
+        resolveMistake: resolveMistake
     };
 })();

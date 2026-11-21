@@ -65,6 +65,17 @@
     const norm = (categoryName || '').toLowerCase();
     const normSub = (subCategory || '').toLowerCase();
 
+    if (norm.includes('mistake') || norm.includes('cat_mistakes')) {
+      return [];
+    }
+    if (norm.includes('css mpt') || norm.includes('cat_css_mpt') || norm.includes('mpt 200')) {
+      return [
+        'js/data_core_fallback.js',
+        'js/data_2200.js',
+        'js/data_islamiat_1000.js',
+        'js/data_current_affairs_200.js'
+      ];
+    }
     if (norm.includes('synonym') || norm.includes('antonym')) {
       return ['js/data_synonyms_antonyms.js'];
     }

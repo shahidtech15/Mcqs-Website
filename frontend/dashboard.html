@@ -727,7 +727,26 @@
             </div>
         </div>
 
-        <!-- Row 3: Completed Tests History Table -->
+        <!-- Row 3: Personal Mistake Notebook & Spaced Repetition Queue -->
+        <div class="dash-card" id="mistakeNotebookCard" style="margin-bottom: 24px;">
+            <div class="dash-card-header" style="flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <h2 class="dash-card-title"><i class="fa-solid fa-book-medical" style="color:#e11d48;"></i> Personal Mistake Notebook &amp; Spaced Repetition Queue (<span id="mistakeCountBadge">0</span>)</h2>
+                    <p style="font-size:0.84rem; color:var(--text-light); margin-top:4px; margin-bottom:0;">Every question you answer incorrectly in a mock test is automatically saved here. Answering a question correctly during a Mistake Retry Quiz or clicking "Mark Mastered" removes it from your queue.</p>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <a href="quiz.html?categoryId=cat_mistakes" class="rx-action-btn" style="background:#e11d48;">
+                        <i class="fa-solid fa-bullseye"></i> Practice All Mistakes in Quiz
+                    </a>
+                    <a href="quiz.html?categoryId=cat_css_mpt" class="rx-action-btn" style="background:#1d4ed8;">
+                        <i class="fa-solid fa-award"></i> Take CSS MPT 200-Mark Mock
+                    </a>
+                </div>
+            </div>
+            <div id="mistakeNotebookList" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:14px; margin-top:12px;"></div>
+        </div>
+
+        <!-- Row 4: Completed Tests History Table -->
         <div class="dash-card">
             <div class="dash-card-header">
                 <h2 class="dash-card-title"><i class="fa-solid fa-clock-rotate-left" style="color:#0284c7;"></i> Completed Tests History</h2>
@@ -911,6 +930,52 @@
                             </td>
                         </tr>
                     `).join('');
+                }
+
+                // Mistake Notebook Rendering
+                const mistakeListEl = document.getElementById('mistakeNotebookList');
+                const mistakeCountEl = document.getElementById('mistakeCountBadge');
+                if (mistakeListEl && typeof db.getMistakes === 'function') {
+                    const mistakes = db.getMistakes();
+                    if (mistakeCountEl) mistakeCountEl.textContent = String(mistakes.length);
+                    if (mistakes.length === 0) {
+                        mistakeListEl.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:24px; color:var(--text-light); background:var(--bg-color); border-radius:10px;">🎉 All mistakes mastered! Take a new mock quiz to continue building your spaced repetition queue.</div>';
+                    } else {
+                        mistakeListEl.innerHTML = mistakes.map(m => {
+                            const opts = m.options || {};
+                            const corrText = opts[m.correctAnswer] || m.correctAnswer;
+                            const wrongText = opts[m.selectedAnswer] || m.selectedAnswer || 'Unattempted';
+                            return `
+                                <div class="rx-card" style="margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between;">
+                                    <div>
+                                        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px;">
+                                            <span class="status-pill status-weak">${m.categoryName || 'Exam MCQ'}</span>
+                                            <span style="font-size:0.74rem; color:#ef4444; font-weight:700;"><i class="fa-solid fa-rotate"></i> Missed ${m.mistakeCount || 1}x</span>
+                                        </div>
+                                        <div style="font-size:0.9rem; font-weight:700; color:var(--text-dark); margin-bottom:8px; line-height:1.45;">${m.questionText}</div>
+                                        <div style="font-size:0.8rem; margin-bottom:4px; color:#dc2626;"><i class="fa-solid fa-xmark"></i> <strong>Your Choice (${m.selectedAnswer || '—'}):</strong> ${wrongText}</div>
+                                        <div style="font-size:0.8rem; margin-bottom:8px; color:#059669;"><i class="fa-solid fa-check"></i> <strong>Correct (${m.correctAnswer}):</strong> ${corrText}</div>
+                                        <div style="font-size:0.78rem; color:var(--text-light); background:rgba(15,23,42,0.03); padding:8px 10px; border-radius:6px; margin-bottom:10px; line-height:1.45;">
+                                            <strong>Note:</strong> ${m.explanation}
+                                        </div>
+                                    </div>
+                                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                                        <span style="font-size:0.72rem; color:var(--text-light);">Last missed: ${m.lastMissedAt || 'Recent'}</span>
+                                        <button type="button" class="btn-resolve-mistake" data-id="${m._id}" style="background:#10b981; color:#fff; border:none; padding:5px 11px; border-radius:6px; font-size:0.76rem; font-weight:700; cursor:pointer;">
+                                            <i class="fa-solid fa-check"></i> Mark Mastered
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+
+                        mistakeListEl.querySelectorAll('.btn-resolve-mistake').forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                db.resolveMistake(btn.getAttribute('data-id'));
+                                renderDashboard();
+                            });
+                        });
+                    }
                 }
             }
 

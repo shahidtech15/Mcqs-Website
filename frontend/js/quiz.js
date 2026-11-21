@@ -192,6 +192,8 @@ const KNOWN_SUBCATEGORIES = {
 
 // Default Fallback Categories
 const FALLBACK_CATEGORIES = [
+  { _id: 'cat_mistakes', name: '🎯 Mistake Notebook (Spaced Repetition Retry)', description: 'Practice questions you previously missed across mock tests. Answering correctly graduates them from your Mistake Notebook.', icon: 'fa-bullseye', questionCount: 50, subcategoriesCount: 0 },
+  { _id: 'cat_css_mpt', name: '🏛️ CSS MPT 200-Mark Official Screening Mock', description: 'Official FPSC CSS MPT 200-MCQ Screening Paper: Islamic Studies (20), English Vocabulary & Grammar (50), General Abilities/Math/IQ (60), and GK/Pak Affairs/Current Affairs/Everyday Science (70).', icon: 'fa-award', questionCount: 200, subcategoriesCount: 0 },
   { _id: 'cat_synonyms', name: 'English Synonyms', description: '2,000 High-Yield Synonym MCQs with complete academic definitions, parts of speech, and contextual example sentences for CSS, PMS, FPSC, PPSC, NTS, and GRE exams.', icon: 'fa-spell-check', questionCount: 2000, subcategoriesCount: 4 },
   { _id: 'cat_antonyms', name: 'English Antonyms', description: '2,000 High-Yield Antonym MCQs with contrasting words, comprehensive explanations, and illustrative sentences targeting competitive examinations.', icon: 'fa-arrows-split-up-and-left', questionCount: 2000, subcategoriesCount: 4 },
   { _id: 'cat_fia_ad_sample', name: 'FIA Assistant Director Sample Papers', description: '20 Full-Length 100-Mark Sample Papers (2,000 MCQs) for FIA Assistant Director (Investigation): 10 Standard + 10 Advanced Hard Mocks covering English (20 Marks), Basic Maths, GK, Pak Affairs, Islamiat, Current Affairs (last 5 years), Everyday Science, and FIA Act 1974.', icon: 'fa-file-shield', questionCount: 2000, subcategoriesCount: 20 },
@@ -248,10 +250,22 @@ async function loadCategoriesForSetup() {
         categoriesData = FALLBACK_CATEGORIES;
     }
 
+    // Ensure Mistake Notebook & CSS MPT are always available at top of dropdown
+    const specialIds = new Set(['cat_mistakes', 'cat_css_mpt']);
+    const specialCats = FALLBACK_CATEGORIES.filter(c => specialIds.has(c._id));
+    const restCats = categoriesData.filter(c => !specialIds.has(c._id));
+    categoriesData = [...specialCats, ...restCats];
+
     setupCategory.innerHTML = '<option value="">Select a Category</option>';
     categoriesData.forEach(cat => {
         setupCategory.innerHTML += `<option value="${cat._id}">${cat.name}</option>`;
     });
+
+    if (window.LEARNING_DASHBOARD && typeof window.LEARNING_DASHBOARD.getMistakes === 'function') {
+        const mCount = window.LEARNING_DASHBOARD.getMistakes().length;
+        const badgeEl = document.getElementById('mistakeBannerCount');
+        if (badgeEl) badgeEl.textContent = String(mCount);
+    }
 
     // Check URL parameters for pre-selected Category / Subcategory
     parseUrlParameters();
@@ -304,6 +318,18 @@ setupCategory.addEventListener('change', (e) => {
     const catName = e.target.options[e.target.selectedIndex] ? e.target.options[e.target.selectedIndex].text : '';
     updateSubcategoryDropdown(catName);
 });
+
+window.quickStartSpecialMode = function (modeId) {
+    if (!setupCategory) return;
+    setupCategory.value = modeId;
+    if (modeId === 'cat_css_mpt' && setupLimit) {
+        setupLimit.value = '200';
+    } else if (modeId === 'cat_mistakes' && setupLimit) {
+        setupLimit.value = '20';
+    }
+    updateSubcategoryDropdown('');
+    startQuizBtn.click();
+};
 
 // 3. Start Quiz Procedure
 startQuizBtn.addEventListener('click', async () => {
@@ -407,6 +433,37 @@ function generateFallbackQuiz(catName, subCat, count, difficulty) {
 
     const normCat = (catName || '').toLowerCase();
 
+    if (normCat.includes('mistake') || normCat.includes('cat_mistakes')) {
+        const savedMistakes = (window.LEARNING_DASHBOARD && typeof window.LEARNING_DASHBOARD.getMistakes === 'function')
+            ? window.LEARNING_DASHBOARD.getMistakes()
+            : [];
+        if (savedMistakes.length > 0) {
+            return savedMistakes.slice(0, count);
+        }
+    }
+    if (normCat.includes('css mpt') || normCat.includes('cat_css_mpt') || normCat.includes('mpt 200')) {
+        const pick = (arr, n) => [...arr].sort(() => Math.random() - 0.5).slice(0, n);
+        const ratio = count / 200;
+        const islamPool = [...islamiat1000, ...all2200.filter(q => q.category && q.category.name === 'Islamiat')];
+        const engPool = all2200.filter(q => q.category && q.category.name === 'English');
+        const mathPool = [
+            ...MATH_SPECIALIZED_MCQS,
+            ...MATH_LIMITS_MCQS,
+            ...all2200.filter(q => q.category && (q.category.name === 'Mathematics' || q.category.name === 'IQ & Analytical Reasoning'))
+        ];
+        const gkPool = [
+            ...CURRENT_AFFAIRS_2026_MCQS,
+            ...ca200,
+            ...all2200.filter(q => q.category && ['General Knowledge', 'Pakistan Affairs', 'Everyday Science', 'Current Affairs'].includes(q.category.name))
+        ];
+        const mptSet = [
+            ...pick(islamPool, Math.max(2, Math.round(20 * ratio))),
+            ...pick(engPool, Math.max(5, Math.round(50 * ratio))),
+            ...pick(mathPool, Math.max(6, Math.round(60 * ratio))),
+            ...pick(gkPool, Math.max(7, Math.round(70 * ratio)))
+        ];
+        return mptSet.slice(0, count);
+    }
     if (normCat.includes('synonym') || normCat.includes('cat_synonyms')) {
         pool = [...synMcqs];
         if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
@@ -866,7 +923,29 @@ function renderResultsDashboard(data) {
                 unattemptedCount: data.unattemptedCount,
                 timeSpent: typeof formatTime === 'function' ? formatTime(data.timeTaken) : '25 mins'
             });
-            console.log('Quiz result successfully recorded to Learning Dashboard.');
+            // Record new mistakes & graduate solved mistakes into Mistake Notebook
+            if (Array.isArray(data.gradedResults)) {
+                const wrongOnes = data.gradedResults
+                    .filter(r => !r.isCorrect)
+                    .map(r => ({
+                        questionId: r.questionId,
+                        questionText: r.questionText,
+                        options: r.options,
+                        correctAnswer: r.correctAnswer,
+                        selectedAnswer: r.selectedAnswer || 'Unattempted',
+                        explanation: r.explanation,
+                        categoryName: catName
+                    }));
+                if (wrongOnes.length > 0 && typeof window.LEARNING_DASHBOARD.recordMistakes === 'function') {
+                    window.LEARNING_DASHBOARD.recordMistakes(wrongOnes, catName);
+                }
+                if (catName.toLowerCase().includes('mistake') && typeof window.LEARNING_DASHBOARD.resolveMistake === 'function') {
+                    data.gradedResults.filter(r => r.isCorrect).forEach(r => {
+                        window.LEARNING_DASHBOARD.resolveMistake(r.questionId);
+                    });
+                }
+            }
+            console.log('Quiz result and Mistake Notebook synced to Learning Dashboard.');
         } catch (e) {
             console.warn('Could not record quiz result to Learning Dashboard:', e);
         }
@@ -890,6 +969,38 @@ function renderResultsDashboard(data) {
     if (data.percentage >= 80) { statusEl.innerText = 'Excellent'; statusEl.parentElement.className = 'score-metric primary'; }
     else if (data.percentage >= 50) { statusEl.innerText = 'Average'; statusEl.parentElement.className = 'score-metric info'; }
     else { statusEl.innerText = 'Needs Work'; statusEl.parentElement.className = 'score-metric warning'; }
+
+    const retryBtn = document.getElementById('retryMistakesBtn');
+    if (retryBtn && Array.isArray(data.gradedResults)) {
+        const missedInThisQuiz = data.gradedResults.filter(r => !r.isCorrect);
+        if (missedInThisQuiz.length > 0) {
+            retryBtn.classList.remove('hidden');
+            retryBtn.innerHTML = `<i class="fa-solid fa-bullseye"></i> Retry ${missedInThisQuiz.length} Missed Question${missedInThisQuiz.length === 1 ? '' : 's'} Now`;
+            retryBtn.onclick = () => {
+                quizQuestions = missedInThisQuiz.map(r => ({
+                    _id: r.questionId,
+                    questionText: r.questionText,
+                    options: r.options,
+                    correctAnswer: r.correctAnswer,
+                    explanation: r.explanation
+                }));
+                userAnswers = {};
+                visitedQuestions.clear();
+                markedForReview.clear();
+                currentIndex = 0;
+                totalTimeTaken = 0;
+                isSubmitting = false;
+                sectionResults.classList.add('hidden');
+                sectionEngine.classList.remove('hidden');
+                activeQuizTitle.innerText = '🎯 Mistake Notebook - Instant Retry';
+                timeRemaining = quizQuestions.length * 60;
+                startTimer();
+                renderQuestion(0);
+            };
+        } else {
+            retryBtn.classList.add('hidden');
+        }
+    }
 
     const reviewList = document.getElementById('reviewList');
     reviewList.innerHTML = '';

@@ -298,6 +298,18 @@
             </div>
             </div>
 
+            <!-- Spaced Repetition Mistake Notebook & Official CSS MPT 200-Mark Simulator Banner -->
+            <div style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(29, 78, 216, 0.08)); border: 1.5px solid #e11d48; border-radius: 12px; padding: 14px 18px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                <div>
+                    <h4 style="margin: 0 0 4px 0; font-size: 0.96rem; font-weight: 800; color: #be123c;"><i class="fa-solid fa-bullseye"></i> Spaced Repetition &amp; Official CSS MPT 200-Mark Mode</h4>
+                    <p style="margin: 0; font-size: 0.82rem; color: #64748b;">Drill your saved wrong answers from the <strong>Mistake Notebook</strong> (<span id="mistakeBannerCount">6</span> queued) or take a full 200-MCQ FPSC-weighted CSS MPT screening mock.</p>
+                </div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button type="button" onclick="window.quickStartSpecialMode('cat_mistakes')" style="background: #e11d48; color: #fff; border: none; padding: 8px 13px; border-radius: 8px; font-weight: 700; font-size: 0.82rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;"><i class="fa-solid fa-rotate"></i> Practice My Mistakes</button>
+                    <button type="button" onclick="window.quickStartSpecialMode('cat_css_mpt')" style="background: #1d4ed8; color: #fff; border: none; padding: 8px 13px; border-radius: 8px; font-weight: 700; font-size: 0.82rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;"><i class="fa-solid fa-award"></i> CSS MPT 200-Mark Mock</button>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label for="setupCategory">Target Category</label>
                 <select id="setupCategory" class="form-control" title="Select Category" aria-label="Select Category">
@@ -321,6 +333,7 @@
                         <option value="30">30 Questions</option>
                         <option value="50">50 Questions</option>
                         <option value="100">100 Questions (Full Paper Mock)</option>
+                        <option value="200">200 Questions (CSS MPT 200-Min Mock)</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -492,8 +505,12 @@
             </div>
 
             <div class="results-actions">
+                <button id="retryMistakesBtn" class="btn-primary hidden" type="button" style="background:#e11d48; border-color:#e11d48;"><i class="fa-solid fa-bullseye"></i>
+                    Retry Missed Questions Now</button>
                 <button class="btn-primary" onclick="window.location.reload()"><i class="fa-solid fa-rotate-right"></i>
                     Take Another Quiz</button>
+                <button class="btn-outline" onclick="window.location.href='dashboard.html#mistakeNotebookCard'"><i class="fa-solid fa-book-medical"></i>
+                    Open Mistake Notebook</button>
                 <button class="btn-outline" onclick="window.location.href='index.html'"><i class="fa-solid fa-home"></i>
                     Back to Home</button>
             </div>
