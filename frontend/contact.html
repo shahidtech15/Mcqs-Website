@@ -432,7 +432,7 @@
                     <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <div class="contact-item-text">
                         <h4>General Inquiries</h4>
-                        <p><code>contact@cssprepcentral.com</code></p>
+                        <p><a href="mailto:shahidali.shahid@gmail.com" style="color:#2563eb; font-weight:600; text-decoration:none;"><code>shahidali.shahid@gmail.com</code></a></p>
                     </div>
                 </div>
 
@@ -440,7 +440,7 @@
                     <div class="contact-icon"><i class="fas fa-spell-check"></i></div>
                     <div class="contact-item-text">
                         <h4>Question Corrections &amp; Editorial Verification</h4>
-                        <p><code>editorial@cssprepcentral.com</code></p>
+                        <p><a href="mailto:shahidali.shahid@gmail.com" style="color:#2563eb; font-weight:600; text-decoration:none;"><code>shahidali.shahid@gmail.com</code></a></p>
                     </div>
                 </div>
 
@@ -448,7 +448,7 @@
                     <div class="contact-icon"><i class="fas fa-shield-alt"></i></div>
                     <div class="contact-item-text">
                         <h4>Privacy &amp; Data Rights</h4>
-                        <p><code>privacy@cssprepcentral.com</code></p>
+                        <p><a href="mailto:shahidali.shahid@gmail.com" style="color:#2563eb; font-weight:600; text-decoration:none;"><code>shahidali.shahid@gmail.com</code></a></p>
                     </div>
                 </div>
 
@@ -555,7 +555,18 @@
     <script>
         function handleContactSubmit(e) {
             e.preventDefault();
+            const name = (document.getElementById('userName') || {}).value || '';
+            const email = (document.getElementById('userEmail') || {}).value || '';
+            const category = (document.getElementById('userCategory') || {}).value || 'General';
+            const subject = (document.getElementById('userSubject') || {}).value || 'CSS Prep Central Inquiry';
+            const message = (document.getElementById('userMessage') || {}).value || '';
+
+            const mailtoUrl = 'mailto:shahidali.shahid@gmail.com?subject=' +
+                encodeURIComponent('[CSS Prep Central - ' + category + '] ' + subject) +
+                '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nCategory: ' + category + '\n\nMessage:\n' + message);
+
             const alertBox = document.getElementById('contactSuccessAlert');
+            alertBox.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been logged. To also send a copy directly via your email client to <strong>shahidali.shahid@gmail.com</strong>, <a href="' + mailtoUrl + '" style="color:#065f46;font-weight:800;text-decoration:underline;">click here to send email</a>.';
             alertBox.style.display = 'block';
             document.getElementById('contactForm').reset();
             alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
