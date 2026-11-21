@@ -1,0 +1,56 @@
+{
+  "name": "CSS Prep Central & MCQs Portal",
+  "short_name": "CSS Prep",
+  "description": "Pakistan's premier open-access competitive examination portal for CSS, PMS, FPSC, PPSC, SPSC, FIA & interactive academic tools.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#1e3a8a",
+  "categories": ["education", "books", "reference", "games"],
+  "icons": [
+    {
+      "src": "img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Take Mock Quiz",
+      "short_name": "Mock Quiz",
+      "description": "Start a timed MCQ mock test or CSS MPT simulator",
+      "url": "./quiz.html",
+      "icons": [{ "src": "img/logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Daily Challenges",
+      "short_name": "Daily 5",
+      "description": "Play today's interactive civil services challenge",
+      "url": "./daily-challenges.html",
+      "icons": [{ "src": "img/logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Constitution Explorer",
+      "short_name": "Constitution",
+      "description": "Explore Articles 1-280 and 26 Amendments",
+      "url": "./constitution-explorer.html",
+      "icons": [{ "src": "img/logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Academic Scrabble",
+      "short_name": "Scrabble",
+      "description": "Play CSS/GRE vocabulary Scrabble against AI",
+      "url": "./scrabble.html",
+      "icons": [{ "src": "img/logo.png", "sizes": "192x192" }]
+    }
+  ]
+}

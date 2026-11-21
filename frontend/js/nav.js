@@ -685,9 +685,54 @@
     });
   }
 
+  // 8. Progressive Web App (PWA) Service Worker Registration & Install Prompt
+  function initPwaSupport() {
+    if (!document.querySelector('link[rel="manifest"]')) {
+      var ml = document.createElement('link');
+      ml.rel = 'manifest';
+      ml.href = 'manifest.json';
+      document.head.appendChild(ml);
+    }
+    if (!document.querySelector('meta[name="theme-color"]')) {
+      var tm = document.createElement('meta');
+      tm.name = 'theme-color';
+      tm.content = '#1e3a8a';
+      document.head.appendChild(tm);
+    }
+
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    }
+
+    var deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', function (e) {
+      e.preventDefault();
+      deferredPrompt = e;
+      var footerRight = document.querySelector('#cmdPaletteBackdrop .cmd-footer span:last-child');
+      if (footerRight && !document.getElementById('cmdInstallAppBtn')) {
+        var installBtn = document.createElement('button');
+        installBtn.id = 'cmdInstallAppBtn';
+        installBtn.type = 'button';
+        installBtn.style.cssText = 'background:#059669;color:#fff;border:none;padding:3px 10px;border-radius:6px;font-size:0.72rem;font-weight:700;cursor:pointer;margin-left:8px;';
+        installBtn.innerHTML = '<i class="fas fa-download"></i> Install App';
+        installBtn.addEventListener('click', function () {
+          if (!deferredPrompt) return;
+          deferredPrompt.prompt();
+          deferredPrompt = null;
+          installBtn.style.display = 'none';
+        });
+        footerRight.appendChild(installBtn);
+      }
+    });
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectCommandPalette);
+    document.addEventListener('DOMContentLoaded', function () {
+      injectCommandPalette();
+      initPwaSupport();
+    });
   } else {
     injectCommandPalette();
+    initPwaSupport();
   }
 })();
