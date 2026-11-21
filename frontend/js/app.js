@@ -1,4 +1,31 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = (typeof localStorage !== 'undefined' && localStorage.getItem('mcqs_custom_api_url'))
+  || ((typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+    ? 'http://localhost:5000/api'
+    : 'https://mcqs-website-backend.vercel.app/api');
+
+// Fast API fetch wrapper with 2s timeout & session circuit-breaker when DB is in standalone mode
+async function apiFetch(url, options = {}) {
+  const isGet = !options.method || options.method.toUpperCase() === 'GET';
+  if (isGet && typeof window !== 'undefined' && window.__mcqsApiOffline) {
+    throw new Error('API in standalone fallback mode');
+  }
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 2000);
+  try {
+    const res = await fetch(url, { ...options, signal: options.signal || controller.signal });
+    if (res.status === 503 && typeof window !== 'undefined') {
+      window.__mcqsApiOffline = true;
+    }
+    return res;
+  } catch (err) {
+    if (isGet && typeof window !== 'undefined') {
+      window.__mcqsApiOffline = true;
+    }
+    throw err;
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 // HTML Sanitization & Escaping Utility to prevent Stored & Reflected XSS
 function escapeHtml(str) {
@@ -143,7 +170,7 @@ window.showBookmarkedQuestions = function() {
 
   // Try to fetch from backend; fall back to CIVIL_SERVANTS_ACT_MCQS if offline
   const fetches = ids.map(id =>
-    fetch(`${API_URL}/questions/${id}`)
+    apiFetch(`${API_URL}/questions/${id}`)
       .then(r => r.ok ? r.json() : null)
       .catch(() => null)
   );
@@ -760,7 +787,7 @@ async function fetchCategories() {
   if (!categoriesGrid) return;
 
   try {
-    const response = await fetch(`${API_URL}/categories/with-counts`);
+    const response = await apiFetch(`${API_URL}/categories/with-counts`);
     if (!response.ok) throw new Error('API request failed');
     loadedCategories = await response.json();
   } catch (error) {
@@ -1073,7 +1100,7 @@ async function loadMcqs(page = 1) {
     const sectionTitle = document.querySelector('.latest-mcqs .section-title h2');
     if (sectionTitle) sectionTitle.innerText = heading;
 
-    const response = await fetch(url);
+    const response = await apiFetch(url);
     if (!response.ok) throw new Error('Failed to load questions from backend');
     const data = await response.json();
 

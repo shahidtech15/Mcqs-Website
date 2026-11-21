@@ -12,8 +12,9 @@ app.use(cors());
 app.use(express.json());
 
 // Database Connection: Only connect if valid URI is supplied; fail gracefully without crashing
+mongoose.set('bufferCommands', false);
 if (process.env.MONGODB_URI) {
-    mongoose.connect(process.env.MONGODB_URI)
+    mongoose.connect(process.env.MONGODB_URI, { serverSelectionTimeoutMS: 3000 })
         .then(() => console.log('MongoDB Connected successfully'))
         .catch(err => console.warn('MongoDB connection warning:', err.message));
 } else {
@@ -42,6 +43,18 @@ app.get('/health', (req, res) => {
         uptime: process.uptime(),
         mongoStatus: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
     });
+});
+
+// Fast standalone check so /api/* never hangs for 10s when MongoDB is not configured
+app.use('/api', (req, res, next) => {
+    if (mongoose.connection.readyState !== 1) {
+        return res.status(503).json({
+            status: 'standalone',
+            mongoStatus: 'disconnected',
+            message: 'MongoDB is not connected; client should use built-in fallback dataset.'
+        });
+    }
+    next();
 });
 
 // Mount API Routes safely

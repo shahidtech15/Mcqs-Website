@@ -1,4 +1,31 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = (typeof localStorage !== 'undefined' && localStorage.getItem('mcqs_custom_api_url'))
+  || ((typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+    ? 'http://localhost:5000/api'
+    : 'https://mcqs-website-backend.vercel.app/api');
+
+// Fast API fetch wrapper with 2s timeout & session circuit-breaker when DB is in standalone mode
+async function apiFetch(url, options = {}) {
+  const isGet = !options.method || options.method.toUpperCase() === 'GET';
+  if (isGet && typeof window !== 'undefined' && window.__mcqsApiOffline) {
+    throw new Error('API in standalone fallback mode');
+  }
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 2000);
+  try {
+    const res = await fetch(url, { ...options, signal: options.signal || controller.signal });
+    if (res.status === 503 && typeof window !== 'undefined') {
+      window.__mcqsApiOffline = true;
+    }
+    return res;
+  } catch (err) {
+    if (isGet && typeof window !== 'undefined') {
+      window.__mcqsApiOffline = true;
+    }
+    throw err;
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 // ---- Shared Dark Mode (duplicated from app.js; quiz.js is standalone) ----
 function initDarkMode() {
@@ -213,7 +240,7 @@ function syncQuizCoreFallbackGlobals() {
 // 1. INIT: Load Categories into Dropdown & Handle URL Parameters
 async function loadCategoriesForSetup() {
     try {
-        const res = await fetch(`${API_URL}/categories`);
+        const res = await apiFetch(`${API_URL}/categories`);
         if (!res.ok) throw new Error("Backend offline");
         categoriesData = await res.json();
     } catch (err) {
@@ -298,7 +325,7 @@ startQuizBtn.addEventListener('click', async () => {
         let url = `${API_URL}/quiz/generate?categoryId=${encodeURIComponent(catId)}&limit=${limit}&difficulty=${diff}`;
         if (subCat) url += `&subCategory=${encodeURIComponent(subCat)}`;
 
-        const res = await fetch(url);
+        const res = await apiFetch(url);
         if (!res.ok) throw new Error("No backend quiz response.");
 
         quizQuestions = await res.json();

@@ -14,7 +14,10 @@
  * Dual Mode: Seamless Express/MongoDB API Integration + Offline/Local Persistence Fallback
  */
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = (typeof localStorage !== 'undefined' && localStorage.getItem('mcqs_custom_api_url'))
+  || ((typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+    ? 'http://localhost:5000/api'
+    : 'https://mcqs-website-backend.vercel.app/api');
 let authToken = localStorage.getItem('adminToken');
 let parsedBulkQuestions = [];
 
