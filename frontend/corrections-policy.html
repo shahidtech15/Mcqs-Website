@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Corrections Policy for CSS Prep Central: how students and educators can report incorrect MCQ answer keys, outdated facts, statutory amendments, or broken links.">
+    <title>Corrections Policy & Error Reporting | CSS Prep Central</title>
+    <link rel="canonical" href="https://cssprepcentral.com/corrections-policy.html">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e3a8a">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://cssprepcentral.com/corrections-policy.html">
+    <meta property="og:title" content="Corrections Policy & Error Reporting | CSS Prep Central">
+    <meta property="og:description" content="Corrections Policy for CSS Prep Central: how students and educators can report incorrect MCQ answer keys, outdated facts, statutory amendments, or broken links.">
+    <meta property="og:image" content="https://cssprepcentral.com/img/logo.png">
+    <meta property="og:site_name" content="CSS Prep Central">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://cssprepcentral.com/corrections-policy.html">
+    <meta name="twitter:title" content="Corrections Policy & Error Reporting | CSS Prep Central">
+    <meta name="twitter:description" content="Corrections Policy for CSS Prep Central: how students and educators can report incorrect MCQ answer keys, outdated facts, statutory amendments, or broken links.">
+    <meta name="twitter:image" content="https://cssprepcentral.com/img/logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "CSS Prep Central", "item": "https://cssprepcentral.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Corrections Policy & Error Reporting", "item": "https://cssprepcentral.com/corrections-policy.html" }
+      ]
+    }
+    </script>
+
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .legal-page-container { max-width: 960px; margin: 40px auto 80px; padding: 0 20px; }
+        .legal-card { background: var(--card-bg, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: 16px; padding: 44px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); line-height: 1.85; color: var(--text-dark, #1e293b); }
+        html.dark-mode .legal-card, .dark-mode .legal-card { background: #1e293b; border-color: #334155; color: #f8fafc; }
+        .legal-card h1 { font-family: 'Outfit', sans-serif; font-size: 2.2rem; color: var(--primary-color, #002b66); margin-bottom: 8px; }
+        html.dark-mode .legal-card h1, .dark-mode .legal-card h1 { color: #93c5fd; }
+        .effective-date { font-size: 0.9rem; color: var(--text-light, #64748b); margin-bottom: 28px; border-bottom: 1px solid var(--border-color, #e2e8f0); padding-bottom: 14px; }
+        .legal-card h2 { font-family: 'Outfit', sans-serif; font-size: 1.35rem; color: var(--primary-color, #002b66); margin-top: 32px; margin-bottom: 12px; border-left: 4px solid #2563eb; padding-left: 12px; }
+        html.dark-mode .legal-card h2, .dark-mode .legal-card h2 { color: #60a5fa; border-left-color: #3b82f6; }
+        .legal-card h3 { font-size: 1.1rem; margin-top: 20px; margin-bottom: 8px; color: #334155; }
+        html.dark-mode .legal-card h3, .dark-mode .legal-card h3 { color: #cbd5e1; }
+        .legal-card p, .legal-card li { font-size: 0.98rem; color: inherit; margin-bottom: 12px; }
+        .legal-card ul, .legal-card ol { padding-left: 24px; margin-bottom: 18px; }
+        .highlight-notice { background: rgba(37, 99, 235, 0.08); border: 1px solid rgba(37, 99, 235, 0.25); border-radius: 10px; padding: 16px 20px; margin: 20px 0; font-size: 0.95rem; }
+        html.dark-mode .highlight-notice, .dark-mode .highlight-notice { background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.35); }
+        .workflow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+        .wf-step { background: rgba(15, 118, 110, 0.07); border: 1px solid rgba(15, 118, 110, 0.25); border-radius: 10px; padding: 14px; text-align: center; }
+        .wf-step strong { display: block; color: #0f766e; font-size: 0.95rem; margin-bottom: 4px; }
+        html.dark-mode .wf-step strong { color: #2dd4bf; }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-graduation-cap" style="color: #f59e0b; font-size: 1.5rem; margin-right: 8px;"></i>
+                    <span>CSS Prep<span class="highlight">Central</span></span>
+                </a>
+            </div>
+            <nav class="nav-links" id="mainNav" aria-label="Main Navigation">
+                <a href="index.html">Home</a>
+
+                <!-- MEGA-MENU: Exam Prep -->
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-graduation-cap"></i> Exam Prep <i class="fa-solid fa-chevron-down nav-caret"></i>
+                    </button>
+                    <div class="mega-menu" role="menu">
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-pen-nib"></i> CSS / PMS Essays</h4>
+                            <a href="css-essays-2026.html">CSS 2026 Essays (10 Solved)</a>
+                            <a href="css-essays-2021.html">CSS 2021 Essays (10 Solved)</a>
+                            <a href="cce-essays-2025.html">SPSC CCE 2025 Essays</a>
+                            <a href="upsc-essays-2023.html">UPSC CSE 2023 Essays</a>
+                            <a href="written-prep.html">Written Exam Hub</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-briefcase"></i> Recruitment Tests</h4>
+                            <a href="recruitment-prep.html">Recruitment Prep Hub</a>
+                            <a href="fia-sample-papers.html">FIA AD Sample Papers (2,000+)</a>
+                            <a href="exam-guide.html">Competitive Exam Guide</a>
+                            <a href="latest-jobs.html"><i class="fa-solid fa-bullhorn"></i> Latest Jobs (17,500+)</a>
+                            <a href="scholarships.html"><i class="fa-solid fa-award"></i> MS/PhD Scholarships</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-book"></i> Study Resources</h4>
+                            <a href="grammar-rules.html">English Grammar Rules</a>
+                            <a href="science-notes.html">Science Capsule Notes</a>
+                            <a href="math-mcqs.html">Math MCQs (300+)</a>
+                            <a href="math-tricks.html">Math Shortcut Tricks</a>
+                            <a href="islamiat-mcqs.html">Islamiat MCQs (1,000+)</a>
+                            <a href="acts-rules.html">Acts &amp; Rules</a>
+                            <a href="digital-library.html">Digital Library</a>
+                            <a href="recommended-books.html">Recommended Books</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEGA-MENU: Interactive Tools -->
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-flask"></i> Explore <i class="fa-solid fa-chevron-down nav-caret"></i>
+                    </button>
+                    <div class="mega-menu" role="menu">
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-map"></i> Maps &amp; Geography</h4>
+                            <a href="pakistan-map.html">Pakistan Geography Map</a>
+                            <a href="sindh-map.html">Sindh Districts Map</a>
+                            <a href="world-map.html">Interactive World Map</a>
+                            <a href="physical-geography-map.html">Physical Geography Map</a>
+                            <a href="geopolitical-hotspots-map.html">Geopolitical Hotspots</a>
+                            <a href="international-trade-routes-map.html">Trade Routes Map</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-atom"></i> Science &amp; Technology</h4>
+                            <a href="periodic-table.html">Periodic Table (118 Elements)</a>
+                            <a href="solar-system-explorer.html">Solar System Explorer</a>
+                            <a href="human-body-explorer.html">Human Body Explorer</a>
+                            <a href="climate-change-explorer.html">Climate Change Explorer</a>
+                            <a href="technology-explorer.html">Technology Explorer</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-scale-balanced"></i> Law &amp; Governance</h4>
+                            <a href="constitution-explorer.html">Constitution Explorer</a>
+                            <a href="ppc-section-finder.html">PPC Section Finder</a>
+                            <a href="crpc-procedure-flowchart.html">CrPC Flowchart</a>
+                            <a href="identify-legal-provision.html">Legal Provision Quiz</a>
+                            <a href="court-structure-explorer.html">Court Structure</a>
+                            <a href="fia-laws-explorer.html">FIA Laws Explorer</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-chart-line"></i> Economy &amp; History</h4>
+                            <a href="world-economy-dashboard.html">World Economy Dashboard</a>
+                            <a href="currency-exchange-explorer.html">Currency &amp; Exchange</a>
+                            <a href="who-trades-what.html">Who Trades What?</a>
+                            <a href="world-history-timeline.html">World History Timeline</a>
+                            <a href="timeline.html">Pakistan History Timeline</a>
+                            <a href="global-power-comparison.html">Global Power Comparison</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEGA-MENU: Practice & Games -->
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-gamepad"></i> Practice <i class="fa-solid fa-chevron-down nav-caret"></i>
+                    </button>
+                    <div class="mega-menu" role="menu">
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-brain"></i> MCQ Quiz</h4>
+                            <a href="quiz.html">Take a Mock Quiz</a>
+                            <a href="islamiat-mcqs.html">Islamiat MCQs</a>
+                            <a href="math-mcqs.html">Mathematics MCQs</a>
+                            <a href="daily-challenges.html"><i class="fa-solid fa-bolt"></i> Daily Challenges</a>
+                            <a href="daily-fact.html"><i class="fa-solid fa-calendar-day"></i> Daily Fact Explorer</a>
+                            <a href="leaderboard.html"><i class="fa-solid fa-trophy"></i> Leaderboard</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-puzzle-piece"></i> Interactive Games</h4>
+                            <a href="guess-the-country.html">Guess the Country</a>
+                            <a href="locate-on-map.html">Locate on Map</a>
+                            <a href="match-the-following.html">Match the Following</a>
+                            <a href="arrange-chronologically.html">Chronology Quiz</a>
+                            <a href="crossword.html">Crossword Puzzle</a>
+                            <a href="scrabble.html">Scrabble Word Game</a>
+                            <a href="word-search.html">Word Search</a>
+                            <a href="unsc-simulator.html">UNSC Simulator</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-globe"></i> Global Affairs</h4>
+                            <a href="international-organizations-explorer.html">Int'l Organizations</a>
+                            <a href="topic-united-nations.html">One-Topic: UN</a>
+                            <a href="topic-european-union.html">One-Topic: EU</a>
+                            <a href="topic-nato.html">One-Topic: NATO</a>
+                            <a href="international-relations-essays.html">IR &amp; Geopolitics Essays</a>
+                            <a href="global-security-conflict-essays.html">Global Security Essays</a>
+                            <a href="geoeconomics-finance-essays.html">Geoeconomics Essays</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEGA-MENU: Essays & Articles -->
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-feather-pointed"></i> Essays <i class="fa-solid fa-chevron-down nav-caret"></i>
+                    </button>
+                    <div class="mega-menu" role="menu">
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-landmark"></i> CSS/PMS Solved</h4>
+                            <a href="css-essays-2026.html">CSS 2026 (10 Essays)</a>
+                            <a href="css-essays-2021.html">CSS 2021 (10 Essays)</a>
+                            <a href="cce-essays-2025.html">CCE/SPSC 2025 (8 Essays)</a>
+                            <a href="upsc-essays-2023.html">UPSC 2023 (8 Essays)</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-globe"></i> Master Essays</h4>
+                            <a href="international-relations-essays.html">IR &amp; Geopolitics (12)</a>
+                            <a href="global-security-conflict-essays.html">Global Security (12)</a>
+                            <a href="geoeconomics-finance-essays.html">Geoeconomics &amp; Finance (12)</a>
+                            <a href="essay-pakistan-education-crisis.html">Pakistan Education Crisis</a>
+                            <a href="essay-russia-ukraine-war.html">Russia-Ukraine War</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fa-solid fa-newspaper"></i> Articles &amp; Notes</h4>
+                            <a href="articles.html">In-Depth Study Articles</a>
+                            <a href="editorial-explainer.html">Editorial Explainers</a>
+                            <a href="science-notes.html">Science Capsule Notes</a>
+                            <a href="grammar-rules.html">English Grammar Rules</a>
+                            <a href="ai-assistant.html"><i class="fa-solid fa-robot"></i> AI Study Assistant</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="quiz.html" class="nav-cta-btn"><i class="fa-solid fa-bolt"></i> Take Quiz</a>
+                <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                <a href="admin.html" class="admin-link">Admin</a>
+            </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="legal-page-container">
+        <article class="legal-card">
+            <h1>Corrections Policy & Error Reporting Procedure</h1>
+            <div class="effective-date">Last Updated: November 2026 | Transparent Verification & Prompt Remediation</div>
+            
+            <div class="highlight-notice">
+                <strong>Accuracy Matters in Competitive Exams:</strong> A single miskeyed MCQ or outdated statutory reference can affect a candidate's preparation. We welcome and prioritize correction reports from students, teachers, and subject specialists.
+            </div>
+
+            <h2>1. What You Can Report</h2>
+            <p>Users are encouraged to report any of the following issues across our 74+ pages, interactive tools, and 15,000+ MCQ bank:</p>
+            <ul>
+                <li><strong>Incorrect MCQ Answer Keys:</strong> Questions where the marked correct option or explanation conflicts with an authoritative textbook, bare act, or official key.</li>
+                <li><strong>Outdated Statutory or Constitutional Provisions:</strong> Legal sections or constitutional articles that have been amended or repealed by subsequent legislation.</li>
+                <li><strong>Factual or Statistical Errors:</strong> Historical dates, geographical coordinates, scientific constants, or economic figures requiring correction.</li>
+                <li><strong>Technical Issues &amp; Broken Links:</strong> Non-functioning interactive controls, display issues on mobile devices, or broken external reference links.</li>
+                <li><strong>Copyright or Attribution Concerns:</strong> Material believed to require updated attribution or removal under our <a href="copyright-policy.html" style="color:#2563eb;font-weight:600;">Copyright Policy</a>.</li>
+            </ul>
+
+            <h2>2. How to Submit a Correction Report</h2>
+            <p>You can report an error through either of these channels:</p>
+            <ol>
+                <li><strong>Via the Contact &amp; Error Reporting Form:</strong> Visit our <a href="contact.html" style="color:#2563eb;font-weight:600;">Contact Us &amp; Error Reporting Page</a>, select <em>"Report an MCQ Error / Content Correction"</em>, and include the page URL, question text (or ID), and the authoritative source supporting the correction.</li>
+                <li><strong>Direct Question Feedback:</strong> Use the comment/feedback box beneath individual questions on the homepage or note the Question ID during a mock quiz review.</li>
+            </ol>
+
+            <h2>3. How Corrections Are Reviewed and Implemented</h2>
+            <ul>
+                <li><strong>Step 1 — Logging:</strong> Every reported error is logged in our Administrative Review Queue.</li>
+                <li><strong>Step 2 — Primary Source Verification:</strong> Our editorial team verifies the report against the relevant bare act (e.g., Constitution of Pakistan, PPC, CrPC, FIA Act), official Economic Survey, or standard academic reference.</li>
+                <li><strong>Step 3 — Update &amp; Explanation Note:</strong> Once verified, the answer key, explanation, or article text is corrected across both the primary dataset and offline fallback cache. Significant updates to articles include a visible <em>"Last Updated"</em> notice.</li>
+            </ul>
+  
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #0f172a; color: #94a3b8; padding: 40px 20px 25px; margin-top: 60px; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 30px;">
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">CSS Prep Central</h4>
+                <p style="font-size: 0.88rem; line-height: 1.6;">An independent open-access educational platform for competitive examination preparation in Pakistan (CSS, PMS, FPSC, SPSC, PPSC) and international academic learning.</p>
+            </div>
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">Academic Portals</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2;">
+                    <li><a href="quiz.html" style="color: #cbd5e1; text-decoration: none;">MCQ Practice &amp; Mock Simulator</a></li>
+                    <li><a href="written-prep.html" style="color: #cbd5e1; text-decoration: none;">Written Examination Prep</a></li>
+                    <li><a href="recruitment-prep.html" style="color: #cbd5e1; text-decoration: none;">Recruitment Prep Hub</a></li>
+                    <li><a href="constitution-explorer.html" style="color: #cbd5e1; text-decoration: none;">Pakistan Constitution Explorer</a></li>
+                    <li><a href="digital-library.html" style="color: #cbd5e1; text-decoration: none;">Digital Library &amp; Reports</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">Policies &amp; Transparency</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2;">
+                    <li><a href="about.html" style="color: #cbd5e1; text-decoration: none;">About Us</a></li>
+                    <li><a href="contact.html" style="color: #cbd5e1; text-decoration: none;">Contact Us</a></li>
+                    <li><a href="editorial-policy.html" style="color: #cbd5e1; text-decoration: none;">Editorial Policy</a></li>
+                    <li><a href="corrections-policy.html" style="color: #cbd5e1; text-decoration: none;">Corrections Policy</a></li>
+                    <li><a href="copyright-policy.html" style="color: #cbd5e1; text-decoration: none;">Copyright Policy</a></li>
+                    <li><a href="privacy.html" style="color: #cbd5e1; text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="terms.html" style="color: #cbd5e1; text-decoration: none;">Terms and Conditions</a></li>
+                    <li><a href="disclaimer.html" style="color: #cbd5e1; text-decoration: none;">Disclaimer</a></li>
+                    <li><a href="faq.html" style="color: #cbd5e1; text-decoration: none;">FAQ</a></li>
+                    <li><a href="sitemap.xml" style="color: #cbd5e1; text-decoration: none;">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 1px solid #1e293b; text-align: center; font-size: 0.82rem;">
+            <p>&copy; 2026 CSS Prep Central. All rights reserved. Independent educational platform; not affiliated with FPSC, SPSC, PPSC, NTS, or any government body.</p>
+        </div>
+    </footer>
+
+    <script>
+        const darkToggle = document.getElementById('darkModeToggle');
+        if (darkToggle) {
+            darkToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark-mode');
+                document.body.classList.toggle('dark-mode', isDark);
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                darkToggle.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                darkToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+        }
+    </script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+
+</html>

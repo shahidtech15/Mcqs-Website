@@ -485,17 +485,17 @@ window.DIGITAL_LIBRARY_DATA = {
     ]
   },
   {
-    "id": "pdf-examveda-gk-comp-eng",
-    "title": "ExamVeda Master Bank: GK, Computer Science & English",
+    "id": "pdf-master-gk-comp-eng",
+    "title": "Comprehensive Practice Bank: GK, Computer Science & English",
     "category": "Computer & General Knowledge",
-    "fileSize": "2.82 MB",
-    "pages": "340+ Pages",
-    "fileName": "ExamVeda_GK_Computer_English.pdf",
-    "filePath": "resources/ExamVeda_GK_Computer_English.pdf",
-    "description": "All-in-one resource for computer fundamentals, networking, cybersecurity protocols, MS Office shortcuts, modern world history, and advanced English verbal aptitude.",
+    "fileSize": "Interactive Module",
+    "pages": "6,000+ MCQs",
+    "fileName": "Interactive_GK_Computer_English",
+    "filePath": "quiz.html?categoryName=General%20Knowledge",
+    "description": "All-in-one interactive question bank for computer fundamentals, networking, cybersecurity protocols, MS Office shortcuts, modern world history, and advanced English verbal aptitude.",
     "tags": [
       "Computer Science",
-      "ExamVeda",
+      "General Knowledge",
       "GK",
       "Cybersecurity",
       "Aptitude"

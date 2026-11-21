@@ -324,16 +324,15 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+        <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <h1>Master Your Exams with <br> Top-Tier MCQs</h1>
-            <p>Access thousands of multiple choice questions across various subjects to prepare for your competitive
-                exams and interviews.</p>
+            <h1>Prepare Smarter. Learn Better. Succeed.</h1>
+            <p>Your complete destination for CSS, PMS, FPSC, SPSC and other competitive examinations. Practice thousands of MCQs, explore interactive educational tools and access comprehensive study resources.</p>
             <div class="search-box-container">
                 <form id="searchForm" class="search-box" onsubmit="return false;" role="search">
                     <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-                    <input type="text" id="searchInput" placeholder="Search questions across all subjects (e.g., Article 25, Algebra, MS Office)..." autocomplete="off" aria-label="Search MCQs" />
+                    <input type="text" id="searchInput" placeholder="Search 15,000+ MCQs, Constitution articles, essays, maps &amp; study tools (or press Ctrl+K)..." autocomplete="off" aria-label="Search MCQs and Study Resources" />
                     <button type="button" id="clearSearchBtn" class="clear-search-btn hidden" title="Clear search" aria-label="Clear search">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -341,19 +340,95 @@
                         <i class="fa-solid fa-magnifying-glass"></i> Search
                     </button>
                 </form>
-                                <div class="search-suggestions-chips" aria-label="Popular search topics">
-                    <span class="suggestion-label"><i class="fa-solid fa-fire"></i> Popular:</span>
-                    <button type="button" class="search-chip" onclick="window.location.href='latest-jobs.html'" style="font-weight:800; border-color:#e11d48; color:#e11d48;"><i class="fa-solid fa-bullhorn"></i> Latest Jobs (17,500+)</button>
-                    <button type="button" class="search-chip" onclick="window.location.href='scholarships.html'" style="font-weight:700; border-color:#4338ca; color:#4338ca;"><i class="fa-solid fa-graduation-cap"></i> MS/PhD Scholarships</button>
-                    <button type="button" class="search-chip" onclick="window.location.href='css-essays-2026.html'" style="font-weight:700; border-color:#002b66; color:#002b66;"><i class="fa-solid fa-award"></i> CSS 2026 Essays</button>
-                    <button type="button" class="search-chip" onclick="window.location.href='recruitment-prep.html'" style="font-weight:700; border-color:#0f766e; color:#0f766e;"><i class="fa-solid fa-briefcase"></i> Recruitment Prep (FIA, Police)</button>
-                    <button type="button" class="search-chip" onclick="window.location.href='math-mcqs.html'" style="font-weight:700; border-color:#0284c7; color:#0284c7;"><i class="fa-solid fa-calculator"></i> Math MCQs (300+)</button>
-                    <button type="button" class="search-chip" onclick="window.location.href='periodic-table.html'" style="font-weight:700; border-color:#8b5cf6; color:#8b5cf6;"><i class="fa-solid fa-atom"></i> Periodic Table</button>
-                    <button type="button" class="search-chip" onclick="window.location.href='pakistan-map.html'" style="font-weight:700; border-color:#047857; color:#047857;"><i class="fa-solid fa-map"></i> Pakistan Map</button>
-                    <button type="button" class="search-chip" onclick="window.location.href='constitution-explorer.html'" style="font-weight:700; border-color:#0f766e; color:#0f766e;"><i class="fa-solid fa-scale-balanced"></i> Constitution Explorer</button>
-                    <button type="button" class="search-chip" onclick="window.location.href='daily-challenges.html'" style="font-weight:700; border-color:#7c3aed; color:#7c3aed;"><i class="fa-solid fa-bolt"></i> Daily Challenge</button>
-                    <button type="button" class="search-chip" onclick="window.location.href='international-organizations-explorer.html'" style="font-weight:700; border-color:#0284c7; color:#0284c7;"><i class="fa-solid fa-globe"></i> Int'l Organizations</button>
+
+                <!-- Primary Hero Action Buttons (Section 4.2) -->
+                <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:18px 0 14px;">
+                    <a href="quiz.html" class="btn-primary" style="padding:11px 22px; border-radius:10px; font-weight:700; font-size:0.92rem; display:inline-flex; align-items:center; gap:8px; text-decoration:none; box-shadow:0 4px 14px rgba(37,99,235,0.28);">
+                        <i class="fa-solid fa-circle-play"></i> Start MCQ Practice
+                    </a>
+                    <a href="#study-resources" style="background:#ffffff; color:#1e3a8a; border:1.5px solid #cbd5e1; padding:11px 20px; border-radius:10px; font-weight:700; font-size:0.92rem; display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+                        <i class="fa-solid fa-book-open"></i> Explore Study Resources
+                    </a>
+                    <a href="#tools-hub" style="background:#0f766e; color:#ffffff; padding:11px 20px; border-radius:10px; font-weight:700; font-size:0.92rem; display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+                        <i class="fa-solid fa-compass"></i> Explore Interactive Tools
+                    </a>
                 </div>
+
+                <div class="search-suggestions-chips" aria-label="Popular search topics">
+                    <span class="suggestion-label"><i class="fa-solid fa-fire"></i> Quick Access:</span>
+                    <button type="button" class="search-chip" onclick="window.location.href='quiz.html?categoryId=cat_css_mpt'" style="font-weight:700; border-color:#1e3a8a; color:#1e3a8a;"><i class="fa-solid fa-award"></i> CSS MPT 200-Mark Mock</button>
+                    <button type="button" class="search-chip" onclick="window.location.href='css-essays-2026.html'" style="font-weight:700; border-color:#002b66; color:#002b66;"><i class="fa-solid fa-pen-nib"></i> CSS 2026 Solved Essays</button>
+                    <button type="button" class="search-chip" onclick="window.location.href='constitution-explorer.html'" style="font-weight:700; border-color:#0f766e; color:#0f766e;"><i class="fa-solid fa-scale-balanced"></i> Constitution Explorer</button>
+                    <button type="button" class="search-chip" onclick="window.location.href='pakistan-map.html'" style="font-weight:700; border-color:#047857; color:#047857;"><i class="fa-solid fa-map"></i> Pakistan Geography Map</button>
+                    <button type="button" class="search-chip" onclick="window.location.href='periodic-table.html'" style="font-weight:700; border-color:#7c3aed; color:#7c3aed;"><i class="fa-solid fa-atom"></i> Periodic Table</button>
+                    <button type="button" class="search-chip" onclick="window.location.href='recruitment-prep.html'" style="font-weight:700; border-color:#0f766e; color:#0f766e;"><i class="fa-solid fa-briefcase"></i> FPSC &amp; FIA Prep</button>
+                    <button type="button" class="search-chip" onclick="window.location.href='latest-jobs.html'" style="font-weight:700; border-color:#e11d48; color:#e11d48;"><i class="fa-solid fa-bullhorn"></i> Jobs &amp; Scholarships</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 3: 13 MAIN LEARNING CATEGORIES (Master Prompt Section 4.3) ═══ -->
+    <section id="main-learning-categories" style="padding: 48px 0 24px; background: var(--bg-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Main Learning Categories</h2>
+                <div class="underline"></div>
+                <p class="section-subtitle">Structured academic pathways for civil services, public service commissions, and university learners.</p>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(255px, 1fr)); gap:16px; margin-top:24px;">
+                <a href="exam-guide.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(30,58,138,0.1); color:#1e3a8a; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">1. CSS Preparation</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">200-Mark MPT simulator, compulsory &amp; optional syllabi, and solved essays.</p></div>
+                </a>
+                <a href="cce-essays-2025.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(13,148,136,0.1); color:#0d9488; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-landmark"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">2. PMS &amp; PCS Preparation</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">Provincial civil service essays, Sindh/Punjab GK, and written composition guides.</p></div>
+                </a>
+                <a href="recruitment-prep.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(15,118,110,0.1); color:#0f766e; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-building-columns"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">3. FPSC &amp; SPSC One-Paper</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">Targeted syllabi &amp; mock papers for FIA, Customs, NAB, AAO, and Police tests.</p></div>
+                </a>
+                <a href="quiz.html?categoryName=General%20Knowledge" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(2,132,199,0.1); color:#0284c7; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-globe"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">4. General Knowledge</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">World geography, capitals, currencies, international organizations, and inventions.</p></div>
+                </a>
+                <a href="pakistan-map.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(4,120,87,0.1); color:#047857; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-flag"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">5. Pakistan Affairs</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">Pakistan Movement, constitutional history, physical geography, rivers, and economy.</p></div>
+                </a>
+                <a href="#current-affairs-hub" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(37,99,235,0.1); color:#2563eb; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-newspaper"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">6. Current Affairs</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">Dated national &amp; global briefings, economic indicators, summits, and 2025–26 MCQs.</p></div>
+                </a>
+                <a href="science-notes.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(139,92,246,0.1); color:#7c3aed; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-flask"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">7. Everyday Science</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">Physics, Chemistry, Biology, Human Anatomy, Solar System, and Periodic Table.</p></div>
+                </a>
+                <a href="grammar-rules.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(20,184,166,0.1); color:#0d9488; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-spell-check"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">8. English Grammar &amp; Vocab</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">Tenses, active/passive voice, narration, prepositions, and 4,000 Synonyms/Antonyms.</p></div>
+                </a>
+                <a href="math-mcqs.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(217,119,6,0.1); color:#d97706; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-calculator"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">9. Mathematics &amp; Reasoning</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">300+ solved quantitative problems, shortcut formulas, algebra, ratios, and IQ series.</p></div>
+                </a>
+                <a href="international-organizations-explorer.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(29,78,216,0.1); color:#1d4ed8; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-earth-americas"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">10. International Relations</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">IR theories, UN/EU/NATO explorers, UNSC simulator, and 12 solved geopolitics essays.</p></div>
+                </a>
+                <a href="constitution-explorer.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(15,118,110,0.1); color:#0f766e; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">11. Law &amp; Constitution</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">1973 Constitution, PPC 1860, CrPC 1898 flowchart, FIA Act, PECA, and court hierarchy.</p></div>
+                </a>
+                <a href="technology-explorer.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(99,102,241,0.1); color:#4f46e5; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">12. Computer Science &amp; AI</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">MS Office, networking, OS fundamentals, and 200 Artificial Intelligence MCQs.</p></div>
+                </a>
+                <a href="latest-jobs.html" class="hub-category-card" style="padding:18px; text-decoration:none; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:44px; height:44px; border-radius:10px; background:rgba(225,29,72,0.1); color:#e11d48; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;"><i class="fa-solid fa-briefcase"></i></div>
+                    <div><h3 style="font-size:0.98rem; margin-bottom:4px; color:var(--text-dark);">13. Jobs &amp; Scholarships</h3><p style="font-size:0.8rem; color:var(--text-light); margin:0;">Verified public-sector recruitment notices and fully funded MS/PhD scholarships.</p></div>
+                </a>
             </div>
         </div>
     </section>
@@ -1417,10 +1492,10 @@
                 <div class="resource-card">
                     <div class="resource-icon">🏆</div>
                     <div class="resource-content">
-                        <h3>ExamVeda — GK, Computer &amp; English</h3>
-                        <p>Comprehensive 546-page question bank with 6,000+ MCQs covering General Knowledge, Computer Fundamentals (MS Word, Excel, PowerPoint, OS) &amp; English.</p>
-                        <div class="resource-meta"><span>📄 PDF (546 Pages)</span> <span>🔥 6000+ MCQs</span></div>
-                        <a href="resources/ExamVeda_GK_Computer_English.pdf" download class="resource-btn"><i class="fa-solid fa-download"></i> Download PDF</a>
+                        <h3>Comprehensive GK, Computer Science &amp; English Bank</h3>
+                        <p>Interactive 6,000+ question practice bank covering World General Knowledge, Computer Fundamentals (MS Word, Excel, PowerPoint, OS) &amp; English Grammar.</p>
+                        <div class="resource-meta"><span>🧠 Interactive Quiz</span> <span>🔥 6000+ MCQs</span></div>
+                        <a href="quiz.html?categoryName=General%20Knowledge" class="resource-btn"><i class="fa-solid fa-play"></i> Practice Online</a>
                     </div>
                 </div>
 
@@ -1440,6 +1515,179 @@
             </div>
         </div>
     </section>
+
+    
+    <!-- ═══ SECTION 7: INTERACTIVE DAILY MCQ CHALLENGE (Master Prompt Section 4.7) ═══ -->
+    <section id="daily-mcq-challenge" style="padding: 52px 0; background: var(--bg-color); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2>⚡ Daily MCQ Challenge — Question of the Day</h2>
+                <div class="underline"></div>
+                <p class="section-subtitle">Select an option and submit your response to reveal the verified answer and academic explanation.</p>
+            </div>
+            <div style="max-width: 780px; margin: 24px auto 0; background: var(--white); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; box-shadow: var(--card-shadow);" id="qotdHomeCard">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:14px;">
+                    <span style="background:rgba(30,58,138,0.1); color:#1e3a8a; font-size:0.78rem; font-weight:700; padding:4px 12px; border-radius:20px;"><i class="fa-solid fa-scale-balanced"></i> Constitutional Law &amp; Pakistan Affairs</span>
+                    <span style="font-size:0.78rem; color:var(--text-light); font-weight:600;">FPSC / CSS High-Yield</span>
+                </div>
+                <h3 style="font-size:1.12rem; line-height:1.55; margin-bottom:18px; color:var(--text-dark);" id="qotdQuestionText">
+                    Under the Constitution of the Islamic Republic of Pakistan (1973), which Article guarantees that "All citizens are equal before law and are entitled to equal protection of law"?
+                </h3>
+                <div id="qotdOptionsGroup" style="display:grid; gap:10px; margin-bottom:18px;">
+                    <label style="display:flex; align-items:center; gap:10px; padding:12px 14px; border:1.5px solid var(--border-color); border-radius:10px; cursor:pointer; font-size:0.92rem; font-weight:500;">
+                        <input type="radio" name="qotdHomeOpt" value="A" /> <span><strong>A.</strong> Article 9 (Security of Person)</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:10px; padding:12px 14px; border:1.5px solid var(--border-color); border-radius:10px; cursor:pointer; font-size:0.92rem; font-weight:500;">
+                        <input type="radio" name="qotdHomeOpt" value="B" /> <span><strong>B.</strong> Article 19A (Right to Information)</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:10px; padding:12px 14px; border:1.5px solid var(--border-color); border-radius:10px; cursor:pointer; font-size:0.92rem; font-weight:500;">
+                        <input type="radio" name="qotdHomeOpt" value="C" /> <span><strong>C.</strong> Article 25(1) (Equality of Citizens)</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:10px; padding:12px 14px; border:1.5px solid var(--border-color); border-radius:10px; cursor:pointer; font-size:0.92rem; font-weight:500;">
+                        <input type="radio" name="qotdHomeOpt" value="D" /> <span><strong>D.</strong> Article 10A (Right to Fair Trial)</span>
+                    </label>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+                    <button type="button" id="btnSubmitHomeQotd" class="btn-primary" style="padding:10px 20px; border-radius:8px; font-weight:700; border:none; cursor:pointer;">
+                        <i class="fa-solid fa-check-circle"></i> Submit Answer
+                    </button>
+                    <a href="daily-challenges.html" style="font-size:0.86rem; font-weight:700; color:#2563eb; text-decoration:none;">
+                        Explore Previous Daily Questions &amp; 5 Challenge Modes <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div id="qotdFeedbackBox" style="display:none; margin-top:18px; padding:16px; border-radius:10px; font-size:0.9rem; line-height:1.6;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 8: CURRENT AFFAIRS BRIEFINGS (Master Prompt Section 4.8) ═══ -->
+    <section id="current-affairs-hub" style="padding: 52px 0; background: var(--white); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2>🌐 Current Affairs &amp; Strategic Briefings</h2>
+                <div class="underline"></div>
+                <p class="section-subtitle">Structured briefings across Pakistan, International Affairs, Economy, Science, Environment, International Organizations, and Diplomacy — with explicit Event Dates and Publication Dates.</p>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr)); gap:20px; margin-top:26px;">
+                <article class="hub-category-card" style="padding:20px;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.74rem; font-weight:700; color:#047857; margin-bottom:8px;">
+                        <span><i class="fa-solid fa-flag"></i> PAKISTAN</span>
+                        <span>Event: Oct 2024 | Published: Nov 2026</span>
+                    </div>
+                    <h3 style="font-size:1.02rem; margin-bottom:8px;"><a href="constitution-explorer.html" style="color:var(--text-dark);">26th Constitutional Amendment &amp; Judicial Commission Reform</a></h3>
+                    <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:12px;">Analysis of Article 191A Constitutional Benches, reconstitution of the Judicial Commission of Pakistan (Article 175A), and parliamentary oversight in Chief Justice appointment.</p>
+                    <a href="constitution-explorer.html" style="font-size:0.82rem; font-weight:700; color:#2563eb;">Read Constitutional Text &amp; MCQs &rarr;</a>
+                </article>
+
+                <article class="hub-category-card" style="padding:20px;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.74rem; font-weight:700; color:#0284c7; margin-bottom:8px;">
+                        <span><i class="fa-solid fa-chart-line"></i> ECONOMY</span>
+                        <span>Period: FY2023–24 | Updated: Nov 2026</span>
+                    </div>
+                    <h3 style="font-size:1.02rem; margin-bottom:8px;"><a href="world-economy-dashboard.html" style="color:var(--text-dark);">Pakistan Economic Survey &amp; IMF Extended Fund Facility</a></h3>
+                    <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:12px;">Sectoral breakdown of 2.38% real GDP recovery, 6.25% agricultural expansion, current account compression, monetary policy rate adjustments, and fiscal consolidation targets.</p>
+                    <a href="world-economy-dashboard.html" style="font-size:0.82rem; font-weight:700; color:#2563eb;">Explore Economy Dashboard &rarr;</a>
+                </article>
+
+                <article class="hub-category-card" style="padding:20px;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.74rem; font-weight:700; color:#1d4ed8; margin-bottom:8px;">
+                        <span><i class="fa-solid fa-building-columns"></i> INT'L ORGANIZATIONS</span>
+                        <span>Event: Oct 2024 | Published: Nov 2026</span>
+                    </div>
+                    <h3 style="font-size:1.02rem; margin-bottom:8px;"><a href="international-organizations-explorer.html" style="color:var(--text-dark);">23rd SCO Council of Heads of Government Summit in Islamabad</a></h3>
+                    <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:12px;">Key outcomes on regional connectivity, counter-terrorism cooperation (RATS), trade facilitation, and multilateral diplomacy hosted by Pakistan.</p>
+                    <a href="international-organizations-explorer.html" style="font-size:0.82rem; font-weight:700; color:#2563eb;">Open Organizations Explorer &rarr;</a>
+                </article>
+
+                <article class="hub-category-card" style="padding:20px;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.74rem; font-weight:700; color:#059669; margin-bottom:8px;">
+                        <span><i class="fa-solid fa-leaf"></i> ENVIRONMENT</span>
+                        <span>Ref: IPCC AR6 / COP | Updated: Nov 2026</span>
+                    </div>
+                    <h3 style="font-size:1.02rem; margin-bottom:8px;"><a href="climate-change-explorer.html" style="color:var(--text-dark);">Global Climate Finance, Loss &amp; Damage Fund &amp; Glacial Melt</a></h3>
+                    <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:12px;">Scientific review of +1.1°C warming above pre-industrial baseline, Hindu Kush–Karakoram glacial retreat, and COP climate finance commitments for vulnerable developing states.</p>
+                    <a href="climate-change-explorer.html" style="font-size:0.82rem; font-weight:700; color:#2563eb;">Explore Climate Data &rarr;</a>
+                </article>
+
+                <article class="hub-category-card" style="padding:20px;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.74rem; font-weight:700; color:#7c3aed; margin-bottom:8px;">
+                        <span><i class="fa-solid fa-microchip"></i> SCIENCE &amp; TECH</span>
+                        <span>Event: 2024–2026 | Published: Nov 2026</span>
+                    </div>
+                    <h3 style="font-size:1.02rem; margin-bottom:8px;"><a href="technology-explorer.html" style="color:var(--text-dark);">Foundation AI Models, Quantum Computing &amp; Nobel Breakthroughs</a></h3>
+                    <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:12px;">From neural network foundations and protein structure prediction (AlphaFold) to the EU AI Act and sovereign semiconductor supply chains.</p>
+                    <a href="technology-explorer.html" style="font-size:0.82rem; font-weight:700; color:#2563eb;">Explore Emerging Tech &rarr;</a>
+                </article>
+
+                <article class="hub-category-card" style="padding:20px;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.74rem; font-weight:700; color:#be123c; margin-bottom:8px;">
+                        <span><i class="fa-solid fa-chess-knight"></i> DIPLOMACY &amp; GEOPOLITICS</span>
+                        <span>Ref: 2024–2026 | Updated: Nov 2026</span>
+                    </div>
+                    <h3 style="font-size:1.02rem; margin-bottom:8px;"><a href="international-trade-routes-map.html" style="color:var(--text-dark);">Maritime Chokepoints, Red Sea Shipping &amp; Energy Corridors</a></h3>
+                    <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:12px;">Geopolitical assessment of Bab el-Mandeb, Strait of Hormuz, Suez Canal, Malacca Strait, and CPEC Gwadar connectivity in global trade security.</p>
+                    <a href="international-trade-routes-map.html" style="font-size:0.82rem; font-weight:700; color:#2563eb;">Explore Trade Routes Map &rarr;</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 6: LATEST EDUCATIONAL ARTICLES (Master Prompt Section 4.6) ═══ -->
+    <section id="latest-educational-articles" style="padding: 52px 0; background: var(--bg-color); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2>📚 Latest Original Educational Articles</h2>
+                <div class="underline"></div>
+                <p class="section-subtitle">In-depth, primary-source cited research guides and model analyses authored by the CSS Prep Central Editorial Team.</p>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr)); gap:20px; margin-top:26px;">
+                <article class="hub-category-card" style="padding:22px;">
+                    <span style="font-size:0.72rem; font-weight:700; color:#047857; text-transform:uppercase;">Education &amp; Public Policy</span>
+                    <h3 style="font-size:1.05rem; margin:6px 0 8px;"><a href="essay-pakistan-education-crisis.html" style="color:var(--text-dark);">Pakistan's Education Emergency: Out-of-School Children, Article 25A &amp; Reform Roadmap</a></h3>
+                    <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:12px;">Comprehensive 3,500-word analytical study examining constitutional obligations under Article 25A, fiscal allocation gaps, technical education, and higher education governance.</p>
+                    <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:10px;">By CSS Prep Central Editorial Wing &bull; Published: Oct 2026 &bull; Updated: Nov 2026</div>
+                    <a href="essay-pakistan-education-crisis.html" style="font-size:0.84rem; font-weight:700; color:#2563eb;">Read Full Article &rarr;</a>
+                </article>
+
+                <article class="hub-category-card" style="padding:22px;">
+                    <span style="font-size:0.72rem; font-weight:700; color:#1e3a8a; text-transform:uppercase;">International Relations</span>
+                    <h3 style="font-size:1.05rem; margin:6px 0 8px;"><a href="essay-russia-ukraine-war.html" style="color:var(--text-dark);">The Russia-Ukraine Conflict and the Restructuring of European &amp; Global Security</a></h3>
+                    <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:12px;">An examination of NATO enlargement, energy supply-chain realignment, food security corridors, and lessons for middle powers in a multipolar order.</p>
+                    <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:10px;">By CSS Prep Central Editorial Wing &bull; Published: Oct 2026 &bull; Updated: Nov 2026</div>
+                    <a href="essay-russia-ukraine-war.html" style="font-size:0.84rem; font-weight:700; color:#2563eb;">Read Full Article &rarr;</a>
+                </article>
+
+                <article class="hub-category-card" style="padding:22px;">
+                    <span style="font-size:0.72rem; font-weight:700; color:#0f766e; text-transform:uppercase;">Constitutional &amp; Legal Studies</span>
+                    <h3 style="font-size:1.05rem; margin:6px 0 8px;"><a href="articles.html" style="color:var(--text-dark);">Evolution of Federalism in Pakistan: 18th Amendment, NFC Award &amp; CCI</a></h3>
+                    <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:12px;">Detailed study of legislative lists, provincial fiscal autonomy under Article 160, Council of Common Interests (Article 153), and administrative devolution challenges.</p>
+                    <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:10px;">By CSS Prep Central Editorial Wing &bull; Published: Sep 2026 &bull; Updated: Nov 2026</div>
+                    <a href="articles.html" style="font-size:0.84rem; font-weight:700; color:#2563eb;">Read Study Guides &rarr;</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 10: HONEST NEWSLETTER & UPDATES SECTION (Master Prompt Section 4.10) ═══ -->
+    <section id="newsletter-section" style="padding: 44px 0; background: var(--white); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div style="max-width: 720px; margin: 0 auto; text-align: center; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px 24px;">
+                <h2 style="font-size: 1.35rem; margin-bottom: 8px; color: var(--text-dark);"><i class="fa-regular fa-envelope" style="color:#2563eb;"></i> Study Updates &amp; Exam Notifications</h2>
+                <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 16px;">Subscribe to receive syllabus updates, new solved essay releases, and official FPSC/SPSC recruitment alerts.</p>
+                <form id="newsletterForm" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:10px;" onsubmit="return false;">
+                    <input type="email" id="newsletterEmail" required placeholder="Enter your email address..." aria-label="Email address for study updates" style="flex:1; min-width:240px; max-width:380px; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); font-size:0.9rem;" />
+                    <button type="submit" id="newsletterSubmitBtn" class="btn-primary" style="padding:10px 20px; border-radius:8px; font-weight:700; border:none; cursor:pointer;">Subscribe</button>
+                </form>
+                <label style="display:inline-flex; align-items:center; gap:6px; font-size:0.78rem; color:var(--text-light); cursor:pointer;">
+                    <input type="checkbox" id="newsletterConsent" required /> I consent to receive educational updates in accordance with the <a href="privacy.html" style="color:#2563eb;">Privacy Policy</a>.
+                </label>
+                <div id="newsletterStatusMsg" style="display:none; margin-top:12px; padding:10px 14px; border-radius:8px; font-size:0.83rem; font-weight:600;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deactivated AdSense Slot Placeholder (Hidden until owner configures real AdSense publisher ID; Section 9D) -->
+    <div class="adsense-slot-placeholder" data-ad-slot="homepage-bottom" hidden aria-hidden="true"></div>
 
     <!-- Professional Footer with Mandatory AdSense & Trust Disclosures -->
     <footer style="background: #0f172a; color: #94a3b8; padding: 50px 20px 30px; margin-top: 60px; border-top: 1px solid #1e293b;">
@@ -1507,11 +1755,16 @@
                     <i class="fas fa-shield-halved" style="color: #60a5fa; margin-right: 8px;"></i>Legal &amp; Transparency
                 </h4>
                 <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 2.1;">
-                    <li><a href="privacy.html" style="color: #60a5fa; font-weight: 600; text-decoration: none;"><i class="fas fa-user-shield" style="margin-right: 6px;"></i>Privacy Policy (AdSense/GDPR)</a></li>
-                    <li><a href="terms.html" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-file-contract" style="margin-right: 6px;"></i>Terms of Service</a></li>
-                    <li><a href="disclaimer.html" style="color: #f87171; font-weight: 600; text-decoration: none;"><i class="fas fa-triangle-exclamation" style="margin-right: 6px;"></i>Official Disclaimer</a></li>
-                    <li><a href="about.html" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-users" style="margin-right: 6px;"></i>About Us &amp; Editorial Standards</a></li>
-                    <li><a href="contact.html" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-envelope" style="margin-right: 6px;"></i>Contact &amp; Error Reporting</a></li>
+                    <li><a href="about.html" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-users" style="margin-right: 6px;"></i>About Us</a></li>
+                    <li><a href="contact.html" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-envelope" style="margin-right: 6px;"></i>Contact Us</a></li>
+                    <li><a href="privacy.html" style="color: #60a5fa; font-weight: 600; text-decoration: none;"><i class="fas fa-user-shield" style="margin-right: 6px;"></i>Privacy Policy</a></li>
+                    <li><a href="terms.html" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-file-contract" style="margin-right: 6px;"></i>Terms and Conditions</a></li>
+                    <li><a href="disclaimer.html" style="color: #f87171; font-weight: 600; text-decoration: none;"><i class="fas fa-triangle-exclamation" style="margin-right: 6px;"></i>Disclaimer</a></li>
+                    <li><a href="editorial-policy.html" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-check-double" style="margin-right: 6px;"></i>Editorial Policy</a></li>
+                    <li><a href="corrections-policy.html" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-screwdriver-wrench" style="margin-right: 6px;"></i>Corrections Policy</a></li>
+                    <li><a href="copyright-policy.html" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-copyright" style="margin-right: 6px;"></i>Copyright Policy</a></li>
+                    <li><a href="faq.html" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-circle-question" style="margin-right: 6px;"></i>FAQ</a></li>
+                    <li><a href="sitemap.xml" style="color: #cbd5e1; text-decoration: none;"><i class="fas fa-sitemap" style="margin-right: 6px;"></i>Sitemap</a></li>
                 </ul>
             </div>
         </div>

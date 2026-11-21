@@ -226,7 +226,11 @@
     { title: 'Recommended Books by Subject & Exam', sub: 'Curated Compulsory & Optional Subject Booklists for CSS, PMS & FPSC', url: 'recommended-books.html', cat: 'Games & Career', icon: 'fa-book', kw: 'reading list authors syllabus books' },
     { title: 'AI Study Assistant & Quiz Generator', sub: 'Interactive Concept Explainer, Essay Outline Builder & Topic Summarizer', url: 'ai-assistant.html', cat: 'Tools & Maps', icon: 'fa-robot', kw: 'chatbot tutor help' },
     { title: 'My Learning Dashboard & Analytics', sub: 'Track Quiz Accuracy, Subject Mastery, Bookmarks & Study Progress', url: 'dashboard.html', cat: 'Games & Career', icon: 'fa-chart-pie', kw: 'profile stats scores performance' },
-    { title: 'Global Leaderboard & Rankings', sub: 'Top Performers & Daily Challenge Champions', url: 'leaderboard.html', cat: 'Games & Career', icon: 'fa-trophy', kw: 'high scores rank' }
+    { title: 'Global Leaderboard & Rankings', sub: 'Top Performers & Daily Challenge Champions', url: 'leaderboard.html', cat: 'Games & Career', icon: 'fa-trophy', kw: 'high scores rank' },
+    { title: 'Editorial Policy & Research Standards', sub: 'Five-Stage Fact-Checking Workflow, Primary Sources & Update Standards', url: 'editorial-policy.html', cat: 'Law & Acts', icon: 'fa-check-double', kw: 'sources verification editorial workflow' },
+    { title: 'Corrections Policy & Error Reporting', sub: 'How to Report Disputed MCQ Keys, Outdated Facts & Statutory Updates', url: 'corrections-policy.html', cat: 'Law & Acts', icon: 'fa-screwdriver-wrench', kw: 'report error mistake feedback' },
+    { title: 'Copyright Policy & Intellectual Property', sub: 'Original Content Ownership, Public Domain Legislation & Takedown Notice', url: 'copyright-policy.html', cat: 'Law & Acts', icon: 'fa-copyright', kw: 'dmca fair use attribution' },
+    { title: 'Frequently Asked Questions (FAQ)', sub: 'Guide to CSS MPT Simulator, Negative Marking, Mistake Notebook & Offline App', url: 'faq.html', cat: 'Games & Career', icon: 'fa-circle-question', kw: 'help guide questions' }
   ];
 
   function injectCommandPalette() {
@@ -726,13 +730,100 @@
     });
   }
 
+  // 9. Homepage Daily MCQ Challenge, Honest Newsletter & Universal Policy Footer Links
+  function initHomepageWidgetsAndFooterPolicies() {
+    // A. Homepage Question of the Day (never reveals answer before user submits)
+    var qotdBtn = document.getElementById('btnSubmitHomeQotd');
+    var qotdFeedback = document.getElementById('qotdFeedbackBox');
+    if (qotdBtn && qotdFeedback) {
+      qotdBtn.addEventListener('click', function () {
+        var chosen = document.querySelector('input[name="qotdHomeOpt"]:checked');
+        if (!chosen) {
+          qotdFeedback.style.display = 'block';
+          qotdFeedback.style.background = '#fef2f2';
+          qotdFeedback.style.border = '1px solid #fecaca';
+          qotdFeedback.style.color = '#991b1b';
+          qotdFeedback.innerHTML = '<strong>Please select an answer option (A, B, C, or D) before submitting.</strong>';
+          return;
+        }
+        var isCorrect = chosen.value === 'C';
+        qotdFeedback.style.display = 'block';
+        if (isCorrect) {
+          qotdFeedback.style.background = 'rgba(16, 185, 129, 0.12)';
+          qotdFeedback.style.border = '1px solid rgba(16, 185, 129, 0.35)';
+          qotdFeedback.style.color = '#065f46';
+          qotdFeedback.innerHTML = '<strong><i class="fa-solid fa-circle-check"></i> Correct! Option C — Article 25(1)</strong><br>Article 25(1) of the 1973 Constitution of Pakistan states: <em>"All citizens are equal before law and are entitled to equal protection of law."</em> Article 25(2) prohibits discrimination on the basis of sex, and Article 25(3) empowers the State to make special provisions for the protection of women and children.';
+        } else {
+          qotdFeedback.style.background = 'rgba(239, 68, 68, 0.1)';
+          qotdFeedback.style.border = '1px solid rgba(239, 68, 68, 0.35)';
+          qotdFeedback.style.color = '#991b1b';
+          qotdFeedback.innerHTML = '<strong><i class="fa-solid fa-circle-xmark"></i> Not quite (You chose ' + chosen.value + '). Correct Answer: Option C — Article 25(1)</strong><br>Article 25(1) of the Constitution of Pakistan guarantees equality of citizens before the law. (Article 9 protects security of person; Article 10A guarantees fair trial; Article 19A guarantees right to information.)';
+        }
+      });
+    }
+
+    // B. Honest Newsletter Form Handler (never displays a fake subscription success message when backend is unconfigured)
+    var nlForm = document.getElementById('newsletterForm');
+    var nlMsg = document.getElementById('newsletterStatusMsg');
+    if (nlForm && nlMsg) {
+      nlForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var emailEl = document.getElementById('newsletterEmail');
+        var consentEl = document.getElementById('newsletterConsent');
+        var email = emailEl ? emailEl.value.trim() : '';
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          nlMsg.style.display = 'block';
+          nlMsg.style.background = '#fef2f2';
+          nlMsg.style.color = '#991b1b';
+          nlMsg.textContent = 'Please enter a valid email address.';
+          return;
+        }
+        if (consentEl && !consentEl.checked) {
+          nlMsg.style.display = 'block';
+          nlMsg.style.background = '#fef2f2';
+          nlMsg.style.color = '#991b1b';
+          nlMsg.textContent = 'Please check the consent box to proceed.';
+          return;
+        }
+        nlMsg.style.display = 'block';
+        nlMsg.style.background = 'rgba(37, 99, 235, 0.1)';
+        nlMsg.style.color = '#1e3a8a';
+        nlMsg.innerHTML = '<i class="fa-solid fa-circle-info"></i> Email newsletter backend delivery is currently not configured on this server. To receive daily exam updates without email, bookmark the <a href="daily-challenges.html" style="color:#2563eb;text-decoration:underline;">Daily Learning Centre</a> or install our offline Web App.';
+      });
+    }
+
+    // C. Ensure all 10 required policy links are present in every page's footer
+    var footer = document.querySelector('footer');
+    if (footer && !footer.innerHTML.includes('editorial-policy.html')) {
+      var policyBar = document.createElement('div');
+      policyBar.style.cssText = 'max-width:1200px;margin:14px auto 0;padding-top:12px;border-top:1px solid rgba(148,163,184,0.18);display:flex;flex-wrap:wrap;justify-content:center;gap:14px;font-size:0.78rem;';
+      policyBar.innerHTML = [
+        ['about.html', 'About Us'],
+        ['contact.html', 'Contact Us'],
+        ['privacy.html', 'Privacy Policy'],
+        ['terms.html', 'Terms & Conditions'],
+        ['disclaimer.html', 'Disclaimer'],
+        ['editorial-policy.html', 'Editorial Policy'],
+        ['corrections-policy.html', 'Corrections Policy'],
+        ['copyright-policy.html', 'Copyright Policy'],
+        ['faq.html', 'FAQ'],
+        ['sitemap.xml', 'Sitemap']
+      ].map(function (pair) {
+        return '<a href="' + pair[0] + '" style="color:#94a3b8;text-decoration:none;">' + pair[1] + '</a>';
+      }).join(' &bull; ');
+      footer.appendChild(policyBar);
+    }
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       injectCommandPalette();
       initPwaSupport();
+      initHomepageWidgetsAndFooterPolicies();
     });
   } else {
     injectCommandPalette();
     initPwaSupport();
+    initHomepageWidgetsAndFooterPolicies();
   }
 })();
