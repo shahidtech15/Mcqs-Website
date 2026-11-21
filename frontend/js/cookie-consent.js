@@ -261,9 +261,18 @@
         });
     }
     
+    function ensureNavController() {
+        if (window.__mcqsNavInitialized || document.querySelector('script[src*="js/nav.js"]')) return;
+        var s = document.createElement('script');
+        s.src = 'js/nav.js';
+        s.async = true;
+        document.head.appendChild(s);
+    }
+
     function init() {
         initCookieBanner();
         initBackToTop();
+        ensureNavController();
     }
 
     if (document.readyState === 'loading') {
