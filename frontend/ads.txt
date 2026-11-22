@@ -1,5 +1,5 @@
 # Google AdSense Authorized Digital Sellers (ads.txt)
-# Website: CSS Prep Central (https://cssprepcentral.com)
+# Website: CSS Prep Central (https://www.cssprepcentral.com)
 #
 # INSTRUCTION FOR PUBLISHING:
 # Replace the placeholder publisher ID "pub-0000000000000000" below with your 
