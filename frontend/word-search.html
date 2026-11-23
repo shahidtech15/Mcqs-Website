@@ -335,6 +335,35 @@
             color: #ffffff;
         }
 
+        .ws-victory-banner {
+            display: none;
+            margin-bottom: 16px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(139, 92, 246, 0.12));
+            border: 1px solid rgba(16, 185, 129, 0.45);
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .ws-victory-banner.show {
+            display: flex;
+        }
+
+        .ws-victory-text {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--ws-text-main);
+        }
+
+        .ws-victory-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
         /* Main Game Arena */
         .ws-main-container {
             max-width: 1400px;
@@ -802,6 +831,10 @@
                 </select>
 
                 <div class="hud-stat">
+                    <i class="fas fa-layer-group" style="color:var(--ws-accent);"></i>
+                    <span id="hudGameNum">Game #1</span>
+                </div>
+                <div class="hud-stat">
                     <i class="fas fa-clock" style="color:var(--ws-primary);"></i>
                     <span id="hudTimerVal">00:00</span>
                 </div>
@@ -818,14 +851,14 @@
                 <button type="button" class="btn-action" id="btnRevealAll" title="Reveal unfound words">
                     <i class="fas fa-eye"></i> Reveal
                 </button>
-                <button type="button" class="btn-action btn-primary" id="btnNewGame" title="Generate a fresh puzzle">
-                    <i class="fas fa-arrows-rotate"></i> New Game
+                <button type="button" class="btn-action btn-primary" id="btnNewGame" title="Generate the next fresh Word Search puzzle">
+                    <i class="fas fa-forward"></i> Next Word Search &rarr;
                 </button>
                 <button type="button" class="btn-action" id="btnSoundToggle" title="Toggle Sound Effects">
                     <i class="fas fa-volume-high"></i>
                 </button>
                 <a href="crossword.html" class="btn-action btn-switch-crossword" title="Switch to Crossword Puzzle">
-                    <i class="fas fa-chess-board"></i> Play Crossword &rarr;
+                    <i class="fas fa-chess-board"></i> Crossword &rarr;
                 </a>
             </div>
         </div>
@@ -835,6 +868,19 @@
     <main class="ws-main-container">
         <!-- Board Column -->
         <div class="ws-board-card">
+            <div class="ws-victory-banner" id="wsVictoryBanner">
+                <div class="ws-victory-text" id="wsVictoryText">
+                    <i class="fas fa-trophy" style="color:#f59e0b;"></i> Word Search Complete!
+                </div>
+                <div class="ws-victory-actions">
+                    <button type="button" class="btn-action btn-primary" id="btnWsVictoryNext">
+                        <i class="fas fa-forward"></i> Next Word Search &rarr;
+                    </button>
+                    <a href="crossword.html" class="btn-action btn-switch-crossword">
+                        <i class="fas fa-chess-board"></i> Play Crossword
+                    </a>
+                </div>
+            </div>
             <div class="ws-grid-frame">
                 <div class="ws-grid-matrix" id="wordSearchGrid">
                     <!-- Dynamic Letter Matrix Injected Here -->
@@ -906,6 +952,8 @@
         let secondsElapsed = 0;
         let timerInterval = null;
         let isComplete = false;
+        let gameNumber = 0;
+        let usedWordsByCategory = {};
 
         // Web Audio Synthesizer
         let audioCtx = null;
@@ -1027,6 +1075,11 @@
         // Generate Board
         function generateNewPuzzle() {
             isComplete = false;
+            gameNumber++;
+            const numEl = document.getElementById('hudGameNum');
+            if (numEl) numEl.textContent = `Game #${gameNumber}`;
+            const banner = document.getElementById('wsVictoryBanner');
+            if (banner) banner.classList.remove('show');
             startTimer();
 
             // Pull candidate pool
@@ -1041,9 +1094,18 @@
                 pool = vocabData[currentCategory] || [];
             }
 
-            // Filter words that fit within grid size
+            // Filter words that fit within grid size and rotate fresh unseen words first
             const validPool = pool.filter(w => w.answer.length <= gridSize);
-            const shuffledPool = shuffle(validPool);
+            if (!usedWordsByCategory[currentCategory]) usedWordsByCategory[currentCategory] = new Set();
+            const seenSet = usedWordsByCategory[currentCategory];
+
+            let freshPool = validPool.filter(w => !seenSet.has(w.answer));
+            if (freshPool.length < targetWordCount) {
+                // Reset rotation once all words in this topic have been played
+                seenSet.clear();
+                freshPool = validPool;
+            }
+            const shuffledPool = shuffle(freshPool).concat(shuffle(validPool.filter(w => seenSet.has(w.answer))));
 
             // Directions allowed by difficulty
             let allowedDirs = [
@@ -1079,6 +1141,9 @@
                 const placement = tryPlaceWord(word, allowedDirs);
 
                 if (placement) {
+                    if (usedWordsByCategory[currentCategory]) {
+                        usedWordsByCategory[currentCategory].add(wordObj.answer);
+                    }
                     targetWords.push({
                         ...wordObj,
                         found: false,
@@ -1341,10 +1406,15 @@
 
             if (foundCount === targetWords.length && !isComplete) {
                 isComplete = true;
+                if (timerInterval) clearInterval(timerInterval);
                 playSound('victory');
-                setTimeout(() => {
-                    alert(`🎉 Excellent! You discovered all ${targetWords.length} civil service examination words in ${document.getElementById('hudTimerVal').textContent}!`);
-                }, 300);
+                const banner = document.getElementById('wsVictoryBanner');
+                const text = document.getElementById('wsVictoryText');
+                if (banner && text) {
+                    text.innerHTML = `<i class="fas fa-trophy" style="color:#f59e0b;"></i> <strong>Game #${gameNumber} Complete!</strong> Found all <strong>${targetWords.length}</strong> terms in <strong>${document.getElementById('hudTimerVal').textContent}</strong>.`;
+                    banner.classList.add('show');
+                    banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
             }
         }
 
@@ -1411,12 +1481,14 @@
             updateFoundProgress();
         });
 
-        // Actions: New Game
+        // Actions: Next Word Search Game
         document.getElementById('btnNewGame').addEventListener('click', generateNewPuzzle);
+        document.getElementById('btnWsVictoryNext').addEventListener('click', generateNewPuzzle);
 
         // Actions: Category & Difficulty Change
         document.getElementById('categorySelect').addEventListener('change', (e) => {
             currentCategory = e.target.value;
+            gameNumber = 0;
             generateNewPuzzle();
         });
 

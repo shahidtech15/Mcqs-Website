@@ -337,6 +337,71 @@
             color: #ffffff;
         }
 
+        .puzzle-nav-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--cw-bg);
+            border: 1px solid var(--cw-border);
+            border-radius: 8px;
+            padding: 2px 4px;
+        }
+
+        .puzzle-nav-group .hud-select {
+            border: none;
+            background: transparent;
+            padding: 5px 8px;
+            font-size: 0.85rem;
+        }
+
+        .puzzle-nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--cw-text-muted);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .puzzle-nav-btn:hover {
+            background: var(--cw-primary-light);
+            color: var(--cw-primary);
+        }
+
+        .cw-victory-banner {
+            display: none;
+            margin-bottom: 16px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(2, 132, 199, 0.12));
+            border: 1px solid rgba(16, 185, 129, 0.45);
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .cw-victory-banner.show {
+            display: flex;
+        }
+
+        .cw-victory-text {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--cw-text-main);
+        }
+
+        .cw-victory-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
         /* Main Game Arena */
         .cw-main-container {
             max-width: 1400px;
@@ -813,14 +878,22 @@
             <div class="hud-left">
                 <label for="puzzleCategorySelect" style="display:none;">Select Discipline</label>
                 <select id="puzzleCategorySelect" class="hud-select" title="Select Discipline">
-                    <option value="grand">⭐ Grand Civil Service Crossword (All Disciplines)</option>
-                    <option value="pakistan_affairs">🇵🇰 Pakistan Affairs &amp; Constitutional History</option>
-                    <option value="international_relations">🌐 International Relations &amp; Geopolitics</option>
-                    <option value="science">🔬 Everyday Science &amp; Discoveries</option>
-                    <option value="law">⚖️ Constitutional, Civil &amp; Criminal Law</option>
-                    <option value="geography">🌍 Physical Geography &amp; Earth Sciences</option>
-                    <option value="current_affairs">📰 Current Affairs &amp; 21st-Century Dynamics</option>
+                    <option value="grand">⭐ Grand Civil Service Crossword (5 Games)</option>
+                    <option value="pakistan_affairs">🇵🇰 Pakistan Affairs &amp; History (5 Games)</option>
+                    <option value="international_relations">🌐 International Relations (5 Games)</option>
+                    <option value="science">🔬 Everyday Science &amp; Discoveries (5 Games)</option>
+                    <option value="law">⚖️ Constitutional, Civil &amp; Criminal Law (5 Games)</option>
+                    <option value="geography">🌍 Physical Geography &amp; Earth Sciences (5 Games)</option>
+                    <option value="current_affairs">📰 Current Affairs &amp; Economy (5 Games)</option>
                 </select>
+                <div class="puzzle-nav-group" title="Switch between puzzles in this topic">
+                    <button type="button" class="puzzle-nav-btn" id="btnPrevPuzzle" title="Previous Crossword"><i class="fas fa-chevron-left"></i></button>
+                    <label for="puzzleIndexSelect" style="display:none;">Select Puzzle Number</label>
+                    <select id="puzzleIndexSelect" class="hud-select" title="Choose Puzzle Set">
+                        <option value="0">Puzzle 1 / 5</option>
+                    </select>
+                    <button type="button" class="puzzle-nav-btn" id="btnNextPuzzleIcon" title="Next Crossword"><i class="fas fa-chevron-right"></i></button>
+                </div>
                 <div class="hud-stat" id="hudTimerBox">
                     <i class="fas fa-clock" style="color:var(--cw-primary);"></i>
                     <span id="hudTimerVal">00:00</span>
@@ -832,7 +905,7 @@
             </div>
             <div class="hud-right">
                 <button type="button" class="btn-action" id="btnCheckAnswers" title="Check your entered answers">
-                    <i class="fas fa-check-double"></i> Check Answers
+                    <i class="fas fa-check-double"></i> Check
                 </button>
                 <button type="button" class="btn-action" id="btnRevealWord" title="Reveal the currently selected word">
                     <i class="fas fa-eye"></i> Reveal Word
@@ -840,11 +913,14 @@
                 <button type="button" class="btn-action" id="btnClearBoard" title="Clear current entries">
                     <i class="fas fa-rotate-left"></i> Reset
                 </button>
+                <button type="button" class="btn-action btn-primary" id="btnNextPuzzle" title="Load the next crossword puzzle in this topic">
+                    <i class="fas fa-forward"></i> Next Crossword &rarr;
+                </button>
                 <button type="button" class="btn-action" id="btnSoundToggle" title="Toggle Sound Effects">
                     <i class="fas fa-volume-high"></i>
                 </button>
                 <a href="word-search.html" class="btn-action btn-switch-puzzle" title="Switch to Word Search Game">
-                    <i class="fas fa-magnifying-glass"></i> Play Word Search &rarr;
+                    <i class="fas fa-magnifying-glass"></i> Word Search &rarr;
                 </a>
             </div>
         </div>
@@ -854,6 +930,19 @@
     <main class="cw-main-container">
         <!-- Crossword Board Column -->
         <div class="cw-board-card">
+            <div class="cw-victory-banner" id="cwVictoryBanner">
+                <div class="cw-victory-text" id="cwVictoryText">
+                    <i class="fas fa-trophy" style="color:#f59e0b;"></i> Puzzle Completed!
+                </div>
+                <div class="cw-victory-actions">
+                    <button type="button" class="btn-action btn-primary" id="btnVictoryNext">
+                        <i class="fas fa-forward"></i> Next Crossword Puzzle &rarr;
+                    </button>
+                    <a href="word-search.html" class="btn-action btn-switch-puzzle">
+                        <i class="fas fa-magnifying-glass"></i> Try Word Search
+                    </a>
+                </div>
+            </div>
             <div class="cw-grid-frame">
                 <div class="cw-grid-matrix" id="crosswordGridMatrix">
                     <!-- Dynamic Grid Cells Injected Here -->
@@ -935,6 +1024,7 @@
     <script>
         // Game State
         let currentPuzzleKey = 'grand';
+        let currentPuzzleIndex = 0;
         let currentPuzzle = null;
         let activeWord = null;
         let activeDirection = 'across'; // 'across' or 'down'
@@ -945,6 +1035,7 @@
         let timerInterval = null;
         let userGrid = {}; // key: "r,c" -> user letter
         let isComplete = false;
+        let completedPuzzles = new Set(JSON.parse(localStorage.getItem('cw_completed_puzzles') || '[]'));
 
         // Audio Context (Web Audio API)
         let audioCtx = null;
@@ -1023,12 +1114,30 @@
             }
         }
 
+        function getPuzzleSet(puzzleKey) {
+            const sets = window.CROSSWORD_PUZZLE_SETS || {};
+            if (Array.isArray(sets[puzzleKey]) && sets[puzzleKey].length > 0) {
+                return sets[puzzleKey];
+            }
+            const single = (window.CROSSWORD_PUZZLES || {})[puzzleKey];
+            return single ? [single] : [];
+        }
+
+        function populatePuzzleSelector(puzzleKey) {
+            const select = document.getElementById('puzzleIndexSelect');
+            if (!select) return;
+            const list = getPuzzleSet(puzzleKey);
+            select.innerHTML = list.map((p, idx) => {
+                const pid = p.id || `${puzzleKey}_${idx + 1}`;
+                const doneMark = completedPuzzles.has(pid) ? ' ✓' : '';
+                return `<option value="${idx}">Puzzle ${idx + 1} / ${list.length}${doneMark}</option>`;
+            }).join('');
+            select.value = String(currentPuzzleIndex);
+        }
+
         // Initialize Crossword
         function initCrossword() {
-            const puzzles = window.CROSSWORD_PUZZLES || {};
-            loadPuzzle(currentPuzzleKey);
-
-            // Timer start
+            loadPuzzle(currentPuzzleKey, 0);
             startTimer();
         }
 
@@ -1049,15 +1158,21 @@
         }
 
         // Load Puzzle
-        function loadPuzzle(puzzleKey) {
+        function loadPuzzle(puzzleKey, puzzleIdx = 0) {
             currentPuzzleKey = puzzleKey;
-            const puzzles = window.CROSSWORD_PUZZLES || {};
-            currentPuzzle = puzzles[puzzleKey];
+            const list = getPuzzleSet(puzzleKey);
+            if (!list.length) return;
 
-            if (!currentPuzzle) return;
+            currentPuzzleIndex = ((puzzleIdx % list.length) + list.length) % list.length;
+            currentPuzzle = list[currentPuzzleIndex];
 
             userGrid = {};
             isComplete = false;
+
+            const banner = document.getElementById('cwVictoryBanner');
+            if (banner) banner.classList.remove('show');
+
+            populatePuzzleSelector(puzzleKey);
 
             // Update title badge
             const titles = {
@@ -1069,7 +1184,8 @@
                 geography: 'Physical Geography',
                 current_affairs: 'Current Affairs'
             };
-            document.getElementById('puzzleTitleBadge').textContent = titles[puzzleKey] || 'Crossword';
+            document.getElementById('puzzleTitleBadge').textContent =
+                currentPuzzle.title || `${titles[puzzleKey] || 'Crossword'} — Puzzle ${currentPuzzleIndex + 1} / ${list.length}`;
 
             renderBoard();
             renderClues();
@@ -1080,6 +1196,20 @@
             }
 
             updateSolvedCount();
+        }
+
+        function loadNextPuzzle() {
+            const list = getPuzzleSet(currentPuzzleKey);
+            if (!list.length) return;
+            loadPuzzle(currentPuzzleKey, (currentPuzzleIndex + 1) % list.length);
+            startTimer();
+        }
+
+        function loadPrevPuzzle() {
+            const list = getPuzzleSet(currentPuzzleKey);
+            if (!list.length) return;
+            loadPuzzle(currentPuzzleKey, (currentPuzzleIndex - 1 + list.length) % list.length);
+            startTimer();
         }
 
         // Render Crossword Grid
@@ -1218,13 +1348,24 @@
             updateDossier(wordObj);
         }
 
+        function isWordSolved(wordObj) {
+            for (let i = 0; i < wordObj.answer.length; i++) {
+                const r = wordObj.direction === 'across' ? wordObj.row : wordObj.row + i;
+                const c = wordObj.direction === 'across' ? wordObj.col + i : wordObj.col;
+                if ((userGrid[`${r},${c}`] || '') !== wordObj.answer[i]) return false;
+            }
+            return true;
+        }
+
         function updateDossier(wordObj) {
-            document.getElementById('dossierWordTitle').innerHTML = `<span>${wordObj.answer}</span> <span style="font-size:0.75rem; background:var(--cw-primary-light); color:var(--cw-primary); padding:2px 8px; border-radius:12px;">${wordObj.answer.length} Letters &bull; ${wordObj.direction.toUpperCase()}</span>`;
+            const solved = isWordSolved(wordObj);
+            const displayWord = solved ? wordObj.answer : wordObj.answer.split('').map(() => '_').join(' ');
+            document.getElementById('dossierWordTitle').innerHTML = `<span>${displayWord}</span> <span style="font-size:0.75rem; background:var(--cw-primary-light); color:var(--cw-primary); padding:2px 8px; border-radius:12px;">${wordObj.answer.length} Letters &bull; ${wordObj.direction.toUpperCase()}</span>`;
             document.getElementById('dossierDefinitionText').textContent = wordObj.clue;
             
             const factBox = document.getElementById('dossierExamFact');
             const factText = document.getElementById('dossierExamFactText');
-            if (wordObj.examFact) {
+            if (wordObj.examFact && solved) {
                 factBox.style.display = 'block';
                 factText.textContent = wordObj.examFact;
             } else {
@@ -1400,31 +1541,39 @@
             });
 
             updateSolvedCount();
+            if (activeWord) updateDossier(activeWord);
         }
 
         function updateSolvedCount() {
             let count = 0;
             currentPuzzle.words.forEach(w => {
-                let spelled = '';
-                for (let i = 0; i < w.answer.length; i++) {
-                    const r = w.direction === 'across' ? w.row : w.row + i;
-                    const c = w.direction === 'across' ? w.col + i : w.col;
-                    spelled += userGrid[`${r},${c}`] || '';
-                }
-                if (spelled === w.answer) count++;
+                if (isWordSolved(w)) count++;
             });
 
             document.getElementById('hudSolvedCount').textContent = `${count} / ${currentPuzzle.words.length} Solved`;
 
             if (count === currentPuzzle.words.length && !isComplete) {
                 isComplete = true;
+                if (timerInterval) clearInterval(timerInterval);
+                const pid = currentPuzzle.id || `${currentPuzzleKey}_${currentPuzzleIndex + 1}`;
+                completedPuzzles.add(pid);
+                try { localStorage.setItem('cw_completed_puzzles', JSON.stringify([...completedPuzzles])); } catch (e) {}
+                populatePuzzleSelector(currentPuzzleKey);
                 playSound('victory');
                 showVictoryNotice();
             }
         }
 
         function showVictoryNotice() {
-            alert(`🎉 Congratulations! You have successfully completed the ${document.getElementById('puzzleTitleBadge').textContent} in ${document.getElementById('hudTimerVal').textContent}!`);
+            const banner = document.getElementById('cwVictoryBanner');
+            const text = document.getElementById('cwVictoryText');
+            if (banner && text) {
+                const title = document.getElementById('puzzleTitleBadge').textContent;
+                const time = document.getElementById('hudTimerVal').textContent;
+                text.innerHTML = `<i class="fas fa-trophy" style="color:#f59e0b;"></i> <strong>Solved!</strong> You completed <em>${title}</em> in <strong>${time}</strong>.`;
+                banner.classList.add('show');
+                banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         }
 
         // Actions: Check Answers
@@ -1478,8 +1627,18 @@
         // Action: Clear Board
         document.getElementById('btnClearBoard').addEventListener('click', () => {
             if (confirm('Are you sure you want to clear your current progress for this puzzle?')) {
-                loadPuzzle(currentPuzzleKey);
+                loadPuzzle(currentPuzzleKey, currentPuzzleIndex);
             }
+        });
+
+        // Action: Next & Previous Puzzle
+        document.getElementById('btnNextPuzzle').addEventListener('click', loadNextPuzzle);
+        document.getElementById('btnNextPuzzleIcon').addEventListener('click', loadNextPuzzle);
+        document.getElementById('btnPrevPuzzle').addEventListener('click', loadPrevPuzzle);
+        document.getElementById('btnVictoryNext').addEventListener('click', loadNextPuzzle);
+        document.getElementById('puzzleIndexSelect').addEventListener('change', (e) => {
+            loadPuzzle(currentPuzzleKey, parseInt(e.target.value, 10) || 0);
+            startTimer();
         });
 
         // Action: Sound Toggle
@@ -1492,7 +1651,7 @@
 
         // Category Select
         document.getElementById('puzzleCategorySelect').addEventListener('change', (e) => {
-            loadPuzzle(e.target.value);
+            loadPuzzle(e.target.value, 0);
             startTimer();
         });
 
