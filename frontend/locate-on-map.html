@@ -1064,10 +1064,13 @@
                     <option value="Oceania">Oceania</option>
                 </select>
 
-                <select id="mapStyleSelect" class="select-filter" title="Select Blank Map Style">
-                    <option value="voyager">🗺️ Blank Physical (Voyager)</option>
-                    <option value="positron">⬜ Blank Minimalist (Light)</option>
-                    <option value="dark">⬛ Blank Midnight (Dark)</option>
+                <select id="mapStyleSelect" class="select-filter" title="Select Blank Map Style (No Labels)">
+                    <option value="physical">⛰️ Physical Relief (No Labels)</option>
+                    <option value="terrain">🗺️ Terrain Shaded Relief (No Labels)</option>
+                    <option value="satellite">🛰️ Satellite Imagery (No Labels)</option>
+                    <option value="voyager">🌐 Standard Blank (Light)</option>
+                    <option value="positron">⬜ Minimalist Blank (Light)</option>
+                    <option value="dark">⬛ Standard Blank (Dark)</option>
                 </select>
             </div>
         </div>
@@ -1217,11 +1220,32 @@
         let connectionLine = null;
         let hintCircle = null;
 
-        // Tile URLs (CartoDB No-Labels for Blank Map Testing)
+        // Tile URLs (Zero-API-Key Unlabeled Layers for Blank Map Testing)
         const TILE_URLS = {
-            voyager: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
-            positron: 'https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png',
-            dark: 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}{r}.png'
+            physical: {
+                url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+                options: { attribution: 'Tiles &copy; Esri &mdash; US National Park Service', maxNativeZoom: 8, maxZoom: 11 }
+            },
+            terrain: {
+                url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
+                options: { attribution: 'Tiles &copy; Esri &mdash; World Shaded Relief', maxNativeZoom: 13, maxZoom: 11 }
+            },
+            satellite: {
+                url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                options: { attribution: 'Tiles &copy; Esri &mdash; Maxar, Earthstar Geographics', maxNativeZoom: 17, maxZoom: 11 }
+            },
+            voyager: {
+                url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
+                options: { attribution: '&copy; CartoDB &copy; OpenStreetMap', subdomains: 'abcd', maxZoom: 19 }
+            },
+            positron: {
+                url: 'https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png',
+                options: { attribution: '&copy; CartoDB &copy; OpenStreetMap', subdomains: 'abcd', maxZoom: 19 }
+            },
+            dark: {
+                url: 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}{r}.png',
+                options: { attribution: '&copy; CartoDB &copy; OpenStreetMap', subdomains: 'abcd', maxZoom: 19 }
+            }
         };
 
         // Web Audio Synthesizer
@@ -1354,8 +1378,8 @@
 
                 map = L.map('blankMapCanvas', {
                     center: [24, 20],
-                    zoom: 2.3,
-                    minZoom: 1.8,
+                    zoom: 2,
+                    minZoom: 2,
                     maxZoom: 11,
                     scrollWheelZoom: true,
                     zoomControl: false,
@@ -1379,7 +1403,7 @@
                 if (btnZOut) btnZOut.addEventListener('click', () => { if (map) map.zoomOut(); });
                 const btnReset = document.getElementById('btnResetView');
                 if (btnReset) btnReset.addEventListener('click', () => {
-                    if (map) map.setView([24, 20], 2.3);
+                    if (map) map.setView([24, 20], 2);
                 });
 
                 setTimeout(() => { if (map) map.invalidateSize(); }, 250);
@@ -1391,17 +1415,13 @@
         }
 
         function createResilientTileLayer(styleKey) {
-            if (!TILE_URLS[styleKey] || !map || typeof L === 'undefined') return;
+            const cfg = TILE_URLS[styleKey];
+            if (!cfg || !map || typeof L === 'undefined') return;
             if (baseTileLayer) map.removeLayer(baseTileLayer);
 
-            const primaryUrl = TILE_URLS[styleKey];
             const fallbackUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 
-            baseTileLayer = L.tileLayer(primaryUrl, {
-                attribution: '&copy; CartoDB &copy; OpenStreetMap',
-                subdomains: 'abcd',
-                maxZoom: 19
-            }).addTo(map);
+            baseTileLayer = L.tileLayer(cfg.url, cfg.options).addTo(map);
 
             let switched = false;
             baseTileLayer.on('tileerror', function() {

@@ -503,6 +503,42 @@
             color: #047857;
         }
 
+        .basemap-switcher {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--pak-bg);
+            border: 1px solid var(--pak-border);
+            border-radius: 10px;
+            padding: 3px;
+            flex-wrap: wrap;
+        }
+
+        .basemap-btn {
+            background: transparent;
+            border: none;
+            color: var(--pak-text-muted);
+            padding: 5px 10px;
+            border-radius: 7px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s;
+        }
+
+        .basemap-btn:hover {
+            color: var(--pak-text-main);
+        }
+
+        .basemap-btn.active {
+            background: #047857;
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(4, 120, 87, 0.3);
+        }
+
         /* Leaflet Map Height */
         #pakistanMapContainer {
             width: 100%;
@@ -1225,6 +1261,12 @@
                         <i class="fas fa-flag" style="color: #047857;"></i>
                         <span id="activeFeatureTitle">Active: Punjab (Land of Five Rivers)</span>
                     </div>
+                    <div class="basemap-switcher" role="group" aria-label="Map Layer Style">
+                        <button type="button" class="basemap-btn" data-style="physical" onclick="setBasemapStyle('physical')" title="Physical Relief"><i class="fas fa-mountain"></i> Physical</button>
+                        <button type="button" class="basemap-btn" data-style="terrain" onclick="setBasemapStyle('terrain')" title="National Geographic Terrain"><i class="fas fa-map"></i> Terrain</button>
+                        <button type="button" class="basemap-btn" data-style="satellite" onclick="setBasemapStyle('satellite')" title="Satellite Imagery"><i class="fas fa-satellite"></i> Satellite</button>
+                        <button type="button" class="basemap-btn active" data-style="standard" onclick="setBasemapStyle('standard')" title="Standard Cartographic Map"><i class="fas fa-layer-group"></i> Standard</button>
+                    </div>
                     <div class="map-actions">
                         <button class="tool-btn" onclick="zoomInMap()" title="Zoom In"><i class="fas fa-plus"></i></button>
                         <button class="tool-btn" onclick="zoomOutMap()" title="Zoom Out"><i class="fas fa-minus"></i></button>
@@ -1395,21 +1437,50 @@
         }
 
         let tileLayer = null;
+        let currentBasemapStyle = 'standard';
+
+        function setBasemapStyle(style) {
+            currentBasemapStyle = style;
+            document.querySelectorAll('.basemap-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.style === style);
+            });
+            updateMapTiles();
+        }
+
         function updateMapTiles() {
             if (!map || typeof L === 'undefined') return;
             if (tileLayer) map.removeLayer(tileLayer);
 
             const isDark = document.documentElement.classList.contains('dark-mode');
-            const tileUrl = isDark 
-                ? 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png'
-                : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
             const fallbackUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 
-            tileLayer = L.tileLayer(tileUrl, {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                subdomains: 'abcd',
-                maxZoom: 19
-            }).addTo(map);
+            const basemapConfigs = {
+                physical: {
+                    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+                    options: { attribution: 'Tiles &copy; Esri &mdash; US National Park Service', maxNativeZoom: 8, maxZoom: 14 }
+                },
+                terrain: {
+                    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
+                    options: { attribution: 'Tiles &copy; Esri &mdash; National Geographic', maxNativeZoom: 12, maxZoom: 14 }
+                },
+                satellite: {
+                    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                    options: { attribution: 'Tiles &copy; Esri &mdash; Maxar, Earthstar Geographics', maxNativeZoom: 17, maxZoom: 14 }
+                },
+                standard: {
+                    url: isDark
+                        ? 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png'
+                        : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+                    options: {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                        subdomains: 'abcd',
+                        maxZoom: 19
+                    }
+                }
+            };
+
+            const cfg = basemapConfigs[currentBasemapStyle] || basemapConfigs.standard;
+            tileLayer = L.tileLayer(cfg.url, cfg.options).addTo(map);
 
             let hasSwitched = false;
             tileLayer.on('tileerror', function() {
@@ -1443,8 +1514,8 @@
                 if (typeof L !== 'undefined') {
                     map = L.map('pakistanMapContainer', {
                         center: [30.3753, 69.3451],
-                        zoom: 5.3,
-                        minZoom: 4.5,
+                        zoom: 5,
+                        minZoom: 4,
                         maxZoom: 14,
                         scrollWheelZoom: true,
                         zoomControl: false

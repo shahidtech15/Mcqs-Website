@@ -854,6 +854,41 @@
             border-color: var(--org-primary);
         }
 
+        .basemap-switcher {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--org-card-bg);
+            border: 1px solid var(--org-border);
+            border-radius: 10px;
+            padding: 3px;
+            flex-wrap: wrap;
+        }
+
+        .basemap-btn {
+            background: transparent;
+            border: none;
+            color: var(--org-text-muted);
+            padding: 5px 10px;
+            border-radius: 7px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s;
+        }
+
+        .basemap-btn:hover {
+            color: var(--org-text-main);
+        }
+
+        .basemap-btn.active {
+            background: var(--org-primary);
+            color: #ffffff;
+        }
+
         .map-zoom-group {
             display: flex;
             gap: 6px;
@@ -1502,6 +1537,13 @@
                         <button class="map-filter-btn" data-filter="partner"><i class="fas fa-circle" style="color:#0ea5e9; font-size:0.7rem;"></i> Partners (<span id="countPartnerMembers">0</span>)</button>
                     </div>
 
+                    <div class="basemap-switcher" role="group" aria-label="Map Layer Style">
+                        <button type="button" class="basemap-btn" data-style="physical" onclick="setBasemapStyle('physical')" title="Physical Relief"><i class="fas fa-mountain"></i> Physical</button>
+                        <button type="button" class="basemap-btn" data-style="terrain" onclick="setBasemapStyle('terrain')" title="National Geographic Terrain"><i class="fas fa-map"></i> Terrain</button>
+                        <button type="button" class="basemap-btn" data-style="satellite" onclick="setBasemapStyle('satellite')" title="Satellite Imagery"><i class="fas fa-satellite"></i> Satellite</button>
+                        <button type="button" class="basemap-btn active" data-style="standard" onclick="setBasemapStyle('standard')" title="Standard Cartographic Map"><i class="fas fa-layer-group"></i> Standard</button>
+                    </div>
+
                     <div class="map-zoom-group">
                         <span style="font-size:0.8rem; font-weight:700; color:var(--org-text-muted); align-self:center; margin-right:4px;">Region:</span>
                         <button class="zoom-region-btn" data-lat="20" data-lng="10" data-zoom="2">Global</button>
@@ -1733,8 +1775,8 @@
 
                 map = L.map('orgWorldMapCanvas', {
                     center: [25, 15],
-                    zoom: 2.3,
-                    minZoom: 1.8,
+                    zoom: 2,
+                    minZoom: 2,
                     maxZoom: 10,
                     worldCopyJump: true
                 });
@@ -1750,21 +1792,50 @@
             }
         }
 
+        let currentBasemapStyle = 'standard';
+
+        function setBasemapStyle(style) {
+            currentBasemapStyle = style;
+            document.querySelectorAll('.basemap-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.style === style);
+            });
+            updateMapTiles();
+        }
+
         function updateMapTiles() {
             if (!map || typeof L === 'undefined') return;
             if (tileLayer) map.removeLayer(tileLayer);
 
             const isDark = document.documentElement.classList.contains('dark-mode');
-            const primaryUrl = isDark 
-                ? 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png'
-                : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
             const fallbackUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 
-            tileLayer = L.tileLayer(primaryUrl, {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                subdomains: 'abcd',
-                maxZoom: 19
-            }).addTo(map);
+            const basemapConfigs = {
+                physical: {
+                    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+                    options: { attribution: 'Tiles &copy; Esri &mdash; US National Park Service', maxNativeZoom: 8, maxZoom: 10 }
+                },
+                terrain: {
+                    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
+                    options: { attribution: 'Tiles &copy; Esri &mdash; National Geographic', maxNativeZoom: 12, maxZoom: 10 }
+                },
+                satellite: {
+                    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                    options: { attribution: 'Tiles &copy; Esri &mdash; Maxar, Earthstar Geographics', maxNativeZoom: 17, maxZoom: 10 }
+                },
+                standard: {
+                    url: isDark
+                        ? 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png'
+                        : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+                    options: {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                        subdomains: 'abcd',
+                        maxZoom: 19
+                    }
+                }
+            };
+
+            const cfg = basemapConfigs[currentBasemapStyle] || basemapConfigs.standard;
+            tileLayer = L.tileLayer(cfg.url, cfg.options).addTo(map);
 
             let switched = false;
             tileLayer.on('tileerror', function() {
