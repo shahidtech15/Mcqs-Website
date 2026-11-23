@@ -829,18 +829,26 @@
             window.renderPaperTabs = function() {
                 if (!paperTabsContainer) return;
                 const filteredMeta = papersMeta.filter(pm => {
-                    if (window.activeTier === 'standard') return pm.paperNumber <= 10;
-                    if (window.activeTier === 'hard') return pm.paperNumber > 10;
+                    if (window.activeTier === 'standard') return pm.paperNumber >= 1 && pm.paperNumber <= 10;
+                    if (window.activeTier === 'hard') return pm.paperNumber >= 11 && pm.paperNumber <= 20;
+                    if (window.activeTier === 'past') return pm.paperNumber === 2021;
                     return true;
                 });
 
                 paperTabsContainer.innerHTML = filteredMeta.map(pm => {
-                    const isHard = pm.paperNumber > 10;
+                    const isPast = pm.paperNumber === 2021;
+                    const isHard = pm.paperNumber >= 11 && pm.paperNumber <= 20;
                     const isActive = pm.paperNumber === currentPaper;
+                    const borderStyle = isPast ? 'border-color: rgba(16, 185, 129, 0.5);' : (isHard ? 'border-color: rgba(239, 68, 68, 0.4);' : '');
+                    const iconHtml = isPast
+                        ? '<i class="fa-solid fa-certificate" style="color:#10b981;"></i>'
+                        : `<i class="fa-solid ${isHard ? 'fa-fire' : 'fa-file-lines'}" style="${isHard ? 'color: #ef4444;' : ''}"></i>`;
+                    const labelHtml = isPast
+                        ? '2021 Past Paper <span style="font-size:0.7rem; background:#dcfce7; color:#047857; padding:2px 6px; border-radius:10px; margin-left:4px; font-weight:700;">REAL</span>'
+                        : `Paper ${pm.paperNumber} ${isHard ? '<span style="font-size:0.7rem; background:#fee2e2; color:#b91c1c; padding:2px 6px; border-radius:10px; margin-left:4px; font-weight:700;">HARD</span>' : ''}`;
                     return `
-                        <button type="button" class="paper-tab-btn ${isActive ? 'active' : ''}" data-paper="${pm.paperNumber}" style="${isHard ? 'border-color: rgba(239, 68, 68, 0.4);' : ''}">
-                            <i class="fa-solid ${isHard ? 'fa-fire' : 'fa-file-lines'}" style="${isHard ? 'color: #ef4444;' : ''}"></i> 
-                            Paper ${pm.paperNumber} ${isHard ? '<span style="font-size:0.7rem; background:#fee2e2; color:#b91c1c; padding:2px 6px; border-radius:10px; margin-left:4px; font-weight:700;">HARD</span>' : ''}
+                        <button type="button" class="paper-tab-btn ${isActive ? 'active' : ''}" data-paper="${pm.paperNumber}" style="${borderStyle}">
+                            ${iconHtml} ${labelHtml}
                         </button>
                     `;
                 }).join('');
@@ -849,7 +857,7 @@
                     btn.addEventListener('click', () => {
                         paperTabsContainer.querySelectorAll('.paper-tab-btn').forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
-                        currentPaper = parseInt(btn.getAttribute('data-paper'));
+                        currentPaper = parseInt(btn.getAttribute('data-paper'), 10);
                         renderPaper(currentPaper);
                     });
                 });
@@ -862,20 +870,22 @@
                 document.getElementById('tierHardBtn').classList.toggle('active', tier === 'hard');
                 const pastBtn = document.getElementById('tierPastBtn');
                 if (pastBtn) pastBtn.classList.toggle('active', tier === 'past');
-                window.renderPaperTabs();
                 // If current paper is outside tier, select first visible
-                if (tier === 'standard' && currentPaper > 10) {
+                if (tier === 'standard' && (currentPaper < 1 || currentPaper > 10)) {
                     currentPaper = 1;
                     renderPaper(1);
-                } else if (tier === 'hard' && currentPaper <= 10) {
+                } else if (tier === 'hard' && (currentPaper < 11 || currentPaper > 20)) {
                     currentPaper = 11;
                     renderPaper(11);
+                } else if (tier === 'past' && currentPaper !== 2021) {
+                    currentPaper = 2021;
+                    renderPaper(2021);
                 }
+                window.renderPaperTabs();
             };
 
             if (paperTabsContainer) {
                 window.renderPaperTabs();
-            });
             }
 
             // Subject Filter Handling
