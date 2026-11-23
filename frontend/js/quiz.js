@@ -239,27 +239,26 @@ function syncQuizCoreFallbackGlobals() {
     if (Array.isArray(window.FIA_AD_INVESTIGATION_MCQS)) FIA_AD_INVESTIGATION_MCQS = window.FIA_AD_INVESTIGATION_MCQS;
 }
 
-// 1. INIT: Load Categories into Dropdown & Handle URL Parameters
-async function loadCategoriesForSetup() {
-    try {
-        const res = await apiFetch(`${API_URL}/categories`);
-        if (!res.ok) throw new Error("Backend offline");
-        categoriesData = await res.json();
-    } catch (err) {
-        console.warn("Using fallback categories for quiz setup.");
-        categoriesData = FALLBACK_CATEGORIES;
-    }
-
-    // Ensure Mistake Notebook & CSS MPT are always available at top of dropdown
+function populateCategoryDropdown(list) {
     const specialIds = new Set(['cat_mistakes', 'cat_css_mpt']);
     const specialCats = FALLBACK_CATEGORIES.filter(c => specialIds.has(c._id));
-    const restCats = categoriesData.filter(c => !specialIds.has(c._id));
+    const restCats = (Array.isArray(list) && list.length ? list : FALLBACK_CATEGORIES).filter(c => !specialIds.has(c._id));
     categoriesData = [...specialCats, ...restCats];
 
+    const previousVal = setupCategory ? setupCategory.value : '';
     setupCategory.innerHTML = '<option value="">Select a Category</option>';
     categoriesData.forEach(cat => {
         setupCategory.innerHTML += `<option value="${cat._id}">${cat.name}</option>`;
     });
+    if (previousVal && Array.from(setupCategory.options).some(o => o.value === previousVal)) {
+        setupCategory.value = previousVal;
+    }
+}
+
+// 1. INIT: Load Categories into Dropdown Instantly & Handle URL Parameters
+async function loadCategoriesForSetup() {
+    // Render fallback categories IMMEDIATELY (0ms) so the simulator is never stuck on "Loading..."
+    populateCategoryDropdown(FALLBACK_CATEGORIES);
 
     if (window.LEARNING_DASHBOARD && typeof window.LEARNING_DASHBOARD.getMistakes === 'function') {
         const mCount = window.LEARNING_DASHBOARD.getMistakes().length;
@@ -267,15 +266,38 @@ async function loadCategoriesForSetup() {
         if (badgeEl) badgeEl.textContent = String(mCount);
     }
 
-    // Check URL parameters for pre-selected Category / Subcategory
+    // Apply URL parameters immediately
     parseUrlParameters();
+
+    // Optionally refresh from live backend in background (only if user hasn't picked a category yet)
+    try {
+        const res = await apiFetch(`${API_URL}/categories`);
+        if (!res.ok) throw new Error("Backend offline");
+        const liveCats = await res.json();
+        if (Array.isArray(liveCats) && liveCats.length > 0 && !setupCategory.value) {
+            populateCategoryDropdown(liveCats);
+            parseUrlParameters();
+        }
+    } catch (err) {
+        console.warn("Using built-in fallback categories for quiz setup.");
+    }
 }
 
 function parseUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
-    const paramCatId = urlParams.get('categoryId');
+    const paramCatId = urlParams.get('categoryId') || urlParams.get('category');
     const paramCatName = urlParams.get('categoryName');
     const paramSubCat = urlParams.get('subCategory');
+    const paramLimit = urlParams.get('limit');
+    const paramDiff = urlParams.get('diff') || urlParams.get('difficulty');
+
+    if (paramLimit && setupLimit && Array.from(setupLimit.options).some(o => o.value === paramLimit)) {
+        setupLimit.value = paramLimit;
+    }
+    if (paramDiff && setupDifficulty && Array.from(setupDifficulty.options).some(o => o.value.toLowerCase() === paramDiff.toLowerCase())) {
+        const matched = Array.from(setupDifficulty.options).find(o => o.value.toLowerCase() === paramDiff.toLowerCase());
+        if (matched) setupDifficulty.value = matched.value;
+    }
 
     if (!paramCatId && !paramCatName) return;
 
@@ -366,6 +388,22 @@ startQuizBtn.addEventListener('click', async () => {
         syncQuizCoreFallbackGlobals();
         quizQuestions = generateFallbackQuiz(catName, subCat, limit, diff);
     }
+
+    // Ensure every question has a stable unique _id
+    quizQuestions = (Array.isArray(quizQuestions) ? quizQuestions : []).map((q, idx) => ({
+        ...q,
+        _id: String(q._id || q.id || q.questionId || `quiz_q_${idx + 1}`)
+    }));
+
+    if (quizQuestions.length === 0) {
+        startQuizBtn.innerHTML = '<i class="fa-solid fa-play"></i> Start Quiz Simulation';
+        startQuizBtn.disabled = false;
+        alert('No questions were found for this filter. Please try "All Topics" or another category.');
+        return;
+    }
+
+    startQuizBtn.innerHTML = '<i class="fa-solid fa-play"></i> Start Quiz Simulation';
+    startQuizBtn.disabled = false;
 
     // Initialize state
     userAnswers = {};
@@ -616,10 +654,11 @@ function renderQuestion(index) {
     const selected = userAnswers[q._id];
 
     letters.forEach(letter => {
-        if (q.options[letter]) {
+        if (q.options && q.options[letter]) {
             const isSelected = selected === letter ? 'selected' : '';
+            const safeId = String(q._id).replace(/'/g, "\\'");
             optsHtml += `
-            <div class="quiz-option ${isSelected}" onclick="selectOption('${q._id}', '${letter}')">
+            <div class="quiz-option ${isSelected}" data-letter="${letter}" onclick="selectOption('${safeId}', '${letter}', this)">
                 <div class="option-letter">${letter}</div>
                 <div class="option-text">${q.options[letter]}</div>
             </div>`;
@@ -734,12 +773,17 @@ function renderPalette() {
 }
 
 // 7. Interaction Handlers
-window.selectOption = function (questionId, letter) {
+window.selectOption = function (questionId, letter, el) {
     userAnswers[questionId] = letter;
     const options = document.querySelectorAll('.quiz-option');
-    options.forEach(opt => opt.classList.remove('selected'));
-    if (event && event.currentTarget) {
-        event.currentTarget.classList.add('selected');
+    options.forEach(opt => {
+        opt.classList.remove('selected');
+        if (!el && opt.getAttribute('data-letter') === letter) {
+            opt.classList.add('selected');
+        }
+    });
+    if (el) {
+        el.classList.add('selected');
     }
     renderPalette();
 };
@@ -830,7 +874,10 @@ async function submitQuiz() {
     };
 
     try {
-        const res = await fetch(`${API_URL}/quiz/submit`, {
+        if (typeof window !== 'undefined' && window.__mcqsApiOffline) {
+            throw new Error("Standalone mode: grading client-side");
+        }
+        const res = await apiFetch(`${API_URL}/quiz/submit`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -1127,10 +1174,15 @@ function initMobileNav() {
     });
 }
 
-// Boot
+// Boot immediately on DOMContentLoaded (don't wait for slow external assets in window.onload)
 window.generateFallbackQuiz = generateFallbackQuiz;
-window.onload = () => {
+function bootQuizSimulator() {
     initMobileNav();
     initDarkMode();
     loadCategoriesForSetup();
-};
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootQuizSimulator);
+} else {
+    bootQuizSimulator();
+}

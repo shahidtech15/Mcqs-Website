@@ -66,7 +66,7 @@
     const normSub = (subCategory || '').toLowerCase();
 
     if (norm.includes('mistake') || norm.includes('cat_mistakes')) {
-      return [];
+      return ['js/data_2200.js'];
     }
     if (norm.includes('css mpt') || norm.includes('cat_css_mpt') || norm.includes('mpt 200')) {
       return [
