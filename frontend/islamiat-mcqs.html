@@ -346,12 +346,45 @@
             gap: 10px;
             padding: 12px 14px;
             border-radius: 10px;
-            border: 1px solid var(--border-color, #e2e8f0);
+            border: 1.5px solid var(--border-color, #e2e8f0);
             background: var(--bg-color, #f8fafc);
             font-size: 0.9rem;
             line-height: 1.4;
             color: var(--text-color, #334155);
             transition: all 0.2s ease;
+            cursor: pointer;
+            user-select: none;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+        }
+
+        .isl-opt:hover:not(.answered) {
+            border-color: var(--islam-emerald-primary);
+            background: var(--islam-emerald-subtle);
+            transform: translateY(-1px);
+        }
+
+        .isl-opt.answered {
+            cursor: default;
+        }
+
+        .isl-opt.wrong {
+            background: #fef2f2 !important;
+            border-color: #ef4444 !important;
+            color: #991b1b !important;
+            font-weight: 600;
+        }
+
+        .isl-opt.wrong .isl-opt-letter {
+            background: #ef4444 !important;
+            color: #ffffff !important;
+        }
+
+        .dark-mode .isl-opt.wrong {
+            background: rgba(239, 68, 68, 0.16) !important;
+            border-color: #f87171 !important;
+            color: #fca5a5 !important;
         }
 
         .isl-opt-letter {
@@ -777,12 +810,15 @@
             </div>
         </div>
 
-        <!-- Results Counter -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; font-size:0.9rem; color:#64748b; font-weight:600;">
+        <!-- Results Counter & Live Practice Score -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:18px; font-size:0.9rem; color:#64748b; font-weight:600;">
             <span id="resultsCount">Loading 1,000 questions...</span>
-            <button id="toggleAllAnswersBtn" class="isl-toggle-btn">
-                <i class="fa-regular fa-eye"></i> Show All Answers
-            </button>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                <span id="liveScorePill" style="display:none; background:#ecfdf5; color:#047857; border:1px solid #a7f3d0; padding:5px 12px; border-radius:20px; font-size:0.82rem; font-weight:700;"></span>
+                <button id="toggleAllAnswersBtn" class="isl-toggle-btn">
+                    <i class="fa-regular fa-eye"></i> Show All Answers
+                </button>
+            </div>
         </div>
 
         <!-- Question List -->
@@ -864,6 +900,26 @@
             let currentPage = 1;
             let pageSize = 25;
             let allAnswersVisible = false;
+            const userAnswers = {}; // questionId -> 'A' | 'B' | 'C' | 'D'
+            const liveScorePill = document.getElementById('liveScorePill');
+
+            function updateLiveScore() {
+                const attemptedIds = Object.keys(userAnswers);
+                if (!attemptedIds.length) {
+                    if (liveScorePill) liveScorePill.style.display = 'none';
+                    return;
+                }
+                let correctCount = 0;
+                attemptedIds.forEach(id => {
+                    const q = allQuestions.find(item => String(item.questionId) === String(id));
+                    if (q && userAnswers[id] === q.correctAnswer) correctCount++;
+                });
+                const pct = Math.round((correctCount / attemptedIds.length) * 100);
+                if (liveScorePill) {
+                    liveScorePill.style.display = 'inline-flex';
+                    liveScorePill.innerHTML = `<i class="fa-solid fa-check-double" style="margin-right:5px;"></i> Score: ${correctCount}/${attemptedIds.length} (${pct}%)`;
+                }
+            }
 
             const mcqContainer = document.getElementById('mcqContainer');
             const paginationContainer = document.getElementById('paginationContainer');
@@ -928,7 +984,16 @@
                 let html = '';
                 pageItems.forEach((q, idx) => {
                     const diffClass = `diff-${(q.difficulty || 'medium').toLowerCase()}`;
-                    const isVisible = allAnswersVisible;
+                    const selectedOpt = userAnswers[q.questionId] || null;
+                    const isVisible = allAnswersVisible || Boolean(selectedOpt);
+
+                    const optClass = (letter) => {
+                        const classes = ['isl-opt'];
+                        if (selectedOpt) classes.push('answered');
+                        if (isVisible && q.correctAnswer === letter) classes.push('correct');
+                        if (selectedOpt === letter && letter !== q.correctAnswer) classes.push('wrong');
+                        return classes.join(' ');
+                    };
 
                     html += `
                         <article class="isl-mcq-card" id="card-${q.questionId}">
@@ -941,22 +1006,22 @@
                             </div>
                             <div class="isl-qtext">${escapeHtml(q.questionText)}</div>
                             <div class="isl-options-grid">
-                                <div class="isl-opt ${isVisible && q.correctAnswer === 'A' ? 'correct' : ''}" data-opt="A">
+                                <button type="button" class="${optClass('A')}" data-opt="A" onclick="selectOption(${q.questionId}, 'A')">
                                     <span class="isl-opt-letter">A</span>
                                     <span>${escapeHtml(q.options.A)}</span>
-                                </div>
-                                <div class="isl-opt ${isVisible && q.correctAnswer === 'B' ? 'correct' : ''}" data-opt="B">
+                                </button>
+                                <button type="button" class="${optClass('B')}" data-opt="B" onclick="selectOption(${q.questionId}, 'B')">
                                     <span class="isl-opt-letter">B</span>
                                     <span>${escapeHtml(q.options.B)}</span>
-                                </div>
-                                <div class="isl-opt ${isVisible && q.correctAnswer === 'C' ? 'correct' : ''}" data-opt="C">
+                                </button>
+                                <button type="button" class="${optClass('C')}" data-opt="C" onclick="selectOption(${q.questionId}, 'C')">
                                     <span class="isl-opt-letter">C</span>
                                     <span>${escapeHtml(q.options.C)}</span>
-                                </div>
-                                <div class="isl-opt ${isVisible && q.correctAnswer === 'D' ? 'correct' : ''}" data-opt="D">
+                                </button>
+                                <button type="button" class="${optClass('D')}" data-opt="D" onclick="selectOption(${q.questionId}, 'D')">
                                     <span class="isl-opt-letter">D</span>
                                     <span>${escapeHtml(q.options.D)}</span>
-                                </div>
+                                </button>
                             </div>
                             <div class="isl-card-footer">
                                 <button class="isl-toggle-btn" onclick="toggleAnswer(${q.questionId})">
@@ -1007,6 +1072,32 @@
                 window.scrollTo({ top: mcqContainer.offsetTop - 120, behavior: 'smooth' });
             };
 
+            window.selectOption = function (id, chosen) {
+                const card = document.getElementById(`card-${id}`);
+                if (!card) return;
+                const question = allQuestions.find(q => q.questionId === id);
+                if (!question) return;
+
+                // Record selection and style options
+                userAnswers[id] = chosen;
+                card.querySelectorAll('.isl-opt').forEach(opt => {
+                    opt.classList.add('answered');
+                    opt.classList.remove('correct', 'wrong');
+                    const letter = opt.getAttribute('data-opt');
+                    if (letter === question.correctAnswer) {
+                        opt.classList.add('correct');
+                    } else if (letter === chosen && chosen !== question.correctAnswer) {
+                        opt.classList.add('wrong');
+                    }
+                });
+
+                const expBox = document.getElementById(`exp-${id}`);
+                const btnText = card.querySelector('.btn-text');
+                if (expBox) expBox.style.display = 'block';
+                if (btnText) btnText.textContent = 'Hide Answer';
+                updateLiveScore();
+            };
+
             window.toggleAnswer = function (id) {
                 const card = document.getElementById(`card-${id}`);
                 if (!card) return;
@@ -1019,7 +1110,9 @@
                 if (isShown) {
                     expBox.style.display = 'none';
                     btnText.textContent = 'Show Answer & Explanation';
-                    card.querySelectorAll('.isl-opt').forEach(opt => opt.classList.remove('correct'));
+                    delete userAnswers[id];
+                    card.querySelectorAll('.isl-opt').forEach(opt => opt.classList.remove('correct', 'wrong', 'answered'));
+                    updateLiveScore();
                 } else {
                     expBox.style.display = 'block';
                     btnText.textContent = 'Hide Answer';
