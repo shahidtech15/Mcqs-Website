@@ -84,10 +84,12 @@ app.use((err, req, res, next) => {
     });
 });
 
-// ALWAYS listen on PORT when run directly (Vercel Node runtime uses process.env.PORT)
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-});
+// Listen on PORT only when executed directly (Vercel Serverless imports app via api/index.js)
+if (require.main === module) {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`Server listening on port ${PORT}`);
+    });
+}
 
 module.exports = app;
