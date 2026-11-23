@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Half-Face Celebrity &amp; Personality Guess Game | GK &amp; Current Affairs — CSS Prep Central</title>
+    <meta name="description"
+        content="Interactive Half-Face Celebrity and Famous Personality Guess Game. Identify world leaders, Pakistani icons, scientists, sports legends, and cinema stars from half their face, then reveal the full portrait and biography.">
+    <link rel="canonical" href="https://www.cssprepcentral.com/half-face-game.html" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Anti-FOUC Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.cssprepcentral.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Half-Face Personality Guess Game", "item": "https://www.cssprepcentral.com/half-face-game.html" }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --hf-bg: #f8fafc;
+            --hf-card: #ffffff;
+            --hf-border: #e2e8f0;
+            --hf-text: #0f172a;
+            --hf-muted: #64748b;
+            --hf-primary: #4f46e5;
+            --hf-primary-hover: #4338ca;
+            --hf-primary-soft: rgba(79, 70, 229, 0.12);
+            --hf-accent: #0284c7;
+            --hf-success: #10b981;
+            --hf-amber: #d97706;
+            --hf-danger: #ef4444;
+            --hf-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.09);
+        }
+
+        .dark-mode {
+            --hf-bg: #0b1120;
+            --hf-card: #1e293b;
+            --hf-border: #334155;
+            --hf-text: #f8fafc;
+            --hf-muted: #94a3b8;
+            --hf-primary: #818cf8;
+            --hf-primary-hover: #6366f1;
+            --hf-primary-soft: rgba(129, 140, 248, 0.16);
+            --hf-accent: #38bdf8;
+            --hf-success: #34d399;
+            --hf-amber: #fbbf24;
+            --hf-danger: #f87171;
+            --hf-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.45);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--hf-bg);
+            color: var(--hf-text);
+            line-height: 1.55;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        /* Top Switcher Bar */
+        .site-switcher-bar {
+            background: #090d16;
+            border-bottom: 1px solid #1e293b;
+            padding: 7px 16px;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .switcher-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .switcher-cat-tag {
+            font-size: 0.68rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: rgba(99, 102, 241, 0.22);
+            color: #a5b4fc;
+        }
+        .switcher-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .switcher-btn:hover { color: #ffffff; background: rgba(255,255,255,0.06); }
+        .switcher-btn.active { color: #a5b4fc; background: rgba(99, 102, 241, 0.18); font-weight: 700; }
+
+        /* Header */
+        .site-header {
+            background: var(--hf-card);
+            border-bottom: 1px solid var(--hf-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--hf-text);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            white-space: nowrap;
+        }
+        .logo i { color: var(--hf-primary); }
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            overflow-x: auto;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--hf-muted);
+            font-weight: 600;
+            font-size: 0.86rem;
+            white-space: nowrap;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--hf-primary); }
+        .theme-toggle-btn {
+            background: var(--hf-bg);
+            border: 1px solid var(--hf-border);
+            color: var(--hf-text);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero */
+        .hf-hero {
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 58%, #312e81 100%);
+            color: #ffffff;
+            padding: 30px 20px 26px;
+            text-align: center;
+        }
+        .hf-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(129, 140, 248, 0.2);
+            border: 1px solid rgba(165, 180, 252, 0.4);
+            color: #c7d2fe;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+        .hf-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.65rem, 3.5vw, 2.3rem);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .hf-hero p {
+            max-width: 720px;
+            margin: 0 auto;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        /* HUD Bar */
+        .hf-hud {
+            background: var(--hf-card);
+            border-bottom: 1px solid var(--hf-border);
+            padding: 12px 20px;
+            position: sticky;
+            top: 61px;
+            z-index: 80;
+        }
+        .hf-hud-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .hud-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .hud-select {
+            background: var(--hf-bg);
+            border: 1px solid var(--hf-border);
+            color: var(--hf-text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 7px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .hud-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--hf-bg);
+            border: 1px solid var(--hf-border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* Main Stage */
+        .hf-main {
+            max-width: 1120px;
+            width: 100%;
+            margin: 26px auto 44px;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: 0.92fr 1.08fr;
+            gap: 26px;
+            align-items: start;
+        }
+        @media (max-width: 880px) {
+            .game-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Portrait Card with Half-Face Curtain */
+        .portrait-card {
+            background: var(--hf-card);
+            border: 1px solid var(--hf-border);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--hf-shadow);
+        }
+
+        .portrait-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 4.6;
+            max-height: 440px;
+            background: #0f172a;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .portrait-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 18%;
+            display: block;
+            transition: filter 0.35s ease;
+        }
+
+        /* The Half-Face Mask Curtain */
+        .face-curtain {
+            position: absolute;
+            background: linear-gradient(145deg, #0f172a 0%, #1e1b4b 55%, #090d16 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #e2e8f0;
+            z-index: 4;
+            transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+        }
+
+        /* Left half covered (shows RIGHT half of face) */
+        .face-curtain.mask-left {
+            top: 0; bottom: 0; left: 0; width: 50%;
+            border-right: 3px solid #818cf8;
+            box-shadow: 6px 0 28px rgba(0, 0, 0, 0.65);
+        }
+        .face-curtain.mask-left.revealed {
+            transform: translateX(-104%);
+            opacity: 0;
+        }
+
+        /* Right half covered (shows LEFT half of face) */
+        .face-curtain.mask-right {
+            top: 0; bottom: 0; right: 0; width: 50%;
+            border-left: 3px solid #818cf8;
+            box-shadow: -6px 0 28px rgba(0, 0, 0, 0.65);
+        }
+        .face-curtain.mask-right.revealed {
+            transform: translateX(104%);
+            opacity: 0;
+        }
+
+        /* Bottom half covered (shows TOP half / eyes) */
+        .face-curtain.mask-bottom {
+            left: 0; right: 0; bottom: 0; height: 50%;
+            border-top: 3px solid #818cf8;
+            box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.65);
+        }
+        .face-curtain.mask-bottom.revealed {
+            transform: translateY(104%);
+            opacity: 0;
+        }
+
+        /* Top half covered (shows LOWER half) */
+        .face-curtain.mask-top {
+            left: 0; right: 0; top: 0; height: 50%;
+            border-bottom: 3px solid #818cf8;
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.65);
+        }
+        .face-curtain.mask-top.revealed {
+            transform: translateY(-104%);
+            opacity: 0;
+        }
+
+        .curtain-q {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: rgba(129, 140, 248, 0.18);
+            border: 2px solid rgba(165, 180, 252, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #c7d2fe;
+            margin-bottom: 8px;
+        }
+        .curtain-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #94a3b8;
+        }
+
+        .portrait-status-pill {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 6;
+            background: rgba(15, 23, 42, 0.82);
+            backdrop-filter: blur(6px);
+            color: #ffffff;
+            padding: 5px 11px;
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Post-Guess Bio Dossier */
+        .bio-dossier {
+            display: none;
+            padding: 18px 20px;
+            border-top: 1px solid var(--hf-border);
+            animation: fadeUp 0.35s ease;
+        }
+        .bio-dossier.show { display: block; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .bio-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+        .bio-role {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--hf-primary);
+            margin-bottom: 10px;
+        }
+        .bio-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .bio-pill {
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 8px;
+            background: var(--hf-bg);
+            border: 1px solid var(--hf-border);
+        }
+        .bio-fact {
+            background: var(--hf-bg);
+            border-left: 4px solid var(--hf-amber);
+            padding: 10px 13px;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.86rem;
+        }
+
+        /* Right Column: Options */
+        .options-card {
+            background: var(--hf-card);
+            border: 1px solid var(--hf-border);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: var(--hf-shadow);
+        }
+        .options-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .options-sub {
+            color: var(--hf-muted);
+            font-size: 0.88rem;
+            margin-bottom: 16px;
+        }
+        .hint-box {
+            display: none;
+            margin-bottom: 14px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(217, 119, 6, 0.12);
+            border: 1px solid rgba(217, 119, 6, 0.35);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .hint-box.show { display: block; }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+        .option-btn {
+            width: 100%;
+            text-align: left;
+            background: var(--hf-bg);
+            border: 2px solid var(--hf-border);
+            color: var(--hf-text);
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-size: 0.96rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            transition: all 0.15s;
+        }
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--hf-primary);
+            transform: translateX(3px);
+        }
+        .option-btn:disabled { cursor: default; }
+        .option-left { display: flex; align-items: center; }
+        .option-key {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 7px;
+            background: var(--hf-card);
+            border: 1px solid var(--hf-border);
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--hf-muted);
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .option-btn.correct {
+            background: rgba(16, 185, 129, 0.14);
+            border-color: #10b981;
+            color: #047857;
+        }
+        .dark-mode .option-btn.correct { color: #6ee7b7; }
+        .option-btn.wrong {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: #ef4444;
+            color: #b91c1c;
+        }
+        .dark-mode .option-btn.wrong { color: #fca5a5; }
+
+        .feedback-banner {
+            display: none;
+            margin-top: 16px;
+            padding: 13px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .feedback-banner.show { display: block; }
+        .feedback-banner.ok {
+            background: rgba(16, 185, 129, 0.14);
+            border: 1px solid rgba(16, 185, 129, 0.45);
+            color: #047857;
+        }
+        .dark-mode .feedback-banner.ok { color: #6ee7b7; }
+        .feedback-banner.err {
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.45);
+            color: #b91c1c;
+        }
+        .dark-mode .feedback-banner.err { color: #fca5a5; }
+
+        .action-row {
+            margin-top: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn-secondary {
+            background: var(--hf-bg);
+            border: 1px solid var(--hf-border);
+            color: var(--hf-text);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .btn-secondary:hover { border-color: var(--hf-primary); color: var(--hf-primary); }
+        .btn-next {
+            background: linear-gradient(135deg, #4f46e5, #0284c7);
+            color: #ffffff;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
+        }
+        .btn-next:hover { opacity: 0.95; }
+
+        /* Round Summary Screen */
+        .summary-card {
+            display: none;
+            background: var(--hf-card);
+            border: 1px solid var(--hf-border);
+            border-radius: 18px;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: var(--hf-shadow);
+        }
+        .summary-card.show { display: block; }
+        .summary-stats {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 18px 0 24px;
+        }
+        .summary-stat-box {
+            background: var(--hf-bg);
+            border: 1px solid var(--hf-border);
+            border-radius: 12px;
+            padding: 14px 22px;
+            min-width: 130px;
+        }
+        .summary-stat-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--hf-primary);
+        }
+        .summary-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 18px 0 26px;
+            text-align: left;
+        }
+        .gallery-mini {
+            background: var(--hf-bg);
+            border: 1px solid var(--hf-border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .gallery-mini img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
+        }
+        .gallery-mini-body {
+            padding: 8px 10px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Switcher Bar -->
+    <div class="site-switcher-bar">
+        <div class="switcher-inner">
+            <span class="switcher-cat-tag"><i class="fas fa-gamepad"></i> Interactive &amp; Games</span>
+            <a href="half-face-game.html" class="switcher-btn active"><i class="fas fa-user-secret"></i> Half-Face Quiz</a>
+            <a href="animal-sounds-game.html" class="switcher-btn"><i class="fas fa-paw"></i> Animal Sounds</a>
+            <a href="crossword.html" class="switcher-btn"><i class="fas fa-pen-fancy"></i> Crosswords</a>
+            <a href="word-search.html" class="switcher-btn"><i class="fas fa-search"></i> Word Search</a>
+            <a href="scrabble.html" class="switcher-btn"><i class="fas fa-font"></i> Scrabble</a>
+            <a href="guess-the-country.html" class="switcher-btn"><i class="fas fa-flag"></i> Guess Country</a>
+            <a href="locate-on-map.html" class="switcher-btn"><i class="fas fa-compass"></i> Locate on Map</a>
+            <a href="daily-challenges.html" class="switcher-btn"><i class="fas fa-bolt"></i> Daily Challenges</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CSS Prep Central</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="half-face-game.html" class="active"><i class="fas fa-user-secret"></i> Half-Face Quiz</a>
+                <a href="animal-sounds-game.html"><i class="fas fa-paw"></i> Animal Sounds</a>
+                <a href="crossword.html"><i class="fas fa-chess-board"></i> Crossword</a>
+                <a href="word-search.html"><i class="fas fa-magnifying-glass"></i> Word Search</a>
+                <a href="quiz.html"><i class="fas fa-bolt"></i> Practice Quiz</a>
+            </nav>
+            <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hf-hero">
+        <div class="hf-hero-badge">
+            <i class="fas fa-user-secret"></i> Visual Recognition Challenge &bull; 36 World &amp; Pakistani Personalities
+        </div>
+        <h1>Guess the Personality from Half a Face</h1>
+        <p>
+            Only half of the portrait is visible! Identify world leaders, Pakistani national icons, Nobel scientists, sports legends, and cinema stars — then watch the curtain slide open to reveal the full face and biography.
+        </p>
+    </section>
+
+    <!-- HUD Control Bar -->
+    <div class="hf-hud">
+        <div class="hf-hud-inner">
+            <div class="hud-group">
+                <label for="categoryFilter" style="display:none;">Category</label>
+                <select id="categoryFilter" class="hud-select" title="Choose Personality Category">
+                    <option value="all">🌍 All Personalities (36)</option>
+                    <option value="pakistan">🇵🇰 Pakistan Icons (9)</option>
+                    <option value="leaders">🏛️ World Leaders &amp; History (8)</option>
+                    <option value="science">🔬 Scientists &amp; Tech Innovators (9)</option>
+                    <option value="sports">🏆 Sports Legends (5)</option>
+                    <option value="entertainment">🎬 Cinema &amp; Music Stars (5)</option>
+                </select>
+                <label for="splitModeSelect" style="display:none;">Split Style</label>
+                <select id="splitModeSelect" class="hud-select" title="Half-Face Mask Direction">
+                    <option value="vertical">🌓 Left / Right Half-Face</option>
+                    <option value="horizontal">🌗 Top / Bottom Half-Face</option>
+                    <option value="random">🎲 Random Half-Face</option>
+                </select>
+            </div>
+            <div class="hud-group">
+                <div class="hud-pill"><i class="fas fa-list-ol" style="color:var(--hf-accent);"></i> <span id="hudRound">1 / 10</span></div>
+                <div class="hud-pill"><i class="fas fa-star" style="color:var(--hf-amber);"></i> Score: <span id="hudScore">0</span></div>
+                <div class="hud-pill"><i class="fas fa-fire" style="color:#f97316;"></i> Streak: <span id="hudStreak">0</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Game Container -->
+    <main class="hf-main">
+        <div class="game-grid" id="gameGrid">
+            <!-- Left: Half-Face Portrait Card -->
+            <div class="portrait-card">
+                <div class="portrait-frame">
+                    <span class="portrait-status-pill" id="portraitStatusPill">
+                        <i class="fas fa-eye-slash"></i> Half-Face Hidden
+                    </span>
+                    <img id="portraitImg" src="" alt="Mystery celebrity half-face portrait">
+                    <div class="face-curtain mask-right" id="faceCurtain">
+                        <div class="curtain-q"><i class="fas fa-question"></i></div>
+                        <div class="curtain-label">Guess to Reveal</div>
+                    </div>
+                </div>
+
+                <!-- Post-Guess Full Biography Dossier -->
+                <div class="bio-dossier" id="bioDossier">
+                    <div class="bio-name" id="bioName">Name</div>
+                    <div class="bio-role" id="bioRole">Role</div>
+                    <div class="bio-pills">
+                        <span class="bio-pill"><i class="fas fa-flag"></i> <span id="bioCountry">Country</span></span>
+                        <span class="bio-pill"><i class="fas fa-calendar"></i> <span id="bioEra">Era</span></span>
+                    </div>
+                    <div class="bio-fact">
+                        <strong><i class="fas fa-lightbulb" style="color:var(--hf-amber);"></i> GK / Exam Fact:</strong>
+                        <span id="bioFact"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Answer Choices -->
+            <div class="options-card">
+                <h2 class="options-heading">Who is this famous personality?</h2>
+                <p class="options-sub">Study the visible half of the face and pick the right name (or press keys <strong>1–4</strong>). The full face unlocks right after your guess!</p>
+
+                <div class="hint-box" id="hintBox"></div>
+
+                <div class="options-list" id="optionsList"></div>
+
+                <div class="feedback-banner" id="feedbackBanner"></div>
+
+                <div class="action-row">
+                    <button type="button" class="btn-secondary" id="btnHint">
+                        <i class="fas fa-lightbulb"></i> Show Hint
+                    </button>
+                    <button type="button" class="btn-next" id="btnNext" style="display:none;">
+                        Next Personality <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Round Complete Summary -->
+        <div class="summary-card" id="summaryCard">
+            <div style="font-size:2.8rem; margin-bottom:8px;">🎭</div>
+            <h2 style="font-family:'Outfit',sans-serif; font-size:1.75rem; font-weight:800;">Round Complete!</h2>
+            <p style="color:var(--hf-muted); margin-top:4px;" id="summarySubtitle">Sharp visual memory!</p>
+
+            <div class="summary-stats">
+                <div class="summary-stat-box">
+                    <div class="summary-stat-val" id="sumScore">0 / 10</div>
+                    <div style="font-size:0.8rem; color:var(--hf-muted); font-weight:600;">Correct Guesses</div>
+                </div>
+                <div class="summary-stat-box">
+                    <div class="summary-stat-val" id="sumAccuracy">0%</div>
+                    <div style="font-size:0.8rem; color:var(--hf-muted); font-weight:600;">Accuracy</div>
+                </div>
+                <div class="summary-stat-box">
+                    <div class="summary-stat-val" id="sumStreak">0</div>
+                    <div style="font-size:0.8rem; color:var(--hf-muted); font-weight:600;">Best Streak</div>
+                </div>
+            </div>
+
+            <h3 style="font-size:0.95rem; color:var(--hf-muted); margin-bottom:10px;">Personalities Revealed This Round</h3>
+            <div class="summary-gallery" id="summaryGallery"></div>
+
+            <button type="button" class="btn-next" id="btnPlayAgain">
+                <i class="fas fa-rotate-right"></i> Play Next Round &rarr;
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" style="background:#0f172a; color:#94a3b8; padding:30px 20px; border-top:1px solid #1e293b; text-align:center;">
+        <div style="max-width:1120px; margin:0 auto;">
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px; font-size:0.85rem; margin-bottom:12px;">
+                <a href="index.html" style="color:#fff; font-weight:700; text-decoration:none;">Home</a>
+                <a href="half-face-game.html" style="color:#a5b4fc; font-weight:700; text-decoration:none;">Half-Face Quiz</a>
+                <a href="animal-sounds-game.html" style="color:#cbd5e1; text-decoration:none;">Animal Sounds</a>
+                <a href="crossword.html" style="color:#cbd5e1; text-decoration:none;">Crossword</a>
+                <a href="word-search.html" style="color:#cbd5e1; text-decoration:none;">Word Search</a>
+                <a href="about.html" style="color:#94a3b8; text-decoration:none;">About</a>
+                <a href="privacy.html" style="color:#60a5fa; text-decoration:none;">Privacy Policy</a>
+            </div>
+            <p style="font-size:0.78rem; color:#64748b;">
+                &copy; 2026 CSS Prep Central &bull; Portraits sourced from Wikimedia Commons (Public Domain / Creative Commons).
+            </p>
+        </div>
+    </footer>
+
+    <!-- Dataset -->
+    <script src="js/data_half_face.js"></script>
+
+    <!-- Game Engine -->
+    <script>
+        const ALL_PEOPLE = window.HALF_FACE_DATA || [];
+        let currentCategory = 'all';
+        let splitMode = 'vertical'; // 'vertical', 'horizontal', 'random'
+        let roundQueue = [];
+        let roundIndex = 0;
+        let score = 0;
+        let streak = 0;
+        let bestStreak = 0;
+        let answered = false;
+        let currentPerson = null;
+        let currentOptions = [];
+        let roundHistory = [];
+        let audioCtx = null;
+
+        // Dark Mode Toggle
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        function playChime(ok) {
+            try {
+                if (!audioCtx) {
+                    const AC = window.AudioContext || window.webkitAudioContext;
+                    if (AC) audioCtx = new AC();
+                }
+                if (!audioCtx) return;
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const now = audioCtx.currentTime;
+                const o = audioCtx.createOscillator();
+                const g = audioCtx.createGain();
+                o.type = 'triangle';
+                if (ok) {
+                    o.frequency.setValueAtTime(523.25, now);
+                    o.frequency.setValueAtTime(659.25, now + 0.1);
+                    o.frequency.setValueAtTime(783.99, now + 0.2);
+                } else {
+                    o.frequency.setValueAtTime(210, now);
+                    o.frequency.linearRampToValueAtTime(140, now + 0.22);
+                }
+                g.gain.setValueAtTime(0.15, now);
+                g.gain.exponentialRampToValueAtTime(0.001, now + 0.34);
+                o.connect(g).connect(audioCtx.destination);
+                o.start(now); o.stop(now + 0.35);
+            } catch (e) {}
+        }
+
+        function shuffle(arr) {
+            const c = [...arr];
+            for (let i = c.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [c[i], c[j]] = [c[j], c[i]];
+            }
+            return c;
+        }
+
+        function getFilteredPool() {
+            if (currentCategory === 'all') return ALL_PEOPLE;
+            return ALL_PEOPLE.filter(p => p.category === currentCategory);
+        }
+
+        function pickMaskClass() {
+            if (splitMode === 'vertical') return Math.random() < 0.5 ? 'mask-left' : 'mask-right';
+            if (splitMode === 'horizontal') return Math.random() < 0.5 ? 'mask-bottom' : 'mask-top';
+            const all = ['mask-left', 'mask-right', 'mask-bottom', 'mask-top'];
+            return all[Math.floor(Math.random() * all.length)];
+        }
+
+        function startNewRound() {
+            const pool = getFilteredPool();
+            const count = Math.min(10, pool.length);
+            roundQueue = shuffle(pool).slice(0, count);
+            roundIndex = 0;
+            score = 0;
+            streak = 0;
+            bestStreak = 0;
+            roundHistory = [];
+
+            document.getElementById('summaryCard').classList.remove('show');
+            document.getElementById('gameGrid').style.display = 'grid';
+            updateHud();
+            loadQuestion();
+        }
+
+        function updateHud() {
+            document.getElementById('hudRound').textContent = `${Math.min(roundIndex + 1, roundQueue.length)} / ${roundQueue.length}`;
+            document.getElementById('hudScore').textContent = score;
+            document.getElementById('hudStreak').textContent = streak;
+        }
+
+        function loadQuestion() {
+            answered = false;
+            currentPerson = roundQueue[roundIndex];
+            if (!currentPerson) return;
+
+            // Reset curtain immediately without transition flicker
+            const curtain = document.getElementById('faceCurtain');
+            curtain.style.transition = 'none';
+            curtain.className = 'face-curtain ' + pickMaskClass();
+            void curtain.offsetWidth; // force reflow
+            curtain.style.transition = '';
+
+            document.getElementById('portraitStatusPill').innerHTML = '<i class="fas fa-eye-slash"></i> Half-Face Hidden';
+            document.getElementById('bioDossier').classList.remove('show');
+            document.getElementById('feedbackBanner').className = 'feedback-banner';
+            document.getElementById('hintBox').classList.remove('show');
+            document.getElementById('btnHint').disabled = false;
+            document.getElementById('btnNext').style.display = 'none';
+
+            const img = document.getElementById('portraitImg');
+            img.src = currentPerson.imageUrl || '';
+            img.alt = 'Mystery personality half-face portrait';
+
+            // Preload next portrait for snappy UX
+            if (roundQueue[roundIndex + 1] && roundQueue[roundIndex + 1].imageUrl) {
+                const pre = new Image();
+                pre.src = roundQueue[roundIndex + 1].imageUrl;
+            }
+
+            // Build 4 options (prefer same category for realistic challenge)
+            const sameCat = ALL_PEOPLE.filter(p => p.id !== currentPerson.id && p.category === currentPerson.category);
+            const fallbackPool = ALL_PEOPLE.filter(p => p.id !== currentPerson.id);
+            const distractors = shuffle(sameCat.length >= 3 ? sameCat : fallbackPool).slice(0, 3);
+            currentOptions = shuffle([currentPerson, ...distractors]);
+
+            document.getElementById('optionsList').innerHTML = currentOptions.map((opt, idx) => `
+                <button type="button" class="option-btn" data-id="${opt.id}" onclick="submitGuess('${opt.id}')">
+                    <span class="option-left">
+                        <span class="option-key">${idx + 1}</span>
+                        <span>${opt.name}</span>
+                    </span>
+                    <span style="font-size:0.78rem; color:var(--hf-muted);">${opt.country}</span>
+                </button>
+            `).join('');
+
+            updateHud();
+        }
+
+        function submitGuess(selectedId) {
+            if (answered || !currentPerson) return;
+            answered = true;
+            const isCorrect = selectedId === currentPerson.id;
+
+            if (isCorrect) {
+                score++;
+                streak++;
+                if (streak > bestStreak) bestStreak = streak;
+            } else {
+                streak = 0;
+            }
+
+            roundHistory.push({ person: currentPerson, correct: isCorrect });
+            playChime(isCorrect);
+            updateHud();
+
+            // Style option buttons
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.disabled = true;
+                const bid = btn.dataset.id;
+                if (bid === currentPerson.id) {
+                    btn.classList.add('correct');
+                    btn.insertAdjacentHTML('beforeend', '<i class="fas fa-circle-check" style="color:#10b981;"></i>');
+                } else if (bid === selectedId && !isCorrect) {
+                    btn.classList.add('wrong');
+                    btn.insertAdjacentHTML('beforeend', '<i class="fas fa-circle-xmark" style="color:#ef4444;"></i>');
+                }
+            });
+
+            // SLIDE OPEN THE CURTAIN TO REVEAL THE FULL FACE!
+            document.getElementById('faceCurtain').classList.add('revealed');
+            document.getElementById('portraitStatusPill').innerHTML = '<i class="fas fa-eye"></i> Full Portrait Revealed';
+            document.getElementById('portraitImg').alt = currentPerson.name;
+
+            // Populate & Show Biography Dossier
+            document.getElementById('bioName').textContent = currentPerson.name;
+            document.getElementById('bioRole').textContent = currentPerson.role;
+            document.getElementById('bioCountry').textContent = currentPerson.country;
+            document.getElementById('bioEra').textContent = currentPerson.era;
+            document.getElementById('bioFact').textContent = currentPerson.fact;
+            document.getElementById('bioDossier').classList.add('show');
+
+            // Feedback Banner
+            const fb = document.getElementById('feedbackBanner');
+            fb.className = 'feedback-banner show ' + (isCorrect ? 'ok' : 'err');
+            fb.innerHTML = isCorrect
+                ? `<i class="fas fa-circle-check"></i> Brilliant! That is <strong>${currentPerson.name}</strong>.`
+                : `<i class="fas fa-circle-xmark"></i> Close! The personality is <strong>${currentPerson.name}</strong>.`;
+
+            // Show Next Button
+            const nextBtn = document.getElementById('btnNext');
+            nextBtn.style.display = 'inline-flex';
+            nextBtn.innerHTML = (roundIndex + 1 < roundQueue.length)
+                ? 'Next Personality <i class="fas fa-arrow-right"></i>'
+                : 'View Round Results <i class="fas fa-trophy"></i>';
+        }
+
+        function nextQuestion() {
+            if (roundIndex + 1 < roundQueue.length) {
+                roundIndex++;
+                loadQuestion();
+            } else {
+                showRoundSummary();
+            }
+        }
+
+        function showRoundSummary() {
+            document.getElementById('gameGrid').style.display = 'none';
+            const card = document.getElementById('summaryCard');
+            card.classList.add('show');
+
+            const pct = Math.round((score / roundQueue.length) * 100);
+            document.getElementById('sumScore').textContent = `${score} / ${roundQueue.length}`;
+            document.getElementById('sumAccuracy').textContent = `${pct}%`;
+            document.getElementById('sumStreak').textContent = bestStreak;
+            document.getElementById('summarySubtitle').textContent =
+                pct >= 80 ? 'Eagle-eyed recognition! You nailed the half-face challenge.'
+                : pct >= 50 ? 'Nice score! Try switching to Top/Bottom Half-Face for a fresh challenge.'
+                : 'Play another round — every reveal builds your General Knowledge!';
+
+            document.getElementById('summaryGallery').innerHTML = roundHistory.map(item => `
+                <div class="gallery-mini">
+                    <img src="${item.person.imageUrl || ''}" alt="${item.person.name}">
+                    <div class="gallery-mini-body">
+                        <div style="font-weight:800; display:flex; justify-content:space-between; align-items:center; gap:4px;">
+                            <span>${item.person.name}</span>
+                            <i class="fas ${item.correct ? 'fa-circle-check' : 'fa-circle-xmark'}" style="color:${item.correct ? '#10b981' : '#ef4444'};"></i>
+                        </div>
+                        <div style="color:var(--hf-muted); font-size:0.72rem;">${item.person.country}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Event Listeners
+        document.getElementById('btnHint').addEventListener('click', () => {
+            if (!currentPerson) return;
+            const box = document.getElementById('hintBox');
+            box.innerHTML = `<i class="fas fa-lightbulb" style="color:var(--hf-amber);"></i> <strong>Hint:</strong> ${currentPerson.role} &bull; <em>${currentPerson.country} (${currentPerson.era})</em>`;
+            box.classList.add('show');
+            document.getElementById('btnHint').disabled = true;
+        });
+        document.getElementById('btnNext').addEventListener('click', nextQuestion);
+        document.getElementById('btnPlayAgain').addEventListener('click', startNewRound);
+        document.getElementById('categoryFilter').addEventListener('change', (e) => {
+            currentCategory = e.target.value;
+            startNewRound();
+        });
+        document.getElementById('splitModeSelect').addEventListener('change', (e) => {
+            splitMode = e.target.value;
+            if (!answered) {
+                const curtain = document.getElementById('faceCurtain');
+                curtain.className = 'face-curtain ' + pickMaskClass();
+            }
+        });
+
+        // Keyboard Shortcuts (1-4 = Guess, Enter = Next)
+        window.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
+            if (!answered && ['1', '2', '3', '4'].includes(e.key)) {
+                const idx = parseInt(e.key, 10) - 1;
+                if (currentOptions[idx]) submitGuess(currentOptions[idx].id);
+            } else if (answered && e.key === 'Enter') {
+                nextQuestion();
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', startNewRound);
+    </script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+
+</html>
