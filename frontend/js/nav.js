@@ -204,6 +204,7 @@
     { title: 'English Grammar & Composition Rules', sub: 'Tenses, Active/Passive Voice, Direct/Indirect, Prepositions & Sentence Correction', url: 'grammar-rules.html', cat: 'MCQs & Quizzes', icon: 'fa-spell-check', kw: 'parts of speech punctuation syntax' },
 
     // MCQs, Quizzes & Exam Prep
+    { title: 'Official FPSC CSS & MPT Syllabus (1,200 + 200 Marks)', sub: 'Complete CSS MPT, 6 Compulsory Papers, 45 Optional Subjects (7 Groups) & 600-Mark Planner', url: 'css-mpt-syllabus.html', cat: 'MCQs & Quizzes', icon: 'fa-book-bookmark', kw: 'css syllabus mpt fpsc compulsory optional groups civics ethics urdu' },
     { title: 'Interactive Mock Quiz Engine (Timed + Negative Marking)', sub: 'Customizable 10–100 Question Mock Tests with FPSC -0.25 Option & Review', url: 'quiz.html', cat: 'MCQs & Quizzes', icon: 'fa-brain', kw: 'practice test simulator timer mpt' },
     { title: 'FIA Assistant Director 20 Sample Papers (2,000 MCQs)', sub: '10 Standard + 10 Hard 100-Mark Full Mock Papers with Explanations', url: 'fia-sample-papers.html', cat: 'MCQs & Quizzes', icon: 'fa-file-shield', kw: 'fia ad investigation inspector past papers' },
     { title: 'Islamiat 1,000+ Solved MCQs Bank', sub: 'Quran, Hadith, Seerat-un-Nabi, Ghazwat, Khulafa-e-Rashideen & Fiqh', url: 'islamiat-mcqs.html', cat: 'MCQs & Quizzes', icon: 'fa-kaaba', kw: 'islamic studies prophets pillarszakat hajj' },
