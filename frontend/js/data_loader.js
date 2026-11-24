@@ -109,6 +109,12 @@
     if (norm.includes('islam')) {
       return ['js/data_islamiat_1000.js', 'js/data_2200.js'];
     }
+    if (norm.includes('chemistry') || norm.includes('cat_chem') || norm.includes('metallurg') || norm.includes('cat_meta')) {
+      return ['js/data_extra_categories.js', 'js/data_2200.js'];
+    }
+    if (norm.includes('css past') || norm.includes('cat_css')) {
+      return ['js/data_extra_categories.js', 'js/data_2200.js', 'js/data_islamiat_1000.js', 'js/data_current_affairs_200.js'];
+    }
     if (norm.includes('everyday science') || (norm.includes('science') && !norm.includes('computer'))) {
       return [
         'js/data_2200.js',

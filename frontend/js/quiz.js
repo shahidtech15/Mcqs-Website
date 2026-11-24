@@ -448,6 +448,46 @@ startQuizBtn.addEventListener('click', async () => {
     window.addEventListener('beforeunload', antiCheatWarning);
 });
 
+function filterBySubCategory(pool, subCat) {
+    if (!subCat || !Array.isArray(pool) || pool.length === 0) return pool;
+    const normSub = subCat.toLowerCase().trim();
+
+    // 1. Exact match on subCategory / paperSubCategory / subtopic
+    const exact = pool.filter(q =>
+        (q.paperSubCategory && q.paperSubCategory.toLowerCase() === normSub) ||
+        (q.subCategory && q.subCategory.toLowerCase() === normSub) ||
+        (q.subtopic && q.subtopic.toLowerCase() === normSub)
+    );
+    if (exact.length > 0) return exact;
+
+    // 2. Synonyms / Antonyms difficulty-tier mapping
+    if (normSub.includes('synonym') || normSub.includes('antonym')) {
+        let targetDiff = null;
+        if (normSub.includes('css') || normSub.includes('gre') || normSub.includes('advanced')) targetDiff = 'hard';
+        else if (normSub.includes('fpsc') || normSub.includes('ppsc')) targetDiff = 'medium';
+        else if (normSub.includes('foundational') || normSub.includes('everyday')) targetDiff = 'easy';
+        if (targetDiff) {
+            const byDiff = pool.filter(q => (q.difficulty || 'medium').toLowerCase() === targetDiff);
+            if (byDiff.length > 0) return byDiff;
+        }
+        return pool;
+    }
+
+    // 3. Smart keyword match across subCategory, questionText, and explanation
+    const stopWords = new Set(['and', 'the', 'for', 'with', 'main', 'updates', 'basic', 'high', 'yield']);
+    const keywords = normSub.split(/[\s,&/\-()]+/).filter(w => w.length >= 3 && !stopWords.has(w));
+    if (keywords.length > 0) {
+        const kwMatches = pool.filter(q => {
+            const hay = `${q.subCategory || ''} ${q.questionText || ''} ${q.explanation || ''}`.toLowerCase();
+            return keywords.some(kw => hay.includes(kw));
+        });
+        if (kwMatches.length > 0) return kwMatches;
+    }
+
+    // 4. Graceful fallback to full parent category pool (never return 0 MCQs)
+    return pool;
+}
+
 function generateFallbackQuiz(catName, subCat, count, difficulty) {
     const all2200 = (typeof window !== 'undefined' && Array.isArray(window.ALL_2200_MCQS)) ? window.ALL_2200_MCQS : [];
     const islamiat1000 = (typeof window !== 'undefined' && Array.isArray(window.ISLAMIAT_1000_MCQS)) ? window.ISLAMIAT_1000_MCQS : [];
@@ -456,6 +496,9 @@ function generateFallbackQuiz(catName, subCat, count, difficulty) {
     const sciCapsule = (typeof window !== 'undefined' && Array.isArray(window.SCIENCE_CAPSULE_MCQS)) ? window.SCIENCE_CAPSULE_MCQS : [];
     const factsMcqs = (typeof window !== 'undefined' && Array.isArray(window.FACTS_MCQS)) ? window.FACTS_MCQS : [];
     const aaoMcqs = (typeof window !== 'undefined' && Array.isArray(window.AAO_MCQS)) ? window.AAO_MCQS : [];
+    const extraChem = (typeof window !== 'undefined' && Array.isArray(window.EXTRA_CHEMISTRY_MCQS)) ? window.EXTRA_CHEMISTRY_MCQS : [];
+    const extraMeta = (typeof window !== 'undefined' && Array.isArray(window.EXTRA_METALLURGY_MCQS)) ? window.EXTRA_METALLURGY_MCQS : [];
+    const extraCssPP = (typeof window !== 'undefined' && Array.isArray(window.EXTRA_CSS_PAST_PAPERS_MCQS)) ? window.EXTRA_CSS_PAST_PAPERS_MCQS : [];
     const ca200 = (typeof window !== 'undefined' && Array.isArray(window.CURRENT_AFFAIRS_200_MCQS)) ? window.CURRENT_AFFAIRS_200_MCQS : [];
     const caSts = (typeof window !== 'undefined' && Array.isArray(window.CURRENT_AFFAIRS_STS_200_MCQS)) ? window.CURRENT_AFFAIRS_STS_200_MCQS : [];
     const aiMcqs = (typeof window !== 'undefined' && Array.isArray(window.AI_MCQS)) ? window.AI_MCQS : [];
@@ -503,64 +546,54 @@ function generateFallbackQuiz(catName, subCat, count, difficulty) {
         return mptSet.slice(0, count);
     }
     if (normCat.includes('synonym') || normCat.includes('cat_synonyms')) {
-        pool = [...synMcqs];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...synMcqs], subCat);
     } else if (normCat.includes('antonym') || normCat.includes('cat_antonyms')) {
-        pool = [...antMcqs];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...antMcqs], subCat);
     } else if (normCat.includes('fia assistant director sample') || normCat.includes('sample paper') || normCat.includes('cat_fia_ad_sample') || normCat.includes('fia sample')) {
-        pool = [...fiaSampleMcqs];
-        if (subCat) {
-            pool = pool.filter(q => (q.paperSubCategory && q.paperSubCategory.toLowerCase() === subCat.toLowerCase()) || (q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase()));
-        }
+        pool = filterBySubCategory([...fiaSampleMcqs], subCat);
         if (subCat && subCat.toLowerCase().startsWith('sample paper')) {
             return pool.slice(0, count);
         }
     } else if (normCat.includes('world organization') || normCat.includes('international organization') || normCat.includes('cat_world_org') || normCat === 'world organizations' || normCat.includes('united nations') || normCat.includes('un master') || normCat.includes('european union') || normCat.includes('eu master') || normCat.includes('nato') || normCat.includes('north atlantic')) {
-        pool = [...unTopicMcqs, ...euTopicMcqs, ...natoTopicMcqs, ...worldOrgMcqs];
-        if (subCat) pool = pool.filter(q => (q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase()) || (q.subtopic && q.subtopic.toLowerCase() === subCat.toLowerCase()));
+        pool = filterBySubCategory([...unTopicMcqs, ...euTopicMcqs, ...natoTopicMcqs, ...worldOrgMcqs], subCat);
     } else if (normCat.includes('artificial intelligence') || normCat === 'ai' || normCat.includes('ai &') || normCat.includes('ai development')) {
-        pool = [...aiMcqs];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...aiMcqs], subCat);
     } else if (normCat.includes('audit') || normCat.includes('aao')) {
-        pool = [...aaoMcqs];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...aaoMcqs], subCat);
+    } else if (normCat.includes('chemistry') || normCat.includes('cat_chem')) {
+        const sciChem = all2200.filter(q => q.category && q.category.name === 'Everyday Science' && /acid|atom|chemical|element|gas|pH|oxide|carbon|hydrogen|oxygen|salt|alkali/i.test(q.questionText || ''));
+        pool = filterBySubCategory([...extraChem, ...sciChem], subCat);
+    } else if (normCat.includes('metallurg') || normCat.includes('cat_meta')) {
+        pool = filterBySubCategory([...extraMeta], subCat);
+    } else if (normCat.includes('css past') || normCat.includes('cat_css')) {
+        const cssPak = all2200.filter(q => q.category && q.category.name === 'Pakistan Affairs').slice(0, 40);
+        pool = filterBySubCategory([...extraCssPP, ...cssPak, ...ca200.slice(0, 40), ...islamiat1000.slice(0, 40)], subCat);
     } else if (normCat.includes('civil servant') || normCat.includes('csa')) {
-        pool = [...CIVIL_SERVANTS_ACT_MCQS];
-        if (subCat) pool = pool.filter(q => q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...CIVIL_SERVANTS_ACT_MCQS], subCat);
     } else if (normCat.includes('current affairs')) {
         const suhag = all2200.filter(q => q.category && q.category.name === 'Current Affairs');
-        pool = [...CURRENT_AFFAIRS_2026_MCQS, ...ca200, ...caSts, ...suhag];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...CURRENT_AFFAIRS_2026_MCQS, ...ca200, ...caSts, ...suhag], subCat);
     } else if (normCat.includes('mathematics') || normCat.includes('math')) {
         const suhag = all2200.filter(q => q.category && q.category.name === 'Mathematics');
-        pool = [...MATH_LIMITS_MCQS, ...MATH_SPECIALIZED_MCQS, ...suhag];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...MATH_LIMITS_MCQS, ...MATH_SPECIALIZED_MCQS, ...suhag], subCat);
     } else if (normCat.includes('investigation') || normCat.includes('inv')) {
-        pool = [...FIA_AD_INVESTIGATION_MCQS];
-        if (subCat) pool = pool.filter(q => q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...FIA_AD_INVESTIGATION_MCQS], subCat);
     } else if (normCat.includes('fia') || normCat.includes('legal')) {
-        pool = [...FIA_AD_LEGAL_MCQS];
-        if (subCat) pool = pool.filter(q => q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...FIA_AD_LEGAL_MCQS], subCat);
     } else if (normCat.includes('geography')) {
         const suhag = all2200.filter(q => q.category && q.category.name === 'Geography');
-        pool = [...suhag, ...US_GEOGRAPHY_MCQS];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...suhag, ...US_GEOGRAPHY_MCQS], subCat);
     } else if (normCat.includes('everyday science') || (normCat.includes('science') && !normCat.includes('computer'))) {
         const suhagSci = all2200.filter(q => q.category && q.category.name === 'Everyday Science');
         const evSci = examveda.filter(q => q.subCategory && ['General Science', 'Physics', 'Chemistry', 'Biology', 'Environmental Science'].includes(q.subCategory));
-        pool = [...suhagSci, ...sciInst, ...sciCapsule, ...factsMcqs.filter(q => q.category && q.category.name === 'Everyday Science'), ...evSci];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...suhagSci, ...sciInst, ...sciCapsule, ...factsMcqs.filter(q => q.category && q.category.name === 'Everyday Science'), ...evSci], subCat);
     } else if (normCat.includes('sindh')) {
-        pool = all2200.filter(q => q.category && q.category.name === 'Sindh General Knowledge');
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory(all2200.filter(q => q.category && q.category.name === 'Sindh General Knowledge'), subCat);
     } else if (normCat.includes('islam')) {
         const suhagIslam = all2200.filter(q => q.category && q.category.name === 'Islamiat');
-        pool = [...islamiat1000, ...suhagIslam];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...islamiat1000, ...suhagIslam], subCat);
     } else if (normCat.includes('iq') || normCat.includes('reasoning')) {
-        pool = all2200.filter(q => q.category && q.category.name === 'IQ & Analytical Reasoning');
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory(all2200.filter(q => q.category && q.category.name === 'IQ & Analytical Reasoning'), subCat);
     } else if (normCat.includes('english')) {
         if (subCat && subCat.toLowerCase().includes('synonym')) {
             pool = [...synMcqs];
@@ -569,26 +602,22 @@ function generateFallbackQuiz(catName, subCat, count, difficulty) {
         } else {
             const suhagEng = all2200.filter(q => q.category && q.category.name === 'English');
             const evEng = examveda.filter(q => q.category && q.category.name === 'English');
-            pool = [...suhagEng, ...evEng, ...synMcqs, ...antMcqs];
-            if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+            pool = filterBySubCategory([...suhagEng, ...evEng, ...synMcqs, ...antMcqs], subCat);
         }
     } else if (normCat.includes('computer')) {
         const suhagCS = all2200.filter(q => q.category && q.category.name === 'Computer Science');
         const evCS = examveda.filter(q => q.category && q.category.name === 'Computer Science');
-        pool = [...suhagCS, ...evCS];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...suhagCS, ...evCS], subCat);
     } else if (normCat.includes('pakistan affairs')) {
-        pool = all2200.filter(q => q.category && q.category.name === 'Pakistan Affairs');
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory(all2200.filter(q => q.category && q.category.name === 'Pakistan Affairs'), subCat);
     } else if (normCat.includes('general knowledge') || normCat === 'gk') {
         const suhagGK = all2200.filter(q => q.category && q.category.name === 'General Knowledge');
         const evGK = examveda.filter(q => q.category && q.category.name === 'General Knowledge');
-        pool = [...suhagGK, ...evGK, ...factsMcqs.filter(q => q.category && q.category.name === 'General Knowledge')];
-        if (subCat) pool = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCat.toLowerCase());
+        pool = filterBySubCategory([...suhagGK, ...evGK, ...factsMcqs.filter(q => q.category && q.category.name === 'General Knowledge')], subCat);
     } else {
         // Fallback: match any from all2200 or general pool
         const match = all2200.filter(q => q.category && q.category.name.toLowerCase().includes(normCat));
-        if (match.length > 0) pool = match;
+        if (match.length > 0) pool = filterBySubCategory(match, subCat);
         else pool = [...all2200, ...CURRENT_AFFAIRS_2026_MCQS, ...ca200, ...caSts, ...aiMcqs, ...CIVIL_SERVANTS_ACT_MCQS];
     }
 
