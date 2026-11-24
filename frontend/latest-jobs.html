@@ -989,7 +989,7 @@
             </div>
             <div class="cta-row">
                 <a href="#fpsc-vacancies-directory" class="btn-cta btn-cta-primary" style="background: #10b981;">
-                    <i class="fas fa-table-list"></i> Browse All 48 FPSC Cases
+                    <i class="fas fa-table-list"></i> Browse All 48 Cases &amp; Official Syllabi
                 </a>
                 <a href="https://www.fpsc.gov.pk" target="_blank" rel="noopener noreferrer" class="btn-cta btn-cta-secondary">
                     <i class="fas fa-arrow-up-right-from-square"></i> Official FPSC Portal (fpsc.gov.pk)
@@ -1594,16 +1594,111 @@
         <p>&copy; 2026 CSS Prep Central. All rights reserved. Educational portal for civil service, recruitment screening, and scholarship aspirants.</p>
     </footer>
 
-    <!-- Official FPSC Phase-4/2026 Dataset -->
+    <!-- Official FPSC Syllabus Modal -->
+    <div id="fpscSyllabusModal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(15,23,42,0.75); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:18px;" onclick="if(event.target===this) closeFpscSyllabus()">
+        <div style="background:var(--job-card-bg); color:var(--job-text-main); border:1px solid var(--job-border); border-radius:18px; max-width:860px; width:100%; max-height:88vh; overflow-y:auto; box-shadow:0 24px 60px rgba(0,0,0,0.4);">
+            <div style="position:sticky; top:0; background:linear-gradient(135deg, #064e3b, #1e3a8a); color:#fff; padding:18px 22px; display:flex; justify-content:space-between; align-items:flex-start; gap:12px; z-index:2;">
+                <div>
+                    <div style="font-size:0.75rem; font-weight:800; color:#a7f3d0; text-transform:uppercase; letter-spacing:0.05em;" id="sylModalCase">Case No. F.4-195/2026-R</div>
+                    <h3 style="margin:4px 0 2px; font-size:1.25rem; font-weight:800; color:#fff;" id="sylModalTitle">Post Title</h3>
+                    <div style="font-size:0.82rem; color:#cbd5e1;" id="sylModalMinistry">Ministry</div>
+                </div>
+                <button type="button" onclick="closeFpscSyllabus()" aria-label="Close syllabus modal" style="background:rgba(255,255,255,0.16); color:#fff; border:none; width:34px; height:34px; border-radius:8px; cursor:pointer; font-size:1.1rem; flex-shrink:0;">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            </div>
+            <div style="padding:22px;">
+                <div id="sylModalSpecs" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;"></div>
+                <div style="background:var(--job-bg); border:1px solid var(--job-border); border-radius:12px; padding:16px 18px; margin-bottom:16px;">
+                    <h4 style="margin:0 0 8px; font-size:0.96rem; color:#0284c7;" id="sylPart1Label">Part-I</h4>
+                    <ul id="sylPart1List" style="margin:0; padding-left:20px; font-size:0.86rem; line-height:1.65;"></ul>
+                </div>
+                <div style="background:var(--job-bg); border:1px solid var(--job-border); border-radius:12px; padding:16px 18px; margin-bottom:16px;">
+                    <h4 style="margin:0 0 8px; font-size:0.96rem; color:#059669;" id="sylPart2Label">Part-II</h4>
+                    <ul id="sylPart2List" style="margin:0; padding-left:20px; font-size:0.86rem; line-height:1.7;"></ul>
+                </div>
+                <div id="sylModalNote" style="display:none; padding:10px 14px; border-radius:10px; background:rgba(217,119,6,0.12); border-left:4px solid #d97706; font-size:0.84rem; margin-bottom:16px;"></div>
+                <div style="padding:12px 14px; border-radius:10px; background:rgba(2,132,199,0.08); font-size:0.8rem; color:var(--job-text-muted); margin-bottom:16px;">
+                    <strong>Official Source Reference:</strong> Federal Public Service Commission (Curriculum &amp; Research Wing) &mdash; <em>Schemes and Syllabi for Screening/Professional Tests Relating to Posts Advertised under Consolidated Advertisement No. 04/2026</em> (Official Website Document dated 11/11/2026, <a href="https://www.fpsc.gov.pk" target="_blank" rel="noopener noreferrer" style="color:#0284c7; font-weight:700;">www.fpsc.gov.pk</a>).
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                        <a id="sylPracticeLink" href="quiz.html" class="btn-cta btn-cta-primary" style="background:#059669; padding:9px 16px; font-size:0.85rem;">
+                            <i class="fas fa-play"></i> Practice Related MCQs
+                        </a>
+                        <button type="button" onclick="window.print()" class="btn-cta btn-cta-secondary" style="background:var(--job-bg); color:var(--job-text-main); border-color:var(--job-border); padding:9px 14px; font-size:0.85rem;">
+                            <i class="fas fa-print"></i> Print Syllabus
+                        </button>
+                    </div>
+                    <button type="button" onclick="closeFpscSyllabus()" class="btn-cta btn-cta-secondary" style="background:var(--job-bg); color:var(--job-text-main); border-color:var(--job-border); padding:9px 16px; font-size:0.85rem;">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official FPSC Phase-4/2026 Dataset & Syllabi -->
     <script src="js/data_fpsc_phase4_2026.js"></script>
+    <script src="js/data_fpsc_phase4_2026_syllabi.js"></script>
     <!-- Interactive Search Script -->
     <script>
+        function openFpscSyllabus(caseNo) {
+            const jobs = window.FPSC_PHASE4_2026_JOBS || [];
+            const syllabi = window.FPSC_PHASE4_2026_SYLLABI || {};
+            const job = jobs.find(j => j.caseNo === caseNo);
+            const syl = syllabi[caseNo];
+            const modal = document.getElementById('fpscSyllabusModal');
+            if (!job || !syl || !modal) return;
+
+            document.getElementById('sylModalCase').textContent = `Case No. ${job.caseNo} • ${syl.part} • ${job.scale}`;
+            document.getElementById('sylModalTitle').textContent = `${job.post} (${job.scale})`;
+            document.getElementById('sylModalMinistry').textContent = job.ministry;
+
+            document.getElementById('sylModalSpecs').innerHTML = `
+                <span style="padding:5px 11px; border-radius:8px; font-size:0.78rem; font-weight:700; background:rgba(2,132,199,0.12); color:#0284c7;"><i class="fas fa-list-check"></i> Objective MCQ • ${syl.totalMarks} Marks</span>
+                <span style="padding:5px 11px; border-radius:8px; font-size:0.78rem; font-weight:700; background:rgba(5,150,105,0.12); color:#059669;"><i class="fas fa-clock"></i> Duration: ${syl.duration}</span>
+                <span style="padding:5px 11px; border-radius:8px; font-size:0.78rem; font-weight:700; background:${syl.negativeMarking === 'None' ? 'rgba(100,116,139,0.14); color:var(--job-text-main);' : 'rgba(220,38,38,0.12); color:#dc2626;'}"><i class="fas fa-scale-unbalanced"></i> Negative Marking: ${syl.negativeMarking}</span>
+            `;
+
+            document.getElementById('sylPart1Label').textContent = syl.part1.label;
+            document.getElementById('sylPart1List').innerHTML = syl.part1.topics.map(t => `<li style="margin-bottom:5px;">${t}</li>`).join('');
+
+            document.getElementById('sylPart2Label').textContent = syl.part2Label;
+            document.getElementById('sylPart2List').innerHTML = syl.part2Topics.map(t => `<li style="margin-bottom:6px;">${t}</li>`).join('');
+
+            const noteEl = document.getElementById('sylModalNote');
+            if (syl.note) {
+                noteEl.style.display = 'block';
+                noteEl.innerHTML = `<strong><i class="fas fa-circle-info"></i> Official Note:</strong> ${syl.note}`;
+            } else {
+                noteEl.style.display = 'none';
+            }
+
+            const prepBtn = document.getElementById('sylPracticeLink');
+            if (prepBtn) prepBtn.href = job.prepLink || 'quiz.html';
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFpscSyllabus() {
+            const modal = document.getElementById('fpscSyllabusModal');
+            if (modal) modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeFpscSyllabus();
+        });
+
         function renderFpscPhase4Table() {
             const tbody = document.getElementById('fpscPhase4Tbody');
             const statusEl = document.getElementById('fpscFilterStatus');
             if (!tbody) return;
 
             const jobs = window.FPSC_PHASE4_2026_JOBS || [];
+            const syllabi = window.FPSC_PHASE4_2026_SYLLABI || {};
             const scaleVal = (document.getElementById('fpscScaleFilter') || {}).value || 'ALL';
             const quotaVal = (document.getElementById('fpscQuotaFilter') || {}).value || 'ALL';
             const query = ((document.getElementById('fpscSearchInput') || {}).value || '').toLowerCase().trim();
@@ -1612,7 +1707,9 @@
                 if (scaleVal !== 'ALL' && j.scale !== scaleVal) return false;
                 if (quotaVal !== 'ALL' && !j.quota.toLowerCase().includes(quotaVal.toLowerCase())) return false;
                 if (query) {
-                    const hay = `${j.caseNo} ${j.post} ${j.scale} ${j.ministry} ${j.qualification} ${j.quota} ${j.posting}`.toLowerCase();
+                    const syl = syllabi[j.caseNo];
+                    const sylText = syl ? `${syl.part2Topics.join(' ')}` : '';
+                    const hay = `${j.caseNo} ${j.post} ${j.scale} ${j.ministry} ${j.qualification} ${j.quota} ${j.posting} ${sylText}`.toLowerCase();
                     if (!hay.includes(query)) return false;
                 }
                 return true;
@@ -1620,7 +1717,7 @@
 
             const totalVac = filtered.reduce((sum, j) => sum + (j.vacancies || 0), 0);
             if (statusEl) {
-                statusEl.textContent = `Showing ${filtered.length} of ${jobs.length} FPSC cases (${totalVac} vacancies) • Closing Date: 23-11-2026 • Ref: FPSC Phase-4/2026 (www.fpsc.gov.pk)`;
+                statusEl.textContent = `Showing ${filtered.length} of ${jobs.length} FPSC cases (${totalVac} vacancies) • Official Syllabi Included for All 48 Cases • Closing Date: 23-11-2026`;
             }
 
             if (filtered.length === 0) {
@@ -1628,7 +1725,10 @@
                 return;
             }
 
-            tbody.innerHTML = filtered.map(j => `
+            tbody.innerHTML = filtered.map(j => {
+                const syl = syllabi[j.caseNo];
+                const safeCase = j.caseNo.replace(/'/g, "\\'");
+                return `
                 <tr>
                     <td style="white-space:nowrap;">
                         <div style="font-weight:800; color:#059669;">#${j.sr}</div>
@@ -1638,7 +1738,10 @@
                         <strong style="font-size:0.92rem;">${j.post}</strong><br>
                         <span style="display:inline-block; margin-top:4px; font-size:0.74rem; font-weight:800; padding:2px 8px; border-radius:6px; background:rgba(2,132,199,0.12); color:#0284c7;">${j.scale}</span>
                         <span style="font-size:0.74rem; color:var(--job-text-muted); margin-left:4px;">${j.nature}</span>
-                        ${j.prepLink ? `<div style="margin-top:6px;"><a href="${j.prepLink}" style="font-size:0.76rem; font-weight:700; color:#059669; text-decoration:none;"><i class="fas fa-play-circle"></i> Practice MCQs &rarr;</a></div>` : ''}
+                        <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+                            ${syl ? `<button type="button" onclick="openFpscSyllabus('${safeCase}')" style="background:#1e3a8a; color:#fff; border:none; padding:5px 10px; border-radius:7px; font-size:0.74rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:5px;"><i class="fas fa-book-open"></i> Official Syllabus (${syl.totalMarks} Marks)</button>` : ''}
+                            ${j.prepLink ? `<a href="${j.prepLink}" style="font-size:0.76rem; font-weight:700; color:#059669; text-decoration:none;"><i class="fas fa-play-circle"></i> Practice MCQs &rarr;</a>` : ''}
+                        </div>
                     </td>
                     <td style="font-size:0.84rem;">${j.ministry}</td>
                     <td style="font-size:0.82rem; line-height:1.45; max-width:320px;">${j.qualification}</td>
@@ -1652,7 +1755,8 @@
                         <div style="margin-top:4px; color:#dc2626; font-weight:700;">Closes: 23-11-2026</div>
                     </td>
                 </tr>
-            `).join('');
+            `;
+            }).join('');
         }
 
         window.addEventListener('DOMContentLoaded', renderFpscPhase4Table);
