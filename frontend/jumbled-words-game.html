@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumbled Words Game — Unscramble &amp; Guess the Word | CSS Prep Central</title>
+    <meta name="description"
+        content="Play the interactive Jumbled Words (Word Scramble & Anagram) Game! Unscramble 180 curated words across Everyday & Nature, World Geography, Science & Tech, CSS/GRE Vocabulary, History & Law, and Sports & Culture with Classic, 60s Time Attack, and Endless modes.">
+    <meta name="keywords"
+        content="Jumbled Words Game, Word Scramble Game, Anagram Puzzle, Unscramble Words Online, Vocabulary Brain Game, CSS GRE Word Game, Educational Word Puzzle">
+    <link rel="canonical" href="https://www.cssprepcentral.com/jumbled-words-game.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cssprepcentral.com/jumbled-words-game.html">
+    <meta property="og:title" content="Jumbled Words Game — Unscramble &amp; Guess the Word">
+    <meta property="og:description" content="Click tiles or type on your keyboard to unscramble 180 words across 6 categories and 3 difficulty levels with hints, streak multipliers, and 60s Time Attack.">
+    <meta property="og:image" content="https://www.cssprepcentral.com/img/logo.png">
+
+    <!-- BreadcrumbList JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.cssprepcentral.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Jumbled Words Game", "item": "https://www.cssprepcentral.com/jumbled-words-game.html" }
+      ]
+    }
+    </script>
+
+    <!-- Anti-FOUC Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4c1d95">
+
+    <style>
+        :root {
+            --jw-primary: #7c3aed;
+            --jw-primary-dark: #5b21b6;
+            --jw-accent: #10b981;
+            --jw-gold: #f59e0b;
+            --jw-danger: #ef4444;
+            --jw-bg: #f8fafc;
+            --jw-card: #ffffff;
+            --jw-border: #e2e8f0;
+            --jw-text: #0f172a;
+            --jw-muted: #64748b;
+            --jw-soft: #f1f5f9;
+        }
+
+        .dark-mode {
+            --jw-bg: #0b0f19;
+            --jw-card: #111827;
+            --jw-border: #1f2937;
+            --jw-text: #f8fafc;
+            --jw-muted: #94a3b8;
+            --jw-soft: #1e293b;
+        }
+
+        body {
+            background-color: var(--jw-bg);
+            color: var(--jw-text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .jw-header {
+            background: var(--jw-card);
+            border-bottom: 1px solid var(--jw-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .jw-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 66px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .jw-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--jw-text);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+        }
+
+        .jw-brand img { height: 34px; border-radius: 8px; }
+
+        .jw-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .jw-nav-links a {
+            text-decoration: none;
+            color: var(--jw-muted);
+            font-weight: 600;
+            font-size: 0.86rem;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: all 0.15s;
+        }
+
+        .jw-nav-links a:hover,
+        .jw-nav-links a.active {
+            color: var(--jw-primary);
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .icon-btn {
+            border: 1px solid var(--jw-border);
+            background: var(--jw-soft);
+            color: var(--jw-text);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .jw-container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 24px 18px 68px;
+        }
+
+        /* Hero Banner */
+        .jw-hero {
+            background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 55%, #db2777 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 28px 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 14px 36px rgba(124, 58, 237, 0.24);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .jw-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 900;
+            margin: 0 0 6px;
+            color: #ffffff;
+        }
+
+        .jw-hero p {
+            margin: 0;
+            color: #f3e8ff;
+            font-size: 0.94rem;
+            max-width: 600px;
+        }
+
+        .best-stats {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .best-pill {
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 12px;
+            padding: 10px 14px;
+            text-align: center;
+            min-width: 96px;
+        }
+
+        .best-pill .val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .best-pill .lbl {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #e9d5ff;
+        }
+
+        /* Setup / Controls Card */
+        .setup-card {
+            background: var(--jw-card);
+            border: 1px solid var(--jw-border);
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .control-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .jw-select {
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--jw-border);
+            background: var(--jw-bg);
+            color: var(--jw-text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: inherit;
+        }
+
+        .mode-btn {
+            padding: 8px 13px;
+            border-radius: 999px;
+            border: 1px solid var(--jw-border);
+            background: var(--jw-soft);
+            color: var(--jw-text);
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .mode-btn.active {
+            background: var(--jw-primary);
+            border-color: var(--jw-primary);
+            color: #ffffff;
+        }
+
+        /* Live HUD */
+        .hud-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .hud-bar { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .hud-box {
+            background: var(--jw-card);
+            border: 1px solid var(--jw-border);
+            border-radius: 14px;
+            padding: 12px 14px;
+            text-align: center;
+        }
+
+        .hud-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--jw-primary);
+            line-height: 1.1;
+        }
+
+        .dark-mode .hud-val { color: #c4b5fd; }
+
+        .hud-lbl {
+            font-size: 0.75rem;
+            color: var(--jw-muted);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* Main Game Board */
+        .board-card {
+            background: var(--jw-card);
+            border: 1px solid var(--jw-border);
+            border-radius: 20px;
+            padding: 28px 24px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        .word-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .meta-pill {
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: var(--jw-soft);
+            color: var(--jw-muted);
+        }
+
+        .pill-Easy { background: #dcfce7; color: #166534; }
+        .pill-Medium { background: #fef3c7; color: #92400e; }
+        .pill-Hard { background: #fee2e2; color: #991b1b; }
+        .dark-mode .pill-Easy { background: rgba(16,185,129,0.2); color: #6ee7b7; }
+        .dark-mode .pill-Medium { background: rgba(245,158,11,0.2); color: #fcd34d; }
+        .dark-mode .pill-Hard { background: rgba(239,68,68,0.2); color: #fca5a5; }
+
+        .hint-banner {
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            color: #92400e;
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            max-width: 620px;
+            margin: 0 auto 18px;
+            display: none;
+        }
+
+        .dark-mode .hint-banner { color: #fde68a; }
+        .hint-banner.visible { display: block; }
+
+        /* Answer Slots */
+        .slots-label {
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--jw-muted);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .answer-slots {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            min-height: 58px;
+        }
+
+        .slot-tile {
+            width: 50px;
+            height: 54px;
+            border-radius: 12px;
+            border: 2px dashed var(--jw-border);
+            background: var(--jw-soft);
+            color: var(--jw-text);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 900;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.15s;
+            user-select: none;
+        }
+
+        .slot-tile.filled {
+            border-style: solid;
+            border-color: var(--jw-primary);
+            background: rgba(124, 58, 237, 0.12);
+            color: var(--jw-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .dark-mode .slot-tile.filled { color: #ddd6fe; }
+
+        .slot-tile.locked {
+            border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.18);
+            color: #b45309;
+            cursor: default;
+        }
+
+        .dark-mode .slot-tile.locked { color: #fde68a; }
+
+        .slot-tile.correct {
+            border-color: #059669;
+            background: #10b981;
+            color: #ffffff;
+        }
+
+        .slot-tile.wrong {
+            border-color: #dc2626;
+            background: rgba(239, 68, 68, 0.18);
+            color: #dc2626;
+        }
+
+        @keyframes shakeX {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-7px); }
+            40%, 80% { transform: translateX(7px); }
+        }
+
+        .shake { animation: shakeX 0.36s ease; }
+
+        /* Scrambled Letter Bank */
+        .letter-tray {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 9px;
+            margin-bottom: 24px;
+            min-height: 58px;
+        }
+
+        .letter-tile {
+            width: 52px;
+            height: 54px;
+            border-radius: 12px;
+            border: 2px solid var(--jw-border);
+            border-bottom: 4px solid #cbd5e1;
+            background: var(--jw-card);
+            color: var(--jw-text);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 900;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.12s, background 0.12s, opacity 0.15s;
+            user-select: none;
+        }
+
+        .dark-mode .letter-tile { border-bottom-color: #334155; }
+
+        .letter-tile:hover:not(:disabled) {
+            transform: translateY(-3px);
+            border-color: var(--jw-primary);
+            background: rgba(124, 58, 237, 0.08);
+        }
+
+        .letter-tile:disabled {
+            opacity: 0.22;
+            cursor: default;
+            transform: scale(0.92);
+        }
+
+        @media (max-width: 540px) {
+            .slot-tile, .letter-tile { width: 40px; height: 44px; font-size: 1.15rem; border-radius: 9px; }
+        }
+
+        /* Action Buttons */
+        .action-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .btn-game {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 18px;
+            border-radius: 11px;
+            font-family: inherit;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid var(--jw-border);
+            background: var(--jw-soft);
+            color: var(--jw-text);
+            transition: all 0.15s;
+        }
+
+        .btn-game:hover:not(:disabled) { transform: translateY(-1px); border-color: var(--jw-primary); }
+        .btn-game:disabled { opacity: 0.45; cursor: not-allowed; }
+
+        .btn-submit {
+            background: var(--jw-primary);
+            border-color: var(--jw-primary);
+            color: #ffffff;
+            padding: 10px 26px;
+        }
+
+        .btn-submit:hover:not(:disabled) { background: var(--jw-primary-dark); }
+
+        .btn-next {
+            background: #059669;
+            border-color: #059669;
+            color: #ffffff;
+            padding: 10px 26px;
+        }
+
+        /* Result Feedback Box */
+        .feedback-box {
+            margin-top: 16px;
+            padding: 14px 18px;
+            border-radius: 14px;
+            max-width: 660px;
+            margin-left: auto;
+            margin-right: auto;
+            display: none;
+            text-align: left;
+        }
+
+        .feedback-box.visible { display: block; }
+        .feedback-box.win { background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.4); }
+        .feedback-box.skip { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.35); }
+
+        .kb-tip {
+            font-size: 0.78rem;
+            color: var(--jw-muted);
+            margin-top: 12px;
+        }
+
+        /* End Summary */
+        .summary-card {
+            display: none;
+            background: var(--jw-card);
+            border: 1px solid var(--jw-border);
+            border-radius: 20px;
+            padding: 30px 24px;
+            text-align: center;
+        }
+
+        .summary-card.visible { display: block; }
+
+        .review-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0 22px;
+            text-align: left;
+            font-size: 0.86rem;
+        }
+
+        .review-table th,
+        .review-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--jw-border);
+        }
+
+        .review-table th {
+            background: var(--jw-soft);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            color: var(--jw-muted);
+        }
+
+        .jw-footer {
+            text-align: center;
+            padding: 26px 20px;
+            border-top: 1px solid var(--jw-border);
+            color: var(--jw-muted);
+            font-size: 0.84rem;
+        }
+
+        .jw-footer a { color: var(--jw-primary); text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+
+<body>
+    <header class="jw-header">
+        <div class="jw-nav-inner">
+            <a href="index.html" class="jw-brand">
+                <img src="img/logo.png" alt="CSS Prep Central Logo">
+                <span>CSS Prep <span style="color:var(--jw-primary);">Central</span></span>
+            </a>
+            <nav class="jw-nav-links" aria-label="Game Navigation">
+                <a href="index.html">Home</a>
+                <a href="jumbled-words-game.html" class="active">Jumbled Words</a>
+                <a href="crossword.html">Crossword</a>
+                <a href="word-search.html">Word Search</a>
+                <a href="half-face-game.html">Half-Face Quiz</a>
+                <a href="animal-sounds-game.html">Animal Sounds</a>
+                <button class="icon-btn" id="soundToggleBtn" title="Toggle Sound Effects" aria-label="Toggle Sound">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+                <button class="icon-btn" id="themeToggleBtn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="jw-container">
+        <!-- Hero -->
+        <section class="jw-hero">
+            <div>
+                <h1><i class="fa-solid fa-shuffle"></i> Jumbled Words Challenge</h1>
+                <p>Unscramble the jumbled letters to guess the hidden word! Click letter tiles or type directly on your keyboard across 180 curated words.</p>
+            </div>
+            <div class="best-stats">
+                <div class="best-pill">
+                    <div class="val" id="bestScoreVal">0</div>
+                    <div class="lbl">Best Score</div>
+                </div>
+                <div class="best-pill">
+                    <div class="val" id="bestStreakVal">0</div>
+                    <div class="lbl">Best Streak</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mode & Filter Controls -->
+        <section class="setup-card" aria-label="Game Settings">
+            <div class="control-group" id="modeButtons">
+                <button type="button" class="mode-btn active" data-mode="classic"><i class="fa-solid fa-trophy"></i> Classic (10 Words)</button>
+                <button type="button" class="mode-btn" data-mode="timed"><i class="fa-solid fa-stopwatch"></i> 60s Time Attack</button>
+                <button type="button" class="mode-btn" data-mode="endless"><i class="fa-solid fa-infinity"></i> Endless</button>
+            </div>
+            <div class="control-group">
+                <select id="categorySelect" class="jw-select" aria-label="Word Category">
+                    <option value="ALL">All 6 Categories (180 Words)</option>
+                </select>
+                <select id="difficultySelect" class="jw-select" aria-label="Difficulty">
+                    <option value="ALL">All Difficulties</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+                <button type="button" class="btn-game" id="restartBtn"><i class="fa-solid fa-rotate-right"></i> New Game</button>
+            </div>
+        </section>
+
+        <!-- Live HUD -->
+        <section class="hud-bar" aria-label="Live Scoreboard">
+            <div class="hud-box">
+                <div class="hud-val" id="hudProgress">1 / 10</div>
+                <div class="hud-lbl" id="hudProgressLbl">Word</div>
+            </div>
+            <div class="hud-box">
+                <div class="hud-val" id="hudScore">0</div>
+                <div class="hud-lbl">Score</div>
+            </div>
+            <div class="hud-box">
+                <div class="hud-val" id="hudStreak">0</div>
+                <div class="hud-lbl">Streak</div>
+            </div>
+            <div class="hud-box">
+                <div class="hud-val" id="hudTimer">&infin;</div>
+                <div class="hud-lbl" id="hudTimerLbl">Timer</div>
+            </div>
+        </section>
+
+        <!-- Active Game Board -->
+        <section class="board-card" id="gameBoard">
+            <div class="word-meta">
+                <span class="meta-pill" id="wordCategoryPill">Category</span>
+                <span class="meta-pill" id="wordDiffPill">Easy</span>
+                <span class="meta-pill" id="wordLenPill">6 Letters</span>
+            </div>
+
+            <div class="hint-banner" id="hintBanner"></div>
+
+            <div class="slots-label">Your Guess (Click a filled box or press Backspace to undo)</div>
+            <div class="answer-slots" id="answerSlots"></div>
+
+            <div class="slots-label">Jumbled Letters (Click tiles or type A–Z on your keyboard)</div>
+            <div class="letter-tray" id="letterTray"></div>
+
+            <div class="action-row" id="activeActions">
+                <button type="button" class="btn-game btn-submit" id="checkBtn"><i class="fa-solid fa-check"></i> Check Word</button>
+                <button type="button" class="btn-game" id="shuffleBtn"><i class="fa-solid fa-shuffle"></i> Reshuffle</button>
+                <button type="button" class="btn-game" id="clearBtn"><i class="fa-solid fa-eraser"></i> Clear</button>
+                <button type="button" class="btn-game" id="hintBtn"><i class="fa-solid fa-lightbulb"></i> Hint</button>
+                <button type="button" class="btn-game" id="revealLetterBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Reveal Letter (-15)</button>
+                <button type="button" class="btn-game" id="skipBtn"><i class="fa-solid fa-forward"></i> Skip</button>
+            </div>
+
+            <div class="action-row" id="nextActions" style="display:none;">
+                <button type="button" class="btn-game btn-next" id="nextWordBtn">Next Jumbled Word <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <div class="feedback-box" id="feedbackBox"></div>
+
+            <div class="kb-tip">
+                <i class="fa-solid fa-keyboard"></i> Shortcuts: Type <strong>A–Z</strong> to place letters &bull; <strong>Backspace</strong> to undo &bull; <strong>Enter</strong> to check / next &bull; <strong>Space</strong> to reshuffle
+            </div>
+        </section>
+
+        <!-- End Summary Card -->
+        <section class="summary-card" id="summaryCard">
+            <div style="font-size:2.6rem; margin-bottom:6px;">🎉</div>
+            <h2 id="summaryTitle" style="font-family:'Outfit',sans-serif; font-size:1.8rem; margin:0 0 8px;">Challenge Complete!</h2>
+            <p id="summarySubtitle" style="color:var(--jw-muted); margin:0 0 18px;"></p>
+
+            <div style="overflow-x:auto;">
+                <table class="review-table">
+                    <thead>
+                        <tr>
+                            <th>Word</th>
+                            <th>Category</th>
+                            <th>Result</th>
+                            <th>Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summaryTableBody"></tbody>
+                </table>
+            </div>
+
+            <button type="button" class="btn-game btn-submit" id="playAgainBtn">
+                <i class="fa-solid fa-play"></i> Play Another Round
+            </button>
+        </section>
+    </main>
+
+    <footer class="jw-footer">
+        <p style="margin:0;">
+            <a href="index.html">Home</a> &bull;
+            <a href="crossword.html">Crossword</a> &bull;
+            <a href="word-search.html">Word Search</a> &bull;
+            <a href="scrabble.html">Academic Scrabble</a> &bull;
+            <a href="half-face-game.html">Half-Face Quiz</a> &bull;
+            <a href="animal-sounds-game.html">Animal Sounds</a>
+        </p>
+    </footer>
+
+    <script src="js/data_jumbled_words.js"></script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/nav.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            // Dark mode
+            var themeBtn = document.getElementById('themeToggleBtn');
+            function syncThemeIcon() {
+                if (!themeBtn) return;
+                var dark = document.documentElement.classList.contains('dark-mode');
+                themeBtn.innerHTML = dark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+            }
+            syncThemeIcon();
+            if (themeBtn) {
+                themeBtn.addEventListener('click', function () {
+                    document.documentElement.classList.toggle('dark-mode');
+                    localStorage.setItem('mcqs_dark_mode', document.documentElement.classList.contains('dark-mode'));
+                    syncThemeIcon();
+                });
+            }
+
+            // Synthesized Web Audio SFX
+            var soundEnabled = true;
+            var audioCtx = null;
+            function playTone(freqs, dur, type) {
+                if (!soundEnabled) return;
+                try {
+                    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+                    freqs.forEach(function (f, idx) {
+                        var osc = audioCtx.createOscillator();
+                        var gain = audioCtx.createGain();
+                        osc.type = type || 'sine';
+                        osc.frequency.value = f;
+                        var start = audioCtx.currentTime + idx * 0.065;
+                        gain.gain.setValueAtTime(0.09, start);
+                        gain.gain.exponentialRampToValueAtTime(0.001, start + dur);
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start(start);
+                        osc.stop(start + dur);
+                    });
+                } catch (e) {}
+            }
+
+            document.getElementById('soundToggleBtn').addEventListener('click', function () {
+                soundEnabled = !soundEnabled;
+                this.innerHTML = soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
+            });
+
+            var ALL_WORDS = Array.isArray(window.JUMBLED_WORDS_DATA) ? window.JUMBLED_WORDS_DATA : [];
+
+            // Populate categories
+            var cats = [];
+            ALL_WORDS.forEach(function (w) {
+                if (cats.indexOf(w.category) === -1) cats.push(w.category);
+            });
+            var catSelect = document.getElementById('categorySelect');
+            cats.forEach(function (c) {
+                var opt = document.createElement('option');
+                opt.value = c;
+                opt.textContent = c;
+                catSelect.appendChild(opt);
+            });
+
+            // Persistent bests
+            var bestScore = Number(localStorage.getItem('jw_best_score') || 0);
+            var bestStreak = Number(localStorage.getItem('jw_best_streak') || 0);
+            function syncBests() {
+                document.getElementById('bestScoreVal').textContent = bestScore;
+                document.getElementById('bestStreakVal').textContent = bestStreak;
+            }
+            syncBests();
+
+            // Game State
+            var mode = 'classic'; // classic | timed | endless
+            var deck = [];
+            var deckIdx = 0;
+            var score = 0;
+            var streak = 0;
+            var solvedCount = 0;
+            var history = [];
+            var timerId = null;
+            var timeLeft = 60;
+            var roundStartTime = 0;
+
+            // Current word state
+            var currentItem = null;
+            var tiles = []; // [{ id, ch, used }]
+            var slots = []; // [null | { tileId, ch, locked }]
+            var hintUsed = false;
+            var revealPenalty = 0;
+            var roundFinished = false;
+
+            function esc(str) {
+                return String(str == null ? '' : str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+            }
+
+            function shuffleArray(arr) {
+                var a = arr.slice();
+                for (var i = a.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+                }
+                return a;
+            }
+
+            function scrambleWord(word) {
+                var chars = word.split('');
+                if (chars.length <= 1) return chars;
+                var scrambled = shuffleArray(chars);
+                var guard = 0;
+                while (scrambled.join('') === word && guard < 20) {
+                    scrambled = shuffleArray(chars);
+                    guard++;
+                }
+                if (scrambled.join('') === word) {
+                    var t = scrambled[0]; scrambled[0] = scrambled[scrambled.length - 1]; scrambled[scrambled.length - 1] = t;
+                }
+                return scrambled;
+            }
+
+            function buildDeck() {
+                var catVal = catSelect.value;
+                var diffVal = document.getElementById('difficultySelect').value;
+                var filtered = ALL_WORDS.filter(function (w) {
+                    if (catVal !== 'ALL' && w.category !== catVal) return false;
+                    if (diffVal !== 'ALL' && w.difficulty !== diffVal) return false;
+                    return true;
+                });
+                if (!filtered.length) filtered = ALL_WORDS.slice();
+                var shuffled = shuffleArray(filtered);
+                return mode === 'classic' ? shuffled.slice(0, Math.min(10, shuffled.length)) : shuffled;
+            }
+
+            function stopTimer() {
+                if (timerId) { clearInterval(timerId); timerId = null; }
+            }
+
+            function startGame() {
+                stopTimer();
+                deck = buildDeck();
+                deckIdx = 0;
+                score = 0;
+                streak = 0;
+                solvedCount = 0;
+                history = [];
+
+                document.getElementById('summaryCard').classList.remove('visible');
+                document.getElementById('gameBoard').style.display = 'block';
+
+                if (mode === 'timed') {
+                    timeLeft = 60;
+                    document.getElementById('hudTimer').textContent = timeLeft + 's';
+                    document.getElementById('hudTimerLbl').textContent = 'Seconds Left';
+                    timerId = setInterval(function () {
+                        timeLeft--;
+                        document.getElementById('hudTimer').textContent = Math.max(0, timeLeft) + 's';
+                        if (timeLeft <= 0) {
+                            stopTimer();
+                            endGame('Time\'s Up!');
+                        }
+                    }, 1000);
+                } else {
+                    document.getElementById('hudTimer').innerHTML = '&infin;';
+                    document.getElementById('hudTimerLbl').textContent = mode === 'classic' ? 'No Limit' : 'Relaxed';
+                }
+
+                loadWord();
+            }
+
+            function loadWord() {
+                if (deckIdx >= deck.length) {
+                    if (mode === 'classic') {
+                        endGame('Classic 10-Word Challenge Complete!');
+                        return;
+                    }
+                    deck = buildDeck();
+                    deckIdx = 0;
+                }
+
+                currentItem = deck[deckIdx];
+                var scrambled = scrambleWord(currentItem.word);
+                tiles = scrambled.map(function (ch, idx) {
+                    return { id: idx, ch: ch, used: false };
+                });
+                slots = new Array(currentItem.word.length).fill(null);
+                hintUsed = false;
+                revealPenalty = 0;
+                roundFinished = false;
+                roundStartTime = Date.now();
+
+                document.getElementById('wordCategoryPill').textContent = currentItem.category;
+                var diffPill = document.getElementById('wordDiffPill');
+                diffPill.textContent = currentItem.difficulty;
+                diffPill.className = 'meta-pill pill-' + currentItem.difficulty;
+                document.getElementById('wordLenPill').textContent = currentItem.word.length + ' Letters';
+
+                var hintEl = document.getElementById('hintBanner');
+                hintEl.textContent = '';
+                hintEl.classList.remove('visible');
+
+                var fb = document.getElementById('feedbackBox');
+                fb.className = 'feedback-box';
+                fb.innerHTML = '';
+
+                document.getElementById('activeActions').style.display = 'flex';
+                document.getElementById('nextActions').style.display = 'none';
+
+                updateHud();
+                renderBoard();
+            }
+
+            function updateHud() {
+                if (mode === 'classic') {
+                    document.getElementById('hudProgress').textContent = Math.min(deckIdx + 1, deck.length) + ' / ' + deck.length;
+                    document.getElementById('hudProgressLbl').textContent = 'Word';
+                } else {
+                    document.getElementById('hudProgress').textContent = solvedCount;
+                    document.getElementById('hudProgressLbl').textContent = 'Solved';
+                }
+                document.getElementById('hudScore').textContent = score;
+                document.getElementById('hudStreak').textContent = streak;
+            }
+
+            function renderBoard(markState) {
+                var slotsEl = document.getElementById('answerSlots');
+                slotsEl.innerHTML = slots.map(function (s, idx) {
+                    var cls = 'slot-tile';
+                    if (s) {
+                        cls += ' filled';
+                        if (s.locked) cls += ' locked';
+                    }
+                    if (markState === 'correct') cls += ' correct';
+                    if (markState === 'wrong') cls += ' wrong';
+                    return '<button type="button" class="' + cls + '" data-slot="' + idx + '">' + (s ? esc(s.ch) : '') + '</button>';
+                }).join('');
+
+                var trayEl = document.getElementById('letterTray');
+                trayEl.innerHTML = tiles.map(function (t) {
+                    return '<button type="button" class="letter-tile" data-tile="' + t.id + '"' + (t.used || roundFinished ? ' disabled' : '') + '>' + esc(t.ch) + '</button>';
+                }).join('');
+            }
+
+            function placeTile(tileId) {
+                if (roundFinished) return;
+                var tile = tiles.find(function (t) { return t.id === tileId && !t.used; });
+                if (!tile) return;
+                var emptyIdx = slots.findIndex(function (s) { return s === null; });
+                if (emptyIdx === -1) return;
+                tile.used = true;
+                slots[emptyIdx] = { tileId: tile.id, ch: tile.ch, locked: false };
+                playTone([520], 0.06, 'triangle');
+                renderBoard();
+            }
+
+            function removeSlot(slotIdx) {
+                if (roundFinished) return;
+                var s = slots[slotIdx];
+                if (!s || s.locked) return;
+                var tile = tiles.find(function (t) { return t.id === s.tileId; });
+                if (tile) tile.used = false;
+                slots[slotIdx] = null;
+                playTone([340], 0.05, 'triangle');
+                renderBoard();
+            }
+
+            function checkGuess() {
+                if (roundFinished) return;
+                if (slots.some(function (s) { return s === null; })) {
+                    var slotsEl = document.getElementById('answerSlots');
+                    slotsEl.classList.remove('shake');
+                    void slotsEl.offsetWidth;
+                    slotsEl.classList.add('shake');
+                    playTone([220], 0.12, 'sawtooth');
+                    return;
+                }
+                var guess = slots.map(function (s) { return s.ch; }).join('');
+                if (guess === currentItem.word) {
+                    roundFinished = true;
+                    solvedCount++;
+                    streak++;
+                    var elapsedSec = Math.round((Date.now() - roundStartTime) / 1000);
+                    var basePts = currentItem.difficulty === 'Hard' ? 120 : currentItem.difficulty === 'Medium' ? 100 : 80;
+                    var speedBonus = Math.max(0, 30 - elapsedSec);
+                    var streakBonus = Math.min(50, (streak - 1) * 10);
+                    var earned = Math.max(20, basePts + speedBonus + streakBonus - (hintUsed ? 15 : 0) - revealPenalty);
+                    score += earned;
+
+                    if (score > bestScore) { bestScore = score; localStorage.setItem('jw_best_score', bestScore); }
+                    if (streak > bestStreak) { bestStreak = streak; localStorage.setItem('jw_best_streak', bestStreak); }
+                    syncBests();
+
+                    if (mode === 'timed') {
+                        timeLeft += 5;
+                        document.getElementById('hudTimer').textContent = timeLeft + 's';
+                    }
+
+                    history.push({ word: currentItem.word, category: currentItem.category, solved: true, meaning: currentItem.meaning });
+                    playTone([523.25, 659.25, 783.99], 0.16, 'sine');
+                    renderBoard('correct');
+                    updateHud();
+
+                    var fb = document.getElementById('feedbackBox');
+                    fb.className = 'feedback-box visible win';
+                    fb.innerHTML = '<strong><i class="fa-solid fa-circle-check" style="color:#059669;"></i> Correct! +' + earned + ' pts' +
+                        (mode === 'timed' ? ' &bull; +5s Bonus!' : '') + '</strong>' +
+                        '<div style="margin-top:4px; font-size:0.88rem;"><strong>' + esc(currentItem.word) + ':</strong> ' + esc(currentItem.meaning) + '</div>';
+
+                    document.getElementById('activeActions').style.display = 'none';
+                    document.getElementById('nextActions').style.display = 'flex';
+                } else {
+                    streak = 0;
+                    updateHud();
+                    playTone([210, 170], 0.14, 'sawtooth');
+                    renderBoard('wrong');
+                    var slotsBox = document.getElementById('answerSlots');
+                    slotsBox.classList.remove('shake');
+                    void slotsBox.offsetWidth;
+                    slotsBox.classList.add('shake');
+                    setTimeout(function () { if (!roundFinished) renderBoard(); }, 450);
+                }
+            }
+
+            function skipWord() {
+                if (roundFinished) return;
+                roundFinished = true;
+                streak = 0;
+                history.push({ word: currentItem.word, category: currentItem.category, solved: false, meaning: currentItem.meaning });
+                playTone([280, 220], 0.14, 'triangle');
+
+                // Show answer in slots
+                slots = currentItem.word.split('').map(function (ch) { return { tileId: -1, ch: ch, locked: true }; });
+                tiles.forEach(function (t) { t.used = true; });
+                renderBoard('wrong');
+                updateHud();
+
+                var fb = document.getElementById('feedbackBox');
+                fb.className = 'feedback-box visible skip';
+                fb.innerHTML = '<strong><i class="fa-solid fa-circle-info" style="color:#dc2626;"></i> Answer: ' + esc(currentItem.word) + '</strong>' +
+                    '<div style="margin-top:4px; font-size:0.88rem;">' + esc(currentItem.meaning) + '</div>';
+
+                document.getElementById('activeActions').style.display = 'none';
+                document.getElementById('nextActions').style.display = 'flex';
+            }
+
+            function revealOneLetter() {
+                if (roundFinished) return;
+                var targetIdx = -1;
+                for (var i = 0; i < currentItem.word.length; i++) {
+                    if (!slots[i] || slots[i].ch !== currentItem.word[i] || !slots[i].locked) {
+                        targetIdx = i;
+                        break;
+                    }
+                }
+                if (targetIdx === -1) return;
+                var neededChar = currentItem.word[targetIdx];
+
+                // If slot already has a non-locked tile, return it first
+                if (slots[targetIdx] && !slots[targetIdx].locked) {
+                    var prevTile = tiles.find(function (t) { return t.id === slots[targetIdx].tileId; });
+                    if (prevTile) prevTile.used = false;
+                    slots[targetIdx] = null;
+                }
+
+                // Find unused tile with neededChar; if none unused, pull from another unlocked slot
+                var chosenTile = tiles.find(function (t) { return !t.used && t.ch === neededChar; });
+                if (!chosenTile) {
+                    for (var k = 0; k < slots.length; k++) {
+                        if (k !== targetIdx && slots[k] && !slots[k].locked && slots[k].ch === neededChar) {
+                            chosenTile = tiles.find(function (t) { return t.id === slots[k].tileId; });
+                            slots[k] = null;
+                            break;
+                        }
+                    }
+                }
+                if (!chosenTile) return;
+                chosenTile.used = true;
+                slots[targetIdx] = { tileId: chosenTile.id, ch: neededChar, locked: true };
+                revealPenalty += 15;
+                playTone([640], 0.08, 'sine');
+                renderBoard();
+            }
+
+            function endGame(title) {
+                stopTimer();
+                document.getElementById('gameBoard').style.display = 'none';
+                var card = document.getElementById('summaryCard');
+                card.classList.add('visible');
+                document.getElementById('summaryTitle').textContent = title;
+                var acc = history.length ? Math.round((solvedCount / history.length) * 100) : 0;
+                document.getElementById('summarySubtitle').textContent =
+                    'Final Score: ' + score + ' pts  •  Solved: ' + solvedCount + ' / ' + history.length + ' (' + acc + '%)';
+
+                document.getElementById('summaryTableBody').innerHTML = history.map(function (h) {
+                    return '<tr>' +
+                        '<td><strong>' + esc(h.word) + '</strong></td>' +
+                        '<td>' + esc(h.category) + '</td>' +
+                        '<td>' + (h.solved ? '<span style="color:#059669; font-weight:800;">✓ Solved</span>' : '<span style="color:#dc2626; font-weight:700;">Skipped</span>') + '</td>' +
+                        '<td>' + esc(h.meaning) + '</td>' +
+                    '</tr>';
+                }).join('');
+            }
+
+            // Click handlers
+            document.getElementById('letterTray').addEventListener('click', function (e) {
+                var btn = e.target.closest('.letter-tile');
+                if (!btn || btn.disabled) return;
+                placeTile(Number(btn.getAttribute('data-tile')));
+            });
+
+            document.getElementById('answerSlots').addEventListener('click', function (e) {
+                var btn = e.target.closest('.slot-tile');
+                if (!btn) return;
+                removeSlot(Number(btn.getAttribute('data-slot')));
+            });
+
+            document.getElementById('checkBtn').addEventListener('click', checkGuess);
+            document.getElementById('skipBtn').addEventListener('click', skipWord);
+            document.getElementById('revealLetterBtn').addEventListener('click', revealOneLetter);
+
+            document.getElementById('hintBtn').addEventListener('click', function () {
+                if (roundFinished || !currentItem) return;
+                hintUsed = true;
+                var h = document.getElementById('hintBanner');
+                h.innerHTML = '<i class="fa-solid fa-lightbulb"></i> <strong>Hint:</strong> ' + esc(currentItem.hint);
+                h.classList.add('visible');
+            });
+
+            document.getElementById('shuffleBtn').addEventListener('click', function () {
+                if (roundFinished) return;
+                tiles = shuffleArray(tiles);
+                playTone([440], 0.05, 'triangle');
+                renderBoard();
+            });
+
+            document.getElementById('clearBtn').addEventListener('click', function () {
+                if (roundFinished) return;
+                slots.forEach(function (s, idx) {
+                    if (s && !s.locked) {
+                        var t = tiles.find(function (x) { return x.id === s.tileId; });
+                        if (t) t.used = false;
+                        slots[idx] = null;
+                    }
+                });
+                renderBoard();
+            });
+
+            document.getElementById('nextWordBtn').addEventListener('click', function () {
+                deckIdx++;
+                loadWord();
+            });
+
+            document.getElementById('modeButtons').addEventListener('click', function (e) {
+                var btn = e.target.closest('.mode-btn');
+                if (!btn) return;
+                mode = btn.getAttribute('data-mode');
+                document.querySelectorAll('.mode-btn').forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                startGame();
+            });
+
+            catSelect.addEventListener('change', startGame);
+            document.getElementById('difficultySelect').addEventListener('change', startGame);
+            document.getElementById('restartBtn').addEventListener('click', startGame);
+            document.getElementById('playAgainBtn').addEventListener('click', startGame);
+
+            // Keyboard support
+            document.addEventListener('keydown', function (e) {
+                if (e.ctrlKey || e.metaKey || e.altKey) return;
+                var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+                if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+                if (document.getElementById('summaryCard').classList.contains('visible')) return;
+
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (roundFinished) { deckIdx++; loadWord(); }
+                    else { checkGuess(); }
+                    return;
+                }
+                if (roundFinished) return;
+
+                if (e.key === 'Backspace') {
+                    e.preventDefault();
+                    for (var i = slots.length - 1; i >= 0; i--) {
+                        if (slots[i] && !slots[i].locked) {
+                            removeSlot(i);
+                            break;
+                        }
+                    }
+                    return;
+                }
+                if (e.key === ' ') {
+                    e.preventDefault();
+                    tiles = shuffleArray(tiles);
+                    renderBoard();
+                    return;
+                }
+                if (/^[a-zA-Z]$/.test(e.key)) {
+                    var ch = e.key.toUpperCase();
+                    var match = tiles.find(function (t) { return !t.used && t.ch === ch; });
+                    if (match) placeTile(match.id);
+                }
+            });
+
+            startGame();
+        })();
+    </script>
+</body>
+
+</html>
