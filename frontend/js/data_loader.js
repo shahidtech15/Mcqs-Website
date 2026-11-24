@@ -55,7 +55,8 @@
         'js/data_world_org.js',
         'js/data_aao.js',
         'js/data_islamiat_1000.js',
-        'js/data_pedagogy_500.js'
+        'js/data_pedagogy_500.js',
+        'js/data_computer_fundamentals.js'
       ];
     }
 
@@ -135,7 +136,7 @@
       return ['js/data_2200.js', 'js/data_examveda.js'];
     }
     if (norm.includes('computer') || norm.includes('cat_cs')) {
-      return ['js/data_2200.js', 'js/data_examveda.js'];
+      return ['js/data_computer_fundamentals.js', 'js/data_2200.js', 'js/data_examveda.js'];
     }
     if (norm.includes('general knowledge') || norm === 'gk' || norm.includes('cat_gk')) {
       return ['js/data_2200.js', 'js/data_examveda.js', 'js/data_facts_mcqs.js'];

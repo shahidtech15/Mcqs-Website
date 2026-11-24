@@ -158,7 +158,7 @@ const KNOWN_SUBCATEGORIES = {
     ],
     "Civil Servants Act, 1973": ["Definitions", "Terms & Conditions", "Appointments & Probation", "Promotion & Seniority", "Termination & Retirement"],
     "Mathematics": ["Algebra", "Limits", "Calculus", "Train problems", "Compound and Simple Interest", "Ratio", "Percentage", "Geometry", "Probability", "Trigonometry"],
-    "Computer Science": ["MS Word", "MS Excel", "MS PowerPoint", "Programming", "Networks", "Databases"],
+    "Computer Science": ["Computer Fundamentals", "Operating System", "MS Word", "MS Excel", "MS PowerPoint", "Programming", "Networks", "Databases"],
     "English": ["Grammar", "Tenses", "Synonyms", "Antonyms", "Direct and Indirect Speech", "Preposition"],
     "English Synonyms": [
         "CSS / PMS High-Yield Synonyms",
@@ -505,6 +505,7 @@ function generateFallbackQuiz(catName, subCat, count, difficulty) {
     const all2200 = (typeof window !== 'undefined' && Array.isArray(window.ALL_2200_MCQS)) ? window.ALL_2200_MCQS : [];
     const islamiat1000 = (typeof window !== 'undefined' && Array.isArray(window.ISLAMIAT_1000_MCQS)) ? window.ISLAMIAT_1000_MCQS : [];
     const pedagogy500 = (typeof window !== 'undefined' && Array.isArray(window.PEDAGOGY_500_MCQS)) ? window.PEDAGOGY_500_MCQS : [];
+    const compFundMcqs = (typeof window !== 'undefined' && Array.isArray(window.COMPUTER_FUNDAMENTALS_MCQS)) ? window.COMPUTER_FUNDAMENTALS_MCQS : [];
     const sciInst = (typeof window !== 'undefined' && Array.isArray(window.SCIENCE_INSTRUMENTS_MCQS)) ? window.SCIENCE_INSTRUMENTS_MCQS : [];
     const examveda = (typeof window !== 'undefined' && Array.isArray(window.EXAMVEDA_MCQS)) ? window.EXAMVEDA_MCQS : [];
     const sciCapsule = (typeof window !== 'undefined' && Array.isArray(window.SCIENCE_CAPSULE_MCQS)) ? window.SCIENCE_CAPSULE_MCQS : [];
@@ -623,7 +624,7 @@ function generateFallbackQuiz(catName, subCat, count, difficulty) {
     } else if (normCat.includes('computer')) {
         const suhagCS = all2200.filter(q => q.category && q.category.name === 'Computer Science');
         const evCS = examveda.filter(q => q.category && q.category.name === 'Computer Science');
-        pool = filterBySubCategory([...suhagCS, ...evCS], subCat);
+        pool = filterBySubCategory([...compFundMcqs, ...suhagCS, ...evCS], subCat);
     } else if (normCat.includes('pakistan affairs')) {
         pool = filterBySubCategory(all2200.filter(q => q.category && q.category.name === 'Pakistan Affairs'), subCat);
     } else if (normCat.includes('general knowledge') || normCat === 'gk') {
