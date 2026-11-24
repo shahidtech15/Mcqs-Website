@@ -234,6 +234,7 @@ const FALLBACK_CATEGORIES = [
   { _id: 'cat_geog', name: 'Geography', description: 'Physical, political & human geography of World, Pakistan & United States', icon: 'fa-map-location-dot', questionCount: 177, subcategoriesCount: 23 },
   { _id: 'cat_sindh', name: 'Sindh General Knowledge', description: 'Sindh history, archaeology (Mohenjo Daro, Kot Diji), Sufi heritage & geography', icon: 'fa-monument', questionCount: 117, subcategoriesCount: 5 },
   { _id: 'cat_islam', name: 'Islamiat', description: 'Holy Quran, Seerat-un-Nabi (PBUH), Battles, Caliphate & Islamic history', icon: 'fa-kaaba', questionCount: 1103, subcategoriesCount: 10 },
+  { _id: 'cat_pedagogy', name: 'Pedagogy', description: '500 Progressive Easy-to-Hard Pedagogy MCQs across Teaching Methods, Educational Psychology, Curriculum, Assessment, Research & Leadership', icon: 'fa-chalkboard-user', questionCount: 500, subcategoriesCount: 10 },
   { _id: 'cat_chem', name: 'Chemistry', description: 'Organic, Inorganic, Physical & Analytical Chemistry', icon: 'fa-flask-vial', questionCount: 90, subcategoriesCount: 14 },
   { _id: 'cat_meta', name: 'Metallurgical Engineering', description: 'Physical, extractive, foundry & welding metallurgy', icon: 'fa-atom', questionCount: 85, subcategoriesCount: 20 },
   { _id: 'cat_iq', name: 'IQ & Analytical Reasoning', description: 'Word analogies, coding-decoding, logical puzzles and analytical reasoning', icon: 'fa-brain', questionCount: 77, subcategoriesCount: 5 },
@@ -1150,6 +1151,7 @@ async function renderSampleQuestionsFallback() {
   const catId = currentFetchOptions.categoryId || '';
   const all2200 = (typeof window !== 'undefined' && Array.isArray(window.ALL_2200_MCQS)) ? window.ALL_2200_MCQS : [];
   const islamiat1000 = (typeof window !== 'undefined' && Array.isArray(window.ISLAMIAT_1000_MCQS)) ? window.ISLAMIAT_1000_MCQS : [];
+  const pedagogy500 = (typeof window !== 'undefined' && Array.isArray(window.PEDAGOGY_500_MCQS)) ? window.PEDAGOGY_500_MCQS : [];
   const sciInst = (typeof window !== 'undefined' && Array.isArray(window.SCIENCE_INSTRUMENTS_MCQS)) ? window.SCIENCE_INSTRUMENTS_MCQS : [];
   const examveda = (typeof window !== 'undefined' && Array.isArray(window.EXAMVEDA_MCQS)) ? window.EXAMVEDA_MCQS : [];
   const sciCapsule = (typeof window !== 'undefined' && Array.isArray(window.SCIENCE_CAPSULE_MCQS)) ? window.SCIENCE_CAPSULE_MCQS : [];
@@ -1210,6 +1212,9 @@ async function renderSampleQuestionsFallback() {
   const isIslamiat = categoryName.toLowerCase().includes('islam') || 
                      catId.toLowerCase().includes('islam');
 
+  const isPedagogy = categoryName.toLowerCase().includes('pedagog') ||
+                     catId.toLowerCase().includes('pedagog');
+
   const isIQ = categoryName.toLowerCase().includes('iq') || 
                categoryName.toLowerCase().includes('reasoning') || 
                catId.toLowerCase().includes('cat_iq');
@@ -1233,7 +1238,13 @@ async function renderSampleQuestionsFallback() {
                catId.toLowerCase().includes('cat_cs') || 
                catId === 'Computer Science';
 
-      if (isSynonyms) {
+  if (isPedagogy) {
+    pool = [...pedagogy500];
+    if (subCategory) {
+      const filtered = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCategory.toLowerCase());
+      if (filtered.length > 0) pool = filtered;
+    }
+  } else if (isSynonyms) {
     pool = [...synMcqs];
     if (subCategory) {
       const filtered = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCategory.toLowerCase());

@@ -54,7 +54,8 @@
         'js/data_ai.js',
         'js/data_world_org.js',
         'js/data_aao.js',
-        'js/data_islamiat_1000.js'
+        'js/data_islamiat_1000.js',
+        'js/data_pedagogy_500.js'
       ];
     }
 
@@ -108,6 +109,9 @@
     }
     if (norm.includes('islam')) {
       return ['js/data_islamiat_1000.js', 'js/data_2200.js'];
+    }
+    if (norm.includes('pedagog') || norm.includes('cat_pedagogy')) {
+      return ['js/data_pedagogy_500.js'];
     }
     if (norm.includes('chemistry') || norm.includes('cat_chem') || norm.includes('metallurg') || norm.includes('cat_meta')) {
       return ['js/data_extra_categories.js', 'js/data_2200.js'];
