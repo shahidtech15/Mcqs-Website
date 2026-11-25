@@ -62,6 +62,17 @@
       centralPortalName: 'University of Iceland SENS Vacancies & Rannís IRF',
       centralPortalUrl: 'https://english.hi.is/university/vacancies',
       highlights: 'World-leading natural science fieldwork in Volcanology, Glaciology, Geothermal Chemistry, Marine Biology, and Sub-Arctic Ecology funded by Rannís and UI Doctoral Fund.'
+    },
+    {
+      country: 'Italy',
+      flag: '🇮🇹',
+      title: 'Dottorato di Ricerca (MUR/PNRR PhD) & Laurea Magistrale (MAECI/DSU Master\'s)',
+      duration: '3 Years (PhD) or 2 Years (Master\'s)',
+      grossSalary: 'PhD: €1,353–€1,625/mo net (+50% abroad) • MS: €7,000–€9,000/yr + Free Hostel & Meals',
+      tuitionFee: '0 EUR (100% Tuition Waiver under MUR PhD, MAECI & DSU)',
+      centralPortalName: 'Universitaly.it, StudyInItaly (MAECI) & University Bandi Portals',
+      centralPortalUrl: 'https://universitaly.it/',
+      highlights: 'Accepts 4-year Pakistani BS (16-year) directly into 3-year funded PhDs! Master\'s students qualify for DSU Regional Grants (€7,000+/yr + free hostel & meals) or MAECI (€1,000/mo).'
     }
   ];
 
@@ -808,6 +819,133 @@
         'Europe\'s most prestigious and highest-paying doctoral fellowship program under Horizon Europe',
         'Includes €1,600/month institutional research/training budget + mandatory 3–12 month international lab/industry secondments',
         'Open to Pakistani and global Natural Science graduates of all nationalities who satisfy the 12-in-36-month mobility rule'
+      ]
+    },
+
+    // ==================== ITALY: FUNDED MASTER'S & PHD POSITIONS (6) ====================
+    {
+      id: 'it-unibo-phd-ms',
+      country: 'Italy',
+      flag: '🇮🇹',
+      university: 'University of Bologna (Alma Mater Studiorum - Unibo)',
+      faculty: 'Departments of Chemistry ("Giacomo Ciamician"), Physics & Astronomy, Biological, Geological & Environmental Sciences (BiGeA)',
+      city: 'Bologna, Ravenna & Rimini',
+      disciplines: ['Chemistry & Materials', 'Physics, Quantum & Astronomy', 'Biology & Life Sciences', 'Earth, Climate & Environmental Science', 'Marine Science & Oceanography', 'Mathematics & Computational Science'],
+      keyDepartments: 'PhD & Master\'s in Chemistry, Nanoscience, Astrophysics, Earth, Life and Environmental Sciences (STVA), Marine Biology (Ravenna), Cultural Heritage Science, Data Science & Computation.',
+      salary: 'PhD: €16,243+/yr net (+50% abroad + 10% research grant) • Master\'s: ER.GO DSU (€7,000+/yr + Free Dorm + Tuition Waiver) & Unibo Action Grants',
+      contractType: '3-Year Fully-Funded PhD (Dottorato) & 2-Year Funded English-Taught Laurea Magistrale (Master\'s)',
+      applicationCycle: 'Master\'s Int\'l Intake: Jan–May • Main PhD Call (Cycle XLII): April–June annually',
+      languageReq: 'English (English Proficiency Certificate / MOI accepted for most courses, or IELTS 6.0+)',
+      eligibility: 'Master\'s: 16-year BS degree. PhD: Accepts BOTH 18-year MS/MPhil AND 4-year BS (16-year) degree holders directly!',
+      vacancyUrl: 'https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/phd-programmes',
+      highlights: [
+        'The Western world\'s oldest university (founded 1088) offering 50+ international English-taught Master\'s and 48 PhD programmes',
+        'Master\'s students automatically qualify for ER.GO regional scholarships (100% tuition waiver + ~€7,000/yr + housing/canteen)',
+        'Accepts 4-year Pakistani BS (Hons) degrees directly into 3-year fully-funded PhD programs without requiring an MPhil'
+      ]
+    },
+    {
+      id: 'it-unipd-phd-ms',
+      country: 'Italy',
+      flag: '🇮🇹',
+      university: 'University of Padua (Università degli Studi di Padova - UNIPD)',
+      faculty: 'School of Science & Departments of Chemical Sciences, Physics & Astronomy, Biology, and Geosciences',
+      city: 'Padua (Padova, Veneto)',
+      disciplines: ['Chemistry & Materials', 'Biology & Life Sciences', 'Physics, Quantum & Astronomy', 'Earth, Climate & Environmental Science', 'Mathematics & Computational Science'],
+      keyDepartments: 'Molecular Sciences, Materials Science & Catalysis, Physics & Astronomy ("Galileo Galilei"), Biosciences, Earth & Planetary Geosciences, Environmental Sciences, CARIPARO Foundation Excellence PhDs.',
+      salary: 'PhD: €16,243+/yr net + CARIPARO housing grants • Master\'s: Padua International Excellence Scholarship (€8,000/yr + 0% Tuition) & Veneto ESU DSU Grant',
+      contractType: '3-Year Funded PhD Fellowship & 2-Year Funded English Master\'s Programmes',
+      applicationCycle: 'Master\'s Calls: Nov–Feb & Mar–May • Main PhD Call: April–May annually',
+      languageReq: 'English (MOI English Proficiency Certificate widely accepted for Master\'s and PhD)',
+      eligibility: 'Master\'s: 15–16 years BS degree. PhD: 4-year BS (Hons) or 18-year MS/MPhil in Natural Sciences.',
+      vacancyUrl: 'https://www.unipd.it/en/phd-programmes-calls-and-admissions',
+      highlights: [
+        'Galileo Galilei\'s university (founded 1222) — offers 43+ CARIPARO Foundation & MUR fully-funded PhD scholarships reserved for international applicants',
+        'Award-winning Padua International Excellence Master\'s Scholarship (€8,000/year + 100% tuition waiver) plus 100 departmental fee waivers',
+        'Veneto ESU regional scholarship provides free dormitories, daily Mensa meals, and cash stipend to eligible Master\'s students'
+      ]
+    },
+    {
+      id: 'it-sapienza-phd-ms',
+      country: 'Italy',
+      flag: '🇮🇹',
+      university: 'Sapienza University of Rome',
+      faculty: 'Faculty of Mathematical, Physical and Natural Sciences (SMFN)',
+      city: 'Rome',
+      disciplines: ['Physics, Quantum & Astronomy', 'Chemistry & Materials', 'Biology & Life Sciences', 'Earth, Climate & Environmental Science', 'Mathematics & Computational Science'],
+      keyDepartments: 'Department of Physics (Nobel Laureate Giorgio Parisi school), Department of Chemistry, Department of Biology and Biotechnology ("Charles Darwin"), Department of Earth Sciences, Environmental & Evolutionary Biology.',
+      salary: 'PhD: €16,243+/yr net + 50% abroad bonus • Master\'s: Laziodisco DSU (€6,900+/yr + Free Hostel & Meals) & Sapienza "Don\'t-Miss" Fellowships',
+      contractType: '3-Year Fully-Funded PhD (90+ Doctoral Schools) & 2-Year Funded Master\'s',
+      applicationCycle: 'Master\'s Pre-Selection: Nov–April • PhD National Call: May–July annually',
+      languageReq: 'English (MOI or B2 certificate; NO application fee for many PhD tracks)',
+      eligibility: '16-year BS (for Master\'s or direct PhD entry) or 18-year MS/MPhil.',
+      vacancyUrl: 'https://www.uniroma1.it/en/pagina/phd-programmes',
+      highlights: [
+        'Europe\'s largest university with over 400+ fully-funded PhD positions annually across 90+ doctoral programmes',
+        'Home to Nobel Prize in Physics laureate Prof. Giorgio Parisi\'s Theoretical & Statistical Physics research groups',
+        'Laziodisco (DiSCo Lazio) regional scholarship covers 100% tuition, free Rome student residence, and €6,900+ annual grant for Master\'s students'
+      ]
+    },
+    {
+      id: 'it-sns-sissa-elite',
+      country: 'Italy',
+      flag: '🇮🇹',
+      university: 'Scuola Normale Superiore (SNS Pisa) & SISSA (Trieste)',
+      faculty: 'Faculty of Sciences (SNS Pisa) & Physics, Mathematics and Neuroscience/Biology (SISSA)',
+      city: 'Pisa, Florence & Trieste',
+      disciplines: ['Physics, Quantum & Astronomy', 'Chemistry & Materials', 'Biology & Life Sciences', 'Mathematics & Computational Science', 'Earth, Climate & Environmental Science'],
+      keyDepartments: 'SNS Pisa: Chemistry, Computational Chemistry, Quantum Physics, Nanoscience, Molecular Biology & Astrochemistry. SISSA Trieste: Astrophysics & Cosmology, Theoretical Particle Physics, Molecular Biology, Statistical Physics, Applied Mathematics.',
+      salary: '€17,000 – €20,000+ / year net + FREE Board & Lodging + up to €4,000 Travel/Research Grant',
+      contractType: '4-Year Elite Fully-Funded PhD Fellowship (100% of admitted students receive full funding)',
+      applicationCycle: 'Spring Round (February–March) & Autumn Round (July–August) annually',
+      languageReq: 'Fluent English (100% English-medium elite doctoral research institutes)',
+      eligibility: '4-year BS (Hons) or MSc/MPhil in Physics, Chemistry, Biology, or Mathematics with top academic standing.',
+      vacancyUrl: 'https://www.sns.it/en/admissions/phd',
+      highlights: [
+        'Italy\'s two premier international graduate schools where EVERY admitted PhD candidate receives a full 4-year scholarship',
+        'Provides free daily meals, housing allowance/college residence, and non-EU relocation/visa cost reimbursement',
+        'No Italian language required; direct collaboration with ICTP (Abdus Salam International Centre for Theoretical Physics) in Trieste'
+      ]
+    },
+    {
+      id: 'it-polimi-polito',
+      country: 'Italy',
+      flag: '🇮🇹',
+      university: 'Politecnico di Milano (PoliMi) & Politecnico di Torino (PoliTo)',
+      faculty: 'Departments of Chemistry, Materials & Chemical Engineering ("Giulio Natta"), Physics, and Environmental Engineering',
+      city: 'Milan & Turin',
+      disciplines: ['Chemistry & Materials', 'Physics, Quantum & Astronomy', 'Earth, Climate & Environmental Science', 'Mathematics & Computational Science'],
+      keyDepartments: 'Materials Chemistry & Polymer Science (Nobel Laureate Giulio Natta dept), Applied Physics & Photonics, Quantum Engineering, Climate Change & Environmental Sustainability, Mathematical Modeling.',
+      salary: 'PhD: €17,500 – €22,000 / year net • Master\'s: DSU Lombardy / EDISU Piemonte (€7,000–€8,000/yr + Free Dorm + 0% Tuition) & Merit Scholarships',
+      contractType: '3-Year High-Stipend Salaried PhD & 2-Year Funded Laurea Magistrale (Master\'s)',
+      applicationCycle: 'Master\'s Early Bird: Sept–Nov & Jan–Feb • PhD Calls: May–June & Autumn rounds',
+      languageReq: 'English (IELTS 6.0 / TOEFL 78 or approved English certificate)',
+      eligibility: 'Master\'s: 16-year BS with strong CGPA. PhD: MS/MPhil or 4-year BS (240 ECTS).',
+      vacancyUrl: 'https://www.dottorato.polimi.it/en/prospective-phd-candidates/calls-and-regulations',
+      highlights: [
+        'Ranked #1 in Italy and Top 20–40 globally in STEM, Chemical/Materials Science, and Applied Physics',
+        'PoliMi and PoliTo recently raised base PhD scholarships above the national minimum, with many PNRR/industry fellowships paying €1,550–€1,850/month net',
+        'EDISU Piemonte (Turin) and PoliMi DSU (Milan) provide comprehensive need-based Master\'s grants covering tuition, housing, and living costs'
+      ]
+    },
+    {
+      id: 'it-maeci-dsu-national-hub',
+      country: 'Italy',
+      flag: '🇮🇹',
+      university: 'Italy Master\'s & PhD National Portal — MAECI, Invest Your Talent (IYT) & Regional DSU Grants',
+      faculty: 'Universities of Milan (Statale), Turin (UniTo), Pisa (UniPi), Trento (UniTrento), Pavia & Florence',
+      city: 'Milan, Turin, Pisa, Trento, Pavia & Nationwide',
+      disciplines: ['Chemistry & Materials', 'Biology & Life Sciences', 'Physics, Quantum & Astronomy', 'Earth, Climate & Environmental Science', 'Marine Science & Oceanography', 'Mathematics & Computational Science'],
+      keyDepartments: 'All English-taught Master\'s (Laurea Magistrale) and PhD programmes in Chemistry, Industrial Biotechnology, Molecular Biology, Environmental Change, Physics, Marine Sciences, and Data Science across 80+ public Italian universities.',
+      salary: 'MAECI/IYT: €1,000/mo (€9,000/yr) + 0% Tuition • Regional DSU: €6,500–€8,000/yr + Free Hostel & Meals',
+      contractType: '2-Year Fully-Funded Master\'s (Laurea Magistrale) & 3-Year Funded PhD Scholarships',
+      applicationCycle: 'University Pre-Admission: Nov–May • IYT: Jan–Mar • MAECI: May–June • DSU: July–Aug',
+      languageReq: 'English Proficiency Certificate (MOI from Pakistani university accepted by 70%+ of Italian public universities!)',
+      eligibility: '16-year BS degree (for Master\'s or direct PhD) or 18-year MS/MPhil; no GRE required; low or zero university application fees.',
+      vacancyUrl: 'https://studyinitaly.esteri.it/',
+      highlights: [
+        'Three stackable application tracks: (1) University Excellence Scholarships, (2) MAECI / IYT Government Grants (€1,000/mo), and (3) Regional DSU Need-Based Scholarships (€7,000+/yr + free hostel & meals)',
+        'Most accessible European Master\'s & PhD pathway for Pakistani Natural Science graduates using an English Medium of Instruction (MOI) certificate'
       ]
     }
   ];

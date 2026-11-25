@@ -795,6 +795,103 @@ window.GLOBAL_SCHOLARSHIPS_DATA = [
       "Finalists attend a live competency-based panel interview with WIPO division directors in Geneva (via Zoom)."
     ],
     "expertTips": "Many Natural Science (Chemistry, Biotech, Physics, Environmental Science) graduates overlook WIPO thinking it is only for lawyers! In reality, WIPO heavily recruits STEM and Natural Science fellows for Patent Analytics, WIPO GREEN (climate-change technology transfer), WIPO Re:Search (tropical medicine/biotech), and PCT scientific terminology. Highlight how your scientific expertise bridges R&D innovation and practical technology transfer for developing economies."
+  },
+  {
+    "id": "italy-mur-phd-dottorato",
+    "name": "Italy National Funded PhD Positions (Dottorato di Ricerca — MUR, PNRR & Scuole Superiori)",
+    "country": "Italy",
+    "region": "Europe",
+    "flag": "🇮🇹",
+    "levels": ["PhD"],
+    "funding": "Fully Funded (Tax-Exempt IRPEF)",
+    "stipendAmount": "€16,243 – €19,500+ / year (~€1,353–€1,625 / mo net + 50% Foreign Mobility Bonus)",
+    "benefits": [
+      "100% University Tuition Fee Waiver across all 3 to 4 years of the Italian PhD (Dottorato di Ricerca)",
+      "Monthly Tax-Exempt Stipend (~€1,353/month net at public universities; up to €1,625+/month at SISSA, SNS Pisa & Politecnico di Milano)",
+      "50% Automatic Stipend Increase (~€2,030/month net) for up to 12–18 months of visiting research at any foreign university/lab abroad",
+      "Mandatory 10% Annual Research Budget (minimum €1,624/year) for conferences, fieldwork, publications, and laptops",
+      "Free board and lodging at elite Italian Schools of Advanced Studies (Scuola Normale Superiore Pisa, Sant'Anna, IUSS Pavia)"
+    ],
+    "hostInstitutions": "University of Bologna (Unibo), University of Padua (UNIPD), Sapienza University of Rome, Politecnico di Milano, Politecnico di Torino, Scuola Normale Superiore (SNS Pisa), SISSA Trieste, University of Milan, University of Turin, University of Trento",
+    "targetAudience": "International and Pakistani graduates holding an 18-year Master's degree (MS/MPhil) OR a 4-year BS (16 years education, 240 ECTS — accepted directly for PhD entry by most Italian universities as equivalent to Laurea Magistrale!). No age limit for most university calls.",
+    "languageRequirements": "English Proficiency Certificate from previous university OR IELTS 6.0–6.5 (most Italian STEM/Natural Science PhD calls accept an English Medium of Instruction - MOI certificate!)",
+    "standardizedTests": "None (No GRE required; selection is based on CV, Research Proposal, and Zoom interview)",
+    "applicationWindow": "Main National Call (Bando di Concorso): April to August annually &bull; Additional Autumn calls Sept–Nov",
+    "deadlineMonth": "June",
+    "officialUrl": "https://universitaly.it/",
+    "managingBody": "Italian Ministry of University and Research (MUR) & Public Italian Universities",
+    "applicationProcess": [
+      "Monitor annual PhD calls (Bandi di Dottorato — Cycle XLII / XLIII) published between April and August on Universitaly, Euraxess Italy, and individual university portals.",
+      "Prepare a 3-to-5 page PhD Research Project Proposal aligned with the department's published research topics.",
+      "Submit online application along with your BS+MS transcripts, Master's thesis abstract, Europass CV, and 2 Reference Letters (usually uploaded directly by referees via a link).",
+      "Pass Phase 1 (Evaluation of Qualifications & Research Proposal score) and Phase 2 (Online Oral/Technical Interview on Zoom/Teams).",
+      "Once ranked on the final merit list (Graduatoria), complete pre-enrollment on the Universitaly portal for fast-track Italian D-Type Study Visa."
+    ],
+    "expertTips": "Italy is one of the very few European countries where a 4-year Pakistani BS (Hons) degree (16 years of education) is legally accepted by many top universities (Bologna, Padua, Sapienza, PoliTo, Milan) for DIRECT entry into a 3-year fully-funded PhD! Furthermore, an English Proficiency Certificate (MOI) from your Pakistani university is widely accepted instead of IELTS."
+  },
+  {
+    "id": "italy-maeci-iyt",
+    "name": "Italian Government Scholarships (MAECI) & Invest Your Talent in Italy (IYT)",
+    "country": "Italy",
+    "region": "Europe",
+    "flag": "🇮🇹",
+    "levels": ["Master's", "PhD"],
+    "funding": "Fully Funded Government Grant",
+    "stipendAmount": "€900 – €1,000 / month (€8,100–€9,000 / academic year + 100% Tuition Waiver)",
+    "benefits": [
+      "100% Exemption from University Enrollment and Tuition Fees at Italian public universities",
+      "Monthly Living Stipend of €900 to €1,000 paid in quarterly installments (renewable for 2nd year of Master's)",
+      "Comprehensive Health and Medical/Accident Insurance coverage throughout your stay in Italy",
+      "For 'Invest Your Talent in Italy (IYT)': Includes a mandatory 3-month paid/supported internship at a leading Italian corporation",
+      "Free Italian language and culture course included"
+    ],
+    "hostInstitutions": "All accredited Italian Public Universities (Bologna, Padua, Sapienza Rome, Politecnico di Milano, Politecnico di Torino, Milan, Venice Ca' Foscari, Pavia)",
+    "targetAudience": "Pakistani and international students applying for a Master's (Laurea Magistrale — must be 28 years old or younger for MAECI / 26 for IYT) or PhD (must be 30 years old or younger for MAECI).",
+    "languageRequirements": "English B2 Certificate (IELTS 6.0+ or official university English Proficiency Certificate for English-taught programs)",
+    "standardizedTests": "None (No GRE / HAT required)",
+    "applicationWindow": "IYT: January – March &bull; MAECI: May – June annually",
+    "deadlineMonth": "June",
+    "officialUrl": "https://studyinitaly.esteri.it/",
+    "managingBody": "Ministry of Foreign Affairs and International Cooperation (MAECI), Government of Italy",
+    "applicationProcess": [
+      "Apply for admission to an English-taught Master's (Laurea Magistrale) or PhD program at an Italian public university.",
+      "Register on the official Study in Italy portal (studyinitaly.esteri.it) when the annual MAECI / IYT call opens.",
+      "Submit your academic transcripts, B2 English certificate, CV, Motivation Statement, and (for IYT) a 1-minute video motivation pitch.",
+      "Shortlisted candidates are interviewed by the Italian Embassy / Consulate committee in Pakistan."
+    ],
+    "expertTips": "For Invest Your Talent in Italy (IYT), your 1-minute video pitch is decisive—record it in clear lighting explaining how an Italian Master's plus an internship in an Italian engineering/science/design company will build trade and technology links between Italy and Pakistan."
+  },
+  {
+    "id": "italy-dsu-regional",
+    "name": "Italy Regional DSU / EDISU / ER.GO / Laziodisco Scholarships (Master's & BS/PhD)",
+    "country": "Italy",
+    "region": "Europe",
+    "flag": "🇮🇹",
+    "levels": ["Master's", "PhD"],
+    "funding": "Fully Funded Need-Based Grant",
+    "stipendAmount": "€6,500 – €8,000 / year Cash Stipend + Free Dormitory + Free Daily Meals + 0% Tuition",
+    "benefits": [
+      "100% University Tuition Fee Waiver at your admitted Italian public university",
+      "€6,500 to €8,000 / year Tax-Free Cash Stipend (tiered by region for 'Fuori Sede' international students)",
+      "Free University Dormitory Accommodation (or extra housing rent allowance)",
+      "Free Daily Meals (Lunch & Dinner) at university canteens (Mensa Universitaria)",
+      "Extremely high acceptance rate (>90% of Pakistani applicants with complete family income documents receive the award!)"
+    ],
+    "hostInstitutions": "All public universities across Italy's 20 regions: Lombardy (PoliMi, Unimi, Pavia), Emilia-Romagna (ER.GO — Bologna, Modena, Parma, Ferrara), Piedmont (EDISU — PoliTo, UniTo), Lazio (Laziodisco — Sapienza, Tor Vergata), Tuscany (DSU Toscana — Pisa, Florence, Siena), Veneto (ESU — Padua, Venice)",
+    "targetAudience": "Any international/Pakistani student holding an admission offer (or pre-admission) to a Master's (Laurea Magistrale), Bachelor's, or unfunded PhD at an Italian public university whose family income falls below the regional ISEE Parificato threshold (~€23,000–€27,000/year — nearly all middle-income Pakistani families qualify for the maximum bracket).",
+    "languageRequirements": "English Proficiency Certificate (MOI from Pakistani university) or IELTS",
+    "standardizedTests": "None",
+    "applicationWindow": "Regional DSU calls open June – July &bull; Deadlines July to September annually",
+    "deadlineMonth": "August",
+    "officialUrl": "https://universitaly.it/",
+    "managingBody": "Italian Regional Right-to-Education Agencies (DSU Toscana, EDISU Piemonte, ER.GO, DiSCo Lazio, ESU Veneto)",
+    "applicationProcess": [
+      "Step 1 (Nov–April): Apply for English-taught Master's admission at 2–4 Italian public universities (e.g., Bologna, Padua, Sapienza, Pisa, Turin, Pavia) using your BS transcripts and English Proficiency Certificate.",
+      "Step 2 (April–June): Once you receive your University Pre-Acceptance Letter, submit your pre-enrollment application on Universitaly.it for the Italian Embassy.",
+      "Step 3 (May–July): Prepare and legalize (Apostille from MOFA Pakistan) your Family Registration Certificate (FRC), Father/Guardian Annual Income Certificate, and Property/Bank Certificate.",
+      "Step 4 (July–August): Submit the online regional DSU/EDISU/ER.GO scholarship application to acquire your ISEE Parificato certificate and secure 100% tuition waiver + €7,000+ stipend + free hostel & meals."
+    ],
+    "expertTips": "DSU is a legal entitlement ('Diritto allo Studio'), not a lottery! As long as you hold a university admission offer and your Apostilled family income/property documents are submitted accurately before the regional August deadline, you are guaranteed the tuition waiver and stipend upon enrollment."
   }
 ];
 
