@@ -641,7 +641,10 @@
             </div>
             <div class="hero-cta-row">
                 <a href="#positions-directory" class="btn-np btn-np-primary">
-                    <i class="fa-solid fa-flask"></i> Browse 35 Natural Science PhD Portals
+                    <i class="fa-solid fa-flask"></i> Browse 36 Natural Science PhD Portals
+                </a>
+                <a href="#msca-section" class="btn-np btn-np-secondary" style="background:rgba(234,179,8,0.22); border-color:rgba(253,224,71,0.5); color:#fef08a;">
+                    <i class="fa-solid fa-star"></i> Marie Curie (MSCA) Fellowships &amp; Calculator
                 </a>
                 <a href="https://www.jobbnorge.no/en/available-jobs" target="_blank" rel="noopener noreferrer" class="btn-np btn-np-secondary">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Jobbnorge (All Norway PhDs)
@@ -653,6 +656,55 @@
                     <i class="fa-solid fa-award"></i> All Global MS/PhD Scholarships
                 </a>
             </div>
+        </section>
+
+        <!-- Marie Skłodowska-Curie Actions (MSCA) Flagship Section & Interactive Salary Calculator -->
+        <section id="msca-section" style="margin-bottom: 36px; background: linear-gradient(135deg, rgba(30, 58, 138, 0.07), rgba(5, 150, 105, 0.08)); border: 1.5px solid rgba(2, 132, 199, 0.35); border-radius: 20px; padding: 26px 24px;">
+            <div class="sec-head" style="margin-bottom: 14px;">
+                <h2><i class="fa-solid fa-star" style="color:#eab308;"></i> Marie Skłodowska-Curie Actions (MSCA) Funded PhD &amp; Postdoc Guide</h2>
+                <span class="salary-badge">Horizon Europe Flagship &bull; €4,600 – €6,685+ / Month in Nordics</span>
+            </div>
+            <p id="mscaOverviewText" style="font-size:0.92rem; color:var(--np-text); margin:0 0 18px;"></p>
+
+            <!-- 3 MSCA Tracks Cards -->
+            <div id="mscaTracksGrid" class="playbook-grid" style="margin-bottom: 20px;"></div>
+
+            <!-- Interactive MSCA Monthly Package Calculator -->
+            <div style="background: var(--np-card); border: 1px solid var(--np-border); border-radius: 16px; padding: 20px 22px; margin-bottom: 18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+                    <h3 style="margin:0; font-family:'Outfit',sans-serif; font-size:1.15rem;">
+                        <i class="fa-solid fa-calculator" style="color:var(--np-primary);"></i> Interactive Marie Curie (MSCA) Monthly Allowance &amp; Nordic Coefficient Calculator
+                    </h3>
+                    <a href="https://marie-sklodowska-curie-actions.ec.europa.eu/actions/doctoral-networks" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:700; color:var(--np-primary);">
+                        Official EU MSCA Portal <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-bottom:16px;">
+                    <div>
+                        <label for="mscaTrackSel" style="display:block; font-size:0.78rem; font-weight:800; color:var(--np-muted); margin-bottom:4px;">1. Select MSCA Programme Track</label>
+                        <select id="mscaTrackSel" class="np-search" style="width:100%; min-width:0; padding:9px 12px;">
+                            <option value="4010">MSCA Doctoral Networks (PhD — €4,010 Base)</option>
+                            <option value="3400">MSCA COFUND / Classic DN (PhD — €3,400 Base)</option>
+                            <option value="5990">MSCA Postdoctoral Fellowship (Postdoc — €5,990 Base)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="mscaCountrySel" style="display:block; font-size:0.78rem; font-weight:800; color:var(--np-muted); margin-bottom:4px;">2. Host Country &amp; Correction Coefficient</label>
+                        <select id="mscaCountrySel" class="np-search" style="width:100%; min-width:0; padding:9px 12px;"></select>
+                    </div>
+                    <div>
+                        <label for="mscaFamilySel" style="display:block; font-size:0.78rem; font-weight:800; color:var(--np-muted); margin-bottom:4px;">3. Family Obligation Status</label>
+                        <select id="mscaFamilySel" class="np-search" style="width:100%; min-width:0; padding:9px 12px;">
+                            <option value="660">Married / With Dependent Children (+€660/mo)</option>
+                            <option value="0">Single Researcher (+€0/mo)</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="mscaCalcResult" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:10px;"></div>
+            </div>
+
+            <!-- 4 Golden Rules of MSCA -->
+            <div id="mscaRulesGrid" class="playbook-grid" style="margin-bottom: 0;"></div>
         </section>
 
         <!-- Country-by-Country Salary & Employment Comparison Matrix -->
@@ -882,6 +934,69 @@
                 searchQuery = e.target.value;
                 renderPositions();
             });
+
+            // Render Marie Skłodowska-Curie Actions (MSCA) Hub & Interactive Calculator
+            var msca = window.MSCA_PROGRAM_DATA;
+            if (msca) {
+                document.getElementById('mscaOverviewText').textContent = msca.overview;
+                document.getElementById('mscaTracksGrid').innerHTML = msca.tracks.map(function (t) {
+                    return '<div class="playbook-card" style="border-top-color:#eab308;">' +
+                        '<div style="font-size:0.75rem; font-weight:800; color:#b45309; text-transform:uppercase; margin-bottom:4px;">' + esc(t.level) + ' &bull; ' + esc(t.duration) + '</div>' +
+                        '<h3>' + esc(t.title) + '</h3>' +
+                        '<p style="margin-bottom:8px;">' + esc(t.description) + '</p>' +
+                        '<div style="font-size:0.8rem; font-weight:700; color:var(--np-primary);">Base Living: €' + t.livingBase.toLocaleString() + '/mo + €' + t.mobility + ' Mobility + €' + t.family + ' Family</div>' +
+                    '</div>';
+                }).join('');
+
+                var cSel = document.getElementById('mscaCountrySel');
+                cSel.innerHTML = msca.coefficients.map(function (c, idx) {
+                    return '<option value="' + c.coeff + '"' + (idx === 1 ? ' selected' : '') + '>' + esc(c.country) + ' — ' + esc(c.pct) + ' Coefficient</option>';
+                }).join('');
+
+                document.getElementById('mscaRulesGrid').innerHTML = msca.goldenRules.map(function (r) {
+                    return '<div class="playbook-card" style="border-top-color:var(--np-primary);">' +
+                        '<h3><i class="fa-solid fa-circle-check" style="color:var(--np-emerald);"></i> ' + esc(r.title) + '</h3>' +
+                        '<p>' + esc(r.detail) + '</p>' +
+                    '</div>';
+                }).join('');
+
+                function updateMscaCalc() {
+                    var base = Number(document.getElementById('mscaTrackSel').value) || 4010;
+                    var coeff = Number(cSel.value) || 1.353;
+                    var fam = Number(document.getElementById('mscaFamilySel').value) || 0;
+                    var mob = 600;
+                    var resGrant = base > 5000 ? 1000 : 1600;
+                    var adjustedLiving = Math.round(base * coeff);
+                    var totalResearcherGross = adjustedLiving + mob + fam;
+
+                    document.getElementById('mscaCalcResult').innerHTML =
+                        '<div class="meta-box" style="margin:0;">' +
+                            '<div style="font-size:0.75rem; color:var(--np-muted); font-weight:700;">Adjusted Living Allowance</div>' +
+                            '<div style="font-family:\'Outfit\',sans-serif; font-size:1.3rem; font-weight:900; color:var(--np-text);">€' + adjustedLiving.toLocaleString() + ' / mo</div>' +
+                            '<div style="font-size:0.73rem; color:var(--np-muted);">€' + base.toLocaleString() + ' &times; ' + (coeff * 100).toFixed(1) + '%</div>' +
+                        '</div>' +
+                        '<div class="meta-box" style="margin:0;">' +
+                            '<div style="font-size:0.75rem; color:var(--np-muted); font-weight:700;">Mobility + Family Allowance</div>' +
+                            '<div style="font-family:\'Outfit\',sans-serif; font-size:1.3rem; font-weight:900; color:var(--np-primary);">+ €' + (mob + fam).toLocaleString() + ' / mo</div>' +
+                            '<div style="font-size:0.73rem; color:var(--np-muted);">€600 Mobility + €' + fam + ' Family</div>' +
+                        '</div>' +
+                        '<div class="meta-box" style="margin:0; border:1.5px solid var(--np-emerald); background:rgba(5,150,105,0.09);">' +
+                            '<div style="font-size:0.75rem; color:#047857; font-weight:800;">Total Monthly Researcher Gross</div>' +
+                            '<div style="font-family:\'Outfit\',sans-serif; font-size:1.45rem; font-weight:900; color:#059669;">€' + totalResearcherGross.toLocaleString() + ' / mo</div>' +
+                            '<div style="font-size:0.73rem; color:var(--np-muted);">≈ €' + (totalResearcherGross * 12).toLocaleString() + ' / year gross</div>' +
+                        '</div>' +
+                        '<div class="meta-box" style="margin:0;">' +
+                            '<div style="font-size:0.75rem; color:var(--np-muted); font-weight:700;">Lab &amp; Conference Budget</div>' +
+                            '<div style="font-family:\'Outfit\',sans-serif; font-size:1.3rem; font-weight:900; color:var(--np-text);">+ €' + resGrant.toLocaleString() + ' / mo</div>' +
+                            '<div style="font-size:0.73rem; color:var(--np-muted);">Paid to host lab for your research</div>' +
+                        '</div>';
+                }
+
+                document.getElementById('mscaTrackSel').addEventListener('change', updateMscaCalc);
+                cSel.addEventListener('change', updateMscaCalc);
+                document.getElementById('mscaFamilySel').addEventListener('change', updateMscaCalc);
+                updateMscaCalc();
+            }
 
             renderPositions();
         })();

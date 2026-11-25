@@ -788,9 +788,101 @@
         'Best single live feed for Marie Skłodowska-Curie Actions (MSCA) Doctoral Networks in the Nordics',
         'MSCA PhD positions pay an additional €600/month Mobility Allowance and €660/month Family Allowance (if married) on top of base salary'
       ]
+    },
+    {
+      id: 'msca-dn-nordic-consortia',
+      country: 'Sweden',
+      flag: '🇪🇺',
+      university: 'Marie Skłodowska-Curie Actions (MSCA) — Doctoral Networks & COFUND (Nordic Nodes)',
+      faculty: 'Horizon Europe MSCA-DN, Joint Doctorates (JD), Industrial Doctorates (ID) & COFUND',
+      city: 'Stockholm, Oslo, Copenhagen, Helsinki, Reykjavík & EU Consortia',
+      disciplines: ['Chemistry & Materials', 'Biology & Life Sciences', 'Physics, Quantum & Astronomy', 'Earth, Climate & Environmental Science', 'Marine Science & Oceanography', 'Mathematics & Computational Science'],
+      keyDepartments: 'Cross-border European doctoral consortia recruiting 10–15 PhD Fellows (DC1–DC15) per network across Green Catalysis, Quantum Physics, Marine Biodiversity, Climate Modeling, Structural Biology, and Battery Materials.',
+      salary: '€4,600 – €6,685 / month gross (€4,010 Base × Nordic Country Coefficient 119%–137% + €600 Mobility + €660 Family)',
+      contractType: '3-Year (36-Month) Salaried MSCA Employment Contract (+ 4th Year University Extension in SE/FI)',
+      applicationCycle: 'Rolling calls year-round on EURAXESS (filter by Programme: MSCA)',
+      languageReq: 'Fluent English',
+      eligibility: 'Master\'s degree (18 years education) + Strict MSCA Mobility Rule: Must NOT have lived or worked/studied in the recruiting host country for more than 12 months in the 36 months prior to recruitment.',
+      vacancyUrl: 'https://marie-sklodowska-curie-actions.ec.europa.eu/actions/doctoral-networks',
+      highlights: [
+        'Europe\'s most prestigious and highest-paying doctoral fellowship program under Horizon Europe',
+        'Includes €1,600/month institutional research/training budget + mandatory 3–12 month international lab/industry secondments',
+        'Open to Pakistani and global Natural Science graduates of all nationalities who satisfy the 12-in-36-month mobility rule'
+      ]
     }
   ];
 
+  const MSCA_PROGRAM_DATA = {
+    overview: 'The Marie Skłodowska-Curie Actions (MSCA) are the European Union\'s flagship €6.6 billion funding programme under Horizon Europe for doctoral education and postdoctoral training. Unlike ordinary scholarships, MSCA fellows are hired on full employment contracts with social security, pension, and country-adjusted living, mobility, and family allowances.',
+    tracks: [
+      {
+        code: 'MSCA-DN',
+        title: '1. MSCA Doctoral Networks (Standard, Industrial & Joint Doctorates)',
+        level: 'PhD / Doctoral Candidates (R1)',
+        duration: '36 Months (3 Years MSCA funding; often extended to 4 years in Sweden/Finland)',
+        livingBase: 4010,
+        mobility: 600,
+        family: 660,
+        researchBudget: 1600,
+        description: 'International consortia of universities, research labs, and companies across 3+ European/Nordic countries recruit 10–15 PhD candidates (DC1–DC15) per network. Includes Industrial Doctorates (50% in industry) and Joint Doctorates (double/joint PhD degree).'
+      },
+      {
+        code: 'MSCA-COFUND',
+        title: '2. MSCA COFUND Doctoral Programmes',
+        level: 'PhD / Doctoral Candidates (R1)',
+        duration: '36 to 48 Months',
+        livingBase: 3400,
+        mobility: 600,
+        family: 660,
+        researchBudget: 1200,
+        description: 'Co-financed regional or university-wide doctoral programmes (such as SciLifeLab PULSE, Finish/Danish COFUND schemes) where individual applicants often propose their own Natural Science PhD topic with a host supervisor.'
+      },
+      {
+        code: 'MSCA-PF',
+        title: '3. MSCA Postdoctoral Fellowships (European & Global Fellowships)',
+        level: 'Postdoctoral Researchers (PhD Holders — R2/R3)',
+        duration: '12–24 Months (European Fellowship) or 24–36 Months (Global Fellowship)',
+        livingBase: 5990,
+        mobility: 600,
+        family: 660,
+        researchBudget: 1000,
+        description: 'Individual fellowships written jointly by a PhD holder (≤8 years post-PhD experience) and a host professor at any European or Nordic university. Annual deadline every September.'
+      }
+    ],
+    coefficients: [
+      { country: '🇮🇸 Iceland', code: 'IS', coeff: 1.374, pct: '137.4%' },
+      { country: '🇩🇰 Denmark', code: 'DK', coeff: 1.353, pct: '135.3%' },
+      { country: '🇳🇴 Norway', code: 'NO', coeff: 1.319, pct: '131.9%' },
+      { country: '🇫🇮 Finland', code: 'FI', coeff: 1.208, pct: '120.8%' },
+      { country: '🇸🇪 Sweden', code: 'SE', coeff: 1.193, pct: '119.3%' },
+      { country: '🇫🇷 France', code: 'FR', coeff: 1.177, pct: '117.7%' },
+      { country: '🇬🇧 UK / 🇨🇭 Switzerland', code: 'UK', coeff: 1.146, pct: '114.6%' },
+      { country: '🇳🇱 Netherlands', code: 'NL', coeff: 1.139, pct: '113.9%' },
+      { country: '🇩🇪 Germany', code: 'DE', coeff: 1.029, pct: '102.9%' },
+      { country: '🇮🇹 Italy', code: 'IT', coeff: 0.954, pct: '95.4%' },
+      { country: '🇪🇸 Spain', code: 'ES', coeff: 0.915, pct: '91.5%' }
+    ],
+    goldenRules: [
+      {
+        title: 'The 12-in-36 Months Mobility Rule (Mandatory)',
+        detail: 'You can be of ANY nationality (including Pakistani), provided you have NOT lived, worked, or studied in the recruiting host country for more than 12 months in the 36 months immediately before the recruitment date.'
+      },
+      {
+        title: 'Family Allowance Eligibility (€660 / Month Extra)',
+        detail: 'Paid on top of your salary if you are legally married (or in a recognized equivalent partnership) OR have dependent children at the time of recruitment or during the fellowship.'
+      },
+      {
+        title: 'Mandatory International & Sectoral Secondments',
+        detail: 'Every MSCA PhD fellow spends 3 to 12 months on funded research secondments at partner universities, synchrotrons, or biotech/chemical companies in other European countries.'
+      },
+      {
+        title: 'How to Spot MSCA PhDs on EURAXESS',
+        detail: 'Search "MSCA", "Doctoral Network", or "DC1 / DC2" on EURAXESS and filter by Research Field (Chemistry, Physics, Biological Sciences, Environmental Science, Geosciences).'
+      }
+    ]
+  };
+
   global.NORDIC_COUNTRY_SUMMARY = NORDIC_COUNTRY_SUMMARY;
   global.NORDIC_PHD_POSITIONS = NORDIC_PHD_POSITIONS;
+  global.MSCA_PROGRAM_DATA = MSCA_PROGRAM_DATA;
 })(typeof window !== 'undefined' ? window : globalThis);

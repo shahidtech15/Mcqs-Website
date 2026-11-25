@@ -697,6 +697,71 @@ window.GLOBAL_SCHOLARSHIPS_DATA = [
       "Submit MSc transcripts, Master's thesis, 2 reference letters, and statement of research purpose."
     ],
     "expertTips": "Iceland is a global superpower in Earth Sciences (volcanology, glaciology, CarbFix basalt CO2 mineralization, geothermal chemistry) and Marine Biology. Proactively contacting a University of Iceland professor right after Rannís announces annual grant awards in early spring gives you a massive head start."
+  },
+  {
+    "id": "msca-doctoral-networks",
+    "name": "Marie Skłodowska-Curie Actions — Doctoral Networks & COFUND (MSCA-DN PhD)",
+    "country": "European Union & Nordics (27 EU + Associated Countries)",
+    "region": "Europe",
+    "flag": "🇪🇺",
+    "levels": ["PhD"],
+    "funding": "Fully Funded (Horizon Europe Flagship)",
+    "stipendAmount": "€4,010/mo Base × Country Coefficient + €600/mo Mobility + €660/mo Family (€4,600–€6,685/mo)",
+    "benefits": [
+      "Country-Corrected Monthly Living Allowance (€4,010/mo base × Country Coefficient: e.g., 135.3% in Denmark, 131.9% in Norway, 119.3% in Sweden, 120.8% in Finland, 137.4% in Iceland)",
+      "Fixed Monthly Mobility Allowance (€600/month) paid to every doctoral candidate for travel/relocation",
+      "Fixed Monthly Family Allowance (€660/month) if married or supporting dependent children",
+      "€1,600/month Institutional Research, Training & Networking budget covering lab consumables, conferences, and tuition",
+      "Mandatory 3–12 month international or industrial secondments across European partner labs (Standard DN, Industrial Doctorates & Joint Doctorates)"
+    ],
+    "hostInstitutions": "Consortia of top European & Nordic universities, national research labs, and industry R&D partners across Sweden, Norway, Denmark, Finland, Iceland, Germany, Netherlands, France, UK, and Switzerland",
+    "targetAudience": "Graduates holding an 18-year Master's degree (MSc/MS/MPhil) who have not yet been awarded a PhD. Must satisfy the MSCA Mobility Rule: you must NOT have resided or carried out your main activity (work/studies) in the recruiting host country for more than 12 months in the 36 months immediately prior to recruitment.",
+    "languageRequirements": "English proficiency (IELTS 6.5 / TOEFL 90 or English-taught Master's degree)",
+    "standardizedTests": "None (No GRE required)",
+    "applicationWindow": "Rolling year-round vacancies advertised daily on EURAXESS",
+    "deadlineMonth": "Rolling",
+    "officialUrl": "https://euraxess.ec.europa.eu/jobs/search",
+    "managingBody": "European Commission — European Research Executive Agency (REA) under Horizon Europe",
+    "applicationProcess": [
+      "Go to the EURAXESS Jobs Portal and filter by European Research Program: 'Marie Skłodowska-Curie Actions' and Research Profile: 'First Stage Researcher (R1)'.",
+      "Verify that you meet the strict 12-in-36-month MSCA Transnational Mobility Rule for the host country.",
+      "Apply directly to the recruiting university/consortium for up to 3 specific Doctoral Candidate (DC1–DC15) sub-projects.",
+      "Submit your Europass CV, Master's thesis summary, BSc/MSc transcripts, project motivation letter, and 2–3 reference letters.",
+      "Shortlisted candidates undergo a structured competency interview and scientific presentation before the consortium panel."
+    ],
+    "expertTips": "Every MSCA Doctoral Network recruits a cohort of 10 to 15 PhD candidates (labeled DC1 to DC15) simultaneously across multiple European countries. Highlight your readiness for cross-border secondments and interdisciplinary collaboration between academic labs and industry partners."
+  },
+  {
+    "id": "msca-postdoctoral-fellowships",
+    "name": "Marie Skłodowska-Curie Actions — Postdoctoral Fellowships (MSCA-PF)",
+    "country": "European Union, Nordics & Global",
+    "region": "Europe",
+    "flag": "🇪🇺",
+    "levels": ["PhD"],
+    "funding": "Fully Funded (Post-PhD Fellowship)",
+    "stipendAmount": "€5,990/mo Base × Country Coefficient + €600/mo Mobility + €660/mo Family (€6,500–€9,400/mo)",
+    "benefits": [
+      "Generous Monthly Living Allowance (€5,990/mo base adjusted by host Country Correction Coefficient)",
+      "Monthly Mobility Allowance (€600/month) + Family Allowance (€660/month if eligible)",
+      "€1,000/month Research, Training & Networking contribution for experiments, fieldwork, and open-access publishing",
+      "Two tracks: European Fellowships (12–24 months in Europe/Nordics for researchers of any nationality) & Global Fellowships (24–36 months)",
+      "Option for an additional 6-month Non-Academic Placement at the end of the fellowship"
+    ],
+    "hostInstitutions": "Any accredited university, research institute, or enterprise in an EU Member State or Horizon Europe Associated Country (including Norway, Iceland, UK)",
+    "targetAudience": "Researchers of any nationality holding a completed PhD degree with a maximum of 8 years full-time postdoctoral research experience. Must comply with the 12-in-36-month MSCA Mobility Rule for the destination country.",
+    "languageRequirements": "English (proposal written in English jointly with host supervisor)",
+    "standardizedTests": "None",
+    "applicationWindow": "Opens April &bull; Annual Deadline mid-September",
+    "deadlineMonth": "September",
+    "officialUrl": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+    "managingBody": "European Commission — Horizon Europe MSCA",
+    "applicationProcess": [
+      "Identify and secure commitment from a host supervisor at a European or Nordic university 3–5 months before the September deadline.",
+      "Co-write a 10-page Part B-1 technical research proposal structured around Excellence (50%), Impact (30%), and Implementation (20%).",
+      "Submit the proposal electronically through the EU Funding & Tenders Portal before the September cutoff.",
+      "Proposals scoring 85%+ often receive the MSCA Seal of Excellence, unlocking alternative national funding in Sweden, Norway, Finland, and other EU states even if just below the EU cutoff."
+    ],
+    "expertTips": "MSCA-PF is a two-way knowledge transfer grant: evaluators judge not only what the European host lab teaches you, but also what unique experimental/analytical methodology you bring from your PhD to the host institution."
   }
 ];
 
