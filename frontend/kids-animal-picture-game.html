@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Animal Picture Quiz Game — Guess the Animal by Picture! | CSS Prep Central</title>
+    <meta name="description"
+        content="Fun, interactive Kids Animal Picture Game! Identify 36 real wildlife and farm animals from their pictures with voice read-aloud, 4-Photo Picture Hunt mode, Peek-a-Boo Mystery Blur, baby animal names, and fun nature facts.">
+    <meta name="keywords"
+        content="Kids Animal Picture Game, Guess the Animal by Picture, Identify Animals for Kids, Animal Flashcards for Kids, Educational Kids Wildlife Quiz, Farm and Jungle Animals Game">
+    <link rel="canonical" href="https://www.cssprepcentral.com/kids-animal-picture-game.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cssprepcentral.com/kids-animal-picture-game.html">
+    <meta property="og:title" content="Kids Animal Picture Quiz — Guess the Animal by Picture!">
+    <meta property="og:description" content="36 real animal pictures across Jungle & Safari, Farm & Pets, Ocean & Water, and Birds & Sky with Voice Read-Aloud, 4-Picture Hunt, and Flashcards!">
+    <meta property="og:image" content="https://www.cssprepcentral.com/img/logo.png">
+
+    <!-- BreadcrumbList JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.cssprepcentral.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Kids Animal Picture Game", "item": "https://www.cssprepcentral.com/kids-animal-picture-game.html" }
+      ]
+    }
+    </script>
+
+    <!-- Anti-FOUC Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#059669">
+
+    <style>
+        :root {
+            --ka-primary: #10b981;
+            --ka-primary-dark: #059669;
+            --ka-orange: #f59e0b;
+            --ka-purple: #8b5cf6;
+            --ka-blue: #0ea5e9;
+            --ka-bg: #f0fdf4;
+            --ka-card: #ffffff;
+            --ka-border: #d1fae5;
+            --ka-text: #0f172a;
+            --ka-muted: #475569;
+            --ka-soft: #ecfdf5;
+        }
+
+        .dark-mode {
+            --ka-bg: #0b131e;
+            --ka-card: #111827;
+            --ka-border: #1f2937;
+            --ka-text: #f8fafc;
+            --ka-muted: #94a3b8;
+            --ka-soft: #1e293b;
+        }
+
+        body {
+            background-color: var(--ka-bg);
+            color: var(--ka-text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        .ka-header {
+            background: var(--ka-card);
+            border-bottom: 2px solid var(--ka-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .ka-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 66px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .ka-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--ka-text);
+            font-family: 'Fredoka', 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .ka-brand img { height: 34px; border-radius: 8px; }
+
+        .ka-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .ka-nav-links a {
+            text-decoration: none;
+            color: var(--ka-muted);
+            font-weight: 700;
+            font-size: 0.86rem;
+            padding: 6px 10px;
+            border-radius: 10px;
+            transition: all 0.15s;
+        }
+
+        .ka-nav-links a:hover,
+        .ka-nav-links a.active {
+            color: var(--ka-primary-dark);
+            background: rgba(16, 185, 129, 0.14);
+        }
+
+        .icon-btn {
+            border: 1px solid var(--ka-border);
+            background: var(--ka-soft);
+            color: var(--ka-text);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ka-container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 22px 18px 68px;
+        }
+
+        /* Kids Hero */
+        .ka-hero {
+            background: linear-gradient(135deg, #059669 0%, #0ea5e9 55%, #8b5cf6 100%);
+            color: #ffffff;
+            border-radius: 24px;
+            padding: 28px 30px;
+            margin-bottom: 18px;
+            box-shadow: 0 14px 36px rgba(5, 150, 105, 0.24);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .ka-hero h1 {
+            font-family: 'Fredoka', 'Outfit', sans-serif;
+            font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+            font-weight: 700;
+            margin: 0 0 6px;
+            color: #ffffff;
+        }
+
+        .ka-hero p {
+            margin: 0;
+            color: #ecfdf5;
+            font-size: 0.98rem;
+            max-width: 620px;
+        }
+
+        .stars-badge {
+            background: rgba(255, 255, 255, 0.18);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-radius: 18px;
+            padding: 12px 18px;
+            text-align: center;
+            min-width: 130px;
+        }
+
+        .stars-val {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: #fef08a;
+            line-height: 1.1;
+        }
+
+        .stars-lbl {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        /* Mode & Habitat Toolbar */
+        .toolbar-card {
+            background: var(--ka-card);
+            border: 2px solid var(--ka-border);
+            border-radius: 20px;
+            padding: 16px 18px;
+            margin-bottom: 18px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .toolbar-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mode-pills, .habitat-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .kid-pill {
+            padding: 9px 15px;
+            border-radius: 999px;
+            border: 2px solid var(--ka-border);
+            background: var(--ka-soft);
+            color: var(--ka-text);
+            font-family: 'Fredoka', 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .kid-pill:hover { transform: translateY(-1px); border-color: var(--ka-primary); }
+        .kid-pill.active { background: var(--ka-primary-dark); border-color: var(--ka-primary-dark); color: #ffffff; }
+        .kid-pill.hab-pill.active { background: var(--ka-blue); border-color: var(--ka-blue); color: #ffffff; }
+
+        /* HUD */
+        .hud-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .hud-row { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .hud-tile {
+            background: var(--ka-card);
+            border: 2px solid var(--ka-border);
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .hud-num {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--ka-primary-dark);
+            line-height: 1.1;
+        }
+
+        .dark-mode .hud-num { color: #34d399; }
+        .hud-cap { font-size: 0.76rem; font-weight: 700; color: var(--ka-muted); }
+
+        /* Main Quiz Card */
+        .game-stage {
+            background: var(--ka-card);
+            border: 2px solid var(--ka-border);
+            border-radius: 24px;
+            padding: 26px 24px;
+            text-align: center;
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+        }
+
+        .prompt-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .prompt-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .btn-speak {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 15px;
+            border-radius: 999px;
+            border: none;
+            background: #fef3c7;
+            color: #b45309;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+
+        .btn-speak:hover { transform: scale(1.04); }
+
+        /* Single Picture Frame (Mode 1) */
+        .photo-frame {
+            position: relative;
+            width: 100%;
+            max-width: 370px;
+            height: 270px;
+            margin: 0 auto 18px;
+            border-radius: 22px;
+            overflow: hidden;
+            border: 4px solid var(--ka-primary);
+            background: linear-gradient(135deg, #d1fae5, #e0f2fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 26px rgba(16, 185, 129, 0.18);
+        }
+
+        .dark-mode .photo-frame {
+            background: linear-gradient(135deg, #064e3b, #0c4a6e);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.35s ease, transform 0.35s ease;
+        }
+
+        .photo-frame img.mystery-blur {
+            filter: blur(11px) scale(1.08);
+        }
+
+        .emoji-fallback {
+            font-size: 6.5rem;
+            display: none;
+            user-select: none;
+        }
+
+        .habitat-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(15, 23, 42, 0.72);
+            color: #ffffff;
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 4px 11px;
+            border-radius: 999px;
+            backdrop-filter: blur(4px);
+        }
+
+        .clue-box {
+            max-width: 580px;
+            margin: 0 auto 16px;
+            padding: 11px 16px;
+            border-radius: 14px;
+            background: rgba(245, 158, 11, 0.13);
+            border: 2px dashed rgba(245, 158, 11, 0.45);
+            color: #92400e;
+            font-weight: 700;
+            font-size: 0.94rem;
+            display: none;
+        }
+
+        .dark-mode .clue-box { color: #fde68a; }
+        .clue-box.visible { display: block; }
+
+        /* 4 Big Choice Buttons (Mode 1) */
+        .choices-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 640px;
+            margin: 0 auto 18px;
+        }
+
+        @media (max-width: 520px) {
+            .choices-grid { grid-template-columns: 1fr; }
+        }
+
+        .choice-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 18px;
+            border-radius: 16px;
+            border: 2.5px solid var(--ka-border);
+            border-bottom-width: 5px;
+            background: var(--ka-soft);
+            color: var(--ka-text);
+            font-family: 'Fredoka', 'Inter', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.12s, background 0.15s, border-color 0.15s;
+        }
+
+        .choice-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            border-color: var(--ka-primary);
+            background: rgba(16, 185, 129, 0.12);
+        }
+
+        .choice-btn.correct {
+            background: #10b981;
+            border-color: #047857;
+            color: #ffffff;
+            transform: scale(1.03);
+        }
+
+        .choice-btn.wrong {
+            background: #fee2e2;
+            border-color: #dc2626;
+            color: #991b1b;
+        }
+
+        .dark-mode .choice-btn.wrong {
+            background: rgba(239, 68, 68, 0.25);
+            color: #fecaca;
+        }
+
+        /* 4-Picture Grid (Mode 2: Find the Picture!) */
+        .picture-hunt-grid {
+            display: none;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 660px;
+            margin: 0 auto 18px;
+        }
+
+        @media (max-width: 520px) {
+            .picture-hunt-grid { grid-template-columns: 1fr; }
+        }
+
+        .pic-card-btn {
+            position: relative;
+            height: 200px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid var(--ka-border);
+            background: var(--ka-soft);
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.15s, border-color 0.15s;
+        }
+
+        .pic-card-btn:hover:not(:disabled) {
+            transform: scale(1.03);
+            border-color: var(--ka-blue);
+        }
+
+        .pic-card-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pic-card-btn.correct {
+            border-color: #10b981;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.35);
+        }
+
+        .pic-card-btn.wrong {
+            border-color: #ef4444;
+            opacity: 0.55;
+        }
+
+        .pic-label-overlay {
+            position: absolute;
+            bottom: 0;
+            inset-inline: 0;
+            background: rgba(15, 23, 42, 0.78);
+            color: #ffffff;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 6px 10px;
+            display: none;
+        }
+
+        .pic-card-btn.revealed .pic-label-overlay { display: block; }
+
+        /* Fun Fact Reveal Box */
+        .fact-reveal {
+            max-width: 640px;
+            margin: 14px auto 0;
+            padding: 16px 20px;
+            border-radius: 18px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 2px solid rgba(16, 185, 129, 0.4);
+            text-align: left;
+            display: none;
+        }
+
+        .fact-reveal.visible { display: block; }
+
+        .fact-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 8px 0 10px;
+        }
+
+        .fact-chip {
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 11px;
+            border-radius: 999px;
+            background: var(--ka-card);
+            border: 1px solid var(--ka-border);
+        }
+
+        .stage-controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .btn-kid-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            border-radius: 14px;
+            border: 2px solid var(--ka-border);
+            background: var(--ka-soft);
+            color: var(--ka-text);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.98rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+
+        .btn-kid-action:hover { transform: translateY(-2px); }
+
+        .btn-kid-next {
+            background: var(--ka-primary-dark);
+            border-color: var(--ka-primary-dark);
+            color: #ffffff;
+            padding: 11px 26px;
+        }
+
+        /* Mode 3: Flashcards Gallery */
+        .flashcards-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .flash-card {
+            background: var(--ka-card);
+            border: 2px solid var(--ka-border);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.18s;
+        }
+
+        .flash-card:hover { transform: translateY(-4px); border-color: var(--ka-primary); }
+
+        .flash-img-wrap {
+            height: 175px;
+            background: var(--ka-soft);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .flash-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flash-body {
+            padding: 14px 16px;
+        }
+
+        .flash-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 0 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* End Victory Banner */
+        .victory-card {
+            display: none;
+            background: var(--ka-card);
+            border: 3px solid var(--ka-primary);
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .victory-card.visible { display: block; }
+
+        .ka-footer {
+            text-align: center;
+            padding: 26px 20px;
+            border-top: 1px solid var(--ka-border);
+            color: var(--ka-muted);
+            font-size: 0.85rem;
+        }
+
+        .ka-footer a { color: var(--ka-primary-dark); text-decoration: none; font-weight: 700; }
+    </style>
+</head>
+
+<body>
+    <header class="ka-header">
+        <div class="ka-nav-inner">
+            <a href="index.html" class="ka-brand">
+                <img src="img/logo.png" alt="CSS Prep Central Logo">
+                <span>Kids <span style="color:var(--ka-primary-dark);">Animal Explorer</span></span>
+            </a>
+            <nav class="ka-nav-links" aria-label="Kids Game Navigation">
+                <a href="index.html">Home</a>
+                <a href="kids-animal-picture-game.html" class="active">Animal Pictures</a>
+                <a href="animal-sounds-game.html">Animal Sounds</a>
+                <a href="jumbled-words-game.html">Jumbled Words</a>
+                <a href="half-face-game.html">Half-Face Quiz</a>
+                <button class="icon-btn" id="soundToggleBtn" title="Toggle Sound &amp; Voice" aria-label="Toggle Sound">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+                <button class="icon-btn" id="themeToggleBtn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="ka-container">
+        <!-- Hero -->
+        <section class="ka-hero">
+            <div>
+                <h1>🐾 Guess the Animal by Picture!</h1>
+                <p>Look at the real animal picture (or tap 4 photos in Picture Hunt!), listen to the clue, and learn baby animal names &amp; cool nature facts!</p>
+            </div>
+            <div class="stars-badge">
+                <div class="stars-val" id="totalStarsVal">⭐ 0</div>
+                <div class="stars-lbl">Stars Earned</div>
+            </div>
+        </section>
+
+        <!-- Mode & Habitat Switcher -->
+        <section class="toolbar-card" aria-label="Game Modes and Habitats">
+            <div class="toolbar-row">
+                <div class="mode-pills" id="modePills">
+                    <button type="button" class="kid-pill active" data-mode="picture-quiz">🖼️ Mode 1: Guess from Picture</button>
+                    <button type="button" class="kid-pill" data-mode="picture-hunt">🔍 Mode 2: Tap the Right Picture (4 Photos)</button>
+                    <button type="button" class="kid-pill" data-mode="flashcards">📖 Mode 3: Animal Picture Flashcards (36)</button>
+                </div>
+                <button type="button" class="kid-pill" id="mysteryBlurBtn" title="Blur the photo slightly for an extra challenge!">
+                    🕵️ Mystery Blur: OFF
+                </button>
+            </div>
+
+            <div class="toolbar-row">
+                <div class="habitat-pills" id="habitatPills">
+                    <button type="button" class="kid-pill hab-pill active" data-hab="ALL">🌍 All Animals (36)</button>
+                    <button type="button" class="kid-pill hab-pill" data-hab="Jungle & Safari">🦁 Jungle &amp; Safari (11)</button>
+                    <button type="button" class="kid-pill hab-pill" data-hab="Farm & Pets">🐄 Farm &amp; Pets (10)</button>
+                    <button type="button" class="kid-pill hab-pill" data-hab="Ocean & Water">🐬 Ocean &amp; Water (6)</button>
+                    <button type="button" class="kid-pill hab-pill" data-hab="Birds & Sky">🦚 Birds &amp; Sky (9)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- HUD -->
+        <section class="hud-row" id="hudRow" aria-label="Scoreboard">
+            <div class="hud-tile">
+                <div class="hud-num" id="hudRound">1 / 10</div>
+                <div class="hud-cap">Animal</div>
+            </div>
+            <div class="hud-tile">
+                <div class="hud-num" id="hudScore">0</div>
+                <div class="hud-cap">Score</div>
+            </div>
+            <div class="hud-tile">
+                <div class="hud-num" id="hudStreak">0 🔥</div>
+                <div class="hud-cap">Streak</div>
+            </div>
+            <div class="hud-tile">
+                <div class="hud-num" id="hudBest">0</div>
+                <div class="hud-cap">Best Score</div>
+            </div>
+        </section>
+
+        <!-- Active Quiz Stage (Mode 1 & Mode 2) -->
+        <section class="game-stage" id="quizStage">
+            <div class="prompt-bar">
+                <h2 class="prompt-title" id="promptTitle">Which animal is in this picture?</h2>
+                <button type="button" class="btn-speak" id="speakPromptBtn">
+                    <i class="fa-solid fa-volume-high"></i> Read Aloud
+                </button>
+            </div>
+
+            <div class="clue-box" id="clueBox"></div>
+
+            <!-- Mode 1: Single Big Photo + 4 Name Buttons -->
+            <div id="mode1Container">
+                <div class="photo-frame">
+                    <span class="habitat-tag" id="photoHabitatTag">Jungle &amp; Safari</span>
+                    <img id="mainAnimalImg" src="" alt="Mystery Animal Photo">
+                    <div class="emoji-fallback" id="mainEmojiFallback">🦁</div>
+                </div>
+                <div class="choices-grid" id="choicesGrid"></div>
+            </div>
+
+            <!-- Mode 2: 4-Photo Grid (Tap the matching animal photo!) -->
+            <div class="picture-hunt-grid" id="mode2Grid"></div>
+
+            <!-- Fun Fact & Baby Name Reveal -->
+            <div class="fact-reveal" id="factReveal"></div>
+
+            <div class="stage-controls">
+                <button type="button" class="btn-kid-action" id="clueBtn"><i class="fa-solid fa-lightbulb" style="color:#f59e0b;"></i> Show Clue</button>
+                <button type="button" class="btn-kid-action" id="newRoundBtn"><i class="fa-solid fa-rotate-right"></i> New 10-Animal Game</button>
+                <button type="button" class="btn-kid-action btn-kid-next" id="nextAnimalBtn" style="display:none;">
+                    Next Animal <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Victory Summary -->
+        <section class="victory-card" id="victoryCard">
+            <div style="font-size:3.4rem; margin-bottom:6px;">🏆🦁🎉</div>
+            <h2 id="victoryTitle" style="font-family:'Fredoka',sans-serif; font-size:2rem; margin:0 0 8px;">Super Animal Explorer!</h2>
+            <p id="victorySub" style="font-size:1.05rem; color:var(--ka-muted); margin:0 0 20px;"></p>
+            <button type="button" class="btn-kid-action btn-kid-next" id="playAgainBtn">
+                <i class="fa-solid fa-play"></i> Play Another 10-Animal Adventure!
+            </button>
+        </section>
+
+        <!-- Mode 3: Flashcards Gallery -->
+        <section class="flashcards-grid" id="flashcardsGrid" aria-label="Animal Flashcards"></section>
+    </main>
+
+    <footer class="ka-footer">
+        <p style="margin:0;">
+            <a href="index.html">Home</a> &bull;
+            <a href="animal-sounds-game.html">Guess Animal Sounds</a> &bull;
+            <a href="jumbled-words-game.html">Jumbled Words Game</a> &bull;
+            <a href="half-face-game.html">Half-Face Personality Quiz</a> &bull;
+            <a href="guess-the-country.html">Guess the Country</a>
+        </p>
+    </footer>
+
+    <script src="js/data_kids_animals.js"></script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/nav.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            // Dark mode
+            var themeBtn = document.getElementById('themeToggleBtn');
+            function syncThemeIcon() {
+                if (!themeBtn) return;
+                var dark = document.documentElement.classList.contains('dark-mode');
+                themeBtn.innerHTML = dark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+            }
+            syncThemeIcon();
+            if (themeBtn) {
+                themeBtn.addEventListener('click', function () {
+                    document.documentElement.classList.toggle('dark-mode');
+                    localStorage.setItem('mcqs_dark_mode', document.documentElement.classList.contains('dark-mode'));
+                    syncThemeIcon();
+                });
+            }
+
+            // Audio & Speech
+            var soundEnabled = true;
+            var audioCtx = null;
+
+            function playChime(freqs, dur, type) {
+                if (!soundEnabled) return;
+                try {
+                    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+                    freqs.forEach(function (f, i) {
+                        var osc = audioCtx.createOscillator();
+                        var gain = audioCtx.createGain();
+                        osc.type = type || 'sine';
+                        osc.frequency.value = f;
+                        var t0 = audioCtx.currentTime + i * 0.08;
+                        gain.gain.setValueAtTime(0.11, t0);
+                        gain.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start(t0);
+                        osc.stop(t0 + dur);
+                    });
+                } catch (e) {}
+            }
+
+            function speakText(text) {
+                if (!soundEnabled || typeof window.speechSynthesis === 'undefined') return;
+                try {
+                    window.speechSynthesis.cancel();
+                    var u = new SpeechSynthesisUtterance(text);
+                    u.lang = 'en-US';
+                    u.rate = 0.95;
+                    u.pitch = 1.1;
+                    window.speechSynthesis.speak(u);
+                } catch (e) {}
+            }
+
+            document.getElementById('soundToggleBtn').addEventListener('click', function () {
+                soundEnabled = !soundEnabled;
+                if (!soundEnabled && window.speechSynthesis) window.speechSynthesis.cancel();
+                this.innerHTML = soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
+            });
+
+            var ANIMALS = Array.isArray(window.KIDS_ANIMALS_DATA) ? window.KIDS_ANIMALS_DATA : [];
+            var mode = 'picture-quiz'; // picture-quiz | picture-hunt | flashcards
+            var activeHab = 'ALL';
+            var mysteryBlur = false;
+
+            var deck = [];
+            var roundIdx = 0;
+            var score = 0;
+            var streak = 0;
+            var correctCount = 0;
+            var currentAnimal = null;
+            var currentOptions = [];
+            var answered = false;
+
+            var totalStars = Number(localStorage.getItem('ka_total_stars') || 0);
+            var bestScore = Number(localStorage.getItem('ka_best_score') || 0);
+
+            function syncPersistentStats() {
+                document.getElementById('totalStarsVal').textContent = '⭐ ' + totalStars;
+                document.getElementById('hudBest').textContent = bestScore;
+            }
+            syncPersistentStats();
+
+            function esc(str) {
+                return String(str == null ? '' : str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
+            }
+
+            function shuffle(arr) {
+                var a = arr.slice();
+                for (var i = a.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var t = a[i]; a[i] = a[j]; a[j] = t;
+                }
+                return a;
+            }
+
+            function getPool() {
+                var p = ANIMALS.filter(function (a) {
+                    return activeHab === 'ALL' || a.habitatGroup === activeHab;
+                });
+                return p.length >= 4 ? p : ANIMALS.slice();
+            }
+
+            function startQuizGame() {
+                var pool = getPool();
+                deck = shuffle(pool).slice(0, Math.min(10, pool.length));
+                roundIdx = 0;
+                score = 0;
+                streak = 0;
+                correctCount = 0;
+
+                document.getElementById('victoryCard').classList.remove('visible');
+                if (mode === 'flashcards') {
+                    document.getElementById('quizStage').style.display = 'none';
+                    document.getElementById('hudRow').style.display = 'none';
+                    document.getElementById('flashcardsGrid').style.display = 'grid';
+                    renderFlashcards();
+                    return;
+                }
+
+                document.getElementById('flashcardsGrid').style.display = 'none';
+                document.getElementById('hudRow').style.display = 'grid';
+                document.getElementById('quizStage').style.display = 'block';
+                loadQuestion();
+            }
+
+            function loadQuestion() {
+                if (roundIdx >= deck.length) {
+                    showVictory();
+                    return;
+                }
+                answered = false;
+                currentAnimal = deck[roundIdx];
+
+                // Pick 3 distractors
+                var distractors = shuffle(ANIMALS.filter(function (a) { return a.id !== currentAnimal.id; })).slice(0, 3);
+                currentOptions = shuffle([currentAnimal].concat(distractors));
+
+                document.getElementById('hudRound').textContent = (roundIdx + 1) + ' / ' + deck.length;
+                document.getElementById('hudScore').textContent = score;
+                document.getElementById('hudStreak').textContent = streak + ' 🔥';
+
+                var clueEl = document.getElementById('clueBox');
+                clueEl.classList.remove('visible');
+                clueEl.innerHTML = '💡 <strong>Clue:</strong> ' + esc(currentAnimal.clue);
+
+                var factEl = document.getElementById('factReveal');
+                factEl.classList.remove('visible');
+                factEl.innerHTML = '';
+
+                document.getElementById('nextAnimalBtn').style.display = 'none';
+                document.getElementById('clueBtn').style.display = 'inline-flex';
+
+                if (mode === 'picture-quiz') {
+                    document.getElementById('mode1Container').style.display = 'block';
+                    document.getElementById('mode2Grid').style.display = 'none';
+                    document.getElementById('promptTitle').textContent = 'Which animal is in this picture?';
+                    document.getElementById('photoHabitatTag').textContent = currentAnimal.habitatGroup;
+
+                    var img = document.getElementById('mainAnimalImg');
+                    var emo = document.getElementById('mainEmojiFallback');
+                    img.style.display = 'block';
+                    emo.style.display = 'none';
+                    img.className = mysteryBlur ? 'mystery-blur' : '';
+                    img.onerror = function () {
+                        img.style.display = 'none';
+                        emo.style.display = 'block';
+                        emo.textContent = currentAnimal.emoji;
+                    };
+                    img.src = currentAnimal.imageUrl;
+                    img.alt = 'Mystery Animal';
+
+                    document.getElementById('choicesGrid').innerHTML = currentOptions.map(function (opt) {
+                        return '<button type="button" class="choice-btn" data-id="' + esc(opt.id) + '">' +
+                            '<span style="font-size:1.5rem;">' + opt.emoji + '</span>' +
+                            '<span>' + esc(opt.name) + '</span>' +
+                        '</button>';
+                    }).join('');
+                } else {
+                    // Mode 2: Tap the Right Picture (4 Photos)
+                    document.getElementById('mode1Container').style.display = 'none';
+                    var m2 = document.getElementById('mode2Grid');
+                    m2.style.display = 'grid';
+                    document.getElementById('promptTitle').innerHTML = 'Tap the picture of the <span style="color:var(--ka-primary-dark); text-decoration:underline;">' + esc(currentAnimal.name) + '</span>! ' + currentAnimal.emoji;
+
+                    m2.innerHTML = currentOptions.map(function (opt) {
+                        return '<button type="button" class="pic-card-btn" data-id="' + esc(opt.id) + '">' +
+                            '<img src="' + esc(opt.imageUrl) + '" alt="' + esc(opt.name) + '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';">' +
+                            '<span style="display:none; font-size:4.5rem;">' + opt.emoji + '</span>' +
+                            '<span class="pic-label-overlay">' + opt.emoji + ' ' + esc(opt.name) + '</span>' +
+                        '</button>';
+                    }).join('');
+                }
+            }
+
+            function handleAnswer(chosenId) {
+                if (answered) return;
+                answered = true;
+                var isCorrect = chosenId === currentAnimal.id;
+
+                // Unblur image on answer
+                var mainImg = document.getElementById('mainAnimalImg');
+                if (mainImg) mainImg.classList.remove('mystery-blur');
+
+                if (mode === 'picture-quiz') {
+                    document.querySelectorAll('#choicesGrid .choice-btn').forEach(function (btn) {
+                        var bid = btn.getAttribute('data-id');
+                        btn.disabled = true;
+                        if (bid === currentAnimal.id) btn.classList.add('correct');
+                        else if (bid === chosenId) btn.classList.add('wrong');
+                    });
+                } else {
+                    document.querySelectorAll('#mode2Grid .pic-card-btn').forEach(function (btn) {
+                        var bid = btn.getAttribute('data-id');
+                        btn.disabled = true;
+                        btn.classList.add('revealed');
+                        if (bid === currentAnimal.id) btn.classList.add('correct');
+                        else if (bid === chosenId) btn.classList.add('wrong');
+                    });
+                }
+
+                if (isCorrect) {
+                    correctCount++;
+                    streak++;
+                    score += 100 + Math.min(50, (streak - 1) * 10);
+                    totalStars++;
+                    localStorage.setItem('ka_total_stars', totalStars);
+                    if (score > bestScore) {
+                        bestScore = score;
+                        localStorage.setItem('ka_best_score', bestScore);
+                    }
+                    syncPersistentStats();
+                    playChime([523.25, 659.25, 783.99, 1046.5], 0.16, 'sine');
+                    speakText('Awesome! That is a ' + currentAnimal.name + '!');
+                } else {
+                    streak = 0;
+                    playChime([240, 190], 0.16, 'triangle');
+                    speakText('Oops! That is a ' + currentAnimal.name + '.');
+                }
+
+                document.getElementById('hudScore').textContent = score;
+                document.getElementById('hudStreak').textContent = streak + ' 🔥';
+
+                var factEl = document.getElementById('factReveal');
+                factEl.classList.add('visible');
+                factEl.innerHTML =
+                    '<div style="font-family:\'Fredoka\',sans-serif; font-size:1.2rem; font-weight:700; color:' + (isCorrect ? '#047857' : '#b91c1c') + ';">' +
+                        (isCorrect ? '🌟 Super Job! It is a ' : '🔎 Good try! This animal is a ') + currentAnimal.emoji + ' ' + esc(currentAnimal.name) + '!' +
+                    '</div>' +
+                    '<div class="fact-chips">' +
+                        '<span class="fact-chip">👶 Baby: <strong>' + esc(currentAnimal.babyName) + '</strong></span>' +
+                        '<span class="fact-chip">🔊 Sound: <strong>' + esc(currentAnimal.sound) + '</strong></span>' +
+                        '<span class="fact-chip">🍽️ Eats: <strong>' + esc(currentAnimal.diet) + '</strong></span>' +
+                    '</div>' +
+                    '<div style="font-size:0.92rem;"><strong>🧠 Fun Fact:</strong> ' + esc(currentAnimal.funFact) + '</div>';
+
+                document.getElementById('nextAnimalBtn').style.display = 'inline-flex';
+            }
+
+            function showVictory() {
+                document.getElementById('quizStage').style.display = 'none';
+                var vc = document.getElementById('victoryCard');
+                vc.classList.add('visible');
+                document.getElementById('victoryTitle').textContent =
+                    correctCount >= 8 ? '🌟 Super Animal Master!' : '🐾 Great Animal Explorer!';
+                document.getElementById('victorySub').textContent =
+                    'You identified ' + correctCount + ' out of ' + deck.length + ' animals and scored ' + score + ' points!';
+                playChime([523.25, 659.25, 783.99, 1046.5], 0.22, 'sine');
+            }
+
+            function renderFlashcards() {
+                var pool = getPool();
+                document.getElementById('flashcardsGrid').innerHTML = pool.map(function (a) {
+                    return '<article class="flash-card">' +
+                        '<div>' +
+                            '<div class="flash-img-wrap">' +
+                                '<span class="habitat-tag">' + esc(a.habitatGroup) + '</span>' +
+                                '<img src="' + esc(a.imageUrl) + '" alt="' + esc(a.name) + '" loading="lazy" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';">' +
+                                '<span style="display:none; font-size:4.5rem;">' + a.emoji + '</span>' +
+                            '</div>' +
+                            '<div class="flash-body">' +
+                                '<h3 class="flash-title">' +
+                                    '<span>' + a.emoji + ' ' + esc(a.name) + '</span>' +
+                                    '<button type="button" class="btn-speak" data-speak="' + esc(a.name + '. Baby name: ' + a.babyName + '. ' + a.funFact) + '" title="Hear Animal Name">' +
+                                        '<i class="fa-solid fa-volume-high"></i>' +
+                                    '</button>' +
+                                '</h3>' +
+                                '<div style="font-size:0.8rem; color:var(--ka-muted); margin-bottom:8px;">' +
+                                    '👶 <strong>Baby:</strong> ' + esc(a.babyName) + ' &bull; 🔊 <strong>' + esc(a.sound) + '</strong><br>' +
+                                    '🍽️ <strong>Eats:</strong> ' + esc(a.diet) +
+                                '</div>' +
+                                '<p style="font-size:0.84rem; margin:0;">' + esc(a.funFact) + '</p>' +
+                            '</div>' +
+                        '</div>' +
+                    '</article>';
+                }).join('');
+            }
+
+            // Event Listeners
+            document.getElementById('choicesGrid').addEventListener('click', function (e) {
+                var btn = e.target.closest('.choice-btn');
+                if (!btn || btn.disabled) return;
+                handleAnswer(btn.getAttribute('data-id'));
+            });
+
+            document.getElementById('mode2Grid').addEventListener('click', function (e) {
+                var btn = e.target.closest('.pic-card-btn');
+                if (!btn || btn.disabled) return;
+                handleAnswer(btn.getAttribute('data-id'));
+            });
+
+            document.getElementById('flashcardsGrid').addEventListener('click', function (e) {
+                var btn = e.target.closest('[data-speak]');
+                if (!btn) return;
+                speakText(btn.getAttribute('data-speak'));
+            });
+
+            document.getElementById('speakPromptBtn').addEventListener('click', function () {
+                if (!currentAnimal) return;
+                if (mode === 'picture-hunt') {
+                    speakText('Tap the picture of the ' + currentAnimal.name + '! Clue: ' + currentAnimal.clue);
+                } else {
+                    speakText('Which animal is in this picture? Clue: ' + currentAnimal.clue);
+                }
+            });
+
+            document.getElementById('clueBtn').addEventListener('click', function () {
+                var cb = document.getElementById('clueBox');
+                cb.classList.add('visible');
+                if (currentAnimal) speakText(currentAnimal.clue);
+            });
+
+            document.getElementById('nextAnimalBtn').addEventListener('click', function () {
+                roundIdx++;
+                loadQuestion();
+            });
+
+            document.getElementById('newRoundBtn').addEventListener('click', startQuizGame);
+            document.getElementById('playAgainBtn').addEventListener('click', startQuizGame);
+
+            document.getElementById('mysteryBlurBtn').addEventListener('click', function () {
+                mysteryBlur = !mysteryBlur;
+                this.textContent = mysteryBlur ? '🕵️ Mystery Blur: ON' : '🕵️ Mystery Blur: OFF';
+                this.classList.toggle('active', mysteryBlur);
+                var img = document.getElementById('mainAnimalImg');
+                if (img && !answered) img.classList.toggle('mystery-blur', mysteryBlur);
+            });
+
+            document.getElementById('modePills').addEventListener('click', function (e) {
+                var btn = e.target.closest('.kid-pill');
+                if (!btn) return;
+                mode = btn.getAttribute('data-mode');
+                document.querySelectorAll('#modePills .kid-pill').forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                startQuizGame();
+            });
+
+            document.getElementById('habitatPills').addEventListener('click', function (e) {
+                var btn = e.target.closest('.kid-pill');
+                if (!btn) return;
+                activeHab = btn.getAttribute('data-hab');
+                document.querySelectorAll('#habitatPills .kid-pill').forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                startQuizGame();
+            });
+
+            startQuizGame();
+        })();
+    </script>
+</body>
+
+</html>
