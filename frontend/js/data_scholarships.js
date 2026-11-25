@@ -762,6 +762,39 @@ window.GLOBAL_SCHOLARSHIPS_DATA = [
       "Proposals scoring 85%+ often receive the MSCA Seal of Excellence, unlocking alternative national funding in Sweden, Norway, Finland, and other EU states even if just below the EU cutoff."
     ],
     "expertTips": "MSCA-PF is a two-way knowledge transfer grant: evaluators judge not only what the European host lab teaches you, but also what unique experimental/analytical methodology you bring from your PhD to the host institution."
+  },
+  {
+    "id": "wipo-fellowship-2027-switzerland",
+    "name": "WIPO Fellowship Program 2027 & Young Experts Program (YEP) — Geneva",
+    "country": "Switzerland (UN WIPO HQ, Geneva)",
+    "region": "Europe",
+    "flag": "🇨🇭",
+    "levels": ["Master's", "PhD"],
+    "funding": "Fully Funded UN Fellowship",
+    "stipendAmount": "CHF 5,000 / month (~$5,650 / month tax-exempt + 75% Medical + Flights)",
+    "benefits": [
+      "Monthly Stipend of CHF 5,000 (Swiss Francs — approx. $5,650 / €5,300 per month, exempt from Swiss income tax)",
+      "75% WIPO contribution toward comprehensive UN medical insurance + 100% accident insurance",
+      "Round-trip economy airfare and travel/relocation contribution from home country to Geneva, Switzerland",
+      "Swiss UN Legitimation Card (Carte de Légitimation) and full visa/relocation assistance in Geneva",
+      "Three high-impact tracks: (1) WIPO Young Experts Program (YEP — 24 months), (2) Patent, Natural Sciences & PCT Terminology Fellowships (12–36 months), and (3) Global Innovation Index / Legal Fellowships"
+    ],
+    "hostInstitutions": "World Intellectual Property Organization (WIPO) Headquarters — Specialized Agency of the United Nations, Geneva, Switzerland",
+    "targetAudience": "Graduates and early-career researchers holding a Bachelor's, Master's (MS/MPhil), or PhD in Natural Sciences (Chemistry, Biotechnology, Pharmaceuticals, Physics, Climate/Green Tech), Engineering, Computer Science/AI, Economics, Data Science, or Law. For YEP: age 35 or under with at least 2 years of relevant research/professional experience (candidates from developing countries like Pakistan are strongly prioritized).",
+    "languageRequirements": "Excellent written and spoken English (knowledge of another UN language such as Arabic, French, or Chinese is an asset for PCT tracks)",
+    "standardizedTests": "None (No GRE required; WIPO conducts online technical test & video interview)",
+    "applicationWindow": "2027 Cohort Calls: Opens Q3/Q4 (Aug–Dec) &bull; Rolling Fellowship Tracks year-round",
+    "deadlineMonth": "November",
+    "officialUrl": "https://www.wipo.int/jobs/en/",
+    "managingBody": "World Intellectual Property Organization (WIPO — United Nations Agency, Geneva)",
+    "applicationProcess": [
+      "Create an applicant profile on the official WIPO e-Recruitment Portal (wipo.taleo.net / wipo.int/jobs/en).",
+      "Monitor and apply to the 'WIPO Young Experts Program (YEP)' call and specialized 'WIPO Fellowship' requisitions (PCT Science/Terminology, WIPO GREEN Climate Tech, Global Innovation Index).",
+      "Complete the WIPO online application detailing your scientific/technical or policy background and a tailored Cover Letter.",
+      "Shortlisted applicants complete an asynchronous video assessment (HireVue/Sonru) and a technical/scientific evaluation.",
+      "Finalists attend a live competency-based panel interview with WIPO division directors in Geneva (via Zoom)."
+    ],
+    "expertTips": "Many Natural Science (Chemistry, Biotech, Physics, Environmental Science) graduates overlook WIPO thinking it is only for lawyers! In reality, WIPO heavily recruits STEM and Natural Science fellows for Patent Analytics, WIPO GREEN (climate-change technology transfer), WIPO Re:Search (tropical medicine/biotech), and PCT scientific terminology. Highlight how your scientific expertise bridges R&D innovation and practical technology transfer for developing economies."
   }
 ];
 
