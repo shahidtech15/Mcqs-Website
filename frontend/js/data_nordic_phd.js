@@ -73,6 +73,17 @@
       centralPortalName: 'Universitaly.it, StudyInItaly (MAECI) & University Bandi Portals',
       centralPortalUrl: 'https://universitaly.it/',
       highlights: 'Accepts 4-year Pakistani BS (16-year) directly into 3-year funded PhDs! Master\'s students qualify for DSU Regional Grants (€7,000+/yr + free hostel & meals) or MAECI (€1,000/mo).'
+    },
+    {
+      country: 'Switzerland',
+      flag: '🇨🇭',
+      title: 'Salaried Doctoral Assistant (ETH/EPFL/SNSF) & ESKAS / ESOP / WIPO Fellows',
+      duration: '4 Years (PhD) or 1.5–2 Years (Master\'s)',
+      grossSalary: 'PhD: CHF 50,040–83,700/yr ($56k–$94k) • MS: CHF 10,000–27,000/yr • WIPO: CHF 5,000/mo',
+      tuitionFee: 'Low/Waived (100% Waived under ESOP, UNIL, ESKAS & WIPO)',
+      centralPortalName: 'ETH/EPFL Jobs, Life Science Zurich GS, UNIGE Science & Swiss ESKAS',
+      centralPortalUrl: 'https://jobs.ethz.ch/',
+      highlights: 'Highest doctoral salaries in Europe + UNIGE Faculty of Science Master\'s Fellowships (CHF 10k–15k/yr, no GRE) + ETH ESOP (CHF 24k–27k/yr) + Permit B family & post-study rights.'
     }
   ];
 
@@ -946,6 +957,130 @@
       highlights: [
         'Three stackable application tracks: (1) University Excellence Scholarships, (2) MAECI / IYT Government Grants (€1,000/mo), and (3) Regional DSU Need-Based Scholarships (€7,000+/yr + free hostel & meals)',
         'Most accessible European Master\'s & PhD pathway for Pakistani Natural Science graduates using an English Medium of Instruction (MOI) certificate'
+      ]
+    },
+
+    // ==================== SWITZERLAND: FUNDED MASTER'S & PHD POSITIONS (6) ====================
+    {
+      id: 'ch-eth-zurich',
+      country: 'Switzerland',
+      flag: '🇨🇭',
+      university: 'ETH Zurich (Swiss Federal Institute of Technology)',
+      faculty: 'Departments of Chemistry & Applied Biosciences (D-CHAB), Physics (D-PHYS), Biology (D-BIOL), Earth & Planetary Sciences (D-EAPS), and Environmental Systems (D-USYS)',
+      city: 'Zurich',
+      disciplines: ['Chemistry & Materials', 'Physics, Quantum & Astronomy', 'Biology & Life Sciences', 'Earth, Climate & Environmental Science', 'Mathematics & Computational Science'],
+      keyDepartments: 'Organic, Inorganic & Physical Chemistry, Molecular Biosciences, Quantum & Particle Physics, Atmospheric & Climate Science (IAC), Geological Sciences, Ecology, Mathematics.',
+      salary: 'PhD: CHF 52,500 – CHF 83,700 / year gross (~$59,000–$94,500/yr) • Master\'s ESOP: CHF 12,000–13,500 / semester + 100% Tuition Waiver',
+      contractType: '4-Year Salaried Doctoral Employment & 2-Year ESOP Excellence Master\'s Scholarship',
+      applicationCycle: 'Master\'s ESOP: Nov 1 – Dec 15 annually • PhD Positions: Daily rolling calls on jobs.ethz.ch',
+      languageReq: 'English (PhD: fluent research English; Master\'s: IELTS 7.0 / TOEFL 100)',
+      eligibility: 'Master\'s: 16-year BS in top 10% of cohort. PhD: 18-year Master\'s degree (MSc/MPhil) in Natural Sciences, Math, or Engineering.',
+      vacancyUrl: 'https://jobs.ethz.ch/',
+      highlights: [
+        'Ranked #1 university in continental Europe (QS Top 10 globally) with 22 Nobel Laureates including Albert Einstein',
+        'PhD salaries follow Fixed/Standard to Higher Rates (Rate 2–5 in Chemistry/Physics/CS reaching CHF 60,800–83,700/yr)',
+        'ETH ESOP Master\'s Scholarship covers full living/study expenses (CHF 24,000–27,000/yr) plus complete tuition waiver'
+      ]
+    },
+    {
+      id: 'ch-epfl-lausanne',
+      country: 'Switzerland',
+      flag: '🇨🇭',
+      university: 'EPFL (École Polytechnique Fédérale de Lausanne)',
+      faculty: 'School of Basic Sciences (SB: Chemistry, Physics, Mathematics) & School of Life Sciences (SV) / ENAC Environmental Sciences',
+      city: 'Lausanne, Sion & Geneva',
+      disciplines: ['Chemistry & Materials', 'Physics, Quantum & Astronomy', 'Biology & Life Sciences', 'Earth, Climate & Environmental Science', 'Mathematics & Computational Science'],
+      keyDepartments: 'Institute of Chemical Sciences and Engineering (ISIC), Institute of Physics (IPHYS), Molecular & Biological Chemistry (EDCH), Quantitative Biology (EDBB), Environmental & Alpine/Cryosphere Sciences (ENAC).',
+      salary: 'PhD: CHF 55,650 – CHF 62,000+ / year gross • Master\'s Excellence Fellowship: CHF 10,000 / semester (CHF 20,000/yr) + Reserved Housing',
+      contractType: '4-Year Salaried Doctoral Assistant Contract & 2-Year Master\'s Excellence Fellowship',
+      applicationCycle: 'PhD Doctoral School Calls: April 15 & December 15 • Master\'s: Nov 15 – Dec 15 & April 15',
+      languageReq: 'English (100% of EPFL Doctoral Schools & MSc Science tracks are in English)',
+      eligibility: 'Master\'s: Top BS degree. PhD: 18-year MSc/MPhil degree (direct centralized application to EPFL Doctoral Programs EDCH, EDPY, EDBB, EDMA).',
+      vacancyUrl: 'https://www.epfl.ch/education/phd/programs/',
+      highlights: [
+        'Structured centralized PhD admission (2 deadlines/year: April 15 & Dec 15) — you do NOT need to secure a supervisor before submitting your initial PhD application!',
+        'Every admitted EPFL PhD candidate is guaranteed a 4-year salaried employment contract exceeding CHF 55,650/year',
+        'EPFL Excellence Master\'s Fellowships award CHF 20,000/year plus guaranteed student housing on Lake Geneva'
+      ]
+    },
+    {
+      id: 'ch-unige-science',
+      country: 'Switzerland',
+      flag: '🇨🇭',
+      university: 'University of Geneva (UNIGE)',
+      faculty: 'Faculty of Science (Faculté des Sciences — Excellence Master Fellowships & SNSF PhDs)',
+      city: 'Geneva',
+      disciplines: ['Chemistry & Materials', 'Biology & Life Sciences', 'Physics, Quantum & Astronomy', 'Earth, Climate & Environmental Science', 'Mathematics & Computational Science'],
+      keyDepartments: 'Organic, Analytical & Physical Chemistry, Biochemistry, Biology & Genetics, Physics & Quantum Materials, Astronomy & Exoplanets (Nobel Laureate Michel Mayor dept), Earth & Environmental Sciences, Pharmaceutical Sciences.',
+      salary: 'Master\'s Fellowship: CHF 10,000 – 15,000 / year • PhD Salary: CHF 50,040 – 65,000+ / year gross',
+      contractType: 'Master of Science Excellence Fellowship & 4-Year Salaried SNSF / Cantonal PhD Contract',
+      applicationCycle: 'Master\'s Excellence Fellowship Deadline: February 28 annually • PhD Positions: Rolling year-round',
+      languageReq: 'English (NO French required for Faculty of Science MSc Excellence Fellowships or Natural Science PhDs; NO GRE required!)',
+      eligibility: 'Master\'s: 16-year BS in Natural Sciences (top 10% of class). PhD: 18-year MSc/MPhil.',
+      vacancyUrl: 'https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships/',
+      highlights: [
+        'UNIGE Faculty of Science offers one of Europe\'s best-kept secrets for Natural Science BS graduates: the Excellence Master Fellowship (CHF 10,000–15,000/yr, deadline Feb 28, no GRE required!)',
+        'Home to the 2019 Nobel Prize in Physics discovery of the first exoplanet (Michel Mayor & Didier Queloz) and direct research links to CERN in Geneva'
+      ]
+    },
+    {
+      id: 'ch-uzh-lszgs',
+      country: 'Switzerland',
+      flag: '🇨🇭',
+      university: 'University of Zurich (UZH) & Life Science Zurich Graduate School (LSZGS)',
+      faculty: 'Faculty of Science (MNF) & Joint UZH / ETH Zurich Life Science Graduate School',
+      city: 'Zurich',
+      disciplines: ['Biology & Life Sciences', 'Chemistry & Materials', 'Earth, Climate & Environmental Science', 'Physics, Quantum & Astronomy', 'Mathematics & Computational Science'],
+      keyDepartments: '17 PhD Programs including Molecular Life Sciences, Chemical and Molecular Sciences (CMSZH), Ecology, Evolutionary Biology, Systems Biology, Cancer Biology, Plant Sciences, Microbiology & Immunology, Geography & Earth System Science.',
+      salary: 'CHF 50,040 – CHF 58,000+ / year gross (4-year salaried SNSF / Cantonal PhD contract)',
+      contractType: '4-Year Salaried Doctoral Employment',
+      applicationCycle: 'LSZGS Centralized Deadlines: May 1 and November 1 annually + Track II rolling project calls',
+      languageReq: 'English (all 17 PhD programs and lab interviews are conducted in English)',
+      eligibility: '18-year Master\'s degree (MSc / MS / MPhil) in Biology, Biochemistry, Chemistry, Physics, Environmental/Earth Science, or Bioinformatics.',
+      vacancyUrl: 'https://www.lifescience-graduateschool.uzh.ch/en.html',
+      highlights: [
+        'Europe\'s premier joint doctoral school (500+ research groups across ETH Zurich and University of Zurich) with a single online application',
+        'Shortlisted Track I candidates are invited to Zurich (with travel & hotel covered or online interview) for a 3-day lab visit and matching week!'
+      ]
+    },
+    {
+      id: 'ch-basel-bern',
+      country: 'Switzerland',
+      flag: '🇨🇭',
+      university: 'University of Basel (Biozentrum) & University of Bern (Oeschger Climate Centre)',
+      faculty: 'Faculties of Science (Philosophisch-Naturwissenschaftliche Fakultät)',
+      city: 'Basel & Bern',
+      disciplines: ['Biology & Life Sciences', 'Chemistry & Materials', 'Earth, Climate & Environmental Science', 'Physics, Quantum & Astronomy'],
+      keyDepartments: 'University of Basel: Biozentrum (Molecular & Cellular Biology, Structural Biology, Biophysics), Department of Chemistry, Nanoscience (SNI). University of Bern: Oeschger Centre for Climate Change Research (OCCR), Ice Core & Paleoclimate Physics, Space Research & Planetary Sciences, Chemistry & Biochemistry.',
+      salary: 'CHF 50,040 – CHF 56,000+ / year gross + Biozentrum International PhD Fellowship perks',
+      contractType: '3 to 4-Year Salaried PhD Employment / Biozentrum PhD Fellowship',
+      applicationCycle: 'Biozentrum Fellowship Calls: May & November • Bern OCCR & Science PhDs: Rolling',
+      languageReq: 'English',
+      eligibility: 'Master\'s degree in Biology, Biochemistry, Chemistry, Physics, Climate/Earth Sciences, or Nanoscience.',
+      vacancyUrl: 'https://www.biozentrum.unibas.ch/education/phd/phd-fellowships',
+      highlights: [
+        'Biozentrum Basel offers a prestigious International PhD Fellowship Program with lab rotations, personal travel funds, and links to Novartis/Roche in Basel',
+        'University of Bern\'s Oeschger Centre (OCCR) leads global IPCC climate modeling, Alpine glaciology, and ice-core greenhouse gas reconstruction'
+      ]
+    },
+    {
+      id: 'ch-eskas-psi-empa-eawag',
+      country: 'Switzerland',
+      flag: '🇨🇭',
+      university: 'Swiss Federal Research Institutes (PSI, Empa, Eawag, WSL) & Swiss Gov Excellence (ESKAS) + UNIL',
+      faculty: 'National Laboratories for Synchrotron Physics, Materials, Aquatic/Water Science, Alpine Ecology & Federal ESKAS PhD Grants',
+      city: 'Villigen, Dübendorf, Zurich, Birmensdorf & Lausanne',
+      disciplines: ['Chemistry & Materials', 'Physics, Quantum & Astronomy', 'Earth, Climate & Environmental Science', 'Biology & Life Sciences', 'Marine Science & Oceanography'],
+      keyDepartments: 'PSI (Paul Scherrer Institute — Swiss Light Source, Neutron Source, Catalysis & Energy), Empa (Materials Science & Technology), Eawag (Aquatic Research & Water Chemistry), WSL (Forest, Snow, Avalanche & Landscape Research), UNIL Lausanne Master\'s Grants (CHF 1,600/mo).',
+      salary: 'PSI/Empa/Eawag PhD: CHF 50,040–55,000+/yr • ESKAS PhD: CHF 1,920–2,450/mo tax-free • UNIL Master\'s: CHF 1,600/mo',
+      contractType: '4-Year Salaried National Lab PhD (degree awarded by ETH Zurich or EPFL!) & 3-Year ESKAS PhD Grant',
+      applicationCycle: 'PSI/Empa/Eawag: Rolling daily • UNIL Master\'s Grant: Nov 1 • Swiss ESKAS Pakistan: Aug–Nov',
+      languageReq: 'English',
+      eligibility: '18-year MSc/MPhil for PhD (or 16-year BS for UNIL Master\'s Grant).',
+      vacancyUrl: 'https://www.psi.ch/en/pa/job-opportunities',
+      highlights: [
+        'PhD researchers hired at PSI, Empa, Eawag, or WSL enjoy national-lab infrastructure while receiving their official PhD degree from ETH Zurich or EPFL!',
+        'Also covers the Swiss Government Excellence Scholarship (ESKAS via Swiss Embassy Islamabad) and UNIL Master\'s Grants (CHF 16,000/yr + tuition waiver)'
       ]
     }
   ];

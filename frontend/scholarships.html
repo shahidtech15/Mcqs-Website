@@ -769,18 +769,18 @@
                     <i class="fas fa-microscope"></i> New Special Directory &bull; 0% Tuition + Monthly Salary
                 </span>
                 <h2 style="font-family:'Outfit',sans-serif; font-size:1.38rem; font-weight:900; margin:0 0 6px; color:#ffffff;">
-                    🇸🇪 🇳🇴 🇩🇰 🇫🇮 🇮🇸 Nordic PhDs &bull; 🇮🇹 Italy Master's &amp; PhDs &bull; 🇪🇺 Marie Curie (MSCA) &bull; 🇨🇭 WIPO 2027
+                    🇸🇪 🇳🇴 🇩🇰 🇫🇮 🇮🇸 Nordics &bull; 🇨🇭 Switzerland &bull; 🇮🇹 Italy &bull; 🇪🇺 Marie Curie (MSCA) &bull; WIPO 2027
                 </h2>
                 <p style="margin:0; font-size:0.9rem; color:#e0f2fe;">
-                    Explore <strong>42 Salaried Nordic &amp; Italian MS/PhD Portals (0% tuition + monthly salary/stipend)</strong>, the <strong>Marie Curie (MSCA) Salary Calculator (€4,600–€6,685+/mo)</strong>, <strong>Italy MAECI/DSU/MUR Grants</strong>, and <strong>WIPO Geneva 2027 (CHF 5,000/mo)</strong>.
+                    Explore <strong>48 Salaried Nordic, Swiss &amp; Italian MS/PhD Portals (CHF 50k–83k/yr in Switzerland, 0% tuition in Nordics/Italy)</strong>, the <strong>Marie Curie (MSCA) Salary Calculator</strong>, <strong>WIPO Geneva 2027 (CHF 5,000/mo)</strong>, and <strong>Complete Visa &amp; Immigration Rules</strong>.
                 </p>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <a href="nordic-phd-positions.html" style="display:inline-flex; align-items:center; gap:8px; background:#10b981; color:#052e16; font-weight:800; font-size:0.86rem; padding:11px 18px; border-radius:10px; text-decoration:none; white-space:nowrap;">
-                    Nordic &amp; Italy PhD/MS Hub (42 Portals) <i class="fas fa-arrow-right"></i>
+                    Nordics, Swiss &amp; Italy Hub (48 Portals) <i class="fas fa-arrow-right"></i>
                 </a>
-                <a href="nordic-phd-positions.html#msca-section" style="display:inline-flex; align-items:center; gap:8px; background:#eab308; color:#1e1b4b; font-weight:800; font-size:0.86rem; padding:11px 18px; border-radius:10px; text-decoration:none; white-space:nowrap;">
-                    <i class="fas fa-star"></i> Marie Curie &amp; WIPO 2027
+                <a href="#global-visa-matrix" style="display:inline-flex; align-items:center; gap:8px; background:#eab308; color:#1e1b4b; font-weight:800; font-size:0.86rem; padding:11px 18px; border-radius:10px; text-decoration:none; white-space:nowrap;">
+                    <i class="fas fa-passport"></i> Visa &amp; Immigration Guide
                 </a>
             </div>
         </section>
@@ -846,6 +846,30 @@
                 </thead>
                 <tbody id="comparisonTableBody">
                     <!-- Rendered by JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Global Scholarship Visa, Immigration, Family & Post-Study Work Matrix -->
+        <div id="global-visa-matrix" class="section-header-row">
+            <h2 class="section-header-title">
+                <i class="fas fa-passport" style="color: #059669;"></i> Immigration, Visa, Bank Statement Exemption &amp; Family Work Rights (All Scholarships)
+            </h2>
+        </div>
+        <div class="table-responsive-box">
+            <table class="scholarships-table">
+                <thead>
+                    <tr>
+                        <th>Destination Country</th>
+                        <th>Visa / Residence Permit Type</th>
+                        <th>Bank Statement / Financial Proof Rule</th>
+                        <th>Spouse &amp; Family Work Rights</th>
+                        <th>Post-Study Work Visa &amp; PR Pathway</th>
+                        <th>Mandatory Legalization &amp; Attestation</th>
+                    </tr>
+                </thead>
+                <tbody id="visaMatrixTableBody">
+                    <!-- Rendered by JS from window.WORLD_VISA_IMMIGRATION_GUIDE -->
                 </tbody>
             </table>
         </div>
@@ -980,6 +1004,59 @@
             }
         }
 
+        function getVisaInfoForScholarship(sch) {
+            const guides = window.WORLD_VISA_IMMIGRATION_GUIDE || [];
+            const c = (sch.country || '').toLowerCase();
+            const id = (sch.id || '').toLowerCase();
+            if (c.includes('sweden')) return guides.find(g => g.country === 'Sweden');
+            if (c.includes('norway')) return guides.find(g => g.country === 'Norway');
+            if (c.includes('denmark')) return guides.find(g => g.country === 'Denmark');
+            if (c.includes('finland')) return guides.find(g => g.country === 'Finland');
+            if (c.includes('iceland')) return guides.find(g => g.country === 'Iceland');
+            if (c.includes('switzerland')) return guides.find(g => g.country === 'Switzerland');
+            if (c.includes('italy')) return guides.find(g => g.country === 'Italy');
+            if (c.includes('united states')) return guides.find(g => g.country.includes('United States'));
+            if (c.includes('united kingdom')) return guides.find(g => g.country.includes('United Kingdom'));
+            if (c.includes('european union') || c.includes('germany') || c.includes('hungary') || id.includes('msca') || id.includes('erasmus')) {
+                return guides.find(g => g.country.includes('European Union'));
+            }
+            if (c.includes('japan') || c.includes('china') || c.includes('korea') || c.includes('australia')) {
+                return guides.find(g => g.country.includes('Japan'));
+            }
+            if (c.includes('turkey')) {
+                return {
+                    visaType: 'Turkish Student Visa + Short-Term Student Residence Permit (İkamet)',
+                    financialProof: 'Official Türkiye Bursları YTB Scholarship Letter 100% waives personal bank statement and visa fee requirements.',
+                    familyRules: 'Married PhD scholars may invite dependents via standard Turkish family/short-term residence permits after obtaining their İkamet.',
+                    postStudyPR: '1-year post-graduation residence extension option or work-permit sponsorship; YTB alumni network access.',
+                    attestationDocs: 'YTB Invitation Letter, HEC & IBCC attested degrees, MOFA Apostille / Turkish Embassy verification, Passport.'
+                };
+            }
+            return {
+                visaType: 'Host Country Student / Doctoral Researcher Visa (or Domestic Enrollment for HEC Indigenous)',
+                financialProof: 'Official Government / HEC Final Award & Sponsorship Guarantee Letter satisfies embassy financial maintenance requirements.',
+                familyRules: 'PhD scholars on long-stay visas are generally eligible to sponsor spouse and dependent children subject to host country housing/income rules.',
+                postStudyPR: 'HEC Overseas & US-Pak Corridor scholars sign a 5-year service bond in Pakistan upon PhD completion.',
+                attestationDocs: 'HEC-attested transcripts/degrees, IBCC-attested Matric/F.Sc, MOFA Apostille, Valid Passport, and Police Character Certificate.'
+            };
+        }
+
+        function renderVisaMatrixTable() {
+            const tbody = document.getElementById('visaMatrixTableBody');
+            if (!tbody) return;
+            const guides = window.WORLD_VISA_IMMIGRATION_GUIDE || [];
+            tbody.innerHTML = guides.map(g => `
+                <tr>
+                    <td><strong>${g.flag} ${g.country}</strong><div style="font-size:0.76rem; color:var(--sch-text-muted); margin-top:2px;">${g.authority}</div></td>
+                    <td><strong style="color:#4338ca;">${g.visaType}</strong></td>
+                    <td><span style="color:#059669; font-weight:700;">${g.financialProof}</span></td>
+                    <td>${g.familyRules}</td>
+                    <td>${g.postStudyPR}</td>
+                    <td>${g.attestationDocs}</td>
+                </tr>
+            `).join('');
+        }
+
         function renderScholarshipsList() {
             const container = document.getElementById('cardsGridContainer');
             const tableBody = document.getElementById('comparisonTableBody');
@@ -1056,6 +1133,21 @@
 
                             <h4 style="margin: 0 0 6px 0; font-size: 0.95rem; color: #4338ca;"><i class="fas fa-lightbulb"></i> Strategic Evaluator Tip</h4>
                             <p style="margin: 0 0 12px 0; font-size: 0.84rem; color: var(--sch-text-main); background: rgba(67, 56, 202, 0.06); padding: 8px 12px; border-radius: 6px; line-height: 1.45;">${sch.expertTips}</p>
+
+                            ${(() => {
+                                const v = getVisaInfoForScholarship(sch);
+                                return `
+                                <div style="margin-top:10px; padding:10px 12px; border-radius:8px; background:rgba(5, 150, 105, 0.07); border:1px solid rgba(5, 150, 105, 0.28);">
+                                    <h4 style="margin:0 0 6px 0; font-size:0.92rem; color:#047857;"><i class="fas fa-passport"></i> Immigration, Visa &amp; Family Dependant Rules</h4>
+                                    <div style="font-size:0.82rem; line-height:1.48; display:grid; gap:4px;">
+                                        <div><strong>Visa Type:</strong> ${v.visaType}</div>
+                                        <div><strong>Bank Statement Rule:</strong> ${v.financialProof}</div>
+                                        <div><strong>Spouse &amp; Family:</strong> ${v.familyRules}</div>
+                                        <div><strong>Post-Study &amp; PR:</strong> ${v.postStudyPR}</div>
+                                        <div><strong>Required Attestation:</strong> ${v.attestationDocs}</div>
+                                    </div>
+                                </div>`;
+                            })()}
                         </div>
 
                         <div class="card-actions">
@@ -1122,6 +1214,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderScholarshipsList();
+            renderVisaMatrixTable();
         });
     </script>
     <script src="js/cookie-consent.js"></script>

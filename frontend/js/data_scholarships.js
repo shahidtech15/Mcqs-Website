@@ -892,6 +892,217 @@ window.GLOBAL_SCHOLARSHIPS_DATA = [
       "Step 4 (July–August): Submit the online regional DSU/EDISU/ER.GO scholarship application to acquire your ISEE Parificato certificate and secure 100% tuition waiver + €7,000+ stipend + free hostel & meals."
     ],
     "expertTips": "DSU is a legal entitlement ('Diritto allo Studio'), not a lottery! As long as you hold a university admission offer and your Apostilled family income/property documents are submitted accurately before the regional August deadline, you are guaranteed the tuition waiver and stipend upon enrollment."
+  },
+  {
+    "id": "switzerland-salaried-phd-snsf-eth-epfl",
+    "name": "Switzerland Salaried PhD Positions (ETH Zurich, EPFL, SNSF & Cantonal Universities)",
+    "country": "Switzerland",
+    "region": "Europe",
+    "flag": "🇨🇭",
+    "levels": ["PhD"],
+    "funding": "Salaried Employment (Highest in Europe)",
+    "stipendAmount": "CHF 50,040 – CHF 83,700 / year gross (~$56,500 – $94,500 / year)",
+    "benefits": [
+      "Full 4-Year Salaried Doctoral Employment Contract at ETH Zurich, EPFL, UZH, UNIGE, Basel, Bern, or PSI/Empa/Eawag",
+      "Standard SNSF PhD Salary starts at CHF 50,040/yr, while ETH Zurich/EPFL Higher Rates (Rates 2–5 in Physics, Chemistry, CompSci & Engineering) pay CHF 60,800 to CHF 83,700/yr",
+      "Full Swiss employee benefits: AHV/IV pension contributions, paid accident insurance, and 4–5 weeks paid annual leave",
+      "Generous conference travel, open-access publishing, and world-leading laboratory infrastructure (CERN, PSI Synchrotron, Swiss National Supercomputing Centre)",
+      "Eligible for Swiss Cantonal Residence Permit B with family reunification rights"
+    ],
+    "hostInstitutions": "ETH Zurich, EPFL Lausanne, University of Zurich (UZH & Life Science Zurich Graduate School), University of Geneva (UNIGE), University of Basel (Biozentrum), University of Bern (Oeschger Climate Centre), PSI, Empa, Eawag, WSL",
+    "targetAudience": "International and Pakistani graduates holding an 18-year Master's degree (MSc / MS / MPhil) with a substantial research thesis in Natural Sciences (Chemistry, Physics, Biology, Earth/Climate Science, Mathematics) or Engineering/Computer Science.",
+    "languageRequirements": "Fluent English (100% of doctoral research and thesis writing in Natural Sciences & STEM is in English; no German/French required)",
+    "standardizedTests": "None for direct PI hiring (ETH/EPFL some doctoral schools value GRE only if from non-Bologna institutions, though most waive it)",
+    "applicationWindow": "Direct PI Vacancies: Year-round &bull; Structured Graduate Schools (LSZGS / EPFL): May 1, Nov 1, Dec 15",
+    "deadlineMonth": "Rolling",
+    "officialUrl": "https://jobs.ethz.ch/",
+    "managingBody": "ETH Board, Swiss National Science Foundation (SNSF) & Swiss Cantonal Universities",
+    "applicationProcess": [
+      "Track 1 (Direct Project Application): Browse open PhD positions daily on jobs.ethz.ch, epfl.ch/about/working, and myScience.ch and apply directly to the hiring professor.",
+      "Track 2 (Structured Graduate Schools): Apply to Life Science Zurich Graduate School (deadlines May 1 & Nov 1) or EPFL Doctoral Programs (Apr 15 & Dec 15) where shortlisted candidates are flown to Zurich/Lausanne (or interviewed online) for lab match-making.",
+      "Submit your Academic CV, MSc & BSc transcripts, Master's thesis PDF/summary, Motivation Letter, and 2–3 academic references."
+    ],
+    "expertTips": "The Life Science Zurich Graduate School (jointly run by ETH Zurich and University of Zurich) is one of the best gateways into Switzerland for Biology, Biochemistry, Chemistry, and Environmental Science graduates — one single application puts your profile in front of 500+ recruiting research groups!"
+  },
+  {
+    "id": "swiss-government-excellence-eskas",
+    "name": "Swiss Government Excellence Scholarships (FCS / ESKAS — PhD, Research & Postdoc)",
+    "country": "Switzerland",
+    "region": "Europe",
+    "flag": "🇨🇭",
+    "levels": ["PhD"],
+    "funding": "Fully Funded Federal Scholarship",
+    "stipendAmount": "CHF 1,920 – CHF 2,450 / month (PhD/Research) &bull; CHF 3,500 / month (Postdoc) tax-free",
+    "benefits": [
+      "Monthly Tax-Free Living Stipend (CHF 1,920–2,450/mo for 3-year PhD or 12-month Research Fellowship; CHF 3,500/mo for Postdoctoral Fellows)",
+      "Mandatory Swiss Basic Health Insurance (KVG/LAMal) paid by the Federal Commission (for non-EU/EFTA scholars)",
+      "One-off CHF 300–600 Housing / Settling-in Allowance upon arrival in Switzerland",
+      "1-Year Half-Fare Public Transport Card (Halbtax) across Swiss Federal Railways (SBB)",
+      "Return Economy Airfare allowance from Switzerland back to Pakistan at completion of studies"
+    ],
+    "hostInstitutions": "All 10 Swiss Cantonal Universities (Zurich, Geneva, Basel, Bern, Lausanne, Fribourg, Neuchâtel, Lugano, St. Gallen, Lucerne), 2 Federal Institutes (ETH Zurich & EPFL), and 4 Federal Research Institutes (PSI, WSL, Empa, Eawag)",
+    "targetAudience": "Pakistani and international postgraduates holding an 18-year Master's degree (born after 31 December 1989 / age ≤35 for PhD) who have secured a signed academic supervision support letter from a professor at a Swiss host university.",
+    "languageRequirements": "English proficiency sufficient for doctoral research (confirmed by the Swiss host professor)",
+    "standardizedTests": "None (No GRE or HEC HAT required)",
+    "applicationWindow": "Opens Early August &bull; Deadline October / November annually via Swiss Embassy Islamabad",
+    "deadlineMonth": "November",
+    "officialUrl": "https://www.sbfi.admin.ch/sbfi/en/home/education/scholarships-and-grants/swiss-government-excellence-scholarships.html",
+    "managingBody": "Federal Commission for Scholarships for Foreign Students (FCS / ESKAS) & Embassy of Switzerland in Pakistan",
+    "applicationProcess": [
+      "Download the official Pakistan country-specific application package from the SERI/SBFI website or request it from the Embassy of Switzerland in Islamabad (islamabad@eda.admin.ch).",
+      "Contact a professor at a Swiss university (ETH, EPFL, UZH, UNIGE, Basel, Bern) and obtain a signed Host Professor Confirmation Letter + copy of their short CV.",
+      "Draft a 5-page Research Proposal using the official FCS template.",
+      "Submit 2 hard-copy sets of your complete application dossier (Forms, Proposal, Host Letter, 2 Confidential Reference Letters, Attested Degrees, Medical Certificate) to the Swiss Embassy in Islamabad before the November deadline."
+    ],
+    "expertTips": "ESKAS strictly rejects applications where the candidate merely attaches a generic email from a Swiss professor. Your Swiss academic host MUST fill and sign the official 2-page ESKAS 'Supervising Professor Support Form' explaining why your skills and research proposal fit their Swiss laboratory."
+  },
+  {
+    "id": "switzerland-masters-esop-epfl-unige",
+    "name": "Switzerland Excellence Master's Scholarships (ETH Zurich ESOP, EPFL & UNIGE Science)",
+    "country": "Switzerland",
+    "region": "Europe",
+    "flag": "🇨🇭",
+    "levels": ["Master's"],
+    "funding": "Fully Funded Merit Fellowship",
+    "stipendAmount": "CHF 10,000 – CHF 27,000 / year (~$11,300 – $30,500 / yr) + Tuition Fee Waiver",
+    "benefits": [
+      "ETH Zurich ESOP: CHF 12,000/semester (rising to CHF 13,500/semester = CHF 27,000/year from Autumn 2027) + 100% Tuition Waiver",
+      "EPFL Excellence Fellowships: CHF 10,000/semester (CHF 20,000/year) + reserved student accommodation in Lausanne",
+      "University of Geneva (UNIGE) Faculty of Science Excellence Fellowships: CHF 10,000 to CHF 15,000/year specifically for Natural Science MSc students",
+      "University of Lausanne (UNIL) Master's Grants: CHF 1,600/month (10 months/yr) + full tuition fee exemption",
+      "Opportunity to earn an additional CHF 2,000–2,500/month as a student Teaching/Research Assistant (Hilfsassistent) from Semester 2"
+    ],
+    "hostInstitutions": "ETH Zurich, EPFL Lausanne, University of Geneva (Faculty of Science), University of Lausanne (UNIL), and Graduate Institute Geneva (IHEID)",
+    "targetAudience": "Graduates holding a 4-year Bachelor's degree (16 years education) in the top 5–10% of their class across Natural Sciences (Chemistry, Biochemistry, Biology, Physics, Astronomy, Earth/Environmental Sciences, Mathematics) or Engineering/CS.",
+    "languageRequirements": "English C1 (IELTS 7.0 / TOEFL 100 for ETH Zurich; IELTS 6.5 / B2-C1 for UNIGE Science & UNIL)",
+    "standardizedTests": "GRE General required by ETH Zurich / EPFL for non-Bologna degrees (not required by UNIGE Science or UNIL)",
+    "applicationWindow": "ETH/EPFL: Nov 1 – Dec 15 &bull; UNIGE Faculty of Science: Deadline Feb 28 &bull; UNIL: Nov 1",
+    "deadlineMonth": "December",
+    "officialUrl": "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships/",
+    "managingBody": "ETH Zurich Foundation, EPFL, UNIGE Faculty of Science & University of Lausanne",
+    "applicationProcess": [
+      "For UNIGE Faculty of Science: Submit a single online application package (CV, BS transcripts, Motivation Letter, and 2 Referee Letters) by February 28 for MSc in Chemistry, Biology, Physics, Astrophysics, Earth Science, or Math.",
+      "For ETH Zurich ESOP: Apply for Master's admission between Nov 1 and Dec 15, check the ESOP box, and upload a 1-to-2 page pre-proposal for your future Master's thesis.",
+      "For UNIL Master's Grants: Send your complete application dossier by November 1 for the following September intake."
+    ],
+    "expertTips": "For Natural Science BS graduates from Pakistan without GRE scores, the University of Geneva (UNIGE) Faculty of Science Excellence Master Fellowship (deadline February 28) is a golden opportunity: it covers Chemistry, Biology, Physics, Earth Sciences, Biochemistry, and Pharmacy, requires NO GRE, and awards CHF 10,000–15,000/year!"
+  }
+];
+
+/**
+ * Comprehensive Country-by-Country Immigration, Visa, Financial Proof, Family Dependant & Post-Study Work Rules
+ * Covers all Scholarship & Salaried PhD Destinations on the Portal
+ */
+window.WORLD_VISA_IMMIGRATION_GUIDE = [
+  {
+    country: 'Sweden',
+    flag: '🇸🇪',
+    visaType: 'Residence Permit for Doctoral Studies (Uppehållstillstånd för forskarstudier)',
+    authority: 'Swedish Migration Agency (Migrationsverket) & Embassy of Sweden',
+    financialProof: 'Your university Doktorand employment contract (SEK 32,700–38,500/mo) 100% satisfies the maintenance requirement — NO personal bank statement needed.',
+    familyRules: 'Spouse and children under 18 can apply simultaneously for co-applicant residence permits with FULL unlimited work rights in Sweden.',
+    postStudyPR: '4 years of a Doctoral Residence Permit counts directly toward Swedish Permanent Residency (Permanent Uppehållstillstånd) + 12-month post-PhD job-seeker permit.',
+    attestationDocs: 'Valid Passport, Signed University Employment/Admission Contract, Comprehensive Health Insurance (covered via university employment for >1 yr contracts).'
+  },
+  {
+    country: 'Norway',
+    flag: '🇳🇴',
+    visaType: 'Residence Permit for Researchers with Own Funds / Skilled Worker Employment Permit',
+    authority: 'Norwegian Directorate of Immigration (UDI) & VFS Global Pakistan',
+    financialProof: 'Your university Stipendiat employment contract (NOK 550,800+/yr) 100% fulfills UDI income requirements — NO blocked account or bank statement needed.',
+    familyRules: 'Spouse/partner and children qualify for Family Immigration permits; your spouse receives automatic full-time work authorization in Norway.',
+    postStudyPR: 'Time spent as a salaried PhD Research Fellow (Code 1017) counts toward the 3-to-5 year requirement for Norwegian Permanent Residence (Permanent oppholdstillatelse).',
+    attestationDocs: 'Passport, Signed UDI Offer of Employment Form from Norwegian University, HEC-attested MS/BS degrees, and VFS biometric appointment.'
+  },
+  {
+    country: 'Denmark',
+    flag: '🇩🇰',
+    visaType: 'PhD Work & Residence Permit (SIRI Form PhD1)',
+    authority: 'Danish Agency for International Recruitment and Integration (SIRI)',
+    financialProof: 'Salaried PhD contract (DKK 28,900–36,000/mo) completely waives personal bank statement requirements. Fast-track processing (~30 days).',
+    familyRules: 'Accompanying spouse and children receive residence permits; spouses automatically have the right to work full-time in Denmark without a separate work permit.',
+    postStudyPR: 'Automatically includes a 6-month (extendable to 3-year under Establishment Card / Fast-Track scheme) job-seeking residence permit upon completing a Danish PhD.',
+    attestationDocs: 'SIRI PhD1 online form (initiated by your Danish university HR), Passport scan, Employment letter, and biometric capture at VFS.'
+  },
+  {
+    country: 'Finland',
+    flag: '🇫🇮',
+    visaType: 'Residence Permit for a Researcher (Continuous Type-A Permit)',
+    authority: 'Finnish Immigration Service (Migri — EnterFinland.fi) & Embassy of Finland',
+    financialProof: 'Hosting Agreement + salaried Doctoral Researcher contract (€2,450–€3,450/mo) waives personal bank deposit proof.',
+    familyRules: 'Spouse and children can apply together via EnterFinland; spouse receives unrestricted right to work in Finland.',
+    postStudyPR: 'All Doctoral Researchers receive a Continuous (Type-A) permit — after 4 years of Type-A residence you qualify directly for Finnish Permanent Residence (P-Permit), plus a 2-year post-graduation job-seeker permit.',
+    attestationDocs: 'Electronic Hosting Agreement signed by the Finnish university, Passport, HEC-attested degrees, and in-person identification at VFS/Embassy.'
+  },
+  {
+    country: 'Iceland',
+    flag: '🇮🇸',
+    visaType: 'Student / Doctoral Researcher Residence Permit (D-Type Schengen Entry)',
+    authority: 'Directorate of Immigration Iceland (Útlendingastofnun — island.is)',
+    financialProof: 'Rannís or University of Iceland doctoral salary contract (ISK 480,000+/mo) satisfies the monthly support threshold (~ISK 247,572/mo).',
+    familyRules: 'Doctral students may sponsor spouse and dependent children for family reunification residence permits.',
+    postStudyPR: 'Eligible for a 6-to-12 month post-graduation renewal to transition into a Specialist/Expert Work Permit in Iceland.',
+    attestationDocs: 'Apostilled/legalized Police Criminal Record Certificate (mandatory for Iceland!), Medical & Health Insurance, Housing confirmation, and UI Admission/Funding letter.'
+  },
+  {
+    country: 'Switzerland',
+    flag: '🇨🇭',
+    visaType: 'National Long-Stay Type-D Visa + Cantonal Residence Permit B (Aufenthaltsbewilligung B)',
+    authority: 'State Secretariat for Migration (SEM), Cantonal Migration Office & Embassy of Switzerland in Islamabad',
+    financialProof: 'Salaried PhD contract (ETH/EPFL/SNSF CHF 50,040+/yr), ESKAS award (CHF 1,920–3,500/mo), ESOP, or WIPO Fellowship letter (CHF 5,000/mo) serves as complete financial proof (WIPO fellows receive a UN Carte de Légitimation instead of Permit B).',
+    familyRules: 'Salaried PhD employees on Permit B (and MSCA/WIPO fellows) can bring spouse and children under family reunification; spouses on Permit B have full work rights in Switzerland.',
+    postStudyPR: 'Graduates of Swiss universities (MS/PhD) receive a 6-month job-seeker residence permit and are exempt from the strict third-country labor market quota test when hired in a job of high academic/economic interest!',
+    attestationDocs: '3 Type-D Visa Forms, Passport, University Admission + Employment/Scholarship Contract, Study Plan, Written Pledge to Leave after Studies (for student Permit B), and HEC/MOFA attested degrees (allow 8–12 weeks for Cantonal approval).'
+  },
+  {
+    country: 'Italy',
+    flag: '🇮🇹',
+    visaType: 'National Long-Stay Type-D Study / Research Visa + Permesso di Soggiorno',
+    authority: 'Universitaly Portal, Embassy of Italy / Consulate & VFS Global Pakistan',
+    financialProof: 'MUR PhD scholarship (€16,243+/yr) or MAECI award (€9,000/yr) waives personal bank funds. For DSU regional scholarship applicants waiting for final ranking, show ~€6,079/yr sponsor/family bank balance at visa stage.',
+    familyRules: 'PhD and Master\'s holders with annual income >€6,900+ and suitable housing certificate can sponsor spouse via Family Cohesion/Reunification (Ricongiungimento Familiare).',
+    postStudyPR: 'Graduates of an Italian Master\'s or PhD can convert their study permit into a 12-month Job-Seeker Permit (Permesso di Soggiorno per Attesa Occupazione) and then an unlimited Work Permit outside the Decreto Flussi quotas!',
+    attestationDocs: 'Mandatory Universitaly Pre-Enrollment Summary, HEC + IBCC attestation, MOFA Pakistan Hague Apostille stamp (replacing old CIMEA/DOV hurdles), Flight reservation, Accommodation proof, and Insurance.'
+  },
+  {
+    country: 'European Union (MSCA / Erasmus / Germany / Hungary)',
+    flag: '🇪🇺',
+    visaType: 'EU Researcher Directive (2016/801) Hosting Agreement Visa / Schengen Type-D Study Visa',
+    authority: 'Host Country Embassy (e.g., German Embassy Section 18d/16b, Hungarian Embassy, or EU Member State)',
+    financialProof: 'Official MSCA Employment Contract (€4,000–€6,600/mo), Erasmus Mundus Award Letter (€1,400/mo), DAAD Award (€934–€1,300/mo), or Stipendium Hungaricum Letter 100% exempts you from Germany\'s €11,904 Blocked Account (Sperrkonto)!',
+    familyRules: 'Under the EU Researcher Directive (MSCA & PhD Section 18d), spouses get immediate family reunion visas with full EU host-country work rights and exemption from A1 language tests.',
+    postStudyPR: 'Germany offers an 18-month Post-Study Job-Seeker Visa (leading to EU Blue Card / PR in 21–27 months); France/Netherlands/Finland offer 1-to-2 year Search Year (Orientation Year) visas; Hungary offers a 9-month Study-to-Work permit.',
+    attestationDocs: 'Hosting Agreement / Official Scholarship Award Letter, HEC-attested degrees, Europass CV, Travel/Health Insurance covered by grant, and biometric visa submission.'
+  },
+  {
+    country: 'United States (Fulbright & US-Pak Corridor)',
+    flag: '🇺🇸',
+    visaType: 'J-1 Exchange Visitor Visa (Government-Sponsored DS-2019) or F-1 Student Visa (I-20)',
+    authority: 'US Embassy / Consulate in Islamabad & Karachi + USEFP / IIE',
+    financialProof: 'Form DS-2019 issued by IIE/USEFP or HEC covers 100% of financial sponsorship — zero personal bank statement required and SEVIS ($220) + MRV ($185) fees are waived for Fulbrighters.',
+    familyRules: 'Spouse and unmarried children under 21 qualify for J-2 Dependent Visas; J-2 spouses can apply to USCIS for an Employment Authorization Document (EAD) to work legally in the US.',
+    postStudyPR: 'J-1 carries up to 18–36 months of Academic Training (AT), followed by the mandatory 2-Year Home-Country Physical Presence Requirement (Section 212e) to serve in Pakistan.',
+    attestationDocs: 'DS-2019, DS-160 Confirmation, Valid Passport, HEC-attested transcripts, and USEFP/HEC Sponsorship Letter.'
+  },
+  {
+    country: 'United Kingdom (Chevening, Commonwealth & Gates Cambridge)',
+    flag: '🇬🇧',
+    visaType: 'UK Student Route Visa (Confirmation of Acceptance for Studies — CAS)',
+    authority: 'UK Visas and Immigration (UKVI) & VFS Global Pakistan',
+    financialProof: 'Official Chevening / CSC / Gates Cambridge Award Letter completely waives the 28-day bank statement rule AND reimburses/exempts the UK Visa Fee (£490) and Immigration Health Surcharge (IHS £776/yr).',
+    familyRules: 'PhD students AND recipients of government-funded scholarships (>6 months) remain legally eligible under UKVI rules to bring dependent spouse and children (with full spouse work rights)!',
+    postStudyPR: 'Commonwealth & Chevening require returning to your home country for at least 2 years after graduation; non-bonded PhD graduates qualify for the 3-Year UK Graduate Route Post-Study Work Visa.',
+    attestationDocs: 'University CAS number, Official Scholarship Award Letter, IOM Tuberculosis (TB) Clearance Certificate from an approved clinic in Pakistan, and ATAS certificate (required for sensitive STEM/Physics/Materials fields).'
+  },
+  {
+    country: 'Japan, China, South Korea & Australia (MEXT, CSC, GKS, Australia Awards)',
+    flag: '🌏',
+    visaType: 'Japan: Ryugaku Student Visa (CoE) • China: X1 Visa (JW201) • Korea: D-2 Visa • Australia: Subclass 500 (DFAT)',
+    authority: 'Embassies of Japan, China, Republic of Korea & Australian High Commission',
+    financialProof: 'Government scholarship certificates (MEXT Certificate, CSC JW201 Form, NIIED GKS Invitation, DFAT Letter) waive all personal bank statement requirements and visa application fees.',
+    familyRules: 'PhD scholars can sponsor dependents (Japan Dependent Visa, Korea F-3 Visa, Australia Subclass 500 Dependent) once settled or concurrently per embassy rules.',
+    postStudyPR: 'Japan (J-Skip / Designated Activities 1-yr job search & accelerated PR in 1–3 yrs for high-scoring STEM researchers) and Korea (D-10 Job-Seeker → F-2-7 Point Visa) offer fast-track STEM retention; Australia Awards requires a 2-year home return.',
+    attestationDocs: 'HEC & MOFA Attested Degrees, Police Character Certificate (apostilled/embassy legalized for China/Korea), Physical Examination Record for Foreigner (China/Japan), and TB screening.'
   }
 ];
 
