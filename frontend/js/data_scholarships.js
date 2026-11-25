@@ -539,6 +539,164 @@ window.GLOBAL_SCHOLARSHIPS_DATA = [
       "Shortlisted candidates are interviewed by a panel of distinguished international scholars."
     ],
     "expertTips": "Gates Cambridge looks for four explicit criteria: outstanding intellectual ability, reasons for choice of course, a commitment to improving the lives of others, and leadership capacity. Your essays must reflect profound humanitarian empathy alongside academic brilliance."
+  },
+  {
+    "id": "sweden-salaried-phd",
+    "name": "Sweden Salaried PhD Positions (Doktorandtjänst — Natural Sciences & STEM)",
+    "country": "Sweden",
+    "region": "Nordic (Scandinavia)",
+    "flag": "🇸🇪",
+    "levels": ["PhD"],
+    "funding": "Salaried Employment (0% Tuition)",
+    "stipendAmount": "SEK 32,700 – 38,500 / month (~$3,100 – $3,650 / month)",
+    "benefits": [
+      "Full 4-Year Salaried University Employment Contract (extendable to 5 years with 20% teaching)",
+      "0% Tuition Fee for all international and Pakistani doctoral candidates",
+      "Stepwise salary increases at 50% and 80% dissertation credit milestones",
+      "Full Swedish social security, healthcare, occupational pension, and 28–35 days paid annual vacation",
+      "Paid parental leave and work/residence permits for accompanying spouse and children"
+    ],
+    "hostInstitutions": "Stockholm University, Uppsala University, Lund University, SLU (Agricultural & Environmental Sciences), University of Gothenburg, KTH, Chalmers, Umeå University",
+    "targetAudience": "Applicants holding an 18-year Master's degree (240 ECTS including at least 60 ECTS at Master's level and a 30 ECTS independent thesis) in Chemistry, Physics, Biology, Earth/Climate Science, Marine Science, or Mathematics.",
+    "languageRequirements": "English proficiency (IELTS 6.5 / TOEFL 90 or English-medium Master's transcript; no Swedish required)",
+    "standardizedTests": "None (No GRE required)",
+    "applicationWindow": "Year-round rolling project vacancies (peak calls in March–May & September–November)",
+    "deadlineMonth": "Rolling",
+    "officialUrl": "nordic-phd-positions.html",
+    "managingBody": "Swedish Public Research Universities (Varbi & ReachMee Recruitment Portals)",
+    "applicationProcess": [
+      "Browse open Faculty of Science doctoral vacancies on Stockholm, Uppsala, Lund, SLU, Gothenburg, KTH, and Umeå portals.",
+      "Prepare a project-specific Cover Letter (1–2 pages) addressing the advertised research project.",
+      "Upload your complete Master's Thesis PDF, certified BSc/MSc transcripts, and Academic CV.",
+      "Provide contact details of 2–3 academic referees (typically your MSc thesis supervisor).",
+      "Shortlisted candidates complete a technical Zoom interview where you present your Master's thesis research."
+    ],
+    "expertTips": "In Sweden, you apply to a specific advertised research project, not a general admission pool. Tailor your motivation letter directly to the lab's methodology (e.g., spectroscopy, catalysis, climate modeling, genomics) and highlight your hands-on thesis skills."
+  },
+  {
+    "id": "norway-salaried-phd",
+    "name": "Norway PhD Research Fellowships (Stipendiat Code 1017 — Natural Sciences)",
+    "country": "Norway",
+    "region": "Nordic (Scandinavia)",
+    "flag": "🇳🇴",
+    "levels": ["PhD"],
+    "funding": "Salaried Employment (0% Tuition)",
+    "stipendAmount": "NOK 550,800 – 595,000 / year (~$50,000 – $55,000 / year)",
+    "benefits": [
+      "3-Year Pure Research or 4-Year (with 25% teaching) State Employee Contract",
+      "0% Tuition Fee across all Norwegian public universities",
+      "Mandatory membership in the Norwegian Public Service Pension Fund (Statens pensjonskasse - SPK)",
+      "5 weeks paid annual holiday plus holiday pay supplement (feriepenger)",
+      "Full Norwegian national healthcare, paid sick leave, and family immigration rights"
+    ],
+    "hostInstitutions": "University of Oslo (UiO), University of Bergen (UiB), NTNU Trondheim, UiT The Arctic University of Norway, NMBU Ås, University of Stavanger (all via Jobbnorge.no)",
+    "targetAudience": "Graduates with a 5-year Master's degree (or 3+2 BSc+MSc = 300 ECTS / 18 years education) in Natural Sciences with an average grade equivalent to Norwegian Grade B or better.",
+    "languageRequirements": "English proficiency (IELTS 6.5 / TOEFL 90 or university exemption for Natural Science project vacancies)",
+    "standardizedTests": "None (No GRE required)",
+    "applicationWindow": "Daily postings year-round on Jobbnorge.no",
+    "deadlineMonth": "Rolling",
+    "officialUrl": "https://www.jobbnorge.no/en/available-jobs",
+    "managingBody": "Norwegian Ministry of Education & Public Universities via Jobbnorge",
+    "applicationProcess": [
+      "Create a reusable academic profile on Jobbnorge.no (where 95%+ of Norwegian PhD vacancies are posted).",
+      "Filter by 'Research fellow / PhD candidate' and Natural Science keywords (Chemistry, Biology, Physics, Geoscience, Marine).",
+      "Submit your Master's thesis, transcripts with grading scale explanation, CV, and project motivation letter.",
+      "Top candidates are invited to an online panel interview and reference check."
+    ],
+    "expertTips": "Always attach an official grading-scale document from your home university showing that your CGPA (e.g., 3.5+/4.0) maps to the top 'A/B' band on the ECTS scale, as Norwegian HR strictly verifies Grade B equivalence."
+  },
+  {
+    "id": "denmark-salaried-phd",
+    "name": "Denmark Salaried PhD Fellowships (Faculty of SCIENCE & Aarhus GSNS)",
+    "country": "Denmark",
+    "region": "Nordic (Scandinavia)",
+    "flag": "🇩🇰",
+    "levels": ["PhD"],
+    "funding": "Salaried Employment (Full Tuition Waiver)",
+    "stipendAmount": "DKK 28,900 – 36,000 / month (~$4,200 – $5,200 / mo) + 17.1% Pension",
+    "benefits": [
+      "Highest starting PhD salary in the EU under Danish collective academic union agreement",
+      "17.1% employer-paid pension contribution on top of base monthly salary",
+      "Unique 4+4 and 3+5 Integrated PhD tracks open to outstanding 4-year BS (16-year) graduates!",
+      "6 weeks paid annual vacation and free Danish national healthcare (Yellow Card)",
+      "Dedicated funding for a 3–6 month international research stay at a partner lab abroad"
+    ],
+    "hostInstitutions": "University of Copenhagen (Faculty of SCIENCE), Aarhus University (Graduate School of Natural Sciences - GSNS), Technical University of Denmark (DTU), SDU Odense, Aalborg University",
+    "targetAudience": "Holders of an 18-year Master's degree (for the 3-year 5+3 PhD track) OR exceptional 16-year 4-year BS (Hons) graduates (for the 4-year/5-year integrated PhD track at Aarhus GSNS and UCPH SCIENCE).",
+    "languageRequirements": "English (IELTS 6.5 / TOEFL 83+ or waiver based on English-taught degree and interview)",
+    "standardizedTests": "None (No GRE required)",
+    "applicationWindow": "Aarhus GSNS: Feb 1, May 1, Aug 1, Nov 1 &bull; UCPH & DTU: Rolling daily",
+    "deadlineMonth": "Rolling",
+    "officialUrl": "https://employment.ku.dk/phd/",
+    "managingBody": "Danish Public Research Universities & Novo Nordisk / Villum / DFF Foundations",
+    "applicationProcess": [
+      "Check University of Copenhagen SCIENCE portal, DTU Careers, and Aarhus GSNS quarterly calls.",
+      "For Specific Calls: Apply directly to the funded project with CV, transcripts, and motivation letter.",
+      "For Open Calls (Aarhus GSNS): Contact a professor in advance to co-design a 2-page PhD project description.",
+      "Complete online academic assessment and Zoom interview with the hiring committee."
+    ],
+    "expertTips": "If you only have a 4-year BS degree (16 years education) with a strong CGPA and research thesis, Denmark's Aarhus University (GSNS) and UCPH SCIENCE are the best pathways in Europe to enter a fully-funded PhD directly via the 4+4 / 3+5 integrated scheme."
+  },
+  {
+    "id": "finland-salaried-phd",
+    "name": "Finland Salaried Doctoral Researcher Positions (Natural Sciences)",
+    "country": "Finland",
+    "region": "Nordic (Scandinavia)",
+    "flag": "🇫🇮",
+    "levels": ["PhD"],
+    "funding": "Salaried Employment (0% Tuition)",
+    "stipendAmount": "€2,450 – €3,450 / month (Collective University Salary Scale)",
+    "benefits": [
+      "4-Year Full-Time Salaried Doctoral Researcher Employment Contract",
+      "0% Tuition Fee (doctoral education in Finland is 100% tuition-free for all nationalities)",
+      "Salary rises across Job Demand Levels 2–4 plus personal performance percentage",
+      "Comprehensive private occupational healthcare (Terveystalo / Mehiläinen) and Finnish social security",
+      "Scientific conference travel grants and access to national supercomputing (CSC) & NanoLabs"
+    ],
+    "hostInstitutions": "University of Helsinki (INAR & Faculty of Science), Aalto University, University of Turku (UTUGS), University of Oulu (UniOGS), University of Jyväskylä, UEF, Åbo Akademi",
+    "targetAudience": "Graduates holding a Master's degree (MSc / MS / MPhil) in Physics, Chemistry, Atmospheric/Climate Science, Biology, Ecology, Geosciences, or Mathematics.",
+    "languageRequirements": "English (IELTS 6.5 / TOEFL 92 or exempt degree; all Natural Science research is in English)",
+    "standardizedTests": "None",
+    "applicationWindow": "University Salaried Calls: Aug–Sept &bull; PI Grant Calls: Rolling year-round",
+    "deadlineMonth": "September",
+    "officialUrl": "https://www.helsinki.fi/en/about-us/careers/open-positions",
+    "managingBody": "Finnish Research Universities, Academy of Finland (Research Council of Finland) & Foundations",
+    "applicationProcess": [
+      "Track year-round PI-funded project vacancies on University of Helsinki, Aalto, Oulu, Turku, and JYU career pages.",
+      "For the annual autumn University-Funded Doctoral Researcher call, contact a prospective supervisor 4–6 weeks early to agree on a research plan.",
+      "Submit application via the university's electronic recruitment system (SAP / Laura / Workday) with MSc thesis and transcripts."
+    ],
+    "expertTips": "Aalto University (Applied Physics & Chemistry) and University of Oulu advertise dozens of direct PI-funded 4-year salaried positions year-round where you do NOT need prior study rights before applying — the study right is granted automatically once hired!"
+  },
+  {
+    "id": "iceland-salaried-phd",
+    "name": "Iceland Funded PhD Fellowships (University of Iceland SENS & Rannís IRF)",
+    "country": "Iceland",
+    "region": "Nordic (Scandinavia)",
+    "flag": "🇮🇸",
+    "levels": ["PhD"],
+    "funding": "Salaried Fellowship (0% Tuition)",
+    "stipendAmount": "ISK 480,000 – 620,000 / month (~$3,500 – $4,500 / month)",
+    "benefits": [
+      "3 to 4-Year Salaried Doctoral Contract funded by Rannís (Icelandic Research Fund) or UI Doctoral Fund",
+      "0% Tuition Fee at the University of Iceland (only ISK 75,000 / ~$540 annual registration fee)",
+      "Unmatched fieldwork access to active volcanoes, glaciers, geothermal systems, and North Atlantic marine ecosystems",
+      "Full Icelandic employee union rights, healthcare coverage, and conference travel budget"
+    ],
+    "hostInstitutions": "University of Iceland (School of Engineering and Natural Sciences - SENS), Agricultural University of Iceland (LBHÍ), University of Akureyri, Marine & Freshwater Research Institute",
+    "targetAudience": "Master's degree holders (18 years education) in Earth Sciences, Geology, Glaciology, Geochemistry, Environmental Science, Marine Biology, Chemistry, Biochemistry, or Physics.",
+    "languageRequirements": "Fluent English (official language of doctoral research and thesis writing in SENS)",
+    "standardizedTests": "None",
+    "applicationWindow": "Peak Rannís project calls: March – June &bull; UI Vacancies: Rolling",
+    "deadlineMonth": "May",
+    "officialUrl": "https://english.hi.is/university/vacancies",
+    "managingBody": "University of Iceland (Háskóli Íslands) & Rannís (The Icelandic Centre for Research)",
+    "applicationProcess": [
+      "Monitor the University of Iceland Vacancies page and EURAXESS Iceland for funded PhD openings.",
+      "Check Rannís's newly awarded Icelandic Research Fund (IRF) project grants each spring and email winning Natural Science PIs with your CV.",
+      "Submit MSc transcripts, Master's thesis, 2 reference letters, and statement of research purpose."
+    ],
+    "expertTips": "Iceland is a global superpower in Earth Sciences (volcanology, glaciology, CarbFix basalt CO2 mineralization, geothermal chemistry) and Marine Biology. Proactively contacting a University of Iceland professor right after Rannís announces annual grant awards in early spring gives you a massive head start."
   }
 ];
 
