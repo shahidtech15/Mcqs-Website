@@ -965,16 +965,115 @@
 
     <main class="main-container">
         <!-- ═══════════════════════════════════════════════════════════════════
+             FPSC PUBLIC NOTICE — SUPERINTENDENT (BS-16) FIA RESULT (26 NOV 2026)
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section id="fpsc-fia-superintendent-2026" class="hero-banner" style="background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 55%, #065f46 100%); margin-bottom: 24px;">
+            <div class="hero-badge-tag" style="background: rgba(16, 185, 129, 0.25); border-color: rgba(52, 211, 153, 0.55); color: #a7f3d0;">
+                <i class="fas fa-award"></i> FPSC Official Result &bull; Announced 26th November, 2026 &bull; Case No. F.4-155/2026
+            </div>
+            <h1 class="hero-title">
+                FPSC Provisionally Shortlisted Candidates:<br>
+                <span class="highlight-blue" style="color: #6ee7b7;">Superintendent (BS-16)</span> &mdash; <span class="highlight-red" style="color: #fde68a;">FIA</span>
+            </h1>
+            <p class="hero-desc">
+                <strong>Federal Public Service Commission (FPSC)</strong> has announced the official list of provisionally shortlisted and rejected candidates for the posts of <strong>Superintendent (BS-16)</strong> in the <strong>Federal Investigation Agency (FIA)</strong>, <strong>Ministry of Interior &amp; Narcotics Control</strong> (<code>No. F.4-155/2026-R (T&amp;S-A)</code>, dated Islamabad 25th November, 2026), following preliminary scrutiny of online applications and scanned documents.
+            </p>
+            <div class="official-meta-strip">
+                <span><i class="fas fa-file-signature"></i> <strong>Case No:</strong> F.4-155/2026</span>
+                <span><i class="fas fa-shield-halved"></i> <strong>Dept:</strong> FIA (Ministry of Interior &amp; Narcotics Control)</span>
+                <span><i class="fas fa-user-check"></i> <strong>Shortlisted:</strong> 70 Candidates (10 Quotas)</span>
+                <span><i class="fas fa-user-xmark"></i> <strong>Rejected:</strong> 6 Candidates</span>
+                <span><i class="fas fa-calendar-check"></i> <strong>Date:</strong> 26 Nov 2026</span>
+            </div>
+        </section>
+
+        <section class="content-card" style="margin-bottom: 32px; border-top: 4px solid #059669;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+                <div>
+                    <h2 style="margin:0; font-size:1.25rem; color:var(--job-text-main);">
+                        <i class="fas fa-list-check" style="color:#059669;"></i> Search Roll No., Name, Quota or Interview Center
+                    </h2>
+                    <p style="margin:4px 0 0; font-size:0.86rem; color:var(--job-text-muted);">
+                        Complete official FPSC merit &amp; quota-wise breakdown for Superintendent (BS-16), FIA.
+                    </p>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <a href="fia-laws-explorer.html" style="background:#059669; color:#fff; padding:8px 14px; border-radius:8px; font-size:0.82rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                        <i class="fas fa-scale-balanced"></i> FIA Laws Interview Prep
+                    </a>
+                    <a href="fia-sample-papers.html" style="background:#1e3a8a; color:#fff; padding:8px 14px; border-radius:8px; font-size:0.82rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                        <i class="fas fa-file-alt"></i> FIA Sample Papers
+                    </a>
+                </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap:12px; margin-bottom:14px;">
+                <input type="text" id="fiaSupSearch" placeholder="Search Roll No., Name, Merit No., Center..." oninput="renderFiaSupResultTable()" style="padding:10px 14px; border-radius:10px; border:1px solid var(--job-border); background:var(--job-bg); color:var(--job-text-main); font-size:0.9rem;">
+                <select id="fiaSupStatus" onchange="renderFiaSupResultTable()" style="padding:10px 14px; border-radius:10px; border:1px solid var(--job-border); background:var(--job-bg); color:var(--job-text-main); font-size:0.9rem;">
+                    <option value="all">All Candidates (76)</option>
+                    <option value="shortlisted">Provisionally Shortlisted (70)</option>
+                    <option value="rejected">Rejected Candidates (6)</option>
+                </select>
+                <select id="fiaSupQuota" onchange="renderFiaSupResultTable()" style="padding:10px 14px; border-radius:10px; border:1px solid var(--job-border); background:var(--job-bg); color:var(--job-text-main); font-size:0.9rem;">
+                    <option value="all">All Quotas &amp; Categories</option>
+                    <option value="MERIT (2×5=10)">Merit (10)</option>
+                    <option value="PUNJAB (OPEN MERIT=9×3=27)">Punjab Open Merit (27)</option>
+                    <option value="PUNJAB (WOMEN QUOTA=1×3=3)">Punjab Women Quota (3)</option>
+                    <option value="PUNJAB (MINORITIES / NON-MUSLIMS QUOTA=1×3=3)">Punjab Minorities Quota (3)</option>
+                    <option value="SINDH RURAL (OPEN MERIT=2×3=6)">Sindh Rural Open Merit (6)</option>
+                    <option value="SINDH URBAN (OPEN MERIT=2×3=6)">Sindh Urban Open Merit (6)</option>
+                    <option value="KPK (OPEN MERIT=2×3=6)">KPK Open Merit (6)</option>
+                    <option value="KPK (WOMEN QUOTA=1×3=3)">KPK Women Quota (3)</option>
+                    <option value="BALOCHISTAN (OPEN MERIT=1×3=3)">Balochistan Open Merit (3)</option>
+                    <option value="EX-FATA (OPEN MERIT=1×3=3)">Ex-FATA Open Merit (3)</option>
+                    <option value="REJECTED">Rejected Candidates (6)</option>
+                </select>
+            </div>
+
+            <div id="fiaSupStatusBar" style="font-size:0.84rem; font-weight:600; color:var(--job-text-muted); margin-bottom:10px;">
+                Loading official FPSC list...
+            </div>
+
+            <div style="overflow-x:auto; border-radius:10px; border:1px solid var(--job-border);">
+                <table class="vacancy-table" id="fiaSupResultTable" style="width:100%; border-collapse:collapse; margin:0;">
+                    <thead>
+                        <tr>
+                            <th>S. No.</th>
+                            <th>Roll No.</th>
+                            <th>Merit No.</th>
+                            <th>Candidate Name</th>
+                            <th>Status / Quota</th>
+                            <th>Domicile</th>
+                            <th>Opted Interview Center</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fiaSupResultBody"></tbody>
+                </table>
+            </div>
+
+            <div style="margin-top:18px; padding:14px 18px; border-radius:10px; background:rgba(15, 23, 42, 0.04); border-left:4px solid #1e3a8a; font-size:0.86rem; line-height:1.6; color:var(--job-text-main);">
+                <strong>Official FPSC Notes (Paras 3 &amp; 4 &mdash; No. F.4-155/2026-R (T&amp;S-A)):</strong>
+                <ol style="margin:6px 0 6px 18px; padding:0;">
+                    <li>All provisionally shortlisted candidates mentioned above will be called for <strong>physical verification of their documents / interview</strong>, as and when scheduled. The final status of their candidature will be determined upon verification of their claims in the light of documents produced by them and subject to approval of the Commission.</li>
+                    <li>The remaining candidates in the subject case are lower in order of merit.</li>
+                </ol>
+                <div style="font-size:0.8rem; color:var(--job-text-muted);">
+                    Issued by: <strong>Assistant Director (T&amp;S-A)</strong>, Federal Public Service Commission, Aga Khan Road, F-5/1, Islamabad (Ph: 051-111-000-248, 051-9205075).
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
              FPSC CONSOLIDATED ADVERTISEMENT (PHASE-4/2026) — OFFICIAL SECTION
              ═══════════════════════════════════════════════════════════════════ -->
         <section id="fpsc-phase4-2026" class="hero-banner" style="background: linear-gradient(135deg, #064e3b 0%, #0f172a 55%, #1e3a8a 100%); margin-bottom: 28px;">
             <div class="hero-badge-tag" style="background: rgba(16, 185, 129, 0.25); border-color: rgba(52, 211, 153, 0.5); color: #a7f3d0;">
                 <i class="fas fa-landmark"></i> Federal Public Service Commission (FPSC) &bull; Consolidated Advertisement No. 4/2026
             </div>
-            <h1 class="hero-title">
+            <h2 class="hero-title">
                 FPSC Consolidated Advertisement <span class="highlight-blue">(Phase-4/2026)</span>:<br>
                 <span class="highlight-red" style="color: #6ee7b7;">278 Federal Vacancies</span> (BS-16 to BS-20)
-            </h1>
+            </h2>
             <p class="hero-desc">
                 <em>&ldquo;Join Pakistan&rsquo;s Federal Services &mdash; Build a Career that Shapes National Progress.&rdquo;</em><br>
                 Official Federal recruitment drive across <strong>48 Case Numbers</strong> (<code>F.4-176/2026-R</code> to <code>F.4-222/2026-R</code> plus re-advertised <code>F.4-152/2026-R</code>), featuring <strong>160 Assistant Audit Officers (BS-17)</strong>, <strong>25 Demonstrators (BS-17)</strong>, <strong>12 Research/Planning Officers (BS-17)</strong>, <strong>10 Nurses (BS-16)</strong>, Professors, Assistant Directors, and Engineers.
@@ -1790,6 +1889,66 @@
                 tr.style.display = text.includes(q) ? '' : 'none';
             });
         }
+        // Render FPSC FIA Superintendent (BS-16) Result Table (Case No. F.4-155/2026)
+        function renderFiaSupResultTable() {
+            const data = window.FPSC_FIA_SUPERINTENDENT_2026;
+            const tbody = document.getElementById('fiaSupResultBody');
+            const statusBar = document.getElementById('fiaSupStatusBar');
+            if (!data || !tbody) return;
+
+            const q = (document.getElementById('fiaSupSearch')?.value || '').toLowerCase().trim();
+            const statusFilter = document.getElementById('fiaSupStatus')?.value || 'all';
+            const quotaFilter = document.getElementById('fiaSupQuota')?.value || 'all';
+
+            const allRows = [
+                ...data.shortlisted.map(c => ({ ...c, status: 'shortlisted', reason: '' })),
+                ...data.rejected.map(c => ({ ...c, status: 'rejected', quota: 'REJECTED' }))
+            ];
+
+            const filtered = allRows.filter(c => {
+                if (statusFilter !== 'all' && c.status !== statusFilter) return false;
+                if (quotaFilter !== 'all' && c.quota !== quotaFilter) return false;
+                if (!q) return true;
+                const hay = `${c.rollNo} ${c.meritNo} ${c.name} ${c.domicile} ${c.center} ${c.quota} ${c.reason}`.toLowerCase();
+                return hay.includes(q);
+            });
+
+            const slCount = filtered.filter(c => c.status === 'shortlisted').length;
+            const rejCount = filtered.filter(c => c.status === 'rejected').length;
+            if (statusBar) {
+                statusBar.textContent = `Showing ${filtered.length} of ${allRows.length} candidates (${slCount} Provisionally Shortlisted • ${rejCount} Rejected) — Case No. F.4-155/2026`;
+            }
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:24px; color:var(--job-text-muted);">No matching candidate found. Try searching by Roll No., Name, Domicile, or Interview Center.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(c => {
+                const isRej = c.status === 'rejected';
+                const badgeBg = isRej ? 'rgba(220,38,38,0.12)' : 'rgba(5,150,105,0.12)';
+                const badgeColor = isRej ? '#dc2626' : '#059669';
+                const badgeLabel = isRej ? 'REJECTED' : c.quota;
+                return `
+                <tr>
+                    <td style="font-weight:700;">${c.sr}</td>
+                    <td><code style="font-weight:800; font-size:0.86rem;">${c.rollNo}</code></td>
+                    <td style="font-weight:700; color:#1e3a8a;">#${c.meritNo}</td>
+                    <td>
+                        <strong>${c.name}</strong>
+                        ${isRej ? `<div style="font-size:0.76rem; color:#dc2626; margin-top:4px;"><i class="fas fa-circle-exclamation"></i> ${c.reason}</div>` : ''}
+                    </td>
+                    <td><span style="display:inline-block; padding:3px 9px; border-radius:6px; font-size:0.74rem; font-weight:800; background:${badgeBg}; color:${badgeColor};">${badgeLabel}</span></td>
+                    <td style="font-size:0.84rem;">${c.domicile}</td>
+                    <td style="font-size:0.84rem; font-weight:600;">${c.center}</td>
+                </tr>`;
+            }).join('');
+        }
+        window.addEventListener('DOMContentLoaded', renderFiaSupResultTable);
+    </script>
+    <script src="js/data_fpsc_fia_superintendent_2026.js"></script>
+    <script>
+        if (document.readyState !== 'loading') renderFiaSupResultTable();
     </script>
     <script src="js/cookie-consent.js"></script>
     <script src="js/nav.js"></script>
