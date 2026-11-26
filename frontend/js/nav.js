@@ -201,6 +201,7 @@
     { title: 'Written Examination & Precis Prep Hub', sub: 'Essay Structuring, Precis Rules, Comprehension & Paper Presentation', url: 'written-prep.html', cat: 'Essays', icon: 'fa-pen-to-square', kw: 'english composition precis writing tips' },
     { title: 'Editorial Explainer & Current Affairs Analysis', sub: 'Paragraph-by-Paragraph Breakdown of Dawn/Economist Editorials & Vocab', url: 'editorial-explainer.html', cat: 'Essays', icon: 'fa-newspaper', kw: 'opinion reading comprehension vocabulary' },
     { title: 'In-Depth Study Articles & Notes', sub: 'Comprehensive Long-Form Guides on Constitutional, Historical & IR Topics', url: 'articles.html', cat: 'Essays', icon: 'fa-book-open', kw: 'notes lectures reading' },
+    { title: 'English Language Preparation Hub (All 11 Modules)', sub: 'Daily Vocabulary + Alerts, Weekly Vocab Test, One Word Substitution, Idioms, Grammar, Voice, Speech, Precis & Essays', url: 'english-prep.html', cat: 'MCQs & Quizzes', icon: 'fa-spell-check', kw: 'english vocabulary daily words weekly test one word substitution idioms grammar tenses prepositions articles sentence correction active passive direct indirect comprehension precis essay' },
     { title: 'English Grammar & Composition Rules', sub: 'Tenses, Active/Passive Voice, Direct/Indirect, Prepositions & Sentence Correction', url: 'grammar-rules.html', cat: 'MCQs & Quizzes', icon: 'fa-spell-check', kw: 'parts of speech punctuation syntax' },
 
     // MCQs, Quizzes & Exam Prep

@@ -4,8 +4,8 @@
 
 | Metric | Status |
 |--------|--------|
-| Total HTML pages | 86 |
-| Indexable pages | 84 |
+| Total HTML pages | 87 |
+| Indexable pages | 85 |
 | Titles > 60 chars | 0 |
 | Meta descriptions > 160 chars | 0 |
 | Missing / Multiple H1 | 0 |
@@ -17,7 +17,7 @@
 | Duplicate titles | 0 |
 | Duplicate descriptions | 0 |
 | robots.txt Sitemap matches canonical host | Yes |
-| sitemap.xml coverage | 84/84 (missing: 0, extra: 0) |
+| sitemap.xml coverage | 85/85 (missing: 0, extra: 0) |
 
 ## Issues Found (0)
 
@@ -56,6 +56,7 @@ All SEO checks passed with 0 issues!
 | `disclaimer.html` | 43 | 152 | 1 | 0 | Yes | Yes | 1 |
 | `editorial-explainer.html` | 30 | 148 | 1 | 0 | Yes | Yes | 1 |
 | `editorial-policy.html` | 56 | 154 | 1 | 0 | Yes | Yes | 1 |
+| `english-prep.html` | 43 | 152 | 1 | 0 | Yes | Yes | 1 |
 | `essay-pakistan-education-crisis.html` | 38 | 154 | 1 | 0 | Yes | Yes | 1 |
 | `essay-russia-ukraine-war.html` | 33 | 100 | 1 | 0 | Yes | Yes | 1 |
 | `exam-guide.html` | 45 | 160 | 1 | 0 | Yes | Yes | 1 |
