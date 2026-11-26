@@ -4,8 +4,8 @@
 
 | Metric | Status |
 |--------|--------|
-| Total HTML pages | 88 |
-| Indexable pages | 86 |
+| Total HTML pages | 89 |
+| Indexable pages | 87 |
 | Titles > 60 chars | 0 |
 | Meta descriptions > 160 chars | 0 |
 | Missing / Multiple H1 | 0 |
@@ -17,7 +17,7 @@
 | Duplicate titles | 0 |
 | Duplicate descriptions | 0 |
 | robots.txt Sitemap matches canonical host | Yes |
-| sitemap.xml coverage | 86/86 (missing: 0, extra: 0) |
+| sitemap.xml coverage | 87/87 (missing: 0, extra: 0) |
 
 ## Issues Found (0)
 
@@ -32,6 +32,7 @@ All SEO checks passed with 0 issues!
 | `acts-rules.html` | 56 | 156 | 1 | 0 | Yes | Yes | 1 |
 | `admin.html` | 43 | 139 | 1 | 0 | N/A | N/A | N/A |
 | `ai-assistant.html` | 29 | 149 | 1 | 0 | Yes | Yes | 1 |
+| `ai-tech-essays.html` | 52 | 149 | 1 | 0 | Yes | Yes | 1 |
 | `animal-sounds-game.html` | 45 | 149 | 1 | 0 | Yes | Yes | 1 |
 | `arrange-chronologically.html` | 41 | 105 | 1 | 0 | Yes | Yes | 1 |
 | `articles.html` | 51 | 117 | 1 | 0 | Yes | Yes | 1 |
