@@ -4,8 +4,8 @@
 
 | Metric | Status |
 |--------|--------|
-| Total HTML pages | 87 |
-| Indexable pages | 85 |
+| Total HTML pages | 88 |
+| Indexable pages | 86 |
 | Titles > 60 chars | 0 |
 | Meta descriptions > 160 chars | 0 |
 | Missing / Multiple H1 | 0 |
@@ -17,7 +17,7 @@
 | Duplicate titles | 0 |
 | Duplicate descriptions | 0 |
 | robots.txt Sitemap matches canonical host | Yes |
-| sitemap.xml coverage | 85/85 (missing: 0, extra: 0) |
+| sitemap.xml coverage | 86/86 (missing: 0, extra: 0) |
 
 ## Issues Found (0)
 
@@ -36,6 +36,7 @@ All SEO checks passed with 0 issues!
 | `arrange-chronologically.html` | 41 | 105 | 1 | 0 | Yes | Yes | 1 |
 | `articles.html` | 51 | 117 | 1 | 0 | Yes | Yes | 1 |
 | `cce-essays-2025.html` | 38 | 91 | 1 | 0 | Yes | Yes | 1 |
+| `climate-change-essays.html` | 53 | 152 | 1 | 0 | Yes | Yes | 1 |
 | `climate-change-explorer.html` | 34 | 90 | 1 | 0 | Yes | Yes | 1 |
 | `computer-fundamentals-mcqs.html` | 50 | 128 | 1 | 0 | Yes | Yes | 1 |
 | `constitution-explorer.html` | 32 | 110 | 1 | 0 | Yes | Yes | 1 |
