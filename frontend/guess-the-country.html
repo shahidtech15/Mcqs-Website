@@ -1095,6 +1095,15 @@
             </div>
 
             <div class="game-options-group">
+                <select id="continentSelect" onchange="filterByContinent(this.value)" aria-label="Filter by Continent" style="padding:6px 12px; border-radius:20px; border:1px solid var(--quiz-border); background:var(--quiz-card-bg); color:var(--quiz-text-main); font-size:0.8rem; font-weight:700; cursor:pointer;">
+                    <option value="all">🌍 All World Countries (195)</option>
+                    <option value="Asia">🌏 Asia</option>
+                    <option value="Africa">🌍 Africa</option>
+                    <option value="Europe">🌍 Europe</option>
+                    <option value="North America">🌎 North America &amp; Caribbean</option>
+                    <option value="South America">🌎 South America</option>
+                    <option value="Oceania">🌏 Oceania &amp; Pacific</option>
+                </select>
                 <button type="button" class="toggle-chip active" id="btnInputMode" onclick="toggleInputMode()">
                     <i class="fas fa-list-check"></i> <span id="inputModeText">Multiple Choice (4)</span>
                 </button>
@@ -1247,7 +1256,9 @@
 
     <script>
         // State
+        let masterCountries = [];
         let allCountries = [];
+        let selectedContinent = 'all';
         let shuffledQueue = [];
         let currentIndex = 0;
         let currentCountry = null;
@@ -1341,9 +1352,18 @@
 
         // Initialize Game
         function initGame() {
-            allCountries = (typeof window !== 'undefined' && window.GUESS_COUNTRY_DATA) ? window.GUESS_COUNTRY_DATA : ((typeof GUESS_COUNTRY_DATA !== 'undefined') ? GUESS_COUNTRY_DATA : []);
-            if (!allCountries.length) return;
+            masterCountries = (typeof window !== 'undefined' && window.GUESS_COUNTRY_DATA) ? window.GUESS_COUNTRY_DATA : ((typeof GUESS_COUNTRY_DATA !== 'undefined') ? GUESS_COUNTRY_DATA : []);
+            if (!masterCountries.length) return;
+            filterByContinent(selectedContinent);
+        }
 
+        function filterByContinent(cont) {
+            selectedContinent = cont || 'all';
+            if (selectedContinent === 'all') {
+                allCountries = [...masterCountries];
+            } else {
+                allCountries = masterCountries.filter(c => (c.continent || '').includes(selectedContinent));
+            }
             shuffledQueue = shuffle(allCountries);
             currentIndex = 0;
             score = 0;
@@ -1426,9 +1446,11 @@
 
             // Render Visual Card Content
             if (gameMode === 'flag' || (gameMode === 'mystery' && currentClueLevel === 3)) {
+                const flagImgUrl = `https://flagcdn.com/w160/${currentCountry.id.toLowerCase()}.png`;
                 visualCard.innerHTML = `
-                    <div class="flag-emoji-giant">${currentCountry.flag}</div>
-                    <div style="font-weight:700; color:var(--quiz-text-muted); font-size:0.85rem; margin-top:8px;">
+                    <img src="${flagImgUrl}" alt="Mystery National Flag" style="height:96px; width:auto; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.18); border:1px solid var(--quiz-border);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="flag-emoji-giant" style="display:none;">${currentCountry.flag}</div>
+                    <div style="font-weight:700; color:var(--quiz-text-muted); font-size:0.85rem; margin-top:10px;">
                         <i class="fas fa-compass"></i> Continent: ${currentCountry.continent} &bull; ${currentCountry.region}
                     </div>
                 `;
