@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Price &amp; Salary in PKR Game | CSS Prep</title>
+    <meta name="description"
+        content="Interactive Guess the Price &amp; Salary in Pakistani Rupees (PKR) game! Guess salaries, FIFA World Cup tickets, Umrah &amp; Hajj packages, gold, cars &amp; tech.">
+    <link rel="canonical" href="https://www.cssprepcentral.com/guess-pkr-price-game.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cssprepcentral.com/guess-pkr-price-game.html">
+    <meta property="og:title" content="Guess the Price &amp; Salary in PKR Game | CSS Prep">
+    <meta property="og:description"
+        content="Can you guess the real PKR price of Umrah &amp; Hajj packages, FIFA World Cup Final tickets, CSS/MNA/Cricketer salaries, Gold, Cars &amp; Fighter Jets?">
+    <meta property="og:image" content="https://www.cssprepcentral.com/img/logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guess the Price &amp; Salary in PKR Game | CSS Prep">
+    <meta name="twitter:description"
+        content="Play Price Slider, 4-Tag Quiz, and Higher-or-Lower across 60 real salaries, FIFA tickets, Umrah packages &amp; everyday items in Pakistani Rupees!">
+    <meta name="twitter:image" content="https://www.cssprepcentral.com/img/logo.png">
+
+    <!-- BreadcrumbList JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.cssprepcentral.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Guess the Price & Salary in PKR", "item": "https://www.cssprepcentral.com/guess-pkr-price-game.html" }
+      ]
+    }
+    </script>
+
+    <!-- Anti-FOUC Dark Mode -->
+    <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#065f46">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1274590132147339"
+        crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --pk-bg: #f8fafc;
+            --pk-card: #ffffff;
+            --pk-border: #e2e8f0;
+            --pk-text: #0f172a;
+            --pk-muted: #64748b;
+            --pk-green: #059669;
+            --pk-green-dark: #064e3b;
+            --pk-gold: #d97706;
+            --pk-blue: #2563eb;
+            --pk-red: #dc2626;
+        }
+        .dark-mode {
+            --pk-bg: #090e1a;
+            --pk-card: #111827;
+            --pk-border: #1f2937;
+            --pk-text: #f8fafc;
+            --pk-muted: #94a3b8;
+        }
+        body {
+            background: var(--pk-bg);
+            color: var(--pk-text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+        .pk-wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 22px 16px 68px;
+        }
+        .pk-hero {
+            background: linear-gradient(135deg, #022c22 0%, #065f46 52%, #1e3a8a 100%);
+            color: #fff;
+            border-radius: 22px;
+            padding: 32px 26px;
+            margin-bottom: 18px;
+            box-shadow: 0 14px 34px rgba(6, 78, 59, 0.25);
+            text-align: center;
+        }
+        .pk-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(251, 191, 36, 0.18);
+            border: 1px solid rgba(251, 191, 36, 0.5);
+            color: #fde68a;
+            padding: 5px 14px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .pk-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.65rem, 3.2vw, 2.4rem);
+            margin: 0 0 8px;
+            color: #fff;
+        }
+        .pk-hero p {
+            margin: 0 auto;
+            max-width: 760px;
+            color: #d1fae5;
+            font-size: 0.94rem;
+            line-height: 1.55;
+        }
+
+        /* Mode & Category Bars */
+        .pk-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            background: var(--pk-card);
+            border: 1px solid var(--pk-border);
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin-bottom: 14px;
+        }
+        .pk-modes { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pk-mode-btn {
+            border: 1px solid var(--pk-border);
+            background: var(--pk-bg);
+            color: var(--pk-text);
+            padding: 9px 15px;
+            border-radius: 999px;
+            font-size: 0.83rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: all 0.15s ease;
+        }
+        .pk-mode-btn.active {
+            background: #059669;
+            border-color: #059669;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        }
+
+        .pk-cats {
+            display: flex;
+            gap: 7px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+        }
+        .pk-cat-pill {
+            white-space: nowrap;
+            border: 1px solid var(--pk-border);
+            background: var(--pk-card);
+            color: var(--pk-muted);
+            padding: 7px 13px;
+            border-radius: 999px;
+            font-size: 0.79rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .pk-cat-pill.active {
+            background: #1e3a8a;
+            border-color: #1e3a8a;
+            color: #fff;
+        }
+
+        /* HUD */
+        .pk-hud {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .pk-stat {
+            background: var(--pk-card);
+            border: 1px solid var(--pk-border);
+            border-radius: 13px;
+            padding: 11px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        /* Main Stage Card */
+        .pk-stage {
+            background: var(--pk-card);
+            border: 1px solid var(--pk-border);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+        }
+        .item-emoji-circle {
+            width: 78px;
+            height: 78px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(5,150,105,0.14), rgba(37,99,235,0.12));
+            border: 1px solid rgba(5,150,105,0.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.35rem;
+            margin: 0 auto 12px;
+        }
+        .item-cat-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #059669;
+            background: rgba(5,150,105,0.12);
+            padding: 4px 11px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+        .item-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+            margin: 0 auto 6px;
+            max-width: 720px;
+            line-height: 1.3;
+        }
+        .item-unit {
+            color: var(--pk-muted);
+            font-size: 0.86rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        /* Slider Mode */
+        .price-readout-box {
+            background: var(--pk-bg);
+            border: 2px solid #059669;
+            border-radius: 16px;
+            padding: 16px 20px;
+            max-width: 520px;
+            margin: 0 auto 18px;
+            text-align: center;
+        }
+        .price-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1.45rem, 3vw, 2.05rem);
+            font-weight: 800;
+            color: #059669;
+        }
+        .price-words {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--pk-muted);
+            margin-top: 4px;
+        }
+        .pk-slider {
+            width: 100%;
+            max-width: 620px;
+            height: 10px;
+            accent-color: #059669;
+            cursor: pointer;
+            margin: 8px auto 6px;
+            display: block;
+        }
+        .slider-bounds {
+            max-width: 620px;
+            margin: 0 auto 18px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--pk-muted);
+        }
+
+        /* 4-Tag MCQ Grid */
+        .tag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .tag-btn {
+            background: var(--pk-bg);
+            border: 2px solid var(--pk-border);
+            border-radius: 14px;
+            padding: 15px 16px;
+            cursor: pointer;
+            text-align: left;
+            color: var(--pk-text);
+            transition: all 0.14s ease;
+        }
+        .tag-btn:hover:not(:disabled) {
+            border-color: #059669;
+            transform: translateY(-2px);
+        }
+        .tag-btn.correct {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: #059669;
+        }
+        .tag-btn.wrong {
+            background: rgba(220, 38, 38, 0.13);
+            border-color: #dc2626;
+        }
+        .tag-main {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.08rem;
+            font-weight: 800;
+        }
+        .tag-sub {
+            font-size: 0.8rem;
+            color: var(--pk-muted);
+            font-weight: 700;
+            margin-top: 3px;
+        }
+
+        /* Higher / Lower Arena */
+        .hl-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 16px;
+            align-items: stretch;
+        }
+        @media (max-width: 780px) {
+            .hl-grid { grid-template-columns: 1fr; }
+        }
+        .hl-card {
+            background: var(--pk-bg);
+            border: 1px solid var(--pk-border);
+            border-radius: 18px;
+            padding: 22px 18px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .hl-vs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.15rem;
+            color: #d97706;
+        }
+
+        /* Buttons & Result Box */
+        .pk-btn {
+            border: none;
+            border-radius: 12px;
+            padding: 12px 22px;
+            font-size: 0.92rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .pk-btn-green { background: #059669; color: #fff; }
+        .pk-btn-blue { background: #2563eb; color: #fff; }
+        .pk-btn-red { background: #dc2626; color: #fff; }
+        .pk-btn-ghost { background: var(--pk-bg); color: var(--pk-text); border: 1px solid var(--pk-border); }
+
+        .hint-box {
+            max-width: 620px;
+            margin: 12px auto;
+            padding: 11px 15px;
+            border-radius: 11px;
+            background: rgba(217, 119, 6, 0.1);
+            border-left: 4px solid #d97706;
+            font-size: 0.85rem;
+            text-align: left;
+            display: none;
+        }
+        .result-panel {
+            max-width: 680px;
+            margin: 20px auto 0;
+            padding: 18px 20px;
+            border-radius: 16px;
+            background: rgba(5, 150, 105, 0.09);
+            border: 1px solid rgba(5, 150, 105, 0.35);
+            text-align: left;
+            display: none;
+        }
+        .result-panel.show { display: block; animation: popIn 0.2s ease; }
+        @keyframes popIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+
+<body>
+    <header class="site-header" style="background: var(--pk-card); border-bottom: 1px solid var(--pk-border); padding: 12px 20px;">
+        <div style="max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+            <a href="/" style="display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--pk-text); font-weight:800; font-family:'Outfit',sans-serif; font-size:1.08rem;">
+                <i class="fa-solid fa-coins" style="color:#059669;"></i> CSS Prep Central
+            </a>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <a href="/" class="pk-btn pk-btn-ghost" style="padding:7px 12px; font-size:0.82rem;"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="currency-exchange-explorer.html" class="pk-btn pk-btn-ghost" style="padding:7px 12px; font-size:0.82rem;"><i class="fa-solid fa-money-bill-transfer"></i> Currency Explorer</a>
+                <a href="guess-the-country.html" class="pk-btn pk-btn-ghost" style="padding:7px 12px; font-size:0.82rem;"><i class="fa-solid fa-earth-americas"></i> Guess Country</a>
+                <button id="themeToggleBtn" class="pk-btn pk-btn-ghost" style="padding:7px 11px; font-size:0.82rem;" title="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pk-wrap">
+        <section class="pk-hero">
+            <div class="pk-badge">
+                <i class="fa-solid fa-sack-dollar"></i> Pakistani Rupee (PKR) Real-World Price &amp; Salary Challenge
+            </div>
+            <h1>Guess the Price &amp; Salary in PKR!</h1>
+            <p>
+                How well do you know real prices and salaries in <strong>Pakistani Rupees (Rs. / Lakh / Crore / Arab)</strong>? Test yourself on <strong>CSS &amp; MNA salaries</strong>, <strong>Umrah &amp; Hajj packages</strong>, <strong>FIFA World Cup tickets</strong>, <strong>Gold, Cars, PTA Taxes</strong>, and <strong>Fighter Jets</strong> across 3 addictive modes!
+            </p>
+        </section>
+
+        <!-- Mode & Sound Controls -->
+        <div class="pk-bar">
+            <div class="pk-modes">
+                <button type="button" class="pk-mode-btn active" id="modeSlider" onclick="setMode('slider')">
+                    <i class="fa-solid fa-sliders"></i> Price Slider
+                </button>
+                <button type="button" class="pk-mode-btn" id="modeMcq" onclick="setMode('mcq')">
+                    <i class="fa-solid fa-tags"></i> 4-Tag Quiz
+                </button>
+                <button type="button" class="pk-mode-btn" id="modeHl" onclick="setMode('hl')">
+                    <i class="fa-solid fa-up-down"></i> Higher or Lower
+                </button>
+            </div>
+            <button type="button" class="pk-btn pk-btn-ghost" style="padding:8px 13px; font-size:0.8rem;" id="soundBtn" onclick="toggleSound()">
+                <i class="fa-solid fa-volume-high"></i> Sound: On
+            </button>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="pk-cats" id="catBar">
+            <button type="button" class="pk-cat-pill active" data-cat="all">🇵🇰 All Items (60)</button>
+            <button type="button" class="pk-cat-pill" data-cat="salaries">💼 Salaries &amp; Stipends</button>
+            <button type="button" class="pk-cat-pill" data-cat="umrah_hajj">🕋 Umrah &amp; Hajj Packages</button>
+            <button type="button" class="pk-cat-pill" data-cat="tickets_events">⚽ FIFA &amp; Event Tickets</button>
+            <button type="button" class="pk-cat-pill" data-cat="everyday_auto">🚗 Gold, Cars &amp; Everyday</button>
+            <button type="button" class="pk-cat-pill" data-cat="tech_gadgets">📱 Tech, Passports &amp; Fees</button>
+            <button type="button" class="pk-cat-pill" data-cat="mega_benchmarks">🚀 Jets, Prizes &amp; Global</button>
+        </div>
+
+        <!-- HUD -->
+        <div class="pk-hud">
+            <div class="pk-stat"><i class="fa-solid fa-layer-group" style="color:#2563eb;"></i> <span id="hudProgress">Item 1 / 60</span></div>
+            <div class="pk-stat"><i class="fa-solid fa-coins" style="color:#059669;"></i> <span id="hudScore">Score: 0</span></div>
+            <div class="pk-stat"><i class="fa-solid fa-fire" style="color:#d97706;"></i> <span id="hudStreak">Streak: 0</span></div>
+            <div class="pk-stat"><i class="fa-solid fa-trophy" style="color:#7c3aed;"></i> <span id="hudBest">Best: 0</span></div>
+        </div>
+
+        <!-- Game Stage -->
+        <section class="pk-stage" id="gameStage"></section>
+    </main>
+
+    <script src="js/data_pkr_prices_game.js"></script>
+    <script>
+        const ALL_ITEMS = window.PKR_PRICES_GAME_DATA || [];
+        let activeCat = 'all';
+        let mode = 'slider'; // 'slider' | 'mcq' | 'hl'
+        let queue = [];
+        let idx = 0;
+        let score = 0;
+        let streak = 0;
+        let bestScore = parseInt(localStorage.getItem('pkr_game_best_score') || '0', 10);
+        let answered = false;
+        let soundOn = true;
+        let sliderMin = 0;
+        let sliderMax = 100;
+
+        // Pakistani Rupee Formatter: Rs. 1,57,900 + human words ("1.58 Lakh" / "1.90 Crore" / "9.00 Arab")
+        function formatPakCommas(n) {
+            const s = Math.round(n).toString();
+            if (s.length <= 3) return 'Rs. ' + s;
+            const last3 = s.slice(-3);
+            const rest = s.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+            return 'Rs. ' + rest + ',' + last3;
+        }
+
+        function formatPakWords(n) {
+            const v = Math.round(n);
+            if (v >= 1000000000) return (v / 1000000000).toFixed(2).replace(/\.00$/, '') + ' Arab PKR';
+            if (v >= 10000000) return (v / 10000000).toFixed(2).replace(/\.00$/, '') + ' Crore PKR';
+            if (v >= 100000) return (v / 100000).toFixed(2).replace(/\.00$/, '') + ' Lakh PKR';
+            if (v >= 1000) return (v / 1000).toFixed(1).replace(/\.0$/, '') + ' Thousand PKR';
+            return v + ' Rupees';
+        }
+
+        function niceRoundPkr(n) {
+            if (n >= 1000000000) return Math.round(n / 50000000) * 50000000;
+            if (n >= 10000000) return Math.round(n / 250000) * 250000;
+            if (n >= 1000000) return Math.round(n / 25000) * 25000;
+            if (n >= 100000) return Math.round(n / 5000) * 5000;
+            if (n >= 10000) return Math.round(n / 500) * 500;
+            if (n >= 1000) return Math.round(n / 50) * 50;
+            return Math.max(10, Math.round(n / 5) * 5);
+        }
+
+        // Web Audio feedback
+        let audioCtx = null;
+        function beep(ok) {
+            if (!soundOn) return;
+            try {
+                const AC = window.AudioContext || window.webkitAudioContext;
+                if (!AC) return;
+                if (!audioCtx) audioCtx = new AC();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                const t = audioCtx.currentTime;
+                if (ok) {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, t);
+                    osc.frequency.setValueAtTime(659.25, t + 0.08);
+                    osc.frequency.setValueAtTime(783.99, t + 0.16);
+                    gain.gain.setValueAtTime(0.18, t);
+                    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.42);
+                    osc.start(t); osc.stop(t + 0.42);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(190, t);
+                    osc.frequency.linearRampToValueAtTime(125, t + 0.25);
+                    gain.gain.setValueAtTime(0.2, t);
+                    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.32);
+                    osc.start(t); osc.stop(t + 0.32);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundOn = !soundOn;
+            document.getElementById('soundBtn').innerHTML = soundOn
+                ? '<i class="fa-solid fa-volume-high"></i> Sound: On'
+                : '<i class="fa-solid fa-volume-xmark"></i> Sound: Off';
+        }
+
+        function shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        function updateHud() {
+            document.getElementById('hudProgress').textContent = `Item ${Math.min(idx + 1, queue.length)} / ${queue.length}`;
+            document.getElementById('hudScore').textContent = `Score: ${score.toLocaleString()}`;
+            document.getElementById('hudStreak').textContent = `Streak: ${streak}`;
+            if (score > bestScore) {
+                bestScore = score;
+                localStorage.setItem('pkr_game_best_score', String(bestScore));
+            }
+            document.getElementById('hudBest').textContent = `Best: ${bestScore.toLocaleString()}`;
+        }
+
+        function rebuildQueue() {
+            const pool = activeCat === 'all' ? ALL_ITEMS : ALL_ITEMS.filter(x => x.category === activeCat);
+            queue = shuffle(pool);
+            idx = 0;
+            score = 0;
+            streak = 0;
+            renderStage();
+        }
+
+        function setMode(m) {
+            mode = m;
+            document.getElementById('modeSlider').classList.toggle('active', m === 'slider');
+            document.getElementById('modeMcq').classList.toggle('active', m === 'mcq');
+            document.getElementById('modeHl').classList.toggle('active', m === 'hl');
+            rebuildQueue();
+        }
+
+        document.querySelectorAll('.pk-cat-pill').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.pk-cat-pill').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeCat = btn.dataset.cat;
+                rebuildQueue();
+            });
+        });
+
+        function nextTurn() {
+            idx++;
+            if (idx >= queue.length) {
+                queue = shuffle(queue);
+                idx = 0;
+            }
+            renderStage();
+        }
+
+        function renderStage() {
+            answered = false;
+            updateHud();
+            const stage = document.getElementById('gameStage');
+            const item = queue[idx];
+            if (!item) return;
+
+            if (mode === 'slider') {
+                // Randomize slider bounds so true answer sits anywhere between 22% and 78% of slider!
+                const randFactorLow = 0.18 + Math.random() * 0.22; // 0.18..0.40
+                const randFactorHigh = 2.1 + Math.random() * 1.4;  // 2.1..3.5
+                sliderMin = niceRoundPkr(item.pricePkr * randFactorLow);
+                sliderMax = niceRoundPkr(item.pricePkr * randFactorHigh);
+                if (sliderMax <= item.pricePkr) sliderMax = item.pricePkr * 2;
+                const initVal = niceRoundPkr((sliderMin + sliderMax) / 2);
+
+                stage.innerHTML = `
+                    <div style="text-align:center;">
+                        <div class="item-emoji-circle">${item.emoji}</div>
+                        <span class="item-cat-tag">${item.categoryLabel}</span>
+                        <h2 class="item-title">${item.title}</h2>
+                        <div class="item-unit">${item.unit}</div>
+
+                        <div class="price-readout-box">
+                            <div style="font-size:0.76rem; font-weight:800; text-transform:uppercase; color:var(--pk-muted); margin-bottom:4px;">Your PKR Estimate</div>
+                            <div class="price-num" id="sliderNumDisplay">${formatPakCommas(initVal)}</div>
+                            <div class="price-words" id="sliderWordsDisplay">${formatPakWords(initVal)}</div>
+                        </div>
+
+                        <input type="range" id="priceRange" class="pk-slider" min="0" max="1000" value="500" oninput="onSliderMove(this.value)">
+                        <div class="slider-bounds">
+                            <span>${formatPakWords(sliderMin)}</span>
+                            <span>Drag slider to estimate</span>
+                            <span>${formatPakWords(sliderMax)}</span>
+                        </div>
+
+                        <div id="hintBox" class="hint-box"><strong><i class="fa-solid fa-lightbulb"></i> Clue:</strong> ${item.hint}</div>
+
+                        <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;" id="sliderActionRow">
+                            <button type="button" class="pk-btn pk-btn-ghost" onclick="document.getElementById('hintBox').style.display='block'">
+                                <i class="fa-solid fa-lightbulb" style="color:#d97706;"></i> Show Hint
+                            </button>
+                            <button type="button" class="pk-btn pk-btn-green" onclick="submitSliderGuess()">
+                                <i class="fa-solid fa-check"></i> Lock In PKR Guess
+                            </button>
+                        </div>
+
+                        <div id="resultPanel" class="result-panel"></div>
+                    </div>
+                `;
+            } else if (mode === 'mcq') {
+                // Build 3 realistic distractors around the real price
+                const mults = shuffle([0.38, 0.62, 1.48, 2.25, 0.48, 1.75]).slice(0, 3);
+                const used = new Set([item.pricePkr]);
+                const dist = [];
+                for (const m of mults) {
+                    let cand = niceRoundPkr(item.pricePkr * m);
+                    if (cand === item.pricePkr || used.has(cand)) cand = niceRoundPkr(item.pricePkr * (m + 0.31));
+                    used.add(cand);
+                    dist.push(cand);
+                }
+                const options = shuffle([item.pricePkr, ...dist]);
+
+                stage.innerHTML = `
+                    <div style="text-align:center;">
+                        <div class="item-emoji-circle">${item.emoji}</div>
+                        <span class="item-cat-tag">${item.categoryLabel}</span>
+                        <h2 class="item-title">${item.title}</h2>
+                        <div class="item-unit">${item.unit}</div>
+
+                        <div id="hintBox" class="hint-box"><strong><i class="fa-solid fa-lightbulb"></i> Clue:</strong> ${item.hint}</div>
+
+                        <div class="tag-grid" id="mcqGrid">
+                            ${options.map(val => `
+                                <button type="button" class="tag-btn" data-val="${val}" onclick="submitMcqGuess(${val})">
+                                    <div class="tag-main">${formatPakCommas(val)}</div>
+                                    <div class="tag-sub">${formatPakWords(val)}</div>
+                                </button>
+                            `).join('')}
+                        </div>
+
+                        <div style="margin-top:14px;">
+                            <button type="button" class="pk-btn pk-btn-ghost" style="padding:8px 14px; font-size:0.82rem;" onclick="document.getElementById('hintBox').style.display='block'">
+                                <i class="fa-solid fa-lightbulb" style="color:#d97706;"></i> Need a Hint?
+                            </button>
+                        </div>
+
+                        <div id="resultPanel" class="result-panel"></div>
+                    </div>
+                `;
+            } else {
+                // Higher or Lower mode: compare item A (queue[idx]) vs item B (distinct price)
+                let otherPool = ALL_ITEMS.filter(x => x.id !== item.id && x.pricePkr !== item.pricePkr);
+                const itemB = otherPool[Math.floor(Math.random() * otherPool.length)];
+                window._hlItemB = itemB;
+
+                stage.innerHTML = `
+                    <div class="hl-grid">
+                        <div class="hl-card">
+                            <div>
+                                <div class="item-emoji-circle">${item.emoji}</div>
+                                <span class="item-cat-tag">${item.categoryLabel}</span>
+                                <h3 style="font-family:'Outfit',sans-serif; font-size:1.2rem; margin:6px 0;">${item.title}</h3>
+                                <div class="item-unit">${item.unit}</div>
+                            </div>
+                            <div class="price-readout-box" style="margin:10px 0 0;">
+                                <div class="price-num">${formatPakCommas(item.pricePkr)}</div>
+                                <div class="price-words">${formatPakWords(item.pricePkr)}</div>
+                            </div>
+                        </div>
+
+                        <div class="hl-vs">VS</div>
+
+                        <div class="hl-card">
+                            <div>
+                                <div class="item-emoji-circle">${itemB.emoji}</div>
+                                <span class="item-cat-tag">${itemB.categoryLabel}</span>
+                                <h3 style="font-family:'Outfit',sans-serif; font-size:1.2rem; margin:6px 0;">${itemB.title}</h3>
+                                <div class="item-unit">${itemB.unit}</div>
+                            </div>
+                            <div id="hlMysteryBox">
+                                <p style="font-size:0.86rem; font-weight:700; color:var(--pk-muted); margin:8px 0 12px;">Does this cost / earn <strong>HIGHER</strong> or <strong>LOWER</strong> in PKR?</p>
+                                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                                    <button type="button" class="pk-btn pk-btn-green" onclick="submitHlGuess('higher')">
+                                        <i class="fa-solid fa-arrow-trend-up"></i> HIGHER
+                                    </button>
+                                    <button type="button" class="pk-btn pk-btn-red" onclick="submitHlGuess('lower')">
+                                        <i class="fa-solid fa-arrow-trend-down"></i> LOWER
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="resultPanel" class="result-panel"></div>
+                `;
+            }
+        }
+
+        function getSliderValue() {
+            const raw = parseInt(document.getElementById('priceRange')?.value || '500', 10) / 1000;
+            return niceRoundPkr(sliderMin + raw * (sliderMax - sliderMin));
+        }
+
+        function onSliderMove() {
+            const val = getSliderValue();
+            document.getElementById('sliderNumDisplay').textContent = formatPakCommas(val);
+            document.getElementById('sliderWordsDisplay').textContent = formatPakWords(val);
+        }
+
+        function submitSliderGuess() {
+            if (answered) return;
+            answered = true;
+            const item = queue[idx];
+            const guess = getSliderValue();
+            const pctOff = Math.abs(guess - item.pricePkr) / item.pricePkr * 100;
+
+            let pts = 0;
+            let verdict = '';
+            if (pctOff <= 6) { pts = 1000; verdict = '🎯 BULLSEYE! Within 6% of actual PKR price!'; streak++; beep(true); }
+            else if (pctOff <= 16) { pts = 800; verdict = '🔥 Spot On! Within 16% of actual PKR price!'; streak++; beep(true); }
+            else if (pctOff <= 30) { pts = 550; verdict = '👍 Good Estimate! Within 30% of actual price.'; streak++; beep(true); }
+            else if (pctOff <= 50) { pts = 250; verdict = '🙂 Reasonable Try (within 50%).'; streak = 0; beep(true); }
+            else { pts = 0; verdict = '😅 Off the Mark! Check the real PKR price below.'; streak = 0; beep(false); }
+
+            score += pts;
+            document.getElementById('priceRange').disabled = true;
+            document.getElementById('sliderActionRow').style.display = 'none';
+            updateHud();
+
+            const panel = document.getElementById('resultPanel');
+            panel.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+                    <strong style="font-size:1.05rem;">${verdict}</strong>
+                    <span style="background:#059669; color:#fff; padding:4px 12px; border-radius:999px; font-weight:800; font-size:0.84rem;">+${pts} pts (${pctOff.toFixed(1)}% diff)</span>
+                </div>
+                <div style="font-size:0.95rem; margin-bottom:8px;">
+                    <strong>Actual PKR Price / Salary:</strong>
+                    <span style="font-family:'JetBrains Mono',monospace; font-weight:800; color:#059669;">${formatPakCommas(item.pricePkr)}</span>
+                    (${formatPakWords(item.pricePkr)})
+                </div>
+                <p style="margin:0 0 14px; font-size:0.86rem; line-height:1.55; color:var(--pk-muted);">${item.breakdown}</p>
+                <button type="button" class="pk-btn pk-btn-blue" onclick="nextTurn()">Next Item <i class="fa-solid fa-arrow-right"></i></button>
+            `;
+            panel.classList.add('show');
+        }
+
+        function submitMcqGuess(chosenVal) {
+            if (answered) return;
+            answered = true;
+            const item = queue[idx];
+            const isRight = chosenVal === item.pricePkr;
+            document.querySelectorAll('#mcqGrid .tag-btn').forEach(btn => {
+                btn.disabled = true;
+                const v = parseInt(btn.dataset.val, 10);
+                if (v === item.pricePkr) btn.classList.add('correct');
+                else if (v === chosenVal) btn.classList.add('wrong');
+            });
+
+            let pts = 0;
+            if (isRight) {
+                streak++;
+                pts = 500 + Math.min(streak * 50, 500);
+                score += pts;
+                beep(true);
+            } else {
+                streak = 0;
+                beep(false);
+            }
+            updateHud();
+
+            const panel = document.getElementById('resultPanel');
+            panel.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+                    <strong style="font-size:1.05rem; color:${isRight ? '#059669' : '#dc2626'};">
+                        ${isRight ? '✅ Correct Price Tag!' : '❌ Not Quite!'}
+                    </strong>
+                    <span style="font-weight:800;">+${pts} pts</span>
+                </div>
+                <div style="font-size:0.94rem; margin-bottom:8px;">
+                    <strong>Real Value:</strong> ${formatPakCommas(item.pricePkr)} (${formatPakWords(item.pricePkr)})
+                </div>
+                <p style="margin:0 0 14px; font-size:0.86rem; line-height:1.55; color:var(--pk-muted);">${item.breakdown}</p>
+                <button type="button" class="pk-btn pk-btn-blue" onclick="nextTurn()">Next Question <i class="fa-solid fa-arrow-right"></i></button>
+            `;
+            panel.classList.add('show');
+        }
+
+        function submitHlGuess(dir) {
+            if (answered) return;
+            answered = true;
+            const itemA = queue[idx];
+            const itemB = window._hlItemB;
+            const actualDir = itemB.pricePkr > itemA.pricePkr ? 'higher' : 'lower';
+            const isRight = dir === actualDir;
+
+            let pts = 0;
+            if (isRight) {
+                streak++;
+                pts = 400 + Math.min(streak * 50, 600);
+                score += pts;
+                beep(true);
+            } else {
+                streak = 0;
+                beep(false);
+            }
+            updateHud();
+
+            document.getElementById('hlMysteryBox').innerHTML = `
+                <div class="price-readout-box" style="margin:10px 0 0; border-color:${isRight ? '#059669' : '#dc2626'};">
+                    <div class="price-num" style="color:${isRight ? '#059669' : '#dc2626'};">${formatPakCommas(itemB.pricePkr)}</div>
+                    <div class="price-words">${formatPakWords(itemB.pricePkr)}</div>
+                </div>
+            `;
+
+            const panel = document.getElementById('resultPanel');
+            panel.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+                    <strong style="font-size:1.05rem; color:${isRight ? '#059669' : '#dc2626'};">
+                        ${isRight ? '🔥 Correct! Streak: ' + streak : '💥 Streak Broken!'}
+                    </strong>
+                    <span style="font-weight:800;">+${pts} pts</span>
+                </div>
+                <p style="margin:0 0 14px; font-size:0.86rem; line-height:1.55; color:var(--pk-muted);">${itemB.breakdown}</p>
+                <button type="button" class="pk-btn pk-btn-blue" onclick="nextTurn()">Next Showdown <i class="fa-solid fa-arrow-right"></i></button>
+            `;
+            panel.classList.add('show');
+        }
+
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('mcqs_dark_mode', isDark);
+                themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+            });
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', rebuildQueue);
+    </script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+
+</html>

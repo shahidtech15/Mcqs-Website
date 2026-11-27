@@ -4,8 +4,8 @@
 
 | Metric | Status |
 |--------|--------|
-| Total HTML pages | 89 |
-| Indexable pages | 87 |
+| Total HTML pages | 90 |
+| Indexable pages | 88 |
 | Titles > 60 chars | 0 |
 | Meta descriptions > 160 chars | 0 |
 | Missing / Multiple H1 | 0 |
@@ -17,7 +17,7 @@
 | Duplicate titles | 0 |
 | Duplicate descriptions | 0 |
 | robots.txt Sitemap matches canonical host | Yes |
-| sitemap.xml coverage | 87/87 (missing: 0, extra: 0) |
+| sitemap.xml coverage | 88/88 (missing: 0, extra: 0) |
 
 ## Issues Found (0)
 
@@ -70,6 +70,7 @@ All SEO checks passed with 0 issues!
 | `global-power-comparison.html` | 60 | 135 | 1 | 0 | Yes | Yes | 1 |
 | `global-security-conflict-essays.html` | 57 | 146 | 1 | 0 | Yes | Yes | 1 |
 | `grammar-rules.html` | 43 | 90 | 1 | 0 | Yes | Yes | 1 |
+| `guess-pkr-price-game.html` | 47 | 150 | 1 | 0 | Yes | Yes | 1 |
 | `guess-the-country.html` | 28 | 109 | 1 | 0 | Yes | Yes | 1 |
 | `half-face-game.html` | 55 | 153 | 1 | 0 | Yes | Yes | 1 |
 | `human-body-explorer.html` | 30 | 159 | 1 | 0 | Yes | Yes | 1 |
