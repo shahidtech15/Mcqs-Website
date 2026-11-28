@@ -3,7 +3,7 @@
  * Uses Stale-While-Revalidate for static HTML, CSS, JS, and map assets so
  * students can study quizzes, essays, legal explorers, maps, and games offline.
  */
-const CACHE_NAME = 'cssprep-offline-v1';
+const CACHE_NAME = 'cssprep-offline-v2';
 
 const CORE_ASSETS = [
   './',
@@ -72,7 +72,10 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Stale-While-Revalidate for same-origin pages & assets
+  // Network-First for HTML navigation requests so live tag updates & new papers appear immediately;
+  // Stale-While-Revalidate for static CSS/JS/images.
+  const isHtmlNav = req.mode === 'navigate' || url.pathname === '/' || url.pathname.endsWith('.html');
+
   event.respondWith(
     caches.open(CACHE_NAME).then(async (cache) => {
       const cached = await cache.match(req);
@@ -85,6 +88,13 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(() => null);
 
+      if (isHtmlNav) {
+        const freshHtml = await networkFetch;
+        if (freshHtml) return freshHtml;
+        if (cached) return cached;
+        return (await cache.match('./index.html')) || (await cache.match('./404.html'));
+      }
+
       if (cached) {
         return cached;
       }
@@ -94,10 +104,6 @@ self.addEventListener('fetch', (event) => {
         return fresh;
       }
 
-      // Offline fallback for navigation requests
-      if (req.mode === 'navigate') {
-        return (await cache.match('./index.html')) || (await cache.match('./404.html'));
-      }
       return new Response('Offline', { status: 503, statusText: 'Offline' });
     })
   );

@@ -2,12 +2,54 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEPBG0KLFR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TEPBG0KLFR');
+
+      (function() {
+        var consentChoice = null;
+        try { consentChoice = localStorage.getItem('cssprep_cookie_consent_v1'); } catch (e) {}
+        if (consentChoice === 'declined') {
+          window['ga-disable-G-TEPBG0KLFR'] = true;
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        }
+        window.setGa4Consent = function(granted) {
+          var status = granted ? 'granted' : 'denied';
+          window['ga-disable-G-TEPBG0KLFR'] = !granted;
+          gtag('consent', 'update', {
+            'analytics_storage': status,
+            'ad_storage': status,
+            'ad_user_data': status,
+            'ad_personalization': status
+          });
+          if (!granted) {
+            var hostParts = window.location.hostname.split('.');
+            var rootDomain = hostParts.length >= 2 ? '.' + hostParts.slice(-2).join('.') : window.location.hostname;
+            ['_ga', '_ga_TEPBG0KLFR', '_gid', '_gat'].forEach(function(cName) {
+              document.cookie = cName + '=; Max-Age=0; path=/;';
+              document.cookie = cName + '=; Max-Age=0; path=/; domain=' + window.location.hostname + ';';
+              document.cookie = cName + '=; Max-Age=0; path=/; domain=' + rootDomain + ';';
+            });
+          }
+        };
+      })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Privacy Policy for CSS Prep Central &amp; MCQs Portal. Detailed information on our cookie practices, Google AdSense third-party advertising, data collection.">
+        content="Privacy Policy for CSS Prep Central &amp; MCQs Portal. Details on Google Analytics 4 (GA4), cookie consent, Google AdSense, GDPR/CCPA rights &amp; zero-PII policy.">
     <meta name="keywords"
-        content="Privacy Policy, MCQs Portal Privacy, Google AdSense Cookies, DART Cookie, GDPR Compliance, CCPA, User Data Protection">
+        content="Privacy Policy, MCQs Portal Privacy, Google Analytics 4 GA4, Google AdSense Cookies, DART Cookie, GDPR Compliance, CCPA, User Data Protection">
     <title>Privacy Policy | CSS Prep Central &amp; MCQs Portal</title>
     <!-- Anti-FOUC: apply dark mode before stylesheets paint -->
     <script>if(localStorage.getItem('mcqs_dark_mode')==='true')document.documentElement.classList.add('dark-mode');</script>
@@ -323,7 +365,7 @@
     <main class="legal-page-container">
         <article class="legal-card">
             <h1>Privacy Policy</h1>
-            <div class="effective-date">Last Updated &amp; Effective Date: November 16, 2026</div>
+            <div class="effective-date">Last Updated &amp; Effective Date: November 28, 2026</div>
 
             <p>At <strong>CSS Prep Central &amp; MCQs Portal</strong> (accessible via our primary domain and all associated subdomains), the privacy of our visitors is of paramount importance to us. This comprehensive Privacy Policy document outlines the types of information that is collected and recorded by our platform and how we use, safeguard, and disclose that information.</p>
 
@@ -348,18 +390,57 @@
                 Google is one of our third-party vendors. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline;">https://policies.google.com/technologies/ads</a>.
             </div>
 
-            <h2>4. Third-Party Advertising Partners (Google AdSense)</h2>
+            <h2 id="google-analytics-disclosure">4. Web Analytics (Google Analytics 4 &mdash; GA4)</h2>
+            <p>We use <strong>Google Analytics 4 (GA4)</strong> (Measurement ID: <code>G-TEPBG0KLFR</code>), a web analytics service provided by Google LLC, to understand aggregated traffic trends, popular study modules, session duration, and device/browser compatibility across CSS Prep Central.</p>
+            <ul>
+                <li><strong>Cookies Used by Google Analytics 4:</strong> GA4 sets first-party cookies such as <code>_ga</code> and <code>_ga_TEPBG0KLFR</code> (standard retention up to 2 years unless cleared or declined) to distinguish unique visitors and maintain session state across page views.</li>
+                <li><strong>IP Privacy &amp; Zero-PII Policy:</strong> IP anonymization is enabled (<code>anonymize_ip: true</code>), and Google Analytics 4 does not log or store individual IP addresses. We strictly prohibit sending any Personally Identifiable Information (PII)&mdash;such as your name, email address, password, phone number, CNIC, or exam roll number&mdash;to Google Analytics. Any sensitive URL query parameters or email patterns are automatically scrubbed client-side before analytics events are dispatched.</li>
+                <li><strong>Consent &amp; How to Opt Out of Google Analytics:</strong> We integrate Google Consent Mode v2. You may opt out of Google Analytics tracking at any time by:
+                    <ol style="margin-top: 8px;">
+                        <li>Clicking <strong>&ldquo;Essential Only&rdquo;</strong> on our Cookie Consent Banner or using the instant preference controls below;</li>
+                        <li>Installing the official <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline;">Google Analytics Opt-out Browser Add-on</a>; or</li>
+                        <li>Reviewing Google&rsquo;s partner data practices at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline;">How Google uses information from sites or apps that use our services</a>.</li>
+                    </ol>
+                </li>
+            </ul>
+            <div class="highlight-notice" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+                <div>
+                    <strong><i class="fas fa-sliders" style="color:#2563eb;"></i> Manage Your Google Analytics 4 Consent Preference:</strong>
+                    <div id="ga4-consent-status-badge" style="font-size:0.88rem; font-weight:700; margin-top:4px; color:#059669;">Checking your current preference...</div>
+                </div>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <button type="button" onclick="if(window.setPortalCookieConsent)window.setPortalCookieConsent('accepted');" style="background:#2563eb; color:#fff; border:none; border-radius:8px; padding:8px 16px; font-weight:700; cursor:pointer;">Allow Analytics</button>
+                    <button type="button" onclick="if(window.setPortalCookieConsent)window.setPortalCookieConsent('declined');" style="background:#dc2626; color:#fff; border:none; border-radius:8px; padding:8px 16px; font-weight:700; cursor:pointer;">Opt Out / Disable GA4</button>
+                </div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var badge = document.getElementById('ga4-consent-status-badge');
+                    if (!badge) return;
+                    var c = null;
+                    try { c = localStorage.getItem('cssprep_cookie_consent_v1'); } catch (e) {}
+                    if (c === 'declined') {
+                        badge.textContent = 'Current Status: Analytics Disabled (Opted Out)';
+                        badge.style.color = '#dc2626';
+                    } else {
+                        badge.textContent = 'Current Status: Analytics Enabled (Consent Active)';
+                        badge.style.color = '#059669';
+                    }
+                });
+            </script>
+
+            <h2>5. Third-Party Advertising Partners (Google AdSense)</h2>
             <p>Some of the advertisers on our site may use cookies and web beacons. Our advertising partners include <strong>Google AdSense</strong>. Each of our advertising partners has their own Privacy Policy for their policies on user data. For easier access, we hyperlinked to their Privacy Policies above.</p>
 
             <p>Third-party ad servers or ad networks use technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on CSS Prep Central, which are sent directly to users' browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.</p>
 
             <p><em>Note: CSS Prep Central has no access to or control over these cookies that are used by third-party advertisers.</em></p>
 
-            <h2>5. Third-Party Privacy Policies</h2>
+            <h2>6. Third-Party Privacy Policies</h2>
             <p>CSS Prep Central's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.</p>
             <p>You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites.</p>
 
-            <h2>6. CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+            <h2>7. CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
             <p>Under the California Consumer Privacy Act (CCPA), among other rights, California consumers have the right to:</p>
             <ul>
                 <li>Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>
@@ -368,7 +449,7 @@
             </ul>
             <p>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
 
-            <h2>7. GDPR Data Protection Rights</h2>
+            <h2>8. GDPR Data Protection Rights</h2>
             <p>We would like to make sure you are fully aware of all of your data protection rights under the General Data Protection Regulation (GDPR). Every user is entitled to the following:</p>
             <ul>
                 <li><strong>The right to access:</strong> You have the right to request copies of your personal data.</li>
@@ -379,14 +460,14 @@
                 <li><strong>The right to data portability:</strong> You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</li>
             </ul>
 
-            <h2>8. Children's Information (COPPA Compliance)</h2>
+            <h2>9. Children's Information (COPPA Compliance)</h2>
             <p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
             <p>CSS Prep Central does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
 
-            <h2>9. Changes to This Privacy Policy</h2>
+            <h2>10. Changes to This Privacy Policy</h2>
             <p>We may update our Privacy Policy from time to time. Thus, we advise you to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.</p>
 
-            <h2>10. Contact Us</h2>
+            <h2>11. Contact Us</h2>
             <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us:</p>
             <ul>
                 <li>By visiting our contact page: <a href="contact.html" style="color: #2563eb; font-weight: 600;">Contact Form</a></li>

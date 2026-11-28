@@ -94,7 +94,7 @@ All SEO checks passed with 0 issues!
 | `periodic-table.html` | 49 | 93 | 1 | 0 | Yes | Yes | 1 |
 | `physical-geography-map.html` | 45 | 86 | 1 | 0 | Yes | Yes | 1 |
 | `ppc-section-finder.html` | 58 | 149 | 1 | 0 | Yes | Yes | 1 |
-| `privacy.html` | 47 | 153 | 1 | 0 | Yes | Yes | 1 |
+| `privacy.html` | 47 | 155 | 1 | 0 | Yes | Yes | 1 |
 | `quiz.html` | 44 | 121 | 1 | 0 | Yes | Yes | 1 |
 | `recommended-books.html` | 43 | 130 | 1 | 0 | Yes | Yes | 1 |
 | `recruitment-prep.html` | 52 | 159 | 1 | 0 | Yes | Yes | 1 |

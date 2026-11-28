@@ -1,6 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEPBG0KLFR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TEPBG0KLFR');
+
+      (function() {
+        var consentChoice = null;
+        try { consentChoice = localStorage.getItem('cssprep_cookie_consent_v1'); } catch (e) {}
+        if (consentChoice === 'declined') {
+          window['ga-disable-G-TEPBG0KLFR'] = true;
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        }
+        window.setGa4Consent = function(granted) {
+          var status = granted ? 'granted' : 'denied';
+          window['ga-disable-G-TEPBG0KLFR'] = !granted;
+          gtag('consent', 'update', {
+            'analytics_storage': status,
+            'ad_storage': status,
+            'ad_user_data': status,
+            'ad_personalization': status
+          });
+          if (!granted) {
+            var hostParts = window.location.hostname.split('.');
+            var rootDomain = hostParts.length >= 2 ? '.' + hostParts.slice(-2).join('.') : window.location.hostname;
+            ['_ga', '_ga_TEPBG0KLFR', '_gid', '_gat'].forEach(function(cName) {
+              document.cookie = cName + '=; Max-Age=0; path=/;';
+              document.cookie = cName + '=; Max-Age=0; path=/; domain=' + window.location.hostname + ';';
+              document.cookie = cName + '=; Max-Age=0; path=/; domain=' + rootDomain + ';';
+            });
+          }
+        };
+      })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrPC Procedure Flowchart | CSS Prep</title>

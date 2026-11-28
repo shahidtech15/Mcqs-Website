@@ -7,16 +7,42 @@
     'use strict';
     
     // ==========================================
-    // 1. COOKIE CONSENT BANNER
+    // 1. COOKIE CONSENT BANNER (GA4 + AdSense)
     // ==========================================
     var STORAGE_KEY = 'cssprep_cookie_consent_v1';
+
+    function applyConsentChoice(choice) {
+        try {
+            localStorage.setItem(STORAGE_KEY, choice);
+        } catch(e) {}
+        if (typeof window.setGa4Consent === 'function') {
+            window.setGa4Consent(choice === 'accepted');
+        }
+    }
+
+    window.setPortalCookieConsent = function(choice) {
+        applyConsentChoice(choice);
+        var statusEl = document.getElementById('ga4-consent-status-badge');
+        if (statusEl) {
+            statusEl.textContent = choice === 'accepted'
+                ? 'Current Status: Analytics Enabled (Accepted)'
+                : 'Current Status: Analytics Disabled (Opted Out)';
+            statusEl.style.color = choice === 'accepted' ? '#059669' : '#dc2626';
+        }
+    };
     
     function initCookieBanner() {
+        var existingChoice = null;
         try {
-            if (localStorage.getItem(STORAGE_KEY) === 'accepted') {
-                return;
-            }
+            existingChoice = localStorage.getItem(STORAGE_KEY);
         } catch(e) {}
+
+        if (existingChoice === 'accepted' || existingChoice === 'declined') {
+            if (typeof window.setGa4Consent === 'function') {
+                window.setGa4Consent(existingChoice === 'accepted');
+            }
+            return;
+        }
 
         if (document.getElementById('cookie-consent-banner')) return;
         
@@ -34,13 +60,14 @@
                     <div class="cc-banner-text">
                         <strong>Privacy &amp; Cookie Consent</strong>
                         <p>
-                            CSS Prep Central uses essential cookies, local preferences, and Google AdSense partner technologies to ensure portal functionality, prevent fraud, and serve personalized study resources. By clicking "Accept All", you agree to our data practices in accordance with our 
+                            CSS Prep Central uses essential cookies, local preferences, <strong>Google Analytics 4 (GA4)</strong> for anonymous traffic measurement, and <strong>Google AdSense</strong> partner technologies to improve study resources. No personally identifiable information (PII) is sent to Google Analytics. Read our 
                             <a href="privacy.html" class="cc-link">Privacy Policy</a> and <a href="terms.html" class="cc-link">Terms of Service</a>.
                         </p>
                     </div>
                 </div>
                 <div class="cc-banner-actions">
-                    <a href="privacy.html" class="cc-btn-secondary">Manage / Learn More</a>
+                    <a href="privacy.html#google-analytics-disclosure" class="cc-btn-secondary">Manage / Privacy</a>
+                    <button type="button" class="cc-btn-secondary" id="cc-btn-decline" style="cursor:pointer;">Essential Only</button>
                     <button type="button" class="cc-btn-primary" id="cc-btn-accept">Accept All</button>
                 </div>
             </div>
@@ -166,20 +193,38 @@
         document.head.appendChild(style);
         document.body.appendChild(banner);
         
+        function dismissBanner(choice) {
+            applyConsentChoice(choice);
+            banner.style.animation = 'ccSlideDown 0.3s forwards';
+            setTimeout(function() {
+                if (banner.parentNode) {
+                    banner.parentNode.removeChild(banner);
+                }
+            }, 300);
+        }
+
         var acceptBtn = document.getElementById('cc-btn-accept');
         if (acceptBtn) {
             acceptBtn.addEventListener('click', function() {
-                try {
-                    localStorage.setItem(STORAGE_KEY, 'accepted');
-                } catch(e) {}
-                banner.style.animation = 'ccSlideDown 0.3s forwards';
-                setTimeout(function() {
-                    if (banner.parentNode) {
-                        banner.parentNode.removeChild(banner);
-                    }
-                }, 300);
+                dismissBanner('accepted');
             });
         }
+
+        var declineBtn = document.getElementById('cc-btn-decline');
+        if (declineBtn) {
+            declineBtn.addEventListener('click', function() {
+                dismissBanner('declined');
+            });
+        }
+    }
+
+    // Track dynamic History API / SPA query transitions without duplicate page_view events
+    function initSpaRouteTracking() {
+        window.addEventListener('popstate', function() {
+            if (typeof window.trackGa4PageView === 'function') {
+                window.trackGa4PageView(window.location.href);
+            }
+        });
     }
 
     // ==========================================
@@ -272,6 +317,7 @@
     function init() {
         initCookieBanner();
         initBackToTop();
+        initSpaRouteTracking();
         ensureNavController();
     }
 
