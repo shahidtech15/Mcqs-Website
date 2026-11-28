@@ -48,6 +48,7 @@
     if (mode === 'search' || mode === 'bookmarks') {
       return [
         'js/data_core_fallback.js',
+        'js/data_spsc_cce_2026_paper.js',
         'js/data_2200.js',
         'js/data_current_affairs_200.js',
         'js/data_current_affairs_sts_200.js',
@@ -69,6 +70,9 @@
 
     if (norm.includes('mistake') || norm.includes('cat_mistakes')) {
       return ['js/data_2200.js'];
+    }
+    if (norm.includes('spsc cce') || norm.includes('cat_spsc_cce_2026')) {
+      return ['js/data_spsc_cce_2026_paper.js'];
     }
     if (norm.includes('css mpt') || norm.includes('cat_css_mpt') || norm.includes('mpt 200')) {
       return [

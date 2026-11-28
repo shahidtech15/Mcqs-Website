@@ -98,6 +98,14 @@ let isSubmitting = false;
 
 // Known subcategories mapping for fallback
 const KNOWN_SUBCATEGORIES = {
+  "🏛️ SPSC CCE-2026 Screening Paper (28 Nov 2026)": [
+    "English", "Pakistan Affairs", "Islamic Studies", "Comparative Religions",
+    "Mathematics & Reasoning", "Everyday Science", "Computer Science", "Current Affairs & Economy"
+  ],
+  "SPSC CCE Screening Test 2026": [
+    "English", "Pakistan Affairs", "Islamic Studies", "Comparative Religions",
+    "Mathematics & Reasoning", "Everyday Science", "Computer Science", "Current Affairs & Economy"
+  ],
   "FIA Assistant Director Sample Papers": [
     "Sample Paper 1", "Sample Paper 2", "Sample Paper 3", "Sample Paper 4", "Sample Paper 5",
     "Sample Paper 6", "Sample Paper 7", "Sample Paper 8", "Sample Paper 9", "Sample Paper 10",
@@ -205,6 +213,7 @@ const KNOWN_SUBCATEGORIES = {
 // Default Fallback Categories
 const FALLBACK_CATEGORIES = [
   { _id: 'cat_mistakes', name: '🎯 Mistake Notebook (Spaced Repetition Retry)', description: 'Practice questions you previously missed across mock tests. Answering correctly graduates them from your Mistake Notebook.', icon: 'fa-bullseye', questionCount: 50, subcategoriesCount: 0 },
+  { _id: 'cat_spsc_cce_2026', name: '🏛️ SPSC CCE-2026 Screening Paper (28 Nov 2026)', description: 'Official SPSC CCE-2026 Screening Test (Type-A | 28 Nov 2026): 186 Main MCQs + 20 Non-Muslim Comparative Religions MCQs with -0.25 negative marking.', icon: 'fa-file-circle-check', questionCount: 206, subcategoriesCount: 8 },
   { _id: 'cat_css_mpt', name: '🏛️ CSS MPT 200-Mark Official Screening Mock', description: 'Official FPSC CSS MPT 200-MCQ Screening Paper: Islamic Studies (20), English Vocabulary & Grammar (50), General Abilities/Math/IQ (60), and GK/Pak Affairs/Current Affairs/Everyday Science (70).', icon: 'fa-award', questionCount: 200, subcategoriesCount: 0 },
   { _id: 'cat_synonyms', name: 'English Synonyms', description: '2,000 High-Yield Synonym MCQs with complete academic definitions, parts of speech, and contextual example sentences for CSS, PMS, FPSC, PPSC, NTS, and GRE exams.', icon: 'fa-spell-check', questionCount: 2000, subcategoriesCount: 4 },
   { _id: 'cat_antonyms', name: 'English Antonyms', description: '2,000 High-Yield Antonym MCQs with contrasting words, comprehensive explanations, and illustrative sentences targeting competitive examinations.', icon: 'fa-arrows-split-up-and-left', questionCount: 2000, subcategoriesCount: 4 },
@@ -253,7 +262,7 @@ function syncQuizCoreFallbackGlobals() {
 }
 
 function populateCategoryDropdown(list) {
-    const specialIds = new Set(['cat_mistakes', 'cat_css_mpt']);
+    const specialIds = new Set(['cat_mistakes', 'cat_spsc_cce_2026', 'cat_css_mpt']);
     const specialCats = FALLBACK_CATEGORIES.filter(c => specialIds.has(c._id));
     const restCats = (Array.isArray(list) && list.length ? list : FALLBACK_CATEGORIES).filter(c => !specialIds.has(c._id));
     categoriesData = [...specialCats, ...restCats];
@@ -525,9 +534,15 @@ function generateFallbackQuiz(catName, subCat, count, difficulty) {
     const fiaPastMcqs = (typeof window !== 'undefined' && Array.isArray(window.FPSC_FIA_2021_BATCH1_MCQS)) ? window.FPSC_FIA_2021_BATCH1_MCQS : [];
     const synMcqs = (typeof window !== 'undefined' && Array.isArray(window.SYNONYMS_MCQS)) ? window.SYNONYMS_MCQS : [];
     const antMcqs = (typeof window !== 'undefined' && Array.isArray(window.ANTONYMS_MCQS)) ? window.ANTONYMS_MCQS : [];
+    const spscCce26 = (typeof window !== 'undefined' && Array.isArray(window.SPSC_CCE_2026_PAPER_MCQS)) ? window.SPSC_CCE_2026_PAPER_MCQS : [];
     let pool = [];
 
     const normCat = (catName || '').toLowerCase();
+
+    if (normCat.includes('spsc cce') || normCat.includes('cat_spsc_cce_2026')) {
+        const base = subCat ? filterBySubCategory([...spscCce26], subCat) : spscCce26.filter(q => q.track !== 'non_muslim');
+        return base.slice(0, count);
+    }
 
     if (normCat.includes('mistake') || normCat.includes('cat_mistakes')) {
         const savedMistakes = (window.LEARNING_DASHBOARD && typeof window.LEARNING_DASHBOARD.getMistakes === 'function')

@@ -214,6 +214,7 @@ const searchInput = document.getElementById('searchInput');
 
 // Preloaded Fallback Categories Dataset for standalone/offline capability
 const FALLBACK_CATEGORIES = [
+  { _id: 'cat_spsc_cce_2026', name: 'SPSC CCE Screening Test 2026', description: 'Official SPSC CCE-2026 Screening Question Paper (Type-A | 28 Nov 2026): 186 Main MCQs + 20 Non-Muslim Comparative Study of Major Religions MCQs with verified keys, explanations & OMR simulator.', icon: 'fa-file-circle-check', questionCount: 206, subcategoriesCount: 8 },
   { _id: 'cat_synonyms', name: 'English Synonyms', description: '2,000 High-Yield Synonym MCQs with complete academic definitions, parts of speech, and contextual example sentences for CSS, PMS, FPSC, PPSC, NTS, and GRE exams.', icon: 'fa-spell-check', questionCount: 2000, subcategoriesCount: 4 },
   { _id: 'cat_antonyms', name: 'English Antonyms', description: '2,000 High-Yield Antonym MCQs with contrasting words, comprehensive explanations, and illustrative sentences targeting competitive examinations.', icon: 'fa-arrows-split-up-and-left', questionCount: 2000, subcategoriesCount: 4 },
   { _id: 'cat_fia_ad_sample', name: 'FIA Assistant Director Sample Papers', description: '20 Full-Length 100-Mark Sample Papers (2,000 MCQs) for FIA Assistant Director (Investigation): 10 Standard + 10 Advanced Hard Mocks covering English (20 Marks), Basic Maths, GK, Pak Affairs, Islamiat, Current Affairs (last 5 years), Everyday Science, and FIA Act 1974.', icon: 'fa-file-shield', questionCount: 2000, subcategoriesCount: 20 },
@@ -242,6 +243,16 @@ const FALLBACK_CATEGORIES = [
 ];
 
 const KNOWN_SUBCATEGORIES = {
+  "SPSC CCE Screening Test 2026": [
+    "English",
+    "Pakistan Affairs",
+    "Islamic Studies",
+    "Comparative Religions",
+    "Mathematics & Reasoning",
+    "Everyday Science",
+    "Computer Science",
+    "Current Affairs & Economy"
+  ],
   "English Synonyms": [
     "CSS / PMS High-Yield Synonyms",
     "FPSC / PPSC Exam Synonyms",
@@ -1162,6 +1173,8 @@ async function renderSampleQuestionsFallback() {
   const worldOrgMcqs = (typeof window !== 'undefined' && Array.isArray(window.WORLD_ORG_MCQS)) ? window.WORLD_ORG_MCQS : [];
   const synMcqs = (typeof window !== 'undefined' && Array.isArray(window.SYNONYMS_MCQS)) ? window.SYNONYMS_MCQS : [];
   const antMcqs = (typeof window !== 'undefined' && Array.isArray(window.ANTONYMS_MCQS)) ? window.ANTONYMS_MCQS : [];
+  const spscCce26 = (typeof window !== 'undefined' && Array.isArray(window.SPSC_CCE_2026_PAPER_MCQS)) ? window.SPSC_CCE_2026_PAPER_MCQS : [];
+  const isSpscCce26 = categoryName.toLowerCase().includes('spsc cce') || catId.toLowerCase().includes('cat_spsc_cce_2026');
   const isSynonyms = categoryName.toLowerCase().includes('synonym') || catId.toLowerCase().includes('cat_synonyms');
   const isAntonyms = categoryName.toLowerCase().includes('antonym') || catId.toLowerCase().includes('cat_antonyms');
 
@@ -1238,7 +1251,13 @@ async function renderSampleQuestionsFallback() {
                catId.toLowerCase().includes('cat_cs') || 
                catId === 'Computer Science';
 
-  if (isPedagogy) {
+  if (isSpscCce26) {
+    pool = [...spscCce26];
+    if (subCategory) {
+      const filtered = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCategory.toLowerCase());
+      if (filtered.length > 0) pool = filtered;
+    }
+  } else if (isPedagogy) {
     pool = [...pedagogy500];
     if (subCategory) {
       const filtered = pool.filter(q => q.subCategory && q.subCategory.toLowerCase() === subCategory.toLowerCase());
@@ -1391,6 +1410,7 @@ async function renderSampleQuestionsFallback() {
   } else if (currentFetchOptions.type === 'search') {
     const q = (currentFetchOptions.query || '').toLowerCase();
     const combinedPool = [
+      ...spscCce26,
       ...all2200,
       ...FIA_AD_INVESTIGATION_MCQS,
       ...FIA_AD_LEGAL_MCQS,

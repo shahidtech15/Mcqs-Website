@@ -4,8 +4,8 @@
 
 | Metric | Status |
 |--------|--------|
-| Total HTML pages | 90 |
-| Indexable pages | 88 |
+| Total HTML pages | 91 |
+| Indexable pages | 89 |
 | Titles > 60 chars | 0 |
 | Meta descriptions > 160 chars | 0 |
 | Missing / Multiple H1 | 0 |
@@ -17,7 +17,7 @@
 | Duplicate titles | 0 |
 | Duplicate descriptions | 0 |
 | robots.txt Sitemap matches canonical host | Yes |
-| sitemap.xml coverage | 88/88 (missing: 0, extra: 0) |
+| sitemap.xml coverage | 89/89 (missing: 0, extra: 0) |
 
 ## Issues Found (0)
 
@@ -103,6 +103,7 @@ All SEO checks passed with 0 issues!
 | `scrabble.html` | 54 | 157 | 1 | 0 | Yes | Yes | 1 |
 | `sindh-map.html` | 43 | 105 | 1 | 0 | Yes | Yes | 1 |
 | `solar-system-explorer.html` | 35 | 85 | 1 | 0 | Yes | Yes | 1 |
+| `spsc-cce-2026-screening-paper.html` | 54 | 155 | 1 | 0 | Yes | Yes | 1 |
 | `technology-explorer.html` | 30 | 95 | 1 | 0 | Yes | Yes | 1 |
 | `terms.html` | 49 | 151 | 1 | 0 | Yes | Yes | 1 |
 | `timeline.html` | 58 | 151 | 1 | 0 | Yes | Yes | 1 |
