@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-Idempotently places both sponsored banner ad units side-by-side in a clean
-responsive slot immediately above the footer across all 89 public HTML pages
-in frontend/ (excluding admin.html and 404.html):
+Idempotently places the three sponsored ad units in a clean responsive slot
+immediately above the footer across all 89 public HTML pages in frontend/
+(excluding admin.html and 404.html):
 1. 160x300 Banner (key: 97264972179081aee1b6c7d88a288980)
 2. 160x600 Skyscraper (key: b50906c41b73355e61f450db7775af1f)
+3. Standalone Ad Script (src: https://abscloud.org/1/3b1b00432f38229d68fcea0aa5992c72)
 """
 
 import re
@@ -14,6 +15,7 @@ FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
 EXCLUDED_FILES = {"admin.html", "404.html"}
 AD_KEY_300 = "97264972179081aee1b6c7d88a288980"
 AD_KEY_600 = "b50906c41b73355e61f450db7775af1f"
+AD_KEY_ABS = "3b1b00432f38229d68fcea0aa5992c72"
 
 BANNER_BLOCK = """    <!-- Sponsored 160x300 & 160x600 Banner Slot -->
     <aside class="sponsored-banner-slot" aria-label="Sponsored Advertisement" style="max-width:1200px;margin:28px auto 18px;padding:12px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
@@ -44,6 +46,7 @@ BANNER_BLOCK = """    <!-- Sponsored 160x300 & 160x600 Banner Slot -->
                 <script data-cfasync="false" src="https://bauval.org/22/b50906c41b73355e61f450db7775af1f"></script>
             </div>
         </div>
+        <script data-cfasync="false" src="https://abscloud.org/1/3b1b00432f38229d68fcea0aa5992c72"></script>
     </aside>
 """
 
@@ -68,7 +71,7 @@ def main():
         original = f.read_text(encoding="utf-8")
         cleaned = EXISTING_BANNER_RE.sub("\n", original)
 
-        if AD_KEY_300 in cleaned and AD_KEY_600 in cleaned:
+        if AD_KEY_300 in cleaned and AD_KEY_600 in cleaned and AD_KEY_ABS in cleaned:
             continue
 
         m_footer = FOOTER_OPEN_RE.search(cleaned)
@@ -87,7 +90,7 @@ def main():
             f.write_text(new_content, encoding="utf-8")
             updated += 1
 
-    print(f"Placed 160x300 + 160x600 banner slot across {updated} public HTML file(s) (total public: {checked_public}).")
+    print(f"Placed all 3 ad units across {updated} public HTML file(s) (total public: {checked_public}).")
 
 
 if __name__ == "__main__":
